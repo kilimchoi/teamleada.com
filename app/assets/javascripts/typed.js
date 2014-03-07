@@ -1,5 +1,4 @@
-
-n($){
+!function($){
 
   "use strict";
 
