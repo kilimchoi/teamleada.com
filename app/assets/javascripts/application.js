@@ -13,3 +13,23 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function() {
+
+  $(".header-link").click(function(event) {
+    event.preventDefault();
+
+    $("ul#header-links li").removeClass("active");
+    $(this).parent().addClass("active");
+    $('html, body').animate({
+      scrollTop: $("#" + $(this).data().element).offset().top - 70
+    }, 500);
+  });
+
+  $("#typer").typed({
+    strings: ["Facebook.", "Twitter.", "Yelp.", "Google.", "great website. We'll teach you how."],
+    typeSpeed: 80,
+    backDelay: 500
+  });
+
+});
