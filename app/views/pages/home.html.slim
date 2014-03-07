@@ -1,0 +1,54 @@
+= provide(:header_links, "header/home")
+
+.main
+  section#intro
+    .container
+      .row
+        .col-md-12.center
+          .about-intro
+            h1.white Ruby on Rails DeCal
+            h3.white UC Berkeley - Fall 2014
+            p.white
+              | Instructors: 
+              = link_to "Mark Miyashita", "http://markmiyashita.com", class: "light-link underline"
+              |  and 
+              = link_to "Sam Lau", "https://github.com/SamLau95", class: "light-link underline"
+  section#about
+    .container
+      .row
+        .col-md-12.center
+          .attention-grabber
+            h1.white
+              | Build the next 
+              span#typer
+            .row
+              .col-md-8.col-md-offset-2.center
+                p.white
+                  | The Rails DeCal is a 2-unit class for students who want to learn how to create complex, dynamic websites.
+  section#about-mark
+    .container
+      .row
+        .col-md-8.col-md-offset-2
+          .about-section
+            .description
+              h2 About Mark
+              = render partial: "shared/instructors/mark"
+            .image
+              = image_tag "mark_miyashita.jpg", class: "round-with-border"
+  section#about-sam
+    .container
+      .row
+        .col-md-8.col-md-offset-2
+          .about-section
+            .description
+              h2 About Sam
+              = render partial: "shared/instructors/sam"
+            .image
+              = image_tag "sam_lau.jpeg", class: "round-with-border"
+  section#schedule
+    .container
+      .row
+        .col-md-8.col-md-offset-2
+          .schedule-container
+            h1.white Schedule
+            p.white Coming soon!
