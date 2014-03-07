@@ -99,11 +99,11 @@ body {
       }
     }
 
-    section#about-mark {
+    section#content {
       background-color: white;
     }
 
-    section#about-sam {
+    section#learning {
       background-color: $light-gray;
 
       .about-section {
@@ -119,10 +119,18 @@ body {
       }
     }
 
-    section#schedule {
+    section#email {
       background-color: $rails-red;
 
       .schedule-container {
+        padding: 100px 0;
+      }
+    }
+
+    section#try-project {
+      background-color: $lap-lane;
+
+      .try-project-container {
         padding: 100px 0;
       }
     }

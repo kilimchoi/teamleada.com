@@ -26,10 +26,4 @@ $(document).ready(function() {
     }, 500);
   });
 
-  $("#typer").typed({
-    strings: ["Facebook.", "Twitter.", "Yelp.", "Google.", "great website. We'll teach you how."],
-    typeSpeed: 80,
-    backDelay: 500
-  });
-
 });
