@@ -99,11 +99,13 @@ body {
       }
     }
 
-    section#content {
+    section#content-one,
+    section#content-three {
       background-color: $content-bg;
     }
 
-    section#learning {
+    section#content-two,
+    section#content-four {
       background-color: $learning-bg;
 
       .about-section {
