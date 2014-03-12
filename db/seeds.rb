@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+project = Project.create(
+  title: "Titanic: Machine Learning From Disaster",
+  description: "This is a description of the project"
+)
+
+puts "Created project: #{project.title}."
