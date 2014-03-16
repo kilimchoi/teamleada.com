@@ -9,4 +9,7 @@ class PagesController < ApplicationController
   def handbook
   end
 
+  def test
+  end
+
 end
