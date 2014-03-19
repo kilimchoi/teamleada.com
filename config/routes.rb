@@ -5,5 +5,9 @@ TeachData::Application.routes.draw do
   match "handbook", to: "pages#handbook", via: :get
   match "test", to: "pages#test", via: :get
 
-  resources :projects, param: :url, only: [:show]
+  resources :projects, param: :url, only: [:show] do
+    resources :lessons do
+      resources :steps
+    end
+  end
 end
