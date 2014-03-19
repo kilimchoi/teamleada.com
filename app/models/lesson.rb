@@ -4,4 +4,9 @@ class Lesson < ActiveRecord::Base
 
   has_one :next_lesson
   has_one :previous_lesson
+
+  def paragraphs
+    content.split("\n")
+  end
+
 end
