@@ -28,14 +28,6 @@ welcome_lesson = Lesson.create!(
 
 project.lessons << welcome_lesson
 
-welcome_lesson_steps = [
-  "Work with the data",
-  "Learn and apply Analytics tools here",
-]
-
-welcome_lesson_steps.each do |content|
-  new_step = Step.create!(
-    content: content
-  )
-  welcome_lesson.steps << new_step
-end
+work_with_data = Step.create!(content: "Work with the data")
+learn_and_apply = Step.create!(content: "Learn and apply Analytics tools here")
+welcome_lesson.steps << [work_with_data, learn_and_apply]
