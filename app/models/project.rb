@@ -1,4 +1,6 @@
 class Project < ActiveRecord::Base
+  has_many :lessons
+
   before_create :make_url
 
   validates :title, uniqueness: true
