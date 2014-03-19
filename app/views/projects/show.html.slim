@@ -1,0 +1,12 @@
+.container
+  .row
+    .col-md-8.col-md-offset-2
+      .project-container
+        h1.center = @project.title
+        .row
+          .col-md-6
+            h2 Project Details
+          .col-md-6
+            h2 Lessons
+            - @project.lessons.each do |lesson|
+              = link_to lesson.title, project_lesson_path(project_url: @project.url, id: lesson.id)
