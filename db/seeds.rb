@@ -28,6 +28,16 @@ welcome_lesson = Lesson.create!(
 
 project.lessons << welcome_lesson
 
-work_with_data = Step.create!(content: "Work with the data")
-learn_and_apply = Step.create!(content: "Learn and apply Analytics tools here")
+work_with_data_content = "Notice that you are given two datasets [Train/Test]! We will disect and vizualize data, and eventually clean them.
+
+In general Data Scientists build models using cleaned Training data and then make predictions utilizing cleaned Test data.
+"
+learn_and_apply_content = "Welcome to the Tools Screen. There are many models that can be applied to this data project, but we will only go over two: generalized linear models (GLM) and Classification Trees (CT).
+"
+
+work_with_data = Step.create!(title: "Work with the data", content: work_with_data_content)
+learn_and_apply = Step.create!(title: "Learn and apply Analytics tools here", content: learn_and_apply_content)
 welcome_lesson.steps << [work_with_data, learn_and_apply]
+
+
+

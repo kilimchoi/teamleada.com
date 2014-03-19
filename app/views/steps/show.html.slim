@@ -4,4 +4,9 @@
       .step-container
         h1 = @step.lesson.project.title
         h1 = @step.lesson.title
-        h3 = @step.content
+        h3 = @step.title
+        p
+          = @step.content
+        .next-steps-container
+          - @step.next_steps.each do |step|
+            = link_to step.tite, project_lesson_step_path(project_url: step.lesson.project.url, lesson_id: step.lesson.id, id: step.id), class: "flat-button step-button"
