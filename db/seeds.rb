@@ -39,8 +39,23 @@ work_with_data = Step.create!(title: "Work with the data", content: work_with_da
 learn_and_apply = Step.create!(title: "Learn and apply Analytics tools here", content: learn_and_apply_content)
 welcome_lesson.steps << [work_with_data, learn_and_apply]
 
+# Work with Data
 training_data_content = "This is the place where you work with training data. You can view, vizualize, and eventually modify the data."
 training_data = Step.create!(title: "Work with the training data", content: training_data_content, previous_step: work_with_data)
 
 testing_data_content = "This is the place where you work with testing data. You can view, vizualize, and eventually modify the data."
 testing_data = Step.create!(title: "Work with the testing data", content: testing_data_content, previous_step: work_with_data)
+
+# Training Data
+view_training_data_content = ""
+view_training_data = Step.create!(title: "View the training data", content: view_training_data_content, previous_step: training_data)
+
+visualize_training_data_content = ""
+visualize_training_data = Step.create!(title: "Visualize the training data", content: visualize_training_data_content, previous_step: training_data)
+
+manipulate_training_data_content = ""
+manipulate_training_data = Step.create!(title: "Manipulate the training data", content: manipulate_training_data_content, previous_step: training_data)
+
+# Testing Data
+view_testing_data_content = ""
+view_testing_data = Step.create!(title: "View the testing data", content: view_testing_data_content, previous_step: testing_data)
