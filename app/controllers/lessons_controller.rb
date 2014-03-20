@@ -7,7 +7,7 @@ class LessonsController < ApplicationController
   private
 
   def lesson
-    @lesson = Lesson.find(params[:id])
+    @lesson = Lesson.find_by(url: params[:url])
   end
 
 end
