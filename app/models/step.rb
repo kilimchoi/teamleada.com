@@ -27,9 +27,9 @@ class Step < ActiveRecord::Base
 
   def back_link
     if previous_step.nil?
-      project_lesson_path(project_url: lesson.project.url, id: lesson.id)
+      project_lesson_path(project_url: lesson.project.url, url: lesson.url)
     else
-      project_lesson_step_path(project_url: previous_step.main_lesson.project.url, lesson_id: previous_step.main_lesson.id, id: previous_step.id)
+      project_lesson_step_path(project_url: previous_step.main_lesson.project.url, lesson_url: previous_step.main_lesson.url, url: previous_step.url)
     end
   end
 
