@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-TeachData::Application.load_tasks
+TeamLeada::Application.load_tasks
