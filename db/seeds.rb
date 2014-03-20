@@ -59,3 +59,10 @@ manipulate_training_data = Step.create!(title: "Manipulate the training data", c
 # Testing Data
 view_testing_data_content = ""
 view_testing_data = Step.create!(title: "View the testing data", content: view_testing_data_content, previous_step: testing_data)
+
+visualize_testing_data_content = ""
+visualize_testing_data = Step.create!(title: "Visualize the training data", content: visualize_training_data_content, previous_step: training_data)
+
+manipulate_testing_data_content = ""
+manipulate_testing_data = Step.create!(title: "Manipulate the training data", content: manipulate_training_data_content, previous_step: training_data)
+
