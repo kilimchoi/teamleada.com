@@ -11,4 +11,4 @@
         .steps
           - @lesson.steps.each do |step|
             .individual-step.center
-              = link_to step.title, project_lesson_step_path(project_url: @lesson.project.url, lesson_id: @lesson.id, id: step.id), class: "flat-button step-button"
+              = link_to step.title, project_lesson_step_path(project_url: @lesson.project.url, lesson_url: @lesson.url, url: step.url), class: "flat-button step-button"

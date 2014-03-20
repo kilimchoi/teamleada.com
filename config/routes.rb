@@ -6,8 +6,8 @@ TeamLeada::Application.routes.draw do
   match "test", to: "pages#test", via: :get
 
   resources :projects, param: :url, only: [:show] do
-    resources :lessons do
-      resources :steps
+    resources :lessons, param: :url, only: [:show] do
+      resources :steps, param: :url, only: [:show]
     end
   end
 end
