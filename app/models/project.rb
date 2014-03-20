@@ -1,11 +1,11 @@
 class Project < ActiveRecord::Base
   has_many :lessons
 
-  before_create :make_url
+  before_create :set_url
 
   validates :title, uniqueness: true
 
-  def make_url
+  def set_url
     self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize
   end
 
