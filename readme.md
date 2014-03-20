@@ -1,4 +1,4 @@
-# Website for Teada
+# Website for TeamLeada.com
 
 ## Setup
 

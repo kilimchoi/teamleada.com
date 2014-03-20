@@ -6,6 +6,13 @@ class Step < ActiveRecord::Base
 
   belongs_to :previous_step, class_name: "Step"
 
+  before_create :set_url
+  validates_uniqueness_of :title, scope: :lesson_id
+
+  def set_url
+    self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize
+  end
+
   def main_lesson
     unless lesson.nil?
       lesson
@@ -20,9 +27,9 @@ class Step < ActiveRecord::Base
 
   def back_link
     if previous_step.nil?
-      project_lesson_path(project_url: lesson.project.url, id: lesson.id)
+      project_lesson_path(project_url: lesson.project.url, url: lesson.url)
     else
-      project_lesson_step_path(project_url: previous_step.main_lesson.project.url, lesson_id: previous_step.main_lesson.id, id: previous_step.id)
+      project_lesson_step_path(project_url: previous_step.main_lesson.project.url, lesson_url: previous_step.main_lesson.url, url: previous_step.url)
     end
   end
 

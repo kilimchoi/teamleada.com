@@ -11,4 +11,4 @@
             ul
             - @project.lessons.each do |lesson|
               li
-                = link_to lesson.title, project_lesson_path(project_url: @project.url, id: lesson.id)
+                = link_to lesson.title, project_lesson_path(project_url: @project.url, url: lesson.url)

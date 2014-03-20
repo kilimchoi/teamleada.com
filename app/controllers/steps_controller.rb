@@ -7,7 +7,7 @@ class StepsController < ApplicationController
   private
 
   def step
-    @step = Step.find(params[:id])
+    @step = Step.find_by(url: params[:url])
   end
 
 end
