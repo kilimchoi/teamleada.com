@@ -30,6 +30,11 @@ h1, h2, h3, h4, h5 {
   font-weight: 300;
 }
 
+.title {
+  padding-bottom: 10px;
+  border-bottom: 1px solid $medium-gray;
+}
+
 #typed-cursor {
   opacity: 1;
   font-weight: 100;
