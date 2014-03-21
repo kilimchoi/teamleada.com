@@ -1,7 +1,7 @@
 .container
   .row
     .col-md-12
-      h1 = @lesson.project.title
+      h1.title = @lesson.project.title
       h1 = @lesson.title
       = link_to "Back", @lesson.back_link, class: "flat-button"
       .lesson-container

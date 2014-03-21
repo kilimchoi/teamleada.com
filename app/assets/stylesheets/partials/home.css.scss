@@ -1,0 +1,82 @@
+.main {
+  section#intro {
+    background-color: $intro-bg;
+
+    .about-intro {
+      padding: 100px 0;
+    }
+  }
+
+  section#about {
+    background-color: $about-bg;
+
+    .attention-grabber {
+      padding: 100px 0;
+    }
+  }
+
+  section {
+    .about-section {
+      padding: 100px 0;
+      margin: 0 auto;
+      content: "";
+      display: table;
+      max-width: 1000px;
+      width: 100%;
+
+      .description {
+        line-height: 1.8em;
+        position: relative;
+        height: 100%;
+        float: left;
+        width: 50%;
+      }
+
+      .image {
+        float: right;
+        width: 33.33333333333333%;
+        margin-left: 16.666666666666664%;
+        padding-top: 50px;
+        display: inline;
+      }
+    }
+  }
+
+  section#content-one,
+  section#content-three {
+    background-color: $content-bg;
+  }
+
+  section#content-two,
+  section#content-four {
+    background-color: $learning-bg;
+
+    .about-section {
+      .description {
+        float: right;
+        margin-left: 16.666666666666666664%;
+      }
+
+      .image {
+        float: left;
+        margin-left: 0;
+      }
+    }
+  }
+
+  section#email {
+    background-color: $email-bg;
+
+    .schedule-container {
+      padding: 100px 0;
+    }
+  }
+
+  section#try-project {
+    background-color: $try-project-bg;
+
+    .try-project-container {
+      padding: 100px 0;
+    }
+  }
+}
