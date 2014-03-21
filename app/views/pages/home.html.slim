@@ -69,4 +69,4 @@
           .try-project-container
             h1.white Try a project!
             p.white Build a classification tree model in R to predict the survivors in the Titanic!
-            = link_to "Try now!", project_path(url: @project.url), class: "flat-button"
+            = link_to "Try now!", project_lesson_path(project_url: @project.url, url: @project.lessons.first.url), class: "flat-button"
