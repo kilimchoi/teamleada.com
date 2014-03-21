@@ -2,9 +2,9 @@
   .row
     .col-md-12
       .step-container
-        h1 = @step.main_lesson.project.title
-        h1 = @step.main_lesson.title
+        h1.title = @step.main_lesson.project.title
         = link_to "Back", @step.back_link, class: "flat-button"
+        h1 = @step.main_lesson.title
         h3 = @step.title
         p
           = @step.content
