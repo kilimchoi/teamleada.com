@@ -2,13 +2,5 @@
   .row
     .col-md-12
       h1.title = @lesson.project.title
-      h1 = @lesson.title
       = link_to "Back", @lesson.back_link, class: "flat-button"
-      .lesson-container
-        p
-          - @lesson.paragraphs.each do |paragraph|
-            p = paragraph
-        .steps
-          - @lesson.steps.each do |step|
-            .individual-step.center
-              = link_to step.title, project_lesson_step_path(project_url: @lesson.project.url, lesson_url: @lesson.url, url: step.url), class: "flat-button step-button"
+      = render partial: "lessons/lesson", lesson: @lesson
