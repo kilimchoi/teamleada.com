@@ -16,5 +16,6 @@ javascript:
   hljs.initHighlightingOnLoad();
   $(document).ready(function() {
     $("pre .content-code").each(function(i, e) {hljs.highlightBlock(e)});
+    $("pre .content-code").css('color', 'red'); // checking to see that it doensnt work..
     });
   });
