@@ -3,9 +3,10 @@ class Step < ActiveRecord::Base
   serialize :content, Array
 
   belongs_to :lesson
-  has_many :next_steps, foreign_key: :previous_step_id, class_name: "Step"
-
   belongs_to :previous_step, class_name: "Step"
+  has_many :next_steps, foreign_key: :previous_step_id, class_name: "Step"
+  has_many :required_steps, foreign_key: :required_id, class_name: 'RequiredStep'
+  has_many :dependent_steps, foreign_key: :requiree_id, class_name: 'RequiredStep'
 
   before_create :set_url
   validates_uniqueness_of :title, scope: [:lesson_id, :previous_step_id]
