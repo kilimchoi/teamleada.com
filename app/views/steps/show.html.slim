@@ -12,3 +12,5 @@
           - @step.next_steps.each do |step|
             .individual-next-step-container.center
               = link_to step.title, project_lesson_step_path(project_url: step.main_lesson.project.url, lesson_url: step.main_lesson.url, url: step.url), class: "flat-button step-button"
+javascript:
+  hljs.initHighlightingOnLoad();
