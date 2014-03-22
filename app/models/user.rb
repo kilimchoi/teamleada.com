@@ -14,4 +14,14 @@ class User < ActiveRecord::Base
     []
   end
 
+  def completed_points(project)
+    total = 0
+    step_statuses.each do |step_status|
+      if step_status.completed? && step_status.project == project
+        total += step_status
+      end
+    end
+    total
+  end
+
 end
