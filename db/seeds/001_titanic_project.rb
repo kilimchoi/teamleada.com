@@ -105,3 +105,6 @@ view_and_explore_data = Lesson.create!(
   project: project
 )
 =end
+
+# Leaderboard Seed info
+
