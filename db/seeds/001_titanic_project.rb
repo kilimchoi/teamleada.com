@@ -2,7 +2,9 @@
 
 project = Project.create!(
   title: "Titanic: Machine Learning From Disaster",
-  description: "This is a description of the project"
+  description: "This is a description of the project",
+  number: 1,
+  enabled: true
 )
 
 puts "Created project: #{project.title}."
