@@ -6,8 +6,16 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-mark = User.create!(username: "mark", email: "mark@mark.com", password: "password")
-puts "Created user: #{mark.username}."
+users = [
+  'mark',
+  'brian',
+  'tristan',
+]
+
+users.each do |user|
+  new_user = User.create!(username: user, email: "#{user}@#{user}.com", password: "password")
+  puts "Created user: #{new_user.username}."
+end
 
 # Loads seed files from db/seeds
 Dir[File.join(Rails.root, 'db', 'seeds', '*.rb')].sort.each do |seed|

@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140322092759) do
+ActiveRecord::Schema.define(version: 20140322093516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "leaderboards", force: true do |t|
     t.integer  "project_id"
-    t.decimal  "baseline",   precision: 8, scale: 2
+    t.decimal  "baseline",   precision: 20, scale: 5
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20140322092759) do
   create_table "submissions", force: true do |t|
     t.integer  "user_id"
     t.integer  "project_id"
-    t.decimal  "score",      precision: 8, scale: 2
+    t.decimal  "score",      precision: 20, scale: 5
     t.datetime "created_at"
     t.datetime "updated_at"
   end
