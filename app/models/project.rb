@@ -2,6 +2,7 @@ class Project < ActiveRecord::Base
   require 'CSV'
 
   has_many :lessons
+  has_many :submissions
 
   before_create :set_url
 
