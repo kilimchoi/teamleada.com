@@ -7,19 +7,16 @@ project = Project.create!(
 
 puts "Created project: #{project.title}."
 
-welcome_lesson_content = "Welcome to your first Data Project by Leada! This project is taken from Kaggle, a data science competition website and is an excellent introduction into the work of data analytics! Check them out at www.kaggle.com
-
-This project is based off of the historic sinking of the Titanic and you are asked to build a model which predicts which passengers survived! Complete this project and you will have:
-
-      - Learned how to do exploratory analysis on data and create visualizations
-      - Learned how to clean data and make inferences on missing data
-      - Built a classification tree model which predicts which survivors of the Titanic crash survived
-      - Learned how to use your model to predict whether new passengers survived
-
-You will learn all of these things coding in R! Don't worry if you've never use R before, we will walk you through every part of the way!
-
-All of the learning principles here are fundamental skills for data analysts/data scientists and for anyone who wants to learn how to answer questions from data. So lets begin!
-"
+welcome_lesson_content = [
+  ['text', 'Welcome to your first Data Project by Leada! This project is taken from Kaggle, a data science competition website and is an excellent introduction into the work of data analytics! Check them out at www.kaggle.com'],
+  ['text', 'This project is based off of the historic sinking of the Titanic and you are asked to build a model which predicts which passengers survived! Complete this project and you will have:'],
+  ['text', '- Learned how to do exploratory analysis on data and create visualizations'],
+  ['text', '- Learned how to clean data and make inferences on missing data'],
+  ['text', '- Built a classification tree model which predicts which survivors of the Titanic crash survived'],
+  ['text', '- Learned how to use your model to predict whether new passengers survived'],
+  ['text', 'You will learn all of these things coding in R! Don\'t worry if you\'ve never use R before, we will walk you through every part of the way!'],
+  ['text', 'All of the learning principles here are fundamental skills for data analysts/data scientists and for anyone who wants to learn how to answer questions from data. So lets begin!'],
+]
 
 welcome_lesson = Lesson.create!(
   title: "Welcome",
@@ -27,12 +24,11 @@ welcome_lesson = Lesson.create!(
   project: project
 )
 
-quick_pass_content = 'In this project you are given two datasets "Train" and "Test". You will be using the "Train" dataset to build your model. This model will create predictions for passenger survival for the "Train" dataset.
-
-In analytics we call this "training the model", hence the name "Train" for the dataset. Then, using the model you built you will predict whether the passengers in the "Test" dataset survived based on the model you created, hence the name "Test" for the other dataset!
-
-There are 418 passengers we need to predict in the "Test" dataset, 266 were male and 152 were female. Lets first just guess that the men survived and the women died. Don\'t worry about the details of the Rcode we provide for now, we will explain it all later!
-'
+quick_pass_content = [
+  ['text', 'In this project you are given two datasets "Train" and "Test". You will be using the "Train" dataset to build your model. This model will create predictions for passenger survival for the "Train" dataset.'],
+  ['text', 'In analytics we call this "training the model", hence the name "Train" for the dataset. Then, using the model you built you will predict whether the passengers in the "Test" dataset survived based on the model you created, hence the name "Test" for the other dataset!'],
+  ['text', 'There are 418 passengers we need to predict in the "Test" dataset, 266 were male and 152 were female. Lets first just guess that the men survived and the women died. Don\'t worry about the details of the Rcode we provide for now, we will explain it all later!'],
+]
 
 quick_pass = Step.create!(title: "Quick Pass", content: quick_pass_content, lesson: welcome_lesson)
 
