@@ -21,7 +21,7 @@ welcome_lesson_content = [
 ]
 
 welcome_lesson = Lesson.create!(
-  title: "Welcome",
+  title: "Welcome + Takeaways",
   content: welcome_lesson_content,
   project: project
 )
@@ -44,7 +44,7 @@ quick_pass_content = [
   ['code', 'trainData <- read.csv("train.csv", header = TRUE, stringsAsFactors = FALSE)'],
   ['code', 'testData <- read.csv("test.csv", header = TRUE, stringsAsFactors = FALSE)'],
   ['text', 'Then we take the sex of each passenger in the Test dataset and convert them to survived or died. 1 means they survived, 0 means they died'],
-  ['code', 'Survived <- factor(testData$Sex, labels = c(1, 0))'],
+  ['code', 'Survived <- as.numeric(factor(testData$Sex, levels = c("male","female"), labels = c(0,1))) - 1'],
   ['text', 'We select the passengerID of each passenger and match it with our prediction for survival'],
   ['code', 'submission_file <- cbind(testData$PassengerId, Survived)'],
   ['text', 'We rename the columns'],
@@ -59,15 +59,26 @@ quick_pass = Step.create!(title: "Quick Pass", content: quick_pass_content, less
 
 
 main_page_content = [
-  ['text', 'Welcome to the main page. From here please select from the options below.'],
-  ['text', 'In this project you are given two datasets "Train" and "Test". You will be using the "Train" dataset to build your model. This model will create predictions for passenger survival for the "Train" dataset.'],
-  ['text', 'In analytics we call this "training the model", hence the name "Train" for the dataset. Then, using the model you built you will predict whether the passengers in the "Test" dataset survived based on the model you created, hence the name "Test" for the other dataset!'],
-  ['text', 'There are 418 passengers we need to predict in the "Test" dataset, 266 were male and 152 were female. Lets first just guess that the men survived and the women died. Don\'t worry about the details of the Rcode we provide for now, we will explain it all later!'],
+  ['text', 'This is the main page for your first data project! Choose from the options below to begin your training as a data guru and you will find yourself learning the process along the way.'],
+  ['text', 'You are tasked to predict whether a passenger survived the Titanic crash. You are given two datasets (Train & Test) each of which include predictor variables such as Age, Passenger Class, Sex, etc. With these two data sets we will do the following:'],
+  ['text', '1. Create a model which will predict whether a passenger survived using only the Train data set'],
+  ['text', '2. Predict whether the passengers survived in the Test data set based on the model we created'],
 ]
 
 main_page = Lesson.create!(
   title: "Main Page",
   content: main_page_content,
+  project: project
+)
+
+work_with_data_content = [
+  ['text', 'In this project you are given two datasets "Train" and "Test". You will be using the "Train" dataset to build your model. This model will create predictions for passenger survival for the "Train" dataset.'],
+  ['text', 'In analytics we call this "training the model", hence the name "Train" for the dataset. Then, using the model you built you will predict whether the passengers in the "Test" dataset survived based on the model you created, hence the name "Test" for the other dataset!'],
+]
+
+work_with_data_lesson = Lesson.create!(
+  title: "Work with the Data",
+  content: work_with_data_content,
   project: project
 )
 
@@ -83,58 +94,67 @@ train_data_content = [
   ['text', '"Parch" is the number of parents or children that a passenger has on the Titanic. "Pclass" is the passenger class (1st, 2nd, 3rd) "Embarked" is the location the passenger embarked from (Cherbourg, Queenstown, Southampton)'],
 ]
 
-=begin
-work_with_data_content = "Notice that you are given two datasets [Train/Test]! We will disect and vizualize data, and eventually clean them.
+train_data = Step.create!(title: "Train Data", content: train_data_content, lesson: work_with_data_lesson)
 
-In general Data Scientists build models using cleaned Training data and then make predictions utilizing cleaned Test data.
-"
-learn_and_apply_content = "Welcome to the Tools Screen. There are many models that can be applied to this data project, but we will only go over two: generalized linear models (GLM) and Classification Trees (CT).
-"
+train_visualize_content = [
+  ['text', 'It is good to first visualize the data to get a general understanding of the patterns and trends of the data. Lets look at the survival rate of our passengers filtered by Sex.'],
+  ['text', 'Your intuition might be that the women had a higher chance of survival because the boat adhered to the "Women and Children" first standard. We first create a table and call it "counts". Then we use the barplot() function in R.'],
+  ['code', 'counts <- table(trainData$Survived, trainData$Sex)'],
+  ['code', 'barplot(counts, xlab = "Gender", ylab = "Number of People", main = "Survival by Sex")'],
+  ['code', 'counts[2] / (counts[1] + counts[2])'],
+  ['code', 'counts[4] / (counts[3] + counts[4])'],
+  ['text', 'The lighter areas indicate survival and notice that our intuition was correct! 74.2% of women survived vs. 18.9% of men. We can use this to improve our model.'],
+]
 
-work_with_data = Step.create!(title: "Work with the data", content: work_with_data_content, lesson: welcome_lesson)
-learn_and_apply = Step.create!(title: "Learn and apply Analytics tools here", content: learn_and_apply_content, lesson: welcome_lesson)
+train_visualize = Step.create!(title:"Visualize", content: train_visualize_content, previous_step: train_data)
 
-# Work with Data
-training_data_content = "This is the place where you work with training data. You can view, vizualize, and eventually modify the data."
-training_data = Step.create!(title: "Work with the training data", content: training_data_content, previous_step: work_with_data)
+train_clean_content = [
+  ['text', 'Cleaning data is typically one of the most time consuming parts to data analysis. We will cover a major topic in cleaning which is what to do with missing values.'],
+  ['text', 'If you noticed, there are several missing values for the "Age" variable for our observations. You can see by coding the following:'],
+  ['code', 'trainData$Age'],
+  ['text', 'Notice how there are tons of NA\'s. Filling in these NA\'s can improve our model so we will make inferences on the missing age variables. A simple proxy is the average age of all of the passengers. '],
+  ['text', 'We write a for loop which goes through each row of our "Train" dataset and if the Age column is "NA" then we input the average age.'],
+  ['text', 'We first calculate the mean age and ignore the NAs'],
+  ['code', 'mean_age <- round(mean(trainData$Age,na.rm=T), digits = 3)'],
+  ['text', 'Then we loop through the observations in the dataset and add the average age accordingly'],
+  #Fix Newline Character spacing for code
+  ['code', 'for (i in 1:nrow(trainData)) {\n\tif (is.na(trainData[i,6])) {\n\t\ttrainData$Age[i] <- mean_age\n\t}\n}'],
+]
 
-testing_data_content = "This is the place where you work with testing data. You can view, vizualize, and eventually modify the data."
-testing_data = Step.create!(title: "Work with the testing data", content: testing_data_content, previous_step: work_with_data)
+train_clean = Step.create!(title:"Clean", content: train_clean_content, previous_step: train_data)
 
-# Training Data
-view_training_data_content = "This is where you'll load the data, and get your first glimpse."
-view_training_data = Step.create!(title: "View the training data", content: view_training_data_content, previous_step: training_data)
+test_data_content = [
+  ['text', 'We can use the same functions as we did before to look at our "Test" dataset If you want to see more than 6 rows you can do'],
+  ['code', 'head(testData, 10)'],
+  ['code', 'tail(testData, 10)'],
+  ['code', 'testData'],
+]
 
-visualize_training_data_content = ""
-visualize_training_data = Step.create!(title: "Visualize the training data", content: visualize_training_data_content, previous_step: training_data)
+test_data = Step.create!(title:"Test Data", content: test_data_content, lesson: work_with_data_lesson)
 
-manipulate_training_data_content = ""
-manipulate_training_data = Step.create!(title: "Manipulate the training data", content: manipulate_training_data_content, previous_step: training_data)
+test_visualize_content = [
+  ['text', 'Visualizing the "Test" dataset is important because you want to make sure that the two datasets are at least somewhat consistent with each other.'],
+  ['text', 'Otherwise when building a model on the "Train" dataset your creating a model for new data that has no similarity with the old data and will result in poor predictions!'],
+  ['text', 'Simple checks such as creating density plots will suffice for now'],
+  ['code', 'plot(density(testData$Age, na.rm = TRUE), main ="TestData Age Density")'],
+  ['code', 'plot(density(trainData$Age, na.rm = TRUE), main ="TrainData Age Density")'],
+  ['text', 'Density plots check the distribution of a variable, a distribution is the probability of being any given value in a variable. In this case its the probability of being any given age based on the datasets.'],
+  ['text', 'You should see that these distributions are approximately similar. Its good to check more of the variables but we will move on.'],
+]
 
-# Testing Data
-view_testing_data_content = ""
-view_testing_data = Step.create!(title: "View the testing data", content: view_testing_data_content, previous_step: testing_data)
+test_visualize = Step.create!(title:"Visualize", content: test_visualize_content, previous_step: test_data)
 
-visualize_testing_data_content = ""
-visualize_testing_data = Step.create!(title: "Visualize the testing data", content: visualize_training_data_content, previous_step: testing_data)
 
-manipulate_testing_data_content = ""
-manipulate_testing_data = Step.create!(title: "Manipulate the testing data", content: manipulate_training_data_content, previous_step: testing_data)
+test_clean_content = [
+  ['text', 'This is the same situation as the "Train" dataset. We want to make inferences on the missing age variables to strengthen our model'],
+  ['text', 'We calculate the mean age of the "Test" dataset'],
+  ['code', 'test_mean_age <- round(mean(testData$Age, na.rm= T), digits = 3)'],
+  ['text', 'We loop through each observation and input the mean age when necessary'],
+  ['code', 'for (i in 1:nrow(testData)) {\n\tif (is.na(testData[i,5])) {\n\t\ttestData[i, 5] <- test_mean_age\n\t}\n}'],
+]
 
-# Second Lesson
-view_and_explore_data_content = 'Here, you learn how to inspect the data. In R, we utilize the following function to achieve that goal:
 
-Taking a brief look at the data first is always a good move to get yourself familiarized. The first thing we want to do is put the datasets you downloaded from Kaggle into RStudio! Write the following code to "read in" your data into RStudio:
-
-trainData <- read.csv("train.csv", header = TRUE, stringsAsFactors = FALSE)
-testData <- read.csv("test.csv", header = TRUE, stringsAsFactors = FALSE)
-'
-view_and_explore_data = Lesson.create!(
-  title: "This is where you view and explore the data!",
-  content: view_and_explore_data_content,
-  project: project
-)
-=end
+test_clean = Step.create!(title: "Clean", content: test_clean_content, previous_step: test_data)
 
 # Leaderboard Seed info
 mark = User.find_by(username: 'mark')

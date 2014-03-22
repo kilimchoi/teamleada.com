@@ -8,7 +8,7 @@ class Step < ActiveRecord::Base
   belongs_to :previous_step, class_name: "Step"
 
   before_create :set_url
-  validates_uniqueness_of :title, scope: :lesson_id
+  validates_uniqueness_of :title, scope: [:lesson_id, :previous_step_id]
 
   def set_url
     self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize
