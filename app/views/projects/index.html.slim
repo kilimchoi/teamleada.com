@@ -1,0 +1,8 @@
+.container
+  .row
+    .col-md-12
+      .projects-container
+        h1.title Projects
+        .projects-list.list-group
+          - @projects.each do |project|
+            = link_to project.title, project_path(url: project.url), class: "list-group-item #{"disabled" unless project.enabled}"
