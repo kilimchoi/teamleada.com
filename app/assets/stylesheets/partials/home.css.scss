@@ -1,9 +1,35 @@
 .main {
   section#intro {
-    background-color: $intro-bg;
+    background-image: asset-url("assets/r_background.jpg");
+    background-size: cover;
+    background-position-y: -260px;
+    background-position-x: -120px;
+    background-repeat: no-repeat;
+    background-size: 110%;
 
     .about-intro {
-      padding: 100px 0;
+      padding: 400px 0;
+
+      .title-container {
+        border-radius: 1000px;
+        background-color: #2d637f;
+        opacity: 0.7;
+        width: 300px;
+        margin: auto;
+        padding: 32px;
+
+        h1 {
+          font-size: 72px;
+        }
+
+        h3 {
+          font-size: 36px;
+        }
+
+        h1, h2, h3, h4, h5 {
+          font-weight: 700;
+        }
+      }
     }
   }
 
