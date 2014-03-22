@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140322085039) do
+ActiveRecord::Schema.define(version: 20140322093516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "leaderboards", force: true do |t|
+    t.integer  "project_id"
+    t.decimal  "baseline",   precision: 20, scale: 5
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "lessons", force: true do |t|
     t.string   "title"
@@ -48,6 +55,14 @@ ActiveRecord::Schema.define(version: 20140322085039) do
     t.string   "url"
   end
 
+  create_table "submissions", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.decimal  "score",      precision: 20, scale: 5
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -61,6 +76,7 @@ ActiveRecord::Schema.define(version: 20140322085039) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "username"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

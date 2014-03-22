@@ -105,3 +105,12 @@ view_and_explore_data = Lesson.create!(
   project: project
 )
 =end
+
+# Leaderboard Seed info
+mark = User.find_by(username: 'mark')
+brian = User.find_by(username: 'brian')
+tristan = User.find_by(username: 'tristan')
+
+Submission.create!(project: project, user: mark, score: 0.999)
+Submission.create!(project: project, user: brian, score: 0.01)
+Submission.create!(project: project, user: tristan, score: 0.001)
