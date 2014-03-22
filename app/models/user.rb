@@ -3,4 +3,15 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  has_many :submissions
+
+  def completed_projects
+    []
+  end
+
+  def in_progress_projects
+    []
+  end
+
 end

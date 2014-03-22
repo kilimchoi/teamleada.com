@@ -25,15 +25,13 @@ class Project < ActiveRecord::Base
     correct = 0
 
     CSV.foreach(file, :headers => true) do |row|
-    if (soln_hash[row[0]] == row[1]) #if correct answer
-      correct += 1
+      if (soln_hash[row[0]] == row[1]) #if correct answer
+        correct += 1
+      end
     end
 
     return correct / total
 
   end
-
-
-
 
 end
