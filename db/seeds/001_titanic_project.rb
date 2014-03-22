@@ -14,7 +14,7 @@ welcome_lesson_content = [
   ['text', 'This project is based off of the historic sinking of the Titanic and you are asked to build a model which predicts which passengers survived! Complete this project and you will have:'],
   ['text', '- Learned how to do exploratory analysis on data and create visualizations'],
   ['text', '- Learned how to clean data and make inferences on missing data'],
-  ['text', '- Built a classification tree model which predicts which survivors of the Titanic crash survived'],
+  ['text', '- Built a classification tree model which predicts which passengers of the Titanic crash survived'],
   ['text', '- Learned how to use your model to predict whether new passengers survived'],
   ['text', 'You will learn all of these things coding in R! Don\'t worry if you\'ve never use R before, we will walk you through every part of the way!'],
   ['text', 'All of the learning principles here are fundamental skills for data analysts/data scientists and for anyone who wants to learn how to answer questions from data. So lets begin!'],
@@ -27,10 +27,20 @@ welcome_lesson = Lesson.create!(
 )
 
 quick_pass_content = [
-  ['text', 'In this project you are given two datasets "Train" and "Test". You will be using the "Train" dataset to build your model. This model will create predictions for passenger survival for the "Train" dataset.'],
-  ['text', 'In analytics we call this "training the model", hence the name "Train" for the dataset. Then, using the model you built you will predict whether the passengers in the "Test" dataset survived based on the model you created, hence the name "Test" for the other dataset!'],
-  ['text', 'There are 418 passengers we need to predict in the "Test" dataset, 266 were male and 152 were female. Lets first just guess that the men survived and the women died. Don\'t worry about the details of the Rcode we provide for now, we will explain it all later!'],
-  ['text', 'First we utilize the read.csv() function to load the data into R.'],
+  ['text', 'To begin we need to install the tools for data analysis! R is a useful and free application for data analytics that is widely used around the world. RStudio provides a more user friendly interface to work in!'],
+  ['text', 'Mac users download and install named "R-3.0.3.pkg (latest version)"'],
+  ['text', 'Windows users download and install R named "Download R 3.0.3 for Windows"'],
+  ['text', 'Also choose the appropriate RStudio file'],
+  ['text', 'Now create a folder on your desktop titled "Kaggle" and download the two data files at this link, save them in this Kaggle folder'],
+  ['text', 'In RStudio we must create a file for us to write in. Go to File ==> New ==> Rscript. Now in that file we must tell R where our current working directory is. We do this by using the setwd() function. Your working directory indicates to R which folder to look for the datasets you want to use. '],
+  ['text', 'Your working directory location is unique to each user! We provide an example of the format your code should be in'],
+  ['text', 'For Mac Users it should look like: setwd("/Users/your_user_name/Desktop/kaggle/")'],
+  ['text', 'For Windows Users it should look like: setwd("C:/Users/your_user_name/Desktop/kaggle")'],
+  ['text', 'You can look at this image as an example. The correct code would be: setwd("/Users/Clair/Desktop/kaggle/")'],
+  #Add image
+  ['text', 'To run what you just wrote in your RScript, put your cursor on a line of code in your RScript and enter control and return at the same time! Congrats you’ve just run your first line of R code!'],
+  ['text', 'From now on you can run any of our code snippets by copy and pasting it into your own RScript, and entering control and return. Typing control and return anywhere on the line runs the entire line of RCode.'],
+  ['text', 'Now we utilize the read.csv() function to load the data into R.'],
   ['code', 'trainData <- read.csv("train.csv", header = TRUE, stringsAsFactors = FALSE)'],
   ['code', 'testData <- read.csv("test.csv", header = TRUE, stringsAsFactors = FALSE)'],
   ['text', 'Then we take the sex of each passenger in the Test dataset and convert them to survived or died. 1 means they survived, 0 means they died'],
@@ -48,10 +58,30 @@ quick_pass_content = [
 quick_pass = Step.create!(title: "Quick Pass", content: quick_pass_content, lesson: welcome_lesson)
 
 
+main_page_content = [
+  ['text', 'Welcome to the main page. From here please select from the options below.'],
+  ['text', 'In this project you are given two datasets "Train" and "Test". You will be using the "Train" dataset to build your model. This model will create predictions for passenger survival for the "Train" dataset.'],
+  ['text', 'In analytics we call this "training the model", hence the name "Train" for the dataset. Then, using the model you built you will predict whether the passengers in the "Test" dataset survived based on the model you created, hence the name "Test" for the other dataset!'],
+  ['text', 'There are 418 passengers we need to predict in the "Test" dataset, 266 were male and 152 were female. Lets first just guess that the men survived and the women died. Don\'t worry about the details of the Rcode we provide for now, we will explain it all later!'],
+]
+
+main_page = Lesson.create!(
+  title: "Main Page",
+  content: main_page_content,
+  project: project
+)
 
 
-
-
+train_data_content = [
+  ['text', 'To take a look at the first six rows of the "Train" dataset use the following function'],
+  ['code', 'head(trainData)'],
+  ['text', 'To take a look at the last six rows of the dataset use'],
+  ['code', 'tail(trainData)'],
+  ['text', 'If you want to look at the entire dataset just type'],
+  ['code', 'trainData'],
+  ['text', 'The first thing you want to understand when beginning to dive into the data is what do the columns represent. Most are self-explanatory but a couple are a little confusing. "SibSp" is the total number of siblings or spouses that a passenger has on the Titanic.'],
+  ['text', '"Parch" is the number of parents or children that a passenger has on the Titanic. "Pclass" is the passenger class (1st, 2nd, 3rd) "Embarked" is the location the passenger embarked from (Cherbourg, Queenstown, Southampton)'],
+]
 
 =begin
 work_with_data_content = "Notice that you are given two datasets [Train/Test]! We will disect and vizualize data, and eventually clean them.
