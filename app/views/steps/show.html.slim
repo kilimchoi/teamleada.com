@@ -6,8 +6,8 @@
         = link_to "Back", @step.back_link, class: "flat-button"
         h1 = @step.main_lesson.title
         h3 = @step.title
-        - @step.paragraphs.each do |paragraph|
-          = paragraph
+        - @step.content.each do |content_array|
+          = render partial: "shared/content", locals: {content_type: content_array[0], content: content_array[1]}
         .next-steps-container
           - @step.next_steps.each do |step|
             .individual-next-step-container.center
