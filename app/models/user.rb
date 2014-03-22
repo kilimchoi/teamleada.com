@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :submissions
+  has_many :step_status
+
+  validates_format_of :username, :with => /^[A-Za-z0-9.&]*\z/
 
   def completed_projects
     []
