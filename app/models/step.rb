@@ -13,6 +13,10 @@ class Step < ActiveRecord::Base
     self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize
   end
 
+  def paragraphs
+    content.split("\n")
+  end
+
   def main_lesson
     unless lesson.nil?
       lesson
