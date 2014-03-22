@@ -1,4 +1,4 @@
 class StepRequirement < ActiveRecord::Base
-  belongs_to :required, class_name: 'Step'
-  belongs_to :requiree, class_name: 'Step'
+  belongs_to :required_step, class_name: 'Step'
+  belongs_to :requiree_step, class_name: 'Step'
 end

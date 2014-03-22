@@ -131,7 +131,7 @@ test_data_content = [
 ]
 
 test_data = Step.create!(title:"Test Data", content: test_data_content, lesson: work_with_data_lesson)
-#test_data.required_steps << [train_visualize, train_clean]
+test_data.add_required_steps([train_visualize, train_clean])
 
 test_visualize_content = [
   ['text', 'Visualizing the "Test" dataset is important because you want to make sure that the two datasets are at least somewhat consistent with each other.'],

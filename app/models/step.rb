@@ -5,9 +5,10 @@ class Step < ActiveRecord::Base
   belongs_to :lesson
   belongs_to :previous_step, class_name: "Step"
   has_many :next_steps, foreign_key: :previous_step_id, class_name: "Step"
-  has_many :step_requirements
-  has_many :required_steps, through: :step_requirements, source: :required
-  has_many :dependent_steps, through: :step_requirements, source: :requiree
+  has_many :step_requirements, foreign_key: :requiree_step_id
+  has_many :step_dependents, foreign_key: :required_step_id, class_name: "StepRequirement"
+  has_many :required_steps, through: :step_requirements
+  has_many :dependent_steps, through: :step_dependents, source: :required_step
 
   before_create :set_url
   validates_uniqueness_of :title, scope: [:lesson_id, :previous_step_id]
@@ -33,6 +34,12 @@ class Step < ActiveRecord::Base
       project_lesson_path(project_url: lesson.project.url, url: lesson.url)
     else
       project_lesson_step_path(project_url: previous_step.main_lesson.project.url, lesson_url: previous_step.main_lesson.url, url: previous_step.url)
+    end
+  end
+
+  def add_required_steps(steps)
+    steps.each do |step|
+      StepRequirement.create!(required_step: step, requiree_step: self)
     end
   end
 
