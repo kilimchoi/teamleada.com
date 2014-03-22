@@ -26,4 +26,14 @@ $(document).ready(function() {
     }, 500);
   });
 
+  loadContent = function() {
+    var time = 400;
+    var lessons = $(".content-text, .content-code, .individual-step");
+    lessons.each(function(index) {
+      $(this).delay((time + 150) * index).fadeIn(time);
+    });
+  }
+
+  loadContent();
+
 });
