@@ -5,4 +5,7 @@
         h1.title Projects
         .projects-list.list-group
           - @projects.each do |project|
-            = link_to project.title, project_path(url: project.url), class: "list-group-item #{"disabled" unless project.enabled}"
+            - unless project.url.nil?
+              = link_to project.title, project_path(url: project.url), class: "list-group-item"
+            - else
+              li.list-group-item.disabled = project.title

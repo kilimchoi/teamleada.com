@@ -6,6 +6,10 @@ class ProjectsController < ApplicationController
   end
 
   def index
+    # Add extra "coming soon" projects
+    3.times do
+      @projects.push(Project.new(title: "Coming soon!"))
+    end
   end
 
   private
@@ -16,9 +20,6 @@ class ProjectsController < ApplicationController
 
   def projects
     @projects = Project.all
-    5.times do
-      @projects.push(Project.new(title: "Coming soon!", url: "coming-soon"))
-    end
   end
 
 end
