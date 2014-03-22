@@ -1,5 +1,7 @@
-ul
-- @project.submissions.each do |submission|
-  li
-    = submission.user.email
-    = submission.score
+table.table.table-striped
+  th Username
+  th Score
+  - @project.submissions.each do |submission|
+    tr
+      td = submission.user.username
+      td = submission.score
