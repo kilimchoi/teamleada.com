@@ -5,8 +5,9 @@ class Step < ActiveRecord::Base
   belongs_to :lesson
   belongs_to :previous_step, class_name: "Step"
   has_many :next_steps, foreign_key: :previous_step_id, class_name: "Step"
-  has_many :required_steps, foreign_key: :required_id, class_name: 'RequiredStep'
-  has_many :dependent_steps, foreign_key: :requiree_id, class_name: 'RequiredStep'
+  has_many :step_requirements
+  has_many :required_steps, through: :step_requirements, source: :required
+  has_many :dependent_steps, through: :step_requirements, source: :requiree
 
   before_create :set_url
   validates_uniqueness_of :title, scope: [:lesson_id, :previous_step_id]
