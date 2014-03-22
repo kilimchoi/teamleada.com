@@ -5,10 +5,10 @@
         h1.title = @project.title
         .row
           .col-md-6
-            h2 Project Details
-          .col-md-6
-            h2 Lessons
+            h2 Choose an option from below:
             ul
             - @project.lessons.each do |lesson|
-              li
-                = link_to lesson.title, project_lesson_path(project_url: @project.url, url: lesson.url)
+              = link_to lesson.title, project_lesson_path(project_url: @project.url, url: lesson.url), class: 'flat-button'
+          .col-md-6
+            h2 Leaderboard
+            = render partial: "projects/leaderboard", locals: {project: @project}

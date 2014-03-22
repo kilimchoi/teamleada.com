@@ -1,0 +1,5 @@
+ul
+- @project.submissions.each do |submission|
+  li
+    = submission.user.email
+    = submission.score
