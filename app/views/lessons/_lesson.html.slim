@@ -1,0 +1,11 @@
+h1 = @lesson.title
+.lesson-container
+  - @lesson.content.each do |content_array|
+    = render partial: "shared/content", locals: {content_type: content_array[0], content: content_array[1]}
+  .steps
+    - @lesson.steps.each do |step|
+      .individual-step.center
+        = link_to step.title, project_lesson_step_path(project_url: @lesson.project.url, lesson_url: @lesson.url, url: step.url), class: "flat-button step-button"
+
+javascript:
+

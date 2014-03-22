@@ -1,5 +1,6 @@
 class Step < ActiveRecord::Base
   include Rails.application.routes.url_helpers
+  serialize :content, Array
 
   belongs_to :lesson
   has_many :next_steps, foreign_key: :previous_step_id, class_name: "Step"
