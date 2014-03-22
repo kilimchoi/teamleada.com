@@ -3,3 +3,12 @@
     .col-md-12
       .user-container
         h1.title = @user.username
+        .row
+          .col-md-5
+            h3.title Completed Projects
+            - @user.completed_projects.each do |project|
+              = project.title
+          .col-md-5.col-md-offset-2
+            h3.title In Progress Projects
+            - @user.in_progress_projects.each do |project|
+              = project.title
