@@ -3,7 +3,7 @@ TeamLeada::Application.routes.draw do
 
   match "about", to: "pages#about", via: :get
 
-  resources :projects, param: :url, only: [:show] do
+  resources :projects, param: :url, only: [:show, :index] do
     resources :lessons, param: :url, only: [:show] do
       resources :steps, param: :url, only: [:show]
     end

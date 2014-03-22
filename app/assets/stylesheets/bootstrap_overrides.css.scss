@@ -37,3 +37,14 @@ $navbar-padding-bottom: 25px;
   background-color: $founders-rock-blue;
   color: white;
 }
+
+.list-group > li.disabled  {
+  color: #999999;
+
+  &:hover,
+  &:focus {
+    color: #999999;
+    text-decoration: none;
+    background-color: transparent;
+  }
+}
