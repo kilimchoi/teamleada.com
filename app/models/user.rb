@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :submissions
   has_many :step_status
 
-  validates_format_of :username, :with => /^[A-Za-z0-9.&]*\z/
+  validates_format_of :username, :with => /\A[A-Za-z0-9.&]*\z/
 
   def completed_projects
     []
