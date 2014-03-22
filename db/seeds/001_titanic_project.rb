@@ -156,6 +156,85 @@ test_clean_content = [
 
 test_clean = Step.create!(title: "Clean", content: test_clean_content, previous_step: test_data)
 
+
+apply_analytics_tools_content = [
+  ['text', 'In this first project we will cover one of the most effective and simple predictive analytics tools for data analytics, classification trees.'],
+  ['text', 'In future projects you will learn a variety of tools and specifically when to apply them. Logistic regression, Support Vector Machines, and many more!'],
+]
+
+apply_analytics_tools_lesson = Lesson.create!(
+  title: "Apply Analytics Tools",
+  content: apply_analytics_tools_content,
+  project: project
+)
+
+learn_ctree_content = [
+  #Include image of C-tree
+  ['text', 'A classification tree is made up of interior and terminal nodes and is structured upside down so the root node is at the top and branches downwards'],
+  ['text', 'In the example tree, the nodes represent the how your data is segmented so at the top it begins by first separating the data by Sex.'],
+  ['text', 'Subsequent nodes further segment the data, for example one node is Age greater than or equal to 6.5 below the male node and results in a 0. This means that the model will classify all male observations with age greater than 6.5 as dying in the Titanic'],
+  ['text', 'What one needs to be careful of when using classification trees is the concept of "overfitting" your data. Classification tree models are very susceptible to overfiting and is one of their disadvantages for use.'],
+  ['text', 'In general, overfitting is when you find patterns in the data that does not generalize to new datasets. If you look hard enough, you can find patterns in any dataset.'],
+  ['text', 'There are two main advantages to building a classification tree model. (1) They require very little data preparationi and cleaning. (2) Classification models are easy to interpret and explain to others!'],
+]
+
+learn_ctree = Step.create!(title: "Learn Classification Trees", content: learn_ctree_content, lesson: apply_analytics_tools_lesson)
+
+apply_ctree_content = [
+  ['text', 'To create a classification tree model we use the function rpart() in R. The arguments in the formula are as follows:\nrpart(formula, data, method, control)\nformula = the independent (Survived) and dependent variables (Age, Pclass, etc.)\ndata = dataset object (trainData or testData)\nmethod = the type of classification tree you are using ("class")\ncontrol = limits the number of splits and complexity to prevent overfitting'],
+  ['text', 'Take a look again at the columns of the "Train" dataset'],
+  ['code', 'head(trainData, 1)'],
+  ['text', 'Remember that we are trying to predict whether each passenger "Survived" (independent variable) and we have the following features to use: "PassengerId", "Pclass", "Name", "Sex", "Age", "SibSp", "Parch", "Ticket", "Fare", "Cabin", "Embarked" (dependent variables)'],
+  ['text', 'For our first model we only use "Pclass", "Sex", and "Age" to predict "Survived". '],
+  ['text', 'First we need to install a package in R'],
+  ['code', 'library(\'rpart\')'],
+  ['text', 'We create our model and name it "tree_model"'],
+  ['code', 'tree_model <- rpart(Survived ~ Pclass + Sex + Age, data = trainData, method = "class")'],
+  ['text', 'We plot the model and label the nodes'],
+  ['code', 'plot(tree_model)'],
+  ['code', 'text(tree_model)'],
+  ['text', 'Now that we have our model built using the "Train" dataset, we can apply our model to the "Test" dataset to make predictions for those passengers! What is done here is the nodes used to classify the passengers in the "Train" dataset such as "Age >= 6.5" are now applied to the passengers in the "Test" dataset to predict their survival.'],
+  ['text', 'R again has a convenient function predict() to allow us to apply our tree_model to the testData'],
+  ['code', 'test_predictions <- round(predict(tree_model, newdata = testData)[, 2], 0)'],
+  ['text', 'We match our predictions with the appropriate PassengerId'],
+  ['code', 'model_submission <- cbind(testData$PassengerId, test_predictions)'],
+  ['text', 'We rename the columns for clarity'],
+  ['code', 'colnames(model_submission) <- c("PassengerId", "Prediction")'],
+  ['text', 'We use the write.csv() function to convert our data frame in R into a CSV file'],
+  ['code', 'write.csv(model_submission, "mysubmission.csv", row.names = FALSE)'],
+  ['text', 'And now you can submit this file to the submission page and see where you rank on the LeadaBoard! Go to the "Increase your Score" page to learn ways to move up on the LeadaBoard and strengthen your model!'],
+]
+
+apply_ctree = Step.create!(title: "Apply a Classification Tree Model", content: apply_ctree_content, lesson: apply_analytics_tools_lesson)
+
+
+increase_score_content = [
+  ['text', 'As you can see building these models is relatively easy! Creating accurate models however are another story. Here we will introduce the most critical skill to analyze data. Curiousity. '],
+  ['text', 'Don\'t believe us? Believe it. Knowing what data you want and can create by asking the right questions is the skill that differentiates data analysis results from the rest. This is best done by having a curiousity with the data, digging into it thoroughly, and thinking creatively.'],
+  ['text', 'For example remember back to our discovery that women were much more likely to survive than men? We determined that through the assumption the passengers adhered to "women and children first". Since we have the age of our passengers, why don\'t we create a variable which identifies children?'],
+  ['text', 'Creates a new column titled "Child"'],
+  ['code', 'trainData["Child"] <- NA'],
+  ['text', 'This for loop loops through each row in "Train" dataset and checks in the age column if it is less than 18. If the age is less than 18, we put a 1 in the "Child" column and if it is greater than 18 we put a 2 in the column.'],
+  ['code', 'for (i in 1:nrow(trainData)) {\n\tif (trainData$Age[i] <= 18) {\n\t\ttrainData$Child[i] <- 1\n\t} else {\n\t\ttrainData$Child[i] <- 2\n\t}\n}'],
+  ['text', 'Just remember that whatever variable you create in your "Train" dataset you must also create in your "Test" dataset for your model to function correctly!'],
+  ['code', 'testData["Child"] <- NA'],
+  ['code', 'for (i in 1:nrow(testData)) {\n\tif (testData[i, 4] <= 18) {\n\t\ttestData[i, 7] <- 1\n\t} else {\n\t\ttestData[i, 7] <- 2\n\t}\n}'],
+  ['text', 'Another possible variable could be "Family Size". Maybe the larger of a family you had the less likely you were to survive.'],
+  ['code', 'trainData["Family"] <- NA'],
+  ['text', 'We sum the number in "SibSp" and "Parch" and add one to include the passenger'],
+  ['code', 'for(i in 1:nrow(trainData)) {\n\tx <- trainData$SibSp[i]\n\ty <- trainData$Parch[i]\n\ttrainData$Family[i] <- x + y + 1\n}'],
+  ['text', 'Again don\'t forget to create this also in the "Test" dataset! Your going to have to try on your own!'],
+  ['text', 'With these new variables and including the ones we didn\'t use, you should be able to significantly increase your score! To add more dependent variables to your model just include the column name and R should do the rest!'],
+  ['text', 'Here is an example of the code for a classification tree model if we included the "Fare" variable'],
+  ['code', 'tree_model_two <- rpart(Survived ~ Pclass + Sex + Age + Fare, data = trainData, method = "class")'],
+]
+
+increase_score_lesson = Lesson.create!(
+  title: "Increase Your Score",
+  content: increase_score_content,
+  project: project
+)
+
 # Leaderboard Seed info
 mark = User.find_by(username: 'mark')
 brian = User.find_by(username: 'brian')
