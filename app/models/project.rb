@@ -9,4 +9,12 @@ class Project < ActiveRecord::Base
     self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize
   end
 
+  def check_submission(file)
+    # Method to check the submission that the user uploaded
+    solution_file = File.expand_path("#{Rails.root}/db/project_solutions/#{"%03d" % self.number}#{self.url}.csv", __FILE__)
+    CSV.foreach(file) do |row|
+      puts row
+    end
+  end
+
 end
