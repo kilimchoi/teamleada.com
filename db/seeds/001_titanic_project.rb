@@ -28,6 +28,19 @@ quick_pass_content = [
   ['text', 'In this project you are given two datasets "Train" and "Test". You will be using the "Train" dataset to build your model. This model will create predictions for passenger survival for the "Train" dataset.'],
   ['text', 'In analytics we call this "training the model", hence the name "Train" for the dataset. Then, using the model you built you will predict whether the passengers in the "Test" dataset survived based on the model you created, hence the name "Test" for the other dataset!'],
   ['text', 'There are 418 passengers we need to predict in the "Test" dataset, 266 were male and 152 were female. Lets first just guess that the men survived and the women died. Don\'t worry about the details of the Rcode we provide for now, we will explain it all later!'],
+  ['text', 'First we utilize the read.csv() function to load the data into R.'],
+  ['code', 'trainData <- read.csv("train.csv", header = TRUE, stringsAsFactors = FALSE)'],
+  ['code', 'testData <- read.csv("test.csv", header = TRUE, stringsAsFactors = FALSE)'],
+  ['text', 'Then we take the sex of each passenger in the Test dataset and convert them to survived or died. 1 means they survived, 0 means they died'],
+  ['code', 'Survived <- factor(testData$Sex, labels = c(1, 0))'],
+  ['text', 'We select the passengerID of each passenger and match it with our prediction for survival'],
+  ['code', 'submission_file <- cbind(testData$PassengerId, Survived)'],
+  ['text', 'We rename the columns'],
+  ['code', 'colnames(submission_file) <- c("PassengerId", "Survived")'],
+  ['text', 'We create the file!'],
+  ['code', 'write.csv(submission_file, file = "FirstSubmission", row.names = FALSE)'],
+  ['text', 'Prompt them to create a name for their submission'],
+  ['text', 'Hmmm not too high! Well continue on to the project to improve your score'],
 ]
 
 quick_pass = Step.create!(title: "Quick Pass", content: quick_pass_content, lesson: welcome_lesson)
