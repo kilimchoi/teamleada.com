@@ -1,5 +1,6 @@
 class Lesson < ActiveRecord::Base
   include Rails.application.routes.url_helpers
+  serialize :content, Array
 
   belongs_to :project
   has_many :steps
@@ -12,10 +13,6 @@ class Lesson < ActiveRecord::Base
 
   def set_url
     self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize
-  end
-
-  def paragraphs
-    content.split("\n")
   end
 
   def back_link

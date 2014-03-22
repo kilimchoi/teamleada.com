@@ -1,5 +1,6 @@
 class Step < ActiveRecord::Base
   include Rails.application.routes.url_helpers
+  serialize :content, Array
 
   belongs_to :lesson
   has_many :next_steps, foreign_key: :previous_step_id, class_name: "Step"
@@ -11,10 +12,6 @@ class Step < ActiveRecord::Base
 
   def set_url
     self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize
-  end
-
-  def paragraphs
-    content.split("\n")
   end
 
   def main_lesson
