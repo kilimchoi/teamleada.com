@@ -14,9 +14,25 @@ class Project < ActiveRecord::Base
   def check_submission(file)
     # Method to check the submission that the user uploaded
     solution_file = File.expand_path("#{Rails.root}/db/project_solutions/#{"%03d" % self.number}-#{self.url}.csv", __FILE__)
-    CSV.foreach(solution_file) do |row|
-      puts row
+    solution_hash = {}
+
+    CSV.foreach(solution_file, :headers => true) do |row|
+      soln_hash[row[0]] = row[1]
     end
+
+    total = Float(soln_hash.length)
+    correct = 0
+
+    CSV.foreach(file, :headers => true) do |row|
+    if (soln_hash[row[0]] == row[1]) #if correct answer
+      correct += 1
+    end
+
+    return correct / total
+
   end
+
+
+
 
 end
