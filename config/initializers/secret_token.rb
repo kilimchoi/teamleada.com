@@ -11,4 +11,3 @@
 # if you're sharing your code publicly.
 #
 TeamLeada::Application.config.secret_token = ENV['SECRET_KEY']
-#TeamLeada::Application.config.secret_key_base = ENV['SECRET_KEY']
