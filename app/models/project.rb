@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  require 'CSV'
+  require 'csv'
 
   has_many :lessons
   has_many :submissions
