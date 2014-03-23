@@ -1,5 +1,6 @@
 # Creates the first project on the site!
 
+
 project = Project.create!(
   title: "Titanic: Machine Learning From Disaster",
   description: "This is a description of the project",
@@ -21,7 +22,7 @@ welcome_lesson_content = [
 ]
 
 welcome_lesson = Lesson.create!(
-  title: "Welcome + Takeaways",
+  title: "Welcome",
   content: welcome_lesson_content,
   project: project
 )
@@ -156,15 +157,14 @@ test_clean_content = [
 
 test_clean = Step.create!(title: "Clean", content: test_clean_content, previous_step: test_data)
 
-
-apply_analytics_tools_content = [
+analytics_tools_content = [
   ['text', 'In this first project we will cover one of the most effective and simple predictive analytics tools for data analytics, classification trees.'],
   ['text', 'In future projects you will learn a variety of tools and specifically when to apply them. Logistic regression, Support Vector Machines, and many more!'],
 ]
 
-apply_analytics_tools_lesson = Lesson.create!(
-  title: "Apply Analytics Tools",
-  content: apply_analytics_tools_content,
+analytics_tools_lesson = Lesson.create!(
+  title: "Analytics Tools",
+  content: analytics_tools_content,
   project: project
 )
 
@@ -178,7 +178,7 @@ learn_ctree_content = [
   ['text', 'There are two main advantages to building a classification tree model. (1) They require very little data preparationi and cleaning. (2) Classification models are easy to interpret and explain to others!'],
 ]
 
-learn_ctree = Step.create!(title: "Learn Classification Trees", content: learn_ctree_content, lesson: apply_analytics_tools_lesson)
+learn_ctree = Step.create!(title: "Learn Classification Trees", content: learn_ctree_content, lesson: analytics_tools_lesson)
 
 apply_ctree_content = [
   ['text', 'To create a classification tree model we use the function rpart() in R. The arguments in the formula are as follows:\nrpart(formula, data, method, control)\nformula = the independent (Survived) and dependent variables (Age, Pclass, etc.)\ndata = dataset object (trainData or testData)\nmethod = the type of classification tree you are using ("class")\ncontrol = limits the number of splits and complexity to prevent overfitting'],
@@ -205,13 +205,13 @@ apply_ctree_content = [
   ['text', 'And now you can submit this file to the submission page and see where you rank on the LeadaBoard! Go to the "Increase your Score" page to learn ways to move up on the LeadaBoard and strengthen your model!'],
 ]
 
-apply_ctree = Step.create!(title: "Apply a Classification Tree Model", content: apply_ctree_content, lesson: apply_analytics_tools_lesson)
+apply_ctree = Step.create!(title: "Apply a Classification Tree Model", content: apply_ctree_content, lesson: analytics_tools_lesson)
 
 
 increase_score_content = [
-  ['text', 'As you can see building these models is relatively easy! Creating accurate models however are another story. Here we will introduce the most critical skill to analyze data. Curiousity. '],
+  ['text', 'As you can see building these models is relatively easy! Creating accurate models however are another story. Here we will introduce the most critical skill to analyzing data. Curiousity. '],
   ['text', 'Don\'t believe us? Believe it. Knowing what data you want and can create by asking the right questions is the skill that differentiates data analysis results from the rest. This is best done by having a curiousity with the data, digging into it thoroughly, and thinking creatively.'],
-  ['text', 'For example remember back to our discovery that women were much more likely to survive than men? We determined that through the assumption the passengers adhered to "women and children first". Since we have the age of our passengers, why don\'t we create a variable which identifies children?'],
+  ['text', 'For example remember back to our discovery that women were much more likely to survive than men? We determined that through the assumption the passengers adhered to "women and children first" standard. Since we have the age of our passengers, why don\'t we create a variable which also identifies children?'],
   ['text', 'Creates a new column titled "Child"'],
   ['code', 'trainData["Child"] <- NA'],
   ['text', 'This for loop loops through each row in "Train" dataset and checks in the age column if it is less than 18. If the age is less than 18, we put a 1 in the "Child" column and if it is greater than 18 we put a 2 in the column.'],
