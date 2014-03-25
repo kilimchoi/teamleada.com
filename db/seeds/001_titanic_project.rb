@@ -99,7 +99,7 @@ train_data = Step.create!(title: "Train Data", content: train_data_content, less
 
 train_visualize_content = [
   ['text', 'It is good to first visualize the data to get a general understanding of the patterns and trends of the data. Lets look at the survival rate of our passengers filtered by Sex.'],
-  ['text', 'Your intuition might be that the women had a higher chance of survival because the boat adhered to the "Women and Children" first standard. We first create a table and call it "counts". Then we use the barplot() function in R.'],
+  ['text', 'Your intuition might be that the women had a higher chance of survival because the boat adhered to the "Women and Children First" standard. We first create a table and call it "counts". Then we use the barplot() function in R.'],
   ['code', 'counts <- table(trainData$Survived, trainData$Sex)'],
   ['code', 'barplot(counts, xlab = "Gender", ylab = "Number of People", main = "Survival by Sex")'],
   ['code', 'counts[2] / (counts[1] + counts[2])'],
