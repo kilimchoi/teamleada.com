@@ -13,9 +13,8 @@
             .individual-next-step-container.center
               = link_to step.title, project_lesson_step_path(project_url: step.main_lesson.project.url, lesson_url: step.main_lesson.url, url: step.url), class: "flat-button step-button"
 javascript:
-  hljs.initHighlightingOnLoad();
-  $(document).ready(function() {
-    $("pre .content-code").each(function(i, e) {hljs.highlightBlock(e)});
-    $("pre .content-code").css('color', 'red'); // checking to see that it doensnt work..
+    $(document).ready(function() {
+      $("pre.content.content-code").each(function(i, e) {
+        hljs.highlightBlock(e);
+      });
     });
-  });
