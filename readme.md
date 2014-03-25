@@ -42,4 +42,8 @@ Since we use Git to deploy to Heroku, this file won't be included, so you'll hav
     heroku config:set SECRET_KEY=secret-password
 
 ## Current Deployments at:
-<a href="http://teamleada-stage.herokuapp.com" title="Deployment 1">Deployment 1</a>
+* <a href="http://teamleada-stage.herokuapp.com" title="Deployment Main">Deployment Main</a>
+* <a href="teamleada-stage-t.herokuapp.com" title="Deployment (t)">Deployment (t)</a>
+* <a href="teamleada-stage-b.herokuapp.com" title="Deployment (b)">Deployment (b)</a>
+
+
