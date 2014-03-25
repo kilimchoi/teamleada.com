@@ -40,3 +40,6 @@ For example:
 Since we use Git to deploy to Heroku, this file won't be included, so you'll have to set the environment variables manually, and this can be done just once. The equivalent of the above on Heroku is:
 
     heroku config:set SECRET_KEY=secret-password
+
+## Current Deployments at:
+<a href="http://teamleada-stage.herokuapp.com" title="Deployment 1">Deployment 1</a>

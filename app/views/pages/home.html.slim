@@ -6,8 +6,9 @@
       .row
         .col-md-12.center
           .about-intro
-            h1.white Leada
-            h3.white Learn Insight in Data
+            .title-container
+              h1.white Leada
+              h3.white Learn Insight in Data
   section#about
     .container
       .row
@@ -25,7 +26,7 @@
         .col-md-8.col-md-offset-2
           .about-section
             .description
-              h2 Learn the statistics and programming skills required to become a data literate professional.
+              h2 Learn the statistics and programming skills required to become a data literate professional
             .image
               = image_tag "filler.png", class: "round-with-border"
   section#content-two
@@ -34,7 +35,7 @@
         .col-md-8.col-md-offset-2
           .about-section
             .description
-              h2 Choose the analysis methods and models you want to apply to the data.
+              h2 Choose the analysis methods and models you want to apply to the data
             .image
               = image_tag "filler.png", class: "round-with-border"
   section#content-three
@@ -52,7 +53,7 @@
         .col-md-8.col-md-offset-2
           .about-section
             .description
-              h2 Place yourself and your work at the top of the Learningboard
+              h2 Place yourself and your work at the top of the LEADAboard
             .image
               = image_tag "filler.png", class: "round-with-border"
   section#email
@@ -60,13 +61,13 @@
       .row
         .col-md-8.col-md-offset-2
           .schedule-container
-            h1.white Interested?
+            h1.white Stay notified of future projects!
             p.white Email box goes here.
   section#try-project
     .container
       .row
         .col-md-8.col-md-offset-2
           .try-project-container
-            h1.white Try a project!
+            h1.white Trial Project
             p.white Build a classification tree model in R to predict the survivors in the Titanic!
-            = link_to "Try now!", project_lesson_path(project_url: @project.url, url: @project.lessons.first.url), class: "flat-button"
+            = link_to "Try now!", project_path(url: @project.url), class: "flat-button"

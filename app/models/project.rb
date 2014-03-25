@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  require 'CSV'
+  require 'csv'
 
   has_many :lessons
   has_many :submissions
@@ -31,7 +31,16 @@ class Project < ActiveRecord::Base
     end
 
     return correct / total
+  end
 
+  def total_points
+    total = 0
+    lessons.each do |lesson|
+      lesson.steps.each do |step|
+        total += step.points
+      end
+    end
+    total
   end
 
 end
