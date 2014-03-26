@@ -39,7 +39,7 @@ quick_pass_content = [
   ['text', 'For Mac Users it should look like: setwd("/Users/your_user_name/Desktop/kaggle/")'],
   ['text', 'For Windows Users it should look like: setwd("C:/Users/your_user_name/Desktop/kaggle")'],
   ['text', 'You can look at this image as an example. The correct code would be: setwd("/Users/Clair/Desktop/kaggle/")'],
-  #Add image
+  ['image', 'set_cwd().png']
   ['text', 'To run what you just wrote in your RScript, put your cursor on a line of code in your RScript and enter control and return at the same time! Congrats you’ve just run your first line of R code!'],
   ['text', 'From now on you can run any of our code snippets by copy and pasting it into your own RScript, and entering control and return. Typing control and return anywhere on the line runs the entire line of RCode.'],
   ['text', 'Now we utilize the read.csv() function to load the data into R.'],
@@ -173,6 +173,7 @@ analytics_tools_lesson = Lesson.create!(
 learn_ctree_content = [
   #Include image of C-tree
   ['text', 'A classification tree is made up of interior and terminal nodes and is structured upside down so the root node is at the top and branches downwards'],
+  ['image', 'classification_tree.jpg']
   ['text', 'In the example tree, the nodes represent the how your data is segmented so at the top it begins by first separating the data by Sex.'],
   ['text', 'Subsequent nodes further segment the data, for example one node is Age greater than or equal to 6.5 below the male node and results in a 0. This means that the model will classify all male observations with age greater than 6.5 as dying in the Titanic'],
   ['text', 'What one needs to be careful of when using classification trees is the concept of "overfitting" your data. Classification tree models are very susceptible to overfiting and is one of their disadvantages for use.'],
