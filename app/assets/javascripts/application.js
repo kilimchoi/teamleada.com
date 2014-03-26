@@ -29,7 +29,7 @@ $(document).ready(function() {
 
   loadContent = function() {
     var time = 400;
-    var lessons = $(".content-text, .content-code, .individual-step");
+    var lessons = $(".content-text, .content-code, .content-image, .content-link, .individual-step");
     lessons.each(function(index) {
       $(this).delay((time + 150) * index).fadeIn(time);
     });
