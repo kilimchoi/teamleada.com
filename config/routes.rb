@@ -14,4 +14,6 @@ TeamLeada::Application.routes.draw do
       resources :steps, param: :url, only: [:show]
     end
   end
+
+  match "*path", :to => "pages#404", via: :get
 end
