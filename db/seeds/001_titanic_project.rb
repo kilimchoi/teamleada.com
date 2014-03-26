@@ -32,7 +32,7 @@ quick_pass_content = [
   ['text', 'Mac users download and install named "R-3.0.3.pkg (latest version)"'],
   ['text', 'Windows users download and install R named "Download R 3.0.3 for Windows"'],
   ['text', 'Make sure to choose the appropriate RStudio file'],
-  ['text'],'Download at <a href="https://www.rstudio.com/ide/download/desktop" target="_blank">https://www.rstudio.com/ide/download/desktop</a>'],
+  ['text','Download at https://www.rstudio.com/ide/download/desktop'],
   ['text', 'Now create a folder on your desktop titled "Kaggle" and download the two data files at this link, save them in this Kaggle folder'],
   ['text', 'In RStudio we must create a file for us to write in. Go to File ==> New ==> Rscript. Now in that file we must tell R where our current working directory is. We do this by using the setwd() function. Your working directory indicates to R which folder to look for the datasets you want to use. '],
   ['text', 'Your working directory location is unique to each user! We provide an example of the format your code should be in'],
