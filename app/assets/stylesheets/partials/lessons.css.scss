@@ -10,6 +10,16 @@ p.content {
   display: none;
 }
 
+.content-image {
+  display: none;
+  max-height: 900px;
+  max-width: 900px;
+}
+
+.content-link {
+  display: none;
+}
+
 .individual-step {
   display: none;
 }
