@@ -4,3 +4,9 @@
 - elsif content_type == 'code'
   pre.content.content-code
     = content
+- elsif content_type == 'image'
+  pre.content.content-image
+    = content
+- elsif content_type == 'link'
+  a.content.content-link
+    = content
