@@ -7,7 +7,7 @@
         .col-md-12.center
           .about-intro
             .title-container
-              = link_to "Try now", project_path(url: @project.url), class: "try-button"
+              = link_to "Trial project", project_path(url: @project.url), class: "try-button"
   section#content-zero
     .container
       .row
@@ -21,6 +21,8 @@
                   | "If you are looking for a career where your services will be in high demand, you should find something where you provide a scarce, complementary service to something that is getting ubiquitous and cheap. So what’s getting ubiquitous and cheap? Data. And what is complementary to data? Analysis. So my recommendation is to take lots of courses about how to manipulate and analyze data..."
                 p.hal_sig
                   | - Hal Varian, Chief Economist at Google
+
+            div.divider
   section#content-one
     .container
       .row
@@ -30,6 +32,7 @@
               h2.content-body-one Learn the statistics and programming skills required to effectively analyze data
             .image
               = image_tag "datachart.png", class: "square-with-border"
+      div.divider
   section#content-two
     .container
       .row
@@ -39,21 +42,23 @@
               h2.content-body-two Choose what analysis methods and models you want to apply to the data
             .image
               = image_tag "methods.png", class: "round-with-border"
+      div.divider
   section#content-three
     .container
       .row
         .col-md-8.col-md-offset-2
           .about-section
             .description
-              h2.content-body-three Fight off some friendly competition and work up the Leadaboard
+              h2.content-body-three Engage in friendly competitions and work up the Leadaboard
             .image
               = image_tag "leadaboard.png", class: "round-with-border"
+      div.divider
   section#content-four
     .container
       .row
         .col-md-8.col-md-offset-2
           .about-section
             .description
-              h2.content-body-four Complete data analytic projects worth sharing
+              h2.content-body-four Complete data projects worth sharing
             .image
               = image_tag "resume.png", class: "round-with-border"
