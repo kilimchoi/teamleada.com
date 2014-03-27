@@ -48,9 +48,10 @@ quick_pass = Step.create!(title: "Begin", content: quick_pass_content, lesson: w
 
 main_page_content = [
   ['text', 'This is the main page for your first data project! Choose from the options below to begin your training as a data guru and you will find yourself learning the process along the way.'],
-  ['text', 'You are tasked to predict whether a passenger survived the Titanic crash. You are given two datasets (Train & Test) each of which include predictor variables such as Age, Passenger Class, Sex, etc. With these two data sets we will do the following:'],
+  ['text', 'You are tasked to predict whether a passenger survived the Titanic crash. You are given two datasets (Train & Test) each of which include predictor variables such as Age, Passenger Class, Sex, etc. We will guide you through the following:'],
   ['text', '1. Create a model which will predict whether a passenger survived using only the Train data set'],
   ['text', '2. Predict whether the passengers survived in the Test data set based on the model we created'],
+  ['text', 'Then the rest is up to you. Happy Exploring!'],
 ]
 
 main_page = Lesson.create!(
