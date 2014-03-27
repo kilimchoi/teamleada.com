@@ -20,7 +20,6 @@
         width: 300px;
         margin: auto;
         padding: 32px;
-        -webkit-filter: brightness(160%);
 
         h1 {
           font-size: 72px;
@@ -122,4 +121,18 @@
       padding: 100px 0;
     }
   }
+
+.hal_quote {
+  color: gray;
+  margin-top: 15px;
+  font-family: Lusitana Bold;
+  font-size: 25px;
+}
+.hal_sig{
+  margin-top: 5px;
+  font-family: Lusitana Bold;
+  font-size: 25px;
+  float: right;
+}
+
 }
