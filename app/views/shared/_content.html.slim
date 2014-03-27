@@ -4,3 +4,8 @@
 - elsif content_type == 'code'
   pre.content.content-code
     = content
+- elsif content_type == 'image'
+	= image_tag content, class: "content content-image"
+- elsif content_type == 'link'
+  a.content.content-link href=content target="_blank"
+    = content
