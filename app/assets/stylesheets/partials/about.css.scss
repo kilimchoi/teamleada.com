@@ -1,0 +1,95 @@
+.main {
+  font-family: Rockwell;
+
+  section#mission {
+    background-image: asset-url("assets/SF_city_background.jpg");
+    background-size: cover;
+    background-position-y: -260px;
+    background-position-x: -120px;
+    background-repeat: no-repeat;
+    background-size: 110%;
+    padding-bottom: 200px;
+
+    .mission-intro {
+      padding: 50px 0;
+      float: right;
+      height: 100%;
+
+
+      .mission-content {
+        font-size: 32px;
+        border-color: white;
+        border-style:solid;
+        border-width: 3px;
+        background-color: white;
+        opacity: 0.98;
+        width: 500px;
+        margin: auto;
+        padding: 32px;
+
+        .mission_header {
+          margin-left: 0;
+          padding-right: 150px;
+          font-family: Rockwell;
+        }
+        .mission_body {
+          margin-top: 20px;
+          font-family: Rockwell;
+        }
+
+        h1, h2, h3, h4, h5 {
+          font-family: Rockwell;
+
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  section#team {
+    padding-bottom: 300px;
+
+    background-image: asset-url("assets/person_studying_medium.jpg");
+    background-size: cover;
+    background-position-y: -260px;
+    background-position-x: -120px;
+    background-repeat: no-repeat;
+    background-size: 110%;
+    padding-top: 7%;
+
+    .divider {
+      border:1px solid gray;
+      width: 90%;
+      margin: auto auto;
+      position: relative;
+    }
+
+    .team-intro {
+      background-color: white;
+      margin: 0 auto;
+      content: "";
+      display: table;
+      max-width: 1000px;
+      width: 100%;
+      opacity: 0.95;
+
+      .team_header {
+        color: slategray;
+      }
+
+      .team-content {
+        background-color: yellow; /*Just to show where the leak is*/
+        height: 100%;
+        width: 75%;
+        opacity: 0.98;
+      }
+
+
+      .image {
+        float: left;
+      }
+
+    }
+  }
+
+}
