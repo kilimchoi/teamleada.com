@@ -88,7 +88,10 @@
   section#content-two,
   section#content-four {
     background-color: $learning-bg;
-    .content-body-two {
+
+
+    .content-body-two,
+    .content-body-four {
       margin-top: 50px;
     }
 
