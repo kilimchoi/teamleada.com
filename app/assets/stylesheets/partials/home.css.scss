@@ -1,6 +1,6 @@
 .main {
   section#intro {
-    background-image: asset-url("assets/r_background.jpg");
+    background-image: asset-url("assets/R_desk_scaled.jpg");
     background-size: cover;
     background-position-y: -260px;
     background-position-x: -120px;
@@ -76,6 +76,7 @@
   section#content-three {
     background-color: $content-bg;
 
+    .content-body-three,
     .content-body-one {
       margin-top: 50px;
     }
