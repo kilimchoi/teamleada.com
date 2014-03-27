@@ -39,11 +39,3 @@
               h2.content-body-two Choose what analysis methods and models you want to apply to the data
             .image
               = image_tag "methods.png", class: "round-with-border"
-  section#try-project
-    .container
-      .row
-        .col-md-8.col-md-offset-2
-          .try-project-container
-            h1.white Trial Project
-            p.white Build a classification tree model in R to predict the survivors in the Titanic!
-            = link_to "Try now!", project_path(url: @project.url), class: "flat-button"
