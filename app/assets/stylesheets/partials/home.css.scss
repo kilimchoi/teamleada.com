@@ -1,4 +1,12 @@
 .main {
+
+  .divider {
+    border:3px solid gray;
+    width: 30%;
+    margin: auto auto;
+    position: relative;
+    margin-bottom: 2%;
+  }
   section#intro {
     background-image: asset-url("assets/R_desk_medium.jpg");
     background-size: cover;
