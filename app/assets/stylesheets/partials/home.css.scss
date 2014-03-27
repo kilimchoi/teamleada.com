@@ -6,8 +6,6 @@
     background-position-x: -120px;
     background-repeat: no-repeat;
     background-size: 110%;
-    -webkit-filter:  hue-rotate(240deg) saturate(3.3);
-    -webkit-filter: brightness(70%);
 
     .about-intro {
       padding: 300px 0;
@@ -16,7 +14,7 @@
         border-radius: 35px;
         border-color: white;
         border-style:solid;
-        border-width: 10px;
+        border-width: 3px;
         background-color: #2d637f;
         opacity: 0.9;
         width: 300px;
