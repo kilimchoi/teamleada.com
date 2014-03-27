@@ -28,36 +28,22 @@ welcome_lesson = Lesson.create!(
 )
 
 quick_pass_content = [
-  ['text', 'To begin we need to install the tools for data analysis! R is a useful and free application for data analytics that is widely used around the world. RStudio provides a more user friendly interface to work in!'],
-  ['text', 'Mac users download and install named "R-3.0.3.pkg (latest version)"'],
-  ['text', 'Windows users download and install R named "Download R 3.0.3 for Windows"'],
-  ['text', 'Make sure to choose the appropriate RStudio file at:'],
-  ['link','https://www.rstudio.com/ide/download/desktop'],
-  ['text', 'Now create a folder on your desktop titled "Kaggle" and download the two data files at this link, save them in this Kaggle folder'],
-  ['text', 'In RStudio we must create a file for us to write in. Go to File ==> New ==> Rscript. Now in that file we must tell R where our current working directory is. We do this by using the setwd() function. Your working directory indicates to R which folder to look for the datasets you want to use. '],
-  ['text', 'Your working directory location is unique to each user! We provide an example of the format your code should be in'],
-  ['text', 'For Mac Users it should look like: setwd("/Users/your_user_name/Desktop/kaggle/")'],
-  ['text', 'For Windows Users it should look like: setwd("C:/Users/your_user_name/Desktop/kaggle")'],
-  ['text', 'You can look at this image as an example. The correct code would be: setwd("/Users/Clair/Desktop/kaggle/")'],
-  ['image', 'set_cwd().png'],
-  ['text', 'To run what you just wrote in your RScript, put your cursor on a line of code in your RScript and enter control and return at the same time! Congrats you’ve just run your first line of R code!'],
-  ['text', 'From now on you can run any of our code snippets by copy and pasting it into your own RScript, and entering control and return. Typing control and return anywhere on the line runs the entire line of RCode.'],
-  ['text', 'Now we utilize the read.csv() function to load the data into R.'],
+  ['text', 'To begin you first need to install the tools necessary for data analysis! In this tutorial we will work in R. Go to the following link to onboard your computer with R, Rstudio, and setting your working directory'],
+  ['link', 'http://statsguys.wordpress.com/2014/03/06/installing-r-rstudio-and-setting-your-working-directory/'],
+  ['text', 'If you have already installed R, Rstudio, and are familiar with working directory\'s than move ahead'],
+  ['text', 'First we utilize the read.csv() function to load the data into R.'],
   ['code', 'trainData <- read.csv("train.csv", header = TRUE, stringsAsFactors = FALSE)'],
   ['code', 'testData <- read.csv("test.csv", header = TRUE, stringsAsFactors = FALSE)'],
-  ['text', 'Then we take the sex of each passenger in the Test dataset and convert them to survived or died. 1 means they survived, 0 means they died'],
+  ['text', 'Lets first just take a guess that women died and men survived'],
   ['code', 'Survived <- as.numeric(factor(testData$Sex, levels = c("male","female"), labels = c(0,1))) - 1'],
-  ['text', 'We select the passengerID of each passenger and match it with our prediction for survival'],
   ['code', 'submission_file <- cbind(testData$PassengerId, Survived)'],
-  ['text', 'We rename the columns'],
   ['code', 'colnames(submission_file) <- c("PassengerId", "Survived")'],
-  ['text', 'We create the file!'],
   ['code', 'write.csv(submission_file, file = "FirstSubmission", row.names = FALSE)'],
-  ['text', 'Prompt them to create a name for their submission'],
+  ['text', 'Check wherever your current working directory is, most likely a folder titled "Kaggle" in your desktop and submit this file for scoring!'],
   ['text', 'Hmmm not too high! Well continue on to the project to improve your score'],
 ]
 
-quick_pass = Step.create!(title: "Quick Pass", content: quick_pass_content, lesson: welcome_lesson)
+quick_pass = Step.create!(title: "Begin", content: quick_pass_content, lesson: welcome_lesson)
 
 
 main_page_content = [
@@ -119,8 +105,11 @@ train_clean_content = [
   ['text', 'We first calculate the mean age and ignore the NAs'],
   ['code', 'mean_age <- round(mean(trainData$Age,na.rm=T), digits = 3)'],
   ['text', 'Then we loop through the observations in the dataset and add the average age accordingly'],
-  #Fix Newline Character spacing for code
-  ['code', 'for (i in 1:nrow(trainData)) {\n\tif (is.na(trainData[i,6])) {\n\t\ttrainData$Age[i] <- mean_age\n\t}\n}'],
+  ['code', 'for (i in 1:nrow(trainData)) {'],
+  ['code', '  if (is.na(trainData[i,6])) {'],
+  ['code', '    trainData$Age[i] <- mean_age'],
+  ['code', '  }'],
+  ['code', '}'],
 ]
 
 train_clean = Step.create!(title:"Clean", content: train_clean_content, previous_step: train_data)
@@ -153,7 +142,11 @@ test_clean_content = [
   ['text', 'We calculate the mean age of the "Test" dataset'],
   ['code', 'test_mean_age <- round(mean(testData$Age, na.rm= T), digits = 3)'],
   ['text', 'We loop through each observation and input the mean age when necessary'],
-  ['code', 'for (i in 1:nrow(testData)) {\n\tif (is.na(testData[i,5])) {\n\t\ttestData[i, 5] <- test_mean_age\n\t}\n}'],
+  ['code', 'for (i in 1:nrow(testData)) {'],
+  ['code', '  if (is.na(testData[i,5])) {'],
+  ['code', '    testData[i, 5] <- test_mean_age'],
+  ['code', '  }'],
+  ['code', '}'],
 ]
 
 
@@ -173,7 +166,7 @@ analytics_tools_lesson = Lesson.create!(
 learn_ctree_content = [
   #Include image of C-tree
   ['text', 'A classification tree is made up of interior and terminal nodes and is structured upside down so the root node is at the top and branches downwards'],
-  ['image', 'classification_tree.jpg'],
+  ['image', 'c_tree.png'],
   ['text', 'In the example tree, the nodes represent the how your data is segmented so at the top it begins by first separating the data by Sex.'],
   ['text', 'Subsequent nodes further segment the data, for example one node is Age greater than or equal to 6.5 below the male node and results in a 0. This means that the model will classify all male observations with age greater than 6.5 as dying in the Titanic'],
   ['text', 'What one needs to be careful of when using classification trees is the concept of "overfitting" your data. Classification tree models are very susceptible to overfiting and is one of their disadvantages for use.'],
@@ -184,7 +177,11 @@ learn_ctree_content = [
 learn_ctree = Step.create!(title: "Learn Classification Trees", content: learn_ctree_content, lesson: analytics_tools_lesson)
 
 apply_ctree_content = [
-  ['text', 'To create a classification tree model we use the function rpart() in R. The arguments in the formula are as follows:\nrpart(formula, data, method, control)\nformula = the independent (Survived) and dependent variables (Age, Pclass, etc.)\ndata = dataset object (trainData or testData)\nmethod = the type of classification tree you are using ("class")\ncontrol = limits the number of splits and complexity to prevent overfitting'],
+  ['text', 'To create a classification tree model we use the function rpart() in R. The arguments in the formula rpart(formula, data, method, control) are as follows:'],
+  ['text', 'formula = the independent (Survived) and dependent variables (Age, Pclass, etc.)'],
+  ['text', 'data = dataset object (trainData or testData)'],
+  ['text', 'method = the type of classification tree you are using ("class")'],
+  ['text', 'ncontrol = limits the number of splits and complexity to prevent overfitting'],
   ['text', 'Take a look again at the columns of the "Train" dataset'],
   ['code', 'head(trainData, 1)'],
   ['text', 'Remember that we are trying to predict whether each passenger "Survived" (independent variable) and we have the following features to use: "PassengerId", "Pclass", "Name", "Sex", "Age", "SibSp", "Parch", "Ticket", "Fare", "Cabin", "Embarked" (dependent variables)'],
@@ -205,7 +202,7 @@ apply_ctree_content = [
   ['code', 'colnames(model_submission) <- c("PassengerId", "Prediction")'],
   ['text', 'We use the write.csv() function to convert our data frame in R into a CSV file'],
   ['code', 'write.csv(model_submission, "mysubmission.csv", row.names = FALSE)'],
-  ['text', 'And now you can submit this file to the submission page and see where you rank on the LeadaBoard! Go to the "Increase your Score" page to learn ways to move up on the LeadaBoard and strengthen your model!'],
+  ['text', 'And now you can submit this file to the submission page and see where you rank on the LeadaBoard! Go to the "Increase your Score" page to learn ways to move up on the Leadaboard!'],
 ]
 
 apply_ctree = Step.create!(title: "Apply a Classification Tree Model", content: apply_ctree_content, lesson: analytics_tools_lesson)
@@ -218,18 +215,23 @@ increase_score_content = [
   ['text', 'Creates a new column titled "Child"'],
   ['code', 'trainData["Child"] <- NA'],
   ['text', 'This for loop loops through each row in "Train" dataset and checks in the age column if it is less than 18. If the age is less than 18, we put a 1 in the "Child" column and if it is greater than 18 we put a 2 in the column.'],
-  ['code', 'for (i in 1:nrow(trainData)) {\n\tif (trainData$Age[i] <= 18) {\n\t\ttrainData$Child[i] <- 1\n\t} else {\n\t\ttrainData$Child[i] <- 2\n\t}\n}'],
+  ['code', 'for (i in 1:nrow(trainData)) {'],
+  ['code', '  if (trainData$Age[i] <= 18) {'],
+  ['code', '    trainData$Child[i] <- 1'],
+  ['code', '  } else {'],
+  ['code', '    trainData$Child[i] <- 2'],
+  ['code', '  }'],
+  ['code', '}'],
   ['text', 'Just remember that whatever variable you create in your "Train" dataset you must also create in your "Test" dataset for your model to function correctly!'],
   ['code', 'testData["Child"] <- NA'],
-  ['code', 'for (i in 1:nrow(testData)) {\n\tif (testData[i, 4] <= 18) {\n\t\ttestData[i, 7] <- 1\n\t} else {\n\t\ttestData[i, 7] <- 2\n\t}\n}'],
-  ['text', 'Another possible variable could be "Family Size". Maybe the larger of a family you had the less likely you were to survive.'],
-  ['code', 'trainData["Family"] <- NA'],
-  ['text', 'We sum the number in "SibSp" and "Parch" and add one to include the passenger'],
-  ['code', 'for(i in 1:nrow(trainData)) {\n\tx <- trainData$SibSp[i]\n\ty <- trainData$Parch[i]\n\ttrainData$Family[i] <- x + y + 1\n}'],
-  ['text', 'Again don\'t forget to create this also in the "Test" dataset! Your going to have to try on your own!'],
-  ['text', 'With these new variables and including the ones we didn\'t use, you should be able to significantly increase your score! To add more dependent variables to your model just include the column name and R should do the rest!'],
-  ['text', 'Here is an example of the code for a classification tree model if we included the "Fare" variable'],
-  ['code', 'tree_model_two <- rpart(Survived ~ Pclass + Sex + Age + Fare, data = trainData, method = "class")'],
+  ['code','for (i in 1:nrow(testData)) {'],
+  ['code','  if (testData[i, 4] <= 18) {'],
+  ['code','    testData[i, 7] <- 1'],
+  ['code','  } else {'],
+  ['code','    testData[i, 7] <- 2'],
+  ['code','  }'],
+  ['code', '}'],
+  ['text', 'What other variables can you think of and implement that are predictive of survival on the Titanic?'],
 ]
 
 increase_score_lesson = Lesson.create!(
