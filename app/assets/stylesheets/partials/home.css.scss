@@ -11,15 +11,33 @@
       padding: 300px 0;
 
       .title-container {
-        border-radius: 35px;
-        border-color: white;
+        border-radius: 10px;
+        border-color: $founders-rock-blue;
         border-style:solid;
         border-width: 3px;
-        background-color: #2d637f;
-        opacity: 0.9;
-        width: 300px;
+        background-color: $medium-gray;
+        opacity: 0.95;
+        width: 250px;
         margin: auto;
-        padding: 32px;
+        padding: 26px;
+
+        .try-button {
+          display: inline-block;
+          border: 0;
+          text-shadow: none;
+          -moz-background-clip: padding;
+          -webkit-background-clip: padding-box;
+          background-clip: padding-box;
+          color: $founders-rock-blue;
+          text-transform: capitalize;
+          top: 0;
+          font-size: 26px;
+        }
+        .try-button:hover {
+          color: white;
+        }
+
+
 
         h1 {
           font-size: 72px;
@@ -125,17 +143,17 @@
     }
   }
 
-.hal_quote {
-  color: gray;
-  margin-top: 15px;
-  font-family: Lusitana Bold;
-  font-size: 25px;
-}
-.hal_sig{
-  margin-top: 5px;
-  font-family: Lusitana Bold;
-  font-size: 25px;
-  float: right;
-}
+  .hal_quote {
+    color: gray;
+    margin-top: 15px;
+    font-family: Lusitana Bold;
+    font-size: 25px;
+  }
+  .hal_sig{
+    margin-top: 5px;
+    font-family: Lusitana Bold;
+    font-size: 25px;
+    float: right;
+  }
 
 }
