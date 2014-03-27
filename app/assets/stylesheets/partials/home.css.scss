@@ -8,15 +8,19 @@
     background-size: 110%;
 
     .about-intro {
-      padding: 400px 0;
+      padding: 300px 0;
 
       .title-container {
-        border-radius: 1000px;
+        border-radius: 35px;
+        border-color: white;
+        border-style:solid;
+        border-width: 3px;
         background-color: #2d637f;
-        opacity: 0.7;
+        opacity: 0.9;
         width: 300px;
         margin: auto;
         padding: 32px;
+        -webkit-filter: brightness(160%);
 
         h1 {
           font-size: 72px;
@@ -58,7 +62,7 @@
         width: 50%;
       }
 
-      .image {
+      .image { /*For the background up top*/
         float: right;
         width: 33.33333333333333%;
         margin-left: 16.666666666666664%;
@@ -71,11 +75,22 @@
   section#content-one,
   section#content-three {
     background-color: $content-bg;
+
+    .content-body-one {
+      margin-top: 50px;
+    }
+    .image {
+      margin-top: -50px;
+    }
   }
 
+  section#content-zero,
   section#content-two,
   section#content-four {
     background-color: $learning-bg;
+    .content-body-two {
+      margin-top: 50px;
+    }
 
     .about-section {
       .description {
@@ -83,7 +98,8 @@
         margin-left: 16.666666666666666664%;
       }
 
-      .image {
+      .image { /*Second Icon down*/
+        margin-top: -50px;
         float: left;
         margin-left: 0;
       }

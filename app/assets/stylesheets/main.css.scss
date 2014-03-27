@@ -7,7 +7,6 @@ body {
 .center {
   text-align: center;
 }
-
 .white {
   color: white;
 }
@@ -28,8 +27,12 @@ body {
 
 h1, h2, h3, h4, h5 {
   font-weight: 300;
+  font-family: Lusitana Bold;
 }
 
+p {
+  font-family: Lusitana Bold;
+}
 .title {
   padding-bottom: 10px;
   border-bottom: 1px solid $medium-gray;
@@ -46,4 +49,25 @@ h1, h2, h3, h4, h5 {
   0% { opacity:1; }
   50% { opacity:0; }
   100% { opacity:1; }
+}
+
+
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+
+.hal_quote {
+  color: gray;
+  margin-top: 15px;
+  font-family: Lusitana Bold;
+  font-size: 25px;
+}
+.hal_sig{
+  margin-top: 5px;
+  font-family: Lusitana Bold;
+  font-size: 25px;
+  float: right;
 }

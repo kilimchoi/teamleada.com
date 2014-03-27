@@ -7,67 +7,35 @@
         .col-md-12.center
           .about-intro
             .title-container
-              h1.white Leada
-              h3.white Learn Insights in Data
-  section#about
+              = link_to "Try now", project_path(url: @project.url), class: "try-button"
+  section#content-zero
     .container
       .row
         .col-md-12.center
           .attention-grabber
-            h1.white
+            h1.left
               | The Most In Demand Skill Today
             .row
               .col-md-8.col-md-offset-2.center
-                p.white
-                  | "If you are looking for a career where your services will be in high demand, you should find something where you provide a scarce, complementary service to something that is getting ubiquitous and cheap. So what’s getting ubiquitous and cheap? Data. And what is complementary to data? Analysis. So my recommendation is to take lots of courses about how to manipulate and analyze data: databases, machine learning, econometrics, statistics, visualization, and so on." - Hal Varian, Chief Economist at Google
+                p.hal_quote
+                  | "If you are looking for a career where your services will be in high demand, you should find something where you provide a scarce, complementary service to something that is getting ubiquitous and cheap. So what’s getting ubiquitous and cheap? Data. And what is complementary to data? Analysis. So my recommendation is to take lots of courses about how to manipulate and analyze data..."
+                p.hal_sig
+                  | - Hal Varian, Chief Economist at Google
   section#content-one
     .container
       .row
         .col-md-8.col-md-offset-2
           .about-section
             .description
-              h2 Learn the statistics and programming skills required to become a data literate professional
+              h2.content-body-one Learn the statistics and programming skills required to effectively analyze data
             .image
-              = image_tag "filler.png", class: "round-with-border"
+              = image_tag "datachart.png", class: "square-with-border"
   section#content-two
     .container
       .row
         .col-md-8.col-md-offset-2
           .about-section
             .description
-              h2 Choose the analysis methods and models you want to apply to the data
+              h2.content-body-two Choose what analysis methods and models you want to apply to the data
             .image
-              = image_tag "filler.png", class: "round-with-border"
-  section#content-three
-    .container
-      .row
-        .col-md-8.col-md-offset-2
-          .about-section
-            .description
-              h2 Learn and complete data analytic projects worth sharing
-            .image
-              = image_tag "filler.png", class: "round-with-border"
-  section#content-four
-    .container
-      .row
-        .col-md-8.col-md-offset-2
-          .about-section
-            .description
-              h2 Place yourself and your work at the top of the LEADAboard
-            .image
-              = image_tag "filler.png", class: "round-with-border"
-  section#email
-    .container
-      .row
-        .col-md-8.col-md-offset-2
-          .schedule-container
-            h1.white Stay notified of future projects!
-            p.white Email box goes here.
-  section#try-project
-    .container
-      .row
-        .col-md-8.col-md-offset-2
-          .try-project-container
-            h1.white Trial Project
-            p.white Build a classification tree model in R to predict the survivors in the Titanic!
-            = link_to "Try now!", project_path(url: @project.url), class: "flat-button"
+              = image_tag "methods.png", class: "round-with-border"
