@@ -3,6 +3,28 @@
 }
 
 .flat-button {
+ display: inline-block;
+  padding: 15px 60px;
+  border: 0;
+  text-shadow: none;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  color: #FFF;
+  background-color: $founders-rock-blue;
+  text-transform: uppercase;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  top: 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.flat-button:hover {
+  color: white;
+}
+
+.try-button {
   display: inline-block;
   border: 0;
   text-shadow: none;
@@ -14,10 +36,7 @@
   text-transform: capitalize;
   top: 0;
   font-size: 20px;
-}
 
-.flat-button:hover {
-  color: white;
 }
 
 .round-with-border {
