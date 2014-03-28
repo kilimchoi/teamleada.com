@@ -1,0 +1,13 @@
+.reveal a.flat-button {
+  padding: 15px 60px;
+  margin: 15px 0;
+}
+
+.reveal a:not(.image) {
+  color: white;
+}
+
+.reveal a.flat-button:not(.image):hover {
+  color: white;
+  text-decoration: underline;
+}
