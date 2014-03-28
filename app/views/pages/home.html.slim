@@ -7,7 +7,7 @@
         .col-md-12.center
           .about-intro
             .title-container
-              = link_to "Trial project", project_path(url: @project.url), class: "try-button"
+              = link_to "Trial project", project_lesson_path(project_url: @project.url, url: @project.lessons.first.url), class: "try-button"
   section#content-zero
     .container
       .row
