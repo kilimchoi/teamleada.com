@@ -172,7 +172,6 @@ analytics_tools_content = [
   ['text', 'In this first project we will cover one of the most effective and simple predictive analytics tools for data analytics, classification trees.'],
   ['text', 'In future projects you will learn a variety of tools and specifically when to apply them. Logistic regression, Support Vector Machines, and many more!'],
   ['lesson_links', nil],
-  ['project_link', 'Back to the lessons page'],
 ]
 
 analytics_tools_lesson = Lesson.create!(
