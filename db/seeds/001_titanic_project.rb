@@ -100,6 +100,7 @@ train_visualize_content = [
   ['code', 'counts[4] / (counts[3] + counts[4])'],
   ['text', 'The lighter areas indicate survival and notice that our intuition was correct! 74.2% of women survived vs. 18.9% of men. We can use this to improve our model.'],
   ['next_steps', nil],
+  ['project_link', 'Back to the lessons page'],
 ]
 
 train_visualize = Step.create!(title:"Visualize", content: train_visualize_content, previous_step: train_data)
@@ -119,6 +120,7 @@ train_clean_content = [
   ['code', '  }'],
   ['code', '}'],
   ['next_steps', nil],
+  ['project_link', 'Back to the lessons page'],
 ]
 
 train_clean = Step.create!(title:"Clean", content: train_clean_content, previous_step: train_data)
@@ -143,6 +145,7 @@ test_visualize_content = [
   ['text', 'Density plots check the distribution of a variable, a distribution is the probability of being any given value in a variable. In this case its the probability of being any given age based on the datasets.'],
   ['text', 'You should see that these distributions are approximately similar. Its good to check more of the variables but we will move on.'],
   ['next_steps', nil],
+  ['project_link', 'Back to the lessons page'],
 ]
 
 test_visualize = Step.create!(title:"Visualize", content: test_visualize_content, previous_step: test_data)
@@ -159,6 +162,7 @@ test_clean_content = [
   ['code', '  }'],
   ['code', '}'],
   ['next_steps', nil],
+  ['project_link', 'Back to the lessons page'],
 ]
 
 
@@ -168,6 +172,7 @@ analytics_tools_content = [
   ['text', 'In this first project we will cover one of the most effective and simple predictive analytics tools for data analytics, classification trees.'],
   ['text', 'In future projects you will learn a variety of tools and specifically when to apply them. Logistic regression, Support Vector Machines, and many more!'],
   ['lesson_links', nil],
+  ['project_link', 'Back to the lessons page'],
 ]
 
 analytics_tools_lesson = Lesson.create!(
@@ -218,6 +223,7 @@ apply_ctree_content = [
   ['code', 'write.csv(model_submission, "mysubmission.csv", row.names = FALSE)'],
   ['text', 'And now you can submit this file to the submission page and see where you rank on the LeadaBoard! Go to the "Increase your Score" page to learn ways to move up on the Leadaboard!'],
   ['next_steps', nil],
+  ['project_link', 'Back to the lessons page'],
 ]
 
 apply_ctree = Step.create!(title: "Apply a Classification Tree Model", content: apply_ctree_content, lesson: analytics_tools_lesson)
@@ -248,6 +254,7 @@ increase_score_content = [
   ['code', '}'],
   ['text', 'What other variables can you think of and implement that are predictive of survival on the Titanic?'],
   ['lesson_links', nil],
+  ['project_link', 'Back to the lessons page'],
 ]
 
 increase_score_lesson = Lesson.create!(
