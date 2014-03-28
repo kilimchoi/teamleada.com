@@ -10,4 +10,4 @@
         section
           h3 = @lesson.title
           - content_slice.each do |content_array|
-            = render partial: "shared/content", locals: {content_type: content_array[0], content: content_array[1], steps: @lesson.steps}
+            = render partial: "shared/content", locals: {content_type: content_array[0], content: content_array[1], lesson: @lesson}

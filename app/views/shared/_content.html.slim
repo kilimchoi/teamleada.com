@@ -23,4 +23,9 @@
 - elsif content_type == 'lesson_links'
   p.fragment
     - steps.each do |step|
-      = link_to step.title, project_lesson_step_path(project_url: step.lesson.project.url, lesson_url: step.lesson.url, url: step.url), class: "flat-button step-button"
+      = link_to step.title, project_lesson_step_path(project_url: lesson.project.url, lesson_url: lesson.url, url: step.url), class: "flat-button step-button"
+- elsif content_type == 'next_steps'
+  p.fragment
+    - step.next_steps.each do |step|
+      .individual-next-step-container.center
+        = link_to step.title, project_lesson_step_path(project_url: step.main_lesson.project.url, lesson_url: step.main_lesson.url, url: step.url), class: "flat-button step-button"

@@ -1,20 +1,3 @@
-.container
-  .row
-    .col-md-12
-      .step-container
-        h1.title = @step.main_lesson.project.title
-        = link_to "Back", @step.back_link, class: "flat-button"
-        h1 = @step.main_lesson.title
-        h3 = @step.title
-        - @step.content.each do |content_array|
-          = render partial: "shared/content", locals: {content_type: content_array[0], content: content_array[1]}
-        .next-steps-container
-          - @step.next_steps.each do |step|
-            .individual-next-step-container.center
-              = link_to step.title, project_lesson_step_path(project_url: step.main_lesson.project.url, lesson_url: step.main_lesson.url, url: step.url), class: "flat-button step-button"
-javascript:
-    $(document).ready(function() {
-      $("pre.content.content-code").each(function(i, e) {
-        hljs.highlightBlock(e);
-      });
-    });
+= render partial: "steps/step_content"
+= stylesheet_link_tag "projects"
+= javascript_include_tag "projects"
