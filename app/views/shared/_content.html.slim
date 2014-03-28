@@ -4,6 +4,17 @@
 - elsif content_type == 'code'
   pre.content.content-code
     = content
+- elsif content_type == 'submit'
+  p.fragment
+    - if signed_in?
+      = form_tag project_submission_path, multipart: true do
+        = file_field_tag "file"
+        = submit_tag "Submit", class: 'flat-button'
+    - else
+      p
+        | In order to make a submission, you must sign up!
+        br
+        = link_to "Sign Up", new_user_registration_path, class: 'flat-button'
 - elsif content_type == 'image'
 	= image_tag content, class: "content content-image"
 - elsif content_type == 'link'

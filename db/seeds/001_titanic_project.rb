@@ -40,7 +40,7 @@ quick_pass_content = [
   ['code', 'colnames(submission_file) <- c("PassengerId", "Survived")'],
   ['code', 'write.csv(submission_file, file = "FirstSubmission", row.names = FALSE)'],
   ['text', 'Check wherever your current working directory is, most likely a folder titled "Kaggle" in your desktop and submit this file for scoring!'],
-  ['text', 'Hmmm not too high! Well continue on to the project to improve your score'],
+  ['submit', nil],
 ]
 
 quick_pass = Step.create!(title: "Begin", content: quick_pass_content, lesson: welcome_lesson)

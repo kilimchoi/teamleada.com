@@ -1,0 +1,5 @@
+.row
+  .col-md-12.center
+    - flash.each do |key, value|
+      div class="alert alert-#{key}"
+        = value

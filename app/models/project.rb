@@ -18,14 +18,14 @@ class Project < ActiveRecord::Base
     solution_hash = {}
 
     CSV.foreach(solution_file, :headers => true) do |row|
-      soln_hash[row[0]] = row[1]
+      solution_hash[row[0]] = row[1]
     end
 
-    total = Float(soln_hash.length)
+    total = Float(solution_hash.length)
     correct = 0
 
-    CSV.foreach(file, :headers => true) do |row|
-      if (soln_hash[row[0]] == row[1]) #if correct answer
+    CSV.foreach(file.path, :headers => true) do |row|
+      if (solution_hash[row[0]] == row[1]) #if correct answer
         correct += 1
       end
     end
