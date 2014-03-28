@@ -19,6 +19,7 @@ welcome_lesson_content = [
   ['text', '- Learned how to use your model to predict whether new passengers survived'],
   ['text', 'You will learn all of these things coding in R! Don\'t worry if you\'ve never use R before, we will walk you through every part of the way!'],
   ['text', 'All of the learning principles here are fundamental skills for data analysts/data scientists and for anyone who wants to learn how to answer questions from data. So lets begin!'],
+  ['lesson_links', nil],
 ]
 
 welcome_lesson = Lesson.create!(
