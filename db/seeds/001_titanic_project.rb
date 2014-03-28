@@ -42,6 +42,7 @@ quick_pass_content = [
   ['code', 'write.csv(submission_file, file = "FirstSubmission", row.names = FALSE)'],
   ['text', 'Check wherever your current working directory is, most likely a folder titled "Kaggle" in your desktop and submit this file for scoring!'],
   ['submit', nil],
+  ['next_steps', nil],
 ]
 
 quick_pass = Step.create!(title: "Begin", content: quick_pass_content, lesson: welcome_lesson)
