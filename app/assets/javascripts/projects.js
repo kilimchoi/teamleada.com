@@ -11,8 +11,7 @@ function initializeReveal() {
     progress: true,
     history: true,
     backgroundTransition: 'slide',
-    transition: 'linear',
-    theme: 'solarized', // available themes are in /css/theme
+    transition: 'linear'
 
     // Optional libraries used to extend on reveal.js
 //    dependencies: [
