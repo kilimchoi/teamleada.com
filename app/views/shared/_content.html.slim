@@ -1,8 +1,8 @@
 - if content_type == 'text'
-  p.content.content-text
+  p.fragment
     = content
 - elsif content_type == 'code'
-  pre.content.content-code
+  pre.fragment.content-code
     = content
 - elsif content_type == 'submit'
   p.fragment
@@ -16,7 +16,21 @@
         br
         = link_to "Sign Up", new_user_registration_path, class: 'flat-button'
 - elsif content_type == 'image'
-	= image_tag content, class: "content content-image"
+  = image_tag content, class: "content content-image"
 - elsif content_type == 'link'
-  a.content.content-link href=content target="_blank"
+  a.fragment href=content target="_blank"
     = content
+- elsif content_type == 'lesson_links'
+  p.fragment
+    - lesson.steps.each do |step|
+      = link_to step.title, project_lesson_step_path(project_url: lesson.project.url, lesson_url: lesson.url, url: step.url), class: "flat-button step-button"
+- elsif content_type == 'next_steps'
+  p.fragment
+    - step.next_steps.each do |step|
+      = link_to step.title, project_lesson_step_path(project_url: step.main_lesson.project.url, lesson_url: step.main_lesson.url, url: step.url), class: "flat-button step-button"
+- elsif content_type == 'project_link'
+  p.fragment
+    - if defined? step
+      = link_to content, project_path(url: step.main_lesson.project.url), class: 'flat-button step-button'
+    - if defined? lesson
+      = link_to content, project_path(url: lesson.project.url), class: 'flat-button step-button'

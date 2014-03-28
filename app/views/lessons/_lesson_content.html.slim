@@ -1,0 +1,13 @@
+.reveal
+  .slides
+    section
+      section#content
+        h1 = @lesson.title
+        p
+          | Press the right arrow key or the <spacebar> to advance through the project!
+    - @lesson.content.each_slice(3).each do |content_slice|
+      section
+        section
+          h3 = @lesson.title
+          - content_slice.each do |content_array|
+            = render partial: "shared/content", locals: {content_type: content_array[0], content: content_array[1], lesson: @lesson}

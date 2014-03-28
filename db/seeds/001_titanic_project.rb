@@ -19,6 +19,7 @@ welcome_lesson_content = [
   ['text', '- Learned how to use your model to predict whether new passengers survived'],
   ['text', 'You will learn all of these things coding in R! Don\'t worry if you\'ve never use R before, we will walk you through every part of the way!'],
   ['text', 'All of the learning principles here are fundamental skills for data analysts/data scientists and for anyone who wants to learn how to answer questions from data. So lets begin!'],
+  ['lesson_links', nil],
 ]
 
 welcome_lesson = Lesson.create!(
@@ -41,6 +42,7 @@ quick_pass_content = [
   ['code', 'write.csv(submission_file, file = "FirstSubmission", row.names = FALSE)'],
   ['text', 'Check wherever your current working directory is, most likely a folder titled "Kaggle" in your desktop and submit this file for scoring!'],
   ['submit', nil],
+  ['next_steps', nil],
 ]
 
 quick_pass = Step.create!(title: "Begin", content: quick_pass_content, lesson: welcome_lesson)
@@ -52,6 +54,8 @@ main_page_content = [
   ['text', '1. Create a model which will predict whether a passenger survived using only the Train data set'],
   ['text', '2. Predict whether the passengers survived in the Test data set based on the model we created'],
   ['text', 'Then the rest is up to you. Happy Exploring!'],
+  ['lesson_links', nil],
+  ['project_link', 'Back to the lessons page'],
 ]
 
 main_page = Lesson.create!(
@@ -63,6 +67,7 @@ main_page = Lesson.create!(
 work_with_data_content = [
   ['text', 'In this project you are given two datasets "Train" and "Test". You will be using the "Train" dataset to build your model. This model will create predictions for passenger survival for the "Train" dataset.'],
   ['text', 'In analytics we call this "training the model", hence the name "Train" for the dataset. Then, using the model you built you will predict whether the passengers in the "Test" dataset survived based on the model you created, hence the name "Test" for the other dataset!'],
+  ['lesson_links', nil],
 ]
 
 work_with_data_lesson = Lesson.create!(
@@ -81,6 +86,7 @@ train_data_content = [
   ['code', 'trainData'],
   ['text', 'The first thing you want to understand when beginning to dive into the data is what do the columns represent. Most are self-explanatory but a couple are a little confusing. "SibSp" is the total number of siblings or spouses that a passenger has on the Titanic.'],
   ['text', '"Parch" is the number of parents or children that a passenger has on the Titanic. "Pclass" is the passenger class (1st, 2nd, 3rd) "Embarked" is the location the passenger embarked from (Cherbourg, Queenstown, Southampton)'],
+  ['next_steps', nil],
 ]
 
 train_data = Step.create!(title: "Train Data", content: train_data_content, lesson: work_with_data_lesson)
@@ -93,6 +99,8 @@ train_visualize_content = [
   ['code', 'counts[2] / (counts[1] + counts[2])'],
   ['code', 'counts[4] / (counts[3] + counts[4])'],
   ['text', 'The lighter areas indicate survival and notice that our intuition was correct! 74.2% of women survived vs. 18.9% of men. We can use this to improve our model.'],
+  ['next_steps', nil],
+  ['project_link', 'Back to the lessons page'],
 ]
 
 train_visualize = Step.create!(title:"Visualize", content: train_visualize_content, previous_step: train_data)
@@ -111,6 +119,8 @@ train_clean_content = [
   ['code', '    trainData$Age[i] <- mean_age'],
   ['code', '  }'],
   ['code', '}'],
+  ['next_steps', nil],
+  ['project_link', 'Back to the lessons page'],
 ]
 
 train_clean = Step.create!(title:"Clean", content: train_clean_content, previous_step: train_data)
@@ -120,6 +130,7 @@ test_data_content = [
   ['code', 'head(testData, 10)'],
   ['code', 'tail(testData, 10)'],
   ['code', 'testData'],
+  ['next_steps', nil],
 ]
 
 test_data = Step.create!(title:"Test Data", content: test_data_content, lesson: work_with_data_lesson)
@@ -133,6 +144,8 @@ test_visualize_content = [
   ['code', 'plot(density(trainData$Age, na.rm = TRUE), main ="TrainData Age Density")'],
   ['text', 'Density plots check the distribution of a variable, a distribution is the probability of being any given value in a variable. In this case its the probability of being any given age based on the datasets.'],
   ['text', 'You should see that these distributions are approximately similar. Its good to check more of the variables but we will move on.'],
+  ['next_steps', nil],
+  ['project_link', 'Back to the lessons page'],
 ]
 
 test_visualize = Step.create!(title:"Visualize", content: test_visualize_content, previous_step: test_data)
@@ -148,6 +161,8 @@ test_clean_content = [
   ['code', '    testData[i, 5] <- test_mean_age'],
   ['code', '  }'],
   ['code', '}'],
+  ['next_steps', nil],
+  ['project_link', 'Back to the lessons page'],
 ]
 
 
@@ -156,6 +171,7 @@ test_clean = Step.create!(title: "Clean", content: test_clean_content, previous_
 analytics_tools_content = [
   ['text', 'In this first project we will cover one of the most effective and simple predictive analytics tools for data analytics, classification trees.'],
   ['text', 'In future projects you will learn a variety of tools and specifically when to apply them. Logistic regression, Support Vector Machines, and many more!'],
+  ['lesson_links', nil],
 ]
 
 analytics_tools_lesson = Lesson.create!(
@@ -173,6 +189,7 @@ learn_ctree_content = [
   ['text', 'What one needs to be careful of when using classification trees is the concept of "overfitting" your data. Classification tree models are very susceptible to overfiting and is one of their disadvantages for use.'],
   ['text', 'In general, overfitting is when you find patterns in the data that does not generalize to new datasets. If you look hard enough, you can find patterns in any dataset.'],
   ['text', 'There are two main advantages to building a classification tree model. (1) They require very little data preparationi and cleaning. (2) Classification models are easy to interpret and explain to others!'],
+  ['next_steps', nil],
 ]
 
 learn_ctree = Step.create!(title: "Learn Classification Trees", content: learn_ctree_content, lesson: analytics_tools_lesson)
@@ -204,6 +221,8 @@ apply_ctree_content = [
   ['text', 'We use the write.csv() function to convert our data frame in R into a CSV file'],
   ['code', 'write.csv(model_submission, "mysubmission.csv", row.names = FALSE)'],
   ['text', 'And now you can submit this file to the submission page and see where you rank on the LeadaBoard! Go to the "Increase your Score" page to learn ways to move up on the Leadaboard!'],
+  ['next_steps', nil],
+  ['project_link', 'Back to the lessons page'],
 ]
 
 apply_ctree = Step.create!(title: "Apply a Classification Tree Model", content: apply_ctree_content, lesson: analytics_tools_lesson)
@@ -233,6 +252,8 @@ increase_score_content = [
   ['code','  }'],
   ['code', '}'],
   ['text', 'What other variables can you think of and implement that are predictive of survival on the Titanic?'],
+  ['lesson_links', nil],
+  ['project_link', 'Back to the lessons page'],
 ]
 
 increase_score_lesson = Lesson.create!(
@@ -246,6 +267,6 @@ mark = User.find_by(username: 'mark')
 brian = User.find_by(username: 'brian')
 tristan = User.find_by(username: 'tristan')
 
-Submission.create!(project: project, user: mark, score: 0.999)
-Submission.create!(project: project, user: brian, score: 0.01)
-Submission.create!(project: project, user: tristan, score: 0.001)
+Submission.create!(project: project, user: mark, score: 0.645)
+Submission.create!(project: project, user: brian, score: 0.600)
+Submission.create!(project: project, user: tristan, score: 0.712)
