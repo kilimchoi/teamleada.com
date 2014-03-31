@@ -36,7 +36,7 @@ quick_pass_content = [
   ['link', 'http://leada.s3.amazonaws.com/titanic_data/train.csv'],
   ['text', 'Now for the test data:'],
   ['link', 'http://leada.s3.amazonaws.com/titanic_data/test.csv'],
-  ['text', 'Now let\'s jump into the analysis'],
+  ['text', 'Now let\'s jump into the analysis.'],
   ['text', 'First we utilize the read.csv() function to load the data into R.'],
   ['code', 'trainData <- read.csv("train.csv", header = TRUE, stringsAsFactors = FALSE)'],
   ['code', 'testData <- read.csv("test.csv", header = TRUE, stringsAsFactors = FALSE)'],
