@@ -12,7 +12,7 @@ puts "Created project: #{project.title}."
 
 welcome_lesson_content = [
   ['text', 'Welcome to your first Data Project by Leada! This project is taken from Kaggle, a data science competition website and is an excellent introduction into the work of data analytics! Check them out at www.kaggle.com'],
-  ['text', 'This project is based off of the historic sinking of the Titanic and you are asked to build a model which predicts which passengers survived! Complete this project and you will have:'],
+  ['text', 'This project is based off of the historic sinking of the Titanic; you are asked to build a model which predicts which passengers survived! Complete this project and you will have:'],
   ['text', '- Learned how to do exploratory analysis on data and create visualizations'],
   ['text', '- Learned how to clean data and make inferences on missing data'],
   ['text', '- Built a classification tree model which predicts which passengers of the Titanic crash survived'],
@@ -29,9 +29,9 @@ welcome_lesson = Lesson.create!(
 )
 
 quick_pass_content = [
-  ['text', 'To begin you first need to install the tools necessary for data analysis! In this tutorial we will work in R. Go to the following link to onboard your computer with R, Rstudio, and setting your working directory'],
+  ['text', 'To begin, you first need to install the tools necessary for data analysis! In this tutorial we will work in R. Go to the following link to onboard your computer with R, Rstudio, and setting your working directory'],
   ['link', 'http://statsguys.wordpress.com/2014/03/06/installing-r-rstudio-and-setting-your-working-directory/'],
-  ['text', 'If you have already installed R, Rstudio, and are familiar with working directory\'s than move ahead'],
+  ['text', 'If you have already installed R, Rstudio, and are familiar with working directories, then move ahead'],
   ['text', 'Now, download the training data from the following location: (Make sure to save the data in the directory you set above!'],
   ['link', 'http://leada.s3.amazonaws.com/titanic_data/train.csv'],
   ['text', 'Now for the test data:'],
@@ -40,12 +40,12 @@ quick_pass_content = [
   ['text', 'First we utilize the read.csv() function to load the data into R.'],
   ['code', 'trainData <- read.csv("train.csv", header = TRUE, stringsAsFactors = FALSE)'],
   ['code', 'testData <- read.csv("test.csv", header = TRUE, stringsAsFactors = FALSE)'],
-  ['text', 'Lets first just take a guess that women died and men survived'],
+  ['text', 'Lets first just guess that women died and men survived'],
   ['code', 'Survived <- as.numeric(factor(testData$Sex, levels = c("male","female"), labels = c(0,1))) - 1'],
   ['code', 'submission_file <- cbind(testData$PassengerId, Survived)'],
   ['code', 'colnames(submission_file) <- c("PassengerId", "Survived")'],
   ['code', 'write.csv(submission_file, file = "FirstSubmission", row.names = FALSE)'],
-  ['text', 'Check wherever your current working directory is, most likely a folder titled "Kaggle" in your desktop and submit this file for scoring!'],
+  ['text', 'Check inside your current working directory. It\'s most likely a folder titled "Kaggle" in your desktop. Submit the file "FirstSubmission.csv" for scoring!'],
   ['submit', nil],
   ['next_steps', nil],
 ]
