@@ -1,3 +1,7 @@
+html, body {
+  height: 100%;
+}
+
 body {
   font-family: 'open sans';
   -webkit-font-smoothing: antialiased;
@@ -28,11 +32,6 @@ body {
 
 h1, h2, h3, h4, h5 {
   font-weight: 300;
-  font-family: Lusitana Bold;
-}
-
-p {
-  font-family: Lusitana Bold;
 }
 
 .title {
