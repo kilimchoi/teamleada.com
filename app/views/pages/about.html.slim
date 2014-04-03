@@ -1,43 +1,46 @@
 = provide(:header_links, "header/about")
 
-.main
-  section#mission
-    .container
-      .row
-        .col-md-12.center
-          .mission-intro
-            .mission-content
-              h2.mission_header Leada's Mission
-              p.mission_body
-                | To empower professionals with data literacy in an increasingly data-centric society.
-  section#team
-    .container
-      .row
-        .col-md-12.center
-          .team-intro
-            .team-content
-            h2.team_header The Leada Team <br>
-            div.divider
-            p
-              | A team that bleeds blue and gold.
-            .image
-                = image_tag "Greg.jpg", class: "headshots-with-border"
-                figcaption
-                  | Advisor <br> Greg L. <br> CEO Yhat
-            .image
-                = image_tag "Brian.png", class: "headshots-with-border"
-                figcaption
-                  | Co-Founder <br>Brian Liou<br> B.S. Business <br> B.A. Statistics
-            .image
-                = image_tag "Tristan.png", class: "headshots-with-border"
-                figcaption
-                  | Co-Founder <br>Tristan Tao<br> B.A. CompSci <br> B.A. Statistics
-            .image
-                = image_tag "Mark.jpg", class: "headshots-with-border"
-                figcaption
-                  | Co-Founder <br>Mark Miyashita<br> B.S. EECS
-            .image
-                = image_tag "Aditya.png", class: "headshots-with-border"
-                figcaption
-                  | Advisor <br> Aditya G. <Br> Statistics Prof
+section#mission
+  .container
+    .row
+      .col-md-12.center
+        .mission-intro
+          .mission-content
+            h2.mission_header Leada's Mission
+            p.mission_body
+              | To empower professionals with data literacy in an increasingly data-centric society.
 
+    .row
+      .col-md-12.center
+        .team-intro
+          h2.team_header The Leada Team
+          div.divider
+          p
+            | A team that bleeds blue and gold.
+
+          .row
+            .col-md-2.col-md-offset-1
+              .image
+                = image_tag "Greg.jpg", class: "headshots-with-border"
+              .fig-caption
+                | Advisor <br> Greg L. <br> CEO Yhat
+            .col-md-2
+              .image
+                = image_tag "Brian.png", class: "headshots-with-border"
+              .fig-caption
+                | Co-Founder <br>Brian Liou<br> B.S. Business <br> B.A. Statistics
+            .col-md-2
+              .image
+                = image_tag "Tristan.png", class: "headshots-with-border"
+              .fig-caption
+                | Co-Founder <br>Tristan Tao<br> B.A. CompSci <br> B.A. Statistics
+            .col-md-2
+              .image
+                = image_tag "Mark.jpg", class: "headshots-with-border"
+              .fig-caption
+                | Co-Founder <br>Mark Miyashita<br> B.S. EECS
+            .col-md-2
+              .image
+                = image_tag "Aditya.png", class: "headshots-with-border"
+              .fig-caption
+                | Advisor <br> Aditya G. <Br> Statistics Prof
