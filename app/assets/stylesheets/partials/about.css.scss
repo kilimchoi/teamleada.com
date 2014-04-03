@@ -96,8 +96,35 @@ section#team {
 }
 
 @media (max-width: 990px) {
+
+  section#mission {
+    min-height: 1700px;
+  }
+
   section#mission .team-intro .image {
     width: 200px;
     margin-left: 100px;
+    float: none;
+    margin-bottom: 10px;
+  }
+
+  .fig-caption {
+    height: 200px;
+    padding: 50px;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  section#mission {
+    .team-intro {
+      .image {
+        margin-left: 25px;
+      }
+
+      .fig-caption {
+      }
+    }
   }
 }
