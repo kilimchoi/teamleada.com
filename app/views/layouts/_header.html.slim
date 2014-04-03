@@ -1,5 +1,5 @@
 nav.navbar.navbar-default.navbar-fixed-top role="navigation"
-  .container-fluid
+  .container
     .navbar-header
       button.navbar-toggle type="button" data-toggle="collapse" data-target="collapsed-navbar"
         span.sr-only Toggle Navigation
@@ -18,7 +18,7 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
         - if signed_in?
           li.dropdown
             a.dropdown-toggle href="#" data-toggle="dropdown"
-              | Welcome,
+              ' Welcome,
               = current_user.username
               b.caret
             ul.dropdown-menu

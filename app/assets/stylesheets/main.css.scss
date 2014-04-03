@@ -1,7 +1,15 @@
+html, body {
+  height: 100%;
+}
+
 body {
   font-family: 'open sans';
   -webkit-font-smoothing: antialiased;
   padding-top: 70px;
+}
+
+.container {
+  min-height: 95%;
 }
 
 .center {
@@ -28,25 +36,12 @@ body {
 
 h1, h2, h3, h4, h5 {
   font-weight: 300;
-  font-family: Lusitana Bold;
-}
-
-p {
-  font-family: Lusitana Bold;
 }
 
 .title {
   padding-bottom: 10px;
   border-bottom: 1px solid $medium-gray;
   margin-bottom: 30px;
-}
-
-.footer {
-  padding: 30px;
-
-  p {
-    margin: 0;
-  }
 }
 
 #typed-cursor {

@@ -1,64 +1,45 @@
 = provide(:header_links, "header/home")
 
-.main
-  section#intro
-    .container
-      .row
-        .col-md-12.center
-          .about-intro
-            .title-container
-              = link_to "Trial project", project_lesson_path(project_url: @project.url, url: @project.lessons.first.url), class: "try-button"
-  section#content-zero
-    .container
-      .row
-        .col-md-12.center
-          .attention-grabber
-            h1.left
-              | The Most In-Demand Skill Today
-            .row
-              .col-md-8.col-md-offset-2.center
-                p.hal_quote
-                  | "If you are looking for a career where your services will be in high demand, you should find something where you provide a scarce, complementary service to something that is getting ubiquitous and cheap. So what’s getting ubiquitous and cheap? Data. And what is complementary to data? Analysis. So my recommendation is to take lots of courses about how to manipulate and analyze data..."
-                p.hal_sig
-                  | - Hal Varian, Chief Economist at Google
+section#intro
+  .about-intro
+    .trial-project-button-container
+      = link_to "Trial project", project_lesson_path(project_url: @project.url, url: @project.lessons.first.url), class: "flat-button animated tada"
+  .front-page-about
+    h1.grabber
+     | Learning data science starts here.
 
-            div.divider
-  section#content-one
+#bottom
+  #about
     .container
       .row
-        .col-md-8.col-md-offset-2
-          .about-section
-            .description
-              h2.content-body-one Learn the statistics and programming skills required to effectively analyze data
-            .image
-              = image_tag "datachart.png", class: "square-with-border"
-      div.divider
-  section#content-two
+        .col-md-12.center
+          h1.left-align
+            | The Most In-Demand Skill Today
+          .row
+            .col-md-8.col-md-offset-2.center
+              p.hal-quote
+                | "If you are looking for a career where your services will be in high demand, you should find something where you provide a scarce, complementary service to something that is getting ubiquitous and cheap. So what’s getting ubiquitous and cheap? Data. And what is complementary to data? Analysis. So my recommendation is to take lots of courses about how to manipulate and analyze data..."
+              p.hal-sig
+                | - Hal Varian, Chief Economist at Google
+
+  #display
     .container
       .row
-        .col-md-8.col-md-offset-2
-          .about-section
-            .description
-              h2.content-body-two Choose what analysis methods and models you want to apply to the data
-            .image
-              = image_tag "methods.png", class: "round-with-border"
-      div.divider
-  section#content-three
-    .container
-      .row
-        .col-md-8.col-md-offset-2
-          .about-section
-            .description
-              h2.content-body-three Engage in friendly competitions and work up the Leadaboard
-            .image
-              = image_tag "leadaboard.png", class: "round-with-border"
-      div.divider
-  section#content-four
-    .container
-      .row
-        .col-md-8.col-md-offset-2
-          .about-section
-            .description
-              h2.content-body-four Complete data projects worth sharing
-            .image
-              = image_tag "resume.png", class: "round-with-border"
+        .col-md-4.center
+          h2 Learn
+          p
+            | Gain the statistics and programming skills necessary to effectively analyze data.
+          .image
+            = image_tag "datachart.png", class: "round-with-border"
+        .col-md-4.center
+          h2 Discover
+          p
+            | Find new analysis methods and apply them to interesting data sets.
+          .image
+            = image_tag "methods.png", class: "round-with-border"
+        .col-md-4.center
+          h2 Engage
+          p
+            | Compete in friendly competition to work up the Leadaboard.
+          .image
+            = image_tag "leadaboard.png", class: "round-with-border"
