@@ -21,5 +21,6 @@ html
 
   body
     = render partial: "layouts/header"
-    = yield
-    = render partial: "layouts/footer"
+    #page-container
+      = yield
+      = render partial: "layouts/footer"
