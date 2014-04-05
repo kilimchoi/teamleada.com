@@ -12,7 +12,7 @@ section#intro
   #about
     .container
       .row
-        .col-md-12.center
+        .col-md-12.center.hide
           h1.left-align
             | The Most In-Demand Skill Today
           .row
@@ -25,21 +25,49 @@ section#intro
   #display
     .container
       .row
-        .col-md-4.center
-          h2 Learn
+        .col-md-4.center.hide
+          h2#learn Learn
           p
             | Gain the statistics and programming skills necessary to effectively analyze data.
           .image
             = image_tag "datachart.png", class: "round-with-border"
-        .col-md-4.center
-          h2 Discover
+        .col-md-4.center.hide
+          h2#discover Discover
           p
             | Find new analysis methods and apply them to interesting data sets.
           .image
             = image_tag "methods.png", class: "round-with-border"
-        .col-md-4.center
-          h2 Engage
+        .col-md-4.center.hide
+          h2#engage Engage
           p
             | Compete in friendly competition to work up the Leadaboard.
           .image
             = image_tag "leadaboard.png", class: "round-with-border"
+
+javascript:
+  $(document).ready(function() {
+
+    $.fn.visible = function(partial) {
+        var $t            = $(this),
+            $w            = $(window),
+            viewTop       = $w.scrollTop(),
+            viewBottom    = viewTop + $w.height(),
+            _top          = $t.offset().top,
+            _bottom       = _top + $t.height(),
+            compareTop    = partial === true ? _bottom : _top,
+            compareBottom = partial === true ? _top : _bottom;
+      return ((compareBottom <= viewBottom) && (compareTop >= viewTop));
+    };
+
+    $(window).scroll(function(event) {
+      $(".hide").each(function(i, el) {
+        var el = $(el);
+        if (el.visible(true)) {
+          console.log(el);
+          el.show();
+          //el.removeClass("hide");
+          //el.slideDown();
+        }
+      });
+    });
+  });
