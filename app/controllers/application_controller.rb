@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def store_location  # store last url - this is needed for post-login redirect to whatever the user last visited.
   	if (request.fullpath != "/login" &&
-  		request.fullpath != "/logout" &&
+	  		request.fullpath != "/logout" &&
 	  		request.fullpath != "/sign_up" &&
 	  		!request.xhr? &&
 	  		(request.format == "text/html" || request.content_type == "text/html"))
@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
 	end
 
 	def after_sign_in_path_for(resource)
+		#todo invalidate prev after lat_request_time expires
 		request.env['omniauth.origin'] || session[:previous_url] || root_path
 	end
 
