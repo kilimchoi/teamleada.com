@@ -22,5 +22,6 @@ html
   body
     = render partial: "layouts/header"
     #page-container
+      = render partial: "shared/flash"
       = yield
       = render partial: "layouts/footer"
