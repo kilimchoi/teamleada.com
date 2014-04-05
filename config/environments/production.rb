@@ -79,5 +79,5 @@ TeamLeada::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # Google Analytics
-  GA.tracker = "UA-48790508-1"
+  GA.tracker = ENV["GA_TRACKER"]
 end
