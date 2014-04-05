@@ -6,6 +6,14 @@ body {
   font-family: 'open sans';
   -webkit-font-smoothing: antialiased;
   padding-top: 70px;
+
+  @include breakpoint($mobile) {
+    padding-top: 0px;
+  }
+}
+
+#page-container {
+  height: 100%;
 }
 
 .container {
