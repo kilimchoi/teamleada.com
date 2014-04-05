@@ -10,9 +10,9 @@ section#intro
 
 #bottom
   #about
-    .container
+    .container#hide
       .row
-        .col-md-12.center.hide
+        .col-md-12.center
           h1.left-align
             | The Most In-Demand Skill Today
           .row
@@ -23,21 +23,21 @@ section#intro
                 | - Hal Varian, Chief Economist at Google
 
   #display
-    .container
+    .container#hide
       .row
-        .col-md-4.center.hide
+        .col-md-4.center
           h2#learn Learn
           p
             | Gain the statistics and programming skills necessary to effectively analyze data.
           .image
             = image_tag "datachart.png", class: "round-with-border"
-        .col-md-4.center.hide
+        .col-md-4.center
           h2#discover Discover
           p
             | Find new analysis methods and apply them to interesting data sets.
           .image
             = image_tag "methods.png", class: "round-with-border"
-        .col-md-4.center.hide
+        .col-md-4.center
           h2#engage Engage
           p
             | Compete in friendly competition to work up the Leadaboard.
@@ -46,6 +46,7 @@ section#intro
 
 javascript:
   $(document).ready(function() {
+    $("#hide").hide();
 
     $.fn.visible = function(partial) {
         var $t            = $(this),
@@ -58,13 +59,11 @@ javascript:
             compareBottom = partial === true ? _top : _bottom;
       return ((compareBottom <= viewBottom) && (compareTop >= viewTop));
     };
-
     $(window).scroll(function(event) {
-      $(".hide").each(function(i, el) {
-        var el = $(el);
-        if (el.visible(true)) {
+      $("#hide").each(function(i, el) {
+        if ($(el).visible(true)) {
           console.log(el);
-          el.show();
+          $(el).slideDown(2000);
           //el.removeClass("hide");
           //el.slideDown();
         }
