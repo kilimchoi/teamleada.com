@@ -19,6 +19,7 @@ gem 'devise', '~> 3.2.3'
 gem 'simple_form', '~> 3.0.1'
 gem 'rails-reveal-js', '~> 2.6.1.2'
 gem 'rails-rename', '~> 1.0.0'
+gem 'aws-sdk', '~> 1.0'
 
 group :doc do
   gem 'sdoc', require: false
