@@ -5,15 +5,15 @@
         h2 = @step.main_lesson.project.title
         h5
         = @step.main_lesson.title
-        |  - 
+        '  -
         = @step.title
         p
           | Press the right arrow key or the <spacebar> to advance through the project!
-    - @step.content.each_slice(3).each do |content_slice|
+    - @step.slides.each do |slide|
       section
         section
           h3 = @step.title
-          - content_slice.each do |content_array|
+          - slide.content.each do |content_array|
             = render partial: "shared/content", locals: {content_type: content_array[0], content: content_array[1], step: @step}
 
 javascript:
