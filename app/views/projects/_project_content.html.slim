@@ -1,0 +1,2 @@
+- @project.description.each do |content_array|
+  = render partial: "shared/content", locals: {content_type: content_array[0], content: content_array[1]}

@@ -6,8 +6,6 @@ main_page_content = [
   ['text', '1. Create a model which will predict whether a passenger survived using only the Train data set'],
   ['text', '2. Predict whether the passengers survived in the Test data set based on the model we created'],
   ['text', 'Then the rest is up to you. Happy Exploring!'],
-  ['lesson_links', nil],
-  ['project_link', 'Back to the lessons page'],
 ]
 
 project = Project.create!(

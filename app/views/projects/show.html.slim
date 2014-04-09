@@ -13,11 +13,13 @@
                   | 0%
         .row
           .col-md-6
+            = render partial: "projects/project_content", locals: {project: @project}
+          .col-md-6
+            h2 Leaderboard
+            = render partial: "projects/leaderboard", locals: {project: @project}
             h2 Choose an option from below:
             ul
             - @project.lessons.each do |lesson|
               .lesson-link.center
                 = link_to lesson.title, project_lesson_path(project_url: @project.url, url: lesson.url), class: 'flat-button step-button'
-          .col-md-6
-            h2 Leaderboard
-            = render partial: "projects/leaderboard", locals: {project: @project}
+
