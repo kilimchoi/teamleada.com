@@ -5,7 +5,10 @@ TeamLeada::Application.routes.draw do
 
   devise_for :users, path: '',
                      path_names: { sign_in: 'login', sign_up: 'sign_up', sign_out: 'logout'},
-                     controllers: { registrations: 'registrations' }
+                     controllers: {
+                       registrations: 'registrations',
+                       sessions: 'sessions'
+                     }
 
   resources :users, param: :username, only: [:show]
 
