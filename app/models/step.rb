@@ -10,6 +10,8 @@ class Step < ActiveRecord::Base
   has_many :required_steps, through: :step_requirements
   has_many :dependent_steps, through: :step_dependents, source: :required_step
 
+  has_many :slides, as: :parent
+
   before_create :set_url
   validates_uniqueness_of :title, scope: [:lesson_id, :previous_step_id]
 

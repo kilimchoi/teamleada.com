@@ -1,22 +1,32 @@
 # Creates the first project on the site!
 
+main_page_content = [
+  ['text', 'This is the main page for your first data project! Choose from the options below to begin your training as a data guru and you will find yourself learning the process along the way.'],
+  ['text', 'You are tasked to predict whether a passenger survived the Titanic crash. You are given two datasets (Train & Test) each of which include predictor variables such as Age, Passenger Class, Sex, etc. We will guide you through the following:'],
+  ['text', '1. Create a model which will predict whether a passenger survived using only the Train data set'],
+  ['text', '2. Predict whether the passengers survived in the Test data set based on the model we created'],
+  ['text', 'Then the rest is up to you. Happy Exploring!'],
+]
 
 project = Project.create!(
   title: "Kaggle Titanic: Machine Learning From Disaster",
-  description: "This is a description of the project",
+  description: main_page_content,
   number: 1,
   enabled: true
 )
 
 puts "Created project: #{project.title}."
 
-welcome_lesson_content = [
+welcome_lesson_slide_one_content = [
   ['text', 'Welcome to your first Data Project by Leada! This project is taken from Kaggle, a data science competition website and is an excellent introduction into the work of data analytics! Check them out at www.kaggle.com'],
   ['text', 'This project is based off of the historic sinking of the Titanic; you are asked to build a model which predicts which passengers survived! Complete this project and you will have:'],
   ['text', '- Learned how to do exploratory analysis on data and create visualizations'],
   ['text', '- Learned how to clean data and make inferences on missing data'],
   ['text', '- Built a classification tree model which predicts which passengers of the Titanic crash survived'],
   ['text', '- Learned how to use your model to predict whether new passengers survived'],
+]
+
+welcome_lesson_slide_two_content = [
   ['text', 'You will learn all of these things coding in R! Don\'t worry if you\'ve never use R before, we will walk you through every part of the way!'],
   ['text', 'All of the learning principles here are fundamental skills for data analysts/data scientists and for anyone who wants to learn how to answer questions from data. So lets begin!'],
   ['lesson_links', nil],
@@ -24,8 +34,17 @@ welcome_lesson_content = [
 
 welcome_lesson = Lesson.create!(
   title: "Welcome",
-  content: welcome_lesson_content,
   project: project
+)
+
+welcome_lesson_slide_one = Slide.create!(
+  content: welcome_lesson_slide_one_content,
+  parent: welcome_lesson
+)
+
+welcome_lesson_slide_two = Slide.create!(
+  content: welcome_lesson_slide_two_content,
+  parent: welcome_lesson
 )
 
 quick_pass_content = [
@@ -51,23 +70,6 @@ quick_pass_content = [
 ]
 
 quick_pass = Step.create!(title: "Begin", content: quick_pass_content, lesson: welcome_lesson)
-
-
-main_page_content = [
-  ['text', 'This is the main page for your first data project! Choose from the options below to begin your training as a data guru and you will find yourself learning the process along the way.'],
-  ['text', 'You are tasked to predict whether a passenger survived the Titanic crash. You are given two datasets (Train & Test) each of which include predictor variables such as Age, Passenger Class, Sex, etc. We will guide you through the following:'],
-  ['text', '1. Create a model which will predict whether a passenger survived using only the Train data set'],
-  ['text', '2. Predict whether the passengers survived in the Test data set based on the model we created'],
-  ['text', 'Then the rest is up to you. Happy Exploring!'],
-  ['lesson_links', nil],
-  ['project_link', 'Back to the lessons page'],
-]
-
-main_page = Lesson.create!(
-  title: "Main Page",
-  content: main_page_content,
-  project: project
-)
 
 work_with_data_content = [
   ['text', 'In this project you are given two datasets "Train" and "Test". You will be using the "Train" dataset to build your model. This model will create predictions for passenger survival for the "Train" dataset.'],

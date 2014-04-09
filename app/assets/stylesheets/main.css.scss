@@ -25,6 +25,12 @@ body {
   text-align: center;
 }
 
+.large-font {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 300;
+}
+
 .center {
   text-align: center;
 }
@@ -83,4 +89,8 @@ h1, h2, h3, h4, h5 {
 
 .right-align {
   text-align: right;
+}
+
+.reveal .slides section .fragment {
+  font-size: 80%;
 }
