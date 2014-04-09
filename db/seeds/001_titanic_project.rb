@@ -17,13 +17,16 @@ project = Project.create!(
 
 puts "Created project: #{project.title}."
 
-welcome_lesson_content = [
+welcome_lesson_slide_one_content = [
   ['text', 'Welcome to your first Data Project by Leada! This project is taken from Kaggle, a data science competition website and is an excellent introduction into the work of data analytics! Check them out at www.kaggle.com'],
   ['text', 'This project is based off of the historic sinking of the Titanic; you are asked to build a model which predicts which passengers survived! Complete this project and you will have:'],
   ['text', '- Learned how to do exploratory analysis on data and create visualizations'],
   ['text', '- Learned how to clean data and make inferences on missing data'],
   ['text', '- Built a classification tree model which predicts which passengers of the Titanic crash survived'],
   ['text', '- Learned how to use your model to predict whether new passengers survived'],
+]
+
+welcome_lesson_slide_two_content = [
   ['text', 'You will learn all of these things coding in R! Don\'t worry if you\'ve never use R before, we will walk you through every part of the way!'],
   ['text', 'All of the learning principles here are fundamental skills for data analysts/data scientists and for anyone who wants to learn how to answer questions from data. So lets begin!'],
   ['lesson_links', nil],
@@ -31,8 +34,17 @@ welcome_lesson_content = [
 
 welcome_lesson = Lesson.create!(
   title: "Welcome",
-  content: welcome_lesson_content,
   project: project
+)
+
+welcome_lesson_slide_one = Slide.create!(
+  content: welcome_lesson_slide_one_content,
+  parent: welcome_lesson
+)
+
+welcome_lesson_slide_two = Slide.create!(
+  content: welcome_lesson_slide_two_content,
+  parent: welcome_lesson
 )
 
 quick_pass_content = [
