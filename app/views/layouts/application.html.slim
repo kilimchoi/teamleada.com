@@ -23,5 +23,7 @@ html
     = render partial: "layouts/header"
     #page-container
       = render partial: "shared/flash"
+      - if params[:controller] == "lessons" || params[:controller] == "steps"
+        | hi
       = yield
       = render partial: "layouts/footer"
