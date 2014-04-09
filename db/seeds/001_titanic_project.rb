@@ -1,9 +1,18 @@
 # Creates the first project on the site!
 
+main_page_content = [
+  ['text', 'This is the main page for your first data project! Choose from the options below to begin your training as a data guru and you will find yourself learning the process along the way.'],
+  ['text', 'You are tasked to predict whether a passenger survived the Titanic crash. You are given two datasets (Train & Test) each of which include predictor variables such as Age, Passenger Class, Sex, etc. We will guide you through the following:'],
+  ['text', '1. Create a model which will predict whether a passenger survived using only the Train data set'],
+  ['text', '2. Predict whether the passengers survived in the Test data set based on the model we created'],
+  ['text', 'Then the rest is up to you. Happy Exploring!'],
+  ['lesson_links', nil],
+  ['project_link', 'Back to the lessons page'],
+]
 
 project = Project.create!(
   title: "Kaggle Titanic: Machine Learning From Disaster",
-  description: "This is a description of the project",
+  description: main_page_content,
   number: 1,
   enabled: true
 )
@@ -51,23 +60,6 @@ quick_pass_content = [
 ]
 
 quick_pass = Step.create!(title: "Begin", content: quick_pass_content, lesson: welcome_lesson)
-
-
-main_page_content = [
-  ['text', 'This is the main page for your first data project! Choose from the options below to begin your training as a data guru and you will find yourself learning the process along the way.'],
-  ['text', 'You are tasked to predict whether a passenger survived the Titanic crash. You are given two datasets (Train & Test) each of which include predictor variables such as Age, Passenger Class, Sex, etc. We will guide you through the following:'],
-  ['text', '1. Create a model which will predict whether a passenger survived using only the Train data set'],
-  ['text', '2. Predict whether the passengers survived in the Test data set based on the model we created'],
-  ['text', 'Then the rest is up to you. Happy Exploring!'],
-  ['lesson_links', nil],
-  ['project_link', 'Back to the lessons page'],
-]
-
-main_page = Lesson.create!(
-  title: "Main Page",
-  content: main_page_content,
-  project: project
-)
 
 work_with_data_content = [
   ['text', 'In this project you are given two datasets "Train" and "Test". You will be using the "Train" dataset to build your model. This model will create predictions for passenger survival for the "Train" dataset.'],
