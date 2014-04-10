@@ -1,6 +1,7 @@
 .reveal a.flat-button {
   padding: 15px 60px;
   margin: 15px 0;
+  text-align: center;
 }
 
 .reveal a.flat-button:not(.image) {
@@ -10,4 +11,8 @@
 .reveal a.flat-button:not(.image):hover {
   color: white;
   text-decoration: underline;
+}
+
+.reveal .slides {
+  text-align: left;
 }
