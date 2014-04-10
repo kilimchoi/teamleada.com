@@ -141,7 +141,7 @@ train_visualize_content = [
 ]
 
 train_visualize_step = Step.create!(
-  title: "Visualize Training Data",
+  title: "Visualize Train Data",
   previous_step: train_data_step
 )
 
@@ -172,7 +172,7 @@ train_clean_content_two = [
 ]
 
 train_clean_step = Step.create!(
-  title: "Clean Training Data",
+  title: "Clean Train Data",
   previous_step: train_data_step
 )
 
@@ -220,7 +220,7 @@ test_visualize_content = [
 ]
 
 test_visualize_step = Step.create!(
-  title:"Visualize Testing Data",
+  title:"Visualize Test Data",
   previous_step: test_data_step
 )
 
@@ -244,7 +244,7 @@ test_clean_one_content = [
 ]
 
 test_clean = Step.create!(
-  title: "Clean Testing Data",
+  title: "Clean Test Data",
   previous_step: test_data_step
 )
 
