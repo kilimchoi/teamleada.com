@@ -269,11 +269,14 @@ learn_ctree_one_content = [
   ['text', 'A classification tree is made up of interior and terminal nodes and is structured upside down so the root node is at the top and branches downwards'],
   ['image', 'c_tree.png'],
   ['text', 'In the example tree, the nodes represent the how your data is segmented so at the top it begins by first separating the data by Sex.'],
+]
+
+learn_ctree_two_content = [
   ['text', 'Subsequent nodes further segment the data, for example one node is Age greater than or equal to 6.5 below the male node and results in a 0. This means that the model will classify all male observations with age greater than 6.5 as dying in the Titanic'],
   ['text', 'What one needs to be careful of when using classification trees is the concept of "overfitting" your data. Classification tree models are very susceptible to overfiting and is one of their disadvantages for use.'],
   ['text', 'In general, overfitting is when you find patterns in the data that does not generalize to new datasets. If you look hard enough, you can find patterns in any dataset.'],
   ['text', 'There are two main advantages to building a classification tree model. (1) They require very little data preparationi and cleaning. (2) Classification models are easy to interpret and explain to others!'],
-  ['next_steps', nil],
+  ['project_link', 'Back to the lessons page'],
 ]
 
 learn_ctree = Step.create!(
@@ -286,6 +289,11 @@ learn_ctree_slide_one = Slide.create!(
   parent: learn_ctree
 )
 
+learn_ctree_slide_two = Slide.create!(
+  content: learn_ctree_two_content,
+  parent: learn_ctree
+)
+
 apply_ctree_one_content = [
   ['text', 'To create a classification tree model we use the function rpart() in R. The arguments in the formula rpart(formula, data, method, control) are as follows:'],
   ['text', 'formula = the independent (Survived) and dependent variables (Age, Pclass, etc.)'],
@@ -295,6 +303,9 @@ apply_ctree_one_content = [
   ['text', 'Take a look again at the columns of the "Train" dataset'],
   ['code', 'head(trainData, 1)'],
   ['text', 'Remember that we are trying to predict whether each passenger "Survived" (independent variable) and we have the following features to use: "PassengerId", "Pclass", "Name", "Sex", "Age", "SibSp", "Parch", "Ticket", "Fare", "Cabin", "Embarked" (dependent variables)'],
+]
+
+apply_ctree_two_content = [
   ['text', 'For our first model we only use "Pclass", "Sex", and "Age" to predict "Survived". '],
   ['text', 'First we need to install a package in R'],
   ['code', 'library(\'rpart\')'],
@@ -303,6 +314,9 @@ apply_ctree_one_content = [
   ['text', 'We plot the model and label the nodes'],
   ['code', 'plot(tree_model)'],
   ['code', 'text(tree_model)'],
+]
+
+apply_ctree_three_content = [
   ['text', 'Now that we have our model built using the "Train" dataset, we can apply our model to the "Test" dataset to make predictions for those passengers! What is done here is the nodes used to classify the passengers in the "Train" dataset such as "Age >= 6.5" are now applied to the passengers in the "Test" dataset to predict their survival.'],
   ['text', 'R again has a convenient function predict() to allow us to apply our tree_model to the testData'],
   ['code', 'test_predictions <- round(predict(tree_model, newdata = testData)[, 2], 0)'],
@@ -324,6 +338,16 @@ apply_ctree = Step.create!(
 
 apply_ctree_slide_one = Slide.create!(
   content: apply_ctree_one_content,
+  parent: apply_ctree
+)
+
+apply_ctree_slide_two = Slide.create!(
+  content: apply_ctree_two_content,
+  parent: apply_ctree
+)
+
+apply_ctree_slide_three = Slide.create!(
+  content: apply_ctree_three_content,
   parent: apply_ctree
 )
 
