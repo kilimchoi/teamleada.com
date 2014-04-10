@@ -75,6 +75,7 @@ begin_two_content = [
 begin_lesson = Step.create!(
   title: "Begin",
   lesson: welcome_lesson
+)
 
 begin_lesson_slide_one = Slide.create!(
   content: begin_one_content,
