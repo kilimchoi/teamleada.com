@@ -147,14 +147,20 @@ fit_lm_content_one = [
   ['code', 'compare_one = data_one #change data_one to another data set (data_one ~ data_four)'],
   ['code', 'compare_two = data_two #same thing applies here. Just make sure they\'re not the same data!'],
   ['text', 'Now, against our better judgement, let\'s not compare the dataset first, but rather fit a model.'],
+  ['text', 'We\'re going to fit a Linear Regression to see how it behaves.'],
 ]
 
 fit_lm_content_two = [
-  ['text', 'We\'re going to fit a Linear Regression to see how it behaves.'],
-  ['text', 'We\'ll be using the lm() function):'],
+  ['text', 'We\'ll be using the lm() function:'],
 	['code', 'help(lm)'],
   ['code', 'linear.mod1 = lm(y ~ x, data = compare_one) #linear model for the first data set'],
-  ['text', 'linear.mod2 = lm(y ~ x, data = compare_two) #linear model for the second data set'],
+  ['code', 'linear.mod2 = lm(y ~ x, data = compare_two) #linear model for the second data set'],
+  ['text', 'now let\'s see what the lines look like.'],
+  ['code', 'plot(c(0, 10), c(0, 10) , type="n", axes=T, xlab="", ylab="") #we\'ll create an empty plot to add plot on.'],
+  ['code', 'abline(linear.mod1, col = \'red\', lwd=3) #adding in the line for the first linear model.'],
+  ['code', 'abline(linear.mod2, col=\'orange\', lwd=5) #adding in the line for the 2nd linear model.'],
+  ['text', '#What happened? Let\'s dig deeper in the next step.'],
+  ['project_link', 'Back to the lessons page'],
 ]
 
 fit_lm = Step.create!(
@@ -229,7 +235,7 @@ learn_ctree_slide_three = Slide.create!(
 work_with_data_post_content = [
   ['text', 'Now that we see what we did wrong, we\'ll properly analyze the data here.'],
   ['text', 'In the earlier steps, we relied on symmary statistics and powerful (or not) models.'],
-  ['text', 'This time, we\'ll start with the correct fundamental step: vizualiation']
+  ['text', 'This time, we\'ll start with the correct fundamental step: vizualiation'],
   ['lesson_links', nil]
 ]
 
@@ -244,7 +250,7 @@ work_with_data_post_slide_one = Slide.create!(
 )
 ################################################################################
 
-data_one_post_content = [
+data_one_post_content_one = [
   ['text', 'We\'ll start with plotting the data'],
   ['code', 'data_one = data.frame(x=c(anscombe$x1),y=c(anscombe$y1))'],
   ['code', 'plot(data_one, col=\'green\', pch=15)'],
@@ -252,7 +258,7 @@ data_one_post_content = [
   ['text', 'We\'ll fit a linear model via lm() function.'],
   ['next_steps', nil]
 ]
-data_one_post_content_one = [
+data_one_post_content_two = [
   ['code', 'linear_model_one = lm(y ~ x, data = data_one)'],
   ['text', 'Let\'s now plot the fit line.'],
   ['code', 'abline(linear_model_one, col = \'blue\', lwd=3)'],
@@ -271,7 +277,7 @@ train_data_slide_one = Slide.create!(
   parent: data_one_post_step
 )
 train_data_slide_two = Slide.create!(
-  content: data_one_post_content_twp,
+  content: data_one_post_content_two,
   parent: data_one_post_step
 )
 
@@ -288,7 +294,7 @@ data_two_pre_content = [
 ]
 
 data_two_pre_step = Step.create!(
-  title: "Data Two",
+  title: "(proper) Data Two",
   lesson: work_with_data_pre_lesson
 )
 
@@ -309,7 +315,7 @@ data_three_pre_content = [
 ]
 
 data_three_pre_step = Step.create!(
-  title: "Data Three",
+  title: "(proper) Data Three",
   lesson: work_with_data_pre_lesson
 )
 
@@ -330,7 +336,7 @@ data_four_pre_content = [
 ]
 
 data_four_pre_step = Step.create!(
-  title: "Data Four",
+  title: "(proper) åData Four",
   lesson: work_with_data_pre_lesson
 )
 
