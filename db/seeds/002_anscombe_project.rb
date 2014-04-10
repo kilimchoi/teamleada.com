@@ -145,7 +145,7 @@ fit_lm_content_one = [
   ['text', 'Here User will compare the 2 data sets. We\'ll do Dataset 1 and Dataset 2, but feel free to do other comparison'],
   ['text', 'We\'re going to rename the data here. Insert whatever data you want to compare, and rename as below:'],
   ['code', 'compare_one = data_one #change data_one to another data set (data_one ~ data_four)'],
-  ['code', 'compare_two = data_two #same thing applies here. Just make sure they\'re not the same data!']
+  ['code', 'compare_two = data_two #same thing applies here. Just make sure they\'re not the same data!'],
   ['text', 'Now, against our better judgement, let\'s not compare the dataset first, but rather fit a model.'],
 ]
 
@@ -155,7 +155,6 @@ fit_lm_content_two = [
 	['code', 'help(lm)'],
   ['code', 'linear.mod1 = lm(y ~ x, data = compare_one) #linear model for the first data set'],
   ['text', 'linear.mod2 = lm(y ~ x, data = compare_two) #linear model for the second data set'],
-  ['project_link', 'Back to the lessons page'],
 ]
 
 fit_lm = Step.create!(
@@ -163,14 +162,64 @@ fit_lm = Step.create!(
   lesson: lm_comparison_content_lesson
 )
 
-learn_ctree_slide_one = Slide.create!(
+fit_lm_slide_one = Slide.create!(
   content: fit_lm_content_one,
   parent: fit_lm
 )
 
-learn_ctree_slide_two = Slide.create!(
+fit_lm_slide_two = Slide.create!(
   content: fit_lm_content_two,
   parent: fit_lm
 )
 ################################################################################
+#LM  comparison #1
+lm_analysis_content_one = [
+  ['text', 'Let\'s inspect the model (press ENTER in the terminal to see next plot):'],
+  ['code', 'plot(linear.mod1, col = \'blue\', lwd=3)'],
+  ['code', 'plot(linear.mod2, col = \'orange\', lwd=3)'],
+  ['text', 'You don\'t have to understand what the plots mean. The important question is:'],
+  ['text', '"Did they look different?".'],
+  ['text', 'Now we\'re getting somewhere.'],
+  ['text', 'What does your intuition say? Something is fishy... Let\'s now compare the data.'],
+  ['text', 'We should have done that a long time ago!']
+]
 
+lm_analysis_content_two = [
+  ['text', 'We\'ll now plot both data point on the same page.'],
+  ['code', 'plot(compare_one, col=\'blue\', pch=19)'],
+  ['code', 'points(compare_two, col=\'green\', pch=19)'],
+  ['code', 'abline(linear.mod1, col = \'red\', lwd=3)'],
+  ['text', 'abline(linear.mod2, col=\'orange\', lwd=5)'],
+  ['text', 'You can click the back-arrow in the plot to see that the regression lines are the same!'],
+]
+
+lm_analysis_content_three = [
+  ['text', 'Inspecting the summary of the model, we see that the lines share the SAME intercept and slope!'],
+  ['code', 'summary(linear.mod1)'],
+  ['code', 'summary(linear.mod2)'],
+  ['text', 'They both share an intercept of about 3, with a slope of 0.5.'],
+  ['text', 'What did we learn? Perhaps we can\'t simply rely on summary statistics and models to tell us data-stories;'],
+  ['text', 'We have to be more careful.'],
+  ['text', 'With that in mind, we\'ll now do a correct analysis on each dataset.'],
+  ['project_link', 'Back to the lessons page'],
+]
+
+analyze_lm = Step.create!(
+  title: "Analyze LM result",
+  lesson: lm_comparison_content_lesson
+)
+
+learn_ctree_slide_one = Slide.create!(
+  content: lm_analysis_content_one,
+  parent: analyze_lm
+)
+
+learn_ctree_slide_two = Slide.create!(
+  content: lm_analysis_content_two,
+  parent: analyze_lm
+)
+
+learn_ctree_slide_two = Slide.create!(
+  content: lm_analysis_content_three,
+  parent: analyze_lm
+)
