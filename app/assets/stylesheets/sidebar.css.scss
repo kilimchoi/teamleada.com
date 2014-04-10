@@ -9,16 +9,17 @@
   color: white;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
-  padding: 20px;
+  overflow-y: scroll;
 }
 
 .sidebar-title {
-  margin: 0;
+  margin: 20px;
 }
 
 .sidebar a {
   color: white;
   text-decoration: none;
+  padding: 0;
 }
 
 .sidebar a:hover {
@@ -32,6 +33,32 @@
 .sidebar-lesson,
 .sidebar-step,
 .sidebar-next-step {
-  margin-bottom: 10px;
+  padding: 10px 0px 10px 0px;
   line-height: 1.2em;
+
+  &:hover {
+    background-color: $light-blue;
+  }
 }
+
+.sidebar-lesson {
+  padding-left: 20px;
+}
+
+.sidebar-step {
+  padding-left: 40px;
+}
+
+.sidebar-next-step {
+  padding-left: 60px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0px;
+}
+
+.sidebar-active {
+  background-color: $light-blue;
+}
+
