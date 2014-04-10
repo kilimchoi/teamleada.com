@@ -75,7 +75,6 @@ begin_two_content = [
 begin_lesson = Step.create!(
   title: "Begin",
   lesson: welcome_lesson
-)
 
 begin_lesson_slide_one = Slide.create!(
   content: begin_one_content,
@@ -149,7 +148,6 @@ train_visualize_slide_one = Slide.create!(
   content: train_visualize_content,
   parent: train_visualize_step
 )
-
 
 train_clean_content_one = [
   ['text', 'Cleaning data is typically one of the most time consuming parts to data analysis. We will cover a major topic in cleaning which is what to do with missing values.'],
