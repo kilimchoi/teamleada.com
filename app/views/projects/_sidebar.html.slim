@@ -1,2 +1,15 @@
 .sidebar
-  h3 = project.title
+  h3.sidebar-title = link_to project.title, project_path(url: project.url)
+
+  ul.sidebar-lessons
+    - project.lessons.each do |lesson|
+      li.sidebar-lesson
+        = link_to lesson.title, project_lesson_path(project_url: project.url, url: lesson.url)
+        ul.sidebar-steps
+        - lesson.steps.each do |step|
+          li.sidebar-step
+            = link_to step.title, project_lesson_step_path(project_url: project.url, lesson_url: lesson.url, url: step.url)
+          ul.next-steps
+            - step.next_steps.each do |next_step|
+              li.sidebar-next-step
+                = link_to next_step.title, project_lesson_step_path(project_url: project.url, lesson_url: lesson.url, url: next_step.url)

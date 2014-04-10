@@ -5,7 +5,33 @@
   z-index: 100;
   width: 300px;
   height: 100%;
-  background: #48a770;
+  background: $founders-rock-blue;
+  color: white;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
+  padding: 20px;
+}
+
+.sidebar-title {
+  margin: 0;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+.sidebar-lessons {
+  margin-top: 30px;
+}
+
+.sidebar-lesson,
+.sidebar-step,
+.sidebar-next-step {
+  margin-bottom: 10px;
+  line-height: 1.2em;
 }
