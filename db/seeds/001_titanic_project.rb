@@ -174,7 +174,7 @@ train_clean_content_two = [
 
 train_clean_step = Step.create!(
   title: "Clean Data",
-  previous_step: work_with_data
+  previous_step: train_data_step
 )
 
 train_clean_slide_one = Slide.create!(
@@ -206,7 +206,7 @@ test_data_slide_one = Slide.create!(
   parent: test_data_step
 )
 
-test_data_lesson.add_required_steps([train_visualize_lesson, train_clean_lesson])
+test_data_step.add_required_steps([train_visualize_step, train_clean_step])
 
 test_visualize_content = [
   ['text', 'Visualizing the "Test" dataset is important because you want to make sure that the two datasets are at least somewhat consistent with each other.'],
@@ -358,12 +358,11 @@ increase_score_one_content = [
 
 increase_score_lesson = Lesson.create!(
   title: "Increase Your Score",
-  content: increase_score_content,
   project: project
 )
 
 increate_score_slide_one = Slide.create!(
-  content: increate_score_one_content,
+  content: increase_score_one_content,
   parent: increase_score_lesson
 )
 
