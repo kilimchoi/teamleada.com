@@ -47,7 +47,7 @@ welcome_lesson_slide_two = Slide.create!(
   parent: welcome_lesson
 )
 
-quick_pass_content = [
+begin_one_content = [
   ['text', 'To begin, you first need to install the tools necessary for data analysis! In this tutorial we will work in R. Go to the following link to onboard your computer with R, Rstudio, and setting your working directory'],
   ['link', 'http://statsguys.wordpress.com/2014/03/06/installing-r-rstudio-and-setting-your-working-directory/'],
   ['text', 'If you have already installed R, Rstudio, and are familiar with working directories, then move ahead'],
@@ -55,6 +55,9 @@ quick_pass_content = [
   ['link', 'http://leada.s3.amazonaws.com/titanic_data/train.csv'],
   ['text', 'Now for the test data:'],
   ['link', 'http://leada.s3.amazonaws.com/titanic_data/test.csv'],
+]
+
+begin_two_content = [
   ['text', 'Now let\'s jump into the analysis.'],
   ['text', 'First we utilize the read.csv() function to load the data into R.'],
   ['code', 'trainData <- read.csv("train.csv", header = TRUE, stringsAsFactors = FALSE)'],
@@ -69,7 +72,21 @@ quick_pass_content = [
   ['next_steps', nil],
 ]
 
-quick_pass = Step.create!(title: "Begin", content: quick_pass_content, lesson: welcome_lesson)
+begin_lesson = Lesson.create!(
+  title: "Begin",
+  project: project
+)
+
+begin_lesson_slide_one = Slide.create!(
+  content: begin_one_content,
+  parent: begin_lesson
+)
+
+begin_lesson_slide_two = Slide.create!(
+  content: begin_two_content,
+  parent: begin_lesson
+)
+
 
 work_with_data_content = [
   ['text', 'In this project you are given two datasets "Train" and "Test". You will be using the "Train" dataset to build your model. This model will create predictions for passenger survival for the "Train" dataset.'],
@@ -79,8 +96,12 @@ work_with_data_content = [
 
 work_with_data_lesson = Lesson.create!(
   title: "Work with the Data",
-  content: work_with_data_content,
   project: project
+)
+
+work_with_data_slide_one = Slide.create!(
+  content: work_with_data_content,
+  parent: work_with_data_lesson
 )
 
 
@@ -96,7 +117,16 @@ train_data_content = [
   ['next_steps', nil],
 ]
 
-train_data = Step.create!(title: "Train Data", content: train_data_content, lesson: work_with_data_lesson)
+train_data_lesson = Lesson.create!(
+  title: "Train Data",
+  project: project
+)
+
+train_data_slide_one = Slide.create!(
+  content: train_data_content,
+  parent: train_data_lesson
+)
+
 
 train_visualize_content = [
   ['text', 'It is good to first visualize the data to get a general understanding of the patterns and trends of the data. Lets look at the survival rate of our passengers filtered by Sex.'],
@@ -110,9 +140,18 @@ train_visualize_content = [
   ['project_link', 'Back to the lessons page'],
 ]
 
-train_visualize = Step.create!(title:"Visualize", content: train_visualize_content, previous_step: train_data)
+train_visualize_lesson = Lesson.create!(
+  title: "Visualize Data",
+  project: project
+)
 
-train_clean_content = [
+train_visualize_slide_one = Slide.create!(
+  content: train_visualize_content,
+  parent:train_visualize_lesson
+)
+
+
+train_clean_content_one = [
   ['text', 'Cleaning data is typically one of the most time consuming parts to data analysis. We will cover a major topic in cleaning which is what to do with missing values.'],
   ['text', 'If you noticed, there are several missing values for the "Age" variable for our observations. You can see by coding the following:'],
   ['code', 'trainData$Age'],
@@ -120,6 +159,9 @@ train_clean_content = [
   ['text', 'We write a for loop which goes through each row of our "Train" dataset and if the Age column is "NA" then we input the average age.'],
   ['text', 'We first calculate the mean age and ignore the NAs'],
   ['code', 'mean_age <- round(mean(trainData$Age,na.rm=T), digits = 3)'],
+]
+
+train_clean_content_two = [
   ['text', 'Then we loop through the observations in the dataset and add the average age accordingly'],
   ['code', 'for (i in 1:nrow(trainData)) {'],
   ['code', '  if (is.na(trainData[i,6])) {'],
@@ -130,7 +172,21 @@ train_clean_content = [
   ['project_link', 'Back to the lessons page'],
 ]
 
-train_clean = Step.create!(title:"Clean", content: train_clean_content, previous_step: train_data)
+train_clean_lesson = Lesson.create!(
+  title: "Clean Data",
+  project: project
+)
+
+train_clean_slide_one = Slide.create!(
+  content: train_clean_content_one,
+  parent: train_clean_lesson
+)
+
+train_clean_slide_two = Slide.create!(
+  content: train_clean_content_two,
+  parent: train_clean_lesson
+)
+
 
 test_data_content = [
   ['text', 'We can use the same functions as we did before to look at our "Test" dataset If you want to see more than 6 rows you can do'],
@@ -140,8 +196,18 @@ test_data_content = [
   ['next_steps', nil],
 ]
 
-test_data = Step.create!(title:"Test Data", content: test_data_content, lesson: work_with_data_lesson)
-test_data.add_required_steps([train_visualize, train_clean])
+test_data_lesson = Lesson.create!(
+  title: "Test Data",
+  project: project
+)
+
+test_data_slide_one = Slide.create!(
+  content: test_data_content,
+  parent: test_data_lesson
+)
+
+## NEED TO FIX THIS FOR NEW SYSTEM
+#test_data_lesson.add_required_steps([train_visualize_lesson, train_clean_lesson])
 
 test_visualize_content = [
   ['text', 'Visualizing the "Test" dataset is important because you want to make sure that the two datasets are at least somewhat consistent with each other.'],
@@ -154,6 +220,8 @@ test_visualize_content = [
   ['next_steps', nil],
   ['project_link', 'Back to the lessons page'],
 ]
+
+
 
 test_visualize = Step.create!(title:"Visualize", content: test_visualize_content, previous_step: test_data)
 
