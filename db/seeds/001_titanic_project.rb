@@ -220,7 +220,7 @@ test_visualize_content = [
 ]
 
 test_visualize_step = Step.create!(
-  title:"Visualize",
+  title:"Visualize Data",
   previous_step: test_data_step
 )
 
@@ -244,7 +244,7 @@ test_clean_one_content = [
 ]
 
 test_clean = Step.create!(
-  title: "Clean",
+  title: "Clean Data",
   previous_step: test_data_step
 )
 
