@@ -220,9 +220,14 @@ test_visualize_content = [
   ['project_link', 'Back to the lessons page'],
 ]
 
-test_visualize = Step.create!(
+test_visualize_step = Step.create!(
   title:"Visualize",
   previous_step: test_data_step
+)
+
+test_visualize_slide_one = Slide.create!(
+  content: test_visualize_content,
+  parent: test_visualize_step
 )
 
 test_clean_one_content = [
@@ -249,6 +254,7 @@ test_clean_slide_one = Slide.create!(
   parent: test_clean
 )
 
+# Analytics
 analytics_tools_one_content = [
   ['text', 'In this first project we will cover one of the most effective and simple predictive analytics tools for data analytics, classification trees.'],
   ['text', 'In future projects you will learn a variety of tools and specifically when to apply them. Logistic regression, Support Vector Machines, and many more!'],
@@ -358,6 +364,9 @@ increase_score_one_content = [
   ['text', 'For example remember back to our discovery that women were much more likely to survive than men? We determined that through the assumption the passengers adhered to "women and children first" standard. Since we have the age of our passengers, why don\'t we create a variable which also identifies children?'],
   ['text', 'Creates a new column titled "Child"'],
   ['code', 'trainData["Child"] <- NA'],
+]
+
+increase_score_two_content = [
   ['text', 'This for loop loops through each row in "Train" dataset and checks in the age column if it is less than 18. If the age is less than 18, we put a 1 in the "Child" column and if it is greater than 18 we put a 2 in the column.'],
   ['code', 'for (i in 1:nrow(trainData)) {'],
   ['code', '  if (trainData$Age[i] <= 18) {'],
@@ -366,6 +375,9 @@ increase_score_one_content = [
   ['code', '    trainData$Child[i] <- 2'],
   ['code', '  }'],
   ['code', '}'],
+]
+
+increase_score_three_content = [
   ['text', 'Just remember that whatever variable you create in your "Train" dataset you must also create in your "Test" dataset for your model to function correctly!'],
   ['code', 'testData["Child"] <- NA'],
   ['code','for (i in 1:nrow(testData)) {'],
@@ -387,6 +399,16 @@ increase_score_lesson = Lesson.create!(
 
 increate_score_slide_one = Slide.create!(
   content: increase_score_one_content,
+  parent: increase_score_lesson
+)
+
+increate_score_slide_two = Slide.create!(
+  content: increase_score_two_content,
+  parent: increase_score_lesson
+)
+
+increate_score_slide_three = Slide.create!(
+  content: increase_score_three_content,
   parent: increase_score_lesson
 )
 
