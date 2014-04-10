@@ -31,7 +31,7 @@ work_with_data_pre_lesson = Lesson.create!(
   project: project
 )
 
-work_with_data_slide_one = Slide.create!(
+work_with_data_pre_slide_one = Slide.create!(
   content: work_with_data_pre_content,
   parent: work_with_data_pre_lesson
 )
@@ -219,7 +219,124 @@ learn_ctree_slide_two = Slide.create!(
   parent: analyze_lm
 )
 
-learn_ctree_slide_two = Slide.create!(
+learn_ctree_slide_three = Slide.create!(
   content: lm_analysis_content_three,
   parent: analyze_lm
 )
+################################################################################
+#POST: Analyze data properly
+
+work_with_data_post_content = [
+  ['text', 'Now that we see what we did wrong, we\'ll properly analyze the data here.'],
+  ['text', 'In the earlier steps, we relied on symmary statistics and powerful (or not) models.'],
+  ['text', 'This time, we\'ll start with the correct fundamental step: vizualiation']
+  ['lesson_links', nil]
+]
+
+work_with_data_post_lesson = Lesson.create!(
+  title: "Correct Analysys of the Datasets",
+  project: project
+)
+
+work_with_data_post_slide_one = Slide.create!(
+  content: work_with_data_post_content,
+  parent: work_with_data_post_lesson
+)
+################################################################################
+
+data_one_post_content = [
+  ['text', 'We\'ll start with plotting the data'],
+  ['code', 'data_one = data.frame(x=c(anscombe$x1),y=c(anscombe$y1))'],
+  ['code', 'plot(data_one, col=\'green\', pch=15)'],
+  ['text', 'WOOT! This dataset actually seems like a good candidate for a linear model! Let\'s see what happens.'],
+  ['text', 'We\'ll fit a linear model via lm() function.'],
+  ['next_steps', nil]
+]
+data_one_post_content_one = [
+  ['code', 'linear_model_one = lm(y ~ x, data = data_one)'],
+  ['text', 'Let\'s now plot the fit line.'],
+  ['code', 'abline(linear_model_one, col = \'blue\', lwd=3)'],
+  ['text', 'This looks good! But how good? We\'ll learn to do better evaluation in future projects.'],
+  ['img', 'anscombe_proper_data_one.png'],
+  ['lesson_links', nil]
+]
+
+data_one_post_step = Step.create!(
+  title: "(proper) Data One",
+  lesson: work_with_data_post_lesson
+)
+
+train_data_slide_one = Slide.create!(
+  content: data_one_post_content_one,
+  parent: data_one_post_step
+)
+train_data_slide_two = Slide.create!(
+  content: data_one_post_content_twp,
+  parent: data_one_post_step
+)
+
+
+################################################################################
+data_two_pre_content = [
+  ['text', 'We\'re going to create a dataframe called data_two via data.frame()'],
+  ['code', 'help(data.frame) #documentation for data.frame()'],
+  ['code', 'data_two = data.frame(x=c(anscombe$x2),y=c(anscombe$y2))'],
+  ['code', 'summary(data_two$x)'],
+  ['code', 'summary(data_two$y)'],
+  ['text', 'What do you notice? Nothing specific? Let\'s look another dataset'],
+  ['next_steps', nil]
+]
+
+data_two_pre_step = Step.create!(
+  title: "Data Two",
+  lesson: work_with_data_pre_lesson
+)
+
+train_data_slide_two = Slide.create!(
+  content: data_two_pre_content,
+  parent: data_two_pre_step
+)
+
+################################################################################
+data_three_pre_content = [
+  ['text', 'We\'re going to create a dataframe called data_three via data.frame()'],
+  ['code', 'help(data.frame) #documentation for data.frame()'],
+  ['code', 'data_three = data.frame(x=c(anscombe$x3),y=c(anscombe$y3))'],
+  ['code', 'summary(data_three$x)'],
+  ['code', 'summary(data_three$y)'],
+  ['text', 'What do you notice? Nothing specific? Let\'s look another dataset'],
+  ['next_steps', nil]
+]
+
+data_three_pre_step = Step.create!(
+  title: "Data Three",
+  lesson: work_with_data_pre_lesson
+)
+
+train_data_slide_three = Slide.create!(
+  content: data_three_pre_content,
+  parent: data_three_pre_step
+)
+
+################################################################################
+data_four_pre_content = [
+  ['text', 'We\'re going to create a dataframe called data_four via data.frame()'],
+  ['code', 'help(data.frame) #documentation for data.frame()'],
+  ['code', 'data_four = data.frame(x=c(anscombe$x3),y=c(anscombe$y3))'],
+  ['code', 'summary(data_four$x)'],
+  ['code', 'summary(data_four$y)'],
+  ['text', 'What do you notice? Nothing specific? Let\'s look another dataset'],
+  ['next_steps', nil]
+]
+
+data_four_pre_step = Step.create!(
+  title: "Data Four",
+  lesson: work_with_data_pre_lesson
+)
+
+train_data_slide_four = Slide.create!(
+  content: data_four_pre_content,
+  parent: data_four_pre_step
+)
+################################################################################
+#Cnclusion
