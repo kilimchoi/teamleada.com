@@ -215,17 +215,17 @@ analyze_lm = Step.create!(
   lesson: lm_comparison_content_lesson
 )
 
-learn_ctree_slide_one = Slide.create!(
+analyze_lm_slide_one = Slide.create!(
   content: lm_analysis_content_one,
   parent: analyze_lm
 )
 
-learn_ctree_slide_two = Slide.create!(
+analyze_lm_slide_two = Slide.create!(
   content: lm_analysis_content_two,
   parent: analyze_lm
 )
 
-learn_ctree_slide_three = Slide.create!(
+analyze_lm_slide_three = Slide.create!(
   content: lm_analysis_content_three,
   parent: analyze_lm
 )
@@ -272,58 +272,130 @@ data_one_post_step = Step.create!(
   lesson: work_with_data_post_lesson
 )
 
-train_data_slide_one = Slide.create!(
+data_one_post_slide_one = Slide.create!(
   content: data_one_post_content_one,
   parent: data_one_post_step
 )
-train_data_slide_two = Slide.create!(
+data_one_post_slide_two = Slide.create!(
   content: data_one_post_content_two,
   parent: data_one_post_step
 )
 
-
 ################################################################################
-data_two_pre_content = [
-  ['text', 'We\'re going to create a dataframe called data_two via data.frame()'],
-  ['code', 'help(data.frame) #documentation for data.frame()'],
+data_two_post_content_one = [
+  ['text', 'We\'ll start with plotting the data'],
   ['code', 'data_two = data.frame(x=c(anscombe$x2),y=c(anscombe$y2))'],
-  ['code', 'summary(data_two$x)'],
-  ['code', 'summary(data_two$y)'],
-  ['text', 'What do you notice? Nothing specific? Let\'s look another dataset'],
-  ['next_steps', nil]
+  ['code', 'plot(data_two, col=\'blue\', pch=16)'],
+  ['text', 'Does it look polynomial? Yes! (2nd order, but not important here) So how do you fit it in R?'],
+  ['text', 'We can tell you aexctly how, or we can tell you how to figure out how.'],
+  ['text', '-1: Get to google.com'],
+  ['text', '-2: Search: "how to fit polynomial in R"'],
+  ['text', '-3: Check out the first result that refers \'stackoverflow.com/...\''],
+  ['text', 'Woah! It features the same exact question that you had!'],
+  ['next_steps', nil],
 ]
 
-data_two_pre_step = Step.create!(
-  title: "(proper) Data Two",
-  lesson: work_with_data_pre_lesson
-)
+data_two_post_content_two = [
+  ['text', 'For the lazies:'],
+  ['link', 'http://stackoverflow.com/questions/3822535/fitting-polynomial-model-to-data-in-r'],
+  ['text', 'The top answer (accepted with a green check mark) offers the following solution.'],
+  ['code', 'large_polynomial_fit = lm(y ~ x + I(x^2) + I(x^3), data=data_two)'],
+  ['code', 'large_polynomial_fit'],
+  ['text', 'This is for a 3rd order polynomial. How do we fix it? Simply remove the larger order!'],
+  ['code', 'quadratic_fit = lm(y ~ x + I(x^2), data=data_two)'],
+  ['code', 'quadratic_fit #call summary(polynomial_fit) for more details!']
+]
 
-train_data_slide_two = Slide.create!(
-  content: data_two_pre_content,
-  parent: data_two_pre_step
+data_two_post_content_three = [
+  ['text', 'By default, the trained model only has x-values from the original data set. That\'s about 11 values.'],
+  ['text', 'We\'ll manually ask the model to predict 1000 granular data points and conncet them as a line.'],
+  ['text', 'We\'ll first generate the granular x-values. We\'ll use seq() to achieve that. But what does seq() do?'],
+  ['code', 'help(seq)'],
+  ['code', 'xvalues = seq(4, 14, 0.01)'],
+  ['text', 'Now we\'ll calculate the predicted y (known as y-hat)'],
+  ['code', 'help(predict) #This help() is a bit vague, so don\'t worry too much about it.'],
+  ['code', 'fitted_yhat = predict(quadratic_fit, data.frame(x=xvalues))'],
+]
+
+data_two_post_content_four = [
+  ['text', 'We\'ll add in the fitted points from the ORIGINAL data in RED.'],
+  ['code', 'points(data_two$x, predict(quadratic_fit), type="p", col="red", lwd=3)'],
+  ['text', 'Note that they overlap perfectly!'],
+  ['text', 'Now to add the quadratic line.'],
+  ['code', 'lines(x=xvalues, y=fitted_yhat, lwd=2, col="darkgray")'],
+  ['text', 'VOILA! Perfect fit. It\'s as if it was meant to fit that well... ;)'],
+  ['text', 'Remember the old days when we tried to fit a linear model? Pepperidge Farm remembers...'],
+]
+
+data_two_post_step = Step.create!(
+  title: "(proper) Data Two",
+  lesson: work_with_data_post_lesson
+)
+data_two_slide_one = Slide.create!(
+  content: data_one_post_content_one,
+  parent: data_one_post_step
+)
+data_two_slide_two = Slide.create!(
+  content: data_two_post_content_two,
+  parent: data_two_post_step
+)
+data_two_slide_three = Slide.create!(
+  content: data_two_post_content_three,
+  parent: data_two_post_step
+)
+data_two_slide_four = Slide.create!(
+  content: data_two_post_content_four,
+  parent: data_two_post_step
 )
 
 ################################################################################
-data_three_pre_content = [
-  ['text', 'We\'re going to create a dataframe called data_three via data.frame()'],
-  ['code', 'help(data.frame) #documentation for data.frame()'],
+data_three_post_content_one = [
+  ['text', 'We\'ll start with plotting the data'],
   ['code', 'data_three = data.frame(x=c(anscombe$x3),y=c(anscombe$y3))'],
-  ['code', 'summary(data_three$x)'],
-  ['code', 'summary(data_three$y)'],
-  ['text', 'What do you notice? Nothing specific? Let\'s look another dataset'],
+  ['code', 'plot(data_three, col=\'orange\',pch=17, main="original data_three")'],
+  ['text', 'What do you see? Perhaps that yellow triangle at the top right corner? Yup, we see it too.'],
+  ['text', 'Could it possibly be an outlier? We\'ll figure that out with the good old box-plot.'],
+  ['code', 'help(boxplot)'],
+  ['code', 'boxplot(data_three, main="box-plot for data_three")'],
+  ['text', 'Yup, an outlier! The circle denoted for 'y' indicates outlier.'],
+  ['text', 'What does your gut tell you to do? *try removing the outlier*'],
   ['next_steps', nil]
 ]
-
-data_three_pre_step = Step.create!(
+data_three_post_content_two = [
+  ['text', 'For now, we will do this manually. (If the dataset was big, manually removal of outliers will perhaps best be saved for pranking the interns)'],
+  ['text', 'What value of y yields the outlier? I think at row/idnex 3 with x=13 and y=12.74 seems to be the culprit.'],
+  ['text', 'We\'ll use a negative notation to subset that particular data point.'],
+  ['code', 'cleaned_data_three = data_three[-3,]'],
+  ['text', 'What we did is similar to how we used to subset data. We used a bracket notation to specify a row.'],
+  ['text', 'We simply added a negative sign (or minus) in front of the index to tell R:'],
+  ['text', '"Return the entire dataset WITHOUT the specified index"'],
+]
+data_three_post_content_three = [
+  ['text', 'Inspect and then plot the result:'],
+  ['code', 'cleaned_data_three'],
+  ['code', 'plot(cleaned_data_three, col=\'orange\',pch=17, main="cleaned data_three")'],
+  ['text', 'Hmm, perhaps we can now fit a linear model??'],
+  ['code', 'linear_model_three = lm(y ~ x, data = cleaned_data_three)'],
+  ['text', 'Let\'s add the new fitted line.'],
+  ['code', 'abline(linear_model_three, col = \'blue\', lwd=3)'],
+  ['text', 'Beautiful.']
+]
+data_three_post_step = Step.create!(
   title: "(proper) Data Three",
-  lesson: work_with_data_pre_lesson
+  lesson: work_with_data_post_lesson
 )
-
-train_data_slide_three = Slide.create!(
-  content: data_three_pre_content,
-  parent: data_three_pre_step
+data_three_slide_one = Slide.create!(
+  content: data_three_post_content_one,
+  parent: data_three_post_step
 )
-
+data_three_slide_two = Slide.create!(
+  content: data_three_post_content_two,
+  parent: data_three_post_step
+)
+data_three_slide_three = Slide.create!(
+  content: data_three_post_content_three,
+  parent: data_three_post_step
+)
 ################################################################################
 data_four_pre_content = [
   ['text', 'We\'re going to create a dataframe called data_four via data.frame()'],
@@ -336,8 +408,8 @@ data_four_pre_content = [
 ]
 
 data_four_pre_step = Step.create!(
-  title: "(proper) åData Four",
-  lesson: work_with_data_pre_lesson
+  title: "(proper) Data Four",
+  lesson: work_with_data_post_lesson
 )
 
 train_data_slide_four = Slide.create!(
