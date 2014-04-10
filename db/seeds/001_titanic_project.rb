@@ -47,7 +47,7 @@ welcome_lesson_slide_two = Slide.create!(
   parent: welcome_lesson
 )
 
-quick_pass_content = [
+begin_one_content = [
   ['text', 'To begin, you first need to install the tools necessary for data analysis! In this tutorial we will work in R. Go to the following link to onboard your computer with R, Rstudio, and setting your working directory'],
   ['link', 'http://statsguys.wordpress.com/2014/03/06/installing-r-rstudio-and-setting-your-working-directory/'],
   ['text', 'If you have already installed R, Rstudio, and are familiar with working directories, then move ahead'],
@@ -55,6 +55,9 @@ quick_pass_content = [
   ['link', 'http://leada.s3.amazonaws.com/titanic_data/train.csv'],
   ['text', 'Now for the test data:'],
   ['link', 'http://leada.s3.amazonaws.com/titanic_data/test.csv'],
+]
+
+begin_two_content = [
   ['text', 'Now let\'s jump into the analysis.'],
   ['text', 'First we utilize the read.csv() function to load the data into R.'],
   ['code', 'trainData <- read.csv("train.csv", header = TRUE, stringsAsFactors = FALSE)'],
@@ -69,7 +72,20 @@ quick_pass_content = [
   ['next_steps', nil],
 ]
 
-quick_pass = Step.create!(title: "Begin", content: quick_pass_content, lesson: welcome_lesson)
+begin_lesson = Step.create!(
+  title: "Begin",
+  lesson: welcome_lesson
+
+begin_lesson_slide_one = Slide.create!(
+  content: begin_one_content,
+  parent: begin_lesson
+)
+
+begin_lesson_slide_two = Slide.create!(
+  content: begin_two_content,
+  parent: begin_lesson
+)
+
 
 work_with_data_content = [
   ['text', 'In this project you are given two datasets "Train" and "Test". You will be using the "Train" dataset to build your model. This model will create predictions for passenger survival for the "Train" dataset.'],
@@ -79,8 +95,12 @@ work_with_data_content = [
 
 work_with_data_lesson = Lesson.create!(
   title: "Work with the Data",
-  content: work_with_data_content,
   project: project
+)
+
+work_with_data_slide_one = Slide.create!(
+  content: work_with_data_content,
+  parent: work_with_data_lesson
 )
 
 
@@ -96,7 +116,16 @@ train_data_content = [
   ['next_steps', nil],
 ]
 
-train_data = Step.create!(title: "Train Data", content: train_data_content, lesson: work_with_data_lesson)
+train_data_step = Step.create!(
+  title: "Train Data",
+  lesson: work_with_data_lesson
+)
+
+train_data_slide_one = Slide.create!(
+  content: train_data_content,
+  parent: train_data_step
+)
+
 
 train_visualize_content = [
   ['text', 'It is good to first visualize the data to get a general understanding of the patterns and trends of the data. Lets look at the survival rate of our passengers filtered by Sex.'],
@@ -110,9 +139,17 @@ train_visualize_content = [
   ['project_link', 'Back to the lessons page'],
 ]
 
-train_visualize = Step.create!(title:"Visualize", content: train_visualize_content, previous_step: train_data)
+train_visualize_step = Step.create!(
+  title: "Visualize Data",
+  previous_step: train_data_step
+)
 
-train_clean_content = [
+train_visualize_slide_one = Slide.create!(
+  content: train_visualize_content,
+  parent: train_visualize_step
+)
+
+train_clean_content_one = [
   ['text', 'Cleaning data is typically one of the most time consuming parts to data analysis. We will cover a major topic in cleaning which is what to do with missing values.'],
   ['text', 'If you noticed, there are several missing values for the "Age" variable for our observations. You can see by coding the following:'],
   ['code', 'trainData$Age'],
@@ -120,6 +157,9 @@ train_clean_content = [
   ['text', 'We write a for loop which goes through each row of our "Train" dataset and if the Age column is "NA" then we input the average age.'],
   ['text', 'We first calculate the mean age and ignore the NAs'],
   ['code', 'mean_age <- round(mean(trainData$Age,na.rm=T), digits = 3)'],
+]
+
+train_clean_content_two = [
   ['text', 'Then we loop through the observations in the dataset and add the average age accordingly'],
   ['code', 'for (i in 1:nrow(trainData)) {'],
   ['code', '  if (is.na(trainData[i,6])) {'],
@@ -130,7 +170,21 @@ train_clean_content = [
   ['project_link', 'Back to the lessons page'],
 ]
 
-train_clean = Step.create!(title:"Clean", content: train_clean_content, previous_step: train_data)
+train_clean_step = Step.create!(
+  title: "Clean Data",
+  previous_step: train_data_step
+)
+
+train_clean_slide_one = Slide.create!(
+  content: train_clean_content_one,
+  parent: train_clean_step
+)
+
+train_clean_slide_two = Slide.create!(
+  content: train_clean_content_two,
+  parent: train_clean_step
+)
+
 
 test_data_content = [
   ['text', 'We can use the same functions as we did before to look at our "Test" dataset If you want to see more than 6 rows you can do'],
@@ -140,8 +194,17 @@ test_data_content = [
   ['next_steps', nil],
 ]
 
-test_data = Step.create!(title:"Test Data", content: test_data_content, lesson: work_with_data_lesson)
-test_data.add_required_steps([train_visualize, train_clean])
+test_data_step = Step.create!(
+  title: "Test Data",
+  lesson: work_with_data_lesson
+)
+
+test_data_slide_one = Slide.create!(
+  content: test_data_content,
+  parent: test_data_step
+)
+
+test_data_step.add_required_steps([train_visualize_step, train_clean_step])
 
 test_visualize_content = [
   ['text', 'Visualizing the "Test" dataset is important because you want to make sure that the two datasets are at least somewhat consistent with each other.'],
@@ -155,10 +218,17 @@ test_visualize_content = [
   ['project_link', 'Back to the lessons page'],
 ]
 
-test_visualize = Step.create!(title:"Visualize", content: test_visualize_content, previous_step: test_data)
+test_visualize_step = Step.create!(
+  title:"Visualize",
+  previous_step: test_data_step
+)
 
+test_visualize_slide_one = Slide.create!(
+  content: test_visualize_content,
+  parent: test_visualize_step
+)
 
-test_clean_content = [
+test_clean_one_content = [
   ['text', 'This is the same situation as the "Train" dataset. We want to make inferences on the missing age variables to strengthen our model'],
   ['text', 'We calculate the mean age of the "Test" dataset'],
   ['code', 'test_mean_age <- round(mean(testData$Age, na.rm= T), digits = 3)'],
@@ -172,10 +242,18 @@ test_clean_content = [
   ['project_link', 'Back to the lessons page'],
 ]
 
+test_clean = Step.create!(
+  title: "Clean",
+  previous_step: test_data_step
+)
 
-test_clean = Step.create!(title: "Clean", content: test_clean_content, previous_step: test_data)
+test_clean_slide_one = Slide.create!(
+  content: test_clean_one_content,
+  parent: test_clean
+)
 
-analytics_tools_content = [
+# Analytics
+analytics_tools_one_content = [
   ['text', 'In this first project we will cover one of the most effective and simple predictive analytics tools for data analytics, classification trees.'],
   ['text', 'In future projects you will learn a variety of tools and specifically when to apply them. Logistic regression, Support Vector Machines, and many more!'],
   ['lesson_links', nil],
@@ -183,25 +261,44 @@ analytics_tools_content = [
 
 analytics_tools_lesson = Lesson.create!(
   title: "Analytics Tools",
-  content: analytics_tools_content,
   project: project
 )
 
-learn_ctree_content = [
-  #Include image of C-tree
+analytics_slide_one = Slide.create!(
+  content: analytics_tools_one_content,
+  parent: analytics_tools_lesson
+)
+
+learn_ctree_one_content = [
   ['text', 'A classification tree is made up of interior and terminal nodes and is structured upside down so the root node is at the top and branches downwards'],
   ['image', 'c_tree.png'],
   ['text', 'In the example tree, the nodes represent the how your data is segmented so at the top it begins by first separating the data by Sex.'],
+]
+
+learn_ctree_two_content = [
   ['text', 'Subsequent nodes further segment the data, for example one node is Age greater than or equal to 6.5 below the male node and results in a 0. This means that the model will classify all male observations with age greater than 6.5 as dying in the Titanic'],
   ['text', 'What one needs to be careful of when using classification trees is the concept of "overfitting" your data. Classification tree models are very susceptible to overfiting and is one of their disadvantages for use.'],
   ['text', 'In general, overfitting is when you find patterns in the data that does not generalize to new datasets. If you look hard enough, you can find patterns in any dataset.'],
   ['text', 'There are two main advantages to building a classification tree model. (1) They require very little data preparationi and cleaning. (2) Classification models are easy to interpret and explain to others!'],
-  ['next_steps', nil],
+  ['project_link', 'Back to the lessons page'],
 ]
 
-learn_ctree = Step.create!(title: "Learn Classification Trees", content: learn_ctree_content, lesson: analytics_tools_lesson)
+learn_ctree = Step.create!(
+  title: "Learn Classification Trees",
+  lesson: analytics_tools_lesson
+)
 
-apply_ctree_content = [
+learn_ctree_slide_one = Slide.create!(
+  content: learn_ctree_one_content,
+  parent: learn_ctree
+)
+
+learn_ctree_slide_two = Slide.create!(
+  content: learn_ctree_two_content,
+  parent: learn_ctree
+)
+
+apply_ctree_one_content = [
   ['text', 'To create a classification tree model we use the function rpart() in R. The arguments in the formula rpart(formula, data, method, control) are as follows:'],
   ['text', 'formula = the independent (Survived) and dependent variables (Age, Pclass, etc.)'],
   ['text', 'data = dataset object (trainData or testData)'],
@@ -210,6 +307,9 @@ apply_ctree_content = [
   ['text', 'Take a look again at the columns of the "Train" dataset'],
   ['code', 'head(trainData, 1)'],
   ['text', 'Remember that we are trying to predict whether each passenger "Survived" (independent variable) and we have the following features to use: "PassengerId", "Pclass", "Name", "Sex", "Age", "SibSp", "Parch", "Ticket", "Fare", "Cabin", "Embarked" (dependent variables)'],
+]
+
+apply_ctree_two_content = [
   ['text', 'For our first model we only use "Pclass", "Sex", and "Age" to predict "Survived". '],
   ['text', 'First we need to install a package in R'],
   ['code', 'library(\'rpart\')'],
@@ -218,6 +318,9 @@ apply_ctree_content = [
   ['text', 'We plot the model and label the nodes'],
   ['code', 'plot(tree_model)'],
   ['code', 'text(tree_model)'],
+]
+
+apply_ctree_three_content = [
   ['text', 'Now that we have our model built using the "Train" dataset, we can apply our model to the "Test" dataset to make predictions for those passengers! What is done here is the nodes used to classify the passengers in the "Train" dataset such as "Age >= 6.5" are now applied to the passengers in the "Test" dataset to predict their survival.'],
   ['text', 'R again has a convenient function predict() to allow us to apply our tree_model to the testData'],
   ['code', 'test_predictions <- round(predict(tree_model, newdata = testData)[, 2], 0)'],
@@ -232,15 +335,36 @@ apply_ctree_content = [
   ['project_link', 'Back to the lessons page'],
 ]
 
-apply_ctree = Step.create!(title: "Apply a Classification Tree Model", content: apply_ctree_content, lesson: analytics_tools_lesson)
+apply_ctree = Step.create!(
+  title: "Apply a Classification Tree Model",
+  lesson: analytics_tools_lesson
+)
+
+apply_ctree_slide_one = Slide.create!(
+  content: apply_ctree_one_content,
+  parent: apply_ctree
+)
+
+apply_ctree_slide_two = Slide.create!(
+  content: apply_ctree_two_content,
+  parent: apply_ctree
+)
+
+apply_ctree_slide_three = Slide.create!(
+  content: apply_ctree_three_content,
+  parent: apply_ctree
+)
 
 
-increase_score_content = [
+increase_score_one_content = [
   ['text', 'As you can see building these models is relatively easy! Creating accurate models however are another story. Here we will introduce the most critical skill to analyzing data. Curiousity. '],
   ['text', 'Don\'t believe us? Believe it. Knowing what data you want and can create by asking the right questions is the skill that differentiates data analysis results from the rest. This is best done by having a curiousity with the data, digging into it thoroughly, and thinking creatively.'],
   ['text', 'For example remember back to our discovery that women were much more likely to survive than men? We determined that through the assumption the passengers adhered to "women and children first" standard. Since we have the age of our passengers, why don\'t we create a variable which also identifies children?'],
   ['text', 'Creates a new column titled "Child"'],
   ['code', 'trainData["Child"] <- NA'],
+]
+
+increase_score_two_content = [
   ['text', 'This for loop loops through each row in "Train" dataset and checks in the age column if it is less than 18. If the age is less than 18, we put a 1 in the "Child" column and if it is greater than 18 we put a 2 in the column.'],
   ['code', 'for (i in 1:nrow(trainData)) {'],
   ['code', '  if (trainData$Age[i] <= 18) {'],
@@ -249,6 +373,9 @@ increase_score_content = [
   ['code', '    trainData$Child[i] <- 2'],
   ['code', '  }'],
   ['code', '}'],
+]
+
+increase_score_three_content = [
   ['text', 'Just remember that whatever variable you create in your "Train" dataset you must also create in your "Test" dataset for your model to function correctly!'],
   ['code', 'testData["Child"] <- NA'],
   ['code','for (i in 1:nrow(testData)) {'],
@@ -265,8 +392,22 @@ increase_score_content = [
 
 increase_score_lesson = Lesson.create!(
   title: "Increase Your Score",
-  content: increase_score_content,
   project: project
+)
+
+increate_score_slide_one = Slide.create!(
+  content: increase_score_one_content,
+  parent: increase_score_lesson
+)
+
+increate_score_slide_two = Slide.create!(
+  content: increase_score_two_content,
+  parent: increase_score_lesson
+)
+
+increate_score_slide_three = Slide.create!(
+  content: increase_score_three_content,
+  parent: increase_score_lesson
 )
 
 # Leaderboard Seed info
