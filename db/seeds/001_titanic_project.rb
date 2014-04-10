@@ -72,9 +72,9 @@ begin_two_content = [
   ['next_steps', nil],
 ]
 
-begin_lesson = Lesson.create!(
+begin_lesson = Step.create!(
   title: "Begin",
-  project: project
+  lesson: welcome_lesson
 )
 
 begin_lesson_slide_one = Slide.create!(
