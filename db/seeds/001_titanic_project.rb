@@ -117,14 +117,14 @@ train_data_content = [
   ['next_steps', nil],
 ]
 
-train_data_lesson = Lesson.create!(
+train_data_step = Step.create!(
   title: "Train Data",
-  project: project
+  lesson: work_with_data_lesson
 )
 
 train_data_slide_one = Slide.create!(
   content: train_data_content,
-  parent: train_data_lesson
+  parent: train_data_step
 )
 
 
@@ -140,14 +140,14 @@ train_visualize_content = [
   ['project_link', 'Back to the lessons page'],
 ]
 
-train_visualize_lesson = Lesson.create!(
+train_visualize_step = Step.create!(
   title: "Visualize Data",
-  project: project
+  previous_step: train_data_step
 )
 
 train_visualize_slide_one = Slide.create!(
   content: train_visualize_content,
-  parent:train_visualize_lesson
+  parent: train_visualize_step
 )
 
 
@@ -172,19 +172,19 @@ train_clean_content_two = [
   ['project_link', 'Back to the lessons page'],
 ]
 
-train_clean_lesson = Lesson.create!(
+train_clean_step = Lesson.create!(
   title: "Clean Data",
-  project: project
+  previous_step: train_data
 )
 
 train_clean_slide_one = Slide.create!(
   content: train_clean_content_one,
-  parent: train_clean_lesson
+  parent: train_clean_step
 )
 
 train_clean_slide_two = Slide.create!(
   content: train_clean_content_two,
-  parent: train_clean_lesson
+  parent: train_clean_step
 )
 
 
@@ -196,14 +196,14 @@ test_data_content = [
   ['next_steps', nil],
 ]
 
-test_data_lesson = Lesson.create!(
+test_data_step = Step.create!(
   title: "Test Data",
-  project: project
+  lesson: work_with_data_lesson
 )
 
 test_data_slide_one = Slide.create!(
   content: test_data_content,
-  parent: test_data_lesson
+  parent: test_data_step
 )
 
 # # NEED TO FIX THIS FOR NEW SYSTEM
