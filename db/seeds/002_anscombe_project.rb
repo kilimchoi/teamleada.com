@@ -332,7 +332,7 @@ data_two_post_step = Step.create!(
   lesson: work_with_data_post_lesson
 )
 data_two_slide_one = Slide.create!(
-  content: data_one_post_content_one,
+  content: data_two_post_content_one,
   parent: data_one_post_step
 )
 data_two_slide_two = Slide.create!(
@@ -450,7 +450,6 @@ data_four_post_step = Step.create!(
   title: "(proper) Data Four",
   lesson: work_with_data_post_lesson
 )
-
 data_four_slide_one = Slide.create!(
   content: data_four_post_content_one,
   parent: data_four_post_step
@@ -470,4 +469,31 @@ data_four_slide_four = Slide.create!(
 
 ################################################################################
 #Cnclusion
+conclusion_content_one = [
+  ['text', 'How this could have happened? You looked at 4 datasets and it seems like the usual statistical methods have deceived you.'],
+  ['text', 'We have 4 clearly different datasets; if we didn\'t inspect them carefully, we would have never learned about their differences.'],
+  ['text', 'This leaves us with one final message: "Look at your data".'],
+  ['text', 'A quote from Josh Wills (Senior Director of Data Science Cloudera):'],
+  ['text', 'People who learn about t-tests and regression get a little sophisticated, and start applying models without looking at the data. They think that they can just apply this technique and they don’t have to look at the data anymore. You do that a few times, you get burned by some bad data, and you learn to go back and start looking at the data again."'],
+  ['lesson_links', nil]
+]
+
+conclusion_lesson = Lesson.create!(
+  title: "Explore The Datasets",
+  project: project
+)
+work_with_data_pre_slide_one = Slide.create!(
+  content: conclusion_content_one,
+  parent: conclusion_lesson
+)
+work_with_data_pre_slide_one = Slide.create!(
+  content: conclusion_content_two,
+  parent: conclusion_lesson
+)
+work_with_data_pre_slide_one = Slide.create!(
+  content: conclusion_content_three,
+  parent: conclusion_lesson
+)
+
+
 
