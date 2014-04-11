@@ -1,5 +1,5 @@
 # Creates the anscombe project on the site!
-
+#Main Page
 main_page_content = [
   ['text', 'In this Lesson, we\'ll be working with a few special datasets, which have interesting properties.'],
   ['text', 'This is actually a well-known dataset; R has them installed by default.'],
@@ -19,7 +19,7 @@ project = Project.create!(
 ################################################################################
 puts "Created project: #{project.title}."
 ################################################################################
-#Main Page
+##PRE: Analyze data IN-properly
 work_with_data_pre_content = [
   ['text', 'In this project, we\'re given four datasets'],
   ['text', 'We\'ll quickly go over an exploratoray data analysis step'],
@@ -397,24 +397,77 @@ data_three_slide_three = Slide.create!(
   parent: data_three_post_step
 )
 ################################################################################
-data_four_pre_content = [
-  ['text', 'We\'re going to create a dataframe called data_four via data.frame()'],
-  ['code', 'help(data.frame) #documentation for data.frame()'],
-  ['code', 'data_four = data.frame(x=c(anscombe$x3),y=c(anscombe$y3))'],
-  ['code', 'summary(data_four$x)'],
-  ['code', 'summary(data_four$y)'],
-  ['text', 'What do you notice? Nothing specific? Let\'s look another dataset'],
+data_four_post_content_one = [
+  ['text', 'We\'ll start with plotting the data'],
+  ['code', 'data_four = data.frame(x=c(anscombe$x4),y=c(anscombe$y4))'],
+  ['text', 'data_four'],
+  ['code', 'plot(data_four,col=\'red\', pch=18, main="data_four")'],
+  ['text', 'What do you think?'],
+  ['text', 'We could do a box plot. But does it make sense? You can try.'],
+  ['text', 'The red dot on the top right corner is clearly an outlier.'],
+  ['text', 'Should we remove it?'],
+  ['text', 'hmm'],
+  ['text', 'hmm'],
   ['next_steps', nil]
 ]
 
-data_four_pre_step = Step.create!(
+data_four_post_content_one = [
+  ['text', 'What will happen if we do? (replot the data if you haven\'t):'],
+  ['text', 'Looks like we\'ll end up with a straight line at x=8'],
+  ['text', 'This is a tricky one. Take a moment and think about this data.'],
+  ['text', 'Pondering on this will (hopefully) help you harvest your curiousity/intution.'],
+  ['text', 'Our thoughts:'],
+  ['text', 'You might not realize right away, but this dataset actually wasn\'t even meant to be fit with a simple linear model.'],
+  ['text', 'It is most likely a categorical dataset, with multiple observation at category-x=8, and 1 observation at category-x=19'],
+  ['next_steps', nil]
+]
+
+data_four_post_content_three = [
+  ['text', 'For example, this could be a survey of the number of cat whiskers in certain cat categories.'],
+  ['text', 'x=8 represents weird-derpy cats (http://i.imgur.com/N9eZrMK.gif) (Apparently We observed 10 of these cats, 2 of which is in the link...)'],
+  ['text', 'x=19 represents majestic-evil cats (http://i.imgur.com/JM6dTOC.jpg) (obviously we observed only one of these cat)'],
+  ['text', 'There is no way to tell. But it doens\'t make sense to throw a linear model at this data.'],
+  ['text', 'Ultimately, linear models are powerful tools.'],
+  ['text', 'However, you have to keep in mind that you can\'t simply throw data into a model and expect results.'],
+]
+
+data_four_post_content_four = [
+  ['text', 'If you were to do real analysis here, you\'d need a certain leve of domain expertise/assumptions:'],
+  ['text', 'We can compare the difference in whisker length. We first look at the lengths for x=8 (weird-derpy cats)'],
+  ['code', 'summary(data_four$x)'],
+  ['text', 'How are the length for derpy cats distributed?'],
+  ['code', 'plot(density(data_four$x), main="distribution of whisker length of derpy cats")'],
+  ['text', 'We\'ll see distributions again, and you\'ll get used to seeing the weird curvy graph.'],
+  ['text', 'In the mean time, check it out:'],
+  ['code', 'help(density) #don\'t worry too much about this function, just get a feel for it.'],
+  ['text', 'for x=19 (majestic-evil cats), we don\'t have enough data point (we only saw one cat!)'],
+  ['text', 'This is where you walk up to your boss, take off your glasses, look him in the eye and say:'],
+  ['text', '"look here Jim, I can\'t conclude anything due to lack of data. We\'re gonna need more funding"'],
+  ['text', '*Next day: come to work equipped with more evil cats*.'],
+]
+
+data_four_post_step = Step.create!(
   title: "(proper) Data Four",
   lesson: work_with_data_post_lesson
 )
 
-train_data_slide_four = Slide.create!(
-  content: data_four_pre_content,
-  parent: data_four_pre_step
+data_four_slide_one = Slide.create!(
+  content: data_four_post_content_one,
+  parent: data_four_post_step
 )
+data_four_slide_two = Slide.create!(
+  content: data_four_post_content_two,
+  parent: data_four_post_step
+)
+data_four_slide_three = Slide.create!(
+  content: data_four_post_content_three,
+  parent: data_four_post_step
+)
+data_four_slide_four = Slide.create!(
+  content: data_four_post_content_four,
+  parent: data_four_post_step
+)
+
 ################################################################################
 #Cnclusion
+
