@@ -104,7 +104,7 @@ train_data_slide_three = Slide.create!(
 data_four_pre_content = [
   ['text', 'We\'re going to create a dataframe called data_four via data.frame()'],
   ['code', 'help(data.frame) #documentation for data.frame()'],
-  ['code', 'data_four = data.frame(x=c(anscombe$x3),y=c(anscombe$y3))'],
+  ['code', 'data_four = data.frame(x=c(anscombe$x4),y=c(anscombe$y4))'],
   ['code', 'summary(data_four$x)'],
   ['code', 'summary(data_four$y)'],
   ['text', 'What do you notice? Nothing specific? Let\'s look another dataset'],
@@ -159,7 +159,7 @@ fit_lm_content_two = [
   ['code', 'plot(c(0, 10), c(0, 10) , type="n", axes=T, xlab="", ylab="") #we\'ll create an empty plot to add plot on.'],
   ['code', 'abline(linear.mod1, col = \'red\', lwd=3) #adding in the line for the first linear model.'],
   ['code', 'abline(linear.mod2, col=\'orange\', lwd=5) #adding in the line for the 2nd linear model.'],
-  ['text', '#What happened? Let\'s dig deeper in the next step.'],
+  ['text', 'What happened? Let\'s dig deeper in the next step.'],
   ['project_link', 'Back to the lessons page'],
 ]
 
@@ -195,7 +195,7 @@ lm_analysis_content_two = [
   ['code', 'plot(compare_one, col=\'blue\', pch=19)'],
   ['code', 'points(compare_two, col=\'green\', pch=19)'],
   ['code', 'abline(linear.mod1, col = \'red\', lwd=3)'],
-  ['text', 'abline(linear.mod2, col=\'orange\', lwd=5)'],
+  ['code', 'abline(linear.mod2, col=\'orange\', lwd=5)'],
   ['text', 'You can click the back-arrow in the plot to see that the regression lines are the same!'],
 ]
 
@@ -256,7 +256,6 @@ data_one_post_content_one = [
   ['code', 'plot(data_one, col=\'green\', pch=15)'],
   ['text', 'WOOT! This dataset actually seems like a good candidate for a linear model! Let\'s see what happens.'],
   ['text', 'We\'ll fit a linear model via lm() function.'],
-  ['next_steps', nil]
 ]
 data_one_post_content_two = [
   ['code', 'linear_model_one = lm(y ~ x, data = data_one)'],
@@ -264,7 +263,7 @@ data_one_post_content_two = [
   ['code', 'abline(linear_model_one, col = \'blue\', lwd=3)'],
   ['text', 'This looks good! But how good? We\'ll learn to do better evaluation in future projects.'],
   ['img', 'anscombe_proper_data_one.png'],
-  ['lesson_links', nil]
+  ['next_steps', nil]
 ]
 
 data_one_post_step = Step.create!(
@@ -292,7 +291,6 @@ data_two_post_content_one = [
   ['text', '-2: Search: "how to fit polynomial in R"'],
   ['text', '-3: Check out the first result that refers \'stackoverflow.com/...\''],
   ['text', 'Woah! It features the same exact question that you had!'],
-  ['next_steps', nil],
 ]
 
 data_two_post_content_two = [
@@ -325,6 +323,7 @@ data_two_post_content_four = [
   ['code', 'lines(x=xvalues, y=fitted_yhat, lwd=2, col="darkgray")'],
   ['text', 'VOILA! Perfect fit. It\'s as if it was meant to fit that well... ;)'],
   ['text', 'Remember the old days when we tried to fit a linear model? Pepperidge Farm remembers...'],
+  ['next_steps', nil]
 ]
 
 data_two_post_step = Step.create!(
@@ -333,7 +332,7 @@ data_two_post_step = Step.create!(
 )
 data_two_slide_one = Slide.create!(
   content: data_two_post_content_one,
-  parent: data_one_post_step
+  parent: data_two_post_step
 )
 data_two_slide_two = Slide.create!(
   content: data_two_post_content_two,
@@ -357,7 +356,7 @@ data_three_post_content_one = [
   ['text', 'Could it possibly be an outlier? We\'ll figure that out with the good old box-plot.'],
   ['code', 'help(boxplot)'],
   ['code', 'boxplot(data_three, main="box-plot for data_three")'],
-  ['text', 'Yup, an outlier! The circle denoted for 'y' indicates outlier.'],
+  ['text', 'Yup, an outlier! The circle denoted for \'y\' indicates outlier.'],
   ['text', 'What does your gut tell you to do? *try removing the outlier*'],
   ['next_steps', nil]
 ]
@@ -408,10 +407,9 @@ data_four_post_content_one = [
   ['text', 'Should we remove it?'],
   ['text', 'hmm'],
   ['text', 'hmm'],
-  ['next_steps', nil]
 ]
 
-data_four_post_content_one = [
+data_four_post_content_two = [
   ['text', 'What will happen if we do? (replot the data if you haven\'t):'],
   ['text', 'Looks like we\'ll end up with a straight line at x=8'],
   ['text', 'This is a tricky one. Take a moment and think about this data.'],
@@ -419,7 +417,6 @@ data_four_post_content_one = [
   ['text', 'Our thoughts:'],
   ['text', 'You might not realize right away, but this dataset actually wasn\'t even meant to be fit with a simple linear model.'],
   ['text', 'It is most likely a categorical dataset, with multiple observation at category-x=8, and 1 observation at category-x=19'],
-  ['next_steps', nil]
 ]
 
 data_four_post_content_three = [
@@ -444,6 +441,7 @@ data_four_post_content_four = [
   ['text', 'This is where you walk up to your boss, take off your glasses, look him in the eye and say:'],
   ['text', '"look here Jim, I can\'t conclude anything due to lack of data. We\'re gonna need more funding"'],
   ['text', '*Next day: come to work equipped with more evil cats*.'],
+  ['next_steps', nil]
 ]
 
 data_four_post_step = Step.create!(
@@ -479,19 +477,11 @@ conclusion_content_one = [
 ]
 
 conclusion_lesson = Lesson.create!(
-  title: "Explore The Datasets",
+  title: "Conclusion",
   project: project
 )
 work_with_data_pre_slide_one = Slide.create!(
   content: conclusion_content_one,
-  parent: conclusion_lesson
-)
-work_with_data_pre_slide_one = Slide.create!(
-  content: conclusion_content_two,
-  parent: conclusion_lesson
-)
-work_with_data_pre_slide_one = Slide.create!(
-  content: conclusion_content_three,
   parent: conclusion_lesson
 )
 
