@@ -14,6 +14,7 @@ project = Project.create!(
   number: 1,
   enabled: true
 )
+################################################################################
 
 puts "Created project: #{project.title}."
 
@@ -46,6 +47,8 @@ welcome_lesson_slide_two = Slide.create!(
   content: welcome_lesson_slide_two_content,
   parent: welcome_lesson
 )
+
+################################################################################
 
 begin_one_content = [
   ['text', 'To begin, you first need to install the tools necessary for data analysis! In this tutorial we will work in R. Go to the following link to onboard your computer with R, Rstudio, and setting your working directory'],
@@ -87,6 +90,7 @@ begin_lesson_slide_two = Slide.create!(
   parent: begin_lesson
 )
 
+################################################################################
 
 work_with_data_content = [
   ['text', 'In this project you are given two datasets "Train" and "Test". You will be using the "Train" dataset to build your model. This model will create predictions for passenger survival for the "Train" dataset.'],
@@ -104,7 +108,7 @@ work_with_data_slide_one = Slide.create!(
   parent: work_with_data_lesson
 )
 
-
+################################################################################
 train_data_content = [
   ['text', 'To take a look at the first six rows of the "Train" dataset use the following function'],
   ['code', 'head(trainData)'],
@@ -127,7 +131,7 @@ train_data_slide_one = Slide.create!(
   parent: train_data_step
 )
 
-
+################################################################################
 train_visualize_content = [
   ['text', 'It is good to first visualize the data to get a general understanding of the patterns and trends of the data. Lets look at the survival rate of our passengers filtered by Sex.'],
   ['text', 'Your intuition might be that the women had a higher chance of survival because the boat adhered to the "Women and Children First" standard. We first create a table and call it "counts". Then we use the barplot() function in R.'],
@@ -149,6 +153,7 @@ train_visualize_slide_one = Slide.create!(
   content: train_visualize_content,
   parent: train_visualize_step
 )
+################################################################################
 
 train_clean_content_one = [
   ['text', 'Cleaning data is typically one of the most time consuming parts to data analysis. We will cover a major topic in cleaning which is what to do with missing values.'],
@@ -186,6 +191,7 @@ train_clean_slide_two = Slide.create!(
   parent: train_clean_step
 )
 
+################################################################################
 
 test_data_content = [
   ['text', 'We can use the same functions as we did before to look at our "Test" dataset If you want to see more than 6 rows you can do'],
@@ -206,6 +212,7 @@ test_data_slide_one = Slide.create!(
 )
 
 test_data_step.add_required_steps([train_visualize_step, train_clean_step])
+################################################################################
 
 test_visualize_content = [
   ['text', 'Visualizing the "Test" dataset is important because you want to make sure that the two datasets are at least somewhat consistent with each other.'],
@@ -228,6 +235,7 @@ test_visualize_slide_one = Slide.create!(
   content: test_visualize_content,
   parent: test_visualize_step
 )
+################################################################################
 
 test_clean_one_content = [
   ['text', 'This is the same situation as the "Train" dataset. We want to make inferences on the missing age variables to strengthen our model'],
@@ -252,6 +260,7 @@ test_clean_slide_one = Slide.create!(
   content: test_clean_one_content,
   parent: test_clean
 )
+################################################################################
 
 # Analytics
 analytics_tools_one_content = [
@@ -269,6 +278,7 @@ analytics_slide_one = Slide.create!(
   content: analytics_tools_one_content,
   parent: analytics_tools_lesson
 )
+################################################################################
 
 learn_ctree_one_content = [
   ['text', 'A classification tree is made up of interior and terminal nodes and is structured upside down so the root node is at the top and branches downwards'],
@@ -298,6 +308,7 @@ learn_ctree_slide_two = Slide.create!(
   content: learn_ctree_two_content,
   parent: learn_ctree
 )
+################################################################################
 
 apply_ctree_one_content = [
   ['text', 'To create a classification tree model we use the function rpart() in R. The arguments in the formula rpart(formula, data, method, control) are as follows:'],
@@ -355,7 +366,7 @@ apply_ctree_slide_three = Slide.create!(
   content: apply_ctree_three_content,
   parent: apply_ctree
 )
-
+################################################################################
 
 increase_score_one_content = [
   ['text', 'As you can see building these models is relatively easy! Creating accurate models however are another story. Here we will introduce the most critical skill to analyzing data. Curiousity. '],
@@ -410,6 +421,7 @@ increate_score_slide_three = Slide.create!(
   content: increase_score_three_content,
   parent: increase_score_lesson
 )
+################################################################################
 
 # Leaderboard Seed info
 mark = User.find_by(username: 'mark')
