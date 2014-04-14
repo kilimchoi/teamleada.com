@@ -101,7 +101,7 @@ basic_assignment_content_three = [
   ['next_steps', nil]
 ]
 basic_assignment_step = Step.create!(
-  title: "Mathematics 101",
+  title: "Variable Assignment 101",
   lesson: basic_operations_lesson
 )
 basic_assignment_slide_one = Slide.create!(
@@ -119,3 +119,64 @@ basic_assignment_slide_two = Slide.create!(
   parent: basic_assignment_step
 )
 ################################################################################
+basic_comparison_content_one = [
+  ['text', 'Now that we have numbers assigned to variables, we can compare the numbers.'],
+  ['text', 'Let\'s see if we can compare some of the variables we assigned above. We can do the followign comparisons:'],
+  ['text', 'Note that what get\'s returned (TRUE or FALSE) are known as Boolean/Logical data types.'],
+  ['text', 'A greater than B : \'A > B\''],
+  ['text', 'A grater than or equal to B : \'B >= A\''],
+  ['text', 'A smaller than B : \'A < B\''],
+  ['text', 'A smaller than B : \'A <= B\''],
+  ['text', 'A is equal to B : \'A == B\' Note that we have TWO equal signs here!']
+  ['next_steps', nil]
+]
+basic_comparison_content_two = [
+  ['text', 'Now let\'s try it out.'],
+  ['code', 'melon <= orange'],
+  ['code', 'grape == five'],
+  ['code', 'cake > -10'],
+  ['code', 'broccoli < 0.0'],
+  ['code', 'favorite_motorcycle == "Yamaha"'],
+  ['code', 'favorite_motorcycle == "Ducati"'],
+  ['text', 'Believe it or not, these comparisons shape the backbone of modern programming.'],
+  ['next_steps', nil]
+]
+basic_comparison_step = Step.create!(
+  title: "Comparison 101",
+  lesson: basic_operations_lesson
+)
+basic_math_slide_one = Slide.create!(
+  content: basic_comparison_content_one,
+  parent: basic_comparison_step
+)
+
+basic_math_slide_two = Slide.create!(
+  content: basic_comparison_content_two,
+  parent: basic_comparison_step
+)
+################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
