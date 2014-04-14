@@ -207,7 +207,7 @@ datatypes_lesson = Lesson.create!(
 )
 basic_operations_slide_one = Slide.create!(
   content: datatypes_intro_content_one,
-  parent: basic_operations_lesson
+  parent: datatypes_lesson
 )
 ################################################################################
 classes_content_one = [
@@ -219,7 +219,8 @@ classes_content_one = [
   ['code', 'class(TRUE)'],
   ['code', 'class(cake > broccoli) #remember what the comparison yielded?'],
   ['text', 'You don\'t have to remember or understand all the datatype; for we simply ask that you remember they exist.']
-  ['text', 'but what other data object exists?']
+  ['text', 'But what other data object exists?'],
+  ['text', 'We\'ll find out next.']
   ['next_steps', nil]
 ]
 classes_content_step = Step.create!(
@@ -228,20 +229,39 @@ classes_content_step = Step.create!(
 )
 classes_slide_one = Slide.create!(
   content: classes_content_one,
-  parent: classes_content_step
+  parent: datatypes_lesson
 )
 ################################################################################
 vectors_content_one = [
-  ['text', 'We saw numbers, strings, true/falses and more. Let\'s inspect by printing the variable and checking its type.'],
-  ['code', 'orange'],
-  ['code', 'class(orange)'],
-  ['code', 'favorite_motorcycle'],
-  ['code', 'class(favorite_motorcycle)'],
-  ['code', 'class(TRUE)'],
-  ['code', 'class(cake > broccoli) #remember what the comparison yielded?'],
-  ['text', 'You don\'t have to remember or understand all the datatype; for we simply ask that you remember they exist.']
-  ['text', 'but what other data object exists?']
+  ['text', 'We now have an idea of elemntary data types. What if we want to store multiple data points?'],
+  ['text', 'Set R aside for a moment and try to envision (in your own way) the following sequence "12" "5" "10" "2" "12"'],
+  ['text', 'Think about it... (ans below)'],
+  ['text', 'How did you do it? You probably used a list! This idea is mirrored in R as Vectors'],
+  ['text', 'Vector will be the last idea we go over here. (Note that R also has "lists", but it is a bit different)'],
+  ['text', 'Vector is one of the wyas R stores data. If you\'re comfortable with matrices, you can imagine a vector to be a single column!'],
+  ['text', 'let\'s try it'.],
   ['next_steps', nil]
+]
+vectors_content_two = [
+  ['text', 'we\'ll start by creating a simple vector'],
+  ['code', 'number_list = c(1,2,3,4)'],
+  ['code', 'words_list = c("I", "hate", "vegetables")']
+  ['text', 'We used the c() function to comine values into a list.']
+  ['text', 'Make sure to have commas, or it will error out. Try and see what error you get!']
+  ['code', 'food_opinion = c("I", "hate" "vegetables")'],
+  ['text', 'Can you intepret the message?'],
+  ['text', 'It\'s telling us that it was expecting something other than a string(word) constant in the command (i.e. it wants a comma)']
+]
+vectors_content_two = [
+  ['text', 'Note that if you mix and match, entries will generally get converted into Character/String type.'],
+  ['code', 'Note that quotes around the values. This indicates that they\'ve been converted into Character type.'],
+  ['code', 'c("I", "once", "ate", 1, "vegetable")'],
+  ['code', 'c("there", "is", 1, TRUE, "winner")']
+  ['text', 'Getting familar with error messages will help you become better faster. We promise.']
+  ['text', 'Check out the help function to learn more.'],
+  ['text', 'We encourage you to use help() to learn about functions. We\'re not always going to be around to tell you everything!'],
+  ['code', 'c'],
+  ['code', 'help(c)']
 ]
 vectors_content_step = Step.create!(
   title: "Vectors 101",
@@ -249,8 +269,55 @@ vectors_content_step = Step.create!(
 )
 vectors_slide_one = Slide.create!(
   content: vectors_content_one,
-  parent: classes_content_step
+  parent: datatypes_lesson
 )
+vectors_slide_two = Slide.create!(
+  content: vectors_content_two,
+  parent: datatypes_lesson
+)
+vectors_slide_three = Slide.create!(
+  content: vectors_content_three,
+  parent: datatypes_lesson
+)
+
+################################################################################
+################################################################################
+##Intro to DataTypes
+datatypes_intro_content_one = [
+  ['text', 'Now that we know how to do "stuff" in R, let\'s end this tutorial by going over one last concept: Data Types.'],
+  ['text', 'Every time you store a variablbe via an assignment, you\'re storing a specific Data Type.'],
+  ['text', 'Each of these datatypes belong to a class.'],
+  ['']
+  ['lesson_links', nil]
+]
+datatypes_lesson = Lesson.create!(
+  title: "Data Types",
+  project: project
+)
+basic_operations_slide_one = Slide.create!(
+  content: datatypes_intro_content_one,
+  parent: datatypes_lesson
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
