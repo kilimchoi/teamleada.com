@@ -17,6 +17,7 @@ project = Project.create!(
 ################################################################################
 puts "Created project: #{project.title}."
 ################################################################################
+################################################################################
 #@TODO INCLUDE ONBOARDING VIDEO ON RSTUDIO.
 
 ##Intro to Basics.
@@ -108,12 +109,10 @@ basic_assignment_slide_one = Slide.create!(
   content: basic_assignment_content_one,
   parent: basic_assignment_step
 )
-
 basic_assignment_slide_two = Slide.create!(
   content: basic_assignment_content_two,
   parent: basic_assignment_step
 )
-
 basic_assignment_slide_two = Slide.create!(
   content: basic_assignment_content_three,
   parent: basic_assignment_step
@@ -127,7 +126,7 @@ basic_comparison_content_one = [
   ['text', 'A grater than or equal to B : \'B >= A\''],
   ['text', 'A smaller than B : \'A < B\''],
   ['text', 'A smaller than B : \'A <= B\''],
-  ['text', 'A is equal to B : \'A == B\' Note that we have TWO equal signs here!']
+  ['text', 'A is equal to B : \'A == B\' Note that we have TWO equal signs here!'],
   ['next_steps', nil]
 ]
 basic_comparison_content_two = [
@@ -155,13 +154,46 @@ basic_math_slide_two = Slide.create!(
   parent: basic_comparison_step
 )
 ################################################################################
+################################################################################
+##Combining Intro Concepts
+combined_operations_content_one = [
+  ['text', 'Let\'s now do some operations and recap what we\'ve done!'],
+  ['code', 'melon_cake = melon + cake'],
+  ['code', 'melon_cake'],
+  ['text', 'What about this?'],
+  ['code', 'evil_cake = broccoli + cake'],
+  ['code', 'evil_cake'],
+  ['text', 'Cool, huh?'],
+  ['lesson_links', nil]
+]
+combined_operations_content_two = [
+  ['text', 'What about words/Strings? Do they all work?'],
+  ['code', 'print (personal_statement)'],
+  ['code', 'print (personal_statement + " But, " + favorite_motorcycle) #Uh oh, does this work? ;)'],
+  ['text', 'What happened? It helps to read the error (printed in read).'],
+  ['text', 'It seems scary, but if we read the error, it says "non-numeric argument to binary operator".'],
+  ['text', 'R is telling you that you can\'t apply the "+" operator to non-numric (such as string/words) data.'],
+  ['text', 'How do we get around this? The following will work, but it is just a sneak preview! We\'ll learn more later.'],
+  ['code', 'print (paste(personal_statement ,favorite_motorcycle, sep=" But, I love "))'],
+  ['project_link', 'Back to the lessons page'],
+]
 
+combined_operations_lesson = Lesson.create!(
+  title: "Basic Operations",
+  project: project
+)
 
+combined_operations_slide_one = Slide.create!(
+  content: combined_operations_content_one,
+  parent: combined_operations_lesson
+)
+combined_operations_slide_one = Slide.create!(
+  content: combined_operations_content_two,
+  parent: combined_operations_lesson
+)
 
-
-
-
-
+################################################################################
+################################################################################
 
 
 
