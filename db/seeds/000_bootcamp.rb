@@ -198,7 +198,6 @@ datatypes_intro_content_one = [
   ['text', 'Now that we know how to do "stuff" in R, let\'s end this tutorial by going over one last concept: Data Types.'],
   ['text', 'Every time you store a variablbe via an assignment, you\'re storing a specific Data Type.'],
   ['text', 'Each of these datatypes belong to a class.'],
-  ['']
   ['lesson_links', nil]
 ]
 datatypes_lesson = Lesson.create!(
@@ -283,20 +282,20 @@ vectors_slide_three = Slide.create!(
 ################################################################################
 ################################################################################
 ##Intro to DataTypes
-datatypes_intro_content_one = [
-  ['text', 'Now that we know how to do "stuff" in R, let\'s end this tutorial by going over one last concept: Data Types.'],
-  ['text', 'Every time you store a variablbe via an assignment, you\'re storing a specific Data Type.'],
-  ['text', 'Each of these datatypes belong to a class.'],
-  ['']
-  ['lesson_links', nil]
+conclusion_content_one = [
+  ['text', 'In this onboarding, we rushed you through some R concepts.'],
+  ['text', 'Though everything may not be clear, you can now do basic arithmetics in R in addition to some data manipulation.'],
+  ['text', 'Believe it or not, you\'ve finished the R bootcamp! The few, the proud, the R-rines! (ar-rines).'],
+  ['text', 'Now, we\'re going to throw you into project specific tutorials. Get ready.'],
+  ['project_link', 'Back to the lessons page']
 ]
-datatypes_lesson = Lesson.create!(
-  title: "Data Types",
+conclusion_lesson = Lesson.create!(
+  title: "Conclusion",
   project: project
 )
 basic_operations_slide_one = Slide.create!(
-  content: datatypes_intro_content_one,
-  parent: datatypes_lesson
+  content: conclusion_content_one,
+  parent: conclusion_lesson
 )
 
 
