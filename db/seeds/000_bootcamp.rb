@@ -51,7 +51,7 @@ basic_math_content_two = [
   ['code', '12 * 2'],
   ['code', '6/2'],
   ['code', '(-3) + 2'],
-  ['text', 'The same mathematical rule applies when it comes to order of operations. Try the followinga and see what you get!'],
+  ['text', 'The same mathematical rule applies when it comes to order of operations. Try the following and see what you get!'],
   ['code', '10 + 5 / 5'],
   ['next_steps', nil]
 ]
@@ -174,12 +174,12 @@ combined_operations_content_two = [
   ['text', 'It seems scary, but if we read the error, it says "non-numeric argument to binary operator".'],
   ['text', 'R is telling you that you can\'t apply the "+" operator to non-numric (such as string/words) data.'],
   ['text', 'How do we get around this? The following will work, but it is just a sneak preview! We\'ll learn more later.'],
-  ['code', 'print (paste(personal_statement ,favorite_motorcycle, sep=" But, I love "))'],
+  ['code', 'print (paste(personal_statement, favorite_motorcycle, sep=" But, I love "))'],
   ['project_link', 'Back to the lessons page'],
 ]
 
 combined_operations_lesson = Lesson.create!(
-  title: "Basic Operations",
+  title: "Combined Operations",
   project: project
 )
 
@@ -217,18 +217,18 @@ classes_content_one = [
   ['code', 'class(favorite_motorcycle)'],
   ['code', 'class(TRUE)'],
   ['code', 'class(cake > broccoli) #remember what the comparison yielded?'],
-  ['text', 'You don\'t have to remember or understand all the datatype; for we simply ask that you remember they exist.']
+  ['text', 'You don\'t have to remember or understand all the datatype; for we simply ask that you remember they exist.'],
   ['text', 'But what other data object exists?'],
-  ['text', 'We\'ll find out next.']
-  ['next_steps', nil]
+  ['text', 'We\'ll find out next.'],
+  ['project_link', 'Back to the lessons page']
 ]
 classes_content_step = Step.create!(
   title: "Classes 101",
-  lesson: basic_operations_lesson
+  lesson: datatypes_lesson
 )
 classes_slide_one = Slide.create!(
   content: classes_content_one,
-  parent: datatypes_lesson
+  parent: classes_content_step
 )
 ################################################################################
 vectors_content_one = [
@@ -238,25 +238,25 @@ vectors_content_one = [
   ['text', 'How did you do it? You probably used a list! This idea is mirrored in R as Vectors'],
   ['text', 'Vector will be the last idea we go over here. (Note that R also has "lists", but it is a bit different)'],
   ['text', 'Vector is one of the wyas R stores data. If you\'re comfortable with matrices, you can imagine a vector to be a single column!'],
-  ['text', 'let\'s try it'.],
+  ['text', 'let\'s try it.'],
   ['next_steps', nil]
 ]
 vectors_content_two = [
   ['text', 'we\'ll start by creating a simple vector'],
   ['code', 'number_list = c(1,2,3,4)'],
-  ['code', 'words_list = c("I", "hate", "vegetables")']
-  ['text', 'We used the c() function to comine values into a list.']
-  ['text', 'Make sure to have commas, or it will error out. Try and see what error you get!']
+  ['code', 'words_list = c("I", "hate", "vegetables")'],
+  ['text', 'We used the c() function to comine values into a list.'],
+  ['text', 'Make sure to have commas, or it will error out. Try and see what error you get!'],
   ['code', 'food_opinion = c("I", "hate" "vegetables")'],
   ['text', 'Can you intepret the message?'],
   ['text', 'It\'s telling us that it was expecting something other than a string(word) constant in the command (i.e. it wants a comma)']
 ]
-vectors_content_two = [
+vectors_content_three = [
   ['text', 'Note that if you mix and match, entries will generally get converted into Character/String type.'],
   ['code', 'Note that quotes around the values. This indicates that they\'ve been converted into Character type.'],
   ['code', 'c("I", "once", "ate", 1, "vegetable")'],
-  ['code', 'c("there", "is", 1, TRUE, "winner")']
-  ['text', 'Getting familar with error messages will help you become better faster. We promise.']
+  ['code', 'c("there", "is", 1, TRUE, "winner")'],
+  ['text', 'Getting familar with error messages will help you become better faster. We promise.'],
   ['text', 'Check out the help function to learn more.'],
   ['text', 'We encourage you to use help() to learn about functions. We\'re not always going to be around to tell you everything!'],
   ['code', 'c'],
@@ -264,19 +264,19 @@ vectors_content_two = [
 ]
 vectors_content_step = Step.create!(
   title: "Vectors 101",
-  lesson: basic_operations_lesson
+  lesson: datatypes_lesson
 )
 vectors_slide_one = Slide.create!(
   content: vectors_content_one,
-  parent: datatypes_lesson
+  parent: vectors_content_step
 )
 vectors_slide_two = Slide.create!(
   content: vectors_content_two,
-  parent: datatypes_lesson
+  parent: vectors_content_step
 )
 vectors_slide_three = Slide.create!(
   content: vectors_content_three,
-  parent: datatypes_lesson
+  parent: vectors_content_step
 )
 
 ################################################################################
@@ -297,6 +297,7 @@ basic_operations_slide_one = Slide.create!(
   content: conclusion_content_one,
   parent: conclusion_lesson
 )
+################################################################################
 
 
 
