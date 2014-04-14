@@ -3,9 +3,20 @@
     .col-md-12
       .projects-container
         h1.title Projects
-        .projects-list.list-group
-          - @projects.each do |project|
-            - unless project.url.nil?
-              = link_to project.title, project_path(url: project.url), class: "list-group-item"
-            - else
-              li.list-group-item.disabled = project.title
+        .projects-list.panel-group#projects
+          - @projects.each_with_index do |project, index|
+            .panel.panel-default
+              - unless project.url.nil?
+                .panel-heading
+                  h4.panel-title
+                    a href="#project#{project.id}" data-toggle="collapse" data-parent="#projects"
+                      = project.title
+                div.panel-collapse.collapse id="project#{project.id}" class="#{'in' if index == 0}"
+                  .panel-body
+                    p
+                      | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    .project-link
+                      = link_to "I'm interested!", project_interest_path(project_url: project.url), method: :post
+              - else
+                .panel-heading
+                  h4.panel-title = project.title
