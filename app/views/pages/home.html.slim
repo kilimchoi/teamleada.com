@@ -3,7 +3,7 @@
 section#intro
   .about-intro
     .trial-project-button-container
-      = link_to "Trial projects", project_lesson_path(project_url: @project.url, url: @project.lessons.first.url), class: "flat-button animated tada"
+      = link_to "Join the Revolution!", new_user_registration_path, class: "flat-button animated tada"
   .front-page-about
     h1.grabber
      | Learning data science starts here.

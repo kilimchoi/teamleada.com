@@ -31,7 +31,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(resource)
-    session.delete(:return_to)
+    projects_path
   end
 
   def after_inactive_sign_up_path_for(resource)
