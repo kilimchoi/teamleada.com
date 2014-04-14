@@ -33,7 +33,7 @@ basic_operations_lesson = Lesson.create!(
 )
 
 basic_operations_slide_one = Slide.create!(
-  content: basic_operations_content,
+  content: basic_operations_content_one,
   parent: basic_operations_lesson
 )
 ################################################################################
@@ -41,7 +41,7 @@ basic_math_content_one = [
   ['text', 'Try the basic operations.'],
   ['code', '5 + 5'],
   ['text', 'What did you get? If you got 10, good!'],
-  ['text', 'ry a few other to get a feel.'],
+  ['text', 'try a few other to get a feel.'],
   ['code', '1 - 10'],
   ['code', '12 + 178'],
   ['next_steps', nil]
@@ -191,16 +191,66 @@ combined_operations_slide_one = Slide.create!(
   content: combined_operations_content_two,
   parent: combined_operations_lesson
 )
-
 ################################################################################
 ################################################################################
-
-
-
-
-
-
-
+##Intro to DataTypes
+datatypes_intro_content_one = [
+  ['text', 'Now that we know how to do "stuff" in R, let\'s end this tutorial by going over one last concept: Data Types.'],
+  ['text', 'Every time you store a variablbe via an assignment, you\'re storing a specific Data Type.'],
+  ['text', 'Each of these datatypes belong to a class.'],
+  ['']
+  ['lesson_links', nil]
+]
+datatypes_lesson = Lesson.create!(
+  title: "Data Types",
+  project: project
+)
+basic_operations_slide_one = Slide.create!(
+  content: datatypes_intro_content_one,
+  parent: basic_operations_lesson
+)
+################################################################################
+classes_content_one = [
+  ['text', 'We saw numbers, strings, true/falses and more. Let\'s inspect by printing the variable and checking its type.'],
+  ['code', 'orange'],
+  ['code', 'class(orange)'],
+  ['code', 'favorite_motorcycle'],
+  ['code', 'class(favorite_motorcycle)'],
+  ['code', 'class(TRUE)'],
+  ['code', 'class(cake > broccoli) #remember what the comparison yielded?'],
+  ['text', 'You don\'t have to remember or understand all the datatype; for we simply ask that you remember they exist.']
+  ['text', 'but what other data object exists?']
+  ['next_steps', nil]
+]
+classes_content_step = Step.create!(
+  title: "Classes 101",
+  lesson: basic_operations_lesson
+)
+classes_slide_one = Slide.create!(
+  content: classes_content_one,
+  parent: classes_content_step
+)
+################################################################################
+vectors_content_one = [
+  ['text', 'We saw numbers, strings, true/falses and more. Let\'s inspect by printing the variable and checking its type.'],
+  ['code', 'orange'],
+  ['code', 'class(orange)'],
+  ['code', 'favorite_motorcycle'],
+  ['code', 'class(favorite_motorcycle)'],
+  ['code', 'class(TRUE)'],
+  ['code', 'class(cake > broccoli) #remember what the comparison yielded?'],
+  ['text', 'You don\'t have to remember or understand all the datatype; for we simply ask that you remember they exist.']
+  ['text', 'but what other data object exists?']
+  ['next_steps', nil]
+]
+vectors_content_step = Step.create!(
+  title: "Vectors 101",
+  lesson: basic_operations_lesson
+)
+vectors_slide_one = Slide.create!(
+  content: vectors_content_one,
+  parent: classes_content_step
+)
 
 
 
