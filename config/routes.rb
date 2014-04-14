@@ -14,6 +14,7 @@ TeamLeada::Application.routes.draw do
 
   resources :projects, param: :url, only: [:show, :index] do
     match "submit", to: "projects#check_submission", as: "submission", via: :post
+    match "interest", to: "projects#show_interest", as: "interest", via: :post
 
     resources :lessons, param: :url, only: [:show] do
       resources :steps, param: :url, only: [:show]
