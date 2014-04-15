@@ -10,7 +10,7 @@ task :pull_blog do
 end
 
 task :generate_blog do
-  system("jekyll build --source app/static/blog --destination public/blog")
+  system("jekyll build --source app/static/blog --destination app/static/blog/_site")
 end
 
 task :blog do
