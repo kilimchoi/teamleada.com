@@ -8,7 +8,3 @@ TeamLeada::Application.load_tasks
 task :pull_blog do
   system("git submodule foreach git pull")
 end
-
-task :generate_blog do
-  system("jekyll build --source app/static/blog --destination public/blog")
-end
