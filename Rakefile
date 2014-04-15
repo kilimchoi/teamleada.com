@@ -11,5 +11,5 @@ end
 
 task :generate_blog do
   system("cd app/static/blog")
-  system("jekyll build")
+  system("jekyll build --destination public/blog")
 end
