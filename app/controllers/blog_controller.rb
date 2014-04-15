@@ -9,7 +9,7 @@ class BlogController < ApplicationController
   end
 
   def load_blog_post
-    render file: File.join(Rails.root, 'app', 'compiled', 'blog', "#{params[:path]}")
+    render file: File.join(Rails.root, 'app', 'compiled', 'blog/blog', "#{params[:path]}", "index.html")
   end
 
 end
