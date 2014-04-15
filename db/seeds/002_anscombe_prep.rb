@@ -71,7 +71,7 @@ vector_data_slide_one = Slide.create!(
   content: vector_data_content_one,
   parent: vector_data_step
 )
-vector_data_slide_one = Slide.create!(
+vector_data_slide_two = Slide.create!(
   content: vector_data_content_two,
   parent: vector_data_step
 )
@@ -112,7 +112,7 @@ matrix_data_slide_one = Slide.create!(
   content: matrix_data_content_one,
   parent: matrix_data_step
 )
-matrix_data_slide_one = Slide.create!(
+matrix_data_slide_two = Slide.create!(
   content: matrix_data_content_two,
   parent: matrix_data_step
 )
@@ -150,7 +150,7 @@ dataframe_data_slide_one = Slide.create!(
   content: dataframe_data_content_one,
   parent: dataframe_data_step
 )
-dataframe_data_slide_one = Slide.create!(
+dataframe_data_slide_two = Slide.create!(
   content: dataframe_data_content_two,
   parent: dataframe_data_step
 )
@@ -202,14 +202,62 @@ matrix_access_slide_one = Slide.create!(
   content: matrix_access_content_one,
   parent: matrix_access_step
 )
-matrix_access_slide_one = Slide.create!(
+matrix_access_slide_two = Slide.create!(
   content: matrix_access_content_two,
   parent: matrix_access_step
 )
 ################################################################################
 
+dataframe_access_content_one = [
+	['text', 'Now we\'re nearing the end of our DataFrame crash course!'],
+	['text', 'Since we saw how to get a single column from a dataframe (via $), we\'ll see how to access a subset.'],
+	['code', 'my_dataframe'],
+	['code', 'my_dataframe$my_numbers'],
+	['code', 'my_dataframe$my_numbers[1]'],
+	['code', 'my_dataframe$my_numbers[1:3]'],
+	['code', 'my_dataframe$my_numbers[1:10]'],
+	['code', 'my_dataframe$my_numbers[1,]'],
+	['text', 'Did all of it work?'],
+]
+dataframe_access_content_two = [
+	['text', 'We first chose my_numbers column via "$". Appending the "[1]" returned the first entry from that column.'],
+	['text', 'Next, instead of [1], we changed to [1:3] to get index 1 through 3.'],
+	['text', 'You might have noticed that [1:10] returned a bunch of NAs. R tries to fill the missing values with "NA".'],
+	['text', '"NA" basically means empty/missing'],
+	['text', 'What about the one with comma?'],
+	['code', 'my_dataframe$my_numbers[1,]'],
+	['text', 'It didn\'t work!'],
+	['text', 'Don\'t panic though, let\'s interpret the error.'],
+]
 
+dataframe_access_content_three = [
+	['text', 'R tells us that there is an error, namely "incorrect number of dimensions".'],
+	['text', 'This is because "[1,]" tries to access a row.'],
+	['text', 'But since the column is a single-dimension vector, if we try to access a row (in a 2-dimensional context), R complains.'],
+	['text', 'However this means that "[1,]" can be applied to any 2-dimensional data. Dataframe is one of them.'],
+	['code', 'my_dataframe[1,]'],
+	['code', 'my_dataframe[,1]'],
+	['text', 'This does give us another way of accessing coumns/rows in dataframe.'],
+	['text', 'However, this is confusing so we\'ll ignore it (for now).'],
+]
+dataframe_access_step = Step.create!(
+  title: "Accessing dataframe",
+  lesson: data_object_lesson
+)
 
+dataframe_access_slide_one = Slide.create!(
+  content: dataframe_access_content_one,
+  parent: dataframe_access_step
+)
+dataframe_access_slide_two = Slide.create!(
+  content: dataframe_access_content_two,
+  parent: dataframe_access_step
+)
+dataframe_access_slide_three = Slide.create!(
+  content: dataframe_access_content_three,
+  parent: dataframe_access_step
+)
+################################################################################
 
 
 
