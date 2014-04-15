@@ -140,6 +140,7 @@ dataframe_data_content_two = [
 	['code', 'my_dataframe[1]'],
 	['code', 'my_dataframe[2]'],
 	['text', 'For now, this isn\'t recommended so we won\'t be using this until you\'re more comfortable with R.'],
+	['project_link', 'Back to the lessons page'],
 ]
 dataframe_data_step = Step.create!(
   title: "Data Frame",
@@ -172,7 +173,6 @@ data_access_slide_one = Slide.create!(
   parent: data_access_lesson
 )
 ################################################################################
-
 matrix_access_content_one = [
 	['text', 'Now to access the data we stored. You can specifiy which data point to access by specifying the row and col numbers.'],
 	['code', 'test_matrix = matrix(c(1,2,3,4, 5, 6), nrow=3, ncol=2)'],
@@ -239,6 +239,7 @@ dataframe_access_content_three = [
 	['code', 'my_dataframe[,1]'],
 	['text', 'This does give us another way of accessing coumns/rows in dataframe.'],
 	['text', 'However, this is confusing so we\'ll ignore it (for now).'],
+	['project_link', 'Back to the lessons page'],
 ]
 dataframe_access_step = Step.create!(
   title: "Accessing dataframe",
@@ -273,20 +274,60 @@ function_main_content = [
 	['text', 'Voila! We\'re applying the "summary" function to a vector we substted from our dataframe!'],
   ['lesson_links', nil]
 ]
-
 function_lesson = Lesson.create!(
   title: "Functions ()",
   project: project
 )
-
 data_access_slide_one = Slide.create!(
   content: function_main_content,
   parent: function_lesson
 )
 ################################################################################
 
+plot_function_content_one = [
+	['text', 'One of the important function we\'ll use in Anscombe is the plot() function.'],
+	['text', 'As you may have guessed, it plots stuff!'],
+	['text', 'So how do we use it? Well, ask for help!'],
+	['text', 'help(plot) #Note that we omitted the "()" following plot(). This is the convention for help.'],
+	['text', 'Usage gives us the specificiation of the function. Don\'t worry about the "(...)" for now.'],
+	['text', 'It says to give it X and Y. Simple enough!'],
+	['code', 'x_to_plot = c(1,2,3)'],
+	['code', 'y_to_plot = c(1,2,3)'],
+	['code', 'plot(x_to_plot, y_to_plot, main="first plot woot!")'],
+]
 
-dataframe_data_content_two = [
+plot_function_content_two = [
+	['text', 'Our first plot! :)'],
+	['text', 'plot is our primary means of data vizualization.'],
+	['text', 'Don\'t worry about the "main=" part, yet (look in help() if you\'re curiou).'],
+	['text', 'Note that R also gives you the tilda (~) option in plotting.'],
+	['code', 'plot(y_to_plot ~ x_to_plot, main="second plot yea!")'],
+	['text', 'This means plot y_to_plot against x_to_plot. It produces the same plot as before! (with a changed title)'],
+	['text', 'Congratz! Now you know how to plot simple graphs!'],
+	['text', 'Rember that help(plot) will always give you examples at the bottom!'],
+  ['project_link', 'Back to the lessons page'],
+]
+plot_function_step = Step.create!(
+  title: "Accessing dataframe",
+  lesson: function_lesson
+)
+
+plot_function_slide_one = Slide.create!(
+  content: plot_function_content_one,
+  parent: plot_function_step
+)
+plot_function_slide_two = Slide.create!(
+  content: plot_function_content_two,
+  parent: plot_function_step
+)
+
+################################################################################
+
+
+
+
+
+plot_function_content_one = [
 	['', ''],
 	['', ''],
 	['', ''],
@@ -301,7 +342,6 @@ dataframe_data_content_two = [
 	['', ''],
 	['', ''],
 ]
-
 
 
 
