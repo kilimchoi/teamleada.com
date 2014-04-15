@@ -21,5 +21,6 @@ TeamLeada::Application.routes.draw do
     end
   end
 
-  match "*path", :to => "pages#404", via: :get
+  match "css/*path", to: "blog#load_stylesheets", via: :get
+  match "*path", to: "pages#error", via: :get
 end

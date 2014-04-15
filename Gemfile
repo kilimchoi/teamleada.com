@@ -36,6 +36,13 @@ group :development, :test do
   gem 'rspec-rails', '~> 2.14.1'
 end
 
+group :development do
+  # For the blog
+  gem "github-pages"
+  gem "tzinfo-data"
+  gem "foreman",  "~> 0.63"
+end
+
 group :production do
   gem 'rails_12factor'
   gem 'newrelic_rpm'
