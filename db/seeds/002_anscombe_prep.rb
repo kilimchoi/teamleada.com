@@ -19,8 +19,9 @@ project = Project.create!(
 puts "Created project: #{project.title}."
 ################################################################################
 ################################################################################
+#Create
 data_object_content = [
-  ['text', 'We\'ll be focusing on the following data obejcts'],
+  ['text', 'We\'ll be focusing on creating following data obejcts'],
   ['lesson_links', nil]
 ]
 
@@ -154,7 +155,23 @@ datarame_data_slide_one = Slide.create!(
   parent: datarame_data_step
 )
 ################################################################################
+################################################################################
+#Access
+data_access_content = [
+  ['text', 'Now that we saw how to create the data accesss, we\'ll see how to access them here.'],
+  ['lesson_links', nil]
+]
 
+data_access_lesson = Lesson.create!(
+  title: "Accessing Data accesss",
+  project: project
+)
+
+data_access_slide_one = Slide.create!(
+  content: data_access_content,
+  parent: data_access_lesson
+)
+################################################################################
 
 dataframe_data_content_two = [
 	['', ''],
