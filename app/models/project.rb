@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
   require 'csv'
+  serialize :description, Array
 
   has_many :lessons
   has_many :submissions

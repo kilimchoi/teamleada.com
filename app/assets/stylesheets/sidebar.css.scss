@@ -1,0 +1,64 @@
+.sidebar {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  z-index: 100;
+  width: 300px;
+  height: 100%;
+  background: $founders-rock-blue;
+  color: white;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  overflow-y: scroll;
+}
+
+.sidebar-title {
+  margin: 20px;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  padding: 0;
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+.sidebar-lessons {
+  margin-top: 30px;
+}
+
+.sidebar-lesson,
+.sidebar-step,
+.sidebar-next-step {
+  padding: 10px 0px 10px 0px;
+  line-height: 1.2em;
+
+  &:hover {
+    background-color: $light-blue;
+  }
+}
+
+.sidebar-lesson {
+  padding-left: 20px;
+}
+
+.sidebar-step {
+  padding-left: 40px;
+}
+
+.sidebar-next-step {
+  padding-left: 60px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0px;
+}
+
+.sidebar-active {
+  background-color: $light-blue;
+}
+

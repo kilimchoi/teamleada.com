@@ -15,7 +15,6 @@
 //= require bootstrap
 
 $(document).ready(function() {
-
   $(".header-link").click(function(event) {
     event.preventDefault();
 

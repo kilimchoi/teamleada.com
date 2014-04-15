@@ -22,5 +22,11 @@ html
   body
     = render partial: "layouts/header"
     #page-container
+      = render partial: "shared/flash"
+      - if params[:controller] == "lessons" || params[:controller] == "steps"
+        - unless @lesson.nil?
+          = render partial: "projects/sidebar", locals: {project: @lesson.project}
+        - unless @step.nil?
+          = render partial: "projects/sidebar", locals: {project: @step.main_lesson.project}
       = yield
       = render partial: "layouts/footer"

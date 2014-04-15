@@ -8,6 +8,8 @@ class Lesson < ActiveRecord::Base
   has_one :next_lesson
   has_one :previous_lesson
 
+  has_many :slides, as: :parent
+
   before_create :set_url
   validates_uniqueness_of :title, scope: :project_id
 

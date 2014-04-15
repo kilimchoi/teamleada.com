@@ -3,9 +3,10 @@
  *= require reveal-theme/simple
  */
 
-@import "reveal_overrides";
 @import "mixins";
 
 @import "colors";
 @import "main";
 @import "buttons";
+@import "sidebar";
+@import "reveal_overrides";

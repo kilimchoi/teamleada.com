@@ -47,3 +47,8 @@ Since we use Git to deploy to Heroku, this file won't be included, so you'll hav
 * [Deployment (t)](http://teamleada-stage-t.herokuapp.com)
 * [Deployment (b)](http://teamleada-stage-b.herokuapp.com)
 * [Deployment (m)](http://teamleada-stage-m.herokuapp.com)
+
+## To clear the db (be careful):
+
+    heroku pg:reset DATABASE --app teamleada-stage
+    heroku run rake db:setup --app teamleada-stage

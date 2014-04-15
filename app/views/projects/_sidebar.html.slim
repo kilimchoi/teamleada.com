@@ -1,0 +1,12 @@
+.sidebar
+  h3.sidebar-title = link_to project.title, project_path(url: project.url)
+
+  ul.sidebar-lessons
+    - project.lessons.each do |lesson|
+      = active_sidebar_link lesson.title, project_lesson_path(project_url: project.url, url: lesson.url), class: "sidebar-lesson"
+      ul.sidebar-steps
+        - lesson.steps.each do |step|
+          = active_sidebar_link step.title, project_lesson_step_path(project_url: project.url, lesson_url: lesson.url, url: step.url), class: "sidebar-step"
+          ul.next-steps
+            - step.next_steps.each do |next_step|
+              = active_sidebar_link next_step.title, project_lesson_step_path(project_url: project.url, lesson_url: lesson.url, url: next_step.url), class: "sidebar-next-step"
