@@ -322,26 +322,28 @@ plot_function_slide_two = Slide.create!(
 )
 
 ################################################################################
-
-
-
-
-
-plot_function_content_one = [
-	['', ''],
-	['', ''],
-	['', ''],
-	['', ''],
-	['', ''],
-	['', ''],
-	['', ''],
-	['', ''],
-	['', ''],
-	['', ''],
-	['', ''],
-	['', ''],
-	['', ''],
+summary_content_one = [
+	['text', 'You\'re now finished with the Anscombe bootcamp.'],
+	['text', 'You saw how to:'],
+	['text', ' - create/comare/access vectors.'],
+	['text', ' - create/access matrices.'],
+	['text', ' - create/access/subset dataframes. It is really similar to matrices!'],
+	['text', ' - understand the basics behind functions.'],
+	['text', 'Don\'t worry if you don\'t fully grasp all the concepts.'],
+	['text', 'You\'ll become more familair as you do the data projects. This bootcamp is just to get you the "feel".'],
+	['text', 'You\'re now ready to take on Anscombe. Charge on!'],
+	['project_link', 'Back to the lessons page'],
 ]
+summary_lesson = Lesson.create!(
+  title: "Summary",
+  project: project
+)
+
+summary_slide_one = Slide.create!(
+  content: summary_content_one,
+  parent: summary_lesson
+)
+################################################################################
 
 
 
