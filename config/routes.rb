@@ -21,6 +21,11 @@ TeamLeada::Application.routes.draw do
     end
   end
 
+  # Blog routes
+  match "blog", to: "blog#home", via: :get
+  match "blog/*path", to: "blog#load_blog_post", via: :get
   match "css/*path", to: "blog#load_stylesheets", via: :get
+
+  # 404 page routes
   match "*path", to: "pages#error", via: :get
 end
