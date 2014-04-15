@@ -2,9 +2,9 @@
 #Main Page
 main_page_content = [
   ['text', 'This quick intro will get you through project Anscombe (ahns-kohm-bees).'],
-  ['text', 'Majority of what we\'ll cover in this quick intro is functions and more data types.'],
-  ['text', 'knowing the different data types is important, because it holds data.'],
-  ['text', 'Ultimately if you\'re working with data, thee most important concept is accessing and storing data.']
+  ['text', 'We\'ll be focusing on Data Objects and Function'],
+  ['text', 'Knowing the different data objects is important, because data objects hold data.'],
+  ['text', 'Ultimately if you\'re working with data, thee most important concept is accessing and storing data.'],
   ['text', 'Happy Learning!']
 ]
 
@@ -43,27 +43,27 @@ vector_data_content_one = [
   ['text', 'Unlike most programming languages, R starts indexing at 1 instead o 0!'],
   ['code', 'vector_one[1]'],
   ['code', 'vector_one[4]'],
-  ['text', 'what about invalid requests?'],
+  ['text', 'What about invalid requests?'],
   ['code', 'vector_one[0]'],
   ['code', 'vector_one[10]'],
 ]
 vector_data_content_two = [
   ['text', 'Note that you con consider the vector as a matrix vector.'],
-  ['code', 'This means you can apply elementary oeprations via scalar operations, as shown below.'],
+  ['text', 'This means you can apply elementary oeprations via scalar operations, as shown below.'],
   ['code', 'bigger_vector = vector_one * 5'],
   ['code', 'bigger_vector'],
-  ['code', 'bigger_vector == vector_one #remember that '=' assigns values, whereas '==' compares them.'],
+  ['code', 'bigger_vector == vector_one #remember that \'=\' assigns values, whereas \'==\' compares them.'],
   ['text', 'This means vector wise comparison works too!'],
   ['code', 'bigger_vector == (vector_one * 5)'],
   ['code', 'bigger_vector - vector_one'],
   ['code', 'class(bigger_vector)'],
   ['text', 'Keep in mind that we\'re not assigning the result from the operations above;'],
-  ['text', 'this means the values are printed, and then lost. All most reeasons for us to use data types to save them!'],
+  ['text', 'This means the values are printed, and then lost. All most reeasons for us to use data types to save them!'],
   ['next_steps', nil]
 ]
 
 vector_data_step = Step.create!(
-  title: "Vectors",
+  title: "Construct Vectors",
   lesson: data_object_lesson
 )
 
@@ -85,12 +85,12 @@ matrix_data_content_one = [
 	['code','col_wise'],
 	['code','class(col_wise)'],
 	['text','Can you guess how this works?'],
-	['text','we feed it the vector data via "data=" option.'],
-	['text','we\'ll tell it how many rows and columns via "nrow=" and "ncol=" option.'],
-	['text','byrow specifies the order in which we populate the matrix row-wise or column-wise.'],
+	['text','We feed it the vector data via "data=" option.'],
+	['text','We\'ll tell it how many rows and columns via "nrow=" and "ncol=" option.'],
+	['text','\'byrow\' specifies the order in which we populate the matrix row-wise or column-wise.'],
 ]
 matrix_data_content_two = [
-	['text', 'what about a mal-formed requests? Try it! We encourage you to try weird things. Who knows, it might work ;)'],
+	['text', 'What about a mal-formed requests? Try it! We encourage you to try weird things. Who knows, it might work ;)'],
 	['text', 'We try to create a 10 by 10 matrx below, while only giving it 6 data points. What happens?'],
 	['code', 'weird_matrix = matrix(data=c(3, 4, 5, 6, 7, 8), nrow=10, ncol=10, byrow = TRUE)'],
 	['text', 'You get a warning message. But did it work? YES! R tries to create the matrix.'],
@@ -100,11 +100,11 @@ matrix_data_content_two = [
 	['text', 'Wherelse could you have gotten that information?'],
 	['code', 'help(matrix)'],
 	['text', 'WOAH! It offers the same information we just imparted. It also has useful examples at the very bottom.'],
-	['text', 'help is always there if you need it.'],
+	['text', 'Help is always there if you need it.'],
 ]
 
 matrix_data_step = Step.create!(
-  title: "Matrix",
+  title: "Construct Matrices",
   lesson: data_object_lesson
 )
 
@@ -143,7 +143,7 @@ dataframe_data_content_two = [
 	['project_link', 'Back to the lessons page'],
 ]
 dataframe_data_step = Step.create!(
-  title: "Data Frame",
+  title: "Construct Data Frames",
   lesson: data_object_lesson
 )
 
@@ -195,7 +195,7 @@ matrix_access_content_two = [
 
 matrix_access_step = Step.create!(
   title: "Accessing Matrix",
-  lesson: data_object_lesson
+  lesson: data_access_lesson
 )
 
 matrix_access_slide_one = Slide.create!(
@@ -243,7 +243,7 @@ dataframe_access_content_three = [
 ]
 dataframe_access_step = Step.create!(
   title: "Accessing dataframe",
-  lesson: data_object_lesson
+  lesson: data_access_lesson
 )
 
 dataframe_access_slide_one = Slide.create!(
@@ -266,7 +266,7 @@ function_main_content = [
   ['text', 'Remember when we called class(some_stuff_here)?'],
 	['text', 'The "function_name(target)" does [something] with the given "target" (formally, parameters).'],
 	['code', 'class(1)'],
-	['code', 'The above function is called class, and it works on the number we gave it, namely "1".'],
+	['text', 'The above function is called class, and it works on the number we gave it, namely "1".'],
 	['code', 'summary(1)'],
 	['text', 'The above function does is called summary, and it gives us a summary of the data.'],
 	['text', '1 isn\'t interesting, so let\'s try something else.'],
@@ -288,7 +288,8 @@ plot_function_content_one = [
 	['text', 'One of the important function we\'ll use in Anscombe is the plot() function.'],
 	['text', 'As you may have guessed, it plots stuff!'],
 	['text', 'So how do we use it? Well, ask for help!'],
-	['text', 'help(plot) #Note that we omitted the "()" following plot(). This is the convention for help.'],
+	['code', 'help(plot)'],
+	['text', 'Note that we omitted the "()" following plot(). This is the convention for help.'],
 	['text', 'Usage gives us the specificiation of the function. Don\'t worry about the "(...)" for now.'],
 	['text', 'It says to give it X and Y. Simple enough!'],
 	['code', 'x_to_plot = c(1,2,3)'],
@@ -298,7 +299,7 @@ plot_function_content_one = [
 
 plot_function_content_two = [
 	['text', 'Our first plot! :)'],
-	['text', 'plot is our primary means of data vizualization.'],
+	['text', 'Plot is our primary means of data vizualization.'],
 	['text', 'Don\'t worry about the "main=" part, yet (look in help() if you\'re curiou).'],
 	['text', 'Note that R also gives you the tilda (~) option in plotting.'],
 	['code', 'plot(y_to_plot ~ x_to_plot, main="second plot yea!")'],
@@ -308,7 +309,7 @@ plot_function_content_two = [
   ['project_link', 'Back to the lessons page'],
 ]
 plot_function_step = Step.create!(
-  title: "Accessing dataframe",
+  title: "Plotting via plot()",
   lesson: function_lesson
 )
 
