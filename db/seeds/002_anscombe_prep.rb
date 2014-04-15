@@ -141,18 +141,18 @@ dataframe_data_content_two = [
 	['code', 'my_dataframe[2]'],
 	['text', 'For now, this isn\'t recommended so we won\'t be using this until you\'re more comfortable with R.'],
 ]
-datarame_data_step = Step.create!(
+dataframe_data_step = Step.create!(
   title: "Data Frame",
   lesson: data_object_lesson
 )
 
-datarame_data_slide_one = Slide.create!(
-  content: datarame_data_content_one,
-  parent: datarame_data_step
+dataframe_data_slide_one = Slide.create!(
+  content: dataframe_data_content_one,
+  parent: dataframe_data_step
 )
-datarame_data_slide_one = Slide.create!(
-  content: datarame_data_content_two,
-  parent: datarame_data_step
+dataframe_data_slide_one = Slide.create!(
+  content: dataframe_data_content_two,
+  parent: dataframe_data_step
 )
 ################################################################################
 ################################################################################
@@ -173,24 +173,40 @@ data_access_slide_one = Slide.create!(
 )
 ################################################################################
 
-dataframe_data_content_two = [
-	['', ''],
-	['', ''],
-	['', ''],
-	['', ''],
-	['', ''],
-	['', ''],
-	['', ''],
-	['', ''],
-	['', ''],
-	['', ''],
-	['', ''],
-	['', ''],
-	['', ''],
+matrix_access_content_one = [
+	['text', 'Now to access the data we stored. You can specifiy which data point to access by specifying the row and col numbers.'],
+	['code', 'test_matrix = matrix(c(1,2,3,4, 5, 6), nrow=3, ncol=2)'],
+	['code', 'test_matrix[1,1]'],
+	['code', 'test_matrix[1,10]'],
+	['code', 'test_matrix[1,100]'],
+	['code', 'test_matrix[1,1000]'],
+	['text', 'Does this work?'],
 ]
 
+matrix_access_content_two = [
+	['text', 'What if you only have one of the numbers? Try it!'],
+	['text', 'Do you see a difference between commas and no commas?'],
+	['code', 'test_matrix'],
+	['code', 'test_matrix[2]'],
+	['code', 'test_matrix[2,]'],
+	['code', 'test_matrix[,2]'],
+	['text', 'Play around, you should notice a specific behavior.'],
+]
 
+matrix_access_step = Step.create!(
+  title: "Accessing Matrix",
+  lesson: data_object_lesson
+)
 
+matrix_access_slide_one = Slide.create!(
+  content: matrix_access_content_one,
+  parent: matrix_access_step
+)
+matrix_access_slide_one = Slide.create!(
+  content: matrix_access_content_two,
+  parent: matrix_access_step
+)
+################################################################################
 
 
 
