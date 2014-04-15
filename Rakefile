@@ -10,6 +10,5 @@ task :pull_blog do
 end
 
 task :generate_blog do
-  system("cd app/static/blog")
-  system("jekyll build --destination public/blog")
+  system("jekyll build --source app/static/blog --destination public/blog")
 end
