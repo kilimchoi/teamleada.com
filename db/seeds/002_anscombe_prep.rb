@@ -258,7 +258,32 @@ dataframe_access_slide_three = Slide.create!(
   parent: dataframe_access_step
 )
 ################################################################################
+################################################################################
+#Function
+function_main_content = [
+  ['text', 'We\'ll also quickly go over the idea of functions here:'],
+  ['text', 'Remember when we called class(some_stuff_here)?'],
+	['text', 'The "function_name(target)" does [something] with the given "target" (formally, parameters).'],
+	['code', 'class(1)'],
+	['code', 'The above function is called class, and it works on the number we gave it, namely "1".'],
+	['code', 'summary(1)'],
+	['text', 'The above function does is called summary, and it gives us a summary of the data.'],
+	['text', '1 isn\'t interesting, so let\'s try something else.'],
+	['code', 'summary(my_dataframe$my_numbers)'],
+	['text', 'Voila! We\'re applying the "summary" function to a vector we substted from our dataframe!'],
+  ['lesson_links', nil]
+]
 
+function_lesson = Lesson.create!(
+  title: "Functions ()",
+  project: project
+)
+
+data_access_slide_one = Slide.create!(
+  content: function_main_content,
+  parent: function_lesson
+)
+################################################################################
 
 
 dataframe_data_content_two = [
