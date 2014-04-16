@@ -31,7 +31,7 @@ section#intro
             | Compete in friendly competition to work up the Leadaboard.
           .image
             = image_tag "leadaboard.png", class: "round-with-border"
-        .col-md-4.center.slide-from-up
+        .col-md-4.center.fade-from-in
           h2#discover Discover
           p
             | Find new analysis methods and apply them to interesting data sets.
@@ -81,7 +81,7 @@ javascript:
       $(".slide-from-up").each(function(i, el) {
         if ($(el).visible(true)) {
           console.log(el);
-          $(el).addClass("slide-up");
+          //$(el).addClass("slide-up");
           //$(el).addClass("visible");
           //$(el).css('visibility', 'visible');
           //$(el).slideDown(1000);
