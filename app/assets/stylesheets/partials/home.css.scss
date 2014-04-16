@@ -185,14 +185,10 @@ section#try-project {
   font-size: 25px;
   float: right;
 }
-.fade-in, .slide-up, .slide-right, .slide-left {
+.fade-from-in {
   visibility: hidden;
+  opacity: 0;
 }
-///////////////////////////////////////#Slide crap ////////////
-.visible {
-  visibility: visible;
-}
-
 .slide-up, .slide-right, .slide-left {
   transition: transform 0.8s ease;
   -webkit-transition: -webkit-transform 0.8s ease;
@@ -202,11 +198,8 @@ section#try-project {
   visibility: visible;
 }
 .fade-in {
-  -webkit-animation: fadein 2s; /* Safari and Chrome */
-  -moz-animation: fadein 2s; /* Firefox */
-  -ms-animation: fadein 2s; /* Internet Explorer */
-  -o-animation: fadein 2s; /* Opera */
-  animation: fadein 2s;
+  opacity: 1;
+  transition: opacity 1s linear;
   visibility: visible;
 }
 .slide-up {
