@@ -189,6 +189,9 @@ section#try-project {
   visibility: hidden;
   opacity: 0;
 }
+.slide-from-up, .slide-from-right, .slide-from-left {
+  visibility: hidden;
+}
 .slide-up, .slide-right, .slide-left {
   transition: transform 0.8s ease;
   -webkit-transition: -webkit-transform 0.8s ease;
