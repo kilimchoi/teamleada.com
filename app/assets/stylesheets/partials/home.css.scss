@@ -227,7 +227,6 @@ section#try-project {
   transform: translate3d(-200%, 0, 0px);
 }
 
-
 @media (max-width: 568px) {
   .slide-left, .slide-left, .slide-left .fade-in {
     -webkit-transform: translate3d(0, 0, 0);
@@ -236,6 +235,8 @@ section#try-project {
     -o-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
     visibility: visible;
+    opacity: 1;
+    transition: opacity 1s linear;
   }
 }
 
