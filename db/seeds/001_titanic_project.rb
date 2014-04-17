@@ -1,7 +1,7 @@
 # Creates the first project on the site!
 
 main_page_content = [
-  ['text', 'This is the main page for your first data project! Choose from the options below to begin your training as a data guru and you will find yourself learning the process along the way.'],
+  ['text', 'This is the main page for the Titanic data project!'],
   ['text', 'You are tasked to predict whether a passenger survived the Titanic crash. You are given two datasets (Train & Test) each of which include predictor variables such as Age, Passenger Class, Sex, etc. We will guide you through the following:'],
   ['text', '1. Create a model which will predict whether a passenger survived using only the Train data set'],
   ['text', '2. Predict whether the passengers survived in the Test data set based on the model we created'],
@@ -19,17 +19,12 @@ project = Project.create!(
 puts "Created project: #{project.title}."
 
 welcome_lesson_slide_one_content = [
-  ['text', 'Welcome to your first Data Project by Leada! This project is taken from Kaggle, a data science competition website and is an excellent introduction into the work of data analytics! Check them out at www.kaggle.com'],
+  ['text', 'Welcome to your first data project by Leada! This project is taken from Kaggle, a data science competition website and is an excellent introduction into the work of data analytics! Check them out at www.kaggle.com'],
   ['text', 'This project is based off of the historic sinking of the Titanic; you are asked to build a model which predicts which passengers survived! Complete this project and you will have:'],
   ['text', '- Learned how to do exploratory analysis on data and create visualizations'],
   ['text', '- Learned how to clean data and make inferences on missing data'],
   ['text', '- Built a classification tree model which predicts which passengers of the Titanic crash survived'],
   ['text', '- Learned how to use your model to predict whether new passengers survived'],
-]
-
-welcome_lesson_slide_two_content = [
-  ['text', 'You will learn all of these things coding in R! Don\'t worry if you\'ve never use R before, we will walk you through every part of the way!'],
-  ['text', 'All of the learning principles here are fundamental skills for data analysts/data scientists and for anyone who wants to learn how to answer questions from data. So lets begin!'],
   ['lesson_links', nil],
 ]
 
@@ -43,40 +38,31 @@ welcome_lesson_slide_one = Slide.create!(
   parent: welcome_lesson
 )
 
-welcome_lesson_slide_two = Slide.create!(
-  content: welcome_lesson_slide_two_content,
-  parent: welcome_lesson
-)
-
 ################################################################################
 
 begin_one_content = [
-  ['text', 'To begin, you first need to install the tools necessary for data analysis! In this tutorial we will work in R. Go to the following link to onboard your computer with R, Rstudio, and setting your working directory'],
+  ['text', 'This project is for learners who have taken a programming course and are familiar with data manipulation concepts such as If/else statements, for loops, and vectors! No prior experience in R specifically is necessary.'],
+  ['text', 'This project is both a lesson and a competition! We guide you through building a basic predictive model using classification trees and into a submission onto the Leadaboard! To increase your score it is then up to you to build a better model.'],
+  ['text', 'We give some hints in the "Increase Your Score" section but it is mostly up to you to take the lesson we provided and expand upon it on your own!'],
+  ['text', 'To begin, you first need to install the tools necessary for data analysis! In this tutorial we will work in R. Go to the following link to onboard your computer with R, Rstudio, and setting your working directory.'],
   ['link', 'http://statsguys.wordpress.com/2014/03/06/installing-r-rstudio-and-setting-your-working-directory/'],
-  ['text', 'If you have already installed R, Rstudio, and are familiar with working directories, then move ahead'],
-  ['text', 'Now, download the training data from the following location: (Make sure to save the data in the directory you set above!'],
-  ['link', 'http://leada.s3.amazonaws.com/titanic_data/train.csv'],
-  ['text', 'Now for the test data:'],
-  ['link', 'http://leada.s3.amazonaws.com/titanic_data/test.csv'],
+  ['text', 'If you have already installed R, Rstudio, and are familiar with working directories, then you can skip this step'],
 ]
 
 begin_two_content = [
-  ['text', 'Now let\'s jump into the analysis.'],
-  ['text', 'First we utilize the read.csv() function to load the data into R.'],
-  ['code', 'trainData <- read.csv("train.csv", header = TRUE, stringsAsFactors = FALSE)'],
-  ['code', 'testData <- read.csv("test.csv", header = TRUE, stringsAsFactors = FALSE)'],
-  ['text', 'Lets first just guess that women died and men survived'],
-  ['code', 'Survived <- as.numeric(factor(testData$Sex, levels = c("male","female"), labels = c(0,1))) - 1'],
-  ['code', 'submission_file <- cbind(testData$PassengerId, Survived)'],
-  ['code', 'colnames(submission_file) <- c("PassengerId", "Survived")'],
-  ['code', 'write.csv(submission_file, file = "FirstSubmission", row.names = FALSE)'],
-  ['text', 'Check inside your current working directory. It\'s most likely a folder titled "Kaggle" in your desktop. Submit the file "FirstSubmission.csv" for scoring!'],
+  ['text', 'Now we will download the data we will analyze and build our predictive model. Make sure to save them in the correct working directory.'],
+  ['text', 'Download the "Train" dataset here:'],
+  ['link', 'http://leada.s3.amazonaws.com/titanic_data/train.csv'],
+  ['text', 'Download the "Test" dataset here:'],
+  ['link', 'http://leada.s3.amazonaws.com/titanic_data/test.csv'],
+  ['text', 'What you submit to Leada are predictions for whether the passengers in the "Test" dataset survived. To give you a sense for the submission file of this data project, download this file and submit it for grading! Instead of building a model we just predict that all of the males died and all of the females survived.'],
+  ['link' , 'ADD s3 link!!'],
   ['submit', nil],
   ['next_steps', nil],
 ]
 
 begin_lesson = Step.create!(
-  title: "Begin",
+  title: "How This Project Works",
   lesson: welcome_lesson
 )
 
@@ -288,7 +274,11 @@ learn_ctree_one_content = [
 
 learn_ctree_two_content = [
   ['text', 'Subsequent nodes further segment the data, for example one node is Age greater than or equal to 6.5 below the male node and results in a 0. This means that the model will classify all male observations with age greater than 6.5 as dying in the Titanic'],
+  ['image', 'c_tree.png'],
   ['text', 'What one needs to be careful of when using classification trees is the concept of "overfitting" your data. Classification tree models are very susceptible to overfiting and is one of their disadvantages for use.'],
+]
+
+learn_ctree_three_content = [
   ['text', 'In general, overfitting is when you find patterns in the data that does not generalize to new datasets. If you look hard enough, you can find patterns in any dataset.'],
   ['text', 'There are two main advantages to building a classification tree model. (1) They require very little data preparationi and cleaning. (2) Classification models are easy to interpret and explain to others!'],
   ['project_link', 'Back to the lessons page'],
@@ -306,6 +296,11 @@ learn_ctree_slide_one = Slide.create!(
 
 learn_ctree_slide_two = Slide.create!(
   content: learn_ctree_two_content,
+  parent: learn_ctree
+)
+
+learn_ctree_slide_three = Slide.create!(
+  content: learn_ctree_three_content,
   parent: learn_ctree
 )
 ################################################################################
