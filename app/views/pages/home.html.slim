@@ -12,7 +12,7 @@ section#intro
   #about
     .container
       .row
-        .col-md-12.center
+        .col-md-12.center.fade-from-in
           h1.left-align
             | The Most In-Demand Skill Today
           .row
@@ -25,21 +25,67 @@ section#intro
   #display
     .container
       .row
-        .col-md-4.center
-          h2 Learn
-          p
-            | Gain the statistics and programming skills necessary to effectively analyze data.
-          .image
-            = image_tag "datachart.png", class: "round-with-border"
-        .col-md-4.center
-          h2 Discover
-          p
-            | Find new analysis methods and apply them to interesting data sets.
-          .image
-            = image_tag "methods.png", class: "round-with-border"
-        .col-md-4.center
-          h2 Engage
+        .col-md-4.center.slide-from-right
+          h2#engage Engage
           p
             | Compete in friendly competition to work up the Leadaboard.
           .image
             = image_tag "leadaboard.png", class: "round-with-border"
+        .col-md-4.center.fade-from-in
+          h2#discover Discover
+          p
+            | Find new analysis methods and apply them to interesting data sets.
+          .image
+              = image_tag "methods.png", class: "round-with-border"
+        .col-md-4.center.slide-from-left
+          h2#learn Learn
+          p
+            | Gain the statistics and programming skills necessary to effectively analyze data.
+          .image
+            = image_tag "datachart.png", class: "round-with-border"
+
+
+javascript:
+  $(document).ready(function() {
+    //$(".slide-up").hide();
+    $.fn.visible = function(partial) {
+        var $t            = $(this),
+            $w            = $(window),
+            viewTop       = $w.scrollTop(),
+            viewBottom    = viewTop + $w.height(),
+            _top          = $t.offset().top,
+            _bottom       = _top + $t.height(),
+            compareTop    = partial === true ? _bottom : _top,
+            compareBottom = partial === true ? _top : _bottom;
+      return ((compareBottom <= viewBottom) && (compareTop >= viewTop));
+    };
+    var onScroll = $(window).scroll(function(event) {
+      $(".slide-from-right").each(function(i, el) {
+        if ($(el).visible(true)) {
+          console.log(el);
+          $(el).addClass("slide-right");
+        }
+      });
+      $(".slide-from-left").each(function(i, el) {
+        if ($(el).visible(true)) {
+          console.log(el);
+          $(el).addClass("slide-left");
+        }
+      });
+      $(".fade-from-in").each(function(i, el) {
+        if ($(el).visible(true)) {
+          console.log(el);
+          $(el).addClass("fade-in");
+        }
+      });
+      $(".slide-from-up").each(function(i, el) {
+        if ($(el).visible(true)) {
+          console.log(el);
+          //$(el).addClass("slide-up");
+          //$(el).addClass("visible");
+          //$(el).css('visibility', 'visible');
+          //$(el).slideDown(1000);
+        }
+      });
+    });
+  });
