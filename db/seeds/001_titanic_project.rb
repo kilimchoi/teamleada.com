@@ -41,7 +41,7 @@ welcome_lesson_slide_one = Slide.create!(
 ################################################################################
 
 begin_one_content = [
-  ['text', 'This project is for learners who have taken a programming course and are familiar with data manipulation concepts such as If/else statements, for loops, and vectors! No prior experience in R specifically is necessary.'],
+  ['text', 'This project is for learners who have taken a programming course and are familiar with data manipulation concepts such as If/else statements, for loops, and vectors! You are supposed to have RStudio open in parallel with our tutorial and copy and paste code snippets we provide.'],
   ['text', 'This project is both a lesson and a competition! We guide you through building a basic predictive model using classification trees and into a submission onto the Leadaboard! To increase your score it is then up to you to build a better model.'],
   ['text', 'We give some hints in the "Increase Your Score" section but it is mostly up to you to take the lesson we provided and expand upon it on your own!'],
   ['text', 'To begin, you first need to install the tools necessary for data analysis! In this tutorial we will work in R. Go to the following link to onboard your computer with R, Rstudio, and setting your working directory.'],
@@ -56,7 +56,7 @@ begin_two_content = [
   ['text', 'Download the "Test" dataset here:'],
   ['link', 'http://leada.s3.amazonaws.com/titanic_data/test.csv'],
   ['text', 'What you submit to Leada are predictions for whether the passengers in the "Test" dataset survived. To give you a sense for the submission file of this data project, download this file and submit it for grading! Instead of building a model we just predict that all of the males died and all of the females survived.'],
-  ['link' , 'ADD s3 link!!'],
+  ['link' , 'https://s3.amazonaws.com/leada/titanic_data/FirstSubmission'],
   ['submit', nil],
   ['next_steps', nil],
 ]
