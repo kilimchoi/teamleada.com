@@ -2,10 +2,12 @@
 
 main_page_content = [
   ['text', 'This is the main page for the Titanic data project!'],
-  ['text', 'You are tasked to predict whether a passenger survived the Titanic crash. You are given two datasets (Train & Test) each of which include predictor variables such as Age, Passenger Class, Sex, etc. We will guide you through the following:'],
+  ['text', 'You are tasked to predict whether a passenger survived the Titanic crash. You are given two datasets (Train & Test) each of which include passengers on the Titanic with their Age, Passenger Class, Sex, etc.'],
+  ['text', 'We will guide you through the following:'],
   ['text', '1. Create a model which will predict whether a passenger survived using only the Train data set'],
   ['text', '2. Predict whether the passengers survived in the Test data set based on the model we created'],
-  ['text', 'Then the rest is up to you. Happy Exploring!'],
+  ['text', 'Your job is to then bolster the basic model with stronger parameters and any other method you can come up with'],
+  ['text', 'Make the top of the leaderboard!'],
 ]
 
 project = Project.create!(
@@ -96,6 +98,9 @@ work_with_data_slide_one = Slide.create!(
 
 ################################################################################
 train_data_content = [
+  ['text', 'To begin working with the data we need to read in the data into R. We utilize the read.csv() function to do this.'],
+  ['code', 'trainData <- read.csv("train.csv", header = TRUE, stringsAsFactors = FALSE)'],
+  ['code', 'testData <- read.csv("test.csv", header = TRUE, stringsAsFactors = FALSE)'],
   ['text', 'To take a look at the first six rows of the "Train" dataset use the following function'],
   ['code', 'head(trainData)'],
   ['text', 'To take a look at the last six rows of the dataset use'],
@@ -152,7 +157,7 @@ train_clean_content_one = [
 ]
 
 train_clean_content_two = [
-  ['text', 'Then we loop through the observations in the dataset and add the average age accordingly'],
+  ['text', 'Then we loop through the observations in the dataset and if the age value is missing we assign it to be the mean age'],
   ['code', 'for (i in 1:nrow(trainData)) {'],
   ['code', '  if (is.na(trainData[i,6])) {'],
   ['code', '    trainData$Age[i] <- mean_age'],
@@ -201,11 +206,11 @@ test_data_step.add_required_steps([train_visualize_step, train_clean_step])
 ################################################################################
 
 test_visualize_content = [
-  ['text', 'Visualizing the "Test" dataset is important because you want to make sure that the two datasets are at least somewhat consistent with each other.'],
+  ['text', 'Visualizing the "Test" dataset is important because you want to make sure that the two datasets are consistent with each other.'],
   ['text', 'Otherwise when building a model on the "Train" dataset your creating a model for new data that has no similarity with the old data and will result in poor predictions!'],
   ['text', 'Simple checks such as creating density plots will suffice for now'],
-  ['code', 'plot(density(testData$Age, na.rm = TRUE), main ="TestData Age Density")'],
-  ['code', 'plot(density(trainData$Age, na.rm = TRUE), main ="TrainData Age Density")'],
+  ['code', 'plot(density(testData$Age, na.rm = TRUE), main = "TestData Age Density")'],
+  ['code', 'plot(density(trainData$Age, na.rm = TRUE), main = "TrainData Age Density")'],
   ['text', 'Density plots check the distribution of a variable, a distribution is the probability of being any given value in a variable. In this case its the probability of being any given age based on the datasets.'],
   ['text', 'You should see that these distributions are approximately similar. Its good to check more of the variables but we will move on.'],
   ['next_steps', nil],
@@ -366,13 +371,13 @@ apply_ctree_slide_three = Slide.create!(
 increase_score_one_content = [
   ['text', 'As you can see building these models is relatively easy! Creating accurate models however are another story. Here we will introduce the most critical skill to analyzing data. Curiousity. '],
   ['text', 'Don\'t believe us? Believe it. Knowing what data you want and can create by asking the right questions is the skill that differentiates data analysis results from the rest. This is best done by having a curiousity with the data, digging into it thoroughly, and thinking creatively.'],
-  ['text', 'For example remember back to our discovery that women were much more likely to survive than men? We determined that through the assumption the passengers adhered to "women and children first" standard. Since we have the age of our passengers, why don\'t we create a variable which also identifies children?'],
-  ['text', 'Creates a new column titled "Child"'],
+  ['text', 'For example, remember our discovery that women were much more likely to survive than men? We determined that through the assumption that the passengers adhered to the "women and children first" standard. Since we have the age of our passengers, why don\'t we create a variable which also identifies children?'],
+  ['text', 'Lets first create a new column in the "Train" dataset and title it "Child"'],
   ['code', 'trainData["Child"] <- NA'],
 ]
 
 increase_score_two_content = [
-  ['text', 'This for loop loops through each row in "Train" dataset and checks in the age column if it is less than 18. If the age is less than 18, we put a 1 in the "Child" column and if it is greater than 18 we put a 2 in the column.'],
+  ['text', 'Next lets loop through each row in the "Train" dataset and check in the age column if it is less than 18. If the age is less than 18, we put a 1 in the "Child" column, and if it is greater than 18 we put a 2 in the column.'],
   ['code', 'for (i in 1:nrow(trainData)) {'],
   ['code', '  if (trainData$Age[i] <= 18) {'],
   ['code', '    trainData$Child[i] <- 1'],
