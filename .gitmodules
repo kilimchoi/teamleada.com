@@ -1,3 +1,0 @@
-[submodule "app/static/blog"]
-	path = app/static/blog
-	url = git@github.com:teamleada/blog.git
