@@ -29,7 +29,7 @@ basic_operations_content_one = [
 ]
 
 basic_operations_lesson = Lesson.create!(
-  title: "Basic Operations",
+  title: "Basic Expressions",
   project: project
 )
 
@@ -185,7 +185,7 @@ combined_operations_content_two = [
 ]
 
 combined_operations_lesson = Lesson.create!(
-  title: "Combined Operations",
+  title: "Combined Expressions",
   project: project
 )
 
