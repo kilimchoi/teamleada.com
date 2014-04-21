@@ -7,6 +7,7 @@ def generate_link(bucket, object_path, expiration_time)
 	Usage: generate_link("leada", "handbook/Handbook_Pt2.pdf", 36.hours.from_now)
 	'''
 	s3 = AWS::S3.new(
+		#The keys are not currently set.
 		:access_key_id => ENV["AWS_KEY_ID"],
 		:secret_access_key => ENV["AWS_ACCESS_KEY"]
 		)
