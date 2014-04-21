@@ -1,8 +1,9 @@
 # Creates the anscombe project on the site!
 #Main Page
 main_page_content = [
-  ['text', 'We\'ll be going over some basic R operations here.'],
-  ['text', 'We\'re technically using the language R, while using the IDE (interactive development environment) of RStudio'],
+  ['text', 'This bootcamp is for first time R users and first time programmers. If you have programming experience the topics in this bootcamp may be too basic for you.'],
+  ['text', 'If you are a first time user, make sure you have also watched our "Onboarding R/RStudio Video"'],
+  ['text', 'We\'re using the language R, while using the IDE (interactive development environment) of RStudio. RStudio is basically software which provides an easier interface to using R.'],
   ['text', 'R is a language designed with the users in mind. Many people find it easy to use and inuitive.'],
   ['text', 'Happy Learning!']
 ]
@@ -28,7 +29,7 @@ basic_operations_content_one = [
 ]
 
 basic_operations_lesson = Lesson.create!(
-  title: "Basic Operations",
+  title: "Basic Expressions",
   project: project
 )
 
@@ -184,7 +185,7 @@ combined_operations_content_two = [
 ]
 
 combined_operations_lesson = Lesson.create!(
-  title: "Combined Operations",
+  title: "Combined Expressions",
   project: project
 )
 
