@@ -17,6 +17,7 @@ class ProjectsController < ApplicationController
     if params[:file].nil?
       flash[:error] = "You must provide a submission file."
       redirect_to :back
+      return
     end
     score = @project.check_submission(params[:file])
     @submission = Submission.new(project: @project, user: current_user, score: score)
