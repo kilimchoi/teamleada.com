@@ -8,12 +8,12 @@ main_page_content = [
   ['text', 'Happy Learning!']
 ]
 
-project = Project.create!(
+project = Project.where(
   title: "R Bootcamp",
   description: main_page_content,
   number: 0,
   enabled: true
-)
+).first_or_create
 
 ################################################################################
 puts "Created project: #{project.title}."
