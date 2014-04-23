@@ -285,7 +285,7 @@ vectors_slide_three = Slide.create!(
 ################################################################################
 ##Intro to DataTypes
 conclusion_content_one = [
-  ['text', 'In this R bootcamp, we taught you how to write basic expressions in R as well as the basis of data types in the R language.'],
+  ['text', 'In this R bootcamp, we taught you how to write basic expressions in R as well as the basics of data types in the R language.'],
   ['text', 'You can now do basic arithmetic in R in addition to some data manipulation.'],
   ['text', 'Now, we\'re going to throw you into project specific tutorials. Get ready.'],
   ['project_link', 'Back to the lessons page']
