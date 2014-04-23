@@ -36,7 +36,7 @@ data_object_slide_one = Slide.create!(
 )
 ################################################################################
 vector_data_content_one = [
-  ['text', 'Previously way we saw how to store data in a vector.'],
+  ['text', 'Previously we saw how to store data in a vector.'],
   ['code', 'vector_one = c(1,2,3,4,5,6)'],
   ['code', 'vector_one'],
   ['text', 'To access data in the vector, simply indicate which location (or index) you want to see.'],
@@ -48,17 +48,17 @@ vector_data_content_one = [
   ['code', 'vector_one[10]'],
 ]
 vector_data_content_two = [
-  ['text', 'Note that you con consider the vector as a matrix vector.'],
+  ['text', 'Note that you can consider the vector as a matrix vector.'],
   ['text', 'This means you can apply elementary oeprations via scalar operations, as shown below.'],
   ['code', 'bigger_vector = vector_one * 5'],
   ['code', 'bigger_vector'],
-  ['code', 'bigger_vector == vector_one #remember that \'=\' assigns values, whereas \'==\' compares them.'],
+  ['code', 'bigger_vector == vector_one #remember that \'=\' assigns values, whereas \'==\' compares.'],
   ['text', 'This means vector wise comparison works too!'],
   ['code', 'bigger_vector == (vector_one * 5)'],
   ['code', 'bigger_vector - vector_one'],
   ['code', 'class(bigger_vector)'],
-  ['text', 'Keep in mind that we\'re not assigning the result from the operations above;'],
-  ['text', 'This means the values are printed, and then lost. All most reeasons for us to use data types to save them!'],
+  ['text', 'Keep in mind that we\'re not assigning the result from the minus operations above;'],
+  ['text', 'This means the values are printed, and then lost. All most reasons for us to use data types to save them!'],
   ['next_steps', nil]
 ]
 
@@ -78,7 +78,7 @@ vector_data_slide_two = Slide.create!(
 ################################################################################
 
 matrix_data_content_one = [
-	['text' ,'A natural extension of a single vector/vector is the Matrix.'],
+	['text' ,'A natural extension of Vectors is the Matrix.'],
 	['code','row_wise = matrix(data=c(3, 4, 5, 6, 7, 8), nrow=2, ncol=3, byrow = TRUE)'],
 	['code','col_wise = matrix(data=c(3, 4, 5, 6, 7, 8), nrow=2, ncol=3, byrow = FALSE)'],
 	['code','row_wise'],
@@ -87,7 +87,7 @@ matrix_data_content_one = [
 	['text','Can you guess how this works?'],
 	['text','We feed it the vector data via "data=" option.'],
 	['text','We\'ll tell it how many rows and columns via "nrow=" and "ncol=" option.'],
-	['text','\'byrow\' specifies the order in which we populate the matrix row-wise or column-wise.'],
+	['text','"byrow" specifies the order in which we populate the matrix: row-wise or column-wise.'],
 ]
 matrix_data_content_two = [
 	['text', 'What about a mal-formed requests? Try it! We encourage you to try weird things. Who knows, it might work ;)'],
@@ -125,7 +125,7 @@ dataframe_data_content_one = [
 	['code', 'my_logicals = c(FALSE, FALSE, TRUE)'],
 	['code', 'my_dataframe = data.frame(my_numbers, my_strings, my_logicals)'],
 	['text', 'All we did was append together a few vectors! Check out the dataframe we created.'],
-	['text', 'One thing to note is that the dataframe (can) contain different kinds of data (numbers, words/strings, logicals)'],
+	['text', 'The main difference is that dataframes (can) contain different kinds of data (numbers, words/strings, logicals)'],
 	['code', 'my_dataframe'],
 	['code', 'class(my_dataframe)'],
 ]
@@ -133,13 +133,13 @@ dataframe_data_content_one = [
 dataframe_data_content_two = [
 	['code', 'names(my_dataframe)'],
 	['text', 'With the name() function, we were able to acess the column names of the entries.'],
-	['text', 'We can access the columns via the "$" operator. You\'ll get used to this notation soon.'],
+	['text', 'We can access specific columns via the "$" operator. You\'ll get used to this notation soon.'],
 	['code', 'my_dataframe$my_logicals'],
 	['code', 'class(my_dataframe$my_logicals)'],
-	['text', 'You can also access columns as we did before, via column index, starting at 1'],
+	['text', 'You can also access specific columns as we did before, via column index, starting at 1'],
 	['code', 'my_dataframe[1]'],
 	['code', 'my_dataframe[2]'],
-	['text', 'For now, this isn\'t recommended so we won\'t be using this until you\'re more comfortable with R.'],
+	['text', 'For now, accessing a column via its index isn\'t recommended. We won\'t be using this until you\'re more comfortable with R.'],
 	['project_link', 'Back to the lessons page'],
 ]
 dataframe_data_step = Step.create!(
@@ -159,12 +159,12 @@ dataframe_data_slide_two = Slide.create!(
 ################################################################################
 #Access
 data_access_content = [
-  ['text', 'Now that we saw how to create the data accesss, we\'ll see how to access them here.'],
+  ['text', 'Now that we saw how to create data objects, we\'ll see how to access them here.'],
   ['lesson_links', nil]
 ]
 
 data_access_lesson = Lesson.create!(
-  title: "Accessing Data accesss",
+  title: "Accessing Data",
   project: project
 )
 
@@ -175,16 +175,16 @@ data_access_slide_one = Slide.create!(
 ################################################################################
 matrix_access_content_one = [
 	['text', 'Now to access the data we stored. You can specifiy which data point to access by specifying the row and col numbers.'],
-	['code', 'test_matrix = matrix(c(1,2,3,4, 5, 6), nrow=3, ncol=2)'],
+	['code', 'test_matrix = matrix(c(1, 2, 3, 4, 5, 6), nrow=3, ncol=2) #let\'s first create the matrix'],
 	['code', 'test_matrix[1,1]'],
 	['code', 'test_matrix[1,10]'],
 	['code', 'test_matrix[1,100]'],
 	['code', 'test_matrix[1,1000]'],
-	['text', 'Does this work?'],
+	['text', 'Do all of the above work?'],
 ]
 
 matrix_access_content_two = [
-	['text', 'What if you only have one of the numbers? Try it!'],
+	['text', 'What if you give it only one of the numbers? Try it!'],
 	['text', 'Do you see a difference between commas and no commas?'],
 	['code', 'test_matrix'],
 	['code', 'test_matrix[2]'],
@@ -209,8 +209,8 @@ matrix_access_slide_two = Slide.create!(
 ################################################################################
 
 dataframe_access_content_one = [
-	['text', 'Now we\'re nearing the end of our DataFrame crash course!'],
-	['text', 'Since we saw how to get a single column from a dataframe (via $), we\'ll see how to access a subset.'],
+	['text', 'Now we\'ll be wrapping up our DataFrame crash course!'],
+	['text', 'Since we saw how to get a single column from a dataframe (via "$"), we\'ll see how to access a particular subset.'],
 	['code', 'my_dataframe'],
 	['code', 'my_dataframe$my_numbers'],
 	['code', 'my_dataframe$my_numbers[1]'],
@@ -238,7 +238,7 @@ dataframe_access_content_three = [
 	['code', 'my_dataframe[1,]'],
 	['code', 'my_dataframe[,1]'],
 	['text', 'This does give us another way of accessing coumns/rows in dataframe.'],
-	['text', 'However, this is confusing so we\'ll ignore it (for now).'],
+	['text', 'However, this is confusing (as mentioned earlier) so we\'ll ignore accessing dataframe columns via indices (for now).'],
 	['project_link', 'Back to the lessons page'],
 ]
 dataframe_access_step = Step.create!(
@@ -262,17 +262,17 @@ dataframe_access_slide_three = Slide.create!(
 ################################################################################
 #Function
 function_main_content = [
-  ['text', 'We\'ll also quickly go over the idea of functions here:'],
-  ['text', 'Remember when we called class(some_stuff_here)?'],
-	['text', 'The "function_name(target)" does [something] with the given "target" (formally, parameters).'],
+ ['text', 'We\'ll also quickly go over the idea of functions here:'],
+ ['text', 'Remember when we called class(some_stuff_here)?'],
+	['text', 'The "function_name(target)" does [something] with access to the given "target" (formally, parameters).'],
 	['code', 'class(1)'],
 	['text', 'The above function is called class, and it works on the number we gave it, namely "1".'],
 	['code', 'summary(1)'],
-	['text', 'The above function does is called summary, and it gives us a summary of the data.'],
+	['text', 'The above function is called summary, and it gives us a summary of the data.'],
 	['text', '1 isn\'t interesting, so let\'s try something else.'],
 	['code', 'summary(my_dataframe$my_numbers)'],
-	['text', 'Voila! We\'re applying the "summary" function to a vector we substted from our dataframe!'],
-  ['lesson_links', nil]
+	['text', 'Voila! We\'re applying the "summary" function to a vector we subsetted from our dataframe!'],
+ ['lesson_links', nil]
 ]
 function_lesson = Lesson.create!(
   title: "Functions ()",
@@ -300,12 +300,12 @@ plot_function_content_one = [
 plot_function_content_two = [
 	['text', 'Our first plot! :)'],
 	['text', 'Plot is our primary means of data vizualization.'],
-	['text', 'Don\'t worry about the "main=" part, yet (look in help() if you\'re curiou).'],
+	['text', 'Don\'t worry about the "main=" part, yet (look in help() if you\'re curious).'],
 	['text', 'Note that R also gives you the tilda (~) option in plotting.'],
 	['code', 'plot(y_to_plot ~ x_to_plot, main="second plot yea!")'],
-	['text', 'This means plot y_to_plot against x_to_plot. It produces the same plot as before! (with a changed title)'],
+	['text', 'This plots "y_to_plot" against "x_to_plot". It produces the same plot as before! (with a changed title)'],
 	['text', 'Congratz! Now you know how to plot simple graphs!'],
-	['text', 'Rember that help(plot) will always give you examples at the bottom!'],
+	['text', 'Rember that help(plot) will always give you examples at the bottom.'],
   ['project_link', 'Back to the lessons page'],
 ]
 plot_function_step = Step.create!(
@@ -326,17 +326,17 @@ plot_function_slide_two = Slide.create!(
 summary_content_one = [
 	['text', 'You\'re now finished with the Anscombe bootcamp.'],
 	['text', 'You saw how to:'],
-	['text', ' - create/comare/access vectors.'],
+	['text', ' - create/compare/access vectors.'],
 	['text', ' - create/access matrices.'],
-	['text', ' - create/access/subset dataframes. It is really similar to matrices!'],
+	['text', ' - create/access/subset dataframes. (It is really similar to matrices!)'],
 	['text', ' - understand the basics behind functions.'],
 	['text', 'Don\'t worry if you don\'t fully grasp all the concepts.'],
-	['text', 'You\'ll become more familair as you do the data projects. This bootcamp is just to get you the "feel".'],
+	['text', 'You\'ll become more familair as you do the data projects. This bootcamp is just to get your feet wet.'],
 	['text', 'You\'re now ready to take on Anscombe. Charge on!'],
 	['project_link', 'Back to the lessons page'],
 ]
 summary_lesson = Lesson.create!(
-  title: "Summary",
+  title: "Anscombe Bootcamp Summary",
   project: project
 )
 
