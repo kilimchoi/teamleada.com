@@ -89,7 +89,7 @@ basic_assignment_content_two = [
   ['code', 'greeting = "Hello World!"'],
   ['code', 'personal_statement = "I hate broccoli!"'],
   ['code', 'favorite_motorcycle = "Ducati"'],
-  ['text', 'Just as before, the assigned variables are immediately ready to use.']
+  ['text', 'Just as before, the assigned variables are immediately ready to use.'],
   ['next_steps', nil]
 ]
 basic_assignment_content_three = [
