@@ -291,7 +291,7 @@ conclusion_content_one = [
   ['project_link', 'Back to the lessons page']
 ]
 conclusion_lesson = Lesson.create!(
-  title: "Conclusion",
+  title: "R Bootcamp Conclusion",
   project: project
 )
 basic_operations_slide_one = Slide.create!(

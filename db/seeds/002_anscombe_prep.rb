@@ -336,7 +336,7 @@ summary_content_one = [
 	['project_link', 'Back to the lessons page'],
 ]
 summary_lesson = Lesson.create!(
-  title: "Summary",
+  title: "Anscombe Bootcamp Summary",
   project: project
 )
 
