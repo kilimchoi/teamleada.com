@@ -13,9 +13,14 @@ users = [
 ]
 
 users.each do |user|
-  new_user = User.create!(username: user, email: "#{user}@#{user}.com", password: "password")
-  puts "Created user: #{new_user.username}."
+  if User.find_by(username: user).nil?
+    new_user = User.create(username: user, email: "#{user}@#{user}.com", password: "password")
+    puts "Created user: #{new_user.username}."
+  end
 end
+
+# Delete all current projects
+Project.delete_all
 
 # Loads seed files from db/seeds
 Dir[File.join(Rails.root, 'db', 'seeds', '*.rb')].sort.each do |seed|
