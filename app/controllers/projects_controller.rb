@@ -10,6 +10,7 @@ class ProjectsController < ApplicationController
     3.times do
       @projects.push(Project.new(title: "Coming soon!"))
     end
+    @interested_user = InterestedUser.new
   end
 
   def check_submission
