@@ -2,8 +2,8 @@ class Project < ActiveRecord::Base
   require 'csv'
   serialize :description, Array
 
-  has_many :lessons
-  has_many :submissions
+  has_many :lessons, dependent: :destroy
+  has_many :submissions, dependent: :destroy
 
   before_create :set_url
 
