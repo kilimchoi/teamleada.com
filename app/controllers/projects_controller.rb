@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
       flash[:danger] = "You must provide a submission file."
       redirect_to :back
       return
-    elsif File.extname(params[:file]) != ".csv"
+    elsif File.extname(params[:file].original_filename) != ".csv"
       flash[:danger] = "Your file submission must be a CSV."
       redirect_to :back
       return
