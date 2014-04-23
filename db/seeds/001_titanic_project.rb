@@ -10,12 +10,12 @@ main_page_content = [
   ['text', 'Make the top of the leaderboard!'],
 ]
 
-project = Project.where(
+project = Project.create!(
   title: "Kaggle Titanic: Machine Learning From Disaster",
   description: main_page_content,
   number: 1,
   enabled: true
-).first_or_create
+)
 ################################################################################
 
 puts "Created project: #{project.title}."

@@ -9,12 +9,12 @@ main_page_content = [
   ['text', 'Happy exploring!']
 ]
 
-project = Project.where(
+project = Project.create!(
   title: "Anscombe",
   description: main_page_content,
   number: 3,
   enabled: true
-).first_or_create
+)
 
 ################################################################################
 puts "Created project: #{project.title}."
