@@ -25,7 +25,7 @@
 - elsif content_type == 'previous_step'
   p.fragment
     - if defined? step
-      = link_to content, project_lesson_step_path(project_url: step.main_lesson.project.url, lesson_url: step.main_lesson.url, url: step.previous_step.url), class: "flat-button step-button"
+      = link_to "Back to #{step.previous_step.title}", project_lesson_step_path(project_url: step.main_lesson.project.url, lesson_url: step.main_lesson.url, url: step.previous_step.url), class: "flat-button step-button"
 - elsif content_type == 'project_link'
   p.fragment
     - if defined? step
