@@ -14,7 +14,8 @@ project = Project.create!(
   title: "Kaggle Titanic: Machine Learning From Disaster",
   description: main_page_content,
   number: 1,
-  enabled: true
+  enabled: true,
+  has_leaderboard: true
 )
 ################################################################################
 
