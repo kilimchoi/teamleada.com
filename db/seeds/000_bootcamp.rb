@@ -4,7 +4,7 @@ main_page_content = [
   ['text', 'This bootcamp is for first time R users and first time programmers. If you have programming experience the topics in this bootcamp may be too basic for you.'],
   ['text', 'If you are a first time user, make sure you have also watched our "Onboarding R/RStudio Video"'],
   ['text', 'We\'re using the language R, while using the IDE (interactive development environment) of RStudio. RStudio is basically software which provides an easier interface to using R.'],
-  ['text', 'R is a language designed with the users in mind. Many people find it easy to use and inuitive.'],
+  ['text', 'You should open up Rstudio in your own computer and use our web application on a different screen.'],
   ['text', 'Happy Learning!']
 ]
 
@@ -54,6 +54,7 @@ basic_math_content_two = [
   ['code', '(-3) + 2'],
   ['text', 'The same mathematical rules applies when it comes to order of operations. Try the following and see what you get!'],
   ['code', '10 + 5 / 5'],
+  ['text', 'END'],
   ['next_steps', nil]
 ]
 basic_math_step = Step.create!(
@@ -93,7 +94,7 @@ basic_assignment_content_two = [
   ['next_steps', nil]
 ]
 basic_assignment_content_three = [
-  ['text', 'At anytime, you can return the value of those variables by entering it in the Console.'],
+  ['text', 'At anytime, you can return the value of those variables by typing directly in your console or writing in your Rscript.'],
   ['code', 'broccoli'],
   ['code', 'orange'],
   ['code', 'melon'],
@@ -102,6 +103,7 @@ basic_assignment_content_three = [
   ['text', 'We\'ll cover methods/functions in more details later. For now, trust us and try it!'],
   ['code', 'print (broccoli)'],
   ['code', 'print (favorite_motorcycle)'],
+  ['text', 'END'],
   ['next_steps', nil]
 ]
 basic_assignment_step = Step.create!(
@@ -146,6 +148,7 @@ basic_comparison_content_two = [
   ['code', 'TRUE + 1 #this will return 2, as TRUE defaults to 1'],
   ['code', 'FALSE == 0 #This should return TRUE'],
   ['text', 'Remember that we\'re comparing numbers via "==" and assinging via "="'],
+  ['text', 'END'],
   ['next_steps', nil]
 ]
 basic_comparison_step = Step.create!(
@@ -165,9 +168,11 @@ basic_math_slide_two = Slide.create!(
 ################################################################################
 ##Combining Intro Concepts
 combined_operations_content_one = [
+  ['text', 'To write down code that you don\'t want Rstudio to run just put a # before it. This is called adding "comments" to your code.'],
   ['text', 'Let\'s now do some operations and recap what we\'ve done!'],
   ['code', 'melon_cake = melon + cake'],
   ['code', 'melon_cake'],
+  ['code', '#melon_cake'],
   ['text', 'What about this?'],
   ['code', 'evil_cake = broccoli + cake'],
   ['code', 'evil_cake'],
@@ -183,7 +188,7 @@ combined_operations_content_two = [
   ['text', 'R is telling us that we can\'t apply the "+" operator to non-numeric (such as characters/strings) data.'],
   ['text', 'How do we get around this? The following will work, but it is just a sneak preview! We\'ll learn more later.'],
   ['code', 'print (paste(personal_statement, favorite_motorcycle, sep=" But, I love "))'],
-  ['project_link', 'Back to the lessons page'],
+  ['text', 'END']
 ]
 
 combined_operations_lesson = Lesson.create!(
@@ -225,7 +230,7 @@ scalars_content_one = [
   ['code', 'class(favorite_motorcycle)'],
   ['code', 'class(TRUE)'],
   ['code', 'class(cake > broccoli) #remember what the comparison yielded?'],
-  ['project_link', 'Back to the lessons page']
+  ['text', 'END'],
 ]
 scalars_content_step = Step.create!(
   title: "Scalars 101",
@@ -262,7 +267,8 @@ vectors_content_three = [
   ['text', 'Check out the help function to learn more.'],
   ['text', 'We encourage you to use help() to learn about functions. We\'re not always going to be around to tell you everything!'],
   ['code', 'c'],
-  ['code', 'help(c)']
+  ['code', 'help(c)'],
+  ['text', 'END'],
 ]
 vectors_content_step = Step.create!(
   title: "Vectors 101",
@@ -288,7 +294,7 @@ conclusion_content_one = [
   ['text', 'In this R bootcamp, we taught you how to write basic expressions in R as well as the basics of data types in the R language.'],
   ['text', 'You can now do basic arithmetic in R in addition to some data manipulation.'],
   ['text', 'Now, we\'re going to throw you into project specific tutorials. Get ready.'],
-  ['project_link', 'Back to the lessons page']
+  ['project_link', 'Back to the Project main page']
 ]
 conclusion_lesson = Lesson.create!(
   title: "R Bootcamp Conclusion",

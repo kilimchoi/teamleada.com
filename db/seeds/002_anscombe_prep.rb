@@ -1,10 +1,11 @@
 # Creates the anscombe project on the site!
 #Main Page
 main_page_content = [
-  ['text', 'This quick intro will get you through project Anscombe (ahns-kohm-bees).'],
-  ['text', 'We\'ll be focusing on Data Objects and Function'],
+  ['text', 'This quick intro will get you through project Anscombe.'],
+  ['text', 'We\'ll be focusing on Data Objects and Functions.'],
   ['text', 'Knowing the different data objects is important, because data objects hold data.'],
-  ['text', 'Ultimately if you\'re working with data, thee most important concept is accessing and storing data.'],
+  ['text', 'Ultimately if you\'re working with data, the most important concept is accessing and storing data.'],
+  ['text', 'You should open Rstudio on a different screen to follow along'],
   ['text', 'Happy Learning!']
 ]
 
@@ -26,7 +27,7 @@ data_object_content = [
 ]
 
 data_object_lesson = Lesson.create!(
-  title: "Creating Different Data Objects",
+  title: "Creating Data Objects",
   project: project
 )
 
@@ -39,10 +40,10 @@ vector_data_content_one = [
   ['text', 'Previously we saw how to store data in a vector.'],
   ['code', 'vector_one = c(1,2,3,4,5,6)'],
   ['code', 'vector_one'],
-  ['text', 'To access data in the vector, simply indicate which location (or index) you want to see.'],
-  ['text', 'Unlike most programming languages, R starts indexing at 1 instead o 0!'],
+  ['text', 'To access data in the vector, the syntax in R is to use brackets ([]) and the index number of what you want to select.'],
+  ['text', 'Unlike most programming languages, R starts indexing at 1 instead of 0'],
   ['code', 'vector_one[1]'],
-  ['code', 'vector_one[4]'],
+  ['code', 'vector_one[1:3] #This grabs the first three values'],
   ['text', 'What about invalid requests?'],
   ['code', 'vector_one[0]'],
   ['code', 'vector_one[10]'],
