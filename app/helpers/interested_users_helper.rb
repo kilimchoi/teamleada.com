@@ -1,0 +1,2 @@
+module InterestedUsersHelper
+end

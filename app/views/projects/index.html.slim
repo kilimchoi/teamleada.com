@@ -20,3 +20,12 @@
               - else
                 .panel-heading
                   h4.panel-title = project.title
+  .row
+    .col-md-12
+      .email-form
+        h4 Interested in hearing when we release new projects?
+        = form_for @interested_user do |f|
+          .input-group
+            = f.text_field :email, class: 'form-control'
+            .input-group-btn
+              = f.submit "I'm interested!", class: 'btn btn-default'
