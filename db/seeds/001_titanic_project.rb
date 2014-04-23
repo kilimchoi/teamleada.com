@@ -47,7 +47,7 @@ begin_one_content = [
   ['text', 'This project is both a lesson and a competition! We guide you through building a basic predictive model using classification trees and into a submission onto the Leadaboard! To increase your score it is then up to you to build a better model.'],
   ['text', 'We give some hints in the "Increase Your Score" section but it is mostly up to you to take the lesson we provided and expand upon it on your own!'],
   ['text', 'To begin, you first need to install the tools necessary for data analysis! In this tutorial we will work in R. Watch the following video to onboard your computer with R, Rstudio, and setting your working directory.'],
-  ['youtube', 'OXdcpbDSzxU'],
+  ['video', 'OXdcpbDSzxU'],
   ['text', 'If you have already installed R, Rstudio, and are familiar with working directories, then you can skip this step'],
 ]
 
