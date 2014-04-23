@@ -20,7 +20,7 @@ users.each do |user|
 end
 
 # Delete all current projects
-Project.delete_all
+Project.destroy_all
 
 # Loads seed files from db/seeds
 Dir[File.join(Rails.root, 'db', 'seeds', '*.rb')].sort.each do |seed|
