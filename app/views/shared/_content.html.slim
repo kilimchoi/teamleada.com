@@ -5,7 +5,7 @@
   pre.fragment.content-code
     = content
 - elsif content_type == 'video'
-    = render partial: "shared/youtube", locals: {youtube_link: youtube_link}
+    = render partial: "shared/youtube", locals: {youtube_link: content}
 - elsif content_type == 'submit'
   p.fragment
     - if signed_in?
