@@ -15,24 +15,28 @@ class ProjectsController < ApplicationController
 
   def check_submission
     if params[:file].nil?
-      flash[:error] = "You must provide a submission file."
+      flash[:danger] = "You must provide a submission file."
+      redirect_to :back
+      return
+    elsif File.extname(params[:file].original_filename) != ".csv"
+      flash[:danger] = "Your file submission must be a CSV."
       redirect_to :back
       return
     end
     score = @project.check_submission(params[:file])
     @submission = Submission.new(project: @project, user: current_user, score: score)
     if @submission.save
-      flash[:notice] = "Your score is: #{score}. Check how you did on the LEADAboard!"
+      flash[:info] = "Your score is: #{score}. Check how you did on the LEADAboard!"
       redirect_to project_path(url: @project.url)
     else
-      flash[:error] = "There was an error in your submission, please try again."
+      flash[:danger] = "There was an error in your submission, please try again."
       redirect_to :back
     end
   end
 
   def show_interest
     if ProjectInterest.exists?(user: current_user, project: @project)
-      flash[:notice] = "Thanks for your enthusiasm, but you've already shown interest in this project!"
+      flash[:info] = "Thanks for your enthusiasm, but you've already shown interest in this project!"
       redirect_to :back
       return
     end
@@ -41,7 +45,7 @@ class ProjectsController < ApplicationController
       flash[:success] = "Thanks for showing interest in #{@project.title}."
       redirect_to projects_path
     else
-      flash[:error] = "There was an error saving your interest, please try again."
+      flash[:danger] = "There was an error saving your interest, please try again."
       redirect_to :back
     end
   end
