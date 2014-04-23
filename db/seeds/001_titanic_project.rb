@@ -133,7 +133,7 @@ train_visualize_content = [
   ['code', 'counts[4] / (counts[3] + counts[4])'],
   ['text', 'The lighter areas indicate survival and notice that our intuition was correct! 74.2% of women survived vs. 18.9% of men. We can use this to improve our model.'],
   ['next_steps', nil],
-  ['project_link', 'Back to the lessons page'],
+  ['previous_step', nil],
 ]
 
 train_visualize_step = Step.create!(
