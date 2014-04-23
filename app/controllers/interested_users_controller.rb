@@ -6,7 +6,7 @@ class InterestedUsersController < ApplicationController
       flash[:info] = "Thanks for expressing your interest. We'll contact you when the new data projects are released!"
       redirect_to projects_path
     else
-      flash[:danger] = "You must enter in a valid email address to get the info about new projects!"
+      flash[:danger] = "You must enter a valid email address to receive updates about the new projects!"
       redirect_to projects_path
     end
   end
