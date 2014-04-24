@@ -1,14 +1,5 @@
 .reveal
   .slides
-    section
-      section#content
-        h2 = @step.main_lesson.project.title
-        h5
-        = @step.main_lesson.title
-        '  -
-        = @step.title
-        p
-          | Press the right arrow key or the <spacebar> to advance through the project!
     - @step.slides.each do |slide|
       section
         section
