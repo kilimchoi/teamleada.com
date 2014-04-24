@@ -1,0 +1,9 @@
+- if signed_in?
+  = form_tag project_submission_path(project_url: params[:url] || params[:project_url]), multipart: true do
+    = file_field_tag "file"
+    = submit_tag "Submit Your Work", class: 'flat-button step-button'
+- else
+  p
+    | In order to make a submission, you must sign up!
+    br
+    = link_to "Sign Up", new_user_registration_path, class: 'flat-button step-button'

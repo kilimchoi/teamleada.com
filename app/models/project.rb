@@ -34,6 +34,21 @@ class Project < ActiveRecord::Base
     return correct / total
   end
 
+  def score_improved?(score, submission)
+    if submission.nil?
+      return false
+    end
+    score <= submission.score ? false : true
+  end
+
+  def submission_rank(submission)
+    submissions.each_with_index do |sub, index|
+      if sub == submission
+        return index + 1
+      end
+    end
+  end
+
   def total_points
     total = 0
     lessons.each do |lesson|

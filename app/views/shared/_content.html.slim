@@ -8,15 +8,7 @@
     = render partial: "shared/youtube", locals: {youtube_link: content}
 - elsif content_type == 'submit'
   p.fragment
-    - if signed_in?
-      = form_tag project_submission_path, multipart: true do
-        = file_field_tag "file"
-        = submit_tag "Submit", class: 'flat-button'
-    - else
-      p
-        | In order to make a submission, you must sign up!
-        br
-        = link_to "Sign Up", new_user_registration_path, class: 'flat-button'
+    = render partial: "projects/submit"
 - elsif content_type == 'image'
   = image_tag content, class: "content content-image"
 - elsif content_type == 'link'
@@ -30,6 +22,10 @@
   p.fragment
     - step.next_steps.each do |step|
       = link_to step.title, project_lesson_step_path(project_url: step.main_lesson.project.url, lesson_url: step.main_lesson.url, url: step.url), class: "flat-button step-button"
+- elsif content_type == 'previous_step'
+  p.fragment
+    - if defined? step
+      = link_to "Back to #{step.previous_step.title}", project_lesson_step_path(project_url: step.main_lesson.project.url, lesson_url: step.main_lesson.url, url: step.previous_step.url), class: "flat-button step-button"
 - elsif content_type == 'project_link'
   p.fragment
     - if defined? step

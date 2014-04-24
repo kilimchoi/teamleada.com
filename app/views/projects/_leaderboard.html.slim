@@ -1,7 +1,9 @@
 table.table.table-striped
+  th Rank
   th Username
   th Score
-  - @project.submissions.each do |submission|
+  - @project.submissions.each_with_index do |submission, index|
     tr
+      td = index + 1
       td = submission.user.username
       td = submission.score
