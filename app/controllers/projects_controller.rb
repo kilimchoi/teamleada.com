@@ -3,6 +3,10 @@ class ProjectsController < ApplicationController
   before_filter :projects, only: [:index]
 
   def show
+    if project.nil?
+      render "pages/error"
+      return
+    end
   end
 
   def index
