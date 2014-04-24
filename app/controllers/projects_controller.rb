@@ -24,9 +24,28 @@ class ProjectsController < ApplicationController
       return
     end
     score = @project.check_submission(params[:file])
-    @submission = Submission.new(project: @project, user: current_user, score: score)
+    @submission = Submission.find_by(project: @project, user: current_user)
+    score_improved = @project.score_improved? score, @submission
+    old_rank = -1
+    new_rank = -1
+    new_submission = false
+    if @submission.nil?
+      @submission = Submission.new(project: @project, user: current_user, score: score)
+      new_submission = true
+    elsif score_improved
+      old_rank = @project.submission_rank(@submission)
+      @submission.update(score: score)
+      new_rank = @project.submission_rank(@submission)
+    end
+
     if @submission.save
-      flash[:info] = "Your score is: #{score}. Check how you did on the LEADAboard!"
+      if new_submission
+        flash[:info] = "Your score is: #{score}. Check how you did on the LEADAboard!"
+      elsif score_improved
+        flash[:info] = "Your score of #{score} improved your position on the leaderboard! Your old rank was #{old_rank} and now your rank is #{new_rank}!"
+      else
+        flash[:warning] = "Your score of #{@submission.score} from last time was the same or better. Be sure to submit again to see if you improved!"
+      end
       redirect_to project_path(url: @project.url)
     else
       flash[:danger] = "There was an error in your submission, please try again."
