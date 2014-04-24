@@ -1,12 +1,12 @@
 # Creates the first project on the site!
 
 main_page_content = [
-  ['text', 'This is the main page for the Titanic data project!'],
+  ['text', 'This is the main page for the Titanic data project.'],
   ['text', 'You are tasked to predict whether a passenger survived the Titanic crash. You are given two datasets (Train & Test) each of which include passengers on the Titanic with their Age, Passenger Class, Sex, etc.'],
   ['text', 'We will guide you through the following:'],
   ['text', '1. Create a model which will predict whether a passenger survived using only the Train data set'],
   ['text', '2. Predict whether the passengers survived in the Test data set based on the model we created'],
-  ['text', 'Your job is to then bolster the basic model with stronger parameters and any other method you can come up with'],
+  ['text', 'Your job is to then bolster the basic model with stronger parameters and any other method you can come up with.'],
   ['text', 'Make the top of the leaderboard!'],
 ]
 
@@ -44,10 +44,10 @@ welcome_lesson_slide_one = Slide.create!(
 ################################################################################
 
 begin_one_content = [
-  ['text', 'This project is for learners who have taken a programming course and are familiar with data manipulation concepts such as If/else statements, for loops, and vectors! You are supposed to have RStudio open in parallel with our tutorial and copy and paste code snippets we provide.'],
+  ['text', 'You are supposed to have RStudio open in another screen with our tutorial and following along by copying and pasting code snippets we provide. Navigate through the project by clicking on the left sidebar.'],
   ['text', 'This project is both a lesson and a competition! We guide you through building a basic predictive model using classification trees and into a submission onto the Leadaboard! To increase your score it is then up to you to build a better model.'],
   ['text', 'We give some hints in the "Increase Your Score" section but it is mostly up to you to take the lesson we provided and expand upon it on your own!'],
-  ['text', 'To begin, you first need to install the tools necessary for data analysis! In this tutorial we will work in R. Watch the following video to onboard your computer with R, Rstudio, and setting your working directory.'],
+  ['text', 'To begin, you first need to install the tools necessary for data analysis! Watch the following video to onboard your computer with R, Rstudio, and setting your working directory.'],
   ['video', 'OXdcpbDSzxU'],
   ['text', 'If you have already installed R, Rstudio, and are familiar with working directories, then you can skip this step'],
 ]
@@ -106,6 +106,9 @@ train_data_content = [
   ['code', 'head(trainData)'],
   ['text', 'To take a look at the last six rows of the dataset use'],
   ['code', 'tail(trainData)'],
+]
+
+train_data_content_two = [
   ['text', 'If you want to look at the entire dataset just type'],
   ['code', 'trainData'],
   ['text', 'The first thing you want to understand when beginning to dive into the data is what do the columns represent. Most are self-explanatory but a couple are a little confusing. "SibSp" is the total number of siblings or spouses that a passenger has on the Titanic.'],
@@ -123,6 +126,11 @@ train_data_slide_one = Slide.create!(
   parent: train_data_step
 )
 
+train_data_slide_two = Slide.create!(
+  content: train_data_content_two,
+  parent: train_data_step
+)
+
 ################################################################################
 train_visualize_content = [
   ['text', 'It is good to first visualize the data to get a general understanding of the patterns and trends of the data. Lets look at the survival rate of our passengers filtered by Sex.'],
@@ -132,8 +140,8 @@ train_visualize_content = [
   ['code', 'counts[2] / (counts[1] + counts[2])'],
   ['code', 'counts[4] / (counts[3] + counts[4])'],
   ['text', 'The lighter areas indicate survival and notice that our intuition was correct! 74.2% of women survived vs. 18.9% of men. We can use this to improve our model.'],
-  ['next_steps', nil],
-  ['previous_step', nil],
+  ['text', 'END'],
+  ['next_steps', nil]
 ]
 
 train_visualize_step = Step.create!(
@@ -164,8 +172,8 @@ train_clean_content_two = [
   ['code', '    trainData$Age[i] <- mean_age'],
   ['code', '  }'],
   ['code', '}'],
-  ['next_steps', nil],
-  ['project_link', 'Back to the lessons page'],
+  ['text', 'END'],
+  ['next_steps', nil]
 ]
 
 train_clean_step = Step.create!(
@@ -214,8 +222,8 @@ test_visualize_content = [
   ['code', 'plot(density(trainData$Age, na.rm = TRUE), main = "TrainData Age Density")'],
   ['text', 'Density plots check the distribution of a variable, a distribution is the probability of being any given value in a variable. In this case its the probability of being any given age based on the datasets.'],
   ['text', 'You should see that these distributions are approximately similar. Its good to check more of the variables but we will move on.'],
-  ['next_steps', nil],
-  ['project_link', 'Back to the lessons page'],
+  ['text', 'END'],
+  ['next_steps', nil]
 ]
 
 test_visualize_step = Step.create!(
@@ -239,8 +247,8 @@ test_clean_one_content = [
   ['code', '    testData[i, 5] <- test_mean_age'],
   ['code', '  }'],
   ['code', '}'],
-  ['next_steps', nil],
-  ['project_link', 'Back to the lessons page'],
+  ['text', 'END'],
+  ['next_steps', nil]
 ]
 
 test_clean = Step.create!(
@@ -287,7 +295,7 @@ learn_ctree_two_content = [
 learn_ctree_three_content = [
   ['text', 'In general, overfitting is when you find patterns in the data that does not generalize to new datasets. If you look hard enough, you can find patterns in any dataset.'],
   ['text', 'There are two main advantages to building a classification tree model. (1) They require very little data preparationi and cleaning. (2) Classification models are easy to interpret and explain to others!'],
-  ['project_link', 'Back to the lessons page'],
+  ['text', 'END'],
 ]
 
 learn_ctree = Step.create!(
@@ -344,8 +352,8 @@ apply_ctree_three_content = [
   ['text', 'We use the write.csv() function to convert our data frame in R into a CSV file'],
   ['code', 'write.csv(model_submission, "mysubmission.csv", row.names = FALSE)'],
   ['text', 'And now you can submit this file to the submission page and see where you rank on the LeadaBoard! Go to the "Increase your Score" page to learn ways to move up on the Leadaboard!'],
+  ['text', 'END'],
   ['next_steps', nil],
-  ['project_link', 'Back to the lessons page'],
 ]
 
 apply_ctree = Step.create!(
@@ -399,8 +407,8 @@ increase_score_three_content = [
   ['code','  }'],
   ['code', '}'],
   ['text', 'What other variables can you think of and implement that are predictive of survival on the Titanic?'],
+  ['text', 'END'],
   ['lesson_links', nil],
-  ['project_link', 'Back to the lessons page'],
 ]
 
 increase_score_lesson = Lesson.create!(
@@ -422,6 +430,28 @@ increate_score_slide_three = Slide.create!(
   content: increase_score_three_content,
   parent: increase_score_lesson
 )
+
+
+submission_guide_content = [
+  ['text', 'Remember that the file you submit to Leada must be a CSV file!'],
+  ['text', 'You also want to make sure that your submission file is of the following format:'],
+  ['text', 'Has exactly two columns titled "PassengerId" and "Prediction"'],
+  ['text', 'Has the correct type of data and has no missing values'],
+  ['text', 'It should be in the exact same format as the first file you submitted which you can again see below'],
+  ['link', 'https://s3.amazonaws.com/leada/titanic_data/FirstSubmission'],
+]
+
+submission_guide_lesson = Lesson.create!(
+  title: "Submission Help",
+  project: project
+)
+
+submission_guide_slide = Slide.create!(
+  content: submission_guide_content,
+  parent: submission_guide_lesson
+)
+
+
 ################################################################################
 
 # Leaderboard Seed info
