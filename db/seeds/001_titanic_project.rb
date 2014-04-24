@@ -430,6 +430,28 @@ increate_score_slide_three = Slide.create!(
   content: increase_score_three_content,
   parent: increase_score_lesson
 )
+
+
+submission_guide_content = [
+  ['text', 'Remember that the file you submit to Leada must be a CSV file!'],
+  ['text', 'You also want to make sure that your submission file is of the following format:'],
+  ['text', 'Has exactly two columns titled "PassengerId" and "Prediction"'],
+  ['text', 'Has the correct type of data and has no missing values'],
+  ['text', 'It should be in the exact same format as the first file you submitted which you can again see below'],
+  ['link', 'https://s3.amazonaws.com/leada/titanic_data/FirstSubmission'],
+]
+
+submission_guide_lesson = Lesson.create!(
+  title: "Submission Help",
+  project: project
+)
+
+submission_guide_slide = Slide.create!(
+  content: submission_guide_content,
+  parent: submission_guide_lesson
+)
+
+
 ################################################################################
 
 # Leaderboard Seed info
