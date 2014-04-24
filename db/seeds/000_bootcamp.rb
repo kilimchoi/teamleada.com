@@ -5,6 +5,7 @@ main_page_content = [
   ['text', 'If you are a first time user, make sure you have also watched our "Onboarding R/RStudio Video"'],
   ['text', 'We\'re using the language R, while using the IDE (interactive development environment) of RStudio. RStudio is basically software which provides an easier interface to using R.'],
   ['text', 'You should open up Rstudio in your own computer and use our web application on a different screen.'],
+  ['video', 'OXdcpbDSzxU'],
   ['text', 'Happy Learning!']
 ]
 
