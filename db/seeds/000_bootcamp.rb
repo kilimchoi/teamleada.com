@@ -42,7 +42,7 @@ basic_operations_slide_one = Slide.create!(
 basic_math_content_one = [
   ['text', 'Try the basic operations.'],
   ['code', '5 + 5'],
-  ['quiz', 'quiz_id_here'],
+  ['quiz', 'onboard_1'],
   ['other', 'some random shit'],
   ['text', 'What did you get? If you got 10, good!'],
   ['text', 'Try a few other to get a feel.'],
