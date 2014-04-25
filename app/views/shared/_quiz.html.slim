@@ -5,20 +5,19 @@ javascript:
   alert("poop1");
   $(document).ready(function() {
     $("#submit_answer").click(function () {
-      alert("poop submit");
-       var user_input = $("#answer_box").val();
-       var quiz_id = $("#answer_box").attr('id');
-       $.ajax({
-         url: '/quizzes/check_answer?quiz_id=' + quiz_id + '&user_input=' + user_input , type: 'get', dataType: 'html',
-         processData: false,
-         success: function(data) {
-         if (data == "Correct!") {
-           alert("Correct!");
-         } else {
-           alert("NOT Correct!");
-           console.log(data);
-         }
-       }
-     });
+      var user_input = $("#answer_box").val();
+      var quiz_id = $("#answer_box").attr('quiz_id');
+      $.ajax({
+        url: '/quizzes/check_answer?quiz_id=' + quiz_id + '&user_input=' + user_input , type: 'get', dataType: 'html',
+        processData: false,
+        success: function(data) {
+          if (data == "correct") {
+            alert("correct!");
+          } else {
+            alert("NOT Correct!");
+            console.log(data);
+          }
+        }
+      });
     });
   });
