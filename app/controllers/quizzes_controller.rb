@@ -1,4 +1,5 @@
 class QuizzesController < ApplicationController
+	before_filter :quizzes, only: [:index]
 
  def check_answer
   @result = Quiz.find_by_quiz_id(params[:quiz_id])
@@ -8,4 +9,14 @@ class QuizzesController < ApplicationController
       render :text => @result
     end
   end
+
+
+  def quiz
+    @quiz = Quiz.find_by(url: params[:url] || params[:project_url])
+  end
+
+  def quizzes
+    @quizzes = Quiz.all
+  end
+
 end
