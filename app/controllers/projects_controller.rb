@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
 
   def show
     if project.nil?
-      render "pages/error"
+      render "projects/error"
       return
     end
   end
