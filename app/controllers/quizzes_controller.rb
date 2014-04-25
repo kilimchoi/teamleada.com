@@ -1,18 +1,23 @@
 class QuizzesController < ApplicationController
+  before_filter :quiz, only: [:show]
 	before_filter :quizzes, only: [:index]
 
  def check_answer
+  puts "=========== controller.check_answer"
+  @quiz="@quiz in check_answer"
+
   @result = Quiz.find_by_quiz_id(params[:quiz_id])
-    if @result == params[:user_input] #if answer is same as what user inputed @TODO clean user input.
+  puts @resultanswer
+  puts
+    if @result.answer == params[:user_input] #if answer is same as what user inputed @TODO clean user input.
       render :text => "correct"
     else
-      render :text => @result
+      render :text => "wrong as fuckk"
     end
   end
 
-
   def quiz
-    @quiz = Quiz.find_by(url: params[:url] || params[:project_url])
+    @quiz = Quiz.find_by_quiz_id(params[:quiz_id])
   end
 
   def quizzes
