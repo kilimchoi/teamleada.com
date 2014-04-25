@@ -22,6 +22,8 @@ TeamLeada::Application.routes.draw do
     end
   end
 
+  resources :quizzes
+
   # 404 page routes
   match "*path", to: "pages#error", via: :get
 end
