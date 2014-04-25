@@ -1,2 +1,24 @@
-input value="#{quiz_content}" type="text"
-input value="check" type="submit"
+input value="answer here!" type="text" class="quiz_input" id="answer_box" quiz_id="#{quiz_id}"
+input value="Check Answer" type="button" id="submit_answer"
+input value="dunno" type="result" id="result_box"
+javascript:
+  alert("poop1");
+  $(document).ready(function() {
+    $("#submit_answer").click(function () {
+      alert("poop submit");
+       var user_input = $("#answer_box").val();
+       var quiz_id = $("#answer_box").attr('id');
+       $.ajax({
+         url: '/quizzes/check_answer?quiz_id=' + quiz_id + '&user_input=' + user_input , type: 'get', dataType: 'html',
+         processData: false,
+         success: function(data) {
+         if (data == "Correct!") {
+           alert("Correct!");
+         } else {
+           alert("NOT Correct!");
+           console.log(data);
+         }
+       }
+     });
+    });
+  });
