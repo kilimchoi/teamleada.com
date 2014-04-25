@@ -19,7 +19,7 @@ project = Project.create!(
 )
 ################################################################################
 
-puts "Created project: #{project.title}."
+puts "============ Created project: #{project.title}."
 
 welcome_lesson_slide_one_content = [
   ['text', 'Welcome to your first data project by Leada! This project is taken from Kaggle, a data science competition website and is an excellent introduction into the work of data analytics! Check them out at www.kaggle.com'],
