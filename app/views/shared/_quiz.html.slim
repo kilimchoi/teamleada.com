@@ -1,23 +1,32 @@
 form class="fragment quiz_box"
-  = "CHECK:\t"
-  input  placeholder="answer here!" type="text" class="quiz_input" id="answer_box" quiz_id="#{quiz_id}"
-  input value="Check Answer" type="button" id="submit_answer"
+  <span class="quiz_title">  CHECK </span>
+  input  placeholder="your answer here" type="text" class="quiz_input" id="answer_box" quiz_id="#{quiz_id}"
+  input value="Check Answer" type="button" id="submit_button"
   = image_tag "ajax-loader.gif", class: "spinner", id: "waiting"
-  span "aa"
+  <span class="quiz_box_status"></span>
 
 javascript:
-  //alert("poop1");
   $(document).ready(function() {
-    $("#submit_answer").click(function () {
+   $('#answer_box').keydown(function(event) { //allows 'ENTER' to submit.
+        if (event.keyCode == 13) {
+            $("#submit_button").trigger('click');
+            return false;
+         }
+    });
+
+    $("#submit_button").click(function () {
       $(".spinner").css("visibility", "visible");
       $(".quiz_box").css("background", "yellow");
+      $(".quiz_box_status").text("");
+
       var input = this;
       input.disabled = true;
+      $(".quiz_input").attr("disabled", "disabled");
 
       var user_input = $("#answer_box").val();
       var quiz_id = $("#answer_box").attr('quiz_id');
       var correct = false;
-      $.ajax({
+      $.ajax({ //check db for answer
         url: '/quizzes/check_answer?quiz_id=' + quiz_id + '&user_input=' + user_input , type: 'get', dataType: 'html',
         processData: false,
         success: function(data) {
@@ -30,14 +39,16 @@ javascript:
         }
       });
       setTimeout(function() {
-        if (correct){
-          $(".quiz_box").css("background", "green");
-
-        } else {
-          $(".quiz_box").css("background", "red");
-        }
-        input.disabled = false;
         $(".spinner").css("visibility", "hidden");
+        if (correct){
+          $(".quiz_box").css("background", "#00B2A5");
+          $(".quiz_box_status").text("Correct!");
+        } else {
+          $(".quiz_input").removeAttr("disabled");
+          $(".quiz_box").css("background", "red");
+          input.disabled = false;
+          $(".quiz_box_status").text("Try Again");
+        }
       }, 1500);
     });
   });
