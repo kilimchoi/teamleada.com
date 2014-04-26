@@ -1,3 +1,14 @@
 // Place all the styles related to the quizzes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.spinner {
+    position: relative;
+    left: 75%;
+    top: 15%;
+    float: left;
+    z-index:1234;
+    overflow: auto;
+    visibility: hidden;
+}
+
