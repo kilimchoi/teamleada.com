@@ -1,23 +1,43 @@
-input value="answer here!" type="text" class="quiz_input" id="answer_box" quiz_id="#{quiz_id}"
-input value="Check Answer" type="button" id="submit_answer"
-input value="dunno" type="result" id="result_box"
+form class="fragment quiz_box"
+  = "CHECK:\t"
+  input  placeholder="answer here!" type="text" class="quiz_input" id="answer_box" quiz_id="#{quiz_id}"
+  input value="Check Answer" type="button" id="submit_answer"
+  = image_tag "ajax-loader.gif", class: "spinner", id: "waiting"
+  span "aa"
+
 javascript:
-  alert("poop1");
+  //alert("poop1");
   $(document).ready(function() {
     $("#submit_answer").click(function () {
+      $(".spinner").css("visibility", "visible");
+      $(".quiz_box").css("background", "yellow");
+      var input = this;
+      input.disabled = true;
+
       var user_input = $("#answer_box").val();
       var quiz_id = $("#answer_box").attr('quiz_id');
+      var correct = false;
       $.ajax({
         url: '/quizzes/check_answer?quiz_id=' + quiz_id + '&user_input=' + user_input , type: 'get', dataType: 'html',
         processData: false,
         success: function(data) {
           if (data == "correct") {
-            alert("correct!");
+            correct = true;
           } else {
-            alert("NOT Correct!");
+            correct = false;
             console.log(data);
           }
         }
       });
+      setTimeout(function() {
+        if (correct){
+          $(".quiz_box").css("background", "green");
+
+        } else {
+          $(".quiz_box").css("background", "red");
+        }
+        input.disabled = false;
+        $(".spinner").css("visibility", "hidden");
+      }, 1500);
     });
   });
