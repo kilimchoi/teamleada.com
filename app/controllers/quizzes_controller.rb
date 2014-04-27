@@ -16,9 +16,9 @@ class QuizzesController < ApplicationController
       return
     end
     if @result.answer == params[:user_input] #if answer is same as what user inputed @TODO clean user input.
-      render :text => "correct"
+      render :text => "correct" #word is used as key, don't change
     else
-      render :text => "wrong as fuckk"
+      render :text => "incorrect"
     end
   end
 
