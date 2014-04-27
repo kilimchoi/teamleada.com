@@ -1,10 +1,15 @@
 class QuizzesController < ApplicationController
   before_filter :quiz, only: [:show]
   before_filter :quizzes, only: [:index]
+
   def check_answer
     puts "=========== controller.check_answer"
     @quiz="@quiz in check_answer"
 
+    if params[:quiz_id] == nil
+      render :text => "quiz_id is empty"
+      return
+    end
     @result = Quiz.find_by_quiz_id(params[:quiz_id])
     if @result == nil
       render :text => "couldn't find quiz id: " + params[:quiz_id]
