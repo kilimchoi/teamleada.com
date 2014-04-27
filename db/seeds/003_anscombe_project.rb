@@ -17,7 +17,7 @@ project = Project.create!(
 )
 
 ################################################################################
-puts "Created project: #{project.title}."
+puts "============ Created project: #{project.title}."
 ################################################################################
 ##PRE: Analyze data IN-properly
 work_with_data_pre_content = [
