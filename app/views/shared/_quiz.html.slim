@@ -1,9 +1,9 @@
 form class="fragment quiz_box"
   <span class="quiz_title">  CHECK </span>
   input  placeholder="your answer here" type="text" class="quiz_input" id="answer_box" quiz_id="#{quiz_id}"
-  input value="Check Answer" type="button" id="submit_button"
+  input value="Check Answer" type="button" class="quiz_button" id="submit_button"
   = image_tag "ajax-loader.gif", class: "spinner", id: "waiting"
-  <span class="quiz_box_status"></span>
+  <span class="eval_result"></span>
 
 javascript:
   $(document).ready(function() {
@@ -17,7 +17,7 @@ javascript:
     $("#submit_button").click(function () {
       $(".spinner").css("visibility", "visible");
       $(".quiz_box").css("background", "yellow");
-      $(".quiz_box_status").text("");
+      $(".eval_result").text("");
 
       var input = this;
       input.disabled = true;
@@ -42,12 +42,12 @@ javascript:
         $(".spinner").css("visibility", "hidden");
         if (correct){
           $(".quiz_box").css("background", "#00B2A5");
-          $(".quiz_box_status").text("Correct!");
+          $(".eval_result").text("Correct!");
         } else {
           $(".quiz_input").removeAttr("disabled");
           $(".quiz_box").css("background", "red");
           input.disabled = false;
-          $(".quiz_box_status").text("Try Again");
+          $(".eval_result").text("Try Again");
         }
       }, 1500);
     });
