@@ -20,7 +20,6 @@ project = Project.create!(
 puts "============ Created project: #{project.title}."
 ################################################################################
 ################################################################################
-#@TODO INCLUDE ONBOARDING VIDEO ON RSTUDIO.
 
 ##Intro to Basics.
 basic_operations_content_one = [
