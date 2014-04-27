@@ -12,12 +12,40 @@
     visibility: hidden;
 }
 
-
-.quiz_box_status {
-	margin: auto;
-	padding-left: 10;
+.quiz_form { /*the whole form */
+    margin: auto;
+    padding: auto;
 }
 
+span[class="quiz_title"] { /*title of the quiz*/
+
+}
+.quiz_input { /*Where the user inputs the answer*/
+
+}
+
+.quiz_button { /*the button to submit the answer */
+  display: inline-block;
+  top: 100px;
+  border: 0;
+  text-shadow: none;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  color: #FFF;
+  background-color: $founders-rock-blue;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+span[class="eval_result"] { /*Span for the result of checking answer*/
+    margin: auto;
+    padding-left: 10;
+    font-size: 100px;
+}
+
+/*Not Yet Used Below*/
 .correct {
 
 }
