@@ -147,16 +147,52 @@ data_dedup_cleaning = Step.create!(
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 
-
-
-
 matching_lesson = Lesson.create!(
 	title: "Data Matching",
 	project: project
 )
 
+email_matching = Step.create!(
+	title: "Email Matching",
+	lesson: matching_lesson
+)
+
+phone_contact_matching = Step.create!(
+	title: "Phone Contact Matching",
+	lesson: matching_lesson
+)
+
+incoming_phone_matching = Step.create!(
+	title: "Incoming Phone Matching",
+	lesson: matching_lesson
+)
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+analysis_lesson = Lesson.create!(
+	title: "Data Analysis",
+	project: project
+)
+
+hypothesis_test = Step.create!(
+	title: "Hypothesis Test",
+	lesson: analysis_lesson
+)
+
+two_sample_test = Step.create!(
+	title: "Test of Two Proportions",
+	lesson: analysis_lesson
+)
 
 
 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+
+conclusion_lesson = Lesson.create!(
+	title: "Conclusion",
+	project: project
+)
 
 
