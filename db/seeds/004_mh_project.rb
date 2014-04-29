@@ -36,7 +36,7 @@ project_intro_slide = Slide.create!(
 )
 
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 project_spec_content = [
 	['text', 'You are given two datasets:'],
@@ -49,7 +49,7 @@ project_spec_content_two = [
 	['text', 'You can download the Abandoned Caller Dataset here:'],
 	['link', 'www.abandonedcallerdataset.com'],
 	['text', 'You can download the Reservation Dataset here:'],
-	['link;', 'www.addlinkhere.com']
+	['link', 'www.addlinkhere.com']
 ]
 
 
@@ -68,7 +68,7 @@ project_spec_slide_two = Slide.create!(
 	parent: project_spec_step
 )
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 
 project_experiment_content = [
@@ -88,7 +88,7 @@ project_spec_slide = Slide.create!(
 	parent: project_experiment_step
 )
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 project_initial_content = [
 	['text', 'The first thing to do with any data set is to understand the rows and columns. Take a look first yourself at what each row represents.'],
@@ -126,7 +126,7 @@ project_initial_format_slide_two = Slide.create!(
 
 )
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 
 cleaning_lesson = Lesson.create!(
@@ -145,7 +145,7 @@ data_dedup_cleaning = Step.create!(
 )
 
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 matching_lesson = Lesson.create!(
 	title: "Data Matching",
@@ -168,7 +168,7 @@ incoming_phone_matching = Step.create!(
 )
 
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 analysis_lesson = Lesson.create!(
 	title: "Data Analysis",
@@ -187,7 +187,7 @@ two_sample_test = Step.create!(
 
 
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 
 conclusion_lesson = Lesson.create!(
