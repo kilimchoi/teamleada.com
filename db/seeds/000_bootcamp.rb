@@ -55,6 +55,7 @@ basic_math_content_two = [
   ['code', '(-3) + 2'],
   ['text', 'The same mathematical rules applies when it comes to order of operations. Try the following and see what you get!'],
   ['code', '10 + 5 / 5'],
+  ['quiz', 'onboard_2'],
   ['text', 'END'],
   ['next_steps', nil]
 ]
