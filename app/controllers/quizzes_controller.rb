@@ -4,8 +4,6 @@ class QuizzesController < ApplicationController
 
   def check_answer
     puts "=========== controller.check_answer"
-    @quiz="@quiz in check_answer"
-
     if params[:quiz_id] == nil
       render :text => "quiz_id is empty"
       return
@@ -16,7 +14,7 @@ class QuizzesController < ApplicationController
       return
     end
     if @result.answer == params[:user_input] #if answer is same as what user inputed @TODO clean user input.
-      render :text => "correct" #word is used as key, don't change
+      render :text => "correct" #"correct" is used as key, don't change
     else
       render :text => "incorrect"
     end
