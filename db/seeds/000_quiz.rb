@@ -14,3 +14,15 @@ quiz = Quiz.create!(
 
 ################################################################################
 puts "++++++++++++ Created quiz: #{quiz.quiz_id}."
+
+
+quiz = Quiz.create!(
+	quiz_id: "onboard_3",
+	answer:"2",
+)
+
+
+quiz = Quiz.create!(
+	quiz_id: "onboard_4",
+	answer:"TRUE",
+)
