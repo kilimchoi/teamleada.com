@@ -24,8 +24,9 @@ tutorial_introduction_content = [
   ['text', 'We\'re using the language R, while using the IDE (interactive development environment) of RStudio. RStudio is software which provides an easier interface to using R.'],
   ['text', 'You should open up Rstudio in your own computer and use our web application on a different screen to follow along.'],
   ['text', 'Use the right arrow key to output text with explanations and R code. We will introduce you to the basic functionalities of the R programming language in this tutorial.'],
-  ['text', 'R has becomeo the most popular programming language for data scientists and data analysts in industry today. Specifically for statistical analysis and visualization of data, R is the most effective language to use.'],
-  ['text', 'Another benefit is that its completely open source and has a large community of developers contributing new libraries and functionalities everyday!'],
+  ['text', 'R has become the most popular programming language for data scientists and data analysts in industry today.'],
+  ['text', 'Specifically for statistical analysis and visualization of data, R is the most effective language to use.'],
+  ['text', 'Another benefit is that it\'s completely open source and has a large community of developers contributing new libraries and functionalities everyday!'],
 ]
 
 tutorial_introduction_lesson = Lesson.create!(
@@ -229,7 +230,7 @@ combined_operations_slide_one = Slide.create!(
 datatypes_intro_content_one = [
   ['text', 'Now that we know how to write basic expressions in R, let\'s end this tutorial by going over one last concept: data types.'],
   ['text', 'Every time you store a variable via an assignment, you\'re storing a specific data type.'],
-  ['text', 'The 5 most common data types in R are: scalars, vectors, matrices, data frames, and lists. We will go over scalars and vectors in this lesson.'],
+  ['text', 'Some of the more common data types in R are: scalars, vectors, matrices, data frames, and lists. We will go over scalars and vectors in this lesson.'],
   ['lesson_links', nil]
 ]
 datatypes_lesson = Lesson.create!(
@@ -242,13 +243,15 @@ basic_operations_slide_one = Slide.create!(
 )
 ################################################################################
 scalars_content_one = [
-  ['text', 'Scalars are the most basic values in R: integers, characters, and logicals. You can verify the classes of the objects with the class() function.'],
+  ['text', 'Scalars are the most basic values in R; they\'re actually vectors of length 1.'],
+  ['text', 'You can verify the classes of the objects with the class() function: integers, characters, and logicals.'],
   ['code', 'orange'],
   ['code', 'class(orange)'],
   ['code', 'favorite_motorcycle'],
   ['code', 'class(favorite_motorcycle)'],
   ['code', 'class(TRUE)'],
   ['code', 'class(cake > broccoli) #remember what the comparison yielded?'],
+  ['text', 'All of the above dealt with single scalars. But remember that scalars are vectors of length 1']
 ]
 scalars_content_step = Step.create!(
   title: "Scalars 101",
@@ -262,8 +265,8 @@ scalars_slide_one = Slide.create!(
 vectors_content_one = [
   ['text', 'We now know how to store single values in R. But what if we want to store multiple values?'],
   ['text', 'We do this in R by creating vectors.'],
-  ['text', 'Vectors are the way in which R stores multiple 1-dimensional data points'],
-  ['text', 'Note that Vectors are NOT the same as Lists.'],
+  ['text', 'Vectors are the way in which R stores multiple 1-dimensional data points (multiple scalars)'],
+  ['text', 'Note that Vectors are NOT the same as Lists (We\' avoid Lists for now).'],
   ['next_steps', nil]
 ]
 vectors_content_two = [
@@ -276,8 +279,8 @@ vectors_content_two = [
   ['text', 'It\'s telling us that it was expecting something other than a string(word) constant in the command (i.e. it requires a comma)']
 ]
 vectors_content_three = [
-  ['text', 'Note that if you create a vector with different data types in R such as strings and numbers, entries will generally get converted into Character/String type.'],
-  ['text', 'Note that quotes around the values indicates that they\'ve been converted into Character/String type.'],
+  ['text', 'Note that if you create a vector with different data types in R such as strings and numbers, they will generally get converted into Character/String type.'],
+  ['text', 'Also quotes around the values indicates that they\'ve been converted into Character/String type.'],
   ['code', 'c("I", "once", "ate", 1, "vegetable")'],
   ['text', 'Getting familar with error messages will help you become better faster.'],
   ['text', 'Check out the help function to learn more about the various functions in R.'],
@@ -310,7 +313,7 @@ conclusion_content_one = [
   ['project_link', 'Back to the Project main page']
 ]
 conclusion_lesson = Lesson.create!(
-  title: "Conclusion",
+  title: "R Intro Conclusion",
   project: project
 )
 basic_operations_slide_one = Slide.create!(
