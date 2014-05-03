@@ -9,7 +9,7 @@ class Admin::CodesController < Admin::BaseController
   def create
     @code = Code.new(code_params)
     if @code.save
-      redirect_to admin_code_path(@code), info: "Create code: #{@code.value}"
+      redirect_to admin_codes_path, info: "Create code: #{@code.value}"
     else
       render :new
     end
