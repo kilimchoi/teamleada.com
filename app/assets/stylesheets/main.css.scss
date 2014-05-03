@@ -5,7 +5,6 @@ html, body {
 body {
   font-family: 'open sans';
   -webkit-font-smoothing: antialiased;
-  padding-top: 70px;
 
   @include breakpoint($mobile) {
     padding-top: 0px;
@@ -18,6 +17,14 @@ body {
 
 .container {
   min-height: 95%;
+}
+
+.banner-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
 
 .email-form {
