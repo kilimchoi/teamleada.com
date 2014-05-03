@@ -47,7 +47,6 @@ section#intro
 
 javascript:
   $(document).ready(function() {
-    //$(".slide-up").hide();
     $.fn.visible = function(partial) {
         var $t            = $(this),
             $w            = $(window),
@@ -62,30 +61,20 @@ javascript:
     var onScroll = $(window).scroll(function(event) {
       $(".slide-from-right").each(function(i, el) {
         if ($(el).visible(true)) {
-          console.log(el);
           $(el).addClass("slide-right");
         }
       });
       $(".slide-from-left").each(function(i, el) {
         if ($(el).visible(true)) {
-          console.log(el);
           $(el).addClass("slide-left");
         }
       });
       $(".fade-from-in").each(function(i, el) {
         if ($(el).visible(true)) {
-          console.log(el);
           $(el).addClass("fade-in");
         }
       });
       $(".slide-from-up").each(function(i, el) {
-        if ($(el).visible(true)) {
-          console.log(el);
-          //$(el).addClass("slide-up");
-          //$(el).addClass("visible");
-          //$(el).css('visibility', 'visible');
-          //$(el).slideDown(1000);
-        }
       });
     });
   });
