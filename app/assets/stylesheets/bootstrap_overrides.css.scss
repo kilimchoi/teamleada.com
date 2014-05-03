@@ -38,7 +38,8 @@ $navbar-padding-bottom: 25px;
     margin: 10px 20px 0px 0px;
     padding-top: 15px;
     padding-bottom: 15px;
-    color: $founders-rock-blue;
+    color: white;
+    background-color: $founders-rock-blue;
   }
 }
 
@@ -48,6 +49,12 @@ $navbar-padding-bottom: 25px;
   color: $founders-rock-blue;
   font-weight: 700;
 }
+
+.nav > li > a:hover, .nav > li > a.flat-button-header:focus,
+.navbar-default .navbar-nav > li > a.flat-button-header:hover {
+  color: white;
+}
+
 
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
