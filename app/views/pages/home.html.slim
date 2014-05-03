@@ -1,12 +1,19 @@
 = provide(:header_links, "header/home")
+= provide(:page_title, "Discover Data Science")
 
-section#intro
-  .about-intro
-    .trial-project-button-container
-      = link_to "Join the Revolution!", new_user_registration_path, class: "flat-button animated tada", id: "signup-button"
-  .front-page-about
-    h1.grabber
-     | Learning data science starts here.
+#users
+  .container
+    .row
+      .col-md-10.col-md-offset-1
+        h1.center
+           | Bridging the gap between what you learn in school and what you need in industry.
+    .row
+      .col-md-6
+        .new-user.right
+          = link_to "I am an Employee", new_user_registration_path, class: "flat-button"
+      .col-md-6
+        .new-user
+          = link_to "I am a Student", new_user_registration_path, class: "flat-button"
 
 #bottom
   #about
