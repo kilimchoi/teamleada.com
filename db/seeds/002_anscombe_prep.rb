@@ -1,8 +1,8 @@
 # Creates the anscombe project on the site!
 #Main Page
 main_page_content = [
-  ['text', 'This quick intro will get you through project Anscombe.'],
-  ['text', 'We\'ll be focusing on Data Objects and Functions.'],
+  ['text', 'This introduction series will get you through project Anscombe.'],
+  ['text', 'Here, we\'ll be focusing on Data Objects and Functions.'],
   ['text', 'Knowing the different data objects is important, because data objects hold data.'],
   ['text', 'Ultimately if you\'re working with data, the most important concept is accessing and storing data.'],
   ['text', 'You should open Rstudio on a different screen to follow along'],
@@ -23,7 +23,7 @@ puts "============ Created project: #{project.title}."
 #Create
 data_object_content = [
 		['text', 'Everything in R is an object.'],
-  ['text', 'Here we\'ll be focusing on creating the following data obejcts'],
+  ['text', 'Here we\'ll be focusing on creating the following data obejcts:'],
   ['lesson_links', nil]
 ]
 
@@ -51,7 +51,7 @@ vector_data_content_one = [
   ['code', 'vector_one[10]'],
 ]
 vector_data_content_two = [
-  ['text', 'Note that you can consider the vector as a matrix vector.'],
+  ['text', 'Note that you can consider the vector as a single column of a matrix'],
   ['text', 'This means you can apply elementary oeprations via scalar operations, as shown below.'],
   ['code', 'bigger_vector = vector_one * 5'],
   ['code', 'bigger_vector'],
