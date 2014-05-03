@@ -30,6 +30,14 @@ TeamLeada::Application.routes.draw do
 
   match "/quizzes/check_answer", to: "quizzes#check_answer", via: :get
 
+  namespace :admin do
+    match '/', to: redirect('/admin/dashboard'), via: :get
+    match 'dashboard', to: 'pages#dashboard', via: :get
+
+    resources :users, param: :username, only: [:index, :show]
+    resources :codes
+  end
+
   # 404 page routes
   match "*path", to: "pages#error", via: :get
 end

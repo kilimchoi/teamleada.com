@@ -14,7 +14,7 @@ users = [
 
 users.each do |user|
   if User.find_by(username: user).nil?
-    new_user = User.create(username: user, email: "#{user}@#{user}.com", password: "password")
+    new_user = User.create(username: user, email: "#{user}@#{user}.com", password: "password", role: 'admin')
     puts "Created user: #{new_user.username}."
   end
 end
