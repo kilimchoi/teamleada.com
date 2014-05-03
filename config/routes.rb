@@ -35,6 +35,7 @@ TeamLeada::Application.routes.draw do
     match 'dashboard', to: 'pages#dashboard', via: :get
 
     resources :users, param: :username, only: [:index, :show]
+    resources :codes
   end
 
   # 404 page routes
