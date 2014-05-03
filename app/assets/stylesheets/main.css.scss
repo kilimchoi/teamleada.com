@@ -20,11 +20,49 @@ body {
 }
 
 .banner-image {
+  overflow: hidden;
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
+  z-index: -1;
+
+  img {
+    width: 100%;
+  }
+}
+
+#header {
+  position: relative;
+}
+
+.title-wrapper {
+  padding: 80px;
+
+  .title-inner {
+    max-width: 60%;
+
+    h1.page-title {
+      font-size: 8em;
+      font-weight: 700;
+      color: $founders-rock-blue;
+      letter-spacing: -3px;
+    }
+  }
+}
+
+.img {
+  background-color: $founders-rock-blue;
+}
+
+#projects-container {
+  padding: 50px;
+
+  .row {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
 }
 
 .email-form {
