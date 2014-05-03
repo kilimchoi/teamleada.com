@@ -10,7 +10,7 @@
               - slice.each do |project|
                 .col-sm-3
                   .ih-item.circle.effect2.left_to_right
-                    a href="#"
+                    = link_to project_path(url: project.url) do
                       .img
                       .info
                         h3 = project.title
