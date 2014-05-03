@@ -1,0 +1,11 @@
+.container
+  .row
+    .col-md-12
+      h1 All Users
+      table.table.table-striped
+        th Username
+        th Email
+        - @users.each do |user|
+          tr
+            td = link_to user.username, admin_user_path(username: user.username)
+            td = user.email

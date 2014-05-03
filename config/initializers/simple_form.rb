@@ -142,4 +142,5 @@ SimpleForm.setup do |config|
 
   # Default class for inputs
   # config.input_class = nil
+  config.input_class = "form-control"
 end

@@ -9,6 +9,14 @@ class User < ActiveRecord::Base
 
   validates_format_of :username, :with => /\A[A-Za-z0-9.&]*\z/
 
+  def is_admin?
+    role == 'admin'
+  end
+
+  def is_company?
+    ['recruiter',].include? role
+  end
+
   def completed_projects
     []
   end
