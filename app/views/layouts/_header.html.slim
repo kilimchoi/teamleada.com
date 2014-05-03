@@ -37,3 +37,12 @@
               = link_to "Sign Up", new_user_registration_path, class: "flat-button-header"
   .banner-image
     = image_tag "berkeley.jpg"
+  .title-wrapper
+    .title-inner
+      - if content_for? :page_title
+        h1.page-title = yield :page_title
+      - else
+        h1.page-title Leada
+
+      - unless signed_in?
+        = link_to "Join The Revolution", new_user_registration_path, class: "flat-button animated tada"
