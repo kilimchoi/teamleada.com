@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140503090020) do
+ActiveRecord::Schema.define(version: 20140505232654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,7 +62,8 @@ ActiveRecord::Schema.define(version: 20140503090020) do
     t.string   "url"
     t.boolean  "enabled"
     t.integer  "number"
-    t.boolean  "has_leaderboard", default: false
+    t.boolean  "has_leaderboard",   default: false
+    t.text     "short_description"
   end
 
   create_table "quizzes", force: true do |t|
