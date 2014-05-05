@@ -90,7 +90,8 @@ basic_math_slide_two = Slide.create!(
 basic_assignment_content_one = [
   ['text', 'If we want to store values that we can refer to later, we do a variable assignement.'],
   ['text', 'Assignment happens with either an equal sign "=" (more traditional), or with an arrow, "<-".'],
-  ['text', 'We\'ll generally use the "=" sign. Run the following lines to save some variables for us to work with.'],
+  ['text', 'We\'ll generally be using the "=" sign.'],
+  ['text', 'Run the following lines to save some variables for us to work with.'],
   ['code', 'orange = 3.5'],
   ['code', 'grape = 4.0'],
   ['code', 'melon = 5.0'],
@@ -105,7 +106,7 @@ basic_assignment_content_two = [
   ['code', 'greeting = "Hello World!"'],
   ['code', 'personal_statement = "I hate broccoli!"'],
   ['code', 'favorite_motorcycle = "Ducati"'],
-  ['text', 'Just as before, the variables are stored to their assigned values and are immediately ready to use.'],
+  ['text', 'Just as before, the variables are stored to their assigned values, and are immediately ready to use.'],
   ['next_steps', nil]
 ]
 basic_assignment_content_three = [
@@ -145,7 +146,7 @@ basic_comparison_content_one = [
   ['text', 'A smaller than or equal to B : "A <= B"'],
   ['text', 'A is equal to B : "A == B": Note that we have TWO equal signs here!'],
   ['text', 'Let\'s see if we can compare some of the variables we assigned above. We can do the following comparisons:'],
-  ['text', 'Note that TRUE or FALSE in R is known as Boolean/Logical data types. This is a different data type from numbers or strings'],
+  ['text', 'Note that TRUE or FALSE in R is known as Boolean/Logical data types. This is a different data type from numbers or strings.'],
   ['next_steps', nil]
 ]
 basic_comparison_content_two = [
@@ -155,7 +156,7 @@ basic_comparison_content_two = [
   ['code', 'favorite_motorcycle == "Yamaha"'],
   ['code', 'favorite_motorcycle == "Ducati"'],
   ['text', 'These comparisons shape the backbone of modern programming.'],
-  ['text', 'The only boolean data types in R are TRUE and FALSE; if you write it in lowercase R will not recognize the data type. Also note that the boolean data types in R defaults to integer values. FALSE defaults to 0 and TRUE defaults to 1'],
+  ['text', 'The only boolean data types in R are TRUE and FALSE; if you write it in lowercase R will not recognize the data type. Also note that the boolean data types in R defaults to integer values. FALSE defaults to 0 and TRUE defaults to 1.'],
   ['text', 'The following code should return an error in R'],
   ['code', 'true'],
   ['next_steps', nil],
