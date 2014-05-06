@@ -3,6 +3,7 @@ TeamLeada::Application.routes.draw do
 
   match 'about', to: 'pages#about', via: :get
   match 'employer', to: 'pages#employer', via: :get
+  match 'student', to: 'pages#student', via: :get
 
   devise_for :users, path: '',
                      path_names: { sign_in: 'login', sign_up: 'sign-up', sign_out: 'logout'},
