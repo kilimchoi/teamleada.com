@@ -10,10 +10,6 @@ class ProjectsController < ApplicationController
   end
 
   def index
-    # Add extra "coming soon" projects
-    3.times do
-      @projects.push(Project.new(title: "Coming soon!"))
-    end
     @interested_user = InterestedUser.new
   end
 

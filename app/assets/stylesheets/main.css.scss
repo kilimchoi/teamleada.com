@@ -5,7 +5,6 @@ html, body {
 body {
   font-family: 'open sans';
   -webkit-font-smoothing: antialiased;
-  padding-top: 70px;
 
   @include breakpoint($mobile) {
     padding-top: 0px;
@@ -18,6 +17,82 @@ body {
 
 .container {
   min-height: 95%;
+}
+
+.banner-image {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+
+  img {
+    width: 100%;
+  }
+}
+
+#header {
+  position: relative;
+}
+
+.title-wrapper {
+  padding: 20px 80px 40px;
+
+  .title-inner {
+    max-width: 60%;
+
+    h1.page-title {
+      font-size: 8em;
+      font-weight: 700;
+      color: $founders-rock-blue;
+      letter-spacing: -3px;
+    }
+  }
+}
+
+.img {
+  background-color: $founders-rock-blue;
+}
+
+#projects-container {
+  padding: 50px;
+
+  .row {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .front-text {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    border-radius: 50%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    h3 {
+      color: #fff;
+      text-transform: uppercase;
+      position: relative;
+      letter-spacing: 2px;
+      font-size: 16px;
+      margin: 0 30px;
+      padding: 80px 0 0 0;
+      height: 110px;
+      text-shadow: 0 0 1px white, 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .ih-item.circle.effect13 .info p {
+    border: none;
+    height: 90%;
+    overflow-y: hidden;
+  }
 }
 
 .email-form {

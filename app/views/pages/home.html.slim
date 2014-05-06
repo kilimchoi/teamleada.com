@@ -1,12 +1,19 @@
 = provide(:header_links, "header/home")
+= provide(:page_title, "Discover Data Science")
 
-section#intro
-  .about-intro
-    .trial-project-button-container
-      = link_to "Join the Revolution!", new_user_registration_path, class: "flat-button animated tada", id: "signup-button"
-  .front-page-about
-    h1.grabber
-     | Learning data science starts here.
+#users
+  .container
+    .row
+      .col-md-10.col-md-offset-1
+        h1.center
+           | Bridging the gap between what you learn in school and what you need in industry.
+    .row
+      .col-md-6
+        .new-user.right
+          = link_to "I am an Employer", new_employer_path, class: "flat-button"
+      .col-md-6
+        .new-user
+          = link_to "I am a Student", student_path, class: "flat-button"
 
 #bottom
   #about
@@ -47,7 +54,6 @@ section#intro
 
 javascript:
   $(document).ready(function() {
-    //$(".slide-up").hide();
     $.fn.visible = function(partial) {
         var $t            = $(this),
             $w            = $(window),
@@ -62,30 +68,20 @@ javascript:
     var onScroll = $(window).scroll(function(event) {
       $(".slide-from-right").each(function(i, el) {
         if ($(el).visible(true)) {
-          console.log(el);
           $(el).addClass("slide-right");
         }
       });
       $(".slide-from-left").each(function(i, el) {
         if ($(el).visible(true)) {
-          console.log(el);
           $(el).addClass("slide-left");
         }
       });
       $(".fade-from-in").each(function(i, el) {
         if ($(el).visible(true)) {
-          console.log(el);
           $(el).addClass("fade-in");
         }
       });
       $(".slide-from-up").each(function(i, el) {
-        if ($(el).visible(true)) {
-          console.log(el);
-          //$(el).addClass("slide-up");
-          //$(el).addClass("visible");
-          //$(el).css('visibility', 'visible');
-          //$(el).slideDown(1000);
-        }
       });
     });
   });

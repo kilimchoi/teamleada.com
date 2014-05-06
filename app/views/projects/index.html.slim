@@ -1,31 +1,28 @@
-.container
-  .row
-    .col-md-12
-      .projects-container
-        h1.title Projects
-        .projects-list.panel-group#projects
-          - @projects.each_with_index do |project, index|
-            .panel.panel-default
-              - unless project.url.nil?
-                .panel-heading
-                  h4.panel-title
-                    a href="#project#{project.id}" data-toggle="collapse" data-parent="#projects"
-                      = project.title
-                div.panel-collapse.collapse id="project#{project.id}" class="#{'in' if index == 0}"
-                  .panel-body
-                    p
-                      | Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                    .project-link
-                      = link_to "I'm interested!", project_interest_path(project_url: project.url), method: :post
-              - else
-                .panel-heading
-                  h4.panel-title = project.title
-  .row
-    .col-md-12
-      .email-form
-        h4 Interested in hearing when we release new projects?
-        = form_for @interested_user do |f|
-          .input-group
-            = f.text_field :email, placeholder: 'Your Email Address', class: 'form-control'
-            .input-group-btn
-              = f.submit "I'm interested!", class: 'btn btn-default'
+= provide(:page_title, "Projects")
+
+#projects-container
+  .container
+    .row
+      .col-md-12
+        .projects-container
+          - @projects.each_slice(4) do |slice|
+            .row
+              - slice.each do |project|
+                .col-sm-3
+                  .ih-item.circle.effect13.left_to_right
+                    = link_to project_path(url: project.url) do
+                      .img
+                        .front-text
+                          h3 = project.title
+                      .info
+                        p = project.short_description
+
+    .row
+      .col-md-12
+        .email-form
+          h4 Interested in hearing when we release new projects?
+          = form_for @interested_user do |f|
+            .input-group
+              = f.text_field :email, placeholder: 'Your Email Address', class: 'form-control'
+              .input-group-btn
+                = f.submit "I'm interested!", class: 'btn btn-default'
