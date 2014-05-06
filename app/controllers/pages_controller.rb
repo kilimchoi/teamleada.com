@@ -1,7 +1,6 @@
 class PagesController < ApplicationController
 
   def home
-    @project = Project.first
   end
 
   def about
