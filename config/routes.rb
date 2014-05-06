@@ -2,7 +2,6 @@ TeamLeada::Application.routes.draw do
   root to: 'pages#home'
 
   match 'about', to: 'pages#about', via: :get
-  match 'employer', to: 'pages#employer', via: :get
   match 'student', to: 'pages#student', via: :get
 
   devise_for :users, path: '',
@@ -14,6 +13,9 @@ TeamLeada::Application.routes.draw do
 
   resources :users, param: :username, only: [:show]
   resources :interested_users, only: [:create]
+
+  match 'employer', to: 'employer_applications#new', as: 'new_employer', via: :get
+  resources :employer_applications, path: 'employer', as: 'employer', only: [:create]
 
   resources :projects, param: :url, only: [:show, :index] do
     match 'submit', to: 'projects#check_submission', as: 'submission', via: :post

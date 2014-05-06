@@ -12,7 +12,7 @@
         ul.nav.navbar-nav.navbar-right
           = active_li_link "Home", root_path
           = active_li_link "Students", student_path
-          = active_li_link "Employers", employers_path
+          = active_li_link "Employers", new_employer_path
           = active_li_link "Handbook", "http://www.analyticshandbook.com/", {class: "inactive"}, {target: '_blank'}
           = active_li_link "Blog", "http://statsguys.wordpress.com/", {class: "inactive"}, {target: '_blank'}
           - if signed_in?
