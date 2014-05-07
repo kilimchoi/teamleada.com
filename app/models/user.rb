@@ -17,6 +17,10 @@ class User < ActiveRecord::Base
     ['recruiter',].include? role
   end
 
+  def has_project_access?
+    true
+  end
+
   def completed_projects
     []
   end
