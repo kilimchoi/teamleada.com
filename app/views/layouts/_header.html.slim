@@ -34,9 +34,9 @@
                   = link_to "Sign Out", destroy_user_session_path, method: :delete
           - else
             li
-              = link_to "Sign In", new_user_session_path, class: "flat-button-header"
+              = link_to "Sign In", new_user_session_path
             li
-              = link_to "Sign Up", new_user_registration_path, class: "flat-button-header"
+              = link_to "Sign Up", new_user_registration_path
   .banner-image
     = image_tag "berkeley.jpg"
   div class="title-wrapper #{'hidden' if params[:controller] == 'lessons' || params[:controller] == 'steps'}"
