@@ -15,4 +15,6 @@ class PagesController < ApplicationController
   def error
   end
 
+  def tutoring
+  end
 end

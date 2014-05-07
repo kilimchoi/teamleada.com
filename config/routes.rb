@@ -2,6 +2,8 @@ TeamLeada::Application.routes.draw do
   root to: 'pages#home'
 
   match 'about', to: 'pages#about', via: :get
+  match 'tutoring', to: 'pages#tutoring', via: :get
+
   match 'student', to: 'pages#student', via: :get
 
   devise_for :users, path: '',
