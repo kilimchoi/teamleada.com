@@ -1,7 +1,8 @@
 TeamLeada::Application.routes.draw do
-  root to: "pages#home"
+  root to: 'pages#home'
 
-  match "about", to: "pages#about", via: :get
+  match 'about', to: 'pages#about', via: :get
+  match 'student', to: 'pages#student', via: :get
 
   devise_for :users, path: '',
                      path_names: { sign_in: 'login', sign_up: 'sign-up', sign_out: 'logout'},
@@ -13,9 +14,12 @@ TeamLeada::Application.routes.draw do
   resources :users, param: :username, only: [:show]
   resources :interested_users, only: [:create]
 
+  match 'employer', to: 'employer_applications#new', as: 'new_employer', via: :get
+  resources :employer_applications, path: 'employer', as: 'employer', only: [:create]
+
   resources :projects, param: :url, only: [:show, :index] do
-    match "submit", to: "projects#check_submission", as: "submission", via: :post
-    match "interest", to: "projects#show_interest", as: "interest", via: :post
+    match 'submit', to: 'projects#check_submission', as: 'submission', via: :post
+    match 'interest', to: 'projects#show_interest', as: 'interest', via: :post
 
     resources :lessons, param: :url, only: [:show] do
       resources :steps, param: :url, only: [:show]
@@ -28,7 +32,7 @@ TeamLeada::Application.routes.draw do
   #  end
   #end
 
-  match "/quizzes/check_answer", to: "quizzes#check_answer", via: :get
+  match 'quizzes/check_answer', to: 'quizzes#check_answer', via: :get
 
   namespace :admin do
     match '/', to: redirect('/admin/dashboard'), via: :get
@@ -39,5 +43,5 @@ TeamLeada::Application.routes.draw do
   end
 
   # 404 page routes
-  match "*path", to: "pages#error", via: :get
+  match '*path', to: 'pages#error', via: :get
 end

@@ -59,7 +59,7 @@ begin_two_content = [
   ['text', 'Download the "Test" dataset here:'],
   ['link', 'http://leada.s3.amazonaws.com/titanic_data/test.csv'],
   ['text', 'What you submit to Leada are predictions for whether the passengers in the "Test" dataset survived. To give you a sense for the submission file of this data project, download this file and submit it for grading! Instead of building a model we just predict that all of the males died and all of the females survived.'],
-  ['link' , 'https://s3.amazonaws.com/leada/titanic_data/FirstSubmission'],
+  ['link' , 'https://s3.amazonaws.com/leada/titanic_data/FirstSubmission.csv'],
   ['submit', nil],
   ['next_steps', nil],
 ]

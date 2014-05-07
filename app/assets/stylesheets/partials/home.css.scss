@@ -1,3 +1,7 @@
+#users {
+  padding: 80px;
+}
+
 .page-divider {
   border:3px solid gray;
   width: 30%;
@@ -21,7 +25,6 @@
 }
 
 section#intro {
-  background-image: asset-url("assets/berkeley.jpg");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -32,11 +35,6 @@ section#intro {
   min-height: 600px;
 
   .about-intro {
-    position: absolute;
-    top: 30%;
-    left: 0;
-    bottom: 0;
-    right: 0;
     margin: 0 auto;
     height: 48px;
     text-align: center;
@@ -86,11 +84,11 @@ section#intro {
 
 #about {
   padding: 100px 0px;
+  background-color: #f8f8f8;
 }
 
 #display {
   padding: 100px 0px;
-  background-color: #f8f8f8;
 }
 
 section {
