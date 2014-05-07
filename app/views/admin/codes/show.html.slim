@@ -4,5 +4,13 @@
       h1
         | '
         = @code.value
-        ' ' in group
+        | ' in group '
         = @code.group
+        | '
+      table.table.table-striped
+        th Name
+        th Email
+        - @code.users do |user|
+          tr
+            td = link_to user.name, admin_user_path(username: user.username)
+            td = user.email
