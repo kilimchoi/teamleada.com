@@ -1,4 +1,4 @@
-.container
+.container.full-container
   .row
     .col-md-12
       h1
@@ -7,7 +7,9 @@
       table.table.table-striped
         th Value
         th Group
+        th User Type
         - @codes.each do |code|
           tr
             td = link_to code.value, admin_code_path(code)
             td = code.group
+            td = code.user_type

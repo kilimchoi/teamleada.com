@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :submissions
   has_many :step_status
+  has_many :user_codes
+  has_many :codes, through: :user_codes
 
   validates_format_of :username, :with => /\A[A-Za-z0-9.&]*\z/
 
@@ -18,7 +20,8 @@ class User < ActiveRecord::Base
   end
 
   def has_project_access?
-    true
+    # TODO: Change it so that project-access is not hard-coded
+    self.codes.where(group: "project-access").count > 0
   end
 
   def completed_projects
