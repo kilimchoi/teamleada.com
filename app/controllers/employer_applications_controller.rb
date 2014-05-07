@@ -2,6 +2,7 @@ class EmployerApplicationsController < ApplicationController
 
   def new
     @employer_application = EmployerApplication.new
+    @large_header = true
   end
 
   def create
