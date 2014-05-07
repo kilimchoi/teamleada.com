@@ -13,10 +13,10 @@
           = active_li_link "Home", root_path
           = active_li_link "Students", student_path
           = active_li_link "Employers", new_employer_path
-          = active_li_link "Handbook", "http://www.analyticshandbook.com/", {class: "inactive"}, {target: '_blank'}
-          = active_li_link "Blog", "http://statsguys.wordpress.com/", {class: "inactive"}, {target: '_blank'}
           - if signed_in?
             = active_li_link "Projects", projects_path
+          = active_li_link "Handbook", "http://www.analyticshandbook.com/", {class: "inactive"}, {target: '_blank'}
+          = active_li_link "Blog", "http://statsguys.wordpress.com/", {class: "inactive"}, {target: '_blank'}
           = active_li_link "About", about_path
           - if content_for?(:header_links)
             = render partial: yield(:header_links)

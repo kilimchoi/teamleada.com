@@ -10,8 +10,8 @@
               - slice.each do |project|
                 .col-sm-3
                   .ih-item.circle.effect13.left_to_right
-                    = link_to project_path(url: project.url) do
-                      .img
+                    = link_to "#", data: { toggle: "modal", target: "##{project.url}" } do
+                      .project-circle
                         .front-text
                           h3 = project.title
                       .info
@@ -26,3 +26,19 @@
               = f.text_field :email, placeholder: 'Your Email Address', class: 'form-control'
               .input-group-btn
                 = f.submit "I'm interested!", class: 'btn btn-default'
+
+- @projects.each do |project|
+  div class="modal fade" id="#{project.url}"
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
+          h4.modal-title
+            = project.title
+        .modal-body
+          p
+            = project.short_description
+        .modal-footer
+          - if signed_in? && current_user.has_project_access?
+            = link_to "Start this project!", project_path(url: project.url), class: "btn btn-leada"
+          button.btn.btn-default type="button" data-dismiss="modal" Close

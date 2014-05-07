@@ -15,8 +15,12 @@ body {
   height: 100%;
 }
 
-.container {
+.container.full-container {
   min-height: 95%;
+}
+
+.flash-container {
+  margin-top: 20px;
 }
 
 .banner-image {
@@ -41,7 +45,7 @@ body {
   padding: 20px 80px 40px;
 
   .title-inner {
-    max-width: 60%;
+    max-width: 80%;
 
     h1.page-title {
       font-size: 8em;
