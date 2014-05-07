@@ -14,7 +14,7 @@ TeamLeada::Application.routes.draw do
                        sessions: 'sessions'
                      }
 
-  resources :users, param: :username, only: [:show]
+  resources :users, only: [:show]
   resources :interested_users, only: [:create]
 
   match 'employer', to: 'employer_applications#new', as: 'new_employer', via: :get
