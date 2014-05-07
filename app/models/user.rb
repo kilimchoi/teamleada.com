@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   end
 
   def has_project_access?
+    # TODO: Change it so that project-access is not hard-coded
     self.codes.where(group: "project-access").count > 0
   end
 
