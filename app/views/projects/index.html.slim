@@ -10,7 +10,7 @@
               - slice.each do |project|
                 .col-sm-3
                   .ih-item.circle.effect13.left_to_right
-                    = link_to project_path(url: project.url) do
+                    = link_to "#", data: { toggle: "modal", target: "#myModal" } do
                       .project-circle
                         .front-text
                           h3 = project.title
@@ -26,3 +26,16 @@
               = f.text_field :email, placeholder: 'Your Email Address', class: 'form-control'
               .input-group-btn
                 = f.submit "I'm interested!", class: 'btn btn-default'
+
+.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
+        h4.modal-title
+          | Modal Title
+        .modal-body
+          p
+            | One fine body
+        .modal-footer
+          button.btn.btn-default type="button" data-dismiss="modal" Close
