@@ -30,8 +30,14 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  def after_sign_up_path_for(resource)
-    projects_path
+  def after_sign_up_path_for(user)
+    if user.is_admin?
+      admin_dashboard_path
+    elsif user.has_project_access?
+      projects_path
+    else
+      session[:previous_url] || root_path
+    end
   end
 
   def after_inactive_sign_up_path_for(resource)
