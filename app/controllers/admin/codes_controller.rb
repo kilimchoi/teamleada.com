@@ -45,7 +45,7 @@ class Admin::CodesController < Admin::BaseController
   end
 
   def code_params
-    params.require(:code).permit(:group, :value)
+    params.require(:code).permit(:group, :value, :user_type)
   end
 
 end
