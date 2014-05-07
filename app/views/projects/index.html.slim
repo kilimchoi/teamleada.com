@@ -18,13 +18,11 @@
 
   .row
     .col-md-12
-      .email-form
-        h4 Interested in hearing when we release new projects?
-        = form_for @interested_user do |f|
-          .input-group
-            = f.text_field :email, placeholder: 'Your Email Address', class: 'form-control'
-            .input-group-btn
-              = f.submit "I'm interested!", class: 'btn btn-leada'
+      h4 Interested in hearing when we release new projects?
+    .col-md-12
+      p
+        | Fill our user survey. Indicate in the last question (Q.6) that you're interested in the product!
+      a href="http://www.surveygizmo.com/s3/1645296/Handbook-Pt-III-Reader-Survey" target="_blank" Take me to the survey
 
 - @projects.each do |project|
   div class="modal fade" id="#{project.url}"
