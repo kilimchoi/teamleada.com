@@ -5,8 +5,8 @@
       = simple_form_for @code, url: admin_codes_path, html: {class: 'form-vertical'} do |f|
         = f.error_notification
         .form-inputs
-          = f.input :value
-          = f.input :group
+          = f.input :value, value: @code.value
+          = f.input :group, collection: Code::GROUPS
           = f.input :user_type
         .form-actions
           = f.button :submit, class: "flat-button"
