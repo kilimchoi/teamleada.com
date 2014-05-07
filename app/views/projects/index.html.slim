@@ -1,7 +1,7 @@
 = provide(:page_title, "Projects")
 
 #projects-container
-  .container
+  .container.full-container
     .row
       .col-md-12
         .projects-container
@@ -25,7 +25,7 @@
             .input-group
               = f.text_field :email, placeholder: 'Your Email Address', class: 'form-control'
               .input-group-btn
-                = f.submit "I'm interested!", class: 'btn btn-default'
+                = f.submit "I'm interested!", class: 'btn btn-leada'
 
 - @projects.each do |project|
   div class="modal fade" id="#{project.url}"
