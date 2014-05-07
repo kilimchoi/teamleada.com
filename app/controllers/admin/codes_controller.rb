@@ -2,8 +2,12 @@ class Admin::CodesController < Admin::BaseController
   before_filter :code, only: [:show, :edit, :update, :destroy]
   before_filter :codes, only: [:index]
 
+  require 'securerandom'
+
   def new
     @code = Code.new
+    # TODO: Hopefully there aren't any collisions...
+    @code.value = SecureRandom.hex(4)
   end
 
   def create
