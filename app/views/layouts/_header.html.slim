@@ -1,5 +1,5 @@
 #header
-  nav.navbar.navbar-default role="navigation"
+  nav class="navbar navbar-default #{'no-navbar-border' if @large_header}" role="navigation"
     .container-fluid
       .navbar-header
         button.navbar-toggle type="button" data-toggle="collapse" data-target="#collapsed-navbar"
@@ -41,14 +41,15 @@
               = link_to "Sign In", new_user_session_path
             li
               = link_to "Sign Up", new_user_registration_path
-  .banner-image
-    = image_tag "berkeley.jpg"
-  div class="title-wrapper #{'hidden' if params[:controller] == 'lessons' || params[:controller] == 'steps'}"
-    .title-inner
-      - if content_for? :page_title
-        h1.page-title = yield :page_title
-      - else
-        h1.page-title Leada
+  - if @large_header
+    .banner-image
+      = image_tag "berkeley.jpg"
+    div class="title-wrapper #{'hidden' if params[:controller] == 'lessons' || params[:controller] == 'steps'}"
+      .title-inner
+        - if content_for? :page_title
+          h1.page-title = yield :page_title
+        - else
+          h1.page-title Leada
 
-      - unless signed_in?
-        = link_to "Join The Revolution", new_user_registration_path, class: "flat-button animated tada"
+        - unless signed_in?
+          = link_to "Join The Revolution", new_user_registration_path, class: "flat-button animated tada"

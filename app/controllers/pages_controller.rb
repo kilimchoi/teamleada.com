@@ -1,9 +1,11 @@
 class PagesController < ApplicationController
 
   def home
+    @large_header = true
   end
 
   def about
+    @large_header = true
   end
 
   def handbook
@@ -17,4 +19,9 @@ class PagesController < ApplicationController
 
   def tutoring
   end
+
+  def student
+    @large_header = true
+  end
+
 end

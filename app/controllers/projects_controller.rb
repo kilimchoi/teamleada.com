@@ -11,6 +11,7 @@ class ProjectsController < ApplicationController
 
   def index
     @interested_user = InterestedUser.new
+    @large_header = true
   end
 
   def check_submission
