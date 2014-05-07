@@ -16,6 +16,10 @@ $navbar-padding-bottom: 25px;
   border-color: transparent;
 }
 
+.white-navbar {
+  background-color: white;
+}
+
 .navbar-nav > li > a {
   padding-top: $navbar-padding-top;
   padding-bottom: $navbar-padding-bottom;
