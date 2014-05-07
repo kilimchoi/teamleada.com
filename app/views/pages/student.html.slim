@@ -1,6 +1,34 @@
 = provide(:page_title, "Students")
 
 .container
-  .row
-    .col-md-12
-      h1 Come Learn With Us
+  .row.employer-row.right-align
+    .col-md-4.col-md-offset-8
+      h1 Become Data Literate
+      p
+        | Learn the statistics and programming skills
+        |  necessary to effectively analyze data.
+  .divider
+  .row.employer-row
+    .col-md-4
+      h1 Learn for a Reason
+      p
+        | Complete data projects that have direct
+        |  application to your future job, well
+        |  because they were taken from previous jobs.
+  .divider
+  .row.employer-row.center
+    .col-md-8.col-md-offset-2
+      h1 Have an Early Access Code already?
+      - if signed_in?
+        = form_tag "student", method: :post do |f|
+          = text_field_tag :code, params[:secret], class: "form-control small-form", placeholder: "Code"
+          .submit-button
+            = submit_tag "Enter", class: "flat-button"
+      - else
+        p
+          | Sign in to use it!
+        .button-container
+          .sign-in-button-container
+            = link_to "Sign In", new_user_session_path, class: "flat-button"
+          .sign-up-button-container
+            = link_to "Sign Up", new_user_registration_path, class: "flat-button"
