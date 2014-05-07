@@ -21,6 +21,7 @@ gem 'rails-reveal-js', '~> 2.6.1.2'
 gem 'rails-rename', '~> 1.0.0'
 gem 'aws-sdk', '~> 1.0'
 gem 'cancancan', '~> 1.7'
+gem 'friendly_id', '~> 5.0.3'
 
 group :doc do
   gem 'sdoc', require: false
@@ -35,6 +36,7 @@ group :development, :test do
   gem 'factory_girl', '~> 4.4.0'
   gem 'rails_best_practices', '~> 1.15.1'
   gem 'rspec-rails', '~> 2.14.1'
+  gem 'quiet_assets', '~> 1.0.2'
 end
 
 group :development do

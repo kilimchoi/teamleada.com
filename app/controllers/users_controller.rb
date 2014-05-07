@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource
   before_filter :user, only: [:show]
 
   def show
@@ -31,7 +32,7 @@ class UsersController < ApplicationController
   private
 
   def user
-    @user = User.find_by(username: params[:username])
+    @user = User.find(params[:id])
   end
 
 end
