@@ -1,5 +1,11 @@
 .reveal
   .slides
+    - if @lesson.first_lesson
+      section
+        section
+          h1 = @lesson.title
+          p
+            | Press the right arrow key of the <spacebar> to advance through the project!
     - @lesson.slides.each do |slide|
       section
         section

@@ -21,4 +21,8 @@ class Lesson < ActiveRecord::Base
     project_path(url: project.url)
   end
 
+  def first_lesson
+    self == self.project.lessons.first
+  end
+
 end
