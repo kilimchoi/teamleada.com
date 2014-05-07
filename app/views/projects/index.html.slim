@@ -1,31 +1,30 @@
 = provide(:page_title, "Projects")
 
-#projects-container
-  .container.full-container
-    .row
-      .col-md-12
-        .projects-container
-          - @projects.each_slice(4) do |slice|
-            .row
-              - slice.each do |project|
-                .col-sm-3
-                  .ih-item.circle.effect13.left_to_right
-                    = link_to "#", data: { toggle: "modal", target: "##{project.url}" } do
-                      .project-circle
-                        .front-text
-                          h3 = project.title
-                      .info
-                        p = project.short_description
+.container.full-container#projects-container
+  .row
+    .col-md-12
+      .projects-container
+        - @projects.each_slice(4) do |slice|
+          .row
+            - slice.each do |project|
+              .col-sm-3
+                .ih-item.circle.effect13.left_to_right
+                  = link_to "#", data: { toggle: "modal", target: "##{project.url}" } do
+                    .project-circle
+                      .front-text
+                        h3 = project.title
+                    .info
+                      p = project.short_description
 
-    .row
-      .col-md-12
-        .email-form
-          h4 Interested in hearing when we release new projects?
-          = form_for @interested_user do |f|
-            .input-group
-              = f.text_field :email, placeholder: 'Your Email Address', class: 'form-control'
-              .input-group-btn
-                = f.submit "I'm interested!", class: 'btn btn-leada'
+  .row
+    .col-md-12
+      .email-form
+        h4 Interested in hearing when we release new projects?
+        = form_for @interested_user do |f|
+          .input-group
+            = f.text_field :email, placeholder: 'Your Email Address', class: 'form-control'
+            .input-group-btn
+              = f.submit "I'm interested!", class: 'btn btn-leada'
 
 - @projects.each do |project|
   div class="modal fade" id="#{project.url}"
