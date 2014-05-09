@@ -20,6 +20,10 @@ class ChargesController < ApplicationController
       :currency    => 'usd'
     )
 
+    ActiveRecord::Base.transaction do
+      @transaction.stripe_charge_id = charge.id
+    end
+
     rescue Stripe::CardError => e
     flash[:danger] = e.message
     redirect_to charges_path
