@@ -4,6 +4,7 @@ class Project < ActiveRecord::Base
 
   has_many :lessons, dependent: :destroy
   has_many :submissions, dependent: :destroy
+  has_many :transactions, as: :item
 
   before_create :set_url
 

@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :step_status
   has_many :user_codes
   has_many :codes, through: :user_codes
+  has_many :transactions
 
   validates_format_of :username, :with => /\A[A-Za-z0-9.&]*\z/
   validates :username, uniqueness: true
