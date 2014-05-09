@@ -44,7 +44,8 @@
         .modal-footer
           - if signed_in? && current_user.has_project_access?
             - if project.paid?
-              = link_to "Purchase this project!", project_purchase_path(project_url: project.url), class: "btn btn-leada"
+              = form_tag project_purchase_path(project_url: project.url), class: "form-inline" do
+                script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-description="A month's subscription" data-amount="100"
             - else
               = link_to "Start this project!", project_path(url: project.url), class: "btn btn-leada"
           button.btn.btn-default type="button" data-dismiss="modal" Close
