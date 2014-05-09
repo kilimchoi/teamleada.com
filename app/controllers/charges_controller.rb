@@ -21,7 +21,9 @@ class ChargesController < ApplicationController
     )
 
     ActiveRecord::Base.transaction do
+      @transaction.amount = @amount
       @transaction.stripe_charge_id = charge.id
+      @transaction.charged = true
     end
 
     rescue Stripe::CardError => e
