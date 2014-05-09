@@ -5,8 +5,8 @@ class ChargesController < ApplicationController
   end
 
   def create
-    @transaction = Transaction.new(transaction_params)
     @project = Project.find_by(url: params[:project_url])
+    @transaction = Transaction.new(item: @project, user: current_user)
 
     customer = Stripe::Customer.create(
       :email => current_user.email,
@@ -26,15 +26,17 @@ class ChargesController < ApplicationController
       @transaction.charged = true
     end
 
+    flash[:info] = "You have successfully paid $#{@project.cost_in_dollars} for the #{@project.title} project!"
+    redirect_to project_path(url: @project.url)
+
     rescue Stripe::CardError => e
     flash[:danger] = e.message
-    redirect_to charges_path
+    redirect_to projects_path
   end
 
   private
 
   def transaction_params
-    params.require(:transaction).permit()
   end
 
 end
