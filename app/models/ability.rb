@@ -14,4 +14,5 @@ class Ability
       can :show, User, id: user.id
     end
   end
+
 end
