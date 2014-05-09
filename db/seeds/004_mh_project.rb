@@ -10,7 +10,9 @@ project = Project.create!(
 	title:"MightyHive",
 	description: main_page_content,
 	number: 5,
-	enabled: true
+	enabled: true,
+  paid: true,
+  cost: 500
 )
 
 ################################################################################
