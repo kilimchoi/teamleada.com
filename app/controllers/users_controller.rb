@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
+  skip_authorize_resource only: :auth_code
   before_filter :user, only: [:show]
 
   def show
@@ -7,7 +8,7 @@ class UsersController < ApplicationController
 
   def auth_code
     @code = Code.find_by(value: params[:code])
-    if @code
+    unless @code.nil?
       existing = current_user.codes.where(value: params[:code]).count > 0
       if existing
         flash[:danger] = "You have already used that code."
