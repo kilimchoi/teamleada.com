@@ -1,12 +1,7 @@
 class ProjectsController < ApplicationController
-  before_filter :project, only: [:show, :check_submission, :show_interest]
-  before_filter :projects, only: [:index]
+  load_and_authorize_resource
 
   def show
-    if project.nil?
-      render "projects/error"
-      return
-    end
   end
 
   def index
@@ -68,16 +63,6 @@ class ProjectsController < ApplicationController
       flash[:danger] = "There was an error saving your interest, please try again."
       redirect_to :back
     end
-  end
-
-  private
-
-  def project
-    @project = Project.find_by(url: params[:url] || params[:project_url])
-  end
-
-  def projects
-    @projects = Project.all
   end
 
 end
