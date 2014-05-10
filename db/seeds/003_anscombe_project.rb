@@ -10,7 +10,7 @@ main_page_content = [
 ]
 
 project = Project.create!(
-  title: "Anscombe",
+  title: "Anscombe's Quartet",
   description: main_page_content,
   number: 3,
   enabled: true
