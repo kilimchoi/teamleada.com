@@ -4,6 +4,7 @@ class Ability
   def initialize(user)
     user ||= User.new
 
+    puts 'hi'
     alias_action :index, :show, to: :view
 
     if user.is_admin?
@@ -12,10 +13,10 @@ class Ability
       can :dashboard
     elsif !user.new_record?
       can :show, User, id: user.id
-      can :read, Project, paid: false
-      can :read, Project, Project.costs_money do |project|
-        !user.transactions.find_by(item: project).nil?
+      can :show, Project do |project|
+        !project.paid || !project.transactions.find_by(user: user).nil?
       end
+      can :index, Project
     end
   end
 
