@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140507070003) do
+ActiveRecord::Schema.define(version: 20140509010333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,8 @@ ActiveRecord::Schema.define(version: 20140507070003) do
     t.boolean  "has_leaderboard",   default: false
     t.text     "short_description"
     t.boolean  "has_submit",        default: false
+    t.integer  "cost"
+    t.boolean  "paid",              default: false
   end
 
   create_table "quizzes", force: true do |t|
@@ -129,6 +131,17 @@ ActiveRecord::Schema.define(version: 20140507070003) do
     t.decimal  "score",      precision: 20, scale: 5
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "transactions", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.string   "item_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "amount"
+    t.integer  "stripe_charge_id"
+    t.boolean  "charged",          default: false
   end
 
   create_table "user_codes", force: true do |t|

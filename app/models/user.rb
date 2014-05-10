@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :step_status
   has_many :user_codes
   has_many :codes, through: :user_codes
+  has_many :transactions
 
   validates_format_of :username, :with => /\A[A-Za-z0-9.&]*\z/
   validates :username, uniqueness: true
@@ -25,7 +26,11 @@ class User < ActiveRecord::Base
 
   def has_project_access?
     # TODO: Change it so that project-access is not hard-coded
-    self.codes.where(group: "project-access").count > 0
+    is_admin? || self.codes.where(group: "project-access").count > 0
+  end
+
+  def has_not_paid_for_project?(project)
+    self.transactions.find_by(item: project).nil?
   end
 
   def completed_projects

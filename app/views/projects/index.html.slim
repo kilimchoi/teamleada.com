@@ -13,6 +13,11 @@
                     .project-circle
                       .front-text
                         h3 = project.title
+                        - if project.paid?
+                          span.label.label-success
+                            | Company Project - $
+                            = project.cost_in_dollars
+
                     .info
                       p = project.short_description
 
@@ -24,6 +29,7 @@
         | Fill our user survey. Indicate in the last question (Q.6) that you're interested in the product!
       a href="http://www.surveygizmo.com/s3/1645296/Handbook-Pt-III-Reader-Survey" target="_blank" Take me to the survey
 
+// TODO: Don't make a new modal for each project
 - @projects.each do |project|
   div class="modal fade" id="#{project.url}"
     .modal-dialog
@@ -37,5 +43,9 @@
             = project.short_description
         .modal-footer
           - if signed_in? && current_user.has_project_access?
-            = link_to "Start this project!", project_path(url: project.url), class: "btn btn-leada"
+            - if project.paid? && current_user.has_not_paid_for_project?(project)
+              = form_tag purchase_project_path(project), class: "form-inline" do
+                script src="https://checkout.stripe.com/checkout.js" class="stripe-button" *{'data-key' => Rails.configuration.stripe[:publishable_key], 'data-description' => project.title, 'data-amount' => project.cost, 'data-email' => current_user.email}
+            - else
+              = link_to "Start this project!", project_path(project), class: "btn btn-leada"
           button.btn.btn-default type="button" data-dismiss="modal" Close

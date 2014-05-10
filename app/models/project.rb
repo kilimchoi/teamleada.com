@@ -4,13 +4,23 @@ class Project < ActiveRecord::Base
 
   has_many :lessons, dependent: :destroy
   has_many :submissions, dependent: :destroy
+  has_many :transactions, as: :item
 
   before_create :set_url
 
   validates :title, uniqueness: true
 
+  scope :costs_money, -> { where(paid: true) }
+
+  extend FriendlyId
+  friendly_id :url, use: :finders
+
   def set_url
     self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize
+  end
+
+  def cost_in_dollars
+    "%.2f" % (cost / 100)
   end
 
   def check_submission(file)

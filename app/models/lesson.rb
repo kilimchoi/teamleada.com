@@ -13,6 +13,9 @@ class Lesson < ActiveRecord::Base
   before_create :set_url
   validates_uniqueness_of :title, scope: :project_id
 
+  extend FriendlyId
+  friendly_id :url, use: :finders
+
   def set_url
     self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize
   end

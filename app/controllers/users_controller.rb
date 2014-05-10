@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
-  before_filter :user, only: [:show]
+  skip_authorize_resource only: :auth_code
 
   def show
   end
 
   def auth_code
     @code = Code.find_by(value: params[:code])
-    if @code
+    unless @code.nil?
       existing = current_user.codes.where(value: params[:code]).count > 0
       if existing
         flash[:danger] = "You have already used that code."
@@ -27,12 +27,6 @@ class UsersController < ApplicationController
       flash[:danger] = "Invalid code entered."
       redirect_to student_path
     end
-  end
-
-  private
-
-  def user
-    @user = User.find(params[:id])
   end
 
 end

@@ -22,6 +22,7 @@ gem 'rails-rename', '~> 1.0.0'
 gem 'aws-sdk', '~> 1.0'
 gem 'cancancan', '~> 1.7'
 gem 'friendly_id', '~> 5.0.3'
+gem 'stripe', git: 'https://github.com/stripe/stripe-ruby'
 
 group :doc do
   gem 'sdoc', require: false

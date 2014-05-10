@@ -12,6 +12,14 @@ class Ability
       can :dashboard
     elsif !user.new_record?
       can :show, User, id: user.id
+      can :show, Project do |project|
+        !project.paid || !user.has_not_paid_for_project?(project)
+      end
+      can :index, Project
+
+      can :show, Lesson
+      can :show, Step
     end
   end
+
 end
