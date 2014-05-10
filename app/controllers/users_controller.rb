@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
   skip_authorize_resource only: :auth_code
-  before_filter :user, only: [:show]
 
   def show
   end
@@ -28,12 +27,6 @@ class UsersController < ApplicationController
       flash[:danger] = "Invalid code entered."
       redirect_to student_path
     end
-  end
-
-  private
-
-  def user
-    @user = User.find(params[:id])
   end
 
 end
