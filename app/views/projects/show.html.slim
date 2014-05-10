@@ -26,5 +26,5 @@
             ul
             - @project.lessons.each do |lesson|
               .lesson-link.center
-                = link_to lesson.title, lesson_path(url: lesson.url), class: 'flat-button step-button'
+                = link_to lesson.title, project_lesson_path(@project, lesson), class: 'flat-button step-button'
 
