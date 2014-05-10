@@ -21,12 +21,14 @@ TeamLeada::Application.routes.draw do
   resources :employer_applications, path: 'employer', as: 'employer', only: [:create]
 
   resources :projects, only: [:show, :index] do
-    match 'submit', to: 'projects#check_submission', as: 'submission', via: :post
-    match 'interest', to: 'projects#show_interest', as: 'interest', via: :post
-    match 'purchase', to: 'charges#create', as: 'purchase', via: [:post]
+    member do
+      match 'submit', to: 'projects#check_submission', as: 'submission', via: :post
+      match 'interest', to: 'projects#show_interest', as: 'interest', via: :post
+      match 'purchase', to: 'charges#create', as: 'purchase', via: [:post]
 
-    resources :lessons, param: :url, only: [:show] do
-      resources :steps, param: :url, only: [:show]
+      resources :lessons, param: :url, only: [:show] do
+        resources :steps, param: :url, only: [:show]
+      end
     end
   end
 
