@@ -12,6 +12,7 @@ main_page_content = [
 project = Project.create!(
   title: "Anscombe's Quartet",
   description: main_page_content,
+  short_description: "Testing this short description.",
   number: 3,
   enabled: true
 )
