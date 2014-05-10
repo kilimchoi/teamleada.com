@@ -10,6 +10,7 @@ main_page_content = [
 project = Project.create!(
   title: "Introduction to R",
   description: main_page_content,
+  short_description: "This project is for first time programmers and first time R users. You will learn to write basic expressions, variable assignment, logical comparisons, and data types.",
   number: 0,
   enabled: true
 )
