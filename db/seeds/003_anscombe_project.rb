@@ -12,6 +12,7 @@ main_page_content = [
 project = Project.create!(
   title: "Anscombe's Quartet",
   description: main_page_content,
+  short_description: "An introductory data project hosted by Leada which familiarizes you with R syntax and creating basic linear models on a dataset. This project is for first time programmers wanting to get introduced to the world of statistical and data analysis.",
   number: 3,
   enabled: true
 )
