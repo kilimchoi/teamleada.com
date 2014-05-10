@@ -1,13 +1,8 @@
 class LessonsController < ApplicationController
-  before_filter :lesson, only: [:show]
+  load_and_authorize_resource :project
+  load_and_authorize_resource :lesson, through: :project
 
   def show
-  end
-
-  private
-
-  def lesson
-    @lesson = Lesson.find_by(url: params[:url])
   end
 
 end

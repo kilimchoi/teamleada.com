@@ -5,7 +5,7 @@ class ChargesController < ApplicationController
   end
 
   def create
-    @project = Project.find_by(url: params[:project_url])
+    @project = Project.find(params[:id])
     @transaction = Transaction.new(item: @project, user: current_user)
 
     customer = Stripe::Customer.create(
@@ -28,7 +28,7 @@ class ChargesController < ApplicationController
     end
 
     flash[:info] = "You have successfully paid $#{@project.cost_in_dollars} for the #{@project.title} project!"
-    redirect_to project_path(url: @project.url)
+    redirect_to project_path(@project)
 
     rescue Stripe::CardError => e
     flash[:danger] = e.message
