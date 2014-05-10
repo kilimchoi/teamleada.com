@@ -20,7 +20,7 @@ TeamLeada::Application.routes.draw do
   match 'employer', to: 'employer_applications#new', as: 'new_employer', via: :get
   resources :employer_applications, path: 'employer', as: 'employer', only: [:create]
 
-  resources :projects, param: :url, only: [:show, :index] do
+  resources :projects, only: [:show, :index] do
     match 'submit', to: 'projects#check_submission', as: 'submission', via: :post
     match 'interest', to: 'projects#show_interest', as: 'interest', via: :post
     match 'purchase', to: 'charges#create', as: 'purchase', via: [:post]
