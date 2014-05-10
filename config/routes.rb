@@ -25,10 +25,10 @@ TeamLeada::Application.routes.draw do
       match 'submit', to: 'projects#check_submission', as: 'submission', via: :post
       match 'interest', to: 'projects#show_interest', as: 'interest', via: :post
       match 'purchase', to: 'charges#create', as: 'purchase', via: [:post]
+    end
 
-      resources :lessons, param: :url, only: [:show] do
-        resources :steps, param: :url, only: [:show]
-      end
+    resources :lessons, only: [:show] do
+      resources :steps, only: [:show]
     end
   end
 
