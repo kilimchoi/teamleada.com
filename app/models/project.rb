@@ -12,6 +12,9 @@ class Project < ActiveRecord::Base
 
   scope :costs_money, -> { where(paid: true) }
 
+  extend FriendlyId
+  friendly_id :url, use: :finders
+
   def set_url
     self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize
   end
