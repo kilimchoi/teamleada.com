@@ -29,6 +29,10 @@ class User < ActiveRecord::Base
     is_admin? || self.codes.where(group: "project-access").count > 0
   end
 
+  def has_not_paid_for_project?(project)
+    self.transactions.find_by(item: project).nil?
+  end
+
   def completed_projects
     []
   end
