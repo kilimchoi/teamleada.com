@@ -24,6 +24,7 @@ class ChargesController < ApplicationController
       @transaction.amount = @project.cost
       @transaction.stripe_charge_id = charge.id
       @transaction.charged = true
+      @transaction.save
     end
 
     flash[:info] = "You have successfully paid $#{@project.cost_in_dollars} for the #{@project.title} project!"

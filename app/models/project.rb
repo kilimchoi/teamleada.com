@@ -10,6 +10,8 @@ class Project < ActiveRecord::Base
 
   validates :title, uniqueness: true
 
+  scope :costs_money, -> { where(paid: true) }
+
   def set_url
     self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize
   end
