@@ -451,8 +451,8 @@ data_four_post_content_four = [
   ['text', 'In the mean time, check it out:'],
   ['code', 'help(density) #don\'t worry too much about this function, just get a feel for it.'],
   ['text', 'For x=19 (majestic-evil cats), we don\'t have enough data point (we only saw one cat!)'],
-  ['text', 'Perhaps our next move is to go find more data for x=19'],
-  ['project_link', 'Back to the lessons page']
+  ['text', 'Perhaps our next move is to go find more data for x=19.'],
+  ['next_steps', nil],
 ]
 
 data_four_post_step = Step.create!(
@@ -479,8 +479,8 @@ data_four_slide_four = Slide.create!(
 ################################################################################
 #Cnclusion
 conclusion_content_one = [
-  ['text', 'How this could have happened? You looked at 4 datasets and it seems like the usual statistical methods have deceived you.'],
-  ['text', 'We have 4 clearly different datasets; if we didn\'t inspect them carefully, we would have never learned about their differences.'],
+  ['text', 'How could this have happened? You looked at 4 datasets and it seems like the usual statistical methods have deceived you.'],
+  ['text', 'We have 4 different datasets; if we didn\'t inspect them carefully, we would have never learned about their differences.'],
   ['text', 'This leaves us with one final message: "Look at your data".'],
   ['text', 'A quote from Josh Wills (Senior Director of Data Science at Cloudera):'],
   ['text', '"People who learn about t-tests and regressions get a little sophisticated, and start applying models without looking at the data. They think that they can just apply this technique and they don’t have to look at the data anymore. You do that a few times, you get burned by some bad data, and you learn to go back and start looking at the data again."'],
