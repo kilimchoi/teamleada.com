@@ -11,7 +11,7 @@ project = Project.create!(
   description: main_page_content,
   short_description: "This data project focuses on using SQL, you will learn how to retrieve data from a database by writing SQL queries. Other skills you will learn is how to create filters, how to order your results, and creating table joins. You will ultimately discover some interesting metrics about March Madness results from the past two decades.",
   number: 7,
-  enabled: true,
+  enabled: false,
 )
 
 ################################################################################
