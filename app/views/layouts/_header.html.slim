@@ -50,6 +50,3 @@
           h1.page-title = yield :page_title
         - else
           h1.page-title Leada
-
-        - unless signed_in?
-          = link_to "Join The Revolution", new_user_registration_path, class: "flat-button animated tada"
