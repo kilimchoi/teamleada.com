@@ -10,6 +10,7 @@ users = [
   'mark',
   'brian',
   'tristan',
+  'chris',
 ]
 
 if Rails.env.development?
