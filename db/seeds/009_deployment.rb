@@ -1,5 +1,5 @@
 main_page_content = [
-	['text', 'This is a pilot proj'],
+	['text', 'This is a pilot proj.'],
 ]
 
 project = Project.create!(
