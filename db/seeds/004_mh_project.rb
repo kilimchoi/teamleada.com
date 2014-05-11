@@ -40,7 +40,6 @@ project_overview_slide = Slide.create!(
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 project_spec_content = [
-  ['text', 'You are given two datasets:'],
   ['text', 'The Abandoned Caller Dataset'],
   ['text', 'Almost half of potential customers who inquire via “Martin’s Travel Agency” call center “abandon the call.” This call center log includes all of the “abandoned” callers from May 1st to May 31st.'],
   ['text', 'The Reservation Dataset'],
@@ -270,7 +269,7 @@ matching_step_content_five = [
 ]
 
 matching_step_content_six = [
-  ['text', 'We also want to check for phone matches between the Incoming_Phone column and the Contact_Phone column. Lets add a check for skipping NA values. This is done in the first if statement and the use of "next" which tells R to exit out of the loop and continue to the next step.'],
+  ['text', 'Lets add a check for skipping NA values. This is done in the first if statement and the use of "next" which tells R to exit out of the loop and continue to the next step.'],
   ['code', 'for(i in c(1:nrow(abndData))) {'],
   ['code', '  if(is.na(abndData$INCOMING_PHONE_A[i])) {'],
   ['code', '    next'],
@@ -302,7 +301,7 @@ matching_step_content_seven = [
 ]
 
 matching_step_content_eight = [
-  ['text', 'In our CONV column we can now add a 1 if there is a 1 in the INCOMING_PHONE_MATCH column. In our case the CONV column will be the exact same as the INCOMING_PHONE_MATCH column.'],
+  ['text', 'In our CONV column we can now add a 1 if there is a 1 in the Incoming_Phone_Match column. In our case the CONV column will be the exact same as the Incoming_Phone_Match column.'],
   ['code', 'for(i in c(1:nrow(resData))) {'],
   ['code', '  if(resData$INCOMING_PHONE_MATCH[i] == 1) {'],
   ['code', '    resData$CONV[i] <- 1'],
@@ -602,9 +601,9 @@ z_test_content_five = [
 
 z_test_content_six = [
   ['text', 'Therefore since this chance is really small (the area in red) we have a strong case against the null hypothesis and can conclude our alternative to be statistically significant.'],
-  ['text', 'We check where our Z score lies on the normal curve with the pnorm() function in R.'],
+  ['text', 'To calculate the area under the normal curve to the right of our z-score we use the pnorm() function in R.'],
   ['code', 'pnorm(z_score, lower.tail = F)'],
-  ['text', 'This value is known as the P-value. The P-value of a statistics test is the chance of getting a more extreme test statistic assuming that the null hypothesis is right. '],
+  ['text', 'This value is known as the P-value. The P-value is the chance of getting a more extreme test statistic assuming that the null hypothesis is right. '],
   ['text', 'Generally a p-value below 5% is considered statistically significant for research.']
 ]
 
