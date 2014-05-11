@@ -43,8 +43,8 @@ vector_data_content_one = [
   ['text', 'Vector is the basic object in R. Even multipliers/scalars are vectors of length 1.'],
   ['code', 'vector_one = c(1,2,3,4,5,6)'],
   ['code', 'vector_one'],
-  ['text', 'To access data in the vector, the syntax in R is to use brackets ([]) and the index number of what you want to select.'],
-  ['text', 'Unlike most programming languages, R starts indexing at 1 instead of 0'],
+  ['text', 'To access data in the vector, the syntax in R is to use brackets [] and the index number of what you want to select.'],
+  ['text', 'Unlike most programming languages, R starts indexing at 1 instead of 0.'],
   ['code', 'vector_one[1]'],
   ['code', 'vector_one[1:3] #This grabs the first three values'],
   ['text', 'What about invalid requests?'],
@@ -52,17 +52,18 @@ vector_data_content_one = [
   ['code', 'vector_one[10]'],
 ]
 vector_data_content_two = [
-  ['text', 'Note that you can consider the vector as a single column of a matrix'],
+  ['text', 'Note that you can consider a vector as a single column of a matrix'],
   ['text', 'This means you can apply elementary oeprations via scalar operations, as shown below.'],
   ['code', 'bigger_vector = vector_one * 5'],
   ['code', 'bigger_vector'],
-  ['code', 'bigger_vector == vector_one #remember that \'=\' assigns values, whereas \'==\' compares.'],
   ['text', 'This means vector wise comparison works too!'],
+  ['code', 'bigger_vector == vector_one #remember that \'=\' assigns values, whereas \'==\' compares.'],
   ['code', 'bigger_vector == (vector_one * 5)'],
-  ['code', 'bigger_vector - vector_one'],
+  ['code', 'bigger_vector - vector_one #vector to vector math!'],
   ['code', 'class(bigger_vector)'],
-  ['text', 'Keep in mind that we\'re not assigning the result from the minus operations above;'],
-  ['text', 'This means the values are printed, and then lost. All most reasons for us to use data types to save them!'],
+  ['text', 'Keep in mind that we\'re not assigning the result from the minus operation above;'],
+  ['text', 'This means the values are printed and then lost.'],
+  ['text', 'If we wanted to use the result, we\'d need to save the result via "=".'],
   ['next_steps', nil]
 ]
 
@@ -89,22 +90,24 @@ matrix_data_content_one = [
 	['code','col_wise'],
 	['code','class(col_wise)'],
 	['text','Can you guess how this works?'],
-	['text','We feed it the vector data via "data=" option.'],
-	['text','We\'ll tell it how many rows and columns via "nrow=" and "ncol=" option.'],
+	['text','We give the matrix() function the vector-data via "data=" option.'],
+	['text','We then tell it how many rows and columns via "nrow=" and "ncol=" option.'],
 	['text','"byrow" specifies the order in which we populate the matrix: row-wise or column-wise.'],
+	['text','R handles the rest.'],
 ]
 matrix_data_content_two = [
-	['text', 'What about a mal-formed requests? Try it! We encourage you to try weird things. Who knows, it might work ;)'],
+	['text', 'What about mal-formed requests? Try it! We encourage you to try weird things. Who knows, it might work!'],
 	['text', 'We try to create a 10 by 10 matrx below, while only giving it 6 data points. What happens?'],
 	['code', 'weird_matrix = matrix(data=c(3, 4, 5, 6, 7, 8), nrow=10, ncol=10, byrow = TRUE)'],
 	['text', 'You get a warning message. But did it work? YES! R tries to create the matrix.'],
 	['text', 'It does so by repeating the data you specified enough times (last repetition is partial) to fill the matrix.'],
 	['text', '(this isn\'t recommended until you\'re more familiar with R)'],
 	['code', 'weird_matrix'],
-	['text', 'Wherelse could you have gotten that information?'],
+	['text', 'Where else could you have gotten that information?'],
 	['code', 'help(matrix)'],
 	['text', 'WOAH! It offers the same information we just imparted. It also has useful examples at the very bottom.'],
 	['text', 'Help is always there if you need it.'],
+	['next_steps', nil]
 ]
 
 matrix_data_step = Step.create!(
