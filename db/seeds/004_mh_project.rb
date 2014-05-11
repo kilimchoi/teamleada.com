@@ -4,6 +4,7 @@
 main_page_content = [
   ['text','MightyHive is an advertising technology company that uses retargeting methods to send ads to users online. One product, “Call Center Remarketing”, uses call center logs to show online advertisements to consumers who have recently called into a clients call center.'],
   ['text', 'You are tasked with determining the effectiveness of one of their advertising campaigns with a vacation rental client “Martin’s Travel Agency”.'],
+  ['text', 'Begin with the Project Overview section then follow downwards by clicking on lessons on the left sidebar.'],
 ]
 
 project = Project.create!(
@@ -20,7 +21,7 @@ puts "============ Created project: #{project.title}."
 
 
 project_overview_content = [
-  ['text', 'This project is based off of work that was directly done by the analytics team at MightyHive.'],
+  ['text', 'This data project is based off of work that was directly done by the analytics team at MightyHive.'],
   ['text', 'We will first begin by describing the data you will be working with and the context of the problem MightyHive was facing.'],
   ['lesson_links', nil]
 ]
