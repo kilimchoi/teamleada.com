@@ -39,14 +39,14 @@ work_with_data_pre_slide_one = Slide.create!(
 ################################################################################
 
 data_one_pre_content = [
-  ['text', 'We\'re going to create a dataframe called data_one via data.frame()'],
+  ['text', 'We\'re going to create a dataframe called data_one using the data.frame() function'],
   ['code', 'help(data.frame)'],
   ['code', 'data_one = data.frame(x=c(anscombe$x1),y=c(anscombe$y1))'],
-  ['text', 'We access the anscombe dataframe\'s column x1 and y1 via the "$" operator.'],
+  ['text', 'We access the resulting dataframe\'s column x1 and y1 via the "$" operator.'],
   ['code', 'summary(data_one$x)'],
   ['code', 'summary(data_one$y)'],
-  ['text', 'What do you notice? Nothing specific? Let\'s look another dataset.'],
-  ['project_link', 'Back to the lessons page']
+  ['text', 'What do you notice? Nothing specific? Let\'s look at another dataset.'],
+  ['next_steps', nil],
 ]
 
 data_one_pre_step = Step.create!(
@@ -68,8 +68,8 @@ data_two_pre_content = [
   ['text', 'We access the anscombe dataframe\'s column x2 and y2 via the "$" operator.'],
   ['code', 'summary(data_two$x)'],
   ['code', 'summary(data_two$y)'],
-  ['text', 'What do you notice? Nothing specific? Let\'s look another dataset.'],
-  ['project_link', 'Back to the lessons page']
+  ['text', 'What do you notice? Nothing specific? Let\'s look at another dataset.'],
+  ['next_steps', nil],
 ]
 
 data_two_pre_step = Step.create!(
@@ -90,8 +90,8 @@ data_three_pre_content = [
   ['text', 'We access the anscombe dataframe\'s column x3 and y3 via the "$" operator.'],
   ['code', 'summary(data_three$x)'],
   ['code', 'summary(data_three$y)'],
-  ['text', 'What do you notice? Nothing specific? Let\'s look another dataset.'],
-  ['project_link', 'Back to the lessons page']
+  ['text', 'What do you notice? Nothing specific? Let\'s look at another dataset.'],
+  ['next_steps', nil],
 ]
 
 data_three_pre_step = Step.create!(
@@ -112,8 +112,8 @@ data_four_pre_content = [
   ['text', 'We access the anscombe dataframe\'s column x4 and y4 via the "$" operator.'],
   ['code', 'summary(data_four$x)'],
   ['code', 'summary(data_four$y)'],
-  ['text', 'What do you notice? Nothing specific? Let\'s look another dataset.'],
-  ['project_link', 'Back to the lessons page']
+  ['text', 'What do you notice? Nothing specific? Let\'s look at another dataset.'],
+  ['next_steps', nil],
 ]
 
 data_four_pre_step = Step.create!(
