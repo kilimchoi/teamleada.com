@@ -13,7 +13,7 @@ users = [
   'chris',
 ]
 
-if Rails.env.development? || Rails.env.production?
+if Rails.env.development?
   users.each do |user|
     if User.find_by(username: user).nil?
       new_user = User.create(username: user, email: "#{user}@#{user}.com", password: "password", role: 'admin')
