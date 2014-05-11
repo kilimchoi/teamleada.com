@@ -407,12 +407,13 @@ data_three_slide_three = Slide.create!(
 )
 ################################################################################
 data_four_post_content_one = [
-  ['text', 'We\'ll start with plotting the data'],
+  ['text', 'We\'ll again start with plotting the data'],
   ['code', 'data_four = data.frame(x=c(anscombe$x4),y=c(anscombe$y4))'],
-  ['text', 'data_four'],
-  ['code', 'plot(data_four,col=\'red\', pch=18, main="data_four")'],
+  ['code', 'data_four'],
+  ['code', 'plot(data_four,col=\'red\', pch=18, main="data_four original")'],
   ['text', 'What do you think?'],
-  ['text', 'We could do a box plot. But does it make sense? You can try.'],
+  ['text', 'We could do a box plot.'],
+  ['text', 'But does it make sense? You can try.'],
   ['text', 'The red dot on the top right corner is clearly an outlier.'],
   ['text', 'Should we remove it?'],
   ['text', 'hmm'],
@@ -421,19 +422,19 @@ data_four_post_content_one = [
 
 data_four_post_content_two = [
   ['text', 'What will happen if we remove the outlier? (replot the data if you haven\'t):'],
-  ['text', 'We\'ll end up with a straight line at x=8'],
+  ['text', 'We\'ll end up with a vertical line at x=8'],
   ['text', 'This is a tricky one. Take a moment and think about this data.'],
-  ['text', 'Pondering on this will (hopefully) help you harvest your curiousity/intution.'],
+  ['text', 'Pondering on the issue will (hopefully) help you harvest your curiousity/intution.'],
   ['text', 'Our thoughts:'],
   ['text', 'You might not realize right away, but this dataset actually wasn\'t even meant to be fit with a simple linear model.'],
-  ['text', 'It is most likely a categorical dataset, with multiple observation at category-x=8, and 1 observation at category-x=19'],
+  ['text', 'It is most likely a categorical dataset, with multiple observation at category-x=8, and one observation at category-x=19.'],
 ]
 
 data_four_post_content_three = [
-  ['text', 'For example, this could be a survey of the number of cat whiskers in certain cat categories.'],
+  ['text', 'For example, this could be a survey on the number of cat whiskers in certain cat categories.'],
   ['text', 'x=8 can represent derpy cats (Apparently We observed 10 of these cats, 2 of which is in the link...):'],
   ['link', 'http://i.imgur.com/N9eZrMK.gif'],
-  ['text', 'x=19 can represents majestic-evil cats (and we observed only one of these cat)'],
+  ['text', 'x=19 can represents majestic-evil cats (and we observed only one of these cats)'],
   ['link', 'http://i.imgur.com/JM6dTOC.jpg'],
   ['text', 'There is no way to tell. But it doens\'t make sense to throw a linear model at this data.'],
   ['text', 'Ultimately, linear models are powerful tools.'],
@@ -441,16 +442,16 @@ data_four_post_content_three = [
 ]
 
 data_four_post_content_four = [
-  ['text', 'If you were to do real analysis here, you\'d need a certain leve of domain expertise:'],
+  ['text', 'If you were to do real analysis here, you\'d need a certain level of domain expertise:'],
   ['text', 'Maybe we can compare the difference in whisker length. We first look at the lengths for x=8 (derpy cats)'],
-  ['code', 'summary(data_four$x)'],
+  ['code', 'summary(data_four$y[data_four$x==8]) #we\'re taking summary of length for x==8.'],
   ['text', 'How are the length for derpy cats distributed?'],
   ['code', 'plot(density(data_four$x), main="distribution of whisker length for derpy cats")'],
   ['text', '"Distributions" will come up again, and you\'ll get used to seeing the weird curvy graph.'],
   ['text', 'In the mean time, check it out:'],
   ['code', 'help(density) #don\'t worry too much about this function, just get a feel for it.'],
   ['text', 'For x=19 (majestic-evil cats), we don\'t have enough data point (we only saw one cat!)'],
-  ['text', '*Next day: come to work equipped with more evil cats*.'],
+  ['text', 'Perhaps our next move is to go find more data for x=19'],
   ['project_link', 'Back to the lessons page']
 ]
 
