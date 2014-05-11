@@ -129,7 +129,7 @@ train_data_slide_four = Slide.create!(
 
 #LM comparison master [LOCKED]
 lm_comparison_content = [
-  ['text', 'In this section, we\'ll first (blindly) fit a Linear Model and compare them.'],
+  ['text', 'In this section, we\'ll first (blindly) fit Linear Models and compare them.'],
   ['text', 'We\'ll then go in-depth about understanding what happened.'],
   ['lesson_links', nil]
 ]
@@ -147,25 +147,25 @@ lm_comparison_content_slide_one = Slide.create!(
 ################################################################################
 #LM  comparison #1
 fit_lm_content_one = [
-  ['text', 'Here User will compare the 2 data sets. We\'ll do Dataset 1 and Dataset 2, but feel free to do other comparison'],
+  ['text', 'Here we\'ll compare 2 datasets. We\'ll do dataset 1 and dataset 2, but feel free to do other comparisons'],
   ['text', 'We\'re going to rename the data here. Insert whatever data you want to compare, and rename as below:'],
-  ['code', 'compare_one = data_one #change data_one to another data set (data_one ~ data_four)'],
-  ['code', 'compare_two = data_two #same thing applies here. Just make sure they\'re not the same data!'],
-  ['text', 'Now, against our better judgement, let\'s not first compare/vizualize the dataset, but rather fit a model.'],
-  ['text', 'We\'re going to fit a Linear Regression to see how it behaves.'],
+  ['code', 'compare_one = data_one #change data_one to another data set (data_one through data_four)'],
+  ['code', 'compare_two = data_two #same thing applies here. Just make sure they\'re not the same data as above!'],
+  ['text', 'Now, against our better judgements, let\'s NOT first compare/vizualize the dataset, but rather fit a model.'],
+  ['text', 'We\'re going to fit a Linear Regression Model to see how it behaves.'],
 ]
 
 fit_lm_content_two = [
   ['text', 'We\'ll be using the lm() function:'],
-	['code', 'help(lm)'],
-  ['code', 'linear.mod1 = lm(y ~ x, data = compare_one) #linear model for the first data set'],
-  ['code', 'linear.mod2 = lm(y ~ x, data = compare_two) #linear model for the second data set'],
+	['code', 'help(lm) #to learn more about the model'],
+  ['code', 'linear.mod1 = lm(y ~ x, data=compare_one) #linear model for the first data set'],
+  ['code', 'linear.mod2 = lm(y ~ x, data=compare_two) #linear model for the second data set'],
   ['text', 'Now let\'s see what the lines look like.'],
-  ['code', 'plot(c(0, 10), c(0, 10) , type="n", axes=T, xlab="", ylab="") #we\'ll create an empty plot to add plots on.'],
-  ['code', 'abline(linear.mod1, col = \'red\', lwd=3) #adding in the line for the first linear model.'],
-  ['code', 'abline(linear.mod2, col=\'orange\', lwd=5) #adding in the line for the 2nd linear model.'],
-  ['text', 'What happened? Let\'s dig deeper in the next step.'],
-  ['project_link', 'Back to the lessons page'],
+  ['code', 'plot(c(0, 10), c(0, 10) , type="n", axes=T, xlab="", ylab="") #we\'ll start with an empty plot.'],
+  ['code', 'abline(linear.mod1, col = \'red\', lwd=3) #adding the fitted line for the 1st linear model.'],
+  ['code', 'abline(linear.mod2, col=\'orange\', lwd=5) #adding the fitted line for the 2nd linear model.'],
+  ['text', 'What happened? Let\'s dig in deeper in the next step.'],
+  ['next_steps', nil],
 ]
 
 fit_lm = Step.create!(
@@ -185,14 +185,14 @@ fit_lm_slide_two = Slide.create!(
 ################################################################################
 #LM  comparison #1
 lm_analysis_content_one = [
-  ['text', 'Let\'s inspect the model (press ENTER in the terminal to see next plot):'],
+  ['text', 'Let\'s inspect the model (press ENTER in the terminal to see the next plots):'],
   ['code', 'plot(linear.mod1, col = \'blue\', lwd=3)'],
   ['code', 'plot(linear.mod2, col = \'orange\', lwd=3)'],
-  ['text', 'You don\'t have to understand what the plots mean. The important question is:'],
-  ['text', '"Did they look different?".'],
+  ['text', 'You don\'t have to understand what the plots mean.'],
+  ['text', 'The important question is: "Did they look different?"'],
   ['text', 'Now we\'re getting somewhere.'],
   ['text', 'What does your intuition say? Something is fishy... Let\'s now compare the data.'],
-  ['text', 'We should have done that a long time ago!']
+  ['text', 'We should have done that from the beginning!']
 ]
 
 lm_analysis_content_two = [
@@ -209,10 +209,11 @@ lm_analysis_content_three = [
   ['code', 'summary(linear.mod1)'],
   ['code', 'summary(linear.mod2)'],
   ['text', 'They both share an intercept of about 3, with a slope of 0.5.'],
-  ['text', 'What did we learn? Perhaps we can\'t simply rely on summary statistics and models to tell us data-stories.'],
+  ['text', 'What did we learn?'],
+  ['text', 'Perhaps we can\'t simply rely on summary statistics and models to tell us data-stories.'],
   ['text', 'We have to be more careful.'],
   ['text', 'With that in mind, we\'ll now do a correct analysis on each dataset.'],
-  ['project_link', 'Back to the lessons page'],
+  ['next_steps', nil],
 ]
 
 analyze_lm = Step.create!(
@@ -240,7 +241,7 @@ analyze_lm_slide_three = Slide.create!(
 work_with_data_post_content = [
   ['text', 'Now that we see what we did wrong, we\'ll properly analyze the data here.'],
   ['text', 'In the earlier steps, we relied on summary statistics and powerful (or not) models.'],
-  ['text', 'This time, we\'ll start with the correct fundamental step: vizualization'],
+  ['text', 'This time, we\'ll start with the correct fundamental step: vizualization.'],
   ['lesson_links', nil]
 ]
 
@@ -260,15 +261,14 @@ data_one_post_content_one = [
   ['code', 'data_one = data.frame(x=c(anscombe$x1),y=c(anscombe$y1))'],
   ['code', 'plot(data_one, col=\'green\', pch=15)'],
   ['text', 'WOOT! This dataset actually seems like a good candidate for a linear model! Let\'s see what happens.'],
-  ['text', 'We\'ll fit a linear model via lm() function.'],
+  ['text', 'We\'ll fit a linear model via the lm() function.'],
 ]
 data_one_post_content_two = [
   ['code', 'linear_model_one = lm(y ~ x, data = data_one)'],
   ['text', 'Let\'s now plot the fit line.'],
   ['code', 'abline(linear_model_one, col = \'blue\', lwd=3)'],
   ['text', 'This looks good! But how good? We\'ll learn to do better evaluation in future projects.'],
-  ['img', 'anscombe_proper_data_one.png'],
-  ['project_link', 'Back to the lessons page'],
+  ['next_steps', nil],
 ]
 
 data_one_post_step = Step.create!(
@@ -287,14 +287,14 @@ data_one_post_slide_two = Slide.create!(
 
 ################################################################################
 data_two_post_content_one = [
-  ['text', 'We\'ll start with plotting the data'],
-  ['code', 'data_two = data.frame(x=c(anscombe$x2),y=c(anscombe$y2))'],
+  ['text', 'We\'ll again start with plotting the data.'],
+  ['code', 'data_two = data.frame(x=c(anscombe$x2),y=c(anscombe$y2)) #generate the dataframe in case you haven\'t'],
   ['code', 'plot(data_two, col=\'blue\', pch=16)'],
   ['text', 'Does it look polynomial? Yes! (2nd order, but not important here). So how do you fit it in R?'],
-  ['text', 'We can tell you aexctly how, or we can tell you how to figure out how.'],
+  ['text', 'We can tell you exactly how, or we can tell you how to figure out how.'],
   ['text', '-1: Get to google.com'],
   ['text', '-2: Search: "how to fit polynomial in R"'],
-  ['text', '-3: Check out the first result that refers \'stackoverflow.com/...\''],
+  ['text', '-3: Check out the first result that refers "stackoverflow.com/..."'],
   ['text', 'Woah! It features the same exact question that you had!'],
 ]
 
@@ -304,7 +304,7 @@ data_two_post_content_two = [
   ['text', 'The top answer (accepted with a green check) offers the following solution:'],
   ['code', 'large_polynomial_fit = lm(y ~ x + I(x^2) + I(x^3), data=data_two)'],
   ['code', 'large_polynomial_fit'],
-  ['text', 'This is for a 3rd order polynomial. How do we fix it? Simply remove the larger order!'],
+  ['text', 'This seems to be for 3rd order polynomials. How do we fix it? Simply remove the larger order!'],
   ['code', 'quadratic_fit = lm(y ~ x + I(x^2), data=data_two)'],
   ['code', 'quadratic_fit #call summary(polynomial_fit) for more details!']
 ]
@@ -313,22 +313,24 @@ data_two_post_content_three = [
   ['text', 'By default, the trained model only has x-values from the original data set. That\'s about 11 values.'],
   ['text', 'We\'ll manually ask the model to predict 1000 granular data points and conncet them as a line.'],
   ['text', 'We\'ll first generate the granular x-values. We\'ll use seq() to achieve that. But what does seq() do?'],
-  ['code', 'help(seq)'],
+  ['code', 'help(seq) #now you know!'],
   ['code', 'xvalues = seq(4, 14, 0.01)'],
-  ['text', 'Now we\'ll calculate the predicted y (known as y-hat)'],
+  ['text', '"xvalues" now represents a list of numbers from 4 to 14, each incrementing by 0.01'],
+  ['text', 'Now we\'ll calculate the predicted y (known as y-hat).'],
   ['code', 'help(predict) #This help() is a bit vague, so don\'t worry too much about it.'],
   ['code', 'fitted_yhat = predict(quadratic_fit, data.frame(x=xvalues))'],
+  ['text', 'Now we have the 1000 predicted points.'],
 ]
 
 data_two_post_content_four = [
   ['text', 'We\'ll add in the fitted points from the ORIGINAL data in RED.'],
   ['code', 'points(data_two$x, predict(quadratic_fit), type="p", col="red", lwd=3)'],
   ['text', 'Note that they overlap perfectly!'],
-  ['text', 'Now to add the quadratic line.'],
+  ['text', 'Now to add the 1000 granular predictions as a line.'],
   ['code', 'lines(x=xvalues, y=fitted_yhat, lwd=2, col="darkgray")'],
-  ['text', 'VOILA! Perfect fit. It\'s as if it was meant to fit that well... ;)'],
+  ['text', 'VOILA! Perfect fit. It\'s as if it was meant to fit that well.'],
   ['text', 'Remember the old days when we tried to fit a linear model? Pepperidge Farm remembers...'],
-  ['project_link', 'Back to the lessons page']
+  ['next_steps', nil],
 ]
 
 data_two_post_step = Step.create!(
@@ -354,21 +356,23 @@ data_two_slide_four = Slide.create!(
 
 ################################################################################
 data_three_post_content_one = [
-  ['text', 'We\'ll start with plotting the data'],
+  ['text', 'Again we\'ll start with plotting the data'],
   ['code', 'data_three = data.frame(x=c(anscombe$x3),y=c(anscombe$y3))'],
-  ['code', 'plot(data_three, col=\'orange\',pch=17, main="original data_three")'],
+  ['code', 'plot(data_three, col=\'orange\',pch=17, main="original data_three") #what is "main="? See help(plot)'],
   ['text', 'What do you see? Perhaps that yellow triangle at the top right corner? Yup, we see it too.'],
   ['text', 'Could it possibly be an outlier? We\'ll figure that out with the good old box-plot.'],
   ['code', 'help(boxplot)'],
   ['code', 'boxplot(data_three, main="box-plot for data_three")'],
-  ['text', 'Yup, an outlier! The circle denoted for \'y\' indicates outlier.'],
-  ['text', 'What does your gut tell you to do? *try removing the outlier*'],
-  ['next_steps', nil]
+  ['text', 'Yup, an outlier! The circle denoted for "y" indicates outlier.'],
+  ['text', 'What is your gut telling you to do? *try removing the outlier*'],
 ]
 data_three_post_content_two = [
-  ['text', 'For now, we will do this manually. (If the dataset was big, manual removal of outliers will perhaps best be saved for pranking the interns)'],
-  ['text', 'What value of x yields the outlier? I think the row/index 3 with x=13 and y=12.74 seems to be the culprit.'],
-  ['text', 'We\'ll use a negative notation to subset that particular data point.'],
+  ['text', 'For now, we will do this manually.'],
+  ['text', 'If the dataset was big, manual removal of outliers will perhaps best be saved for pranking the interns.'],
+  ['text', 'What value of x yields the outlier?'],
+  ['text', 'We think that the row/index 3 with x=13 and y=12.74 seems to be the culprit.'],
+  ['text', 'We found it by finding the highest y-value. You can try it if you\'re curious. (try using max() on the y-column.)'],
+  ['text', 'We\'ll then use negative notation to subset that particular data point.'],
   ['code', 'cleaned_data_three = data_three[-3,]'],
   ['text', 'What we did is similar to how we used to subset data. We used a bracket notation to specify a row.'],
   ['text', 'We simply added a negative sign (or minus) in front of the index to tell R:'],
@@ -383,7 +387,7 @@ data_three_post_content_three = [
   ['text', 'Let\'s add the new fitted line.'],
   ['code', 'abline(linear_model_three, col = \'blue\', lwd=3)'],
   ['text', 'Beautiful.'],
-  ['project_link', 'Back to the lessons page']
+  ['next_steps', nil],
 ]
 data_three_post_step = Step.create!(
   title: "(proper) Data Three",
