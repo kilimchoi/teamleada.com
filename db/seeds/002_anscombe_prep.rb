@@ -1,11 +1,11 @@
 # Creates the anscombe project on the site!
 #Main Page
 main_page_content = [
-  ['text', 'This introduction series will get you through project Anscombe.'],
-  ['text', 'Here, we\'ll be focusing on Data Objects and Functions.'],
+  ['text', 'This introduction series will get you through project Anscombe\'s Quartet.'],
+  ['text', 'In this particular intro, we\'ll be focusing on Data Objects and Functions.'],
   ['text', 'Knowing the different data objects is important, because data objects hold data.'],
   ['text', 'Ultimately if you\'re working with data, the most important concept is accessing and storing data.'],
-  ['text', 'You should open Rstudio on a different screen to follow along'],
+  ['text', 'You should now open RStudio on a different screen to follow along.'],
   ['text', 'Happy Learning!']
 ]
 
