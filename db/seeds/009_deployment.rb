@@ -1,5 +1,5 @@
 main_page_content = [
-	['text', 'This is a pilot proj'],
+	['text', 'This is a pilot proj.'],
 ]
 
 project = Project.create!(
@@ -8,6 +8,8 @@ project = Project.create!(
   short_description: "We\'ll build and deploy a simple machine learning model to the cloud. The model will be accessible from anywhere with an internet connection. Next time you're interviewing, offer to demo the model via their local machines. We guarantee they'll be impressed.",
   number: 9,
   enabled: true,
+  paid: true,
+  cost: 500
 )
 
 ################################################################################
