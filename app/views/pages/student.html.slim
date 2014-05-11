@@ -1,20 +1,26 @@
 = provide(:page_title, "Students")
 
 .container.full-container
-  .row.employer-row.right-align
-    .col-md-4.col-md-offset-8
+  .row.employer-row
+    .col-md-6.col-md-offset-1
+      .image
+        = image_tag "datachart.png", class: "round-with-border"
+    .col-md-4.right-allign
       h1 Become Data Literate
-      p
+      p.right-allign
         | Learn the statistics and programming skills
         |  necessary to effectively analyze data.
+
   .divider
   .row.employer-row
-    .col-md-4
+    .col-md-4.col-md-offset-1
       h1 Learn for a Reason
       p
-        | Complete data projects that have direct
-        |  application to your future job, well
-        |  because they were taken from previous jobs.
+        | Complete companies sponsored data projects
+        | with the most application to industry work possible.
+    .col-md-4.col-md-offset-3
+        .image
+          = image_tag "methods.png", class: "round-with-border"
   .divider
   .row.employer-row.center
     .col-md-8.col-md-offset-2
