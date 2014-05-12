@@ -206,5 +206,103 @@ density_plot_slide = Slide.create!(
   parent: density_plot_step
 )
 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
+programming_bootcamp_content = [
+  ['text', 'In this bootcamp we will cover the two most fundamental control statements in programming. The if/else statement and the for loop. If you have any previous programming experience this will all be review and what you should take note of us the syntax that is R specific.'],
+  ['text', 'By far the best way to understand them is to continuously use them so do not be concerned if these code snippets are difficult to understand!'],
+  ['text', 'Eventually using these statements will become as familiar as writing 1 + 1'],
+]
+
+
+programming_bootcamp_lesson = Lesson.create!(
+  title: "Programming in R",
+  project: project
+)
+
+programming_bootcamp_slide = Slide.create!(
+  content: programming_bootcamp_content,
+  parent: programming_bootcamp_lesson
+)
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
+if_else_content = [
+  ['text', 'The first concept we will cover in programming in R is the if/else statement.'],
+  ['text', 'The if/else statement is usually of the following form:'],
+  ['code', 'if (logical condition) {'],
+  ['code', '  statement 1'],
+  ['code', '} else {'],
+  ['code', '  statement 2'],
+  ['code', '}'],
+  ['text', 'Expressions such as anything we wrote in the manipulating data section or making basic visualization section can be put inside the { } brackets to be statements.'],
+  ['text', 'A logical condition results in a TRUE or FALSE statement or "boolean". If/else statements apply in almost every programming language!'],
+]
+
+if_else_content_two = [
+  ['text', 'Lets write an example if/else statement. The print() function prints whatever is in it to the R Console.'],
+  ['code', 'if (1+1 == 2) {'],
+  ['code', '  print("Knew It!")'],
+  ['code', '} else {'],
+  ['code', '  print("Something\'s Wrong.")'],
+  ['code', '}'],
+  ['text', 'How this is read is we first check the logical condition, and since it is true we go into the first statement. Then we exit the if/else statement. If/else statements create mutually exclusive events. This if/else statment will either print "Knew it!" or print "Something\'s wrong" and then exit. Never both.'],
+
+]
+
+
+if_else_content_three = [
+  ['text', 'You can also add additional "else" cases to make more complex if/else statements! We do an example here with the ChickWeight data'],
+  ['code', 'chick_weight <- ChickWeight$weight[1]'],
+  ['code', 'if (chick_weight == 100) {'],
+  ['code', '  print("Fatty")'],
+  ['code', '} else if (chick_weight > 50) {'],
+  ['code', '  print("Still a fatty")'],
+  ['code', '} else if (chick_weight < 20) {'],
+  ['code', '  print("Skinny-legs")'],
+  ['code', '} else {'],
+  ['code', 'print("42 is a normal weight!")'],
+  ['code', '}'],
+]
+
+if_else_content_four = [
+  ['text', 'Here we set a variable "chick_weight" to be the first chick weight in the ChickWeight dataset.'],
+  ['text', 'In the if/else statement we check first if its equal to 100, if its greater than 50, and if its less than 20. If at anytime the logical condition is true it immediately goes into the statement below it and then exits the entire if/else statement.']
+  ['text', 'Since none of the logical conditions were true we ended with the final statement!'],
+]
+
+
+if_else_step = Step.create!(
+  title: "If/else statements",
+  lesson: programming_bootcamp_lesson
+
+)
+
+if_else_slide = Slide.create!(
+  content: if_else_content,
+  parent:if_else_step
+)
+
+if_else_slide_two = Slide.create!(
+  content: if_else_content_two,
+  parent:if_else_step
+)
+
+if_else_slide_three = Slide.create!(
+  content: if_else_content_three,
+  parent:if_else_step
+)
+
+if_else_slide_four = Slide.create!(
+  content: if_else_content_four,
+  parent:if_else_step
+)
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
+
+
