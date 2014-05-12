@@ -15,7 +15,7 @@ project = Project.create!(
   short_description: "An introductory data project hosted by Leada which familiarizes you with R syntax and creating basic linear models on a dataset. This project is for first time programmers wanting to get introduced to the world of statistical and data analysis.",
   number: 3,
   enabled: true,
-  codename: "anscombes_quartet"
+  uid: 3,
 )
 
 ################################################################################

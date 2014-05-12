@@ -10,7 +10,7 @@ project = Project.create!(
   enabled: false,
   paid: true,
   cost: 500,
-  codename: "model_deployment",
+  uid: 9,
 )
 
 ################################################################################

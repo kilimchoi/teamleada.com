@@ -13,7 +13,7 @@ project = Project.create!(
   short_description: "This project is for first time programmers and first time R users. You will learn to write basic expressions, variable assignment, logical comparisons, and data types.",
   number: 0,
   enabled: true,
-  codename: "r_bootcamp",
+  uid: 0,
 )
 
 ################################################################################
@@ -34,11 +34,13 @@ tutorial_introduction_content = [
 tutorial_introduction_lesson = Lesson.create!(
   title: "Tutorial Introduction",
   project: project,
+  lesson_id: 0,
 )
 
 tutorial_introduction_slide = Slide.create!(
   content: tutorial_introduction_content,
   parent: tutorial_introduction_lesson,
+  slide_id: 0,
 )
 ########################################################################################################
 
