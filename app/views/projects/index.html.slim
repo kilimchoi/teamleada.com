@@ -27,7 +27,7 @@
     .col-md-12
       p
         | Fill our user survey. Indicate in the last question (Q.6) that you're interested in the product!
-      a href="http://www.surveygizmo.com/s3/1645296/Handbook-Pt-III-Reader-Survey" target="_blank" Take me to the survey
+      = link_to "Take me to the survey", "http://www.surveygizmo.com/s3/1645296/Handbook-Pt-III-Reader-Survey", target: "_blank", class: "flat-button"
 
 // TODO: Don't make a new modal for each project
 - @projects.each do |project|
