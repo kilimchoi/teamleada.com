@@ -196,7 +196,7 @@ basic_math_slide_three = Slide.create!(
 ##Combining Intro Concepts
 combined_operations_content_one = [
   ['text', 'To introduce code in R that you don\'t want to exectue, just put a # before it.'],
-  ['text', 'This is called adding "comments" to your code.']
+  ['text', 'This is called adding "comments" to your code.'],
   ['text', 'Let\'s now do some operations and recap what we\'ve done!'],
   ['code', 'melon_cake = melon + cake'],
   ['code', 'melon_cake'],
@@ -234,7 +234,7 @@ combined_operations_slide_one = Slide.create!(
 ##Intro to DataTypes
 datatypes_intro_content_one = [
   ['text', 'Now that we know how to write basic expressions in R, let\'s end this tutorial by going over one last concept: data objects.'],
-  ['text', 'Every time you store a variable via an assignment, you\'re storing a specific data objects.'],
+  ['text', 'Every time you store a variable via an assignment, you\'re storing a specific data object.'],
   ['text', 'Some of the more common data objects in R are: scalars, vectors, matrices, data frames, and lists. We will go over scalars and vectors in this lesson.'],
   ['lesson_links', nil]
 ]
@@ -248,15 +248,16 @@ basic_operations_slide_one = Slide.create!(
 )
 ################################################################################
 scalars_content_one = [
-  ['text', 'Scalars are the most basic values in R; they\'re actually vectors of length 1.'],
+  ['text', 'Scalars are one of the most basic object in R; they\'re actually vectors of length 1.'],
   ['text', 'You can verify the classes of the objects with the class() function: integers, characters, and logicals.'],
   ['code', 'orange'],
   ['code', 'class(orange)'],
   ['code', 'favorite_motorcycle'],
   ['code', 'class(favorite_motorcycle)'],
   ['code', 'class(TRUE)'],
-  ['code', 'class(cake > broccoli) #remember what the comparison yielded?'],
-  ['text', 'All of the above dealt with single scalars. But remember that scalars are vectors of length 1']
+  ['code', 'class(cake > broccoli) #remember what comparisons yielded?'],
+  ['text', 'All of the above deals with scalars. But remember that scalars are vectors of length 1.'],
+  ['lesson_links', nil]
 ]
 scalars_content_step = Step.create!(
   title: "Scalars 101",
@@ -270,26 +271,26 @@ scalars_slide_one = Slide.create!(
 vectors_content_one = [
   ['text', 'We now know how to store single values in R. But what if we want to store multiple values?'],
   ['text', 'We do this in R by creating vectors.'],
-  ['text', 'Vectors are the way in which R stores multiple 1-dimensional data points (multiple scalars)'],
+  ['text', 'Vectors are the way in which R stores multiple 1-dimensional data points (multiple scalars).'],
   ['text', 'Note that Vectors are NOT the same as Lists (We\' avoid Lists for now).'],
-  ['next_steps', nil]
 ]
 vectors_content_two = [
-  ['text', 'We\'ll start by creating a simple vector and using the c() function in R. Think of the c as short for a "concatenate" function.'],
+  ['text', 'We\'ll start by creating a simple vector using the c() function in R. Think of c() as short for the "concatenate" function.'],
   ['code', 'number_list = c(1,2,3,4)'],
   ['code', 'words_list = c("I", "hate", "vegetables")'],
   ['text', 'Make sure to have commas, or it will error out. Try and see what error you get!'],
   ['code', 'food_opinion = c("I", "hate" "vegetables")'],
   ['text', 'Can you intepret the error message?'],
-  ['text', 'It\'s telling us that it was expecting something other than a string(word) constant in the command (i.e. it requires a comma)']
+  ['text', 'It\'s telling us that it was expecting something other than a string (word) constant in the command (i.e. it expected a comma).']
 ]
 vectors_content_three = [
-  ['text', 'Note that if you create a vector with different data types in R such as strings and numbers, they will generally get converted into Character/String type.'],
-  ['text', 'Also quotes around the values indicates that they\'ve been converted into Character/String type.'],
+  ['text', 'Note that if you create a vector with mixed data types in R such as strings and numbers, they will generally get converted into Character/String type.'],
+  ['text', 'Quotes around the values indicates that they\'ve been converted into Character/String type.'],
   ['code', 'c("I", "once", "ate", 1, "vegetable")'],
-  ['text', 'Getting familar with error messages will help you become better faster.'],
-  ['text', 'Check out the help function to learn more about the various functions in R.'],
+  ['text', 'Getting familiar with error messages will help you become better faster.'],
+  ['text', 'Lastly, check out the help function to learn more about the various functions in R.'],
   ['code', 'help(c)'],
+  ['next_steps', nil]
 ]
 vectors_content_step = Step.create!(
   title: "Vectors 101",
@@ -312,9 +313,9 @@ vectors_slide_three = Slide.create!(
 ################################################################################
 ##Intro to DataTypes
 conclusion_content_one = [
-  ['text', 'In this R bootcamp, we taught you how to write basic expressions in R as well as the basics of data types in the R language.'],
-  ['text', 'You can now do basic arithmetic in R in addition to some data manipulation.'],
-  ['text', 'Use the skills and knowledge here to start completing data projects.'],
+  ['text', 'In this R bootcamp, we taught you how to write basic expressions in R as well as the basics of data objects in the R language.'],
+  ['text', 'You can now do basic arithmetics in R, in addition to some basic data manipulation.'],
+  ['text', 'Use the skills and knowledge gained from here to start completing data projects.'],
   ['project_link', 'Back to the Project main page']
 ]
 conclusion_lesson = Lesson.create!(
