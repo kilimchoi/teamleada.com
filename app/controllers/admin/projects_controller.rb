@@ -1,4 +1,4 @@
-class Admin::UsersController < Admin::BaseController
+class Admin::ProjectsController < Admin::BaseController
   load_and_authorize_resource
 
   def index
