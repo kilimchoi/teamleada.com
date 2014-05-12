@@ -421,8 +421,8 @@ remove_webtest_content = [
 
 remove_webtest_content_two = [
   ['text', 'Our regular expression is quite simple since the pattern we want to find is an exact character set.'],
-  ['code', 'test_index <- grep("WebTest",resData$LAST_NAME_R)'],
-  ['text', 'Test_index now contains all of the rows in resData which have "WebTest" as the last name.'],
+  ['code', 'webtest_index <- grep("WebTest",resData$LAST_NAME_R)'],
+  ['text', 'webtest_index now contains all of the rows in resData which have "WebTest" as the last name.'],
   ['text', 'This was relatively straightforward, but regular expressions can get quite complicated when you want to generalize it to a group of characters.'],
   ['text', 'For example, here is the regular expression for finding all of the emails in resData which are from Gmail.'],
   ['code', 'gmail_index <- grep(".+@gmail.com", resData$EMAIL_R)'],
@@ -431,8 +431,8 @@ remove_webtest_content_two = [
 remove_webtest_content_three = [
   ['text','The "." signals any single character and "+" signals that the preceeding item occurs one or more times. Consequently this regular expression looks for the following pattern:'],
   ['text', 'Any character to occur one or more times and then @gmail.com follows.'],
-  ['text', 'With the test_index, we can remove these rows in our resData to remove the WebTest last names.'],
-  ['code', 'resData <- resData[-c(test_index), ]'],
+  ['text', 'With the webtest_index, we can remove these rows in our resData to remove the WebTest last names.'],
+  ['code', 'resData <- resData[-c(webtest_index), ]'],
 ]
 
 remove_webtest_step = Step.create!(
