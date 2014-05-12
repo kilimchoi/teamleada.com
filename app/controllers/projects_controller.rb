@@ -57,7 +57,7 @@ class ProjectsController < ApplicationController
     end
     project_interest = ProjectInterest.new(user: current_user, project: @project)
     if project_interest.save
-      flash[:success] = "Thanks for showing interest in #{@project.title}."
+      flash[:info] = "Thanks for showing interest in #{@project.title}."
       redirect_to projects_path
     else
       flash[:danger] = "There was an error saving your interest, please try again."
