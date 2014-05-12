@@ -44,6 +44,10 @@ class Lesson < ActiveRecord::Base
     self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize
   end
 
+  def id
+    lesson_id
+  end
+
   def back_link
     project_path(url: project.url)
   end

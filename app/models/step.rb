@@ -47,6 +47,10 @@ class Step < ActiveRecord::Base
     self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize
   end
 
+  def id
+    step_id
+  end
+
   def main_lesson
     unless lesson.nil?
       lesson
