@@ -4,10 +4,10 @@
   .row
     .col-md-12
       .projects-container
-        - @projects.each_slice(4) do |slice|
+        - @projects.each_slice(3) do |slice|
           .row
             - slice.each do |project|
-              .col-sm-3
+              .col-sm-4
                 .ih-item.circle.effect13.left_to_right
                   = link_to "", data: { toggle: "modal", target: "##{project.url}" } do
                     .project-circle
