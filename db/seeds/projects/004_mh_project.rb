@@ -4,7 +4,7 @@
 main_page_content = [
   ['text','MightyHive is an advertising technology company that uses retargeting methods to send ads to users online. One product, “Call Center Remarketing”, uses call center logs to show online advertisements to consumers who have recently called into a clients call center.'],
   ['text', 'You are tasked with determining the effectiveness of one of their advertising campaigns with a vacation rental client “Martin’s Travel Agency”.'],
-  ['text', 'Begin with the Project Overview section then follow downwards by clicking on lessons on the left sidebar.'],
+  ['text', 'Start at the Project Overview section. Follow downwards by clicking on lessons on the left sidebar.'],
 ]
 
 project = Project.create!(
@@ -41,10 +41,10 @@ project_overview_slide = Slide.create!(
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 project_spec_content = [
-  ['text', 'The Abandoned Caller Dataset'],
+  ['text', '"The Abandoned Caller Dataset":'],
   ['text', 'Almost half of potential customers who inquire via “Martin’s Travel Agency” call center “abandon the call.” This call center log includes all of the “abandoned” callers from May 1st to May 31st.'],
-  ['text', 'The Reservation Dataset'],
-  ['text', 'A list of the reservations created from May 1st to May 31st for vacation spaces with “Martin’s Travel Agency” which include both abandoned callers who re-engaged with their purchase and otherwise.'],
+  ['text', '"The Reservation Dataset":'],
+  ['text', 'A list of the reservations created from early 2014 for vacation spaces with “Martin’s Travel Agency” which includes both abandoned callers who re-engaged with their purchase and otherwise.'],
   ['text', 'Using these two datasets you will determine whether the online ads MightyHive sent to "Martin\'s Travel Agency" customers had an effect on converting "abandoned" callers to make a reservation.'],
 ]
 
@@ -69,7 +69,7 @@ project_spec_content_three = [
   ['link', 'https://s3.amazonaws.com/leada/mh_data/Reservation_Data_Seed.csv'],
   ['text', 'Download the Reservation dataset and save it as "Reservation_Data_Seed" in the appropriate working directory.'],
   ['link', 'https://s3.amazonaws.com/leada/mh_data/Abandoned_Data_Seed.csv'],
-  ['text', 'First open up these two datasets in Excel to look at the data you are given.']
+  ['text', 'First open up these two datasets in Excel to take look at the data.']
 ]
 
 
@@ -99,8 +99,8 @@ project_spec_slide_three = Slide.create!(
 project_experiment_content = [
   ['text', 'MightyHive randomly split the "abandoned" callers into test/control buckets.'],
   ['text', 'The test group was shown ads online for a period of 7 days.'],
-  ['text', 'The control group was never shown ads'],
-  ['text', 'Given this experiment setting, first think on your own about how you would use these datasets to determine the results MightyHive requires.']
+  ['text', 'The control group was never shown any ad.'],
+  ['text', 'Given this experiment setting, take a momement to think about how you would use these datasets to determine the results MightyHive requires.']
 ]
 
 project_experiment_step = Step.create!(
@@ -115,17 +115,22 @@ project_spec_slide = Slide.create!(
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-
 analysis_strategy_content = [
-  ['text', 'The first step is to look at the data in both datasets and formulate a strategy for tackling the problem at hand. How do we know whether an "abandoned" caller eventually made a reservation?'],
-  ['text', 'The simple answer is that any observation which is included from both the abandoned and reservation datasets would be a conversion. What then determines a match for observations?'],
-  ['text', 'Is the first and last name enough? Looking at the data there is also quite a large number of missing values. If you looked deep enough in the data there are also several observations which have the last name "WebTest" and shouldn\'t be considered in our analysis.'],
+  ['text', 'The first step is to look at the data in both datasets and formulate a strategy for tackling the problem at hand.'],
+  ['text', 'How do we know whether an "abandoned" caller eventually made a reservation?'],
+  ['text', 'The simple answer is that any observation which is included from both the abandoned and reservation datasets would be a considered conversion.'],
+  ['text', 'What then determines a match for observations?'],
+  ['text', 'Is relying solely on the first and last name enough?'],
+  ['text', 'Looking at the data there is also quite a large number of missing values. If you exmaine close enough, there are also several observations which have the last name "WebTest" and shouldn\'t be considered in our analysis.'],
 ]
 
 analysis_strategy_content_two = [
-  ['text', 'There are enough unknowns in this dataset to make a "correct" answer impossible. However we will go through one possible solution which includes major processes of how this was done at MightyHive.'],
-  ['text', 'The first step is data matching abandoned observations with reservation observations. We do this first to determine the total possible number of conversions for both the test and control groups. '],
-  ['text', 'The second step is to do data cleaning. Filtering the resulting possible conversions to only the ones which are plausible. The final step is in the actual analysis where we define our hypothesis test and perform statistical analysis.'],
+  ['text', 'There are enough unknowns in this dataset to make a "correct" answer impossible.'],
+  ['text', 'However we will go through one possible solution which includes major processes of how this was handled at MightyHive.'],
+  ['text', 'The first step is data matching abandoned observations with reservation observations.'],
+  ['text', 'We do this first to determine the total possible number of conversions for both the test and control groups.'],
+  ['text', 'The second step is to clean the data; we\'ll filter the resulting possible conversions to only the ones which are plausible.'],
+  ['text', 'The final step is in the actual analysis where we define our hypothesis test and perform statistical analysis.'],
 ]
 
 analysis_strategy_lesson = Lesson.create!(
@@ -146,9 +151,10 @@ analysis_strategy_slide_two = Slide.create!(
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 data_matching_lesson_content = [
-  ['text', 'In the perfect situation, we could match each reservation observation exactly with the resulting reservation observation if it occured.'],
-  ['text', 'However the reality of the situation is that call center workers sometimes forget to input customer information, input incorrect information, or any other human error you can think of.'],
-  ['text', 'For our analysis we define matched data as any observation with a match in the Incoming_Phone column between the Abandoned Dataset and the Reservations Dataset'],
+  ['text', 'In the perfect scenario, we could match each reservation observation exactly with the resulting reservation observation if it exists.'],
+  ['text', 'However the reality of the situation is that call center workers sometimes make clerical errors.'],
+  ['text', 'For our analysis, we\'ll define "matched data" as any observation with a match in the Incoming_Phone column between the Abandoned Dataset and the Reservations Dataset'],
+  ['text', 'This stems from the reasonable assumption that customer phone numbers are unique.']
 ]
 
 
@@ -165,26 +171,33 @@ data_matching_slide = Slide.create!(
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 initial_setup_step_content = [
-  ['text', 'Lets read in our data into RStudio. Because we are missing a lot of data we set the parameter na.strings to "" in the read.csv() function so that any blank values are set to NA. This makes it easier to see which values in our dataset are missing.'],
+  ['text', 'Lets now load our data into RStudio.'],
+  ['text', 'Because we are missing a lot of data, we set the parameter na.strings = "" in the read.csv() function. This way any blank values are set to NA. This will make it easier to see which values in our dataset are missing.'],
   ['code', 'raw_abandoned_data <- read.csv("Abandoned_Data_Seed.csv", head = T, na.strings = "", stringsAsFactors = F)'],
   ['code', 'raw_reservation_data <- read.csv("Reservation_Data_Seed.csv", head = T, na.strings = "", stringsAsFactors = F)'],
-  ['text', 'Since we only want to check for matches in Incoming_Phone, we can remove many of the columns which are unnecssary for our analysis. We want to make sure to include the last name column to filter out the "WebTest" observations.'],
+  ['text', 'Since we only want to check for matches in Incoming_Phone, we can remove many of the columns which are unnecssary for our analysis.'],
+  ['text', 'We also want to make sure to include the last name column to filter out the "WebTest" observations.']
 ]
 
 initial_setup_step_content_two = [
-  ['text', 'To create this simplified dataset use the cbind() function which concatenates entire columns in R.'],
-  ['code','abndData <- as.data.frame(cbind(raw_abandoned_data$Session, raw_abandoned_data$Last_Name, raw_abandoned_data$Email, raw_abandoned_data$Incoming_Phone, raw_abandoned_data$Contact_Phone, raw_abandoned_data$Test_Control), stringsAsFactors = F)'],
-  ['text', 'We re-label the columns'],
-  ['code', 'colnames(abndData) <- c("SESSION_A", "LAST_NAME_A", "EMAIL_A", "INCOMING_PHONE_A", "CONTACT_PHONE_A", "TEST_CONTROL_A")'],
+  ['text', 'To create this simplified dataset, use the cbind() function which concatenates entire columns in R.'],
+  ['code', 'help(cbind) #if you\'re curious about cbind().'],
+  ['text', 'In the below code snippet, we\'re manually selecting columns via the "$" operator.'],
+  ['text', 'We then recombine the selected columns via cbind(), and then reconvert it back to a new dataframe via as.data.frame().'],
+  ['code', 'abndData <- as.data.frame(cbind(raw_abandoned_data$Session, raw_abandoned_data$Last_Name, raw_abandoned_data$Email, raw_abandoned_data$Incoming_Phone, raw_abandoned_data$Contact_Phone, raw_abandoned_data$Test_Control), stringsAsFactors = F)'],
+  ['text', 'Next we re-label the columns.'],
+  ['code', 'colnames(abndData) = c("SESSION_A", "LAST_NAME_A", "EMAIL_A", "INCOMING_PHONE_A", "CONTACT_PHONE_A", "TEST_CONTROL_A")'],
 ]
 
 initial_setup_step_content_three = [
   ['text', 'We do the same for the reservation dataset'],
   ['code', 'resData <- as.data.frame(cbind(raw_reservation_data$Session, raw_reservation_data$Last_Name, raw_reservation_data$Email, raw_reservation_data$Incoming_Phone, raw_reservation_data$Contact_Phone, raw_reservation_data$Test_Control), stringsAsFactors = F)'],
   ['code', 'colnames(resData) <- c("SESSION_R", "LAST_NAME_R", "EMAIL_R", "INCOMING_PHONE_R", "CONTACT_PHONE_R", "TEST_CONTROL_R")'],
-  ['text', 'Because it is ultimately the reservation dataset that includes all conversions, we will add column to the reservation dataset (which we have re-named resData) which will identify if there was a match in the abandoned dataset or not.'],
-  ['text', 'This is done by writing the following code, here we assign the entire column to be 0s and we will re-label them to be 1s if there is a conversion.'],
-  ['code', 'resData$CONV <- 0'],
+  ['text', 'Because the reservation dataset ultimately sotres all conversions, we will add a column to the new eservation dataset (resData).'],
+  ['text', 'The added column will identify whether there was a corresponding match in the abandoned dataset.'],
+  ['text', 'We add the column below.'],
+  ['code', 'resData$CONV = 0'],
+  ['text', 'We actually assigned the entire column to be 0s. We will later re-label them to be 1s if there is a conversion.']
 ]
 
 initial_setup_step = Step.create!(
@@ -209,21 +222,24 @@ initial_setup_slide_three = Slide.create!(
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-
 matching_step_content = [
-  ['text', 'Then we can add an additional column which will identify if a match occured between the abandoned and reservation datasets in the Incoming_Phone column.'],
+  ['text', 'Now we can add an additional column which will identify whether a match occured between the abandoned and reservation datasets via the phone number column.'],
   ['code', 'resData$INCOMING_PHONE_MATCH <- 0'],
-  ['text', 'The next step is to determine when there is a data match. Lets first take a look at the data we are working with.'],
+  ['text', 'The next step is to determine when there is a data match. Lets first take a look at our data.'],
   ['code', 'abndData$INCOMING_PHONE_A'],
-  ['text', 'Scrolling through this data you should notice two things. Firstly, there are tons of NA values, and secondly each value which isn\'t NA is in quotations which signifies its of character class. You can verify this by using the class() function.'],
-  ['text', 'Test this by indexing the first element in the Incoming_Phone column with the code below'],
+  ['text', 'Scrolling through this data, you\'ll notice two things:'],
+  ['text', 'First, there are tons of NA values'],
+  ['text', 'Second, each value that isn\'t NA is in quotations which tells us that it\'s currently stored as characters class.'],
+  ['text', 'Check this by indexing the first element in the Incoming_Phone column with the code below'],
   ['code', 'class(abndData$INCOMING_PHONE_A[1])'],
 ]
 
 matching_step_content_two = [
-  ['text', 'For each incoming phone observation that is not NA, we want to check to see if there is a matching observation in the reservation data in either the Incoming_Phone column or the Contact_Phone column. We use the which() function in R to find the matches.'],
+  ['text', 'For each incoming phone observation that is not NA, we want to check to see if there is a matching observation in the reservation data in either the Incoming_Phone column or the Contact_Phone column.'],
+  ['text', 'We use the which() function in R to find the matches.'],
   ['code', 'which(abndData$INCOMING_PHONE_A[88] == resData$INCOMING_PHONE_R)'],
-  ['text', 'This returns the rows in the Incoming_Phone column of the reservation dataset which the 88th phone number in the Incoming_Phone column of the Abandoned dataset matches. Verify for this on your own by manually checking the index.'],
+  ['text', 'For example this returns the rows in the Incoming_Phone column of the Reservation dataset which the 88th phone number in the Incoming_Phone column of the Abandoned dataset matches.'],
+  ['text', 'Verify for this on your own by manually checking the index.'],
   ['code', 'abndData$INCOMING_PHONE_A[88]'],
   ['code', 'resData$INCOMING_PHONE_R[16685]'],
   ['text', 'What is the phone number that is matched? Make sure to input it in exactly the same format!'],
@@ -236,7 +252,9 @@ quiz = Quiz.create!(
 )
 
 matching_step_content_three = [
-  ['text', 'Lets now save those matched rows into a variable, phone_match, and for each appropriate row in the Incoming_Phone column of the Reservation dataset lets assign a 1 to the Incoming_Phone_Match column we created earlier. We create the variable phone_match because there could be more than 1 match!'],
+  ['text', 'Lets now save those matched rows into the variable "phone_match".'],
+  ['text', 'Also for each appropriate row in the Incoming_Phone column of the Reservation dataset, lets assign a 1 to the Incoming_Phone_Match column we created earlier.'],
+  ['text', 'We create the variable phone_match because there could be more than 1 match!'],
   ['code', 'phone_match = which(abndData$INCOMING_PHONE_A[88] == resData$INCOMING_PHONE_R)'],
   ['code', 'for(i in phone_match) {'],
   ['code', '  resData$INCOMING_PHONE_MATCH[i] <- 1'],
@@ -244,8 +262,8 @@ matching_step_content_three = [
 ]
 
 matching_step_content_four = [
-  ['text', 'We have now correctly matched phone numbers from the abandoned dataset to the reservation dataset. To make sure our experiment is correct we need to also verify that these matches are for the same Test/Control group.'],
-  ['text', 'A match for phone numbers in a test group and a control group most likely implies that its two different users submitting the same phone number. This was actually quite possible in the case of two people working for a single business.'],
+  ['text', 'We have now correctly matched phone numbers from the abandoned dataset to the reservation dataset. To make sure our experiment is correct, we need to also verify that these matches are for the same Test/Control group.'],
+  ['text', 'A match for phone numbers in a test group and a control group most likely implies that there are two different users submitting the same phone number. This was actually quite possible in the case of two people working for a single business.'],
   ['text', 'Regardless these conversions cannot be counted.'],
   ['text', 'We can add a simple check for this using logical comparisons. Lets make sure the match we found earlier is in the same experiment group.'],
   ['code', 'if(abndData$TEST_CONTROL_A[88] != resData$TEST_CONTROL_R[16685]) {'],
@@ -371,7 +389,7 @@ data_cleaning_content = [
 ]
 
 data_cleaning_content_two = [
-  ['text', 'Keeping in mind the client "Martin\'s Travel Agency" business, we assume that reservations under the same number are a result multiple bookings for vacations.'],
+  ['text', 'Keeping in mind for the client "Martin\'s Travel Agency", we assume that reservations under the same number are a result multiple bookings for vacations.'],
   ['text', 'Verification with the client proves this to be a relatively common occurence. Since we do not want to artificially inflate our conversion numbers we must de-duplicate these conversions into single ones.'],
   ['text', 'Luckily duplicate conversions are contained within the test/control groups so we do not have to do additional filtering besides de-duplication.'],
 ]
@@ -396,22 +414,25 @@ data_cleaning_slide_two = Slide.create!(
 
 remove_webtest_content = [
   ['text', 'We will first remove all of the observations in the reservation dataset which have the last name "WebTest". These are clearly test users which the client uses for their internal work.'],
-  ['text', 'To do this is quite easy but requires an understanding of a new concept, regular expressions. Regular expressions is a language theory for programmers that forms a search pattern for matching strings.'],
-  ['text', 'In our case, we want to identify all of the rows which have the last name "WebTest". Using the grep() function in R we can use a regular expression pattern to search through a specified dataset and it will return the rows which contain that regular expression.'],
+  ['text', 'This can be easily done, but it requires the understanding of a new concept, regular expressions.'],
+  ['text', 'Regular expressions is a language theory for programmers that forms a search pattern for matching strings.'],
+  ['text', 'In our case, we want to identify all of the rows which have the last name "WebTest". Using the grep() function in R, we can use a regular expression pattern to search through a specified dataset. This will return the rows which contain that regular expression.'],
 ]
 
 remove_webtest_content_two = [
   ['text', 'Our regular expression is quite simple since the pattern we want to find is an exact character set.'],
-  ['code', 'test_index <- grep("WebTest",resData$LAST_NAME_R)'],
-  ['text', 'Test_index now contains all of the rows in resData which have "WebTest" as the last name. This was quite easy but regular expressions can get quite complicated when you want to generalize to a group of characters.'],
+  ['code', 'webtest_index <- grep("WebTest",resData$LAST_NAME_R)'],
+  ['text', 'webtest_index now contains all of the rows in resData which have "WebTest" as the last name.'],
+  ['text', 'This was relatively straightforward, but regular expressions can get quite complicated when you want to generalize it to a group of characters.'],
   ['text', 'For example, here is the regular expression for finding all of the emails in resData which are from Gmail.'],
   ['code', 'gmail_index <- grep(".+@gmail.com", resData$EMAIL_R)'],
 ]
 
 remove_webtest_content_three = [
-  ['text','The "."" signals any single character and "+"" signals the preceeding item occuring one or more times. Therefore this regular expression looks for the following pattern: any character to occur one or more times and then @gmail.com.'],
-  ['text', 'With the test_index we can remove these rows in our resData to remove the WebTest last names.'],
-  ['code', 'resData <- resData[-c(test_index), ]'],
+  ['text','The "." signals any single character and "+" signals that the preceeding item occurs one or more times. Consequently this regular expression looks for the following pattern:'],
+  ['text', 'Any character to occur one or more times and then @gmail.com follows.'],
+  ['text', 'With the webtest_index, we can remove these rows in our resData to remove the WebTest last names.'],
+  ['code', 'resData <- resData[-c(webtest_index), ]'],
 ]
 
 remove_webtest_step = Step.create!(
