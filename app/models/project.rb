@@ -29,6 +29,7 @@ class Project < ActiveRecord::Base
   before_create :set_url
 
   validates :title, uniqueness: true
+  validates :codename, uniqueness: true
 
   scope :costs_money, -> { where(paid: true) }
   scope :enabled, -> { where(enabled: true) }
