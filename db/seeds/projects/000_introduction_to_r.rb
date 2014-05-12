@@ -54,11 +54,13 @@ basic_operations_content_one = [
 basic_operations_lesson = Lesson.create!(
   title: "Basic Expressions",
   project: project,
+  lesson_id: 1,
 )
 
 basic_operations_slide_one = Slide.create!(
   content: basic_operations_content_one,
   parent: basic_operations_lesson,
+  slide_id: 0,
 )
 ################################################################################
 basic_math_content_one = [
@@ -80,16 +82,19 @@ basic_math_content_two = [
 ]
 basic_math_step = Step.create!(
   title: "Mathematics 101",
-  lesson: basic_operations_lesson
+  lesson: basic_operations_lesson,
+  step_id: 0
 )
 basic_math_slide_one = Slide.create!(
   content: basic_math_content_one,
-  parent: basic_math_step
+  parent: basic_math_step,
+  slide_id: 0,
 )
 
 basic_math_slide_two = Slide.create!(
   content: basic_math_content_two,
-  parent: basic_math_step
+  parent: basic_math_step,
+  slide_id: 1,
 )
 ################################################################################
 basic_assignment_content_one = [
@@ -125,19 +130,23 @@ basic_assignment_content_three = [
 ]
 basic_assignment_step = Step.create!(
   title: "Variable Assignment 101",
-  lesson: basic_operations_lesson
+  lesson: basic_operations_lesson,
+  step_id: 1,
 )
 basic_assignment_slide_one = Slide.create!(
   content: basic_assignment_content_one,
   parent: basic_assignment_step
+  slide_id: 0,
 )
 basic_assignment_slide_two = Slide.create!(
   content: basic_assignment_content_two,
-  parent: basic_assignment_step
+  parent: basic_assignment_step,
+  slide_id: 1,
 )
-basic_assignment_slide_two = Slide.create!(
+basic_assignment_slide_three = Slide.create!(
   content: basic_assignment_content_three,
-  parent: basic_assignment_step
+  parent: basic_assignment_step,
+  slide_id: 2,
 )
 ################################################################################
 basic_comparison_content_one = [
@@ -177,21 +186,25 @@ basic_comparison_content_three = [
 ]
 basic_comparison_step = Step.create!(
   title: "Comparison 101",
-  lesson: basic_operations_lesson
+  lesson: basic_operations_lesson,
+  step_id: 2,
 )
 basic_math_slide_one = Slide.create!(
   content: basic_comparison_content_one,
-  parent: basic_comparison_step
+  parent: basic_comparison_step,
+  slide_id: 0,
 )
 
 basic_math_slide_two = Slide.create!(
   content: basic_comparison_content_two,
-  parent: basic_comparison_step
+  parent: basic_comparison_step,
+  slide_id: 1,
 )
 
 basic_math_slide_three = Slide.create!(
   content: basic_comparison_content_three,
-  parent: basic_comparison_step
+  parent: basic_comparison_step,
+  slide_id: 2,
 )
 ################################################################################
 ################################################################################
@@ -220,16 +233,20 @@ combined_operations_content_two = [
 
 combined_operations_lesson = Lesson.create!(
   title: "Combined Expressions",
-  project: project
+  project: project,
+  lesson_id: 2,
 )
 
 combined_operations_slide_one = Slide.create!(
   content: combined_operations_content_one,
-  parent: combined_operations_lesson
+  parent: combined_operations_lesson,
+  slide_id: 0,
 )
+
 combined_operations_slide_one = Slide.create!(
   content: combined_operations_content_two,
-  parent: combined_operations_lesson
+  parent: combined_operations_lesson,
+  slide_id: 1,
 )
 ################################################################################
 ################################################################################
@@ -242,11 +259,13 @@ datatypes_intro_content_one = [
 ]
 datatypes_lesson = Lesson.create!(
   title: "Data Objects",
-  project: project
+  project: project,
+  lesson_id: 3,
 )
 basic_operations_slide_one = Slide.create!(
   content: datatypes_intro_content_one,
-  parent: datatypes_lesson
+  parent: datatypes_lesson,
+  slide_id: 0,
 )
 ################################################################################
 scalars_content_one = [
@@ -263,11 +282,13 @@ scalars_content_one = [
 ]
 scalars_content_step = Step.create!(
   title: "Scalars 101",
-  lesson: datatypes_lesson
+  lesson: datatypes_lesson,
+  step_id: 0,
 )
 scalars_slide_one = Slide.create!(
   content: scalars_content_one,
-  parent: scalars_content_step
+  parent: scalars_content_step,
+  slide_id: 0,
 )
 ################################################################################
 vectors_content_one = [
@@ -296,19 +317,23 @@ vectors_content_three = [
 ]
 vectors_content_step = Step.create!(
   title: "Vectors 101",
-  lesson: datatypes_lesson
+  lesson: datatypes_lesson,
+  step_id: 1,
 )
 vectors_slide_one = Slide.create!(
   content: vectors_content_one,
-  parent: vectors_content_step
+  parent: vectors_content_step,
+  slide_id: 0,
 )
 vectors_slide_two = Slide.create!(
   content: vectors_content_two,
-  parent: vectors_content_step
+  parent: vectors_content_step,
+  slide_id: 1,
 )
 vectors_slide_three = Slide.create!(
   content: vectors_content_three,
-  parent: vectors_content_step
+  parent: vectors_content_step,
+  slide_id: 2,
 )
 
 ################################################################################
@@ -322,10 +347,12 @@ conclusion_content_one = [
 ]
 conclusion_lesson = Lesson.create!(
   title: "R Intro Conclusion",
-  project: project
+  project: project,
+  lesson_id: 4,
 )
 basic_operations_slide_one = Slide.create!(
   content: conclusion_content_one,
-  parent: conclusion_lesson
+  parent: conclusion_lesson,
+  slide_id: 0,
 )
 ################################################################################
