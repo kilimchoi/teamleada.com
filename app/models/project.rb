@@ -31,6 +31,7 @@ class Project < ActiveRecord::Base
   validates :title, uniqueness: true
 
   scope :costs_money, -> { where(paid: true) }
+  scope :enabled, -> { where(enabled: true) }
 
   extend FriendlyId
   friendly_id :url, use: :finders

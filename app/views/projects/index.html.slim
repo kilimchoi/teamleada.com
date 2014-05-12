@@ -4,10 +4,10 @@
   .row
     .col-md-12
       .projects-container
-        - @projects.each_slice(4) do |slice|
+        - @projects.each_slice(3) do |slice|
           .row
             - slice.each do |project|
-              .col-sm-3
+              .col-sm-4
                 .ih-item.circle.effect13.left_to_right
                   = link_to "", data: { toggle: "modal", target: "##{project.url}" } do
                     .project-circle
@@ -27,7 +27,7 @@
     .col-md-12
       p
         | Fill our user survey. Indicate in the last question (Q.6) that you're interested in the product!
-      a href="http://www.surveygizmo.com/s3/1645296/Handbook-Pt-III-Reader-Survey" target="_blank" Take me to the survey
+      = link_to "Take me to the survey", "http://www.surveygizmo.com/s3/1645296/Handbook-Pt-III-Reader-Survey", target: "_blank", class: "flat-button"
 
 // TODO: Don't make a new modal for each project
 - @projects.each do |project|
@@ -42,12 +42,12 @@
           p
             = project.short_description
         .modal-footer
-          - if signed_in? && current_user.has_project_access?
+          - if signed_in? && current_user.has_project_access? && project.enabled?
             - if project.paid? && current_user.has_not_paid_for_project?(project) && !current_user.is_admin?
               = form_tag purchase_project_path(project), class: "form-inline" do
                 script src="https://checkout.stripe.com/checkout.js" class="stripe-button" *{'data-key' => Rails.configuration.stripe[:publishable_key], 'data-description' => project.title, 'data-amount' => project.cost, 'data-email' => current_user.email}
-            - elsif project.enabled?
-              = link_to "Start this project!", project_path(project), class: "btn btn-leada"
             - else
-              = link_to "I'm Interested", interest_project_path(project), method: :post, class: "btn btn-leada"
+              = link_to "Start this project!", project_path(project), class: "btn btn-leada"
+          - else
+            = link_to "I'm Interested", interest_project_path(project), method: :post, class: "btn btn-leada"
           button.btn.btn-default type="button" data-dismiss="modal" Close
