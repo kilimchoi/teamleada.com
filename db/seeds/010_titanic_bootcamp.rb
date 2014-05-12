@@ -172,7 +172,7 @@ quiz = Quiz.create!(
 
 
 barplot_bootcamp_step = Step.create!(
-  title: "Barplots"
+  title: "Barplots",
   lesson: visualize_lesson
 )
 
