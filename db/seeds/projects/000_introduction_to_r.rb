@@ -32,7 +32,7 @@ tutorial_introduction_content = [
 ]
 
 tutorial_introduction_lesson = Lesson.create!(
-  title: "Tutorial Introduction",
+  title: "R Tutorial Introduction",
   project: project,
 )
 
