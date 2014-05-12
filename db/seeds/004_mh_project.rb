@@ -184,7 +184,7 @@ initial_setup_step_content_two = [
   ['code', 'help(cbind) #if you\'re curious about cbind().'],
   ['text', 'In the below code snippet, we\'re manually selecting columns via the "$" operator.'],
   ['text', 'We then recombine the selected columns via cbind(), and then reconvert it back to a new dataframe via as.data.frame().'],
-  ['code','abndData <- as.data.frame(cbind(raw_abandoned_data$Session, raw_abandoned_data$Last_Name, raw_abandoned_data$Email, raw_abandoned_data$Incoming_Phone, raw_abandoned_data$Contact_Phone, raw_abandoned_data$Test_Control), stringsAsFactors = F)'],
+  ['code', 'abndData <- as.data.frame(cbind(raw_abandoned_data$Session, raw_abandoned_data$Last_Name, raw_abandoned_data$Email, raw_abandoned_data$Incoming_Phone, raw_abandoned_data$Contact_Phone, raw_abandoned_data$Test_Control), stringsAsFactors = F)'],
   ['text', 'Next we re-label the columns.'],
   ['code', 'colnames(abndData) = c("SESSION_A", "LAST_NAME_A", "EMAIL_A", "INCOMING_PHONE_A", "CONTACT_PHONE_A", "TEST_CONTROL_A")'],
 ]
@@ -389,7 +389,7 @@ data_cleaning_content = [
 ]
 
 data_cleaning_content_two = [
-  ['text', 'Keeping in mind the client "Martin\'s Travel Agency" business, we assume that reservations under the same number are a result multiple bookings for vacations.'],
+  ['text', 'Keeping in mind for the client "Martin\'s Travel Agency", we assume that reservations under the same number are a result multiple bookings for vacations.'],
   ['text', 'Verification with the client proves this to be a relatively common occurence. Since we do not want to artificially inflate our conversion numbers we must de-duplicate these conversions into single ones.'],
   ['text', 'Luckily duplicate conversions are contained within the test/control groups so we do not have to do additional filtering besides de-duplication.'],
 ]
@@ -414,21 +414,24 @@ data_cleaning_slide_two = Slide.create!(
 
 remove_webtest_content = [
   ['text', 'We will first remove all of the observations in the reservation dataset which have the last name "WebTest". These are clearly test users which the client uses for their internal work.'],
-  ['text', 'To do this is quite easy but requires an understanding of a new concept, regular expressions. Regular expressions is a language theory for programmers that forms a search pattern for matching strings.'],
-  ['text', 'In our case, we want to identify all of the rows which have the last name "WebTest". Using the grep() function in R we can use a regular expression pattern to search through a specified dataset and it will return the rows which contain that regular expression.'],
+  ['text', 'This can be easily done, but it requires the understanding of a new concept, regular expressions.'],
+  ['text', 'Regular expressions is a language theory for programmers that forms a search pattern for matching strings.'],
+  ['text', 'In our case, we want to identify all of the rows which have the last name "WebTest". Using the grep() function in R, we can use a regular expression pattern to search through a specified dataset. This will return the rows which contain that regular expression.'],
 ]
 
 remove_webtest_content_two = [
   ['text', 'Our regular expression is quite simple since the pattern we want to find is an exact character set.'],
   ['code', 'test_index <- grep("WebTest",resData$LAST_NAME_R)'],
-  ['text', 'Test_index now contains all of the rows in resData which have "WebTest" as the last name. This was quite easy but regular expressions can get quite complicated when you want to generalize to a group of characters.'],
+  ['text', 'Test_index now contains all of the rows in resData which have "WebTest" as the last name.'],
+  ['text', 'This was relatively straightforward, but regular expressions can get quite complicated when you want to generalize it to a group of characters.'],
   ['text', 'For example, here is the regular expression for finding all of the emails in resData which are from Gmail.'],
   ['code', 'gmail_index <- grep(".+@gmail.com", resData$EMAIL_R)'],
 ]
 
 remove_webtest_content_three = [
-  ['text','The "."" signals any single character and "+"" signals the preceeding item occuring one or more times. Therefore this regular expression looks for the following pattern: any character to occur one or more times and then @gmail.com.'],
-  ['text', 'With the test_index we can remove these rows in our resData to remove the WebTest last names.'],
+  ['text','The "." signals any single character and "+" signals that the preceeding item occurs one or more times. Consequently this regular expression looks for the following pattern:'],
+  ['text', 'Any character to occur one or more times and then @gmail.com follows.'],
+  ['text', 'With the test_index, we can remove these rows in our resData to remove the WebTest last names.'],
   ['code', 'resData <- resData[-c(test_index), ]'],
 ]
 
