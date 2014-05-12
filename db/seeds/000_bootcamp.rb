@@ -1,8 +1,8 @@
 # Creates the anscombe project on the site!
 #Main Page
 main_page_content = [
-  ['text', 'This tutorials is for first time R users and first time programmers. If you have programming experience the topics in this bootcamp may be too basic for you.'],
-  ['text', 'If you are a first time user, make sure you have also watched our "Onboarding R/RStudio Video" as you will need to have R and RStudio installed in your own computer to follow along.'],
+  ['text', 'This tutorial is designed for first time R users / first time programmers. If you have programming experience, the topics in this bootcamp may be a bit basic for you.'],
+  ['text', 'If you are a first time user, make sure you have also watched our "Onboarding R/RStudio Video" as you will need to have R and RStudio installed on your own computer to follow along.'],
   ['video', 'OXdcpbDSzxU'],
   ['text', 'Happy Learning!']
 ]
