@@ -1,0 +1,21 @@
+.container.full-container
+  .row
+    .col-md-12
+      h1 All Projects
+      table.table.table-striped
+        th Title
+        th Enabled?
+        th Has Leaderboard?
+        th Has Submit?
+        th Paid?
+        th Cost
+        th Interested Users
+        - @projects.each do |project|
+          tr
+            td = link_to project.title, admin_project_path(project)
+            td = project.enabled?
+            td = project.has_leaderboard?
+            td = project.has_submit?
+            td = project.paid?
+            td = project.cost_in_dollars
+            td = project.interested_users.count
