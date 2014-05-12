@@ -14,6 +14,8 @@
 #
 
 class Lesson < ActiveRecord::Base
+  self.primary_key = "uid"
+
   include Rails.application.routes.url_helpers
   serialize :content, Array
 
@@ -26,10 +28,17 @@ class Lesson < ActiveRecord::Base
   has_many :slides, as: :parent, dependent: :destroy
 
   before_create :set_url
+  before_create :set_uid
+
+  validates_presence_of :project_id
   validates_uniqueness_of :title, scope: :project_id
 
   extend FriendlyId
   friendly_id :url, use: :finders
+
+  def set_uid
+    self.uid = "p#{project_id}_l#{lesson_id}"
+  end
 
   def set_url
     self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize
