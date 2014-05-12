@@ -151,9 +151,10 @@ analysis_strategy_slide_two = Slide.create!(
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 data_matching_lesson_content = [
-  ['text', 'In the perfect situation, we could match each reservation observation exactly with the resulting reservation observation if it occured.'],
-  ['text', 'However the reality of the situation is that call center workers sometimes forget to input customer information, input incorrect information, or any other human error you can think of.'],
-  ['text', 'For our analysis we define matched data as any observation with a match in the Incoming_Phone column between the Abandoned Dataset and the Reservations Dataset'],
+  ['text', 'In the perfect scenario, we could match each reservation observation exactly with the resulting reservation observation if it exists.'],
+  ['text', 'However the reality of the situation is that call center workers sometimes make clerical errors.'],
+  ['text', 'For our analysis, we\'ll define "matched data" as any observation with a match in the Incoming_Phone column between the Abandoned Dataset and the Reservations Dataset'],
+  ['text', 'This stems from the reasonable assumption that customer phone numbers are unique.']
 ]
 
 
@@ -170,26 +171,33 @@ data_matching_slide = Slide.create!(
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 initial_setup_step_content = [
-  ['text', 'Lets read in our data into RStudio. Because we are missing a lot of data we set the parameter na.strings to "" in the read.csv() function so that any blank values are set to NA. This makes it easier to see which values in our dataset are missing.'],
+  ['text', 'Lets now load our data into RStudio.'],
+  ['text', 'Because we are missing a lot of data, we set the parameter na.strings = "" in the read.csv() function. This way any blank values are set to NA. This will make it easier to see which values in our dataset are missing.'],
   ['code', 'raw_abandoned_data <- read.csv("Abandoned_Data_Seed.csv", head = T, na.strings = "", stringsAsFactors = F)'],
   ['code', 'raw_reservation_data <- read.csv("Reservation_Data_Seed.csv", head = T, na.strings = "", stringsAsFactors = F)'],
-  ['text', 'Since we only want to check for matches in Incoming_Phone, we can remove many of the columns which are unnecssary for our analysis. We want to make sure to include the last name column to filter out the "WebTest" observations.'],
+  ['text', 'Since we only want to check for matches in Incoming_Phone, we can remove many of the columns which are unnecssary for our analysis.'],
+  ['text', 'We also want to make sure to include the last name column to filter out the "WebTest" observations.']
 ]
 
 initial_setup_step_content_two = [
-  ['text', 'To create this simplified dataset use the cbind() function which concatenates entire columns in R.'],
+  ['text', 'To create this simplified dataset, use the cbind() function which concatenates entire columns in R.'],
+  ['code', 'help(cbind) #if you\'re curious about cbind().'],
+  ['text', 'In the below code snippet, we\'re manually selecting columns via the "$" operator.'],
+  ['text', 'We then recombine the selected columns via cbind(), and then reconvert it back to a new dataframe via as.data.frame().'],
   ['code','abndData <- as.data.frame(cbind(raw_abandoned_data$Session, raw_abandoned_data$Last_Name, raw_abandoned_data$Email, raw_abandoned_data$Incoming_Phone, raw_abandoned_data$Contact_Phone, raw_abandoned_data$Test_Control), stringsAsFactors = F)'],
-  ['text', 'We re-label the columns'],
-  ['code', 'colnames(abndData) <- c("SESSION_A", "LAST_NAME_A", "EMAIL_A", "INCOMING_PHONE_A", "CONTACT_PHONE_A", "TEST_CONTROL_A")'],
+  ['text', 'Next we re-label the columns.'],
+  ['code', 'colnames(abndData) = c("SESSION_A", "LAST_NAME_A", "EMAIL_A", "INCOMING_PHONE_A", "CONTACT_PHONE_A", "TEST_CONTROL_A")'],
 ]
 
 initial_setup_step_content_three = [
   ['text', 'We do the same for the reservation dataset'],
   ['code', 'resData <- as.data.frame(cbind(raw_reservation_data$Session, raw_reservation_data$Last_Name, raw_reservation_data$Email, raw_reservation_data$Incoming_Phone, raw_reservation_data$Contact_Phone, raw_reservation_data$Test_Control), stringsAsFactors = F)'],
   ['code', 'colnames(resData) <- c("SESSION_R", "LAST_NAME_R", "EMAIL_R", "INCOMING_PHONE_R", "CONTACT_PHONE_R", "TEST_CONTROL_R")'],
-  ['text', 'Because it is ultimately the reservation dataset that includes all conversions, we will add column to the reservation dataset (which we have re-named resData) which will identify if there was a match in the abandoned dataset or not.'],
-  ['text', 'This is done by writing the following code, here we assign the entire column to be 0s and we will re-label them to be 1s if there is a conversion.'],
-  ['code', 'resData$CONV <- 0'],
+  ['text', 'Because the reservation dataset ultimately sotres all conversions, we will add a column to the new eservation dataset (resData).'],
+  ['text', 'The added column will identify whether there was a corresponding match in the abandoned dataset.'],
+  ['text', 'We add the column below.'],
+  ['code', 'resData$CONV = 0'],
+  ['text', 'We actually assigned the entire column to be 0s. We will later re-label them to be 1s if there is a conversion.']
 ]
 
 initial_setup_step = Step.create!(
