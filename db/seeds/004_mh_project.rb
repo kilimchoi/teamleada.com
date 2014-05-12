@@ -222,21 +222,24 @@ initial_setup_slide_three = Slide.create!(
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-
 matching_step_content = [
-  ['text', 'Then we can add an additional column which will identify if a match occured between the abandoned and reservation datasets in the Incoming_Phone column.'],
+  ['text', 'Now we can add an additional column which will identify whether a match occured between the abandoned and reservation datasets via the phone number column.'],
   ['code', 'resData$INCOMING_PHONE_MATCH <- 0'],
-  ['text', 'The next step is to determine when there is a data match. Lets first take a look at the data we are working with.'],
+  ['text', 'The next step is to determine when there is a data match. Lets first take a look at our data.'],
   ['code', 'abndData$INCOMING_PHONE_A'],
-  ['text', 'Scrolling through this data you should notice two things. Firstly, there are tons of NA values, and secondly each value which isn\'t NA is in quotations which signifies its of character class. You can verify this by using the class() function.'],
-  ['text', 'Test this by indexing the first element in the Incoming_Phone column with the code below'],
+  ['text', 'Scrolling through this data, you\'ll notice two things:'],
+  ['text', 'First, there are tons of NA values'],
+  ['text', 'Second, each value that isn\'t NA is in quotations which tells us that it\'s currently stored as characters class.'],
+  ['text', 'Check this by indexing the first element in the Incoming_Phone column with the code below'],
   ['code', 'class(abndData$INCOMING_PHONE_A[1])'],
 ]
 
 matching_step_content_two = [
-  ['text', 'For each incoming phone observation that is not NA, we want to check to see if there is a matching observation in the reservation data in either the Incoming_Phone column or the Contact_Phone column. We use the which() function in R to find the matches.'],
+  ['text', 'For each incoming phone observation that is not NA, we want to check to see if there is a matching observation in the reservation data in either the Incoming_Phone column or the Contact_Phone column.'],
+  ['text', 'We use the which() function in R to find the matches.'],
   ['code', 'which(abndData$INCOMING_PHONE_A[88] == resData$INCOMING_PHONE_R)'],
-  ['text', 'This returns the rows in the Incoming_Phone column of the reservation dataset which the 88th phone number in the Incoming_Phone column of the Abandoned dataset matches. Verify for this on your own by manually checking the index.'],
+  ['text', 'For example this returns the rows in the Incoming_Phone column of the Reservation dataset which the 88th phone number in the Incoming_Phone column of the Abandoned dataset matches.'],
+  ['text', 'Verify for this on your own by manually checking the index.'],
   ['code', 'abndData$INCOMING_PHONE_A[88]'],
   ['code', 'resData$INCOMING_PHONE_R[16685]'],
   ['text', 'What is the phone number that is matched? Make sure to input it in exactly the same format!'],
@@ -249,7 +252,9 @@ quiz = Quiz.create!(
 )
 
 matching_step_content_three = [
-  ['text', 'Lets now save those matched rows into a variable, phone_match, and for each appropriate row in the Incoming_Phone column of the Reservation dataset lets assign a 1 to the Incoming_Phone_Match column we created earlier. We create the variable phone_match because there could be more than 1 match!'],
+  ['text', 'Lets now save those matched rows into the variable "phone_match".'],
+  ['text', 'Also for each appropriate row in the Incoming_Phone column of the Reservation dataset, lets assign a 1 to the Incoming_Phone_Match column we created earlier.'],
+  ['text', 'We create the variable phone_match because there could be more than 1 match!'],
   ['code', 'phone_match = which(abndData$INCOMING_PHONE_A[88] == resData$INCOMING_PHONE_R)'],
   ['code', 'for(i in phone_match) {'],
   ['code', '  resData$INCOMING_PHONE_MATCH[i] <- 1'],
@@ -257,8 +262,8 @@ matching_step_content_three = [
 ]
 
 matching_step_content_four = [
-  ['text', 'We have now correctly matched phone numbers from the abandoned dataset to the reservation dataset. To make sure our experiment is correct we need to also verify that these matches are for the same Test/Control group.'],
-  ['text', 'A match for phone numbers in a test group and a control group most likely implies that its two different users submitting the same phone number. This was actually quite possible in the case of two people working for a single business.'],
+  ['text', 'We have now correctly matched phone numbers from the abandoned dataset to the reservation dataset. To make sure our experiment is correct, we need to also verify that these matches are for the same Test/Control group.'],
+  ['text', 'A match for phone numbers in a test group and a control group most likely implies that there are two different users submitting the same phone number. This was actually quite possible in the case of two people working for a single business.'],
   ['text', 'Regardless these conversions cannot be counted.'],
   ['text', 'We can add a simple check for this using logical comparisons. Lets make sure the match we found earlier is in the same experiment group.'],
   ['code', 'if(abndData$TEST_CONTROL_A[88] != resData$TEST_CONTROL_R[16685]) {'],
