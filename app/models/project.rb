@@ -39,7 +39,11 @@ class Project < ActiveRecord::Base
   end
 
   def cost_in_dollars
-    "%.2f" % (cost / 100)
+    if cost.nil?
+      "$0"
+    else
+      "$%.2f" % (cost / 100)
+    end
   end
 
   def check_submission(file)
