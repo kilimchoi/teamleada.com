@@ -148,7 +148,7 @@ visualize_bootcamp_slide = Slide.create!(
 
 barplot_bootcamp_content = [
   ['text', 'To make a barplot we will first utilize the table() function in R. The table function calculates frequencies for a given variable. For example lets determine what was the frequency of the Diets in the ChickWeight dataset'],
-  ['code', 'diet_freq <- table(ChickWeight$Diet)'],
+  ['code', 'diet_freq = table(ChickWeight$Diet)'],
   ['text', 'What is the frequency of diet type 2 and 3?'],
   ['quiz', 't_bootcamp_2'],
   ['text', 'If we wanted to see the frequency by Diet AND weight we can add it as a parameter in the table() function'],
@@ -269,7 +269,7 @@ if_else_content_three = [
 
 if_else_content_four = [
   ['text', 'Here we set a variable "chick_weight" to be the first chick weight in the ChickWeight dataset.'],
-  ['text', 'In the if/else statement we check first if its equal to 100, if its greater than 50, and if its less than 20. If at anytime the logical condition is true it immediately goes into the statement below it and then exits the entire if/else statement.']
+  ['text', 'In the if/else statement we check first if its equal to 100, if its greater than 50, and if its less than 20. If at anytime the logical condition is true it immediately goes into the statement below it and then exits the entire if/else statement.'],
   ['text', 'Since none of the logical conditions were true we ended with the final statement!'],
 ]
 
@@ -304,5 +304,75 @@ if_else_slide_four = Slide.create!(
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 
+for_loop_content = [
+  ['text', 'The next concept we will cover for programming in R is the "For Loop". The for loop repeats a statement or a series of statements a predefined number of times. Lets take a look at its form:'],
+  ['code', 'for( name of vector ) {'],
+  ['code', 'statement 1'],
+  ['code', 'statement 2'],
+  ['code', '}'],
+  ['text', 'How it works is most easily shown through examples.'],
+  ['text', 'Here we define a vector "five_times" to be the numbers 1 through 5. Then the for loop is read "for each i in the vector five_times, print i"'],
+  ['code', 'five_times = c(1:5)'],
+  ['code', 'for(i in five_times) {'],
+  ['code', '  print(i)'],
+  ['code', '}'],
+]
+
+
+
+for_loop_content_two = [
+  ['text', 'Remember that within the statement block you can do any type of data manipulation. Here we loop through the number of observations in the ChickWeight weight and add five to each one.'],
+  ['code', 'numofchicks <- length(ChickWeight$weight)'],
+  ['text', 'Lets check the weight of the chicks before we implement this for loop'],
+  ['code', 'head(ChickWeight$weight)'],
+  ['code', 'for(i in c(1:numofchicks)) {'],
+  ['code', '  ChickWeight$weight[i] <- ChickWeight$weight[i] + 5'],
+  ['code', '}'],
+  ['text', 'Lets now check the weight of the chicks after.'],
+  ['code', 'head(ChickWeight$weight)'],
+]
+
+
+for_loop_content_three = [
+  ['text', 'We are now going to put all of our understanding of control structures together and do cool stuff with the ChickWeight dataset. In the Titanic project you will be creating indicator variables and in this bootcamp we will explain the syntax that does it!'],
+  ['text', 'Lets say that we wanted to have an indicator variable with the ChickWeight dataset to highlight when the weight of the chick is greater than 100.'],
+  ['text', 'First we create a new column in the ChickWeight data set'],
+  ['code', 'ChickWeight$FattyIndicator <- 0'],
+  ['text', 'Now what we want to do is write a for loop to loop through each of the weights in the weight column, and if the weight is greater than 100 we want to add a 1 to the "FattyIndicator" column.'],
+  ['code', 'for (i in c(1:nrow(ChickWeight))) {'],
+  ['code', '  if (ChickWeight$weight[i] > 100) {'],
+  ['code', '    ChickWeight$FattyIndicator[i] <- 1'],
+  ['code', '  } else {'],
+  ['code', '    ChickWeight$FattyIndicator[i] <- 0'],
+  ['code', '  }'],
+  ['code', '}'],
+  ['text', 'Check which chicks are fatty\'s!'],
+  ['code', 'ChickWeight'],
+]
+
+
+for_loop_step = Step.create!(
+  title: "For Loops",
+  lesson: programming_bootcamp_lesson
+)
+
+
+for_loop_slide = Slide.create!(
+  content: for_loop_content,
+  parent: for_loop_step
+)
+
+
+
+for_loop_slide_two = Slide.create!(
+  content: for_loop_content_two,
+  parent: for_loop_step
+)
+
+
+for_loop_slide_three = Slide.create!(
+  content: for_loop_content_three,
+  parent: for_loop_step
+)
 
 
