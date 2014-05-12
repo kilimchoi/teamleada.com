@@ -188,4 +188,23 @@ barplot_bootcamp_slide_two = Slide.create!(
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
+density_plot_content = [
+  ['text', 'Next we will show you how to estimate the probability density function of a variable. A PDF is a function which describes the probability of that variable taking a given value. It is important to understand PDFs for many types of statistical analyses. One example is checking normality assumptions.'],
+  ['code', 'plot(density(ChickWeight$weight), main = "PDF of Chick Weight Variable")'],
+  ['text', 'Looking at the visualization you can see that from the data given its most likely that a randomly selected chick weighs approximately 80 grams.'],
+  ['text', 'The plot() function is the generic function for plotting objects in R. Check help for all of the arguments in the function there are a lot! We add additional arguments for clarity below:'],
+  ['code', 'plot(density(ChickWeight$weight), main="PDF of Chick Weight Variable", xlab = "Weight", ylab = "Probability")'],
+]
 
+density_plot_step = Step.create!(
+  title: "Density Plots",
+  lesson: visualize_lesson
+)
+
+density_plot_slide = Slide.create!(
+  content: density_plot_content,
+  parent: density_plot_step
+)
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
