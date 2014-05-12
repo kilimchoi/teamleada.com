@@ -11,6 +11,7 @@ project = Project.create!(
   short_description: "In this bootcamp you will be introduced to the R programming concepts necessary to fully understand the Titanic: Machine Learning from Disaster data project.",
   number: 10,
   enabled: true,
+  codename: "titanic_bootcamp",
 )
 
 

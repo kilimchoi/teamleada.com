@@ -16,7 +16,8 @@ project = Project.create!(
   number: 1,
   enabled: true,
   has_leaderboard: true,
-  has_submit: true
+  has_submit: true,
+  codename: "kaggle_titanic",
 )
 ################################################################################
 
