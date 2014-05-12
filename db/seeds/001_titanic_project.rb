@@ -1,8 +1,7 @@
 # Creates the first project on the site!
 
 main_page_content = [
-  ['text', 'This is the main page for the Titanic data project.'],
-  ['text', 'You are tasked to predict whether a passenger survived the Titanic crash. You are given two datasets (Train & Test) each of which include passengers on the Titanic with their Age, Passenger Class, Sex, etc.'],
+  ['text', 'You are tasked with predicting whether a passenger survived the Titanic crash. You are given two datasets (Train & Test) each of which include passengers on the Titanic with their Age, Passenger Class, Sex, etc.'],
   ['text', 'We will guide you through the following:'],
   ['text', '1. Create a model which will predict whether a passenger survived using only the Train data set'],
   ['text', '2. Predict whether the passengers survived in the Test data set based on the model we created'],
@@ -16,7 +15,8 @@ project = Project.create!(
   short_description: "A data project created by Kaggle, a data science competition website. In this project you will go through the entire process of data analysis from cleaning to building a predictive model. This project is for users with experience in R and an introduction to machine learning concepts.",
   number: 1,
   enabled: true,
-  has_leaderboard: true
+  has_leaderboard: true,
+  has_submit: true
 )
 ################################################################################
 
