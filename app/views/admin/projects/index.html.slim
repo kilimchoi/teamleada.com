@@ -9,6 +9,7 @@
         th Has Submit?
         th Paid?
         th Cost
+        th Interested Users
         - @projects.each do |project|
           tr
             td = link_to project.title, admin_project_path(project)
@@ -17,3 +18,4 @@
             td = project.has_submit?
             td = project.paid?
             td = project.cost_in_dollars
+            td = project.interested_users.count
