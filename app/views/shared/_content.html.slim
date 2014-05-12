@@ -35,6 +35,9 @@
 - elsif content_type == 'quiz'
   p.fragment
     = render partial: "shared/quiz", locals: {quiz_id: content}
+- elsif content_type == 'finish'
+  p.fragment
+    | Section Complete!
 - else
   p.fragment.content-error
-    = "ERR: Unknown Content Type. Contact dev pls: dev@teamleada.com"
+    = "ERR: Unknown Content Type. Contact dev pls: tristan@teamleada.com"
