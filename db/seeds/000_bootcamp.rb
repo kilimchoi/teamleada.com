@@ -195,16 +195,18 @@ basic_math_slide_three = Slide.create!(
 ################################################################################
 ##Combining Intro Concepts
 combined_operations_content_one = [
-  ['text', 'To write down code in your Rscript that you don\'t want Rstudio to run just put a # before it. This is called adding "comments" to your code.'],
+  ['text', 'To introduce code in R that you don\'t want to exectue, just put a # before it.'],
+  ['text', 'This is called adding "comments" to your code.']
   ['text', 'Let\'s now do some operations and recap what we\'ve done!'],
   ['code', 'melon_cake = melon + cake'],
   ['code', 'melon_cake'],
   ['text', 'Verify how code comments work by typing the code below:'],
   ['code', '#melon_cake, see this code doesn\'t return a value'],
+  ['text', 'Because the above code is a comment, R ignores it.'],
   ['lesson_links', nil]
 ]
 combined_operations_content_two = [
-  ['text', 'What about characters/strings? Do they all work?'],
+  ['text', 'What about characters/strings? How do they all work?'],
   ['code', 'print (personal_statement)'],
   ['code', 'print (personal_statement + " But, " + favorite_motorcycle) #Uh oh, does this work?'],
   ['text', 'What happened? It helps to read the error (printed in red).'],
@@ -231,13 +233,13 @@ combined_operations_slide_one = Slide.create!(
 ################################################################################
 ##Intro to DataTypes
 datatypes_intro_content_one = [
-  ['text', 'Now that we know how to write basic expressions in R, let\'s end this tutorial by going over one last concept: data types.'],
-  ['text', 'Every time you store a variable via an assignment, you\'re storing a specific data type.'],
-  ['text', 'Some of the more common data types in R are: scalars, vectors, matrices, data frames, and lists. We will go over scalars and vectors in this lesson.'],
+  ['text', 'Now that we know how to write basic expressions in R, let\'s end this tutorial by going over one last concept: data objects.'],
+  ['text', 'Every time you store a variable via an assignment, you\'re storing a specific data objects.'],
+  ['text', 'Some of the more common data objects in R are: scalars, vectors, matrices, data frames, and lists. We will go over scalars and vectors in this lesson.'],
   ['lesson_links', nil]
 ]
 datatypes_lesson = Lesson.create!(
-  title: "Data Types",
+  title: "Data Objects",
   project: project
 )
 basic_operations_slide_one = Slide.create!(
