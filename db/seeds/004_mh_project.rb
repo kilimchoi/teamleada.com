@@ -4,7 +4,7 @@
 main_page_content = [
   ['text','MightyHive is an advertising technology company that uses retargeting methods to send ads to users online. One product, “Call Center Remarketing”, uses call center logs to show online advertisements to consumers who have recently called into a clients call center.'],
   ['text', 'You are tasked with determining the effectiveness of one of their advertising campaigns with a vacation rental client “Martin’s Travel Agency”.'],
-  ['text', 'Begin with the Project Overview section then follow downwards by clicking on lessons on the left sidebar.'],
+  ['text', 'Start at the Project Overview section. Follow downwards by clicking on lessons on the left sidebar.'],
 ]
 
 project = Project.create!(
@@ -41,10 +41,10 @@ project_overview_slide = Slide.create!(
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 project_spec_content = [
-  ['text', 'The Abandoned Caller Dataset'],
+  ['text', '"The Abandoned Caller Dataset":'],
   ['text', 'Almost half of potential customers who inquire via “Martin’s Travel Agency” call center “abandon the call.” This call center log includes all of the “abandoned” callers from May 1st to May 31st.'],
-  ['text', 'The Reservation Dataset'],
-  ['text', 'A list of the reservations created from May 1st to May 31st for vacation spaces with “Martin’s Travel Agency” which include both abandoned callers who re-engaged with their purchase and otherwise.'],
+  ['text', '"The Reservation Dataset":'],
+  ['text', 'A list of the reservations created from early 2014 for vacation spaces with “Martin’s Travel Agency” which includes both abandoned callers who re-engaged with their purchase and otherwise.'],
   ['text', 'Using these two datasets you will determine whether the online ads MightyHive sent to "Martin\'s Travel Agency" customers had an effect on converting "abandoned" callers to make a reservation.'],
 ]
 
@@ -69,7 +69,7 @@ project_spec_content_three = [
   ['link', 'https://s3.amazonaws.com/leada/mh_data/Reservation_Data_Seed.csv'],
   ['text', 'Download the Reservation dataset and save it as "Reservation_Data_Seed" in the appropriate working directory.'],
   ['link', 'https://s3.amazonaws.com/leada/mh_data/Abandoned_Data_Seed.csv'],
-  ['text', 'First open up these two datasets in Excel to look at the data you are given.']
+  ['text', 'First open up these two datasets in Excel to take look at the data.']
 ]
 
 
@@ -99,8 +99,8 @@ project_spec_slide_three = Slide.create!(
 project_experiment_content = [
   ['text', 'MightyHive randomly split the "abandoned" callers into test/control buckets.'],
   ['text', 'The test group was shown ads online for a period of 7 days.'],
-  ['text', 'The control group was never shown ads'],
-  ['text', 'Given this experiment setting, first think on your own about how you would use these datasets to determine the results MightyHive requires.']
+  ['text', 'The control group was never shown any ad.'],
+  ['text', 'Given this experiment setting, take a momement to think about how you would use these datasets to determine the results MightyHive requires.']
 ]
 
 project_experiment_step = Step.create!(
@@ -115,17 +115,22 @@ project_spec_slide = Slide.create!(
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-
 analysis_strategy_content = [
-  ['text', 'The first step is to look at the data in both datasets and formulate a strategy for tackling the problem at hand. How do we know whether an "abandoned" caller eventually made a reservation?'],
-  ['text', 'The simple answer is that any observation which is included from both the abandoned and reservation datasets would be a conversion. What then determines a match for observations?'],
-  ['text', 'Is the first and last name enough? Looking at the data there is also quite a large number of missing values. If you looked deep enough in the data there are also several observations which have the last name "WebTest" and shouldn\'t be considered in our analysis.'],
+  ['text', 'The first step is to look at the data in both datasets and formulate a strategy for tackling the problem at hand.'],
+  ['text', 'How do we know whether an "abandoned" caller eventually made a reservation?'],
+  ['text', 'The simple answer is that any observation which is included from both the abandoned and reservation datasets would be a considered conversion.'],
+  ['text', 'What then determines a match for observations?'],
+  ['text', 'Is relying solely on the first and last name enough?'],
+  ['text', 'Looking at the data there is also quite a large number of missing values. If you exmaine close enough, there are also several observations which have the last name "WebTest" and shouldn\'t be considered in our analysis.'],
 ]
 
 analysis_strategy_content_two = [
-  ['text', 'There are enough unknowns in this dataset to make a "correct" answer impossible. However we will go through one possible solution which includes major processes of how this was done at MightyHive.'],
-  ['text', 'The first step is data matching abandoned observations with reservation observations. We do this first to determine the total possible number of conversions for both the test and control groups. '],
-  ['text', 'The second step is to do data cleaning. Filtering the resulting possible conversions to only the ones which are plausible. The final step is in the actual analysis where we define our hypothesis test and perform statistical analysis.'],
+  ['text', 'There are enough unknowns in this dataset to make a "correct" answer impossible.'],
+  ['text', 'However we will go through one possible solution which includes major processes of how this was handled at MightyHive.'],
+  ['text', 'The first step is data matching abandoned observations with reservation observations.'],
+  ['text', 'We do this first to determine the total possible number of conversions for both the test and control groups.'],
+  ['text', 'The second step is to clean the data; we\'ll filter the resulting possible conversions to only the ones which are plausible.'],
+  ['text', 'The final step is in the actual analysis where we define our hypothesis test and perform statistical analysis.'],
 ]
 
 analysis_strategy_lesson = Lesson.create!(
