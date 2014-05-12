@@ -33,10 +33,10 @@ class RegistrationsController < Devise::RegistrationsController
   def after_sign_up_path_for(user)
     if user.is_admin?
       admin_dashboard_path
-    elsif user.has_project_access?
-      projects_path
     else
-      session[:previous_url] || root_path
+      projects_path
+      # Code below takes them back to previous page
+      # session[:previous_url] || root_path
     end
   end
 

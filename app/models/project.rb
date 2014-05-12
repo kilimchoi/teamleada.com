@@ -24,12 +24,14 @@ class Project < ActiveRecord::Base
   has_many :lessons, dependent: :destroy
   has_many :submissions, dependent: :destroy
   has_many :transactions, as: :item
+  has_many :interested_users, class_name: ProjectInterest
 
   before_create :set_url
 
   validates :title, uniqueness: true
 
   scope :costs_money, -> { where(paid: true) }
+  scope :enabled, -> { where(enabled: true) }
 
   extend FriendlyId
   friendly_id :url, use: :finders
@@ -39,7 +41,11 @@ class Project < ActiveRecord::Base
   end
 
   def cost_in_dollars
-    "%.2f" % (cost / 100)
+    if cost.nil?
+      "$0"
+    else
+      "$%.2f" % (cost / 100)
+    end
   end
 
   def check_submission(file)

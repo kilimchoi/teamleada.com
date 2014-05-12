@@ -6,28 +6,37 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-users = [
-  'mark',
-  'brian',
-  'tristan',
-  'chris',
-]
-
-if Rails.env.development?
-  users.each do |user|
-    if User.find_by(username: user).nil?
-      new_user = User.create(username: user, email: "#{user}@#{user}.com", password: "password", role: 'admin')
-      puts "Created user: #{new_user.username}."
-    end
-  end
-end
 
 # Delete all current projects
 Project.destroy_all
 Quiz.destroy_all
 
 # Loads seed files from db/seeds
-Dir[File.join(Rails.root, 'db', 'seeds', '*.rb')].sort.each do |seed|
-  puts "Seeding #{seed}."
-  load seed
+def load_from_folder(folder)
+  Dir[File.join(Rails.root, 'db', 'seeds', folder, '*.rb')].sort.each do |seed|
+    puts "Seeding #{seed}."
+    load seed
+  end
+end
+
+
+if Rails.env.development?
+  load_from_folder('development')
+end
+
+if Rails.env.production?
+  load_from_folder('production')
+end
+
+##############
+# Always load
+# Create a separate folder for each type of seed file.
+##############
+
+folders = [
+  'projects',
+]
+
+folders.each do |folder|
+  load_from_folder(folder)
 end

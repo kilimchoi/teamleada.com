@@ -19,6 +19,8 @@ class Ability
 
       can :show, Lesson
       can :show, Step
+    else
+      can :index, Project
     end
   end
 
