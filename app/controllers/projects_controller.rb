@@ -5,6 +5,9 @@ class ProjectsController < ApplicationController
   end
 
   def index
+    if signed_in? && current_user.has_project_access?
+      @projects = @projects.enabled
+    end
     @interested_user = InterestedUser.new
     @large_header = true
   end
@@ -50,6 +53,7 @@ class ProjectsController < ApplicationController
   end
 
   def show_interest
+    redirect_to new_user_registration_path unless signed_in?
     if ProjectInterest.exists?(user: current_user, project: @project)
       flash[:info] = "Thanks for your enthusiasm, but you've already shown interest in this project!"
       redirect_to :back
