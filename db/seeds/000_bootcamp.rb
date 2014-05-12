@@ -1,5 +1,5 @@
 # Creates the anscombe project on the site!
-#Main Page
+# Main Page
 main_page_content = [
   ['text', 'This tutorial is designed for first time R users / first time programmers. If you have programming experience, the topics in this bootcamp may be a bit basic for you.'],
   ['text', 'If you are a first time user, make sure you have also watched our "Onboarding R/RStudio Video" as you will need to have R and RStudio installed on your own computer to follow along.'],
@@ -12,14 +12,14 @@ project = Project.create!(
   description: main_page_content,
   short_description: "This project is for first time programmers and first time R users. You will learn to write basic expressions, variable assignment, logical comparisons, and data types.",
   number: 0,
-  enabled: true
+  enabled: true,
+  codename: "r_bootcamp",
 )
 
 ################################################################################
 puts "============ Created project: #{project.title}."
 ################################################################################
 ################################################################################
-
 
 tutorial_introduction_content = [
   ['text', 'We\'re using the language R, while using the IDE (interactive development environment) of RStudio. RStudio is the application that provides an easier interface to using R.'],
