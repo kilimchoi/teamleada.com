@@ -83,7 +83,7 @@ basic_math_content_two = [
 basic_math_step = Step.create!(
   title: "Mathematics 101",
   lesson: basic_operations_lesson,
-  step_id: 0
+  step_id: 0,
 )
 basic_math_slide_one = Slide.create!(
   content: basic_math_content_one,
@@ -135,7 +135,7 @@ basic_assignment_step = Step.create!(
 )
 basic_assignment_slide_one = Slide.create!(
   content: basic_assignment_content_one,
-  parent: basic_assignment_step
+  parent: basic_assignment_step,
   slide_id: 0,
 )
 basic_assignment_slide_two = Slide.create!(

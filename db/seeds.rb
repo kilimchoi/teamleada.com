@@ -8,7 +8,11 @@
 
 
 # Delete all current projects
-Project.destroy_all
+Project.delete_all
+Lesson.delete_all
+Step.delete_all
+Slide.delete_all
+
 Quiz.destroy_all
 
 # Loads seed files from db/seeds
