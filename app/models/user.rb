@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   end
 
   def is_company?
-    ['recruiter',].include? role
+    ['recruiter', 'employee'].include? role
   end
 
   def has_project_access?

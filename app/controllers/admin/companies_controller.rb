@@ -43,11 +43,7 @@ class Admin::CompaniesController < Admin::BaseController
     end
   end
 
-  def new_user
-    @user = User.new
-  end
-
-  def create_user
+  def add_user
 
   end
 
