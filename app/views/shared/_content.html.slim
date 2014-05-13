@@ -37,6 +37,9 @@
 - elsif content_type == 'section_complete'
   p.fragment.complete
     | Section Complete!
+- elsif content_type == "feedback"
+  a.fragment.flat-button href=content target="_blank"
+    = "Feedback Here!"
 - else
   p.fragment.content-error
     = "ERR: Unknown Content Type. Contact dev pls: tristan@teamleada.com"
