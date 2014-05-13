@@ -40,6 +40,8 @@ TeamLeada::Application.routes.draw do
 
   match 'quizzes/check_answer', to: 'quizzes#check_answer', via: :get
 
+  resources :companies, only: [:show]
+
   namespace :admin do
     match '/', to: redirect('/admin/dashboard'), via: :get
     match 'dashboard', to: 'pages#dashboard', via: :get
@@ -48,8 +50,7 @@ TeamLeada::Application.routes.draw do
     resources :companies do
       member do
         match 'add-project', to: 'companies#add_project', as: :add_project, via: :post
-        match 'add-user', to: 'companies#new_user', as: :new_user, via: :get
-        match 'add-user', to: 'companies#create_user', as: :create_user, via: :post
+        match 'add-user', to: 'companies#add_user', as: :add_user, via: :post
       end
     end
     resources :projects, only: [:index, :show]
