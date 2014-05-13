@@ -1,7 +1,5 @@
 class Admin::CodesController < Admin::BaseController
-  before_filter :code, only: [:show, :edit, :update, :destroy]
-  before_filter :codes, only: [:index]
-
+  load_and_authorize_resource
   require 'securerandom'
 
   def new
@@ -35,14 +33,6 @@ class Admin::CodesController < Admin::BaseController
   end
 
   private
-
-  def code
-    @code = Code.find(params[:id])
-  end
-
-  def codes
-    @codes = Code.all
-  end
 
   def code_params
     params.require(:code).permit(:group, :value, :user_type)

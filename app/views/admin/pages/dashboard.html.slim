@@ -3,9 +3,11 @@
     .col-md-12
       h1 Admin Dashboard
       .row
-        .col-md-4
+        .col-md-3
           = link_to "Users", admin_users_path, class: "flat-button"
-        .col-md-4
+        .col-md-3
+          = link_to "Companies", admin_companies_path, class: "flat-button"
+        .col-md-3
           = link_to "Codes", admin_codes_path, class: "flat-button"
-        .col-md-4
+        .col-md-3
           = link_to "Projects", admin_projects_path, class: "flat-button"
