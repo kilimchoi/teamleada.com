@@ -25,6 +25,7 @@ class Project < ActiveRecord::Base
 
   has_many :lessons, dependent: :destroy
   has_many :submissions, dependent: :destroy
+
   has_many :transactions, as: :item
   has_many :interested_users, class_name: ProjectInterest
 
