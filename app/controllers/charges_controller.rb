@@ -27,7 +27,7 @@ class ChargesController < ApplicationController
       @transaction.save
     end
 
-    flash[:info] = "You have successfully paid $#{@project.cost_in_dollars} for the #{@project.title} project!"
+    flash[:info] = "You have successfully paid #{@project.cost_in_dollars} for the #{@project.title} project!"
     redirect_to project_path(@project)
 
     rescue Stripe::CardError => e

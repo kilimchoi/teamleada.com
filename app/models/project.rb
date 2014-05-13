@@ -19,16 +19,20 @@
 
 class Project < ActiveRecord::Base
   require 'csv'
+  self.primary_key = "uid"
+
   serialize :description, Array
 
   has_many :lessons, dependent: :destroy
   has_many :submissions, dependent: :destroy
+
   has_many :transactions, as: :item
   has_many :interested_users, class_name: ProjectInterest
 
   before_create :set_url
 
   validates :title, uniqueness: true
+  validates :uid, uniqueness: true
 
   scope :costs_money, -> { where(paid: true) }
   scope :enabled, -> { where(enabled: true) }

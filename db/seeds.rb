@@ -8,7 +8,11 @@
 
 
 # Delete all current projects
-Project.destroy_all
+Project.delete_all
+Lesson.delete_all
+Step.delete_all
+Slide.delete_all
+
 Quiz.destroy_all
 
 # Loads seed files from db/seeds
@@ -19,18 +23,9 @@ def load_from_folder(folder)
   end
 end
 
-
-if Rails.env.development?
-  load_from_folder('development')
-end
-
-if Rails.env.production?
-  load_from_folder('production')
-end
-
 ##############
-# Always load
 # Create a separate folder for each type of seed file.
+# Load in all environments.
 ##############
 
 folders = [
@@ -40,3 +35,13 @@ folders = [
 folders.each do |folder|
   load_from_folder(folder)
 end
+
+# Load per environment
+if Rails.env.development?
+  load_from_folder('development')
+end
+
+if Rails.env.production?
+  load_from_folder('production')
+end
+

@@ -19,9 +19,8 @@
     - lesson.steps.each do |step|
       = link_to step.title, project_lesson_step_path(lesson.project, lesson, step), class: "flat-button step-button"
 - elsif content_type == 'next_steps'
-  p.fragment
-    - step.next_steps.each do |step|
-      = link_to step.title, project_lesson_step_path(step.main_lesson.project, step.main_lesson, step), class: "flat-button step-button"
+  p.fragment.complete
+    | next_step, replace to section_complete
 - elsif content_type == 'previous_step'
   p.fragment
     - if defined? step
@@ -35,6 +34,9 @@
 - elsif content_type == 'quiz'
   p.fragment
     = render partial: "shared/quiz", locals: {quiz_id: content}
+- elsif content_type == 'section_complete'
+  p.fragment.complete
+    | Section Complete!
 - else
   p.fragment.content-error
-    = "ERR: Unknown Content Type. Contact dev pls: dev@teamleada.com"
+    = "ERR: Unknown Content Type. Contact dev pls: tristan@teamleada.com"

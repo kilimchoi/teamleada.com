@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140509010333) do
+ActiveRecord::Schema.define(version: 20140513170922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20140509010333) do
     t.datetime "updated_at"
   end
 
-  create_table "lessons", force: true do |t|
+  create_table "lessons", id: false, force: true do |t|
     t.string   "title"
     t.text     "content"
     t.datetime "created_at"
@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(version: 20140509010333) do
     t.integer  "next_lesson_id"
     t.integer  "project_id"
     t.string   "url"
+    t.integer  "lesson_id"
+    t.string   "uid",                null: false
   end
 
   create_table "project_interests", force: true do |t|
@@ -66,7 +68,7 @@ ActiveRecord::Schema.define(version: 20140509010333) do
     t.datetime "updated_at"
   end
 
-  create_table "projects", force: true do |t|
+  create_table "projects", id: false, force: true do |t|
     t.string   "title"
     t.text     "description"
     t.datetime "created_at"
@@ -79,6 +81,7 @@ ActiveRecord::Schema.define(version: 20140509010333) do
     t.boolean  "has_submit",        default: false
     t.integer  "cost"
     t.boolean  "paid",              default: false
+    t.integer  "uid",                               null: false
   end
 
   create_table "quizzes", force: true do |t|
@@ -88,13 +91,15 @@ ActiveRecord::Schema.define(version: 20140509010333) do
     t.datetime "updated_at"
   end
 
-  create_table "slides", force: true do |t|
+  create_table "slides", id: false, force: true do |t|
     t.string   "title"
     t.text     "content"
-    t.integer  "parent_id"
+    t.string   "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "parent_type"
+    t.integer  "slide_id"
+    t.string   "uid",         null: false
   end
 
   create_table "step_requirements", force: true do |t|
@@ -113,16 +118,18 @@ ActiveRecord::Schema.define(version: 20140509010333) do
     t.integer  "project_id"
   end
 
-  create_table "steps", force: true do |t|
-    t.integer  "lesson_id"
+  create_table "steps", id: false, force: true do |t|
+    t.string   "lesson_id"
     t.text     "content"
-    t.integer  "previous_step_id"
-    t.integer  "next_step_id"
+    t.string   "previous_step_id"
+    t.string   "next_step_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title"
     t.string   "url"
     t.integer  "points"
+    t.integer  "step_id"
+    t.string   "uid",              null: false
   end
 
   create_table "submissions", force: true do |t|

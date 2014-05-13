@@ -1,4 +1,3 @@
-
 # Main Page
 
 main_page_content = [
@@ -13,7 +12,7 @@ project = Project.create!(
   short_description: "A data project sponsored by Mightyhive, an advertising technology company. This data is based on a real problem that the analytics team at MightyHive encountered. You will perform data cleaning, de-duplication, and statistical analysis to determine the results of their marketing technology.",
   number: 4,
   enabled: true,
-  codename: "mightyhive",
+  uid: 4,
 )
 
 ################################################################################
@@ -30,12 +29,14 @@ project_overview_content = [
 
 project_overview_lesson = Lesson.create!(
   title: "Project Overview",
-  project: project
+  project: project,
+  lesson_id: 0,
 )
 
 project_overview_slide = Slide.create!(
   content: project_overview_content,
-  parent: project_overview_lesson
+  parent: project_overview_lesson,
+  slide_id: 0,
 )
 
 
@@ -76,22 +77,26 @@ project_spec_content_three = [
 
 project_spec_step = Step.create!(
   title: "Data",
-  lesson: project_overview_lesson
+  lesson: project_overview_lesson,
+  step_id: 0,
 )
 
 project_spec_slide = Slide.create!(
   content: project_spec_content,
-  parent: project_spec_step
+  parent: project_spec_step,
+  slide_id: 0,
 )
 
 project_spec_slide_two = Slide.create!(
   content: project_spec_content_two,
-  parent: project_spec_step
+  parent: project_spec_step,
+  slide_id: 1,
 )
 
 project_spec_slide_three = Slide.create!(
   content: project_spec_content_three,
-  parent: project_spec_step
+  parent: project_spec_step,
+  slide_id: 2,
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -106,12 +111,14 @@ project_experiment_content = [
 
 project_experiment_step = Step.create!(
   title: "Experiment Details",
-  lesson: project_overview_lesson
+  lesson: project_overview_lesson,
+  step_id: 1,
 )
 
 project_spec_slide = Slide.create!(
   content: project_experiment_content,
-  parent: project_experiment_step
+  parent: project_experiment_step,
+  slide_id: 0,
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -137,16 +144,19 @@ analysis_strategy_content_two = [
 analysis_strategy_lesson = Lesson.create!(
   title: "Analysis Strategy",
   project: project,
+  lesson_id: 1,
 )
 
 analysis_strategy_slide_one = Slide.create!(
   content: analysis_strategy_content,
-  parent: analysis_strategy_lesson
+  parent: analysis_strategy_lesson,
+  slide_id: 0,
 )
 
 analysis_strategy_slide_two = Slide.create!(
   content: analysis_strategy_content_two,
-  parent: analysis_strategy_lesson
+  parent: analysis_strategy_lesson,
+  slide_id: 1,
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -161,12 +171,14 @@ data_matching_lesson_content = [
 
 data_matching_lesson = Lesson.create!(
   title: "Data Matching",
-  project: project
+  project: project,
+  lesson_id: 2,
 )
 
 data_matching_slide = Slide.create!(
   content: data_matching_lesson_content,
-  parent: data_matching_lesson
+  parent: data_matching_lesson,
+  slide_id: 0,
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -203,22 +215,26 @@ initial_setup_step_content_three = [
 
 initial_setup_step = Step.create!(
   title: "Initial Setup",
-  lesson: data_matching_lesson
+  lesson: data_matching_lesson,
+  step_id: 0,
 )
 
 initial_setup_slide_one = Slide.create!(
   content: initial_setup_step_content,
-  parent: initial_setup_step
+  parent: initial_setup_step,
+  slide_id: 0,
 )
 
 initial_setup_slide_two = Slide.create!(
   content: initial_setup_step_content_two,
-  parent: initial_setup_step
+  parent: initial_setup_step,
+  slide_id: 1,
 )
 
 initial_setup_slide_three = Slide.create!(
   content: initial_setup_step_content_three,
-  parent: initial_setup_step
+  parent: initial_setup_step,
+  slide_id: 2,
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -332,53 +348,62 @@ matching_step_content_eight = [
 
 matching_step = Step.create!(
   title: "Matching Code",
-  lesson: data_matching_lesson
+  lesson: data_matching_lesson,
+  step_id: 1,
 )
 
 matching_slide_one = Slide.create!(
   content: matching_step_content,
-  parent: matching_step
+  parent: matching_step,
+  slide_id: 0,
 )
 
 
 matching_slide_two = Slide.create!(
   content: matching_step_content_two,
-  parent: matching_step
+  parent: matching_step,
+  slide_id: 1,
 )
 
 
 matching_slide_three = Slide.create!(
   content: matching_step_content_three,
-  parent: matching_step
+  parent: matching_step,
+  slide_id: 2,
 )
 
 
 matching_slide_four = Slide.create!(
   content: matching_step_content_four,
-  parent: matching_step
+  parent: matching_step,
+  slide_id: 3,
 )
 
 
 matching_slide_five = Slide.create!(
   content: matching_step_content_five,
-  parent: matching_step
+  parent: matching_step,
+  slide_id: 4,
 )
 
 
 matching_slide_six = Slide.create!(
   content: matching_step_content_six,
-  parent: matching_step
+  parent: matching_step,
+  slide_id: 5,
 )
 
 
 matching_slide_seven = Slide.create!(
   content: matching_step_content_seven,
-  parent: matching_step
+  parent: matching_step,
+  slide_id: 6,
 )
 
 matching_slide_eight = Slide.create!(
   content: matching_step_content_eight,
-  parent: matching_step
+  parent: matching_step,
+  slide_id: 7,
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -397,17 +422,20 @@ data_cleaning_content_two = [
 
 data_cleaning_lesson = Lesson.create!(
   title: "Data Cleaning",
-  project: project
+  project: project,
+  lesson_id: 3,
 )
 
 data_cleaning_slide = Slide.create!(
   content: data_cleaning_content,
-  parent: data_cleaning_lesson
+  parent: data_cleaning_lesson,
+  slide_id: 0,
 )
 
 data_cleaning_slide_two = Slide.create!(
   content: data_cleaning_content_two,
-  parent: data_cleaning_lesson
+  parent: data_cleaning_lesson,
+  slide_id: 1,
 )
 
 
@@ -438,21 +466,25 @@ remove_webtest_content_three = [
 
 remove_webtest_step = Step.create!(
   title: "Removing WebTest",
-  lesson: data_cleaning_lesson
+  lesson: data_cleaning_lesson,
+  step_id: 0,
 )
 
 remove_webtest_slide = Slide.create!(
   content: remove_webtest_content,
-  parent: remove_webtest_step
+  parent: remove_webtest_step,
+  slide_id: 0,
 )
 
 remove_webtest_slide_two = Slide.create!(
   content: remove_webtest_content_two,
-  parent: remove_webtest_step
+  parent: remove_webtest_step,
+  slide_id: 1,
 )
 remove_webtest_slide_three = Slide.create!(
   content: remove_webtest_content_three,
-  parent: remove_webtest_step
+  parent: remove_webtest_step,
+  slide_id: 2,
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -484,22 +516,26 @@ data_dedup_content_three = [
 
 data_dedup_step = Step.create!(
   title: "Data De-duplication",
-  lesson: data_cleaning_lesson
+  lesson: data_cleaning_lesson,
+  step_id: 1,
 )
 
 data_dedup_slide = Slide.create!(
   content: data_dedup_content,
-  parent: data_dedup_step
+  parent: data_dedup_step,
+  slide_id: 0,
 )
 
 data_dedup_slide_two = Slide.create!(
   content: data_dedup_content_two,
-  parent: data_dedup_step
+  parent: data_dedup_step,
+  slide_id: 1,
 )
 
 data_dedup_slide_three = Slide.create!(
   content: data_dedup_content_three,
-  parent: data_dedup_step
+  parent: data_dedup_step,
+  slide_id: 2,
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -515,12 +551,14 @@ stat_content = [
 
 stat_lesson = Lesson.create!(
   title: "Statistical Analysis",
-  project: project
+  project: project,
+  lesson_id: 4,
 )
 
 stat_slide = Slide.create!(
   content: stat_content,
-  parent: stat_lesson
+  parent: stat_lesson,
+  slide_id: 0,
 )
 
 
@@ -564,17 +602,20 @@ quiz = Quiz.create!(
 
 hypothesis_step = Step.create!(
   title: "Hypothesis Test",
-  lesson: stat_lesson
+  lesson: stat_lesson,
+  step_id: 0,
 )
 
 hypothesis_slide = Slide.create!(
   content: hypothesis_content,
-  parent: hypothesis_step
+  parent: hypothesis_step,
+  slide_id: 0,
 )
 
 hypothesis_slide_two = Slide.create!(
   content: hypothesis_content_two,
-  parent: hypothesis_step
+  parent: hypothesis_step,
+  slide_id: 1,
 )
 
 
@@ -648,47 +689,56 @@ z_test_content_eight = [
 
 z_test_step = Step.create!(
   title: "Two Sample Z-Test",
-  lesson: stat_lesson
+  lesson: stat_lesson,
+  step_id: 1,
 )
 
 z_test_slide = Slide.create!(
   content: z_test_content,
-  parent: z_test_step
+  parent: z_test_step,
+  slide_id: 0,
 )
 
 z_test_slide_two = Slide.create!(
   content: z_test_content_two,
-  parent: z_test_step
+  parent: z_test_step,
+  slide_id: 1,
 )
 
 z_test_slide_three = Slide.create!(
   content: z_test_content_three,
-  parent: z_test_step
+  parent: z_test_step,
+  slide_id: 2,
 )
 
 z_test_slide_four = Slide.create!(
   content: z_test_content_four,
-  parent: z_test_step
+  parent: z_test_step,
+  slide_id: 3,
 )
 
 z_test_slide_five = Slide.create!(
   content: z_test_content_five,
-  parent: z_test_step
+  parent: z_test_step,
+  slide_id: 4,
 )
 
 z_test_slide_six = Slide.create!(
   content: z_test_content_six,
-  parent: z_test_step
+  parent: z_test_step,
+  slide_id: 5,
 )
 
 z_test_slide_seven = Slide.create!(
   content: z_test_content_seven,
-  parent: z_test_step
+  parent: z_test_step,
+  slide_id: 6,
 )
 
 z_test_slide_eight = Slide.create!(
   content: z_test_content_eight,
-  parent: z_test_step
+  parent: z_test_step,
+  slide_id: 7,
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -700,12 +750,13 @@ conclusion_content = [
 
 conclusion_lesson = Lesson.create!(
   title: "MH Conclusion",
-  project: project
+  project: project,
+  lesson_id: 5,
 )
 
 
 conclusion_slide = Slide.create!(
   content: conclusion_content,
-  parent: conclusion_lesson
-
+  parent: conclusion_lesson,
+  slide_id: 0,
 )

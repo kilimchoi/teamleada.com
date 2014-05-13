@@ -11,7 +11,7 @@ project = Project.create!(
   short_description: "A data project based off of an eCommerce website attempting to A/B test their website to increase traffic and landing page engagement. In this project you will learn how to test experiment hypotheses and the statistical analyses required to interpret the results from your A/B test experiments.",
   number: 6,
   enabled: false,
-  codename: "ab_testing",
+  uid: 6,
 )
 
 ################################################################################

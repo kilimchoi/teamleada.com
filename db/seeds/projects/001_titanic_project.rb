@@ -17,7 +17,7 @@ project = Project.create!(
   enabled: true,
   has_leaderboard: true,
   has_submit: true,
-  codename: "kaggle_titanic",
+  uid: 1,
 )
 ################################################################################
 
@@ -34,13 +34,15 @@ welcome_lesson_slide_one_content = [
 ]
 
 welcome_lesson = Lesson.create!(
-  title: "Welcome",
-  project: project
+  title: "Titanic Welcome",
+  project: project,
+  lesson_id: 0,
 )
 
 welcome_lesson_slide_one = Slide.create!(
   content: welcome_lesson_slide_one_content,
-  parent: welcome_lesson
+  parent: welcome_lesson,
+  slide_id: 0,
 )
 
 ################################################################################
@@ -68,17 +70,20 @@ begin_two_content = [
 
 begin_lesson = Step.create!(
   title: "How This Project Works",
-  lesson: welcome_lesson
+  lesson: welcome_lesson,
+  step_id: 0,
 )
 
 begin_lesson_slide_one = Slide.create!(
   content: begin_one_content,
-  parent: begin_lesson
+  parent: begin_lesson,
+  slide_id: 0,
 )
 
 begin_lesson_slide_two = Slide.create!(
   content: begin_two_content,
-  parent: begin_lesson
+  parent: begin_lesson,
+  slide_id: 1,
 )
 
 ################################################################################
@@ -91,12 +96,14 @@ work_with_data_content = [
 
 work_with_data_lesson = Lesson.create!(
   title: "Work with the Data",
-  project: project
+  project: project,
+  lesson_id: 1,
 )
 
 work_with_data_slide_one = Slide.create!(
   content: work_with_data_content,
-  parent: work_with_data_lesson
+  parent: work_with_data_lesson,
+  slide_id: 0,
 )
 
 ################################################################################
@@ -120,17 +127,20 @@ train_data_content_two = [
 
 train_data_step = Step.create!(
   title: "Train Data",
-  lesson: work_with_data_lesson
+  lesson: work_with_data_lesson,
+  step_id: 0,
 )
 
 train_data_slide_one = Slide.create!(
   content: train_data_content,
-  parent: train_data_step
+  parent: train_data_step,
+  slide_id: 0,
 )
 
 train_data_slide_two = Slide.create!(
   content: train_data_content_two,
-  parent: train_data_step
+  parent: train_data_step,
+  slide_id: 1,
 )
 
 ################################################################################
@@ -148,12 +158,14 @@ train_visualize_content = [
 
 train_visualize_step = Step.create!(
   title: "Visualize Train Data",
-  previous_step: train_data_step
+  previous_step: train_data_step,
+  step_id: 1,
 )
 
 train_visualize_slide_one = Slide.create!(
   content: train_visualize_content,
-  parent: train_visualize_step
+  parent: train_visualize_step,
+  slide_id: 0,
 )
 ################################################################################
 
@@ -180,17 +192,20 @@ train_clean_content_two = [
 
 train_clean_step = Step.create!(
   title: "Clean Train Data",
-  previous_step: train_data_step
+  previous_step: train_data_step,
+  step_id: 2,
 )
 
 train_clean_slide_one = Slide.create!(
   content: train_clean_content_one,
-  parent: train_clean_step
+  parent: train_clean_step,
+  slide_id: 0,
 )
 
 train_clean_slide_two = Slide.create!(
   content: train_clean_content_two,
-  parent: train_clean_step
+  parent: train_clean_step,
+  slide_id: 1,
 )
 
 ################################################################################
@@ -205,12 +220,14 @@ test_data_content = [
 
 test_data_step = Step.create!(
   title: "Test Data",
-  lesson: work_with_data_lesson
+  lesson: work_with_data_lesson,
+  step_id: 3,
 )
 
 test_data_slide_one = Slide.create!(
   content: test_data_content,
-  parent: test_data_step
+  parent: test_data_step,
+  slide_id: 0,
 )
 
 test_data_step.add_required_steps([train_visualize_step, train_clean_step])
@@ -230,12 +247,14 @@ test_visualize_content = [
 
 test_visualize_step = Step.create!(
   title:"Visualize Test Data",
-  previous_step: test_data_step
+  previous_step: test_data_step,
+  step_id: 4,
 )
 
 test_visualize_slide_one = Slide.create!(
   content: test_visualize_content,
-  parent: test_visualize_step
+  parent: test_visualize_step,
+  slide_id: 0,
 )
 ################################################################################
 
@@ -255,12 +274,14 @@ test_clean_one_content = [
 
 test_clean = Step.create!(
   title: "Clean Test Data",
-  previous_step: test_data_step
+  previous_step: test_data_step,
+  step_id: 5,
 )
 
 test_clean_slide_one = Slide.create!(
   content: test_clean_one_content,
-  parent: test_clean
+  parent: test_clean,
+  slide_id: 0,
 )
 ################################################################################
 
@@ -273,12 +294,14 @@ analytics_tools_one_content = [
 
 analytics_tools_lesson = Lesson.create!(
   title: "Analytics Tools",
-  project: project
+  project: project,
+  lesson_id: 2,
 )
 
 analytics_slide_one = Slide.create!(
   content: analytics_tools_one_content,
-  parent: analytics_tools_lesson
+  parent: analytics_tools_lesson,
+  slide_id: 0,
 )
 ################################################################################
 
@@ -302,22 +325,26 @@ learn_ctree_three_content = [
 
 learn_ctree = Step.create!(
   title: "Learn Classification Trees",
-  lesson: analytics_tools_lesson
+  lesson: analytics_tools_lesson,
+  step_id: 0,
 )
 
 learn_ctree_slide_one = Slide.create!(
   content: learn_ctree_one_content,
-  parent: learn_ctree
+  parent: learn_ctree,
+  slide_id: 0,
 )
 
 learn_ctree_slide_two = Slide.create!(
   content: learn_ctree_two_content,
-  parent: learn_ctree
+  parent: learn_ctree,
+  slide_id: 1,
 )
 
 learn_ctree_slide_three = Slide.create!(
   content: learn_ctree_three_content,
-  parent: learn_ctree
+  parent: learn_ctree,
+  slide_id: 2,
 )
 ################################################################################
 
@@ -360,22 +387,26 @@ apply_ctree_three_content = [
 
 apply_ctree = Step.create!(
   title: "Apply a Classification Tree Model",
-  lesson: analytics_tools_lesson
+  lesson: analytics_tools_lesson,
+  step_id: 1,
 )
 
 apply_ctree_slide_one = Slide.create!(
   content: apply_ctree_one_content,
-  parent: apply_ctree
+  parent: apply_ctree,
+  slide_id: 0,
 )
 
 apply_ctree_slide_two = Slide.create!(
   content: apply_ctree_two_content,
-  parent: apply_ctree
+  parent: apply_ctree,
+  slide_id: 1,
 )
 
 apply_ctree_slide_three = Slide.create!(
   content: apply_ctree_three_content,
-  parent: apply_ctree
+  parent: apply_ctree,
+  slide_id: 2,
 )
 ################################################################################
 
@@ -415,22 +446,26 @@ increase_score_three_content = [
 
 increase_score_lesson = Lesson.create!(
   title: "Increase Your Score",
-  project: project
+  project: project,
+  lesson_id: 3,
 )
 
 increate_score_slide_one = Slide.create!(
   content: increase_score_one_content,
-  parent: increase_score_lesson
+  parent: increase_score_lesson,
+  slide_id: 0,
 )
 
 increate_score_slide_two = Slide.create!(
   content: increase_score_two_content,
-  parent: increase_score_lesson
+  parent: increase_score_lesson,
+  slide_id: 1,
 )
 
 increate_score_slide_three = Slide.create!(
   content: increase_score_three_content,
-  parent: increase_score_lesson
+  parent: increase_score_lesson,
+  slide_id: 2,
 )
 
 
@@ -445,22 +480,15 @@ submission_guide_content = [
 
 submission_guide_lesson = Lesson.create!(
   title: "Submission Help",
-  project: project
+  project: project,
+  lesson_id: 4,
 )
 
 submission_guide_slide = Slide.create!(
   content: submission_guide_content,
-  parent: submission_guide_lesson
+  parent: submission_guide_lesson,
+  slide_id: 0,
 )
 
 
 ################################################################################
-
-# Leaderboard Seed info
-mark = User.find_by(username: 'mark')
-brian = User.find_by(username: 'brian')
-tristan = User.find_by(username: 'tristan')
-
-Submission.create!(project: project, user: mark, score: 0.645)
-Submission.create!(project: project, user: brian, score: 0.600)
-Submission.create!(project: project, user: tristan, score: 0.712)
