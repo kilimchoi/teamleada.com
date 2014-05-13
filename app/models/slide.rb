@@ -24,8 +24,10 @@ class Slide < ActiveRecord::Base
   def set_uid
     if parent_type == "Step"
       self.uid = "p#{parent.project.uid}_l#{parent.lesson.lesson_id}_st#{parent.step_id}_sl#{slide_id}"
+      puts self.uid
     else
       self.uid = "p#{parent.project.uid}_l#{parent.lesson_id}_sl#{slide_id}"
+      puts self.uid
     end
   end
 end
