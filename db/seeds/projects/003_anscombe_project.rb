@@ -30,12 +30,14 @@ work_with_data_pre_content = [
 
 work_with_data_pre_lesson = Lesson.create!(
   title: "Explore The Datasets",
-  project: project
+  project: project,
+  lesson_id: 0,
 )
 
 work_with_data_pre_slide_one = Slide.create!(
   content: work_with_data_pre_content,
-  parent: work_with_data_pre_lesson
+  parent: work_with_data_pre_lesson,
+  slide_id: 0,
 )
 ################################################################################
 
@@ -52,12 +54,14 @@ data_one_pre_content = [
 
 data_one_pre_step = Step.create!(
   title: "Data One",
-  lesson: work_with_data_pre_lesson
+  lesson: work_with_data_pre_lesson,
+  step_id: 0,
 )
 
 train_data_slide_one = Slide.create!(
   content: data_one_pre_content,
-  parent: data_one_pre_step
+  parent: data_one_pre_step,
+  slide_id: 0,
 )
 
 
@@ -75,12 +79,14 @@ data_two_pre_content = [
 
 data_two_pre_step = Step.create!(
   title: "Data Two",
-  lesson: work_with_data_pre_lesson
+  lesson: work_with_data_pre_lesson,
+  step_id: 1,
 )
 
 train_data_slide_two = Slide.create!(
   content: data_two_pre_content,
-  parent: data_two_pre_step
+  parent: data_two_pre_step,
+  slide_id: 0,
 )
 
 ################################################################################
@@ -97,12 +103,14 @@ data_three_pre_content = [
 
 data_three_pre_step = Step.create!(
   title: "Data Three",
-  lesson: work_with_data_pre_lesson
+  lesson: work_with_data_pre_lesson,
+  step_id: 2,
 )
 
 train_data_slide_three = Slide.create!(
   content: data_three_pre_content,
-  parent: data_three_pre_step
+  parent: data_three_pre_step,
+  slide_id: 0,
 )
 
 ################################################################################
@@ -119,12 +127,14 @@ data_four_pre_content = [
 
 data_four_pre_step = Step.create!(
   title: "Data Four",
-  lesson: work_with_data_pre_lesson
+  lesson: work_with_data_pre_lesson,
+  step_id: 3,
 )
 
 train_data_slide_four = Slide.create!(
   content: data_four_pre_content,
-  parent: data_four_pre_step
+  parent: data_four_pre_step,
+  slide_id: 0,
 )
 ################################################################################
 
@@ -137,12 +147,14 @@ lm_comparison_content = [
 
 lm_comparison_content_lesson = Lesson.create!(
   title: "Analysis via Linear Models",
-  project: project
+  project: project,
+  lesson_id: 1,
 )
 
 lm_comparison_content_slide_one = Slide.create!(
   content: lm_comparison_content,
-  parent: lm_comparison_content_lesson
+  parent: lm_comparison_content_lesson,
+  slide_id: 0,
 )
 
 ################################################################################
@@ -171,17 +183,20 @@ fit_lm_content_two = [
 
 fit_lm = Step.create!(
   title: "Fitting Linear Models",
-  lesson: lm_comparison_content_lesson
+  lesson: lm_comparison_content_lesson,
+  step_id: 0,
 )
 
 fit_lm_slide_one = Slide.create!(
   content: fit_lm_content_one,
-  parent: fit_lm
+  parent: fit_lm,
+  slide_id: 0,
 )
 
 fit_lm_slide_two = Slide.create!(
   content: fit_lm_content_two,
-  parent: fit_lm
+  parent: fit_lm,
+  slide_id: 1,
 )
 ################################################################################
 #LM  comparison #1
@@ -219,22 +234,26 @@ lm_analysis_content_three = [
 
 analyze_lm = Step.create!(
   title: "Analyze LM result",
-  lesson: lm_comparison_content_lesson
+  lesson: lm_comparison_content_lesson,
+  step_id: 1,
 )
 
 analyze_lm_slide_one = Slide.create!(
   content: lm_analysis_content_one,
-  parent: analyze_lm
+  parent: analyze_lm,
+  slide_id: 0,
 )
 
 analyze_lm_slide_two = Slide.create!(
   content: lm_analysis_content_two,
-  parent: analyze_lm
+  parent: analyze_lm,
+  slide_id: 1,
 )
 
 analyze_lm_slide_three = Slide.create!(
   content: lm_analysis_content_three,
-  parent: analyze_lm
+  parent: analyze_lm,
+  slide_id: 2,
 )
 ################################################################################
 #POST: Analyze data properly
@@ -248,12 +267,14 @@ work_with_data_post_content = [
 
 work_with_data_post_lesson = Lesson.create!(
   title: "Correct Analysys of the Datasets",
-  project: project
+  project: project,
+  lesson_id: 2,
 )
 
 work_with_data_post_slide_one = Slide.create!(
   content: work_with_data_post_content,
-  parent: work_with_data_post_lesson
+  parent: work_with_data_post_lesson,
+  slide_id: 0,
 )
 ################################################################################
 
@@ -274,16 +295,19 @@ data_one_post_content_two = [
 
 data_one_post_step = Step.create!(
   title: "(proper) Data One",
-  lesson: work_with_data_post_lesson
+  lesson: work_with_data_post_lesson,
+  step_id: 0,
 )
 
 data_one_post_slide_one = Slide.create!(
   content: data_one_post_content_one,
-  parent: data_one_post_step
+  parent: data_one_post_step,
+  slide_id: 0,
 )
 data_one_post_slide_two = Slide.create!(
   content: data_one_post_content_two,
-  parent: data_one_post_step
+  parent: data_one_post_step,
+  slide_id: 1,
 )
 
 ################################################################################
@@ -336,23 +360,28 @@ data_two_post_content_four = [
 
 data_two_post_step = Step.create!(
   title: "(proper) Data Two",
-  lesson: work_with_data_post_lesson
+  lesson: work_with_data_post_lesson,
+  step_id: 1,
 )
 data_two_slide_one = Slide.create!(
   content: data_two_post_content_one,
-  parent: data_two_post_step
+  parent: data_two_post_step,
+  slide_id: 0,
 )
 data_two_slide_two = Slide.create!(
   content: data_two_post_content_two,
-  parent: data_two_post_step
+  parent: data_two_post_step,
+  slide_id: 1,
 )
 data_two_slide_three = Slide.create!(
   content: data_two_post_content_three,
-  parent: data_two_post_step
+  parent: data_two_post_step,
+  slide_id: 2,
 )
 data_two_slide_four = Slide.create!(
   content: data_two_post_content_four,
-  parent: data_two_post_step
+  parent: data_two_post_step,
+  slide_id: 3,
 )
 
 ################################################################################
@@ -392,19 +421,23 @@ data_three_post_content_three = [
 ]
 data_three_post_step = Step.create!(
   title: "(proper) Data Three",
-  lesson: work_with_data_post_lesson
+  lesson: work_with_data_post_lesson,
+  step_id: 2,
 )
 data_three_slide_one = Slide.create!(
   content: data_three_post_content_one,
-  parent: data_three_post_step
+  parent: data_three_post_step,
+  slide_id: 0,
 )
 data_three_slide_two = Slide.create!(
   content: data_three_post_content_two,
-  parent: data_three_post_step
+  parent: data_three_post_step,
+  slide_id: 1,
 )
 data_three_slide_three = Slide.create!(
   content: data_three_post_content_three,
-  parent: data_three_post_step
+  parent: data_three_post_step,
+  slide_id: 2,
 )
 ################################################################################
 data_four_post_content_one = [
@@ -458,23 +491,28 @@ data_four_post_content_four = [
 
 data_four_post_step = Step.create!(
   title: "(proper) Data Four",
-  lesson: work_with_data_post_lesson
+  lesson: work_with_data_post_lesson,
+  step_id: 3,
 )
 data_four_slide_one = Slide.create!(
   content: data_four_post_content_one,
-  parent: data_four_post_step
+  parent: data_four_post_step,
+  slide_id: 0,
 )
 data_four_slide_two = Slide.create!(
   content: data_four_post_content_two,
-  parent: data_four_post_step
+  parent: data_four_post_step,
+  slide_id: 1,
 )
 data_four_slide_three = Slide.create!(
   content: data_four_post_content_three,
-  parent: data_four_post_step
+  parent: data_four_post_step,
+  slide_id: 2,
 )
 data_four_slide_four = Slide.create!(
   content: data_four_post_content_four,
-  parent: data_four_post_step
+  parent: data_four_post_step,
+  slide_id: 3,
 )
 
 ################################################################################
@@ -490,11 +528,13 @@ conclusion_content_one = [
 
 conclusion_lesson = Lesson.create!(
   title: "Anscombe Conclusion",
-  project: project
+  project: project,
+  lesson_id: 3,
 )
 work_with_data_pre_slide_one = Slide.create!(
   content: conclusion_content_one,
-  parent: conclusion_lesson
+  parent: conclusion_lesson,
+  slide_id: 0,
 )
 
 
