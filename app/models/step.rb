@@ -40,19 +40,8 @@ class Step < ActiveRecord::Base
   friendly_id :url, use: :finders
 
   def set_uid
-    puts "-------- STEP: " + p.to_s + ", TITLE: " + title
-    if not previous_step.nil? #the bug is with when you have multiple step levels (which happens in titanic)
-     puts "XXXXXXXXXXXX: " + previous_step.uid
-    end
-    self.uid = "#{lesson_id}_st#{step_id}_sl*" #it seems like lesson_id contains the project_id, dunno if that's a bug...
-    puts self.uid
+    self.uid = "p#{main_lesson.project.uid}_l#{main_lesson.lesson_id}_st#{step_id}"
   end
-
-  '''
-  p#{project.uid}_l
-  -------- STEP: p0_l1, TITLE: Mathematics 101
-  p0_lp0_l1_st0
-  '''
 
   def set_url
     self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize

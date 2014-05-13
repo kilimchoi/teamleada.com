@@ -221,7 +221,7 @@ test_data_content = [
 test_data_step = Step.create!(
   title: "Test Data",
   lesson: work_with_data_lesson,
-  step_id: 0,
+  step_id: 3,
 )
 
 test_data_slide_one = Slide.create!(
@@ -248,7 +248,7 @@ test_visualize_content = [
 test_visualize_step = Step.create!(
   title:"Visualize Test Data",
   previous_step: test_data_step,
-  step_id: 1,
+  step_id: 4,
 )
 
 test_visualize_slide_one = Slide.create!(
@@ -275,7 +275,7 @@ test_clean_one_content = [
 test_clean = Step.create!(
   title: "Clean Test Data",
   previous_step: test_data_step,
-  step_id: 2,
+  step_id: 5,
 )
 
 test_clean_slide_one = Slide.create!(
@@ -394,19 +394,19 @@ apply_ctree = Step.create!(
 apply_ctree_slide_one = Slide.create!(
   content: apply_ctree_one_content,
   parent: apply_ctree,
-  step_id: 0,
+  slide_id: 0,
 )
 
 apply_ctree_slide_two = Slide.create!(
   content: apply_ctree_two_content,
   parent: apply_ctree,
-  step_id: 1,
+  slide_id: 1,
 )
 
 apply_ctree_slide_three = Slide.create!(
   content: apply_ctree_three_content,
   parent: apply_ctree,
-  step_id: 2,
+  slide_id: 2,
 )
 ################################################################################
 
