@@ -9,7 +9,7 @@ class Ability
     if user.is_admin?
       can :manage, :all
     elsif user.is_company?
-      can :dashboard
+      can :show, Company
     elsif !user.new_record?
       can :show, User, id: user.id
       can :show, Project do |project|
