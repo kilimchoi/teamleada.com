@@ -5,6 +5,13 @@ class Admin::CompaniesController < Admin::BaseController
   end
 
   def create
+    @company = Company.new(company_params)
+    if @company.save
+      flash[:info] = "You have successfully made a company."
+      redirect_to admin_company_path(@company)
+    else
+      render :new
+    end
   end
 
   def edit

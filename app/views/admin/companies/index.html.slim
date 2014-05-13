@@ -1,0 +1,11 @@
+.container.full-container
+  .row
+    .col-md-12
+      h1
+        ' All Companies -
+        = link_to "New Company", new_admin_company_path
+      table.table.table-striped
+        th Name
+        - @companies.each do |company|
+          tr
+            td = link_to company.name, admin_company_path(company)
