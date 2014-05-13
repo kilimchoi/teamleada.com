@@ -4,13 +4,19 @@
       h1.title = @company.name
       .row
         .col-md-12
+          h3.title Projects
           = form_tag admin_company_path(@company), method: :post do |f|
             .input-group
               = collection_select :company_project, :project_id, @projects, :uid, :title, {}, {class: "form-control small-form"}
               span.input-group-btn
                 = submit_tag "Add Project to #{@company.name}", class: "btn btn-leada"
+          / TODO: Load partial for projects here.
           table.table.table-striped
             th Project Title
             - @company.projects.each do |project|
               tr
                 td = link_to project.title, admin_project_path(project)
+      .row
+        .col-md-12
+          h3.title Users
+          / TODO: Load partial for users here.
