@@ -20,8 +20,7 @@
       = link_to step.title, project_lesson_step_path(lesson.project, lesson, step), class: "flat-button step-button"
 - elsif content_type == 'next_steps'
   p.fragment
-    - step.next_steps.each do |step|
-      = link_to step.title, project_lesson_step_path(step.main_lesson.project, step.main_lesson, step), class: "flat-button step-button"
+    | Section Complete!
 - elsif content_type == 'previous_step'
   p.fragment
     - if defined? step
