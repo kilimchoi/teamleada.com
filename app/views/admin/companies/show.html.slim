@@ -22,7 +22,16 @@
                     td = link_to project.title, admin_project_path(project)
       .row
         .col-md-12
-          h3.title
-            ' Users -
-            = link_to "Add Employee to #{@company.name}", new_user_admin_company_path(@company)
+          h3.title Users
+          .row
+            .col-md-12
+              p
+                ' This form will send an email to the specified email address with a link to sign up
+                ' to Leada and have access to the projects of this company.
+              = form_tag add_user_admin_company_path(@company), method: :post do |f|
+                .input-group
+                  = text_field_tag :email, params[:email], class: "form-control small-form", placeholder: "Email Address"
+                  span.input-group-btn
+                    = submit_tag "Add User to #{@company.name}", class: "btn btn-leada"
+
           / TODO: Load partial for users here.
