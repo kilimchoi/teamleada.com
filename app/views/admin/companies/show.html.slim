@@ -24,4 +24,5 @@
         .col-md-12
           h3.title
             ' Users -
+            = link_to "Add Employee to #{@company.name}", new_user_admin_company_path(@company)
           / TODO: Load partial for users here.

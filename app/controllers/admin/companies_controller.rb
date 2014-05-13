@@ -43,6 +43,14 @@ class Admin::CompaniesController < Admin::BaseController
     end
   end
 
+  def new_user
+    @user = User.new
+  end
+
+  def create_user
+
+  end
+
   private
 
   def company_params
