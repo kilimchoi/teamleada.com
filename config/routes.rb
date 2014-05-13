@@ -45,7 +45,9 @@ TeamLeada::Application.routes.draw do
     match 'dashboard', to: 'pages#dashboard', via: :get
 
     resources :users, only: [:index, :show]
-    resources :companies
+    resources :companies do
+      match '/', to: 'companies#add_project', via: :post
+    end
     resources :projects, only: [:index, :show]
     resources :codes
   end
