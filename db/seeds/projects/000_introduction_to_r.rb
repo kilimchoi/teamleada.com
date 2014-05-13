@@ -28,7 +28,7 @@ tutorial_introduction_content = [
   ['text', 'R has become one of the most popular programming language for data scientists and data analysts in industry today.'],
   ['text', 'Specifically for statistical analysis and visualization of data, R is an extremely effective language.'],
   ['text', 'Another benefit is that it\'s open source and has a large community of developers contributing new libraries and functionalities everyday!'],
-  ['next_steps', nil]
+  ['section_complete', nil]
 ]
 
 tutorial_introduction_lesson = Lesson.create!(
@@ -71,14 +71,13 @@ basic_math_content_one = [
   ['text', 'You can also use functions built in R such as sqrt() or abs() to do mathematical operations.'],
   ['code', 'sqrt(16)'],
   ['code', 'abs(-100)'],
-  ['next_steps', nil]
 ]
 basic_math_content_two = [
   ['text', 'The same mathematical rules apply when it comes to order of operations.'],
   ['text', 'Try the following and see what you get!'],
   ['code', '10 + 5 / 5'],
   ['quiz', 'onboard_2'],
-  ['next_steps', nil]
+  ['section_complete', nil]
 ]
 basic_math_step = Step.create!(
   title: "Mathematics 101",
@@ -126,7 +125,7 @@ basic_assignment_content_three = [
   ['text', 'You can also explicitly ask R to print the values of the variables by using the print() method.'],
   ['code', 'print (broccoli)'],
   ['code', 'print (favorite_motorcycle)'],
-  ['next_steps', nil]
+  ['section_complete', nil]
 ]
 basic_assignment_step = Step.create!(
   title: "Variable Assignment 101",
@@ -159,7 +158,6 @@ basic_comparison_content_one = [
   ['text', 'A is equal to B : "A == B": Note that we have TWO equal signs here!'],
   ['text', 'Let\'s see if we can compare some of the variables we assigned earlier. We can do the following comparisons:'],
   ['text', 'Note that TRUE or FALSE in R is known as Boolean/Logical data types. This is a different data type from numericals (numbers) or strings (words).'],
-  ['next_steps', nil]
 ]
 basic_comparison_content_two = [
   ['text', 'Try out the following comparisons and see what they return:'],
@@ -182,7 +180,7 @@ basic_comparison_content_three = [
   ['code', 'FALSE == 0'],
   ['quiz', 'onboard_4'],
   ['text', 'Remember that we compare via "==" and assign via "="'],
-  ['next_steps', nil]
+  ['section_complete', nil]
 ]
 basic_comparison_step = Step.create!(
   title: "Comparison 101",
@@ -218,7 +216,6 @@ combined_operations_content_one = [
   ['text', 'Verify how code comments work by typing the code below:'],
   ['code', '#melon_cake, see this code doesn\'t return a value'],
   ['text', 'Because the above code is a comment, R ignores it.'],
-  ['lesson_links', nil]
 ]
 combined_operations_content_two = [
   ['text', 'What about characters/strings? How do they all work?'],
@@ -229,6 +226,7 @@ combined_operations_content_two = [
   ['text', 'R is telling us that we can\'t apply the "+" operator to non-numeric (such as characters or strings) data.'],
   ['text', 'How do we get around this? The following will work, but it is just a sneak preview! We\'ll learn more later.'],
   ['code', 'print (paste(personal_statement, favorite_motorcycle, sep=" But, I love "))'],
+  ['section_complete', nil]
 ]
 
 combined_operations_lesson = Lesson.create!(
@@ -313,7 +311,7 @@ vectors_content_three = [
   ['text', 'Getting familiar with error messages will help you become better faster.'],
   ['text', 'Lastly, check out the help function to learn more about the various functions in R.'],
   ['code', 'help(c)'],
-  ['next_steps', nil]
+  ['section_complete', nil]
 ]
 vectors_content_step = Step.create!(
   title: "Vectors 101",
@@ -343,6 +341,7 @@ conclusion_content_one = [
   ['text', 'In this R bootcamp, we taught you how to write basic expressions in R as well as the basics of data objects in the R language.'],
   ['text', 'You can now do basic arithmetics in R, in addition to some basic data manipulation.'],
   ['text', 'Use the skills and knowledge gained from here to start completing data projects.'],
+  ['section_complete', nil],
   ['project_link', 'Back to the Project main page']
 ]
 conclusion_lesson = Lesson.create!(
