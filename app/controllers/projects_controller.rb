@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   end
 
   def index
-    if signed_in? && current_user.has_project_access?
+    if signed_in? && current_user.has_project_access? && !current_user.is_admin?
       @projects = @projects.enabled
     end
     @interested_user = InterestedUser.new
