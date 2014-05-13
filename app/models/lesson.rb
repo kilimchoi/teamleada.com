@@ -49,6 +49,15 @@ class Lesson < ActiveRecord::Base
     lesson_id
   end
 
+  def next_link
+    potential_lesson_uid = self.uid[0..-2] + (lesson_id + 1).to_s
+    potential_next_lesson = Lesson.find_by_uid(potential_lesson_uid)
+    if not potential_next_lesson.nil?
+      project_lesson_path(project_id: project.url, id: potential_next_lesson.url)
+    end
+    #lesson_path(url: next_lesson.url)
+  end
+
   def back_link
     project_path(url: project.url)
   end
