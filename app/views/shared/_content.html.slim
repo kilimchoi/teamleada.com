@@ -14,7 +14,7 @@
 - elsif content_type == 'link'
   a.fragment href=content target="_blank"
     = content
-/ - elsif content_type == 'lesson_links'
+- elsif content_type == 'lesson_links'
   p.fragment
     - lesson.steps.each do |step|
       = link_to step.title, project_lesson_step_path(lesson.project, lesson, step), class: "flat-button step-button"
