@@ -7,6 +7,8 @@ TeamLeada::Application.routes.draw do
   match 'student', to: 'pages#student', via: :get
   match 'student', to: 'users#auth_code', via: :post
 
+  match 'surveys/:name', to: 'surveys#show', via: :get
+
   devise_for :users, path: '',
                      path_names: { sign_in: 'login', sign_up: 'sign-up', sign_out: 'logout'},
                      controllers: {
