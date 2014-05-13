@@ -18,6 +18,7 @@ class Admin::CompaniesController < Admin::BaseController
   end
 
   def show
+    @projects = Project.all
   end
 
   def update
@@ -27,6 +28,19 @@ class Admin::CompaniesController < Admin::BaseController
   end
 
   def index
+  end
+
+  def add_project
+    @project = Project.find(params[:company_project][:project_id])
+    @company_project = CompanyProject.find_by(company: @company, project: @project)
+    unless @company_project.nil?
+      flash[:danger] = "You have already assigned #{@project.title} to the comapny #{@company.name}."
+      redirect_to admin_company_path(@company)
+    else
+      @company_project = CompanyProject.create(company: @company, project: @project)
+      flash[:info] = "Success! You have added #{@project.title} to the company #{@company.name}."
+      redirect_to admin_company_path(@company)
+    end
   end
 
   private
