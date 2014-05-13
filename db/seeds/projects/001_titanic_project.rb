@@ -440,7 +440,7 @@ increase_score_three_content = [
   ['code','  }'],
   ['code', '}'],
   ['text', 'What other variables can you think of and implement that are predictive of survival on the Titanic?'],
-  ['text', 'END'],
+  ['feedback', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
   ['lesson_links', nil],
 ]
 

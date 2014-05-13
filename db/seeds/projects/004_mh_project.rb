@@ -746,6 +746,7 @@ z_test_slide_eight = Slide.create!(
 conclusion_content = [
   ['text', 'In conclusion we find that the effect of the MightyHive advertising campaign to be statistically significant in this experiment.'],
   ['text', 'Our 95% confidence interval shows the lift in conversions because of MightyHive advertising technology to be between 3.3% and 4.9%.'],
+  ['feedback', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
 
 conclusion_lesson = Lesson.create!(

@@ -341,7 +341,7 @@ conclusion_content_one = [
   ['text', 'In this R bootcamp, we taught you how to write basic expressions in R as well as the basics of data objects in the R language.'],
   ['text', 'You can now do basic arithmetics in R, in addition to some basic data manipulation.'],
   ['text', 'Use the skills and knowledge gained from here to start completing data projects.'],
-  ['section_complete', nil],
+  ['feedback', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
   ['project_link', 'Back to the Project main page']
 ]
 conclusion_lesson = Lesson.create!(

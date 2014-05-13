@@ -523,6 +523,7 @@ conclusion_content_one = [
   ['text', 'This leaves us with one final message: "Look at your data".'],
   ['text', 'A quote from Josh Wills (Senior Director of Data Science at Cloudera):'],
   ['text', '"People who learn about t-tests and regressions get a little sophisticated, and start applying models without looking at the data. They think that they can just apply this technique and they don’t have to look at the data anymore. You do that a few times, you get burned by some bad data, and you learn to go back and start looking at the data again."'],
+  ['feedback', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
   ['project_link', 'Back to the lessons page'],
 ]
 
