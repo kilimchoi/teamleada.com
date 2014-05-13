@@ -1,5 +1,5 @@
 # Creates the anscombe project on the site!
-#Main Page
+# Main Page
 main_page_content = [
   ['text', 'This introduction series will get you through project Anscombe\'s Quartet.'],
   ['text', 'In this particular intro, we\'ll be focusing on Data Objects and Functions.'],
@@ -31,12 +31,14 @@ data_object_content = [
 
 data_object_lesson = Lesson.create!(
   title: "Creating Data Objects",
-  project: project
+  project: project,
+  lesson_id: 0,
 )
 
 data_object_slide_one = Slide.create!(
   content: data_object_content,
-  parent: data_object_lesson
+  parent: data_object_lesson,
+  slide_id: 0,
 )
 ################################################################################
 vector_data_content_one = [
@@ -70,17 +72,22 @@ vector_data_content_two = [
 
 vector_data_step = Step.create!(
   title: "Construct Vectors",
-  lesson: data_object_lesson
+  lesson: data_object_lesson,
+  step_id: 0,
 )
 
 vector_data_slide_one = Slide.create!(
   content: vector_data_content_one,
-  parent: vector_data_step
+  parent: vector_data_step,
+  slide_id: 0,
 )
+
 vector_data_slide_two = Slide.create!(
   content: vector_data_content_two,
-  parent: vector_data_step
+  parent: vector_data_step,
+  slide_id: 1,
 )
+
 ################################################################################
 
 matrix_data_content_one = [
@@ -113,17 +120,22 @@ matrix_data_content_two = [
 
 matrix_data_step = Step.create!(
   title: "Construct Matrices",
-  lesson: data_object_lesson
+  lesson: data_object_lesson,
+  step_id: 1,
 )
 
 matrix_data_slide_one = Slide.create!(
   content: matrix_data_content_one,
-  parent: matrix_data_step
+  parent: matrix_data_step,
+  slide_id: 0,
 )
+
 matrix_data_slide_two = Slide.create!(
   content: matrix_data_content_two,
-  parent: matrix_data_step
+  parent: matrix_data_step,
+  slide_id: 1,
 )
+
 ################################################################################
 dataframe_data_content_one = [
 	['text', 'Now that we know a thing or two about matrices, we can move on to dataframes.'],
@@ -152,16 +164,19 @@ dataframe_data_content_two = [
 ]
 dataframe_data_step = Step.create!(
   title: "Construct Data Frames",
-  lesson: data_object_lesson
+  lesson: data_object_lesson,
+  step_id: 2,
 )
 
 dataframe_data_slide_one = Slide.create!(
   content: dataframe_data_content_one,
-  parent: dataframe_data_step
+  parent: dataframe_data_step,
+  slide_id: 0,
 )
 dataframe_data_slide_two = Slide.create!(
   content: dataframe_data_content_two,
-  parent: dataframe_data_step
+  parent: dataframe_data_step,
+  slide_id: 1,
 )
 ################################################################################
 ################################################################################
@@ -173,13 +188,16 @@ data_access_content = [
 
 data_access_lesson = Lesson.create!(
   title: "Accessing Data",
-  project: project
+  project: project,
+  lesson_id: 1,
 )
 
 data_access_slide_one = Slide.create!(
   content: data_access_content,
-  parent: data_access_lesson
+  parent: data_access_lesson,
+  slide_id: 0,
 )
+
 ################################################################################
 matrix_access_content_one = [
 	['text', 'Now to access the data we stored.'],
@@ -206,17 +224,22 @@ matrix_access_content_two = [
 
 matrix_access_step = Step.create!(
   title: "Accessing Matrix",
-  lesson: data_access_lesson
+  lesson: data_access_lesson,
+  step_id: 0,
 )
 
 matrix_access_slide_one = Slide.create!(
   content: matrix_access_content_one,
-  parent: matrix_access_step
+  parent: matrix_access_step,
+  slide_id: 0,
 )
+
 matrix_access_slide_two = Slide.create!(
   content: matrix_access_content_two,
-  parent: matrix_access_step
+  parent: matrix_access_step,
+  slide_id: 1,
 )
+
 ################################################################################
 
 dataframe_access_content_one = [
@@ -253,20 +276,26 @@ dataframe_access_content_three = [
 ]
 dataframe_access_step = Step.create!(
   title: "Accessing dataframe",
-  lesson: data_access_lesson
+  lesson: data_access_lesson,
+  step_id: 1,
 )
 
 dataframe_access_slide_one = Slide.create!(
   content: dataframe_access_content_one,
-  parent: dataframe_access_step
+  parent: dataframe_access_step,
+  slide_id: 0,
 )
+
 dataframe_access_slide_two = Slide.create!(
   content: dataframe_access_content_two,
-  parent: dataframe_access_step
+  parent: dataframe_access_step,
+  slide_id: 1,
 )
+
 dataframe_access_slide_three = Slide.create!(
   content: dataframe_access_content_three,
-  parent: dataframe_access_step
+  parent: dataframe_access_step,
+  slide_id: 2,
 )
 ################################################################################
 ################################################################################
@@ -286,11 +315,13 @@ function_main_content = [
 ]
 function_lesson = Lesson.create!(
   title: "Functions ()",
-  project: project
+  project: project,
+  lesson_id: 2,
 )
 data_access_slide_one = Slide.create!(
   content: function_main_content,
-  parent: function_lesson
+  parent: function_lesson,
+  slide_id: 0,
 )
 ################################################################################
 
@@ -320,16 +351,19 @@ plot_function_content_two = [
 ]
 plot_function_step = Step.create!(
   title: "Plotting via plot()",
-  lesson: function_lesson
+  lesson: function_lesson,
+  step_id: 0,
 )
 
 plot_function_slide_one = Slide.create!(
   content: plot_function_content_one,
-  parent: plot_function_step
+  parent: plot_function_step,
+  slide_id: 0,
 )
 plot_function_slide_two = Slide.create!(
   content: plot_function_content_two,
-  parent: plot_function_step
+  parent: plot_function_step,
+  slide_id: 1,
 )
 
 ################################################################################
@@ -347,12 +381,14 @@ summary_content_one = [
 ]
 summary_lesson = Lesson.create!(
   title: "Anscombe Bootcamp Summary",
-  project: project
+  project: project,
+  lesson_id: 3,
 )
 
 summary_slide_one = Slide.create!(
   content: summary_content_one,
-  parent: summary_lesson
+  parent: summary_lesson,
+  slide_id: 0,
 )
 ################################################################################
 
