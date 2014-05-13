@@ -15,10 +15,12 @@
 #
 
 class Step < ActiveRecord::Base
+  self.primary_key = "uid"
+
   include Rails.application.routes.url_helpers
   serialize :content, Array
 
-  belongs_to :lesson
+  belongs_to :lesson, primary_key: :uid
   belongs_to :previous_step, class_name: "Step"
   has_many :next_steps, foreign_key: :previous_step_id, class_name: "Step", dependent: :destroy
   has_many :step_requirements, foreign_key: :requiree_step_id
@@ -29,13 +31,35 @@ class Step < ActiveRecord::Base
   has_many :slides, as: :parent, dependent: :destroy
 
   before_create :set_url
+  before_create :set_uid
+
+  validates_presence_of :step_id
   validates_uniqueness_of :title, scope: [:lesson_id, :previous_step_id]
 
   extend FriendlyId
   friendly_id :url, use: :finders
 
+  def set_uid
+    puts "-------- STEP: " + p.to_s + ", TITLE: " + title
+    if not previous_step.nil? #the bug is with when you have multiple step levels (which happens in titanic)
+     puts "XXXXXXXXXXXX: " + previous_step.uid
+    end
+    self.uid = "#{lesson_id}_st#{step_id}_sl*" #it seems like lesson_id contains the project_id, dunno if that's a bug...
+    puts self.uid
+  end
+
+  '''
+  p#{project.uid}_l
+  -------- STEP: p0_l1, TITLE: Mathematics 101
+  p0_lp0_l1_st0
+  '''
+
   def set_url
     self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize
+  end
+
+  def id
+    step_id
   end
 
   def main_lesson
@@ -48,6 +72,10 @@ class Step < ActiveRecord::Base
       end
       current_step.lesson
     end
+  end
+
+  def project
+    main_lesson.project
   end
 
   def back_link

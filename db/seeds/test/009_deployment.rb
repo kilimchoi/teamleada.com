@@ -9,7 +9,8 @@ project = Project.create!(
   number: 9,
   enabled: false,
   paid: true,
-  cost: 500
+  cost: 500,
+  uid: 9,
 )
 
 ################################################################################

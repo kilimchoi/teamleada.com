@@ -1,16 +1,15 @@
-
-
 main_page_content = [
 	['text', 'This is the test project to gauge interest of what kinds of projects our users want.'],
 
 ]
 
 project = Project.create!(
-  title:"A/B Testing Your Landing Page",
+  title:"Create a Location Recommendation System",
   description: main_page_content,
-  short_description: "A data project based off of an eCommerce website attempting to A/B test their website to increase traffic and landing page engagement. In this project you will learn how to test experiment hypotheses and the statistical analyses required to interpret the results from your A/B test experiments.",
-  number: 6,
+  short_description: "Using data from the Bay Area Bike Share you will learn how to create a simple reccomendation algorithm for potential customers. This project will introduce you to Python for data analysis and machine learning. This project is for intermediate level students.",
+  number: 8,
   enabled: false,
+  uid: 8,
 )
 
 ################################################################################
