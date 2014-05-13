@@ -15,15 +15,17 @@ class Slide < ActiveRecord::Base
   self.primary_key = "uid"
 
   serialize :content, Array
-  belongs_to :parent, polymorphic: true
-
-  default_scope { order('slide_id') }
+  belongs_to :parent, polymorphic: true, primary_key: :uid
 
   before_create :set_uid
 
   validates_presence_of :slide_id
 
   def set_uid
-    self.uid = "p#{project_id}_l#{lesson_id}_#{parent_type}#{parent_id}_sl#{slide_id}"
+    if parent_type == "Step"
+      self.uid = "p#{parent.project.uid}_l#{parent.lesson.lesson_id}_st#{parent.step_id}_sl#{slide_id}"
+    else
+      self.uid = "p#{parent.project.uid}_l#{parent.lesson_id}_sl#{slide_id}"
+    end
   end
 end

@@ -20,7 +20,7 @@ class Step < ActiveRecord::Base
   include Rails.application.routes.url_helpers
   serialize :content, Array
 
-  belongs_to :lesson
+  belongs_to :lesson, primary_key: :uid
   belongs_to :previous_step, class_name: "Step"
   has_many :next_steps, foreign_key: :previous_step_id, class_name: "Step", dependent: :destroy
   has_many :step_requirements, foreign_key: :requiree_step_id
@@ -40,7 +40,7 @@ class Step < ActiveRecord::Base
   friendly_id :url, use: :finders
 
   def set_uid
-    self.uid = "p#{project_id}_l#{lesson_id}_st#{step_id}"
+    self.uid = "p#{project.uid}_l#{lesson_id}_st#{step_id}"
   end
 
   def set_url
@@ -61,6 +61,10 @@ class Step < ActiveRecord::Base
       end
       current_step.lesson
     end
+  end
+
+  def project
+    main_lesson.project
   end
 
   def back_link

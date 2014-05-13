@@ -30,7 +30,7 @@ class Lesson < ActiveRecord::Base
   before_create :set_url
   before_create :set_uid
 
-  validates_presence_of :project_id
+  validates_presence_of :lesson_id
   validates_uniqueness_of :title, scope: :project_id
 
   extend FriendlyId
