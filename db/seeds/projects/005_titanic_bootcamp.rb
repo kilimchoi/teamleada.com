@@ -34,12 +34,14 @@ manipulate_data_content = [
 
 manipulate_lesson = Lesson.create!(
   title: "Manipulating Data in R",
-  project: project
+  project: project,
+  lesson_id: 0,
 )
 
 manipulate_slide = Slide.create!(
   content: manipulate_data_content,
-  parent: manipulate_lesson
+  parent: manipulate_lesson,
+  slide_id: 0,
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -73,17 +75,20 @@ view_data_content_two = [
 
 view_data_step = Step.create!(
   title: "Viewing Data in R",
-  lesson: manipulate_lesson
+  lesson: manipulate_lesson,
+  step_id: 0,
 )
 
 view_data_slide = Slide.create!(
   content: view_data_content,
-  parent: view_data_step
+  parent: view_data_step,
+  slide_id: 0,
 )
 
 view_data_slide_two = Slide.create!(
   content: view_data_content_two,
-  parent: view_data_step
+  parent: view_data_step,
+  slide_id: 1,
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -110,19 +115,22 @@ index_data_content_two = [
 
 index_data_step = Step.create!(
   title: "Indexing Data in R",
-  lesson: manipulate_lesson
+  lesson: manipulate_lesson,
+  step_id: 1,
 
 )
 
 index_slide = Slide.create!(
   content: index_data_content,
-  parent: index_data_step
+  parent: index_data_step,
+  slide_id: 0,
 
 )
 
 index_slide_two = Slide.create!(
   content: index_data_content_two,
-  parent: index_data_step
+  parent: index_data_step,
+  slide_id: 1,
 
 )
 
@@ -137,12 +145,14 @@ visualize_bootcamp_content = [
 
 visualize_lesson = Lesson.create!(
   title: "Basic Visualizations",
-  project: project
+  project: project,
+  lesson_id: 1,
 )
 
 visualize_bootcamp_slide = Slide.create!(
   content: visualize_bootcamp_content,
-  parent: visualize_lesson
+  parent: visualize_lesson,
+  slide_id: 0,
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -174,17 +184,20 @@ quiz = Quiz.create!(
 
 barplot_bootcamp_step = Step.create!(
   title: "Barplots",
-  lesson: visualize_lesson
+  lesson: visualize_lesson,
+  step_id: 0,
 )
 
 barplot_bootcamp_slide = Slide.create!(
   content: barplot_bootcamp_content,
-  parent: barplot_bootcamp_step
+  parent: barplot_bootcamp_step,
+  slide_id: 0,
 )
 
 barplot_bootcamp_slide_two = Slide.create!(
   content: barplot_bootcamp_content_two,
-  parent: barplot_bootcamp_step
+  parent: barplot_bootcamp_step,
+  slide_id: 1,
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -199,12 +212,14 @@ density_plot_content = [
 
 density_plot_step = Step.create!(
   title: "Density Plots",
-  lesson: visualize_lesson
+  lesson: visualize_lesson,
+  step_id: 1,
 )
 
 density_plot_slide = Slide.create!(
   content: density_plot_content,
-  parent: density_plot_step
+  parent: density_plot_step,
+  slide_id: 0,
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -219,12 +234,14 @@ programming_bootcamp_content = [
 
 programming_bootcamp_lesson = Lesson.create!(
   title: "Programming in R",
-  project: project
+  project: project,
+  lesson_id: 2,
 )
 
 programming_bootcamp_slide = Slide.create!(
   content: programming_bootcamp_content,
-  parent: programming_bootcamp_lesson
+  parent: programming_bootcamp_lesson,
+  slide_id: 0,
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -277,28 +294,32 @@ if_else_content_four = [
 
 if_else_step = Step.create!(
   title: "If/else statements",
-  lesson: programming_bootcamp_lesson
-
+  lesson: programming_bootcamp_lesson,
+  step_id: 0,
 )
 
 if_else_slide = Slide.create!(
   content: if_else_content,
-  parent:if_else_step
+  parent: if_else_step,
+  slide_id: 0,
 )
 
 if_else_slide_two = Slide.create!(
   content: if_else_content_two,
-  parent:if_else_step
+  parent: if_else_step,
+  slide_id: 1,
 )
 
 if_else_slide_three = Slide.create!(
   content: if_else_content_three,
-  parent:if_else_step
+  parent: if_else_step,
+  slide_id: 2,
 )
 
 if_else_slide_four = Slide.create!(
   content: if_else_content_four,
-  parent:if_else_step
+  parent: if_else_step,
+  slide_id: 3,
 )
 
 
@@ -354,26 +375,25 @@ for_loop_content_three = [
 
 for_loop_step = Step.create!(
   title: "For Loops",
-  lesson: programming_bootcamp_lesson
+  lesson: programming_bootcamp_lesson,
+  step_id: 1,
 )
 
 
 for_loop_slide = Slide.create!(
   content: for_loop_content,
-  parent: for_loop_step
+  parent: for_loop_step,
+  slide_id: 0,
 )
-
-
 
 for_loop_slide_two = Slide.create!(
   content: for_loop_content_two,
-  parent: for_loop_step
+  parent: for_loop_step,
+  slide_id: 1,
 )
-
 
 for_loop_slide_three = Slide.create!(
   content: for_loop_content_three,
-  parent: for_loop_step
+  parent: for_loop_step,
+  slide_id: 2,
 )
-
-
