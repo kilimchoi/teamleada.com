@@ -152,7 +152,6 @@ train_visualize_content = [
   ['code', 'counts[2] / (counts[1] + counts[2])'],
   ['code', 'counts[4] / (counts[3] + counts[4])'],
   ['text', 'The lighter areas indicate survival and notice that our intuition was correct! 74.2% of women survived vs. 18.9% of men. We can use this to improve our model.'],
-  ['text', 'END'],
   ['next_steps', nil]
 ]
 
@@ -186,7 +185,6 @@ train_clean_content_two = [
   ['code', '    trainData$Age[i] <- mean_age'],
   ['code', '  }'],
   ['code', '}'],
-  ['text', 'END'],
   ['next_steps', nil]
 ]
 
@@ -241,7 +239,6 @@ test_visualize_content = [
   ['code', 'plot(density(trainData$Age, na.rm = TRUE), main = "TrainData Age Density")'],
   ['text', 'Density plots check the distribution of a variable, a distribution is the probability of being any given value in a variable. In this case its the probability of being any given age based on the datasets.'],
   ['text', 'You should see that these distributions are approximately similar. Its good to check more of the variables but we will move on.'],
-  ['text', 'END'],
   ['next_steps', nil]
 ]
 
@@ -268,7 +265,6 @@ test_clean_one_content = [
   ['code', '    testData[i, 5] <- test_mean_age'],
   ['code', '  }'],
   ['code', '}'],
-  ['text', 'END'],
   ['next_steps', nil]
 ]
 
@@ -320,7 +316,7 @@ learn_ctree_two_content = [
 learn_ctree_three_content = [
   ['text', 'In general, overfitting is when you find patterns in the data that does not generalize to new datasets. If you look hard enough, you can find patterns in any dataset.'],
   ['text', 'There are two main advantages to building a classification tree model. (1) They require very little data preparationi and cleaning. (2) Classification models are easy to interpret and explain to others!'],
-  ['text', 'END'],
+  ['next_steps', nil],
 ]
 
 learn_ctree = Step.create!(
@@ -381,7 +377,6 @@ apply_ctree_three_content = [
   ['text', 'We use the write.csv() function to convert our data frame in R into a CSV file'],
   ['code', 'write.csv(model_submission, "mysubmission.csv", row.names = FALSE)'],
   ['text', 'And now you can submit this file to the submission page and see where you rank on the LeadaBoard! Go to the "Increase your Score" page to learn ways to move up on the Leadaboard!'],
-  ['text', 'END'],
   ['next_steps', nil],
 ]
 
