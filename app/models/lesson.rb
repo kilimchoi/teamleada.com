@@ -37,6 +37,7 @@ class Lesson < ActiveRecord::Base
   friendly_id :url, use: :finders
 
   def set_uid
+    puts "************** Lessons: " + lesson_id.to_s
     self.uid = "p#{project_id}_l#{lesson_id}"
   end
 
