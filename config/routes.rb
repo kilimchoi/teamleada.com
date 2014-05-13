@@ -11,8 +11,13 @@ TeamLeada::Application.routes.draw do
                      path_names: { sign_in: 'login', sign_up: 'sign-up', sign_out: 'logout'},
                      controllers: {
                        registrations: 'registrations',
-                       sessions: 'sessions'
+                       sessions: 'sessions',
+                       confirmations: 'confirmations'
                      }
+
+  devise_scope :user do
+    match 'confirm', to: "confirmations#confirm", via: :patch
+  end
 
   resources :users, only: [:show]
   resources :interested_users, only: [:create]
