@@ -23,18 +23,9 @@ def load_from_folder(folder)
   end
 end
 
-
-if Rails.env.development?
-  load_from_folder('development')
-end
-
-if Rails.env.production?
-  load_from_folder('production')
-end
-
 ##############
-# Always load
 # Create a separate folder for each type of seed file.
+# Load in all environments.
 ##############
 
 folders = [
@@ -44,3 +35,13 @@ folders = [
 folders.each do |folder|
   load_from_folder(folder)
 end
+
+# Load per environment
+if Rails.env.development?
+  load_from_folder('development')
+end
+
+if Rails.env.production?
+  load_from_folder('production')
+end
+
