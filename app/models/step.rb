@@ -21,7 +21,7 @@ class Step < ActiveRecord::Base
   serialize :content, Array
 
   belongs_to :lesson, primary_key: :uid
-  belongs_to :previous_step, class_name: "Step"
+  belongs_to :previous_step, class_name: "Step", primary_key: :uid
   has_many :next_steps, foreign_key: :previous_step_id, class_name: "Step", dependent: :destroy
   has_many :step_requirements, foreign_key: :requiree_step_id
   has_many :step_dependents, foreign_key: :required_step_id, class_name: "StepRequirement"

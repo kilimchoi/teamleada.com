@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140513170531) do
+ActiveRecord::Schema.define(version: 20140513170922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,7 +122,7 @@ ActiveRecord::Schema.define(version: 20140513170531) do
     t.string   "lesson_id"
     t.text     "content"
     t.string   "previous_step_id"
-    t.integer  "next_step_id"
+    t.string   "next_step_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title"
