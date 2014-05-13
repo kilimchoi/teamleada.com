@@ -19,8 +19,11 @@
     - lesson.steps.each do |step|
       = link_to step.title, project_lesson_step_path(lesson.project, lesson, step), class: "flat-button step-button"
 - elsif content_type == 'next_steps'
-  p.fragment.complete
-    | next_step, replace to section_complete
+  p.fragment
+    - if not step.next_link.nil?
+      = link_to "Next Step", step.next_link, class: "flat-button step-button"
+    - else
+      = link_to "Next Section", step.lesson.next_link, class: "flat-button step-button"
 - elsif content_type == 'previous_step'
   p.fragment
     - if defined? step

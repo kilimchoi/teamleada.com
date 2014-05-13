@@ -67,11 +67,24 @@ class Step < ActiveRecord::Base
     main_lesson.project
   end
 
+  def next_link
+    current_uid = self.uid
+    potential_step_uid = current_uid[0..-2] + (id + 1).to_s
+    potential_next_step = Step.find_by_uid(potential_step_uid)
+
+    if not potential_next_step.nil?
+      return project_lesson_step_path(project_id: main_lesson.project.url, lesson_id: main_lesson.url, id: potential_next_step.url)
+    else
+      #return project_lesson_path(project_id: lesson.project.url, id: potential_next_lesson.url)
+      nil
+    end
+  end
+
   def back_link
     if previous_step.nil?
-      project_lesson_path(project_url: lesson.project.url, url: lesson.url)
+      project_lesson_path(project_id: lesson.project.url, id: lesson.url)
     else
-      project_lesson_step_path(project_url: previous_step.main_lesson.project.url, lesson_url: previous_step.main_lesson.url, url: previous_step.url)
+      project_lesson_step_path(project_id: previous_step.main_lesson.project.url, lesson_id: previous_step.main_lesson.url, id: previous_step.url)
     end
   end
 
