@@ -12,7 +12,7 @@
 
 class Submission < ActiveRecord::Base
   belongs_to :user
-  belongs_to :project
+  belongs_to :project, primary_key: :uid
 
   default_scope order('score DESC')
 end
