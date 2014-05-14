@@ -5,4 +5,4 @@ p
 p
   | You can confirm your account email through the link below:
 p
-  = link_to 'Confirm my Account', confirmation_url(confirmation_token: @token)
+  = link_to 'Confirm my Account', user_confirmation_url(confirmation_token: @token)

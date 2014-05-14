@@ -12,7 +12,15 @@ class RegistrationsController < Devise::RegistrationsController
         sign_up(resource_name, resource)
         respond_with resource, location: after_sign_up_path_for(resource)
       else
-        set_flash_message :success, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
+        message = "A message with a confirmation link has been sent to your email address. Please click on the link to activate your account."
+        if Rails.env.development?
+          secret = Devise.friendly_token
+          new_token = Devise.token_generator.digest(User, :confirmation_token, secret)
+          resource.confirmation_token = new_token
+          resource.save
+          message += " DEVELOPMENT MODE: <a href='" + user_confirmation_url(confirmation_token: secret) + "'>Activate</a>"
+        end
+        flash[:info] = message.html_safe
         expire_data_after_sign_in!
         respond_with resource, location: after_inactive_sign_up_path_for(resource)
       end
@@ -40,8 +48,14 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  def after_inactive_sign_up_path_for(resource)
-    session.delete(:return_to)
+  def after_inactive_sign_up_path_for(user)
+    if user.is_admin?
+      admin_dashboard_path
+    elsif user.is_company?
+      company_path(user.company)
+    else
+      projects_path
+    end
   end
 
 end
