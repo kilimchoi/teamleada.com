@@ -1,0 +1,17 @@
+.container.full-container
+  .row
+    .col-md-12
+      h1 All Employer Applications
+      table.table.table-striped
+        th Name
+        th Email
+        th Size
+        th Industry
+        th Other Industry
+        - @employer_applications.each do |employer_application|
+          tr
+            td = link_to employer_application.name, admin_employer_application_path(employer_application)
+            td = employer_application.email
+            td = employer_application.size
+            td = employer_application.industry
+            td = employer_application.custom_industry
