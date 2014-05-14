@@ -7,6 +7,8 @@ class Ability
     alias_action :index, :show, to: :view
 
     can :index, Project
+    can :show, Lesson
+    can :show, Step
 
     if user.is_admin?
       can :manage, :all
@@ -20,10 +22,6 @@ class Ability
       can :show, Project do |project|
         user.has_project_access? && (!project.paid || !user.has_not_paid_for_project?(project))
       end
-
-      can :show, Lesson
-      can :show, Step
-    else
     end
   end
 
