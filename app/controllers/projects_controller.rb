@@ -56,7 +56,7 @@ class ProjectsController < ApplicationController
   end
 
   def show_interest
-    redirect_to new_user_registration_path unless signed_in?
+    redirect_to new_user_registration_path and return unless signed_in?
     if ProjectInterest.exists?(user: current_user, project: @project)
       flash[:info] = "Thanks for your enthusiasm, but you've already shown interest in this project!"
       redirect_to :back
