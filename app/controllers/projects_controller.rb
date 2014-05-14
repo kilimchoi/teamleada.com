@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   load_and_authorize_resource except: [:show_interest]
+  load_resource only: [:show_interest]
 
   def show
   end
