@@ -39,6 +39,8 @@ class User < ActiveRecord::Base
 
   belongs_to :company
 
+  default_scope -> { order(:created_at) }
+
   validates_format_of :username, :with => /\A[A-Za-z0-9.&]*\z/
   validates :username, uniqueness: {case_sensitive: false, allow_blank: true}
   validate :check_username
@@ -47,6 +49,8 @@ class User < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :username, use: :finders
+
+  self.per_page = 50
 
   def check_username
     if !self.new_record?
