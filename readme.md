@@ -52,3 +52,13 @@ Since we use Git to deploy to Heroku, this file won't be included, so you'll hav
 
     heroku pg:reset DATABASE --app teamleada-stage
     heroku run rake db:setup --app teamleada-stage
+
+## Environment Variables
+
+The following environment variables need to be set:
+
+    SECRET_KEY
+    STRIPE_SECRET_KEY
+    STRIPE_PUBLISHABLE_KEY
+    NOREPLY_EMAIL
+    NOREPLY_PASSWORD
