@@ -71,7 +71,8 @@ project_spec_content_three = [
   ['link', 'https://s3.amazonaws.com/leada/mh_data/Reservation_Data_Seed.csv'],
   ['text', 'Download the Reservation dataset and save it as "Reservation_Data_Seed" in the appropriate working directory.'],
   ['link', 'https://s3.amazonaws.com/leada/mh_data/Abandoned_Data_Seed.csv'],
-  ['text', 'First open up these two datasets in Excel to take look at the data.']
+  ['text', 'First open up these two datasets in Excel to take look at the data.'],
+  ['next_steps', nil]
 ]
 
 
@@ -106,7 +107,8 @@ project_experiment_content = [
   ['text', 'MightyHive randomly split the "abandoned" callers into test/control buckets.'],
   ['text', 'The test group was shown ads online for a period of 7 days.'],
   ['text', 'The control group was never shown any ad.'],
-  ['text', 'Given this experiment setting, take a momement to think about how you would use these datasets to determine the results MightyHive requires.']
+  ['text', 'Given this experiment setting, take a momement to think about how you would use these datasets to determine the results MightyHive requires.'],
+  ['next_steps', nil]
 ]
 
 project_experiment_step = Step.create!(
@@ -139,6 +141,7 @@ analysis_strategy_content_two = [
   ['text', 'We do this first to determine the total possible number of conversions for both the test and control groups.'],
   ['text', 'The second step is to clean the data; we\'ll filter the resulting possible conversions to only the ones which are plausible.'],
   ['text', 'The final step is in the actual analysis where we define our hypothesis test and perform statistical analysis.'],
+  ['next_steps', nil]
 ]
 
 analysis_strategy_lesson = Lesson.create!(
@@ -165,7 +168,8 @@ data_matching_lesson_content = [
   ['text', 'In the perfect scenario, we could match each reservation observation exactly with the resulting reservation observation if it exists.'],
   ['text', 'However the reality of the situation is that call center workers sometimes make clerical errors.'],
   ['text', 'For our analysis, we\'ll define "matched data" as any observation with a match in the Incoming_Phone column between the Abandoned Dataset and the Reservations Dataset'],
-  ['text', 'This stems from the reasonable assumption that customer phone numbers are unique.']
+  ['text', 'This stems from the reasonable assumption that customer phone numbers are unique.'],
+  ['lesson_links', nil]
 ]
 
 
@@ -210,7 +214,8 @@ initial_setup_step_content_three = [
   ['text', 'The added column will identify whether there was a corresponding match in the abandoned dataset.'],
   ['text', 'We add the column below.'],
   ['code', 'resData$CONV = 0'],
-  ['text', 'We actually assigned the entire column to be 0s. We will later re-label them to be 1s if there is a conversion.']
+  ['text', 'We actually assigned the entire column to be 0s. We will later re-label them to be 1s if there is a conversion.'],
+  ['next_steps', nil]
 ]
 
 initial_setup_step = Step.create!(
@@ -260,7 +265,7 @@ matching_step_content_two = [
   ['code', 'abndData$INCOMING_PHONE_A[88]'],
   ['code', 'resData$INCOMING_PHONE_R[16685]'],
   ['text', 'What is the phone number that is matched? Make sure to input it in exactly the same format!'],
-  ['quiz', 'mh_1' ]
+  ['quiz', 'mh_1' ],
 ]
 
 quiz = Quiz.create!(
@@ -343,6 +348,7 @@ matching_step_content_eight = [
   ['code', '    resData$CONV[i] <- 1'],
   ['code', '  }'],
   ['code', '}'],
+  ['next_steps', nil]
 ]
 
 
@@ -418,6 +424,7 @@ data_cleaning_content_two = [
   ['text', 'Keeping in mind for the client "Martin\'s Travel Agency", we assume that reservations under the same number are a result multiple bookings for vacations.'],
   ['text', 'Verification with the client proves this to be a relatively common occurence. Since we do not want to artificially inflate our conversion numbers we must de-duplicate these conversions into single ones.'],
   ['text', 'Luckily duplicate conversions are contained within the test/control groups so we do not have to do additional filtering besides de-duplication.'],
+  ['next_steps', nil],
 ]
 
 data_cleaning_lesson = Lesson.create!(
@@ -462,6 +469,7 @@ remove_webtest_content_three = [
   ['text', 'Any character to occur one or more times and then @gmail.com follows.'],
   ['text', 'With the webtest_index, we can remove these rows in our resData to remove the WebTest last names.'],
   ['code', 'resData <- resData[-c(webtest_index), ]'],
+  ['next_steps', nil],
 ]
 
 remove_webtest_step = Step.create!(
@@ -512,6 +520,7 @@ data_dedup_content_three = [
   ['text', 'We remove these rows by negatively indexing.'],
   ['code', 'cleaned_conversion_data <- conversion_data[-c(rows_to_remove), ]'],
   ['text', 'And now we have a dataset which only includes conversions which can be attributed to the advertising experiment.'],
+  ['next_steps', nil],
 ]
 
 data_dedup_step = Step.create!(
@@ -540,13 +549,20 @@ data_dedup_slide_three = Slide.create!(
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-
-stat_content = [
-  ['text', 'Determining the appropriate statistical test can be a challenge, here we will explain how to use the most common statistical test, the z-test, and also explain why it is appropriate for this data. The first thing to do is to take a look at exactly the data we are performing a statistical test on.'],
+stat_content_one = [
+  ['text', 'Determining the appropriate statistical test can be a challenge, here we will explain how to use the most common statistical test, the z-test, and also explain why it is appropriate for this data.'],
+  ['text', 'The first thing to do is to take a look at exactly the data we are performing a statistical test on.'],
   ['text', 'While this data comes from the two datasets we started with, its easier to understand which statistical test to apply when you look at the cleaned data.'],
-  ['text', 'We have two groups, test and control, and within each group we have 1\'s and 0\'s. Every 1 is defined as a conversion and 0s are defined as a non-conversion. '],
-  ['text', 'Notice that the proportion of the test and control groups is the same as calculating the average of the two groups so we want a statistical test that compares the averages between two groups.'],
-  ['text', 'Comparing the averages of two groups implies using either a t-test or a z-test and since we have a fairly large sample size we can use the z-test.'],
+  ['text', 'We have two groups, test and control.'],
+  ['text', 'Within each group, we have 1\'s and 0\'s.'],
+  ['text', 'Every 1 is defined as a conversion and 0s are defined as a non-conversion.'],
+]
+
+stat_content_two = [
+ ['text', 'Notice that the proportion of the test and control groups is the same as calculating the average of the two groups.'],
+ ['text', 'Therefore we want a statistical test that compares the averages between two groups.'],
+ ['text', 'Comparing the averages of two groups implies using either a t-test or a z-test and since we have a fairly large sample size we can use the z-test.'],
+ ['lesson_links', nil],
 ]
 
 stat_lesson = Lesson.create!(
@@ -556,11 +572,16 @@ stat_lesson = Lesson.create!(
 )
 
 stat_slide = Slide.create!(
-  content: stat_content,
+  content: stat_content_one,
   parent: stat_lesson,
   slide_id: 0,
 )
 
+stat_slide = Slide.create!(
+  content: stat_content_two,
+  parent: stat_lesson,
+  slide_id: 1,
+)
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -586,6 +607,7 @@ hypothesis_content_three = [
   ['code', 'control_success = length(cleaned_conversion_data$TEST_CONTROL_R[which(cleaned_conversion_data$TEST_CONTROL_R == "control")])'],
   ['code', 'control_total = sum(abndData$TEST_CONTROL_A == "control")'],
   ['code', 'control_proportion = control_success/control_total'],
+  ['next_steps', nil],
 ]
 
 
@@ -618,6 +640,11 @@ hypothesis_slide_two = Slide.create!(
   slide_id: 1,
 )
 
+hypothesis_slide_three = Slide.create!(
+  content: hypothesis_content_three,
+  parent: hypothesis_step,
+  slide_id: 2,
+)
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -685,6 +712,7 @@ z_test_content_eight = [
   ['code', 'lower_bound <- test_proportion - control_proportion - 1.96*SE'],
   ['text', '1.96 is the z-score which defines 95% of the area under the normal curve.'],
   ['text', 'Note that this 95% confidence interval values are approximately the same as values in the 95% confidence interval output in the prop.test() function.'],
+  ['next_steps', nil],
 ]
 
 z_test_step = Step.create!(
@@ -747,6 +775,7 @@ conclusion_content = [
   ['text', 'In conclusion we find that the effect of the MightyHive advertising campaign to be statistically significant in this experiment.'],
   ['text', 'Our 95% confidence interval shows the lift in conversions because of MightyHive advertising technology to be between 3.3% and 4.9%.'],
   ['feedback', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
+  ['project_link', 'Back to the Project main page'],
 ]
 
 conclusion_lesson = Lesson.create!(
