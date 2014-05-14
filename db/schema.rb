@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140514035017) do
+ActiveRecord::Schema.define(version: 20140514085409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -163,6 +163,12 @@ ActiveRecord::Schema.define(version: 20140514035017) do
     t.integer  "amount"
     t.integer  "stripe_charge_id"
     t.boolean  "charged",          default: false
+  end
+
+  create_table "tutoring_slots", force: true do |t|
+    t.datetime "session_datetime"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "user_codes", force: true do |t|
