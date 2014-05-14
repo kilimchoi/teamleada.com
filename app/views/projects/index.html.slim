@@ -21,15 +21,19 @@
                     .info
                       p = project.short_description
 
-  .row
-    .col-md-12
-      h4 Want an <strong>Early Access Code</strong>? Interested in hearing when we release new projects?
-    .col-md-12
-      p
-        | Fill our user survey. Indicate in the last question (Q.6) that you're interested in the product!
-      = link_to "Take me to the survey", "http://www.surveygizmo.com/s3/1645296/Handbook-Pt-III-Reader-Survey", target: "_blank", class: "flat-button"
-      p
-        | *If you already have an access code, use it in the Students page!
+  #access-code-container
+    .row
+      .col-md-12
+        h4 Want an <strong>Early Access Code</strong>? Interested in hearing when we release new projects?
+    .row
+      .col-md-12
+        p
+          | Fill our user survey. Indicate in the last question (Q.6) that you're interested in the product!
+        = link_to "Take me to the survey", "http://www.surveygizmo.com/s3/1645296/Handbook-Pt-III-Reader-Survey", target: "_blank", class: "flat-button"
+    .row
+      .col-md-8.col-md-offset-2
+        = render partial: "codes/project_access_code"
+
 
 // TODO: Don't make a new modal for each project
 - @projects.each do |project|
