@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
 
   def owns_project?(project)
     return false if !self.is_company? || self.company.nil?
-    self.company.projects.incude? project
+    self.company.projects.include? project
   end
 
   def has_not_paid_for_project?(project)
