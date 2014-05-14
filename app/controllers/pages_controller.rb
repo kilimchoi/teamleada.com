@@ -18,6 +18,7 @@ class PagesController < ApplicationController
   end
 
   def tutoring
+    @large_header = true
   end
 
   def student
