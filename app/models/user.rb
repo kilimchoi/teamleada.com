@@ -34,10 +34,29 @@ class User < ActiveRecord::Base
   belongs_to :company
 
   validates_format_of :username, :with => /\A[A-Za-z0-9.&]*\z/
-  validates :username, uniqueness: {case_sensitive: false}, allow_blank: true
+  validates :username, uniqueness: {case_sensitive: false, allow_blank: true}
+  validate :check_username
+  validates :first_name, presence: true, on: :update
+  validates :last_name, presence: true, on: :update
 
   extend FriendlyId
   friendly_id :username, use: :finders
+
+  def check_username
+    if !self.new_record?
+      if username.blank?
+        errors.add(:username, "can't be blank")
+      end
+    end
+  end
+
+  def name
+    if first_name && last_name
+      "#{first_name} #{last_name}"
+    else
+      username
+    end
+  end
 
   def is_admin?
     role == 'admin'
@@ -94,7 +113,7 @@ class User < ActiveRecord::Base
     secret = Devise.friendly_token
     new_token = Devise.token_generator.digest(User, :confirmation_token, secret)
     self.confirmation_token = new_token
-    self.save
+    self.save(validate: false)
     secret
   end
 

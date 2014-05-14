@@ -37,7 +37,7 @@ class ConfirmationsController < Devise::ConfirmationsController
   private
 
   def permitted_params
-    params.require(resource_name).permit(:confirmation_token, :username, :password, :password_confirmation)
+    params.require(resource_name).permit(:confirmation_token, :username, :first_name, :last_name, :password, :password_confirmation)
   end
 
   def after_confirmation_path_for(user)
