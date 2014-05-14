@@ -20,10 +20,17 @@
       = link_to step.title, project_lesson_step_path(lesson.project, lesson, step), class: "flat-button step-button"
 - elsif content_type == 'next_steps'
   p.fragment
-    - if not step.next_link.nil?
-      = link_to "Next Step", step.next_link, class: "flat-button step-button"
-    - else
-      = link_to "Next Section", step.lesson.next_link, class: "flat-button step-button"
+    - if defined? step
+      - if not step.next_link.nil?
+        = link_to "Next Step", step.next_link, class: "flat-button step-button"
+      - elsif not step.lesson.nil?
+        = link_to "Next Section", step.lesson.next_link, class: "flat-button step-button"
+          /this is sketch as fuck, we're dealing with when a step belongs to a step, but next level up is a lesson... Specifically titanic clean_data.
+      - elsif not step.previous_step.nil?
+        = link_to "Next Section", step.previous_step.lesson.next_link, class: "flat-button step-button"
+    - elsif defined? lesson
+      = link_to "Next Section", lesson.next_link, class: "flat-button step-button"
+
 - elsif content_type == 'previous_step'
   p.fragment
     - if defined? step
