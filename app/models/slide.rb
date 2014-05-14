@@ -21,6 +21,8 @@ class Slide < ActiveRecord::Base
 
   validates_presence_of :slide_id
 
+  default_scope order('slide_id ASC')
+
   def set_uid
     if parent_type == "Step"
       self.uid = "p#{parent.project.uid}_l#{parent.main_lesson.lesson_id}_st#{parent.step_id}_sl#{slide_id}"
