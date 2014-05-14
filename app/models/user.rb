@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
 
   default_scope -> { order(:created_at) }
 
-  validates_format_of :username, :with => /\A[A-Za-z0-9.&]*\z/
+  validates_format_of :username, :with => /\A[A-Za-z0-9]*\z/
   validates :username, uniqueness: {case_sensitive: false, allow_blank: true}
   validate :check_username
   validates :first_name, presence: true, on: :update
