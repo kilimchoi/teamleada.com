@@ -5,7 +5,9 @@
       table.table.table-striped
         th Username
         th Email
+        th Confirmed?
         - @users.each do |user|
           tr
-            td = link_to user.username, admin_user_path(username: user.username)
+            td = link_to user.username, admin_user_path(user)
             td = user.email
+            td = user.confirmed?
