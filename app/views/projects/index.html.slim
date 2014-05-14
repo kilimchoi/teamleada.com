@@ -48,6 +48,8 @@
                 script src="https://checkout.stripe.com/checkout.js" class="stripe-button" *{'data-key' => Rails.configuration.stripe[:publishable_key], 'data-description' => project.title, 'data-amount' => project.cost, 'data-email' => current_user.email}
             - else
               = link_to "Start this project!", project_path(project), class: "btn btn-leada"
+          - elsif signed_in? && current_user.is_company? && current_user.owns_project?(project)
+            = link_to "View this project", project_path(project), class: "btn btn-leada"
           - else
             = link_to "I'm Interested", interest_project_path(project), method: :post, class: "btn btn-leada"
           button.btn.btn-default type="button" data-dismiss="modal" Close

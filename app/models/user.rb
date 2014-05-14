@@ -52,6 +52,11 @@ class User < ActiveRecord::Base
     is_admin? || self.codes.where(group: "project-access").count > 0
   end
 
+  def owns_project?(project)
+    return false if !self.is_company? || self.company.nil?
+    self.company.projects.incude? project
+  end
+
   def has_not_paid_for_project?(project)
     self.transactions.find_by(item: project).nil?
   end
