@@ -63,3 +63,4 @@ The following environment variables need to be set:
     NOREPLY_EMAIL
     NOREPLY_PASSWORD
     HOST
+    GA_TRACKER
