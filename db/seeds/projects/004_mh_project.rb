@@ -603,11 +603,11 @@ hypothesis_content_two = [
 ]
 
 hypothesis_content_three = [
-  ['text', 'Lets calculate the same for the control group.'],
+  ['text', 'Lets now calculate the same for the control group.'],
   ['code', 'control_success = length(cleaned_conversion_data$TEST_CONTROL_R[which(cleaned_conversion_data$TEST_CONTROL_R == "control")])'],
   ['code', 'control_total = sum(abndData$TEST_CONTROL_A == "control")'],
   ['code', 'control_proportion = control_success/control_total'],
-  ['next_steps', nil],
+  ['text', 'Now we know how many people in control group had successfully converted!'],
 ]
 
 
@@ -620,7 +620,6 @@ quiz = Quiz.create!(
   quiz_id: "mh_3",
   answer:"4266",
 )
-
 
 hypothesis_step = Step.create!(
   title: "Hypothesis Test",
