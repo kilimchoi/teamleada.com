@@ -3,6 +3,7 @@ TeamLeada::Application.routes.draw do
 
   match 'about', to: 'pages#about', via: :get
   match 'tutoring', to: 'pages#tutoring', via: :get
+  match 'tutoring/purchase', to: 'pages#tutoring_purchase', as: 'tutoring_purchase', via: :post
 
   match 'student', to: 'pages#student', via: :get
   match 'student', to: 'users#auth_code', via: :post
