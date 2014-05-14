@@ -47,6 +47,7 @@ class Admin::CompaniesController < Admin::BaseController
     @user = User.new(user_params)
     # TODO: Don't hard code in employee here.
     @user.role = "employee"
+    @user.company = @company
     if @user.save
       message = "#{@user.email} has been sent an email with confirmation instructions."
       if Rails.env.development?
