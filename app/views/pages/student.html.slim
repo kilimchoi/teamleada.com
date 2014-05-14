@@ -24,23 +24,7 @@
   .divider
   .row.employer-row.center
     .col-md-8.col-md-offset-2
-      h1 Have an Early Access Code already?
-      - if signed_in?
-        .row
-          .col-md-6.col-md-offset-3
-            = form_tag "student", method: :post do |f|
-              .input-group
-                = text_field_tag :code, params[:secret], class: "form-control small-form", placeholder: "Code"
-                span.input-group-btn
-                  = submit_tag "Enter", class: "btn btn-leada"
-      - else
-        p
-          | Sign in to use it!
-        .button-container
-          .sign-in-button-container
-            = link_to "Sign In", new_user_session_path, class: "flat-button"
-          .sign-up-button-container
-            = link_to "Sign Up", new_user_registration_path, class: "flat-button"
+      = render partial: "codes/project_access_code"
     .row.employer-row.center
       .col-md-8.col-md-offset-2
         h3 Want an Early Access Code?
