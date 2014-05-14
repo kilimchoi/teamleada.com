@@ -22,7 +22,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :submissions
@@ -31,8 +31,10 @@ class User < ActiveRecord::Base
   has_many :codes, through: :user_codes
   has_many :transactions
 
+  belongs_to :company
+
   validates_format_of :username, :with => /\A[A-Za-z0-9.&]*\z/
-  validates :username, uniqueness: true
+  validates :username, uniqueness: true, allow_blank: true
 
   extend FriendlyId
   friendly_id :username, use: :finders
@@ -42,7 +44,7 @@ class User < ActiveRecord::Base
   end
 
   def is_company?
-    ['recruiter',].include? role
+    ['recruiter', 'employee'].include? role
   end
 
   def has_project_access?
@@ -70,6 +72,25 @@ class User < ActiveRecord::Base
       end
     end
     total
+  end
+
+  def password_required?
+    super if confirmed?
+  end
+
+  def password_match?
+    self.errors[:password] << "can't be blank" if password.blank?
+    self.errors[:password_confirmation] << "can't be blank" if password_confirmation.blank?
+    self.errors[:password_confirmation] << "does not match password" if password != password_confirmation
+    password == password_confirmation && !password.blank?
+  end
+
+  def generate_new_token
+    secret = Devise.friendly_token
+    new_token = Devise.token_generator.digest(User, :confirmation_token, secret)
+    self.confirmation_token = new_token
+    self.save
+    secret
   end
 
 end

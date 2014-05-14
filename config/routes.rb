@@ -13,8 +13,13 @@ TeamLeada::Application.routes.draw do
                      path_names: { sign_in: 'login', sign_up: 'sign-up', sign_out: 'logout'},
                      controllers: {
                        registrations: 'registrations',
-                       sessions: 'sessions'
+                       sessions: 'sessions',
+                       confirmations: 'confirmations'
                      }
+
+  devise_scope :user do
+    match 'confirm', to: "confirmations#confirm", as: :confirm, via: :patch
+  end
 
   resources :users, only: [:show]
   resources :interested_users, only: [:create]
@@ -42,11 +47,19 @@ TeamLeada::Application.routes.draw do
 
   match 'quizzes/check_answer', to: 'quizzes#check_answer', via: :get
 
+  resources :companies, only: [:show]
+
   namespace :admin do
     match '/', to: redirect('/admin/dashboard'), via: :get
     match 'dashboard', to: 'pages#dashboard', via: :get
 
     resources :users, only: [:index, :show]
+    resources :companies do
+      member do
+        match 'add-project', to: 'companies#add_project', as: :add_project, via: :post
+        match 'add-user', to: 'companies#add_user', as: :add_user, via: :post
+      end
+    end
     resources :projects, only: [:index, :show]
     resources :codes
   end

@@ -2,7 +2,6 @@ users = [
   'mark',
   'brian',
   'tristan',
-  'chris',
 ]
 
 # Create admins

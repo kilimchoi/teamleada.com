@@ -8,6 +8,9 @@ class ProjectsController < ApplicationController
     if signed_in? && current_user.has_project_access? && !current_user.is_admin?
       @projects = @projects.enabled
     end
+    if signed_in? && current_user.is_company?
+      @projects = current_user.company.projects
+    end
     @interested_user = InterestedUser.new
     @large_header = true
   end

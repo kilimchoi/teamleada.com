@@ -12,7 +12,14 @@ class SessionsController < Devise::SessionsController
   def create
     session[:return_to] ||= request.referer
 
-    self.resource = warden.authenticate!(auth_options)
+    puts 'before'
+    self.resource = warden.authenticate(auth_options)
+    if resource.nil?
+      flash[:danger] = "Invalid username or password."
+      self.resource = resource_class.new(sign_in_params)
+      render :new
+      return
+    end
     set_flash_message(:info, :signed_in) if is_flashing_format?
     sign_in(resource_name, resource)
     yield resource if block_given?
