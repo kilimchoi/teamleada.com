@@ -16,4 +16,13 @@
 class Transaction < ActiveRecord::Base
   belongs_to :user
   belongs_to :item, polymorphic: true
+
+  def cost_in_dollars
+    if amount.nil?
+      "$0"
+    else
+      "$%.2f" % (amount / 100)
+    end
+  end
+
 end
