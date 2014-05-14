@@ -11,3 +11,5 @@
             td = link_to user.username, admin_user_path(user)
             td = user.email
             td = user.confirmed?
+        = will_paginate @posts
+
