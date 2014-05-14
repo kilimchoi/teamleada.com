@@ -275,7 +275,7 @@ scalars_content_one = [
   ['code', 'class(favorite_motorcycle)'],
   ['code', 'class(TRUE)'],
   ['code', 'class(cake > broccoli) #remember what comparisons yielded?'],
-  ['text', 'All of the above deals with scalars. But remember that scalars are vectors of length 1.'],
+  ['text', 'All of the above deal with scalars. But just remember that scalars are vectors of length 1.'],
   ['next_steps', nil]
 ]
 scalars_content_step = Step.create!(
