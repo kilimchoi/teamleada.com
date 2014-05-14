@@ -62,3 +62,4 @@ The following environment variables need to be set:
     STRIPE_PUBLISHABLE_KEY
     NOREPLY_EMAIL
     NOREPLY_PASSWORD
+    HOST
