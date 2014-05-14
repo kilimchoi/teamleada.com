@@ -276,7 +276,7 @@ scalars_content_one = [
   ['code', 'class(TRUE)'],
   ['code', 'class(cake > broccoli) #remember what comparisons yielded?'],
   ['text', 'All of the above deals with scalars. But remember that scalars are vectors of length 1.'],
-  ['lesson_links', nil]
+  ['next_steps', nil]
 ]
 scalars_content_step = Step.create!(
   title: "Scalars 101",
