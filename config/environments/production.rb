@@ -80,6 +80,7 @@ TeamLeada::Application.configure do
 
   # Google Analytics
   #GA.tracker = ENV["GA_TRACKER"]
+  config.action_mailer.default_url_options = { :host => ENV['HOST'] }
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
