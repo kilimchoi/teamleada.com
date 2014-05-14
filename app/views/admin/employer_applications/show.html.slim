@@ -1,0 +1,17 @@
+.container.full-container
+  .row
+    .col-md-12
+      h1.title = @employer_application.name
+      p
+        ' Email -
+        = @employer_application.email
+      p
+        ' Size -
+        = @employer_application.size
+      p
+        ' Industry -
+        = @employer_application.industry || @employer_application.custom_industry
+      p
+        ' Project Proposal
+      p
+        = @employer_application.description
