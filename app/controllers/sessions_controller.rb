@@ -69,7 +69,8 @@ class SessionsController < Devise::SessionsController
     elsif user.has_project_access?
       projects_path
     else
-      session[:previous_url] || root_path
+      # For now, always redirect_to projects path
+      project_path
     end
   end
 
