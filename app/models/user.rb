@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   has_many :transactions
 
   validates_format_of :username, :with => /\A[A-Za-z0-9.&]*\z/
-  validates :username, uniqueness: true
+  validates :username, uniqueness: true, allow_blank: true
 
   extend FriendlyId
   friendly_id :username, use: :finders
