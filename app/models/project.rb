@@ -2,7 +2,6 @@
 #
 # Table name: projects
 #
-#  id                :integer          not null, primary key
 #  title             :string(255)
 #  description       :text
 #  created_at        :datetime
@@ -15,6 +14,7 @@
 #  has_submit        :boolean          default(FALSE)
 #  cost              :integer
 #  paid              :boolean          default(FALSE)
+#  uid               :integer          not null, primary key
 #
 
 class Project < ActiveRecord::Base

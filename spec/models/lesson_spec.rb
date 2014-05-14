@@ -2,7 +2,6 @@
 #
 # Table name: lessons
 #
-#  id                 :integer          not null, primary key
 #  title              :string(255)
 #  content            :text
 #  created_at         :datetime
@@ -11,6 +10,8 @@
 #  next_lesson_id     :integer
 #  project_id         :integer
 #  url                :string(255)
+#  lesson_id          :integer
+#  uid                :string(255)      not null, primary key
 #
 
 require 'spec_helper'

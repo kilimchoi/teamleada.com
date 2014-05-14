@@ -17,6 +17,12 @@
 #  updated_at             :datetime
 #  username               :string(255)
 #  role                   :string(255)
+#  confirmation_token     :string(255)
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
+#  company_id             :integer
+#  first_name             :string(255)
+#  last_name              :string(255)
 #
 
 class User < ActiveRecord::Base
