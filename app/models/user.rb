@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :username, use: :finders
 
-  self.per_page = 20
+  self.per_page = 50
 
   def check_username
     if !self.new_record?
