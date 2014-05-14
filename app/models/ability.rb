@@ -13,7 +13,7 @@ class Ability
     elsif user.is_company?
       can :show, Company
       can :show, Project do |project|
-        user.company.projects.find_by(project: project)
+        user.company.projects.include? project
       end
     elsif !user.new_record?
       can :show, User, id: user.id
