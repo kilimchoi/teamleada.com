@@ -17,7 +17,7 @@
             h2 Project Guidelines
             = render partial: "projects/project_content", locals: {project: @project}
           .col-md-6
-            - @project.has_submit?
+            - if @project.has_submit?
               = render partial: "projects/submit"
             - if @project.has_leaderboard?
               h2 Leaderboard
