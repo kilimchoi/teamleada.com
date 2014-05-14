@@ -2,12 +2,14 @@
   nav class="navbar navbar-default #{'no-navbar-border' if @large_header} #{'white-navbar unless @large_border'}" role="navigation"
     .container-fluid
       .navbar-header
-        button.navbar-toggle type="button" data-toggle="collapse" data-target="#collapsed-navbar"
+        button.navbar-toggle type="image" data-toggle="collapse" data-target="#collapsed-navbar"
           span.sr-only Toggle Navigation
           span.icon-bar
           span.icon-bar
           span.icon-bar
-        = link_to "Leada", root_path, class: "navbar-brand"
+        = link_to image_tag("Logo_red.png", class: "leada-logo"), root_path
+        /= image_tag "Logo_red.png", class: "navbar-brand"
+
       .collapse.navbar-collapse#collapsed-navbar
         ul.nav.navbar-nav.navbar-right
           = active_li_link "Home", root_path
