@@ -8,7 +8,7 @@ class EmployerApplicationsController < ApplicationController
   def create
     @employer_application = EmployerApplication.new(employer_application_params)
     if @employer_application.save
-      flash[:info] = "Thanks for expressing interest. We'll be reaching out back to you soon"
+      flash[:info] = "Thanks for expressing interest. We'll be reaching out back to you soon!"
       redirect_to new_employer_path
     else
       render 'new'
