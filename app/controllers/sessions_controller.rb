@@ -70,7 +70,7 @@ class SessionsController < Devise::SessionsController
       projects_path
     else
       # For now, always redirect_to projects path
-      project_path
+      projects_path
     end
   end
 
