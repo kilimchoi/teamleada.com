@@ -48,7 +48,12 @@ class Admin::CompaniesController < Admin::BaseController
     # TODO: Don't hard code in employee here.
     @user.role = "employee"
     if @user.save
-      flash[:info] = "#{@user.email} has been sent an email with confirmation instructions."
+      message = "#{@user.email} has been sent an email with confirmation instructions."
+      if Rails.env.development?
+        secret = @user.generate_new_token
+        message += " DEVELOPMENT MODE: <a href='" + user_confirmation_url(confirmation_token: secret) + "'>Activate</a>"
+      end
+      flash[:info] = message.html_safe
       redirect_to admin_company_path(@company)
     else
       flash[:danger] = "There was an error sending an email to #{@user.email}."

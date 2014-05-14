@@ -86,4 +86,12 @@ class User < ActiveRecord::Base
     password == password_confirmation && !password.blank?
   end
 
+  def generate_new_token
+    secret = Devise.friendly_token
+    new_token = Devise.token_generator.digest(User, :confirmation_token, secret)
+    self.confirmation_token = new_token
+    self.save
+    secret
+  end
+
 end

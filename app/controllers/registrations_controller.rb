@@ -14,10 +14,7 @@ class RegistrationsController < Devise::RegistrationsController
       else
         message = "A message with a confirmation link has been sent to your email address. Please click on the link to activate your account."
         if Rails.env.development?
-          secret = Devise.friendly_token
-          new_token = Devise.token_generator.digest(User, :confirmation_token, secret)
-          resource.confirmation_token = new_token
-          resource.save
+          secret = resource.generate_new_token
           message += " DEVELOPMENT MODE: <a href='" + user_confirmation_url(confirmation_token: secret) + "'>Activate</a>"
         end
         flash[:info] = message.html_safe
