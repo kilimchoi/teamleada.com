@@ -18,7 +18,7 @@ class Ability
     elsif !user.new_record?
       can :show, User, id: user.id
       can :show, Project do |project|
-        !project.paid || !user.has_not_paid_for_project?(project)
+        user.has_project_access? && (!project.paid || !user.has_not_paid_for_project?(project))
       end
 
       can :show, Lesson
