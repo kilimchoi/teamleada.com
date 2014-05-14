@@ -16,7 +16,7 @@ TeamLeada::Application.routes.draw do
                      }
 
   devise_scope :user do
-    match 'confirm', to: "confirmations#confirm", as: :confirmation, via: :patch
+    match 'confirm', to: "confirmations#confirm", as: :confirm, via: :patch
   end
 
   resources :users, only: [:show]

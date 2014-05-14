@@ -1,9 +1,13 @@
-h2 You're almost done! Now create a password to securely access your account.
-  = simple_form_for(resource, :as => resource_name, :url => confirm_path) do |form|
-    = devise_error_messages!
-    .form.inputs
-      = form.input :password, :input_html => {:autofocus => true}
-      = form.input :password_confirmation
-      = form.input :confirmation_token, :as => :hidden, :value => @original_token
-    .form.actions
-      = form.action :submit, :label => 'Confirm Account'
+.container.full-container
+  .row
+    .col-md-6.col-md-offset-3
+      h2 You're almost done! Now create a password to securely access your account.
+      = simple_form_for(resource, :as => resource_name, :url => confirm_path) do |form|
+        = devise_error_messages!
+        .form.inputs
+          = form.input :username, input_html: {autofocus: true}
+          = form.input :password
+          = form.input :password_confirmation
+          = form.input :confirmation_token, :as => :hidden, :value => @original_token
+        .form.actions
+          = form.submit "Confirm Account", class: "flat-button"
