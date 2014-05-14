@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   belongs_to :company
 
   validates_format_of :username, :with => /\A[A-Za-z0-9.&]*\z/
-  validates :username, uniqueness: true, allow_blank: true
+  validates :username, uniqueness: {case_sensitive: false}, allow_blank: true
 
   extend FriendlyId
   friendly_id :username, use: :finders
