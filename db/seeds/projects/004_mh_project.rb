@@ -571,13 +571,13 @@ stat_lesson = Lesson.create!(
   lesson_id: 4,
 )
 
-stat_slide = Slide.create!(
+stat_slide_one = Slide.create!(
   content: stat_content_one,
   parent: stat_lesson,
   slide_id: 0,
 )
 
-stat_slide = Slide.create!(
+stat_slide_two = Slide.create!(
   content: stat_content_two,
   parent: stat_lesson,
   slide_id: 1,
@@ -608,6 +608,7 @@ hypothesis_content_three = [
   ['code', 'control_total = sum(abndData$TEST_CONTROL_A == "control")'],
   ['code', 'control_proportion = control_success/control_total'],
   ['text', 'Now we know how many people in control group had successfully converted!'],
+  ['next_steps', nil],
 ]
 
 
