@@ -23,9 +23,10 @@
   .divider
   .row.employer-row
     .col-md-6.col-md-offset-3
-      h1 Sign up
+      h1 Sign Up for a Tutoring Slot
           <a target='blank' href="https://www.google.com/calendar/selfsched?sstoken=UUs4Y1lBOW9rVEJPfGRlZmF1bHR8N2E3MTBkZmQxMTYwODgwOWU4M2Q2MzFjNmQ0OWJmY2U">here.</a>
-      h1 Pay
-          <a target='blank' href="http://wheresmymoneyat.com/">here.</a>
-
-
+      - if signed_in?
+        = form_tag tutoring_purchase_path, class: "form-inline" do
+          script src="https://checkout.stripe.com/checkout.js" class="stripe-button" *{'data-key' => Rails.configuration.stripe[:publishable_key], 'data-description' => "Leada Tutoring", 'data-amount' => @tutoring_cost, 'data-email' => current_user.email}
+      - else
+        = link_to "Sign In to Purchase Tutoring Slots", new_user_session_path, class: "flat-button"
