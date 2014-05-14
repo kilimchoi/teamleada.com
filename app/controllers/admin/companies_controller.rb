@@ -44,7 +44,6 @@ class Admin::CompaniesController < Admin::BaseController
   end
 
   def add_user
-
   end
 
   private

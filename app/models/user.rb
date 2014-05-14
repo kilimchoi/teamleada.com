@@ -72,6 +72,10 @@ class User < ActiveRecord::Base
     total
   end
 
+  def password_required?
+    super if confirmed?
+  end
+
   def password_match?
     self.errors[:password] << "can't be blank" if password.blank?
     self.errors[:password_confirmation] << "can't be blank" if password_confirmation.blank?
