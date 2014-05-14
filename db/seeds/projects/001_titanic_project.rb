@@ -364,17 +364,18 @@ apply_ctree_two_content = [
   ['text', 'We plot the model and label the nodes'],
   ['code', 'plot(tree_model)'],
   ['code', 'text(tree_model)'],
+  ['text', 'Now that we have our model built using the "Train" dataset, we can apply our model to the "Test" dataset to make predictions for those passengers!']
 ]
 
 apply_ctree_three_content = [
-  ['text', 'Now that we have our model built using the "Train" dataset, we can apply our model to the "Test" dataset to make predictions for those passengers! What is done here is the nodes used to classify the passengers in the "Train" dataset such as "Age >= 6.5" are now applied to the passengers in the "Test" dataset to predict their survival.'],
-  ['text', 'R again has a convenient function predict() to allow us to apply our tree_model to the testData'],
+  ['text', 'What is done here is the nodes used to classify the passengers in the "Train" dataset such as "Age >= 6.5" are now applied to the passengers in the "Test" dataset to predict their survival.'],
+  ['text', 'R again has a convenient function predict() to allow us to apply our tree_model to the testData:'],
   ['code', 'test_predictions <- round(predict(tree_model, newdata = testData)[, 2], 0)'],
-  ['text', 'We match our predictions with the appropriate PassengerId'],
+  ['text', 'We match our predictions with the appropriate PassengerId:'],
   ['code', 'model_submission <- cbind(testData$PassengerId, test_predictions)'],
-  ['text', 'We rename the columns for clarity'],
+  ['text', 'We rename the columns for clarity:'],
   ['code', 'colnames(model_submission) <- c("PassengerId", "Prediction")'],
-  ['text', 'We use the write.csv() function to convert our data frame in R into a CSV file'],
+  ['text', 'We use the write.csv() function to convert our data frame in R into a CSV file:'],
   ['code', 'write.csv(model_submission, "mysubmission.csv", row.names = FALSE)'],
   ['text', 'And now you can submit this file to the submission page and see where you rank on the LeadaBoard! Go to the "Increase your Score" page to learn ways to move up on the Leadaboard!'],
   ['next_steps', nil],
