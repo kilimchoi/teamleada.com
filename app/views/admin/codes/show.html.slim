@@ -10,7 +10,7 @@
       table.table.table-striped
         th Name
         th Email
-        - @code.users do |user|
+        - @code.users.each do |user|
           tr
-            td = link_to user.name, admin_user_path(username: user.username)
+            td = link_to user.username, admin_user_path(user)
             td = user.email
