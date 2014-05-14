@@ -5,7 +5,9 @@
       = simple_form_for(resource, :as => resource_name, :url => confirm_path) do |form|
         = devise_error_messages!
         .form.inputs
-          = form.input :username, input_html: {autofocus: true}
+          = form.input :first_name, input_html: { autofocus: true }, wrapper_html: { class: 'half-width float-left first-name' }
+          = form.input :last_name, wrapper_html: { class: 'half-width float-right last-name'}
+          = form.input :username
           = form.input :password
           = form.input :password_confirmation
           = form.input :confirmation_token, :as => :hidden, :value => @original_token
