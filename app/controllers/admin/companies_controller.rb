@@ -44,12 +44,26 @@ class Admin::CompaniesController < Admin::BaseController
   end
 
   def add_user
+    @user = User.new(user_params)
+    # TODO: Don't hard code in employee here.
+    @user.role = "employee"
+    if @user.save
+      flash[:info] = "#{@user.email} has been sent an email with confirmation instructions."
+      redirect_to admin_company_path(@company)
+    else
+      flash[:danger] = "There was an error sending an email to #{@user.email}."
+      redirect_to admin_company_path(@company)
+    end
   end
 
   private
 
   def company_params
     params.require(:company).permit(:name)
+  end
+
+  def user_params
+    params.permit(:email)
   end
 
 end
