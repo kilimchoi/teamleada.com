@@ -35,3 +35,14 @@
                     = submit_tag "Add User to #{@company.name}", class: "btn btn-leada"
 
           / TODO: Load partial for users here.
+          .row
+            .col-md-12
+              table.table.table-striped
+                th Name
+                th Email
+                th Confirmed?
+                - @company.employees.each do |employee|
+                  tr
+                    td = link_to employee.username, admin_user_path(employee)
+                    td = employee.email
+                    td = employee.confirmed?
