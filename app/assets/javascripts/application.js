@@ -43,4 +43,12 @@ $(document).ready(function() {
 
   // Best In Place
   $(".best_in_place").best_in_place();
+
+  $('.best_in_place').bind("ajax:success", function () {
+    console.log('success');
+  });
+
+  $('.best_in_place').bind("ajax:error", function() {
+    toastr.error('There was an error updating your ' + $(this).data('field') + '.');
+  });
 });
