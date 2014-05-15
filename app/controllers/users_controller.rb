@@ -12,8 +12,7 @@ class UsersController < ApplicationController
 
   def update
     @user.update_attributes(user_params)
-    puts @user.errors.messages
-    respond_with @user
+    respond_with_bip @user
   end
 
   def auth_code

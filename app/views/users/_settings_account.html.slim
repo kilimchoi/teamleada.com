@@ -3,15 +3,15 @@ h4 General Account Settings
 table.table
   tr
     td First Name
-    td = best_in_place current_user, :first_name, type: :input
+    td = best_in_place current_user, :first_name, type: :input, data: { field: 'first name' }
     td Edit
   tr
     td Last Name
-    td = best_in_place current_user, :last_name, type: :input
+    td = best_in_place current_user, :last_name, type: :input, data: { field: 'last name' }
     td Edit
   tr
     td Username
-    td = best_in_place current_user, :username, type: :input
+    td = best_in_place current_user, :username, type: :input, data: { field: 'username' }
     td Edit
   tr
     td Email
