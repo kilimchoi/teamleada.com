@@ -38,7 +38,7 @@ div class="modal fade" id="password-modal"
         h4.modal-title Change your password
       = simple_form_for current_user, remote: true, html: {class: "password-update-form"} do |f|
         .modal-body
-          = f.input :password
+          = f.input :password, autofocus: true
           = f.input :password_confirmation
         .modal-footer
           = f.submit "Submit", class: "btn btn-leada"
