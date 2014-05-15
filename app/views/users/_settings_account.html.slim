@@ -2,24 +2,24 @@ h4 General Account Settings
 
 ul.account-settings
   li.settings-row
-    = link_to(edit_user_path, class: "row-link") do
+    = link_to("#", id: "edit-first-name", class: "row-link") do
       span.col First Name
-      span = best_in_place current_user, :first_name, type: :input, data: { field: 'first name' }
+      span = best_in_place current_user, :first_name, type: :input, data: { field: 'first name' }, activator: "#edit-first-name"
       span.edit-row Edit
   li.settings-row
-    = link_to(edit_user_path, class: "row-link") do
+    = link_to("#", id: "edit-last-name", class: "row-link") do
       span.col Last Name
-      span = best_in_place current_user, :last_name, type: :input, data: { field: 'last name' }
+      span = best_in_place current_user, :last_name, type: :input, data: { field: 'last name' }, activator: "#edit-last-name"
       span.edit-row Edit
   li.settings-row
-    = link_to(edit_user_path, class: "row-link") do
+    = link_to("#", id: "edit-username", class: "row-link") do
       span.col Username
-      span = best_in_place current_user, :username, type: :input, data: { field: 'username' }
+      span = best_in_place current_user, :username, type: :input, data: { field: 'username' }, activator: "#edit-username"
       span.edit-row Edit
   li.settings-row
-    = link_to(edit_user_path, class: "row-link") do
+    = link_to("#", id: "edit-email", class: "row-link") do
       span.col Email
-      span = best_in_place current_user, :email, type: :input, data: { field: 'email' }
+      span = best_in_place current_user, :email, type: :input, data: { field: 'email' }, activator: "#edit-email"
       span.edit-row Edit
   li.settings-row
     = link_to(edit_user_path, class: "row-link") do
