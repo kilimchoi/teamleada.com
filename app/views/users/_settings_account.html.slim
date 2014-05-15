@@ -24,7 +24,7 @@ ul.account-settings
   li.settings-row
     = link_to("#", class: "row-link", data: {toggle: "modal", target: "#password-modal"}) do
       span.col Password
-      span
+      span#password-update-time
         ' Updated
         = time_ago_in_words(current_user.updated_password_at)
         |  ago
@@ -49,10 +49,14 @@ javascript:
     $(".password-update-form").bind("ajax:success", function() {
       $('#password-modal').modal('hide');
       toastr.success("You have successfully changed your password.");
+      $("#password-update-time")[0].innerText = "Updated less than a minute ago";
     });
 
     $(".password-update-form").bind("ajax:error", function() {
       toastr.error("You must provide both a password and a confirmation and they must match!");
+      $("#user_password").val('');
+      $("#user_password_confirmation").val('');
+      $("#user_password").focus();
     });
   });
 
