@@ -1,11 +1,10 @@
 GIT
-  remote: git://github.com/bernat/best_in_place.git
-  revision: 366413be357d65cdf47031e928aea969f72e3659
-  branch: rails-4
+  remote: git://github.com/negativetwelve/best_in_place.git
+  revision: d50e1d2a299e89a4dfabd8507fe0bea72e004eef
   specs:
-    best_in_place (2.0.3)
+    best_in_place (2.1.0)
       jquery-rails
-      rails (~> 4)
+      rails (~> 4.0)
 
 GIT
   remote: https://github.com/stripe/stripe-ruby
