@@ -2,7 +2,18 @@ class UsersController < ApplicationController
   load_and_authorize_resource
   skip_authorize_resource only: :auth_code
 
+  respond_to :html, :json
+
   def show
+  end
+
+  def edit
+  end
+
+  def update
+    @user.update_attributes(user_params)
+    puts @user.errors.messages
+    respond_with @user
   end
 
   def auth_code
@@ -27,6 +38,12 @@ class UsersController < ApplicationController
       flash[:danger] = "Invalid code entered."
       redirect_to student_path
     end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :username, :email)
   end
 
 end

@@ -2,10 +2,25 @@ h4 General Account Settings
 
 table.table
   tr
-    td Name
-    td = current_user.name
+    td First Name
+    td = best_in_place current_user, :first_name, type: :input
+    td Edit
+  tr
+    td Last Name
+    td = best_in_place current_user, :last_name, type: :input
     td Edit
   tr
     td Username
-    td = current_user.username
+    td = best_in_place current_user, :username, type: :input
+    td Edit
+  tr
+    td Email
+    td = current_user.email
+    td Edit
+  tr
+    td Password
+    td
+      ' Updated
+      = time_ago_in_words(current_user.last_updated_password)
+      |  ago
     td Edit

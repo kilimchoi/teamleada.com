@@ -69,6 +69,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def last_updated_password
+    unless reset_password_sent_at.nil?
+      reset_password_sent_at
+    else
+      confirmed_at
+    end
+  end
+
   def is_admin?
     role == 'admin'
   end
