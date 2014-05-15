@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require best_in_place
+//= require toastr
 //= require bootstrap
 
 $(document).ready(function() {
