@@ -15,7 +15,16 @@
   list-style: none;
 }
 
+.privacy-settings {
+  padding: 0;
+  list-style: none;
+}
+
 ul.account-settings > li:first-child {
+  border-width: 0;
+}
+
+ul.privacy-settings > li:first-child {
   border-width: 0;
 }
 
@@ -32,10 +41,29 @@ ul.account-settings > li:first-child {
   color: #333;
 }
 
+.priv-col {
+  width: 275px;
+  float: left;
+  color: #333;
+}
+
 .edit-row {
   float: right;
   padding-right: 5px;
   color: #428bca;
+}
+
+.privacy-topic {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  width: 160px;
+  float: left;
+}
+
+.recruiter-questions {
+  float: right;
+  width: 689px;
 }
 
 a.row-link {
