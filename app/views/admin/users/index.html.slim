@@ -7,13 +7,23 @@
         | )
       table.table.table-striped
         th Username
+        th First Name
+        th Last Name
         th Email
+        th Role
+        th Company
+        th Sign in Count
         th Confirmed?
         th Access Codes
         - @users.each do |user|
           tr
             td = link_to user.username, admin_user_path(user)
+            td = user.first_name
+            td = user.last_name
             td = user.email
+            td = user.role
+            td = user.is_company? ? link_to(user.company.name, admin_company_path(user.company)) : ""
+            td = user.sign_in_count
             td = user.confirmed?
             td
               - user.codes.each do |code|
