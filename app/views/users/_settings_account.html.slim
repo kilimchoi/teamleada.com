@@ -26,7 +26,7 @@ ul.account-settings
       span.col Password
       span
         ' Updated
-        = time_ago_in_words(current_user.last_updated_password)
+        = time_ago_in_words(current_user.updated_password_at)
         |  ago
       span.edit-row Edit
 

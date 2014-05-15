@@ -12,6 +12,9 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(user_params)
+      unless params[:user].try(:password).nil?
+        @user.password_updated!
+      end
       sign_in(@user, bypass: true)
       respond_with_bip @user
     else
