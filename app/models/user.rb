@@ -51,6 +51,7 @@ class User < ActiveRecord::Base
   friendly_id :username, use: :finders
 
   self.per_page = 50
+  SETTINGS_TABS = ['account', 'privacy']
 
   def check_username
     if !self.new_record?

@@ -16,7 +16,7 @@ class Ability
       can :manage, :all
     elsif !user.new_record?
       # Anyone with an account (employee and student)
-      can :show, User, id: user.id
+      can [:show, :edit], User, id: user.id
 
       if user.is_company?
         # Only employees
