@@ -3,4 +3,4 @@
     .col-md-12
       - flash.each do |key, value|
         javascript:
-          toastr.#{key}("#{value}");
+          toastr.#{key == :notice ? 'info' : key}("#{value}");
