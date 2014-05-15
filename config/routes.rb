@@ -22,7 +22,7 @@ TeamLeada::Application.routes.draw do
     match 'confirm', to: "confirmations#confirm", as: :confirm, via: :patch
   end
 
-  resources :users, only: [:show]
+  resources :users, only: [:show, :update, :edit]
   resources :interested_users, only: [:create]
 
   match 'employer', to: 'employer_applications#new', as: 'new_employer', via: :get
