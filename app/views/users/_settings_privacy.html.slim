@@ -1,1 +1,46 @@
+= provide(:page_title, "Privacy Settings")
+
 h4 Privacy
+
+ul.privacy-settings
+  li.settings-row
+    .clearfix
+      span.privacy-topic Who can see your stuff?
+      .recruiter-questions
+        ul.privacy-settings
+          li.settings-row.clearfix
+            = link_to("#", id: "edit-contact", class: "row-link clearfix") do
+              span.priv-col Who can see your profile?
+              span = best_in_place current_user, :first_name, type: :input, data: { field: 'first name' }, activator: "#edit-first-name"
+              span.edit-row Edit
+  li.settings-row
+    .clearfix
+      span.privacy-topic Who can contact me?
+      .recruiter-questions
+        ul.privacy-settings
+          li.settings-row.clearfix
+            = link_to("#", id: "edit-first-name", class: "row-link clearfix") do
+              span.priv-col Who can send you friend requests?
+              span = best_in_place current_user, :first_name, type: :input, data: { field: 'first name' }, activator: "#edit-first-name"
+              span.edit-row Edit
+          li.settings-row.clearfix
+            = link_to("#", id: "edit-first-name", class: "row-link clearfix") do
+              span.priv-col Who can contact you via Leada?
+              span = best_in_place current_user, :first_name, type: :input, data: { field: 'first name' }, activator: "#edit-first-name"
+              span.edit-row Edit
+  li.settings-row
+    .clearfix
+      span.privacy-topic Who can look me up?
+      .recruiter-questions
+        ul.privacy-settings
+          li.settings-row.clearfix
+            = link_to("#", id: "edit-first-name", class: "row-link clearfix") do
+              span.priv-col Who can look you up using the email address you provided?
+              span = best_in_place current_user, :first_name, type: :input, data: { field: 'first name' }, activator: "#edit-first-name"
+              span.edit-row Edit
+          li.settings-row.clearfix
+            = link_to("#", id: "edit-first-name", class: "row-link clearfix") do
+              span.priv-col Who can look you up via your full name or username?
+              span = best_in_place current_user, :first_name, type: :input, data: { field: 'first name' }, activator: "#edit-first-name"
+              span.edit-row Edit
+
