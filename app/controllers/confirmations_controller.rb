@@ -26,6 +26,10 @@ class ConfirmationsController < Devise::ConfirmationsController
 
     if resource.valid? && resource.password_match?
       self.resource.confirm!
+      if resource.role.nil?
+        resource.role = "student"
+        resource.save
+      end
       flash[:info] = "Your account has been confirmed. Check out some of our data projects!"
       sign_in resource_name, resource
       respond_with resource, location: after_confirmation_path_for(resource)
