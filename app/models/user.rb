@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
     if first_name && last_name
       "#{first_name} #{last_name}"
     else
-      username
+      "<full name not entered>"
     end
   end
 
