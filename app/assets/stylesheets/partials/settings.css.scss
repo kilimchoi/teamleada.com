@@ -9,3 +9,47 @@
 .settings-list {
   margin-top: 20px;
 }
+
+.account-settings {
+  padding: 0;
+  list-style: none;
+}
+
+ul.account-settings > li:first-child {
+  border-width: 0;
+}
+
+.settings-row {
+  width: 100%;
+  border-width: 1px 0 0 0;
+  border-color: #e9e9e9;
+  border-style: solid;
+}
+
+.col {
+  width: 165px;
+  float: left;
+  color: #333;
+}
+
+.edit-row {
+  float: right;
+  padding-right: 5px;
+  color: #428bca;
+}
+
+a.row-link {
+  display: block;
+  text-decoration: none;
+  padding: 10px 5px;
+  color: gray;
+}
+
+a.row-link:hover {
+  background: #f7f7f7;
+  text-decoration: none;
+}
+
+a.row-link:hover span.edit-row {
+  text-decoration: underline;
+}

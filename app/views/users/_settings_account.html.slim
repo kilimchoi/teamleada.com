@@ -1,26 +1,31 @@
 h4 General Account Settings
 
-table.table
-  tr
-    td First Name
-    td = best_in_place current_user, :first_name, type: :input, data: { field: 'first name' }
-    td Edit
-  tr
-    td Last Name
-    td = best_in_place current_user, :last_name, type: :input, data: { field: 'last name' }
-    td Edit
-  tr
-    td Username
-    td = best_in_place current_user, :username, type: :input, data: { field: 'username' }
-    td Edit
-  tr
-    td Email
-    td = current_user.email
-    td Edit
-  tr
-    td Password
-    td
-      ' Updated
-      = time_ago_in_words(current_user.last_updated_password)
-      |  ago
-    td Edit
+ul.account-settings
+  li.settings-row
+    = link_to(edit_user_path, class: "row-link") do
+      span.col First Name
+      span = best_in_place current_user, :first_name, type: :input, data: { field: 'first name' }
+      span.edit-row Edit
+  li.settings-row
+    = link_to(edit_user_path, class: "row-link") do
+      span.col Last Name
+      span = best_in_place current_user, :last_name, type: :input, data: { field: 'last name' }
+      span.edit-row Edit
+  li.settings-row
+    = link_to(edit_user_path, class: "row-link") do
+      span.col Username
+      span = best_in_place current_user, :username, type: :input, data: { field: 'username' }
+      span.edit-row Edit
+  li.settings-row
+    = link_to(edit_user_path, class: "row-link") do
+      span.col Email
+      span = best_in_place current_user, :email, type: :input, data: { field: 'email' }
+      span.edit-row Edit
+  li.settings-row
+    = link_to(edit_user_path, class: "row-link") do
+      span.col Password
+      span
+        ' Updated
+        = time_ago_in_words(current_user.last_updated_password)
+        |  ago
+      span.edit-row Edit
