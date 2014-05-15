@@ -4,3 +4,4 @@
       - flash.each do |key, value|
         javascript:
           toastr.#{key == :notice ? 'info' : key}("#{value}");
+          / TODO: Replace all instances of :notice with :info
