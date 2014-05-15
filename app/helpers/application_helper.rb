@@ -14,4 +14,8 @@ module ApplicationHelper
     end
   end
 
+  def valid_settings_tab?(tab)
+    User::SETTINGS_TABS.include? tab
+  end
+
 end
