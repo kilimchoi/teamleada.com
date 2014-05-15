@@ -15,7 +15,8 @@ TeamLeada::Application.routes.draw do
                      controllers: {
                        registrations: 'registrations',
                        sessions: 'sessions',
-                       confirmations: 'confirmations'
+                       confirmations: 'confirmations',
+                       passwords: 'passwords'
                      }
 
   devise_scope :user do
