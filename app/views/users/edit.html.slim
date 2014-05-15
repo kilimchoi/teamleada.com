@@ -5,8 +5,8 @@
     .col-md-2
       = render partial: "users/settings_sidebar"
     .col-md-10
-      - if User::SETTINGS_TABS.include? params[:tab]
-        = render partial: "users/settings_#{params[:tab]}"
-      - else
-        .settings-container
+      .settings-container
+        - if valid_settings_tab? params[:tab]
+          = render partial: "users/settings_#{params[:tab]}"
+        - else
           = render partial: "users/settings_account"
