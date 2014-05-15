@@ -11,8 +11,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update_attributes(user_params)
-    respond_with_bip @user
+    if @user.update_attributes(user_params)
+      sign_in(@user, bypass: true)
+      respond_with_bip @user
+    else
+      respond_with @user, status: :unprocessible_entity
+    end
   end
 
   def auth_code
@@ -42,7 +46,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :username, :email)
+    params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation)
   end
 
 end

@@ -22,10 +22,37 @@ ul.account-settings
       span = best_in_place current_user, :email, type: :input, data: { field: 'email' }, activator: "#edit-email"
       span.edit-row Edit
   li.settings-row
-    = link_to(edit_user_path, class: "row-link") do
+    = link_to("#", class: "row-link", data: {toggle: "modal", target: "#password-modal"}) do
       span.col Password
       span
         ' Updated
         = time_ago_in_words(current_user.last_updated_password)
         |  ago
       span.edit-row Edit
+
+div class="modal fade" id="password-modal"
+  .modal-dialog.modal-sm
+    .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
+        h4.modal-title Change your password
+      = simple_form_for current_user, remote: true, html: {class: "password-update-form"} do |f|
+        .modal-body
+          = f.input :password
+          = f.input :password_confirmation
+        .modal-footer
+          = f.submit "Submit", class: "btn btn-leada"
+          button.btn.btn-danger type="button" data-dismiss="modal" Cancel
+
+javascript:
+  $(document).ready(function() {
+    $(".password-update-form").bind("ajax:success", function() {
+      $('#password-modal').modal('hide');
+      toastr.success("You have successfully changed your password.");
+    });
+
+    $(".password-update-form").bind("ajax:error", function() {
+      toastr.error("You must provide both a password and a confirmation and they must match!");
+    });
+  });
+
