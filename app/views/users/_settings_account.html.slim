@@ -48,6 +48,14 @@ div class="modal fade" id="password-modal"
 
 javascript:
   $(document).ready(function() {
+    $('.best_in_place').bind("ajax:success", function() {
+      toastr.success('Successfully changed your ' + $(this).data('field') + ' to ' + $(this).context.innerText + '.');
+    });
+
+    $('.best_in_place').bind("ajax:error", function() {
+      toastr.error('There was an error updating your ' + $(this).data('field') + '.');
+    });
+
     $(".password-update-form").bind("ajax:success", function() {
       $('#password-modal').modal('hide');
       toastr.success("You have successfully changed your password.");
