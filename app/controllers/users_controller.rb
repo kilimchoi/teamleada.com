@@ -11,9 +11,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    old_password = params[:user].try(:password)
     if @user.update_attributes(user_params)
-      if @user.password != old_password
+      if params[:user].has_key? :password
         @user.password_updated!
       end
       sign_in(@user, bypass: true)

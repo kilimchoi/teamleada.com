@@ -2,6 +2,9 @@
   .row
     .col-md-12
       - flash.each do |key, value|
+        - if key == :notice
+          - key = :info
+        - elsif key == :danger
+          - key = :error
         javascript:
-          toastr.#{key == :notice ? 'info' : key}("#{value}");
-          / TODO: Replace all instances of :notice with :info
+          toastr.#{key}("#{value}");
