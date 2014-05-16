@@ -52,6 +52,8 @@ class User < ActiveRecord::Base
 
   self.per_page = 50
   SETTINGS_TABS = ['account', 'privacy']
+  USER_CATEGORIES = ['Public', 'Friends', 'Recruiters', 'Friends & Recruiters', 'Only Me']
+  USER_TYPES = USER_CATEGORIES.map{ |u| [u, u] }
 
   def check_username
     if !self.new_record?
