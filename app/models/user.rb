@@ -88,6 +88,10 @@ class User < ActiveRecord::Base
     is_admin? || self.codes.where(group: "project-access").count > 0
   end
 
+  def has_missing_profile_info?
+    first_name.nil? || last_name.nil? || username.nil? || email.nil?
+  end
+
   def owns_project?(project)
     return false if !self.is_company? || self.company.nil?
     self.company.projects.include? project

@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @profile_needs_info = signed_in? && current_user.has_missing_profile_info?
   end
 
   def update
@@ -18,7 +19,8 @@ class UsersController < ApplicationController
       sign_in(@user, bypass: true)
       respond_with_bip @user
     else
-      respond_with @user, status: :unprocessible_entity
+      puts @user.errors.messages
+      render json: {data: @user.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
