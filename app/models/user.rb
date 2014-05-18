@@ -50,6 +50,8 @@ class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :username, use: :finders
 
+  before_create :set_dates
+
   self.per_page = 50
   SETTINGS_TABS = ['account', 'privacy']
   USER_CATEGORIES = ['Public', 'Friends', 'Recruiters', 'Friends & Recruiters', 'Only Me']
@@ -61,6 +63,10 @@ class User < ActiveRecord::Base
         errors.add(:username, "can't be blank")
       end
     end
+  end
+
+  def set_dates
+    self.updated_password_at = Time.now
   end
 
   def name
