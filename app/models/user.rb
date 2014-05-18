@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :username, use: :finders
 
-  before_create :set_dates
+  before_create :set_defaults
 
   self.per_page = 50
   SETTINGS_TABS = ['account', 'privacy']
@@ -65,8 +65,21 @@ class User < ActiveRecord::Base
     end
   end
 
+  def set_defaults
+    self.set_dates
+    self.set_privacy_preferences
+  end
+
   def set_dates
     self.updated_password_at = Time.now
+  end
+
+  def set_privacy_preferences
+    self.who_can_see_profile = "Public"
+    self.who_can_send_friend_requests = "Public"
+    self.who_can_contact = "Friends & Recruiters"
+    self.who_can_lookup_using_email = "Friends & Recruiters"
+    self.who_can_lookup_by_name = "Friends & Recruiters"
   end
 
   def name
