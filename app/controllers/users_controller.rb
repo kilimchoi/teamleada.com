@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       respond_with_bip @user
     else
       puts @user.errors.messages
-      render json: {data: @user.errors.full_messages}, status: :unprocessable_entity
+      render json: {data: {full_messages: @user.errors.full_messages, errors: @user.errors.messages.to_a}}, status: :unprocessable_entity
     end
   end
 

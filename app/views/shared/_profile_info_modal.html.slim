@@ -5,12 +5,10 @@ div class="modal fade" id="user-info-modal"
         button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
         h4.modal-title Your profile is missing some information! Don't worry, we can help you fill out your profile below:
       = simple_form_for current_user, remote: true, html: {class: "user-info-form"} do |f|
-        #error_explanation[style="dislay:none;"]
+        ul#error_explanation[style="dislay:none;"]
         .modal-body
           = f.input :first_name, autofocus: true
           = f.input :last_name
-          = f.input :password, autofocus: true
-          = f.input :password_confirmation
         .modal-footer
           = f.submit "Submit", class: "btn btn-leada"
           button.btn.btn-danger type="button" data-dismiss="modal" Cancel
@@ -20,24 +18,19 @@ javascript:
     $('#user-info-modal').modal('show');
 
     $(".user-info-form").bind("ajax:success", function(event, data, status, xhr) {
-      console.log(data);
-      console.log(status);
-      console.log(xhr);
       $('#user-info-modal').modal('hide');
       toastr.success("You have successfully filled out the rest of your profile!");
     });
 
     $(".user-info-form").bind("ajax:error", function(event, data, status, xhr) {
       errors = jQuery.parseJSON(data.responseText).data;
-      $('#error_explanation').append('<ul>')
-      for (var i=0; i < errors.length; i++) {
-        $('#error_explanation').append('<li>' + errors[i] + '</li>');
+      full_messages = errors.full_messages;
+      error_hash = errors.errors;
+      for (var i=0; i < full_messages.length; i++) {
+        $('#error_explanation').append('<li>' + full_messages[i] + '</li>');
+        $('#user_' + error_hash[i][0]).val('');
       };
-      $('#error_explanation').append('</ul>');
       $('#error_explanation').show();
-      toastr.error("You had " + errors.length + " errors while filling out your profile. Fix those up and submit again!");
-      $("#user_password").val('');
-      $("#user_password_confirmation").val('');
-      $("#user_password").focus();
+      toastr.error("You had " + full_messages.length + " errors while filling out your profile. Fix those up and submit again!");
     });
   });
