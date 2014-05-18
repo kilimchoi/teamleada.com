@@ -25,6 +25,8 @@ html
     = render partial: 'shared/analytics'
   body
     = render partial: "layouts/header"
+    - if @profile_needs_info
+      = render partial: "shared/profile_info_modal"
     #page-container
       = render partial: "shared/flash"
       - if params[:controller] == "lessons" || params[:controller] == "steps"

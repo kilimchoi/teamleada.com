@@ -1,0 +1,14 @@
+div class="modal fade" id="password-modal"
+  .modal-dialog.modal-sm
+    .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
+        h4.modal-title Change your password
+      = simple_form_for current_user, remote: true, html: {class: "password-update-form"} do |f|
+        .modal-body
+          = f.input :password, autofocus: true
+          = f.input :password_confirmation
+        .modal-footer
+          = f.submit "Submit", class: "btn btn-leada"
+          button.btn.btn-danger type="button" data-dismiss="modal" Cancel
+
