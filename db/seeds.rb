@@ -30,6 +30,7 @@ end
 
 folders = [
   'projects',
+  'projects/quizzes',
 ]
 
 folders.each do |folder|
