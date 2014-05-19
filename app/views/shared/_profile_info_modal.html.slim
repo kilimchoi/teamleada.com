@@ -19,10 +19,16 @@ javascript:
 
     $(".user-info-form").bind("ajax:success", function(event, data, status, xhr) {
       $('#user-info-modal').modal('hide');
+      fields = data.data;
+      for (var field in fields) {
+        $('*[data-attribute=' + field + ']')[0].outerText = fields[field];
+      }
       toastr.success("You have successfully filled out the rest of your profile!");
     });
 
     $(".user-info-form").bind("ajax:error", function(event, data, status, xhr) {
+      // Clear current error messages
+      $("#error_explanation")[0].innerHTML = "";
       errors = jQuery.parseJSON(data.responseText).data;
       full_messages = errors.full_messages;
       error_hash = errors.errors;

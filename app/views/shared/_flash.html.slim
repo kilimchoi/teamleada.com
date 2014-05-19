@@ -6,5 +6,7 @@
           - key = :info
         - elsif key == :danger
           - key = :error
+        - elsif key == :alert
+          - key = :error
         javascript:
           toastr.#{key}("#{value}");

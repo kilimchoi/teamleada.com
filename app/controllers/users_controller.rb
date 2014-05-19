@@ -17,7 +17,7 @@ class UsersController < ApplicationController
         @user.password_updated!
       end
       sign_in(@user, bypass: true)
-      respond_with_bip @user
+      render json: {data: {first_name: @user.first_name, last_name: @user.last_name}}, status: :ok
     else
       puts @user.errors.messages
       render json: {data: {full_messages: @user.errors.full_messages, errors: @user.errors.messages.to_a}}, status: :unprocessable_entity
