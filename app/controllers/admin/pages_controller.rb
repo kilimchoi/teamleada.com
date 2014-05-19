@@ -1,24 +1,10 @@
 class Admin::PagesController < Admin::BaseController
+  include ChartsHelper
 
   def dashboard
-    timeframe = 30.days.ago
-    zeros = Hash[(timeframe.to_date..Date.today).map { |day| [ day, [] ] }]
-    @users_data = zeros.merge(User.where("created_at > ?", timeframe).group_by{ |user| user.created_at.to_date })
-    @categories = @users_data.keys.map{ |date| date.strftime("%B %d")}
-    sum = User.where("created_at < ?", timeframe).count
-    @values = @users_data.values.map{ |array| sum += array.count }
-    @users_chart = LazyHighCharts::HighChart.new('graph') do |f|
-      f.title(:text => "Sign ups on Leada over Time (past 30 days)")
-      f.xAxis(:categories => @categories)
-      f.series(:name => "Total number of sign ups", :yAxis => 0, :data => @values)
-
-      f.yAxis [
-        {:title => {:text => "Total number of sign ups", :margin => 70} },
-      ]
-
-      f.legend(:align => 'right', :verticalAlign => 'top', :y => 75, :x => 0, :layout => 'vertical',)
-      f.chart({:defaultSeriesType=>"line"})
-    end
+    @users_chart = users_chart(30.days.ago)
+    @interest_chart = interest_chart(30.days.ago)
+    @employer_applications_chart = employer_applications_chart(30.days.ago)
   end
 
 end
