@@ -39,4 +39,8 @@ module ChartsHelper
     chart_from_model(timeframe, ProjectInterest, "Interest in Projects on Leada (past 30 days)", "Total number of interest in projects")
   end
 
+  def employer_applications_chart(timeframe)
+    chart_from_model(timeframe, EmployerApplication, "Employer Applications (past 30 days)", "Total number of employer applications submitted")
+  end
+
 end
