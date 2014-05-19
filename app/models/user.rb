@@ -57,6 +57,11 @@ class User < ActiveRecord::Base
   USER_CATEGORIES = ['Public', 'Friends', 'Recruiters', 'Friends & Recruiters', 'Only Me']
   USER_TYPES = USER_CATEGORIES.map{ |u| [u, u] }
 
+  include PgSearch
+  pg_search_scope :search,
+                  against: [[:first_name, 'A'], [:last_name, 'A'], [:email, 'A'], [:username, 'A']],
+                  using: {tsearch: {prefix: true, normalization: 2}}
+
   def check_username
     if !self.new_record?
       if username.blank?
