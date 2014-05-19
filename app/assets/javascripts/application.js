@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require best_in_place
+//= require toastr
 //= require bootstrap
 
 $(document).ready(function() {
@@ -38,4 +40,7 @@ $(document).ready(function() {
   }
 
   loadContent();
+
+  // Best In Place
+  $(".best_in_place").best_in_place();
 });

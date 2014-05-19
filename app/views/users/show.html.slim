@@ -4,7 +4,11 @@
   .row
     .col-md-12
       .user-container
-        h1.title = @user.name
+        h1.title
+          = @user.name
+          |  (
+          = @user.username
+          | )
         .row
           .col-md-5
             h3.title Completed Projects

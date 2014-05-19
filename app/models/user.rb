@@ -50,7 +50,12 @@ class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :username, use: :finders
 
+  before_create :set_defaults
+
   self.per_page = 50
+  SETTINGS_TABS = ['account', 'privacy']
+  USER_CATEGORIES = ['Public', 'Friends', 'Recruiters', 'Friends & Recruiters', 'Only Me']
+  USER_TYPES = USER_CATEGORIES.map{ |u| [u, u] }
 
   def check_username
     if !self.new_record?
@@ -60,12 +65,33 @@ class User < ActiveRecord::Base
     end
   end
 
+  def set_defaults
+    self.set_dates
+    self.set_privacy_preferences
+  end
+
+  def set_dates
+    self.updated_password_at = Time.now
+  end
+
+  def set_privacy_preferences
+    self.who_can_see_profile = "Public"
+    self.who_can_send_friend_requests = "Public"
+    self.who_can_contact = "Friends & Recruiters"
+    self.who_can_lookup_using_email = "Friends & Recruiters"
+    self.who_can_lookup_by_name = "Friends & Recruiters"
+  end
+
   def name
     if first_name && last_name
       "#{first_name} #{last_name}"
     else
-      username
+      "<full name not entered>"
     end
+  end
+
+  def password_updated!
+    self.update_attribute(:updated_password_at, Time.now)
   end
 
   def is_admin?
@@ -79,6 +105,10 @@ class User < ActiveRecord::Base
   def has_project_access?
     # TODO: Change it so that project-access is not hard-coded
     is_admin? || self.codes.where(group: "project-access").count > 0
+  end
+
+  def has_missing_profile_info?
+    first_name.nil? || last_name.nil? || username.nil? || email.nil?
   end
 
   def owns_project?(project)

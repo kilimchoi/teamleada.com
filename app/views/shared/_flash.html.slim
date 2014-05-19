@@ -2,5 +2,11 @@
   .row
     .col-md-12
       - flash.each do |key, value|
-        div class="alert alert-#{key}"
-          = value
+        - if key == :notice
+          - key = :info
+        - elsif key == :danger
+          - key = :error
+        - elsif key == :alert
+          - key = :error
+        javascript:
+          toastr.#{key}("#{value}");

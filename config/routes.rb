@@ -15,14 +15,16 @@ TeamLeada::Application.routes.draw do
                      controllers: {
                        registrations: 'registrations',
                        sessions: 'sessions',
-                       confirmations: 'confirmations'
+                       confirmations: 'confirmations',
+                       passwords: 'passwords'
                      }
 
   devise_scope :user do
     match 'confirm', to: "confirmations#confirm", as: :confirm, via: :patch
   end
 
-  resources :users, only: [:show]
+  match 'settings', to: 'users#edit', as: 'edit_user', via: :get
+  resources :users, only: [:show, :update]
   resources :interested_users, only: [:create]
 
   match 'employer', to: 'employer_applications#new', as: 'new_employer', via: :get

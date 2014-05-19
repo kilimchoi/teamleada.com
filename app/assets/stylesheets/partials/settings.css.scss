@@ -1,0 +1,83 @@
+.settings-container {
+  border-left: 1px solid #e7e7e7;
+  border-right: 1px solid #e7e7e7;
+  border-bottom: 1px solid #e7e7e7;
+  padding: 20px;
+  padding-bottom: 200px;
+}
+
+.settings-list {
+  margin-top: 20px;
+}
+
+.account-settings {
+  padding: 0;
+  list-style: none;
+}
+
+.privacy-settings {
+  padding: 0;
+  list-style: none;
+}
+
+ul.account-settings > li:first-child {
+  border-width: 0;
+}
+
+ul.privacy-settings > li:first-child {
+  border-width: 0;
+}
+
+.settings-row {
+  width: 100%;
+  border-width: 1px 0 0 0;
+  border-color: #e9e9e9;
+  border-style: solid;
+}
+
+.col {
+  width: 165px;
+  float: left;
+  color: #333;
+}
+
+.priv-col {
+  width: 275px;
+  float: left;
+  color: #333;
+}
+
+.edit-row {
+  float: right;
+  padding-right: 5px;
+  color: #428bca;
+}
+
+.privacy-topic {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  width: 160px;
+  float: left;
+}
+
+.recruiter-questions {
+  float: right;
+  width: 689px;
+}
+
+a.row-link {
+  display: block;
+  text-decoration: none;
+  padding: 10px 5px;
+  color: gray;
+}
+
+a.row-link:hover {
+  background: #f7f7f7;
+  text-decoration: none;
+}
+
+a.row-link:hover span.edit-row {
+  text-decoration: underline;
+}

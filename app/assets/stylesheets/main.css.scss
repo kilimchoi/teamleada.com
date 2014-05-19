@@ -11,6 +11,20 @@ body {
   }
 }
 
+.clearfix {
+  zoom: 1;
+}
+
+.clearfix:after {
+  clear: both;
+  content: ".";
+  display: block;
+  font-size: 0;
+  height: 0;
+  line-height: 0;
+  visibility: hidden;
+}
+
 #page-container {
   height: 100%;
 }
@@ -19,7 +33,11 @@ body {
   min-height: 95%;
 }
 
-.flash-container {
+.toast-top-right {
+  top: 92px;
+}
+
+.alert {
   margin-top: 20px;
 }
 

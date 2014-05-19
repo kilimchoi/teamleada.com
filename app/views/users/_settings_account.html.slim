@@ -1,0 +1,72 @@
+= provide(:page_title, "Account Settings")
+
+h4 General Account Settings
+
+ul.account-settings
+  li.settings-row
+    = link_to("#", id: "edit-first-name", class: "row-link") do
+      span.col First Name
+      span = best_in_place current_user, :first_name, type: :input, data: { field: 'first name' }, activator: "#edit-first-name"
+      span.edit-row Edit
+  li.settings-row
+    = link_to("#", id: "edit-last-name", class: "row-link") do
+      span.col Last Name
+      span = best_in_place current_user, :last_name, type: :input, data: { field: 'last name' }, activator: "#edit-last-name"
+      span.edit-row Edit
+  li.settings-row
+    = link_to("#", id: "edit-username", class: "row-link") do
+      span.col Username
+      span = best_in_place current_user, :username, type: :input, data: { field: 'username' }, activator: "#edit-username"
+      span.edit-row Edit
+  li.settings-row
+    = link_to("#", id: "edit-email", class: "row-link") do
+      span.col Email
+      span = best_in_place current_user, :email, type: :input, data: { field: 'email' }, activator: "#edit-email"
+      span.edit-row Edit
+  li.settings-row
+    = link_to("#", class: "row-link", data: {toggle: "modal", target: "#password-modal"}) do
+      span.col Password
+      span#password-update-time
+        ' Updated
+        = time_ago_in_words(current_user.updated_password_at)
+        |  ago
+      span.edit-row Edit
+
+div class="modal fade" id="password-modal"
+  .modal-dialog.modal-sm
+    .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
+        h4.modal-title Change your password
+      = simple_form_for current_user, remote: true, html: {class: "password-update-form"} do |f|
+        .modal-body
+          = f.input :password, autofocus: true
+          = f.input :password_confirmation
+        .modal-footer
+          = f.submit "Submit", class: "btn btn-leada"
+          button.btn.btn-danger type="button" data-dismiss="modal" Cancel
+
+javascript:
+  $(document).ready(function() {
+    $('.best_in_place').bind("ajax:success", function() {
+      toastr.success('Successfully changed your ' + $(this).data('field') + ' to ' + $(this).context.innerText + '.');
+    });
+
+    $('.best_in_place').bind("ajax:error", function() {
+      toastr.error('There was an error updating your ' + $(this).data('field') + '.');
+    });
+
+    $(".password-update-form").bind("ajax:success", function() {
+      $('#password-modal').modal('hide');
+      toastr.success("You have successfully changed your password.");
+      $("#password-update-time")[0].innerText = "Updated less than a minute ago";
+    });
+
+    $(".password-update-form").bind("ajax:error", function() {
+      toastr.error("You must provide both a password and a confirmation and they must match!");
+      $("#user_password").val('');
+      $("#user_password_confirmation").val('');
+      $("#user_password").focus();
+    });
+  });
+

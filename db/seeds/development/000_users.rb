@@ -13,7 +13,7 @@ users.each do |user|
 end
 
 # Create students
-(0..5).each do |index|
+(0..10).each do |index|
   username = "student#{index}"
   if User.find_by(username: username).nil?
     new_user = User.create(username: username, email: "#{username}@#{username}.com", password: "password", role: 'student')
