@@ -20,7 +20,6 @@
 javascript:
   $(document).ready(function() {
     $('#users-table th a').on('click', function () {
-      console.log('sorted');
       $.getScript(this.href);
       return false;
     });
