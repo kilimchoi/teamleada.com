@@ -30,6 +30,7 @@ gem 'toastr-rails-sass', '~> 2.0.1'
 gem 'highcharts-rails', '~> 3.0.0'
 gem 'lazy_high_charts', '~> 1.5.2'
 gem 'pg_search'
+gem 'font-awesome-rails'
 
 group :doc do
   gem 'sdoc', require: false
