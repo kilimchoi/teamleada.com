@@ -6,7 +6,7 @@ class Admin::UsersController < Admin::BaseController
     unless params[:q].nil? || params[:q].empty?
       @users = @users.search(params[:q])
     end
-    @users = @users.paginate(page: params[:page])
+    @users = @users.order(sort_column + ' ' + sort_direction).paginate(page: params[:page])
   end
 
   def show
@@ -15,7 +15,7 @@ class Admin::UsersController < Admin::BaseController
   private
 
   def sort_column
-    User.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    User.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
   end
 
   def sort_direction
