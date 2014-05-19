@@ -5,7 +5,7 @@ class Admin::PagesController < Admin::BaseController
     zeros = Hash[(timeframe.to_date..Date.today).map { |day| [ day, [] ] }]
     @users_data = zeros.merge(User.where("created_at > ?", timeframe).group_by{ |user| user.created_at.to_date })
     @categories = @users_data.keys.map{ |date| date.strftime("%B %d")}
-    sum = 0
+    sum = User.where("created_at < ?", timeframe).count
     @values = @users_data.values.map{ |array| sum += array.count }
     @users_chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(:text => "Sign ups on Leada over Time (past 30 days)")
