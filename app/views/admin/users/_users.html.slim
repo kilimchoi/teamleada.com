@@ -3,10 +3,10 @@ table.table.table-striped
   th = sortable "first_name"
   th = sortable "last_name"
   th = sortable "email"
-  th Role
+  th = sortable "role"
   th Company
   th = sortable "sign_in_count"
-  th Confirmed?
+  th = sortable "confirmed_at", "Confirmed?"
   th Access Codes
   - @users.each do |user|
     tr
