@@ -27,6 +27,8 @@ gem 'will_paginate', '~> 3.0'
 gem 'best_in_place', github: 'negativetwelve/best_in_place'
 gem 'toastr-rails'
 gem 'toastr-rails-sass', '~> 2.0.1'
+gem 'highcharts-rails', '~> 3.0.0'
+gem 'lazy_high_charts', '~> 1.5.2'
 
 group :doc do
   gem 'sdoc', require: false
