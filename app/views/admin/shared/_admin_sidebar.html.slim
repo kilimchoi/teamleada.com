@@ -3,6 +3,7 @@
     ' Welcome,
     = current_user.name
   .list-group
+    = active_admin_link "Dashboard", admin_dashboard_path, class: "list-group-item"
     = active_admin_link "Users", admin_users_path, class: "list-group-item"
     = active_admin_link "Companies", admin_companies_path, class: "list-group-item"
     = active_admin_link "Codes", admin_codes_path, class: "list-group-item"
