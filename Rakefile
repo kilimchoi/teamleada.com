@@ -18,4 +18,12 @@ task :blog do
   Rake::Task["generate_blog"].execute
 end
 
+task :user_defaults => :environment do
+  User.all.each do |u|
+    u.updated_password_at = u.created_at
+    u.set_privacy_preferences
+    u.save(validate: false)
+  end
+end
+
 task default: [:blog]
