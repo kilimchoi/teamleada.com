@@ -23,4 +23,8 @@ module ApplicationHelper
     User::SETTINGS_TABS.include? tab
   end
 
+  def is_admin_namespace?
+    params[:controller].split('/').first == 'admin'
+  end
+
 end
