@@ -16,7 +16,7 @@ class Admin::PagesController < Admin::BaseController
         {:title => {:text => "Total number of sign ups", :margin => 70} },
       ]
 
-      f.legend(:align => 'right', :verticalAlign => 'top', :y => 75, :x => -50, :layout => 'vertical',)
+      f.legend(:align => 'right', :verticalAlign => 'top', :y => 75, :x => 0, :layout => 'vertical',)
       f.chart({:defaultSeriesType=>"line"})
     end
   end
