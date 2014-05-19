@@ -15,6 +15,8 @@
 //= require best_in_place
 //= require toastr
 //= require bootstrap
+//= require highcharts
+//= require highcharts/highcharts-more
 
 $(document).ready(function() {
   //load heap data here.
