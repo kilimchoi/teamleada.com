@@ -5,30 +5,28 @@
         | All Users - (
         = @users.count
         | )
-      table.table.table-striped
-        th Username
-        th First Name
-        th Last Name
-        th Email
-        th Role
-        th Company
-        th Sign in Count
-        th Confirmed?
-        th Access Codes
-        - @users.each do |user|
-          tr
-            td = link_to user.username, admin_user_path(user)
-            td = user.first_name
-            td = user.last_name
-            td = user.email
-            td = user.role
-            td = user.is_company? ? link_to(user.company.name, admin_company_path(user.company)) : ""
-            td = user.sign_in_count
-            td = user.confirmed?
-            td
-              - user.codes.each do |code|
-                = link_to code.value, admin_code_path(code)
-                '
 
-        = will_paginate @posts
+      = form_tag admin_users_path, method: :get, id: "users_search" do
+        = hidden_field_tag :direction, params[:direction]
+        = hidden_field_tag :sort, params[:sort]
+        .input-group
+          = text_field_tag :q, params[:q], class: 'form-control'
+          span.input-group-btn
+            = submit_tag "Search", class: "btn btn-leada"
+        #users-table
+          = render partial: "admin/users/users"
+
+
+javascript:
+  $(document).ready(function() {
+    $('#users-table th a').on('click', function () {
+      $.getScript(this.href);
+      return false;
+    });
+
+    $('#users_search input').keyup(function () {
+      $.get($('#users_search').attr('action'), $('#users_search').serialize(), null, 'script');
+      return false;
+    });
+  });
 
