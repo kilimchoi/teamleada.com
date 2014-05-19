@@ -9,22 +9,24 @@
       = form_tag admin_users_path, method: :get, id: "users_search" do
         = hidden_field_tag :direction, params[:direction]
         = hidden_field_tag :sort, params[:sort]
-        p
-          = text_field_tag :q, params[:q]
-          = submit_tag "Search", name: nil
+        .input-group
+          = text_field_tag :q, params[:q], class: 'form-control'
+          span.input-group-btn
+            = submit_tag "Search", class: "btn btn-leada"
         #users-table
           = render partial: "admin/users/users"
 
 
 javascript:
   $(document).ready(function() {
-    $('#users-table th a').live('click', function () {
+    $('#users-table th a').on('click', function () {
+      console.log('sorted');
       $.getScript(this.href);
       return false;
     });
 
-    $('#users_search').submit(function () {
-      $.get(this.action, $(this).serialize(), null, 'script');
+    $('#users_search input').keyup(function () {
+      $.get($('#users_search').attr('action'), $('#users_search').serialize(), null, 'script');
       return false;
     });
   });
