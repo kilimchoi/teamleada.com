@@ -29,7 +29,8 @@ body {
   height: 100%;
 }
 
-.container.full-container {
+.container.full-container,
+.container-fluid.full-container {
   min-height: 95%;
 }
 

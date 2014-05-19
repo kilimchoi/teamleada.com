@@ -34,5 +34,15 @@ html
           = render partial: "projects/sidebar", locals: {project: @lesson.project}
         - unless @step.nil?
           = render partial: "projects/sidebar", locals: {project: @step.main_lesson.project}
-      = yield
+
+      - if is_admin_namespace?
+        .container-fluid.full-container
+          .row
+            .col-md-2
+              = render partial: "admin/shared/admin_sidebar"
+            .col-md-10
+              = yield
+      - else
+        = yield
+
       = render partial: "layouts/footer"
