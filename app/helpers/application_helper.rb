@@ -19,6 +19,11 @@ module ApplicationHelper
     link_to(name, options, html_options)
   end
 
+  def active_admin_link(name=nil, options={}, html_options={}, &block)
+    html_options[:class] = "#{html_options[:class]} active" if current_page?(options)
+    link_to(name, options, html_options)
+  end
+
   def valid_settings_tab?(tab)
     User::SETTINGS_TABS.include? tab
   end
