@@ -22,3 +22,13 @@
   padding-left: 15px;
   color: red;
 }
+
+#users-table th a.current.asc:after {
+  content: " \f0dd";
+  font-family: FontAwesome
+}
+
+#users-table th a.current.desc:after {
+  content: " \f0de";
+  font-family: FontAwesome;
+}
