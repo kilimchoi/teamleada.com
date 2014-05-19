@@ -4,5 +4,7 @@
   .row
     .col-md-12
       h1 Admin Dashboard
-      = high_chart("some_id", @chart)
+      .row
+        .col-md-12
+          = high_chart("users_chart", @users_chart)
 
