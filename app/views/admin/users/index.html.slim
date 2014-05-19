@@ -5,8 +5,14 @@
         | All Users - (
         = @users.count
         | )
+
+      = form_tag admin_users_path, method: :get do
+        p
+          = text_field_tag :q, params[:q]
+          = submit_tag "Search", name: nil
+
       table.table.table-striped
-        th Username
+        th = sortable "username"
         th First Name
         th Last Name
         th Email
