@@ -44,6 +44,8 @@ class User < ActiveRecord::Base
   has_many :codes, through: :user_codes
   has_many :transactions
 
+  has_many :resumes
+
   belongs_to :company
 
   default_scope -> { order(:created_at) }
@@ -54,6 +56,8 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true, on: :update
   validates :last_name, presence: true, on: :update
 
+  accepts_nested_attributes_for :resumes
+
   extend FriendlyId
   friendly_id :username, use: :finders
 
@@ -61,7 +65,14 @@ class User < ActiveRecord::Base
 
   self.per_page = 50
   SETTINGS_TABS = ['account', 'privacy']
-  USER_CATEGORIES = ['Public', 'Friends', 'Recruiters', 'Friends & Recruiters', 'Only Me']
+
+  PUBLIC = 'Public'
+  CONNECTIONS = 'Connections Only'
+  RECRUITERS = 'Recruiters Only'
+  CONNECTIONS_AND_RECRUITERS = 'Connections & Recruiters'
+  ONLY_ME = 'Only Me'
+
+  USER_CATEGORIES = [PUBLIC, CONNECTIONS, RECRUITERS, CONNECTIONS_AND_RECRUITERS, ONLY_ME]
   USER_TYPES = USER_CATEGORIES.map{ |u| [u, u] }
 
   include PgSearch
@@ -69,6 +80,9 @@ class User < ActiveRecord::Base
                   against: [[:first_name, 'A'], [:last_name, 'A'], [:email, 'A'], [:username, 'A']],
                   using: {tsearch: {prefix: true, normalization: 2}}
 
+  #########################################################################################
+  # Validations
+  #########################################################################################
   def check_username
     if !self.new_record?
       if username.blank?
@@ -77,6 +91,9 @@ class User < ActiveRecord::Base
     end
   end
 
+  #########################################################################################
+  # Before filter
+  #########################################################################################
   def set_defaults
     self.set_dates
     self.set_privacy_preferences
@@ -89,11 +106,15 @@ class User < ActiveRecord::Base
   def set_privacy_preferences
     self.who_can_see_profile = "Public"
     self.who_can_send_friend_requests = "Public"
-    self.who_can_contact = "Friends & Recruiters"
-    self.who_can_lookup_using_email = "Friends & Recruiters"
-    self.who_can_lookup_by_name = "Friends & Recruiters"
+    self.who_can_contact = "Connections & Recruiters"
+    self.who_can_lookup_using_email = "Connections & Recruiters"
+    self.who_can_lookup_by_name = "Connections & Recruiters"
+    self.who_can_see_resume = "Connections & Recruiters"
   end
 
+  #########################################################################################
+  # Attributes
+  #########################################################################################
   def name
     if first_name && last_name
       "#{first_name} #{last_name}"
@@ -102,8 +123,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  def password_updated!
-    self.update_attribute(:updated_password_at, Time.now)
+  def resume
+    self.has_resume? ? self.resumes.last : nil
   end
 
   def is_admin?
@@ -121,6 +142,10 @@ class User < ActiveRecord::Base
 
   def has_missing_profile_info?
     first_name.nil? || last_name.nil? || username.nil? || email.nil?
+  end
+
+  def has_resume?
+    self.resumes.count > 0
   end
 
   def owns_project?(project)
@@ -161,12 +186,19 @@ class User < ActiveRecord::Base
     password == password_confirmation && !password.blank?
   end
 
+  #########################################################################################
+  # Methods
+  #########################################################################################
   def generate_new_token
     secret = Devise.friendly_token
     new_token = Devise.token_generator.digest(User, :confirmation_token, secret)
     self.confirmation_token = new_token
     self.save(validate: false)
     secret
+  end
+
+  def password_updated!
+    self.update_attribute(:updated_password_at, Time.now)
   end
 
 end

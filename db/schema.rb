@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140516011506) do
+ActiveRecord::Schema.define(version: 20140520052632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,6 +103,16 @@ ActiveRecord::Schema.define(version: 20140516011506) do
     t.string   "answer"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "resumes", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "resume_file_file_name"
+    t.string   "resume_file_content_type"
+    t.integer  "resume_file_file_size"
+    t.datetime "resume_file_updated_at"
   end
 
   create_table "slides", id: false, force: true do |t|
@@ -206,6 +216,7 @@ ActiveRecord::Schema.define(version: 20140516011506) do
     t.string   "who_can_contact"
     t.string   "who_can_lookup_using_email"
     t.string   "who_can_lookup_by_name"
+    t.string   "who_can_see_resume"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
