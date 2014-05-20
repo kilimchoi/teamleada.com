@@ -24,11 +24,7 @@ TeamLeada::Application.routes.draw do
   end
 
   match 'settings', to: 'users#edit', as: 'edit_user', via: :get
-  resources :users, only: [:show, :update] do
-    member do
-      match 'upload-resume', to: 'users#upload_resume', as: 'upload_resume', via: :patch
-    end
-  end
+  resources :users, only: [:show, :update]
   resources :interested_users, only: [:create]
 
   match 'employer', to: 'employer_applications#new', as: 'new_employer', via: :get
