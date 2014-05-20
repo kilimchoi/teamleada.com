@@ -15,22 +15,35 @@
             - if @user.has_resume?
               = render partial: "users/resume_preview", locals: { resume: @user.resume }
             - else
-              h4 Looks like you haven't uploaded a resume yet. Upload one below!
-              = simple_form_for @user, multipart: true do |f|
-                = f.fields_for :resumes do |resume|
-                  = resume.file_field :resume_file
-                = f.input :who_can_see_resume, collection: User::USER_TYPES, label: "Select who can see my resume", selected: User::CONNECTIONS_AND_RECRUITERS
-                = f.submit "Submit", class: "flat-button"
+              h4 Looks like you haven't uploaded a resume yet.
+              = link_to "Upload one now!", "#", data: {toggle: "modal", target: "#resume-modal"}, class: "flat-button"
 
           .col-md-5.col-md-offset-2
             h3.title Completed Projects
+            h4 You have not completed any projects yet.
             - @user.completed_projects.each do |project|
               = project.title
             h3.title In Progress Projects
+            h4 You have not started any projects yet.
             - @user.in_progress_projects.each do |project|
               = project.title
             h3.title Badges
+            h4 You have not earned any badges yet.
 
-        .row
-          .col-md-5
             h3.title Connections
+            h4 Looks like you don't have any connections yet.
+
+div class="modal fade" id="resume-modal"
+  .modal-dialog.modal-sm
+    .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
+        h4.modal-title Upload Your Resume
+      = simple_form_for @user, multipart: true, html: {class: "resume-form"} do |f|
+        .modal-body
+          = f.fields_for :resumes do |resume|
+            = resume.file_field :resume_file
+          = f.input :who_can_see_resume, collection: User::USER_TYPES, label: "Select who can see my resume:", selected: User::CONNECTIONS_AND_RECRUITERS
+        .modal-footer
+          = f.submit "Submit", class: "btn btn-leada"
+          button.btn.btn-danger type="button" data-dismiss="modal" Cancel
