@@ -113,8 +113,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  def resumes
-    self.resumes.count > 0 ? self.resumes.last : nil
+  def resume
+    self.has_resume? ? self.resumes.last : nil
   end
 
   def is_admin?
@@ -132,6 +132,10 @@ class User < ActiveRecord::Base
 
   def has_missing_profile_info?
     first_name.nil? || last_name.nil? || username.nil? || email.nil?
+  end
+
+  def has_resume?
+    self.resumes.count > 0
   end
 
   def owns_project?(project)
