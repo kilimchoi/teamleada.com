@@ -14,7 +14,6 @@ gem 'animate-rails'
 gem 'sprockets', '2.11.0'
 gem 'pg', '0.17.1'
 gem 'jbuilder', '~> 1.2'
-#gem 'google-analytics-rails', '~> 0.0.5'
 gem 'devise', '~> 3.2.3'
 gem 'simple_form', '~> 3.0.1'
 gem 'rails-reveal-js', '~> 2.6.1.2'
@@ -31,6 +30,7 @@ gem 'highcharts-rails', '~> 3.0.0'
 gem 'lazy_high_charts', '~> 1.5.2'
 gem 'pg_search'
 gem 'font-awesome-rails'
+gem 'paperclip', '~> 4.1'
 
 group :doc do
   gem 'sdoc', require: false
