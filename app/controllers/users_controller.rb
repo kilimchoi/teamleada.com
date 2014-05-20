@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   respond_to :html, :json
 
   def show
+    @user.resumes.build
   end
 
   def edit
@@ -17,10 +18,22 @@ class UsersController < ApplicationController
         @user.password_updated!
       end
       sign_in(@user, bypass: true)
-      render json: {data: {first_name: @user.first_name, last_name: @user.last_name}}, status: :ok
+      respond_to do |format|
+        format.json { render json: {data: {first_name: @user.first_name, last_name: @user.last_name}}, status: :ok }
+        format.html {
+          flash[:info] = "You have successfully uploaded your resume viewable by: #{@user.who_can_see_resume}."
+          redirect_to user_path(@user)
+        }
+      end
     else
       puts @user.errors.messages
-      render json: {data: {full_messages: @user.errors.full_messages, errors: @user.errors.messages.to_a}}, status: :unprocessable_entity
+      respond_to do |format|
+        format.json { render json: {data: {full_messages: @user.errors.full_messages, errors: @user.errors.messages.to_a}}, status: :unprocessable_entity }
+        format.html {
+          flash[:error] = "There was a problem uploading your resume."
+          redirect_to user_path(@user)
+        }
+      end
     end
   end
 
@@ -53,7 +66,11 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation,
                                  :who_can_see_profile, :who_can_send_friend_requests, :who_can_contact,
-                                 :who_can_lookup_using_email, :who_can_lookup_by_name)
+                                 :who_can_lookup_using_email, :who_can_lookup_by_name,
+                                 :resume_file, :who_can_see_resume, resumes_attributes: [
+                                   :id,
+                                   :resume_file,
+                                 ])
   end
 
 end
