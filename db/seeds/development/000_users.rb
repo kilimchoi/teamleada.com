@@ -4,23 +4,19 @@ users = [
   'tristan',
 ]
 
-# Create admins
-users.each do |user|
-  email = "#{user}@#{user}.com"
-  if User.find_by(email: email).nil?
-    new_user = User.create(username: user, email: email, password: "password", role: 'admin')
-    new_user.confirm!
-    puts "Created user: #{new_user.username}."
+def create_users(usernames)
+  usernames.each do |username|
+    email = "#{username}@#{username}.com"
+    if User.find_by(email: email).nil?
+      new_user = User.create(username: username, email: email, password: "password", role: 'admin')
+      new_user.confirm!
+      puts "Created user: #{new_user.username}."
+    end
   end
 end
 
+# Create admins
+create_users(users)
+
 # Create students
-(0..30).each do |index|
-  username = "student#{index}"
-  email = "#{username}@#{username}.com"
-  if User.find_by(email: email).nil?
-    new_user = User.create(username: username, email: email, password: "password", role: 'student')
-    new_user.confirm!
-    puts "Created user: #{new_user.username}."
-  end
-end
+create_users((0..30).map{ |index| "student#{index}" })
