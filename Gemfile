@@ -8,6 +8,7 @@ gem 'sass-rails', '~> 4.0.2'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails', '~> 2.2.1'
 gem 'bootstrap-sass', '~> 3.1.1'
+gem 'font-awesome-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'slim-rails', '~> 2.1.3'
 gem 'animate-rails'
@@ -18,19 +19,26 @@ gem 'devise', '~> 3.2.3'
 gem 'simple_form', '~> 3.0.1'
 gem 'rails-reveal-js', '~> 2.6.1.2'
 gem 'rails-rename', '~> 1.0.0'
-gem 'aws-sdk', '~> 1.0'
 gem 'cancancan', '~> 1.7'
 gem 'friendly_id', '~> 5.0.3'
 gem 'stripe', git: 'https://github.com/stripe/stripe-ruby'
 gem 'will_paginate', '~> 3.0'
 gem 'best_in_place', github: 'negativetwelve/best_in_place'
+
+# Notifications
 gem 'toastr-rails'
 gem 'toastr-rails-sass', '~> 2.0.1'
+
+# Charts
 gem 'highcharts-rails', '~> 3.0.0'
 gem 'lazy_high_charts', '~> 1.5.2'
+
+# Search
 gem 'pg_search'
-gem 'font-awesome-rails'
+
+# Uploading
 gem 'paperclip', '~> 4.1'
+gem 'aws-sdk', '~> 1.5.7'
 
 group :doc do
   gem 'sdoc', require: false
