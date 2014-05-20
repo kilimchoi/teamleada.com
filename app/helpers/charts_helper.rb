@@ -7,7 +7,7 @@ module ChartsHelper
       f.series(name: y_axis_text, yAxis: 0, data: values)
 
       f.yAxis [
-        {title: {text: y_axis_text, margin: 70}},
+        {title: {text: y_axis_text, margin: 70}, min: 0},
       ]
 
       f.legend(align: 'right', verticalAlign: 'top', y: 75, x: 0, layout: 'vertical')
