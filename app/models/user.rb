@@ -63,7 +63,14 @@ class User < ActiveRecord::Base
 
   self.per_page = 50
   SETTINGS_TABS = ['account', 'privacy']
-  USER_CATEGORIES = ['Public', 'Friends', 'Recruiters', 'Friends & Recruiters', 'Only Me']
+
+  PUBLIC = 'Public'
+  CONNECTIONS = 'Connections Only'
+  RECRUITERS = 'Recruiters Only'
+  CONNECTIONS_AND_RECRUITERS = 'Connections & Recruiters'
+  ONLY_ME = 'Only Me'
+
+  USER_CATEGORIES = [PUBLIC, CONNECTIONS, RECRUITERS, CONNECTIONS_AND_RECRUITERS, ONLY_ME]
   USER_TYPES = USER_CATEGORIES.map{ |u| [u, u] }
 
   include PgSearch
@@ -97,9 +104,10 @@ class User < ActiveRecord::Base
   def set_privacy_preferences
     self.who_can_see_profile = "Public"
     self.who_can_send_friend_requests = "Public"
-    self.who_can_contact = "Friends & Recruiters"
-    self.who_can_lookup_using_email = "Friends & Recruiters"
-    self.who_can_lookup_by_name = "Friends & Recruiters"
+    self.who_can_contact = "Connections & Recruiters"
+    self.who_can_lookup_using_email = "Connections & Recruiters"
+    self.who_can_lookup_by_name = "Connections & Recruiters"
+    self.who_can_see_resume = "Connections & Recruiters"
   end
 
   #########################################################################################
