@@ -11,16 +11,21 @@
           | )
         .row
           .col-md-5
+            h3.title Resume
+            - if @user.has_resume?
+              = render partial: "users/resume_preview", locals: { resume: @user.resume }
+            - else
+              h4 Looks like you haven't uploaded a resume yet.
+
+          .col-md-5.col-md-offset-2
             h3.title Completed Projects
             - @user.completed_projects.each do |project|
               = project.title
-          .col-md-5.col-md-offset-2
             h3.title In Progress Projects
             - @user.in_progress_projects.each do |project|
               = project.title
+            h3.title Badges
 
         .row
           .col-md-5
-            h3.title Badges
-          .col-md-5.col-md-offset-2
-            h3.title Friends
+            h3.title Connections
