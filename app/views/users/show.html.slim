@@ -15,7 +15,10 @@
             - if @user.has_resume?
               = render partial: "users/resume_preview", locals: { resume: @user.resume }
             - else
-              h4 Looks like you haven't uploaded a resume yet.
+              h4 Looks like you haven't uploaded a resume yet. Upload one below!
+              = simple_form_for @user, url: edit_user_path, multipart: true do |f|
+                = f.file_field :resume_file
+                = f.input :who_can_see_resume, collection: User::USER_TYPES, label: "Select who can see my resume", selected: User::CONNECTIONS_AND_RECRUITERS
 
           .col-md-5.col-md-offset-2
             h3.title Completed Projects
