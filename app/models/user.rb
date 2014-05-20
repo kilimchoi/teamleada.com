@@ -44,6 +44,8 @@ class User < ActiveRecord::Base
   has_many :codes, through: :user_codes
   has_many :transactions
 
+  has_many :resumes
+
   belongs_to :company
 
   default_scope -> { order(:created_at) }
@@ -69,6 +71,9 @@ class User < ActiveRecord::Base
                   against: [[:first_name, 'A'], [:last_name, 'A'], [:email, 'A'], [:username, 'A']],
                   using: {tsearch: {prefix: true, normalization: 2}}
 
+  #########################################################################################
+  # Validations
+  #########################################################################################
   def check_username
     if !self.new_record?
       if username.blank?
@@ -77,6 +82,9 @@ class User < ActiveRecord::Base
     end
   end
 
+  #########################################################################################
+  # Before filter
+  #########################################################################################
   def set_defaults
     self.set_dates
     self.set_privacy_preferences
@@ -94,6 +102,9 @@ class User < ActiveRecord::Base
     self.who_can_lookup_by_name = "Friends & Recruiters"
   end
 
+  #########################################################################################
+  # Attributes
+  #########################################################################################
   def name
     if first_name && last_name
       "#{first_name} #{last_name}"
@@ -102,8 +113,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  def password_updated!
-    self.update_attribute(:updated_password_at, Time.now)
+  def resumes
+    self.resumes.count > 0 ? self.resumes.last : nil
   end
 
   def is_admin?
@@ -161,12 +172,19 @@ class User < ActiveRecord::Base
     password == password_confirmation && !password.blank?
   end
 
+  #########################################################################################
+  # Methods
+  #########################################################################################
   def generate_new_token
     secret = Devise.friendly_token
     new_token = Devise.token_generator.digest(User, :confirmation_token, secret)
     self.confirmation_token = new_token
     self.save(validate: false)
     secret
+  end
+
+  def password_updated!
+    self.update_attribute(:updated_password_at, Time.now)
   end
 
 end
