@@ -14,6 +14,7 @@
             h3.title Resume
             - if @user.has_resume?
               = render partial: "users/resume_preview", locals: { resume: @user.resume }
+              = link_to "Upload a new resume", "#", data: {toggle: "modal", target: "#resume-modal"}, class: "flat-button"
             - else
               h4 Looks like you haven't uploaded a resume yet.
               = link_to "Upload one now!", "#", data: {toggle: "modal", target: "#resume-modal"}, class: "flat-button"
@@ -42,7 +43,8 @@ div class="modal fade" id="resume-modal"
       = simple_form_for @user, multipart: true, html: {class: "resume-form"} do |f|
         .modal-body
           = f.fields_for :resumes do |resume|
-            = resume.file_field :resume_file
+            - if resume.object.new_record?
+              = resume.file_field :resume_file
           = f.input :who_can_see_resume, collection: User::USER_TYPES, label: "Select who can see my resume:", selected: User::CONNECTIONS_AND_RECRUITERS
         .modal-footer
           = f.submit "Submit", class: "btn btn-leada"

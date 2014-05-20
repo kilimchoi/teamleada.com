@@ -3,4 +3,4 @@
     h4
       ' Latest resume uploaded on
       = resume.created_at
-    = image_tag resume.resume_file.url(:preview)
+    = resume.resume_file.url
