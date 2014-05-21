@@ -12,7 +12,7 @@ main_page_content = [
 project = Project.create!(
   title: "Anscombe's Quartet Bootcamp",
   description: main_page_content,
-  short_description: "This bootcamp is mean\'t to introduce you to the R programming skills that will enable you to go through the Anscombe Quartets project effectively.",
+  short_description: "This bootcamp is mean\'t to introduce you to the R programming skills that will enable you to go through the Anscombe Quartets project more effectively.",
   number: 2,
   enabled: true,
   uid: 2,
