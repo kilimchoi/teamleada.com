@@ -266,7 +266,7 @@ work_with_data_post_content = [
 ]
 
 work_with_data_post_lesson = Lesson.create!(
-  title: "Correct Analysys of the Datasets",
+  title: "Correct Analysis of the Datasets",
   project: project,
   lesson_id: 2,
 )
