@@ -29,6 +29,7 @@ manipulate_data_content = [
   ['code', 'ChickWeight'],
   ['text', 'To access information about the dataset'],
   ['code', 'help(ChickWeight)'],
+  ['lesson_links', nil],
 ]
 
 
@@ -71,6 +72,7 @@ view_data_content_two = [
   ['code', 'colnames(ChickWeight)'],
   ['text', 'If you want to select individual columns of a data frame you use the "$" followed by the title of the column you want to select.'],
   ['code', 'ChickWeight$weight'],
+  ['next_steps', nil],
 ]
 
 view_data_step = Step.create!(
@@ -107,9 +109,10 @@ index_data_content = [
 
 index_data_content_two = [
   ['text', 'If we want to index and return the entire dataset we can again use the same [row, column] format. We index the entire data frame by selecting all rows where the weight is greater than 10.'],
-  ['code', 'data_with_weight_greater_than_ten <- ChickWeight[ChickWeight$weight > 10, ]'],
+  ['code', 'data_with_weight_greater_than_ten = ChickWeight[ChickWeight$weight > 10, ]'],
   ['text', 'We assign this newly indexed data frame to the variable name data_with_weight_greater_than_ten. To view it use the head() function.'],
   ['code', 'head(data_with_weight_greater_than_ten)'],
+  ['next_steps', nil],
 ]
 
 
@@ -140,6 +143,7 @@ index_slide_two = Slide.create!(
 visualize_bootcamp_content = [
   ['text', 'R has tons of extra resources for making complex visualizations. In this bootcamp we will introduce a couple of the most basic ones.'],
   ['text', 'R\'s powerful visualization tools are one of its biggest advantages though so be sure to do your own research on how to create beautiful graphics.'],
+  ['lesson_links', nil]
 ]
 
 
@@ -174,6 +178,7 @@ barplot_bootcamp_content_two = [
   ['code', 'help(barplot)'],
   ['text', ' We do some of the basic ones such as setting the length for the y-axis, labeling the axes, and the plot title.'],
   ['code', 'barplot(table(ChickWeight$Diet), ylim = c(0,250), ylab = "Observations", xlab = "Diet Type", main = "Chick Weight Diet")'],
+  ['next_steps', nil],
 ]
 
 quiz = Quiz.create!(
@@ -208,6 +213,7 @@ density_plot_content = [
   ['text', 'Looking at the visualization you can see that from the data given its most likely that a randomly selected chick weighs approximately 80 grams.'],
   ['text', 'The plot() function is the generic function for plotting objects in R. Check help for all of the arguments in the function there are a lot! We add additional arguments for clarity below:'],
   ['code', 'plot(density(ChickWeight$weight), main="PDF of Chick Weight Variable", xlab = "Weight", ylab = "Probability")'],
+  ['next_steps', nil],
 ]
 
 density_plot_step = Step.create!(
@@ -229,6 +235,7 @@ programming_bootcamp_content = [
   ['text', 'In this bootcamp we will cover the two most fundamental control statements in programming. The if/else statement and the for loop. If you have any previous programming experience this will all be review and what you should take note of us the syntax that is R specific.'],
   ['text', 'By far the best way to understand them is to continuously use them so do not be concerned if these code snippets are difficult to understand!'],
   ['text', 'Eventually using these statements will become as familiar as writing 1 + 1'],
+  ['lesson_links', nil]
 ]
 
 
@@ -273,7 +280,7 @@ if_else_content_two = [
 
 if_else_content_three = [
   ['text', 'You can also add additional "else" cases to make more complex if/else statements! We do an example here with the ChickWeight data'],
-  ['code', 'chick_weight <- ChickWeight$weight[1]'],
+  ['code', 'chick_weight = ChickWeight$weight[1]'],
   ['code', 'if (chick_weight == 100) {'],
   ['code', '  print("Fatty")'],
   ['code', '} else if (chick_weight > 50) {'],
@@ -281,7 +288,7 @@ if_else_content_three = [
   ['code', '} else if (chick_weight < 20) {'],
   ['code', '  print("Skinny-legs")'],
   ['code', '} else {'],
-  ['code', 'print("42 is a normal weight!")'],
+  ['code', '  print("42 is a normal weight!")'],
   ['code', '}'],
 ]
 
@@ -289,6 +296,7 @@ if_else_content_four = [
   ['text', 'Here we set a variable "chick_weight" to be the first chick weight in the ChickWeight dataset.'],
   ['text', 'In the if/else statement we check first if its equal to 100, if its greater than 50, and if its less than 20. If at anytime the logical condition is true it immediately goes into the statement below it and then exits the entire if/else statement.'],
   ['text', 'Since none of the logical conditions were true we ended with the final statement!'],
+  ['next_steps', nil],
 ]
 
 
@@ -344,11 +352,11 @@ for_loop_content = [
 
 for_loop_content_two = [
   ['text', 'Remember that within the statement block you can do any type of data manipulation. Here we loop through the number of observations in the ChickWeight weight and add five to each one.'],
-  ['code', 'numofchicks <- length(ChickWeight$weight)'],
+  ['code', 'numofchicks = length(ChickWeight$weight)'],
   ['text', 'Lets check the weight of the chicks before we implement this for loop'],
   ['code', 'head(ChickWeight$weight)'],
   ['code', 'for(i in c(1:numofchicks)) {'],
-  ['code', '  ChickWeight$weight[i] <- ChickWeight$weight[i] + 5'],
+  ['code', '  ChickWeight$weight[i] = ChickWeight$weight[i] + 5'],
   ['code', '}'],
   ['text', 'Lets now check the weight of the chicks after.'],
   ['code', 'head(ChickWeight$weight)'],
@@ -356,21 +364,26 @@ for_loop_content_two = [
 
 
 for_loop_content_three = [
-  ['text', 'We are now going to put all of our understanding of control structures together and do cool stuff with the ChickWeight dataset. In the Titanic project you will be creating indicator variables and in this bootcamp we will explain the syntax that does it!'],
-  ['text', 'Lets say that we wanted to have an indicator variable with the ChickWeight dataset to highlight when the weight of the chick is greater than 100.'],
-  ['text', 'First we create a new column in the ChickWeight data set'],
-  ['code', 'ChickWeight$FattyIndicator <- 0'],
-  ['text', 'Now what we want to do is write a for loop to loop through each of the weights in the weight column, and if the weight is greater than 100 we want to add a 1 to the "FattyIndicator" column.'],
+  ['text', 'We are now going to put all of our understanding of control structures together and do cool stuff with the ChickWeight dataset.'],
+  ['text', 'In the Titanic project you will be creating indicator variables and in this bootcamp we will explain the syntax that does it!'],
+  ['text', 'Lets say that we wanted to have an indicator variable with the ChickWeight dataset to highlight which of the chick weights are greater than 100.'],
+  ['text', 'First we create a new column in the ChickWeight data set.'],
+  ['code', 'ChickWeight$FattyIndicator = 0'],
+]
+
+for_loop_content_four = [
+  ['text', 'Now we want to do write a for loop to loop through each of the weights in the weight column, and if the weight is greater than 100 we want to add a 1 to the "FattyIndicator" column.'],
   ['code', 'for (i in c(1:nrow(ChickWeight))) {'],
   ['code', '  if (ChickWeight$weight[i] > 100) {'],
-  ['code', '    ChickWeight$FattyIndicator[i] <- 1'],
+  ['code', '    ChickWeight$FattyIndicator[i] = 1'],
   ['code', '  } else {'],
-  ['code', '    ChickWeight$FattyIndicator[i] <- 0'],
+  ['code', '    ChickWeight$FattyIndicator[i] = 0'],
   ['code', '  }'],
   ['code', '}'],
   ['text', 'Check which chicks are fatty\'s!'],
   ['code', 'ChickWeight'],
   ['feedback', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
+  ['project_link', 'Back to the lessons page'],
 ]
 
 
@@ -397,4 +410,10 @@ for_loop_slide_three = Slide.create!(
   content: for_loop_content_three,
   parent: for_loop_step,
   slide_id: 2,
+)
+
+for_loop_slide_four = Slide.create!(
+  content: for_loop_content_four,
+  parent: for_loop_step,
+  slide_id: 3,
 )
