@@ -6,7 +6,7 @@ main_page_content = [
 ]
 
 project = Project.create!(
-  title: "Titanic Bootcamp",
+  title: "Kaggle Titanic Bootcamp",
   description: main_page_content,
   short_description: "In this bootcamp you will be introduced to the R programming concepts necessary to fully understand the Titanic: Machine Learning from Disaster data project.",
   number: 5,
