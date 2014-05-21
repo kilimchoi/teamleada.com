@@ -208,7 +208,7 @@ basic_math_slide_three = Slide.create!(
 ################################################################################
 ##Combining Intro Concepts
 combined_operations_content_one = [
-  ['text', 'To introduce code in R that you don\'t want to exectue, just put a # before it.'],
+  ['text', 'To introduce code in R that you don\'t want to execute, just put a # before it.'],
   ['text', 'This is called adding "comments" to your code.'],
   ['text', 'Let\'s now do some operations and recap what we\'ve done!'],
   ['code', 'melon_cake = melon + cake'],

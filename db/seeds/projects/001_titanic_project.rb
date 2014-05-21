@@ -435,9 +435,9 @@ increase_score_three_content = [
   ['code','    testData[i, 7] <- 2'],
   ['code','  }'],
   ['code', '}'],
-  ['text', 'What other variables can you think of and implement that are predictive of survival on the Titanic?'],
+  ['text', 'What other variables can you think of that might help the predictive model?'],
   ['feedback', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
-  ['lesson_links', nil],
+  ['project_link', 'Back to the lessons page'],
 ]
 
 increase_score_lesson = Lesson.create!(
