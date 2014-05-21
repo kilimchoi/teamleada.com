@@ -294,7 +294,7 @@ data_one_post_content_two = [
 ]
 
 data_one_post_step = Step.create!(
-  title: "(proper) Data One",
+  title: "Correct Analysis of Data One",
   lesson: work_with_data_post_lesson,
   step_id: 0,
 )
@@ -359,7 +359,7 @@ data_two_post_content_four = [
 ]
 
 data_two_post_step = Step.create!(
-  title: "(proper) Data Two",
+  title: "Correct Analysis of Data Two",
   lesson: work_with_data_post_lesson,
   step_id: 1,
 )
@@ -420,7 +420,7 @@ data_three_post_content_three = [
   ['next_steps', nil],
 ]
 data_three_post_step = Step.create!(
-  title: "(proper) Data Three",
+  title: "Correct Analysis of Data Three",
   lesson: work_with_data_post_lesson,
   step_id: 2,
 )
@@ -490,7 +490,7 @@ data_four_post_content_four = [
 ]
 
 data_four_post_step = Step.create!(
-  title: "(proper) Data Four",
+  title: "Correct Analysis of Data Four",
   lesson: work_with_data_post_lesson,
   step_id: 3,
 )
