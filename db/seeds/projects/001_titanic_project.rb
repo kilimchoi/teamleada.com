@@ -181,7 +181,7 @@ train_clean_content_one = [
 train_clean_content_two = [
   ['text', 'Then we loop through the observations in the dataset and if the age value is missing we assign it to be the mean age'],
   ['code', 'for (i in 1:nrow(trainData)) {'],
-  ['code', '  if (is.na(trainData[i,6])) {'],
+  ['code', '  if (is.na(trainData$Age)) {'],
   ['code', '    trainData$Age[i] <- mean_age'],
   ['code', '  }'],
   ['code', '}'],
@@ -261,8 +261,8 @@ test_clean_one_content = [
   ['code', 'test_mean_age <- round(mean(testData$Age, na.rm= T), digits = 3)'],
   ['text', 'We loop through each observation and input the mean age when necessary'],
   ['code', 'for (i in 1:nrow(testData)) {'],
-  ['code', '  if (is.na(testData[i,5])) {'],
-  ['code', '    testData[i, 5] <- test_mean_age'],
+  ['code', '  if (is.na(testData$Age[i])) {'],
+  ['code', '    testData$Age[i] <- test_mean_age'],
   ['code', '  }'],
   ['code', '}'],
   ['next_steps', nil]
