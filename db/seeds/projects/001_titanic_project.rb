@@ -357,7 +357,7 @@ apply_ctree_one_content = [
 
 apply_ctree_two_content = [
   ['text', 'For our first model we only use "Pclass", "Sex", and "Age" to predict "Survived". '],
-  ['text', 'First we need to install a package in R'],
+  ['text', 'First we need to load a package in R'],
   ['code', 'library(\'rpart\')'],
   ['text', 'We create our model and name it "tree_model"'],
   ['code', 'tree_model <- rpart(Survived ~ Pclass + Sex + Age, data = trainData, method = "class")'],
@@ -374,7 +374,7 @@ apply_ctree_three_content = [
   ['text', 'We match our predictions with the appropriate PassengerId:'],
   ['code', 'model_submission <- cbind(testData$PassengerId, test_predictions)'],
   ['text', 'We rename the columns for clarity:'],
-  ['code', 'colnames(model_submission) <- c("PassengerId", "Prediction")'],
+  ['code', 'colnames(model_submission) <- c("PassengerId", "Survived")'],
   ['text', 'We use the write.csv() function to convert our data frame in R into a CSV file:'],
   ['code', 'write.csv(model_submission, "mysubmission.csv", row.names = FALSE)'],
   ['text', 'And now you can submit this file to the submission page and see where you rank on the LeadaBoard! Go to the "Increase your Score" page to learn ways to move up on the Leadaboard!'],
