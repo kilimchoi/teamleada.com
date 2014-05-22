@@ -62,7 +62,7 @@ view_data_content = [
 
 quiz = Quiz.create!(
   quiz_id: "t_bootcamp_1",
-  answer:"108",
+  answer:"93",
 )
 
 view_data_content_two = [
@@ -103,13 +103,13 @@ index_data_content = [
   ['code', 'ChickWeight$weight[5]'],
   ['text', 'If we wanted to grab a range of values in the weight column we index by a vector of values'],
   ['code', 'ChickWeight$weight[c(1:5)]'],
-  ['text', 'Finally you can index a dataset by logical comparisons. Here we select all of the weights which are greater than 10.'],
-  ['code', 'ChickWeight$weight[ChickWeight$weight > 10]'],
+  ['text', 'Finally you can index a dataset by logical comparisons. Here we select all of the weights which are greater than 70.'],
+  ['code', 'ChickWeight$weight[ChickWeight$weight > 70]'],
 ]
 
 index_data_content_two = [
-  ['text', 'If we want to index and return the entire dataset we can again use the same [row, column] format. We index the entire data frame by selecting all rows where the weight is greater than 10.'],
-  ['code', 'data_with_weight_greater_than_ten = ChickWeight[ChickWeight$weight > 10, ]'],
+  ['text', 'If we want to index and return the entire dataset we can again use the same [row, column] format. We index the entire data frame by selecting all rows where the weight is greater than 70.'],
+  ['code', 'data_with_weight_greater_than_ten = ChickWeight[ChickWeight$weight > 70, ]'],
   ['text', 'We assign this newly indexed data frame to the variable name data_with_weight_greater_than_ten. To view it use the head() function.'],
   ['code', 'head(data_with_weight_greater_than_ten)'],
   ['next_steps', nil],
