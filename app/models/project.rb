@@ -40,6 +40,12 @@ class Project < ActiveRecord::Base
   extend FriendlyId
   friendly_id :url, use: :finders
 
+  BEGINNER = "Beginner"
+  INTERMEDIATE = "Intermediate"
+  ADVANCED = "Advanced"
+  EXPERT = "Expert"
+  DIFFICULTIES = [BEGINNER, INTERMEDIATE, ADVANCED, EXPERT]
+
   def set_url
     self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize
   end
