@@ -62,7 +62,7 @@ view_data_content = [
 
 quiz = Quiz.create!(
   quiz_id: "t_bootcamp_1",
-  answer:"108",
+  answer:"93",
 )
 
 view_data_content_two = [
