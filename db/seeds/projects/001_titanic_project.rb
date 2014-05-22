@@ -181,7 +181,7 @@ train_clean_content_one = [
 train_clean_content_two = [
   ['text', 'Then we loop through the observations in the dataset and if the age value is missing we assign it to be the mean age'],
   ['code', 'for (i in 1:nrow(trainData)) {'],
-  ['code', '  if (is.na(trainData$Age)) {'],
+  ['code', '  if (is.na(trainData$Age[i])) {'],
   ['code', '    trainData$Age[i] <- mean_age'],
   ['code', '  }'],
   ['code', '}'],
