@@ -37,6 +37,8 @@ class Project < ActiveRecord::Base
   scope :costs_money, -> { where(paid: true) }
   scope :enabled, -> { where(enabled: true) }
 
+  default_scope -> { order(:uid) }
+
   extend FriendlyId
   friendly_id :url, use: :finders
 

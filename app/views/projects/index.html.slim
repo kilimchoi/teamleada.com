@@ -13,11 +13,12 @@
                     .project-circle
                       .front-text
                         h3 = project.title
-                        span [class="label label-#{project.difficulty_tag}"]
+                        span [class="label label-#{project.difficulty_tag} difficulty-tag"]
                           ' Difficulty -
                           = project.difficulty
+                        .clearfix
                         - if project.paid?
-                          span.label.label-success
+                          span.label.label-success.price-tag
                             ' Company Sponsored -
                             = project.cost_in_dollars
 
