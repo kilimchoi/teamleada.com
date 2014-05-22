@@ -58,6 +58,21 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def difficulty_tag
+    case difficulty
+    when BEGINNER
+      "info"
+    when INTERMEDIATE
+      "primary"
+    when ADVANCED
+      "warning"
+    when EXPERT
+      "danger"
+    else
+      "default"
+    end
+  end
+
   def check_submission(file)
     # Method to check the submission that the user uploaded
     solution_file = File.expand_path("#{Rails.root}/db/project_solutions/#{"%03d" % self.number}-#{self.url}.csv", __FILE__)

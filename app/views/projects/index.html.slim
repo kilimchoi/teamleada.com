@@ -13,6 +13,9 @@
                     .project-circle
                       .front-text
                         h3 = project.title
+                        span [class="label label-#{project.difficulty_tag}"]
+                          ' Difficulty -
+                          = project.difficulty
                         - if project.paid?
                           span.label.label-success
                             ' Company Sponsored -
