@@ -2,5 +2,5 @@
   .col-md-12
     h4
       ' Latest resume uploaded on
-      = resume.created_at
-    = resume.resume_file.url
+      = resume.pretty_upload_date
+    = link_to "Most recent resume", resume.resume_file.url, class: "flat-button"
