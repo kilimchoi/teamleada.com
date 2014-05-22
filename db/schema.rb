@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140520052632) do
+ActiveRecord::Schema.define(version: 20140522150634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 20140520052632) do
     t.integer  "cost"
     t.boolean  "paid",              default: false
     t.integer  "uid",                               null: false
+    t.string   "difficulty"
   end
 
   create_table "quizzes", force: true do |t|
