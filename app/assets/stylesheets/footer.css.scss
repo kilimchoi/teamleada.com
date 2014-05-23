@@ -6,13 +6,20 @@
   p {
     margin: 0;
   }
-
-  .heap-analytics {
-    text-align: right;
-    position: relative;
-    right: 0;
-    bottom: 30px;
-    float: right;
-  }
+}
+.heap-analytics {
+  text-align: right;
+  position: relative;
+  right: 0;
+  bottom: 75px;
+  float: right;
+}
+.facebook {
+  position: relative;
+  bottom: 58px;
 }
 
+.twitter {
+  position: relative;
+  left: 15px;
+}
