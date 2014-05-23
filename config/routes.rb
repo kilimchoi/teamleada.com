@@ -64,7 +64,11 @@ TeamLeada::Application.routes.draw do
       end
     end
     resources :projects, only: [:index, :show]
-    resources :codes
+    resources :codes do
+      member do
+        match '/', to: 'codes#update', as: :update, via: :put
+      end
+    end
     resources :employer_applications, path: "employer-applications", only: [:index, :show]
   end
 

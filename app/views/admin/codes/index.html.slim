@@ -16,5 +16,4 @@
             td = code.group
             td = code.user_type
             td = code.users.count
-            / TODO: Make this a checkbox that is ajax-editable
-            td = code.enabled?
+            td = best_in_place code, :enabled, path: update_admin_code_path(code), type: :checkbox

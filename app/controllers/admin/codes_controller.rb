@@ -2,6 +2,8 @@ class Admin::CodesController < Admin::BaseController
   load_and_authorize_resource
   require 'securerandom'
 
+  respond_to :html, :json
+
   def new
     @code = Code.new
     # TODO: Hopefully there aren't any collisions...
@@ -24,6 +26,24 @@ class Admin::CodesController < Admin::BaseController
   end
 
   def update
+    if @code.update_attributes(code_params)
+      respond_to do |format|
+        format.json { render json: @code.to_json, status: :ok }
+        format.html {
+          flash[:info] = "You have edited the code for user type: #{@code.user_type}"
+          redirect_to admin_code_path(@code)
+        }
+      end
+    else
+      respond_to do |format|
+        format.json { render json: @code.to_json, status: :unprocessible_entity }
+        format.html {
+          flash[:error] = "There was a problem updating the code for user type: #{@code.user_type}"
+          redirect_to admin_code_path(@code)
+        }
+      end
+    end
+
   end
 
   def destroy
@@ -35,7 +55,7 @@ class Admin::CodesController < Admin::BaseController
   private
 
   def code_params
-    params.require(:code).permit(:group, :value, :user_type)
+    params.require(:code).permit(:group, :value, :user_type, :enabled)
   end
 
 end
