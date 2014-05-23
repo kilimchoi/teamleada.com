@@ -9,7 +9,7 @@
       = form_tag admin_users_path, method: :get, id: "users_search" do
         = hidden_field_tag :direction, params[:direction]
         = hidden_field_tag :sort, params[:sort]
-        .input-group
+        .input-group.user-search-bar
           = text_field_tag :q, params[:q], class: 'form-control', placeholder: "Search"
           span.input-group-btn
             = submit_tag "Search", class: "btn btn-leada"
