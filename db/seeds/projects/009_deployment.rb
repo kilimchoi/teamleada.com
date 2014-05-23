@@ -11,6 +11,7 @@ project = Project.create!(
   paid: true,
   cost: 500,
   uid: 9,
+  difficulty: 'Advanced',
 )
 
 ################################################################################

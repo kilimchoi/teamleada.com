@@ -18,6 +18,7 @@ project = Project.create!(
   has_leaderboard: true,
   has_submit: true,
   uid: 1,
+  difficulty: 'Intermediate',
 )
 ################################################################################
 

@@ -16,6 +16,7 @@ project = Project.create!(
   number: 3,
   enabled: true,
   uid: 3,
+  difficulty: 'Beginner',
 )
 
 ################################################################################
