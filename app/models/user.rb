@@ -124,7 +124,18 @@ class User < ActiveRecord::Base
   end
 
   def resume
-    self.has_resume? ? self.resumes.last : nil
+    self.has_resume? ? self.last_resume : nil
+  end
+
+  def last_resume
+    if self.has_resume?
+      resume = self.resumes.last
+      if resume.new_record?
+        self.resumes.last(2).first
+      else
+        resume
+      end
+    end
   end
 
   def is_admin?

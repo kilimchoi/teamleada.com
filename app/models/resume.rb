@@ -11,4 +11,9 @@ class Resume < ActiveRecord::Base
     }
 
   validates_attachment_content_type :resume_file, content_type: "application/pdf"
+
+  def pretty_upload_date
+    created_at.strftime("%B %d, %Y")
+  end
+
 end
