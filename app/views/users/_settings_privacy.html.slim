@@ -13,6 +13,11 @@ ul.privacy-settings
               span.priv-col Who can see your profile?
               span = best_in_place current_user, :who_can_see_profile, type: :select, collection: User::USER_TYPES, data: { field: 'who can see your profile' }, activator: "#edit-see-profile"
               span.edit-row Edit
+          li.settings-row.clearfix
+            = link_to("#", id: "edit-see-resume", class: "row-link clearfix") do
+              span.priv-col Who can see your Resume?
+              span = best_in_place current_user, :who_can_see_resume, type: :select, collection: User::USER_TYPES, data: { field: 'who can see your resume' }, activator: "#edit-see-resume"
+              span.edit-row Edit
   li.settings-row
     .clearfix
       span.privacy-topic Who can contact me?
