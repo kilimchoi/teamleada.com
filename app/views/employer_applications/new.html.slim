@@ -32,6 +32,16 @@
         | We transform it into scalable eLearning content.<br>
         | Gain access to our top users.
   .row.employer-row
+    h1.center Data Project Partners
+    .row
+      .col-md-3.col-md-offset-2
+        .image.sponsor-logo
+          = image_tag "mightyhive-logo.png", class: "sponsor-logo"
+      .col-md-3.col-md-offset-1
+        .image
+          = image_tag "statricks-logo.png", class: "sponsor-logo"
+  .divider
+  .row.employer-row
     .col-md-6.col-md-offset-3
       h1 Let Us Help You
       = simple_form_for @employer_application, url: employer_index_path do |f|
