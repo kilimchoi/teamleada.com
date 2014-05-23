@@ -37,8 +37,16 @@ class Project < ActiveRecord::Base
   scope :costs_money, -> { where(paid: true) }
   scope :enabled, -> { where(enabled: true) }
 
+  default_scope -> { order(:uid) }
+
   extend FriendlyId
   friendly_id :url, use: :finders
+
+  BEGINNER = "Beginner"
+  INTERMEDIATE = "Intermediate"
+  ADVANCED = "Advanced"
+  EXPERT = "Expert"
+  DIFFICULTIES = [BEGINNER, INTERMEDIATE, ADVANCED, EXPERT]
 
   def set_url
     self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize
@@ -49,6 +57,21 @@ class Project < ActiveRecord::Base
       "$0"
     else
       "$%.2f" % (cost / 100)
+    end
+  end
+
+  def difficulty_tag
+    case difficulty
+    when BEGINNER
+      "info"
+    when INTERMEDIATE
+      "primary"
+    when ADVANCED
+      "warning"
+    when EXPERT
+      "danger"
+    else
+      "default"
     end
   end
 
