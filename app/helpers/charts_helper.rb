@@ -86,10 +86,10 @@ module ChartsHelper
     all_users = all_users.values.map{ |array| sum += array.count }
 
     comparison_ids = comparison_model.where("#{attribute} = ?", value)
-    comparison_objects = UserCode.where(code_id: comparison_ids).collect{ |user_code| user_code.users }
-    project_access_users = zeros.merge(comparison_objects.where("created_at > ?", timeframe).group_by{ |user| user.created_at.to_date })
+    comparison_objects = Code.where(id: comparison_ids)
+    project_access_users = zeros.merge(comparison_objects.collect{ |code| code.users.where("users.created_at > ?", timeframe) }.flatten.group_by{ |user| user.created_at.to_date })
 
-    sum = comparison_objects.where("created_at < ?", timeframe).count
+    sum = comparison_objects.collect{ |code| code.users.where("users.created_at < ?", timeframe).count }.sum
     project_access_users = project_access_users.values.map{ |array| sum += array.count }
 
     overall_values["All Users"] = all_users
@@ -122,7 +122,7 @@ module ChartsHelper
   end
 
   def detailed_users_chart(timeframe)
-    comparison_chart(timeframe, User, Code, :group, "project-access", "Users with project access compared to all users", "Total number of sign ups")
+    comparison_chart(timeframe, User, Code, :access_type, "project-access", "Users with project access compared to all users", "Total number of sign ups")
   end
 
 end
