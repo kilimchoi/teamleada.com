@@ -15,7 +15,7 @@ ul.privacy-settings
               span.edit-row Edit
           li.settings-row.clearfix
             = link_to("#", id: "edit-see-resume", class: "row-link clearfix") do
-              span.priv-col Who can see your Resume?
+              span.priv-col Who can see your resume?
               span = best_in_place current_user, :who_can_see_resume, type: :select, collection: User::USER_TYPES, data: { field: 'who can see your resume' }, activator: "#edit-see-resume"
               span.edit-row Edit
   li.settings-row

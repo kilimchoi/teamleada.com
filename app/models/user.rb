@@ -105,12 +105,12 @@ class User < ActiveRecord::Base
   end
 
   def set_privacy_preferences
-    self.who_can_see_profile = "Public"
-    self.who_can_send_friend_requests = "Public"
-    self.who_can_contact = "Connections & Recruiters"
-    self.who_can_lookup_using_email = "Connections & Recruiters"
-    self.who_can_lookup_by_name = "Connections & Recruiters"
-    self.who_can_see_resume = "Connections & Recruiters"
+    self.who_can_see_profile = PUBLIC
+    self.who_can_send_friend_requests = PUBLIC
+    self.who_can_contact = CONNECTIONS_AND_RECRUITERS
+    self.who_can_lookup_using_email = CONNECTIONS_AND_RECRUITERS
+    self.who_can_lookup_by_name = CONNECTIONS_AND_RECRUITERS
+    self.who_can_see_resume = CONNECTIONS_AND_RECRUITERS
   end
 
   #########################################################################################
