@@ -28,6 +28,12 @@ TeamLeada::Application.routes.draw do
   resources :users, only: [:show, :update]
   resources :interested_users, only: [:create]
 
+  resources :questions, only: [:show, :index, :new, :create] do
+    member do
+      match 'up-vote', to: 'questions#up_vote', as: 'up_vote', via: :post
+    end
+  end
+
   match 'employer', to: 'employer_applications#new', as: 'new_employer', via: :get
   resources :employer_applications, path: 'employer', as: 'employer', only: [:create]
 
