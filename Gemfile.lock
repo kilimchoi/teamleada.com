@@ -104,6 +104,9 @@ GEM
     execjs (2.0.2)
     factory_girl (4.4.0)
       activesupport (>= 3.0.0)
+    factory_girl_rails (4.4.1)
+      factory_girl (~> 4.4.0)
+      railties (>= 3.0.0)
     fast-stemmer (1.0.2)
     ffi (1.9.3)
     font-awesome-rails (4.1.0.0)
@@ -339,7 +342,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   commands (~> 0.2.1)
   devise (~> 3.2.3)
-  factory_girl (~> 4.4.0)
+  factory_girl_rails (~> 4.4.0)
   font-awesome-rails
   foreman (~> 0.63)
   friendly_id (~> 5.0.3)
