@@ -6,7 +6,7 @@
         = f.error_notification
         .form-inputs
           = f.input :value, value: @code.value
-          = f.input :group, collection: Code::GROUPS
+          = f.input :access_type, collection: Code::ACCESS_TYPES
           = f.input :user_type
         .form-actions
           = f.button :submit, class: "flat-button"
