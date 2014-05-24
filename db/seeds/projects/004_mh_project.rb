@@ -7,11 +7,13 @@ main_page_content = [
 ]
 
 project = Project.create!(
-  title:"MightyHive: Testing the Effectiveness of Advertisement Campaigns",
+  title:"MightyHive",
   description: main_page_content,
   short_description: "A data project sponsored by Mightyhive, an advertising technology company. This data is based on a real problem that the analytics team at MightyHive encountered. You will perform data cleaning, de-duplication, and statistical analysis to determine the results of their marketing technology.",
   number: 4,
   enabled: true,
+  paid: true,
+  cost: 500,
   uid: 4,
   difficulty: 'Advanced',
 )
