@@ -1,14 +1,20 @@
 FactoryGirl.define do
   factory :user do
-    first_name "John"
-    last_name  "Doe"
-    admin false
-  end
+    first_name "Mark"
+    last_name  "Awesome"
+    email "mark@isawesome.com"
+    username "markisawesome"
 
-  # This will use the User class (Admin would have been guessed)
-  factory :admin, class: User do
-    first_name "Admin"
-    last_name  "User"
-    admin      true
+    factory :student do
+      role "student"
+    end
+
+    factory :admin do
+      role "admin"
+    end
+
+    factory :company do
+      role "employee"
+    end
   end
 end
