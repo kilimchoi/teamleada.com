@@ -15,6 +15,7 @@
 #  cost              :integer
 #  paid              :boolean          default(FALSE)
 #  uid               :integer          not null, primary key
+#  difficulty        :string(255)
 #
 
 class Project < ActiveRecord::Base
