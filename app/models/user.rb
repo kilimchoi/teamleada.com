@@ -149,7 +149,7 @@ class User < ActiveRecord::Base
 
   def has_project_access?
     # TODO: Change it so that project-access is not hard-coded
-    is_admin? || self.codes.where(group: "project-access").count > 0
+    is_admin? || self.codes.where(access_type: "project-access").count > 0
   end
 
   def has_missing_profile_info?
