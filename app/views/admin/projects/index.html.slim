@@ -8,6 +8,7 @@
       .row
         .col-md-12
           table.table.table-striped
+            th UID
             th Title
             th Enabled?
             th Has Leaderboard?
@@ -17,6 +18,7 @@
             th Interested Users
             - @projects.each do |project|
               tr
+                td = project.uid
                 td = link_to project.title, admin_project_path(project)
                 td = project.enabled?
                 td = project.has_leaderboard?
