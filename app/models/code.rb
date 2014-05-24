@@ -19,4 +19,6 @@ class Code < ActiveRecord::Base
   validates :user_type, presence: true
 
   GROUPS = ["project-access"]
+
+  default_scope -> { order(:created_at) }
 end
