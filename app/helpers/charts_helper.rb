@@ -75,6 +75,34 @@ module ChartsHelper
     )
   end
 
+  def comparison_chart(timeframe, base_model, comparison_model, attribute, value, title, y_axis)
+    overall_values = {}
+
+    zeros = Hash[(timeframe.to_date..Date.today).map { |day| [ day, [] ] }]
+    all_users = zeros.merge(base_model.where("created_at > ?", timeframe).group_by{ |user| user.created_at.to_date })
+    categories = all_users.keys.map{ |date| date.strftime("%B %d")}
+
+    sum = base_model.where("created_at < ?", timeframe).count
+    all_users = all_users.values.map{ |array| sum += array.count }
+
+    comparison_ids = comparison_model.where("#{attribute} = ?", value)
+    comparison_objects = Code.where(id: comparison_ids)
+    project_access_users = zeros.merge(comparison_objects.collect{ |code| code.users.where("users.created_at > ?", timeframe) }.flatten.group_by{ |user| user.created_at.to_date })
+
+    sum = comparison_objects.collect{ |code| code.users.where("users.created_at < ?", timeframe).count }.sum
+    project_access_users = project_access_users.values.map{ |array| sum += array.count }
+
+    overall_values["All Users"] = all_users
+    overall_values["Users with project access"] = project_access_users
+
+    multichart(
+      title,
+      y_axis,
+      categories,
+      overall_values,
+    )
+  end
+
   # Single line graphs
   def users_chart(timeframe)
     chart_from_model(timeframe, User, "Sign ups on Leada on Time (past 30 days)", "Total number of sign ups")
@@ -91,6 +119,10 @@ module ChartsHelper
   # Multiple line graphs
   def multiple_projects_chart(timeframe)
     multiline_chart_from_model(timeframe, ProjectInterest, :project_id, Project, :title, "Project interest (past 30 days)", "Total number of interest in specific projects")
+  end
+
+  def detailed_users_chart(timeframe)
+    comparison_chart(timeframe, User, Code, :access_type, "project-access", "Users with project access compared to all users", "Total number of sign ups")
   end
 
 end

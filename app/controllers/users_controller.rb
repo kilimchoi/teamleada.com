@@ -52,7 +52,7 @@ class UsersController < ApplicationController
         end
         current_user.codes << @code
         # TODO: Not hard code project-access
-        if @code.group == 'project-access'
+        if @code.access_type == 'project-access'
           flash[:info] = "Congratulations, you now have access to our data projects!"
           redirect_to projects_path
         else
