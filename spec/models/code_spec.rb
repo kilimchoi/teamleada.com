@@ -13,5 +13,20 @@
 require 'spec_helper'
 
 describe Code do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  before :each do
+    @code = Code.new(
+      value: "12345678",
+      user_type: "test",
+      enabled: true,
+      access_type: "project-access",
+    )
+  end
+
+  describe "#value" do
+    it "returns the correct value" do
+      @code.value.should eql "12345678"
+    end
+  end
+
 end
