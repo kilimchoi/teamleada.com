@@ -48,4 +48,12 @@ describe Code do
     end
   end
 
+  describe "user access to projects" do
+    @user = create(:student)
+    @user.codes << @code
+    context "when student has code with access_type = 'project-access'" do
+      it { @user.has_project_access?.should be_true }
+    end
+  end
+
 end
