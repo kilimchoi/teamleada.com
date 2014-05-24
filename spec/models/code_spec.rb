@@ -30,4 +30,22 @@ describe Code do
     end
   end
 
+  describe "#user_type" do
+    it "returns the correct value" do
+      @code.user_type.should eql "test"
+    end
+  end
+
+  describe "#enabled" do
+    it "returns the correct value" do
+      @code.enabled.should be_true
+    end
+  end
+
+  describe "#access_type" do
+    it "returns the correct value" do
+      @code.access_type.should eql "project-access"
+    end
+  end
+
 end
