@@ -1,0 +1,18 @@
+.container-fluid.full-container
+  .row
+    .col-md-12
+      h1 All Questions
+      table.table.table-striped
+        th Question
+        th User
+        th Date posted
+        th Up Votes
+        - @questions.each do |question|
+          tr
+            td = question.title
+            - unless question.asker.nil?
+              td = link_to question.asker.name, admin_user_path(question.asker)
+            - else
+              td anonymous
+            td = question.pretty_post_date
+            td = question.up_votes
