@@ -82,6 +82,10 @@ TeamLeada::Application.configure do
   #GA.tracker = ENV["GA_TRACKER"]
   config.action_mailer.default_url_options = { :host => ENV['HOST'] }
 
+  config.after_initialize do
+    Rails.application.routes.default_url_options[:host] = ENV['HOST']
+  end
+
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',

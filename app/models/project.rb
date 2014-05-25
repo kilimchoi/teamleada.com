@@ -15,10 +15,12 @@
 #  cost              :integer
 #  paid              :boolean          default(FALSE)
 #  uid               :integer          not null, primary key
+#  difficulty        :string(255)
 #
 
 class Project < ActiveRecord::Base
   require 'csv'
+  include Rails.application.routes.url_helpers
   self.primary_key = "uid"
 
   serialize :description, Array
@@ -73,6 +75,10 @@ class Project < ActiveRecord::Base
     else
       "default"
     end
+  end
+
+  def full_url
+    project_path(self)
   end
 
   def check_submission(file)

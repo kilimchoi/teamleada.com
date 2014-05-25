@@ -9,7 +9,7 @@
             - slice.each do |project|
               .col-sm-4
                 .ih-item.circle.effect13.left_to_right
-                  = link_to "", data: { toggle: "modal", target: "##{project.url}" } do
+                  = link_to "", data: { toggle: "modal", target: "##{project.url}" }, onclick: "modalPageView('#{project.full_url}')" do
                     .project-circle
                       .front-text
                         h3 = project.title

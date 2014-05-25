@@ -30,10 +30,10 @@
 #  who_can_contact              :string(255)
 #  who_can_lookup_using_email   :string(255)
 #  who_can_lookup_by_name       :string(255)
+#  who_can_see_resume           :string(255)
 #
 
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
 end
