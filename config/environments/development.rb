@@ -27,4 +27,8 @@ TeamLeada::Application.configure do
   # Add mailer
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   ActionMailer::Base.perform_deliveries = false
+
+  config.after_initialize do
+    Rails.application.routes.default_url_options[:host] = 'localhost:3000'
+  end
 end
