@@ -1,4 +1,12 @@
-.container-fluid.full-container
+= provide(:page_title, "Ask Peter Norvig!")
+
+.container.full-container
+  .row
+    .col-md-8.col-md-offset-2
+      h1 Ask a question about Data Science!
+      = simple_form_for @question do |f|
+        = f.input :title, label: "Question"
+        = f.input :description
+        = f.submit "Submit", class: "flat-button"
   .row
     .col-md-12
-      h1 Ask Peter Norvig about Data Science!
