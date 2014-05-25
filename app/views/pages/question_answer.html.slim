@@ -10,3 +10,6 @@
         = f.submit "Submit", class: "flat-button"
   .row
     .col-md-12
+      - @questions.each do |question|
+        .question-container
+          = question.title
