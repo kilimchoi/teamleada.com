@@ -78,6 +78,7 @@ TeamLeada::Application.routes.draw do
       end
     end
     resources :employer_applications, path: "employer-applications", only: [:index, :show]
+    resources :questions, only: [:index, :show]
   end
 
   # 404 page routes
