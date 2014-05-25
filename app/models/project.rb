@@ -78,7 +78,7 @@ class Project < ActiveRecord::Base
   end
 
   def full_url
-    project_url(self)
+    project_path(self)
   end
 
   def check_submission(file)
