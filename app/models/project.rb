@@ -20,6 +20,7 @@
 
 class Project < ActiveRecord::Base
   require 'csv'
+  include Rails.application.routes.url_helpers
   self.primary_key = "uid"
 
   serialize :description, Array
@@ -74,6 +75,10 @@ class Project < ActiveRecord::Base
     else
       "default"
     end
+  end
+
+  def full_url
+    project_url(self)
   end
 
   def check_submission(file)

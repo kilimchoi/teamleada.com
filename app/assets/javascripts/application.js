@@ -17,6 +17,7 @@
 //= require bootstrap
 //= require highcharts
 //= require highcharts/highcharts-more
+//= require modal
 
 $(document).ready(function() {
   //load heap data here.
