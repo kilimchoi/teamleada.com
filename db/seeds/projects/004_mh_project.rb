@@ -213,7 +213,7 @@ initial_setup_step_content_three = [
   ['text', 'We do the same for the reservation dataset'],
   ['code', 'resData <- as.data.frame(cbind(raw_reservation_data$Session, raw_reservation_data$Last_Name, raw_reservation_data$Email, raw_reservation_data$Incoming_Phone, raw_reservation_data$Contact_Phone, raw_reservation_data$Test_Control), stringsAsFactors = F)'],
   ['code', 'colnames(resData) <- c("SESSION_R", "LAST_NAME_R", "EMAIL_R", "INCOMING_PHONE_R", "CONTACT_PHONE_R", "TEST_CONTROL_R")'],
-  ['text', 'Because the reservation dataset ultimately sotres all conversions, we will add a column to the new eservation dataset (resData).'],
+  ['text', 'Because the reservation dataset ultimately stores all conversions, we will add a column to the new reservation dataset (resData).'],
   ['text', 'The added column will identify whether there was a corresponding match in the abandoned dataset.'],
   ['text', 'We add the column below.'],
   ['code', 'resData$CONV = 0'],
