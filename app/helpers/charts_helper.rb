@@ -105,11 +105,15 @@ module ChartsHelper
 
   # Single line graphs
   def users_chart(timeframe)
-    chart_from_model(timeframe, User, "Sign ups on Leada on Time (past 30 days)", "Total number of sign ups")
+    chart_from_model(timeframe, User, "Sign ups on Leada over Time (past 30 days)", "Total number of sign ups")
   end
 
   def interest_chart(timeframe)
     chart_from_model(timeframe, ProjectInterest, "Interest in Projects on Leada (past 30 days)", "Total number of interest in projects")
+  end
+
+  def resumes_chart(timeframe)
+    chart_from_model(timeframe, Resume, "Resumes uploaded on Leada (past 30 days)", "Totel number of resumes uploaded")
   end
 
   def employer_applications_chart(timeframe)
