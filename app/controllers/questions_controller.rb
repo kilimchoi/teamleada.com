@@ -3,6 +3,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
+    @question.up_votes = 1
     if signed_in?
       @question.asker = current_user
     end
@@ -13,6 +14,12 @@ class QuestionsController < ApplicationController
       flash[:error] = "There was a problem posting your question."
       redirect_to question_answer_path
     end
+  end
+
+  def up_vote
+    @question.up_votes += 1
+    @question.save
+    redirect_to question_answer_path
   end
 
   private
