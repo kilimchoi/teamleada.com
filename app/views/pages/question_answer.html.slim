@@ -9,7 +9,10 @@
         = f.input :description
         = f.submit "Submit", class: "flat-button"
   .row
-    .col-md-12
+    .col-md-8.col-md-offset-2
       - @questions.each do |question|
         .question-container
+          = link_to "", up_vote_question_path(question), method: :post, class: "glyphicon glyphicon-chevron-up"
+          span.badge = question.up_votes
           = question.title
+          = question.pretty_post_date
