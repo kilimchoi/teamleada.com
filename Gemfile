@@ -56,6 +56,10 @@ group :development, :test do
   gem 'quiet_assets', '~> 1.0.2'
 end
 
+group :test do
+  gem 'database_cleaner'
+end
+
 group :development do
   # For the blog
   gem "github-pages"
