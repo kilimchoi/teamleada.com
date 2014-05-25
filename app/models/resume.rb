@@ -30,4 +30,20 @@ class Resume < ActiveRecord::Base
     created_at.strftime("%B %d, %Y")
   end
 
+  def first_name
+    user.first_name
+  end
+
+  def last_name
+    user.last_name
+  end
+
+  def version
+    user.resumes.index(self) + 1
+  end
+
+  def filename
+    resume_file_file_name
+  end
+
 end
