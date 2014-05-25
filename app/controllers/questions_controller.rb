@@ -3,6 +3,9 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
+    if signed_in?
+      @question.asker = current_user
+    end
     if @question.save
       flash[:info] = "Your question has successfully been posted."
       redirect_to question_answer_path
