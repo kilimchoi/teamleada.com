@@ -48,11 +48,21 @@ describe Code do
     end
   end
 
-  describe "user access to projects" do
-    @user = create(:student)
-    @user.codes << @code
-    context "when student has code with access_type = 'project-access'" do
-      it { @user.has_project_access?.should be_true }
+  describe "when giving code to user" do
+    it 'should give users access to projects' do
+      @user = FactoryGirl.create(:student)
+      @user.add_code @code
+      @user.has_project_access?.should be_true
+    end
+  end
+
+  describe "when giving disabled code to user" do
+    it 'should not give users access to projects' do
+      @user = FactoryGirl.create(:student)
+      @code.enabled = false
+      @code.save
+      @user.add_code(@code).should be_false
+      @user.has_project_access?.should be_false
     end
   end
 
