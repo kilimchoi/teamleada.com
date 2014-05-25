@@ -62,6 +62,7 @@ class PagesController < ApplicationController
   def question_answer
     @large_header = true
     @question = Question.new
+    @questions = Question.all
   end
 
 end
