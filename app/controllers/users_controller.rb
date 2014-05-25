@@ -45,12 +45,11 @@ class UsersController < ApplicationController
         flash[:danger] = "You have already used that code."
         redirect_to student_path
       else
-        unless @code.enabled?
+        unless current_user.add_code(@code)
           flash[:error] = "We are sorry. It looks like this code has expired and is no longer valid. Please contact us if you think this is an error."
           redirect_to :back
           return
         end
-        current_user.codes << @code
         # TODO: Not hard code project-access
         if @code.access_type == 'project-access'
           flash[:info] = "Congratulations, you now have access to our data projects!"

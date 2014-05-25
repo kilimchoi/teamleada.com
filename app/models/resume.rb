@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: resumes
+#
+#  id                       :integer          not null, primary key
+#  user_id                  :integer
+#  created_at               :datetime
+#  updated_at               :datetime
+#  resume_file_file_name    :string(255)
+#  resume_file_content_type :string(255)
+#  resume_file_file_size    :integer
+#  resume_file_updated_at   :datetime
+#
+
 class Resume < ActiveRecord::Base
   belongs_to :user
 

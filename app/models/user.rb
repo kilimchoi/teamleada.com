@@ -30,6 +30,7 @@
 #  who_can_contact              :string(255)
 #  who_can_lookup_using_email   :string(255)
 #  who_can_lookup_by_name       :string(255)
+#  who_can_see_resume           :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -211,6 +212,14 @@ class User < ActiveRecord::Base
 
   def password_updated!
     self.update_attribute(:updated_password_at, Time.now)
+  end
+
+  def add_code(code)
+    if code.enabled?
+      self.codes << code
+    else
+      false
+    end
   end
 
 end
