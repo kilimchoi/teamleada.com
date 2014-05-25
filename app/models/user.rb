@@ -214,4 +214,12 @@ class User < ActiveRecord::Base
     self.update_attribute(:updated_password_at, Time.now)
   end
 
+  def add_code(code)
+    if code.enabled?
+      self.codes << code
+    else
+      false
+    end
+  end
+
 end
