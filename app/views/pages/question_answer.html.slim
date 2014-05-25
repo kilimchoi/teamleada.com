@@ -10,11 +10,5 @@
         = f.submit "Submit", class: "flat-button"
   .row
     .col-md-8.col-md-offset-2
-      - @questions.each do |question|
-        .question-container
-          .up-votes-container
-            = link_to "", up_vote_question_path(question), method: :post, class: "glyphicon glyphicon-chevron-up up-vote-button"
-            span.label.label-primary = question.up_votes
-          .question-text-container
-            .question-text
-              = question.title
+      #questions-table
+        = render partial: "questions/questions"

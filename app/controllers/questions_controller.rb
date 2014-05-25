@@ -1,6 +1,8 @@
 class QuestionsController < ApplicationController
   load_resource
 
+  respond_to :html, :js
+
   def create
     @question = Question.new(question_params)
     @question.up_votes = 1
@@ -17,9 +19,10 @@ class QuestionsController < ApplicationController
   end
 
   def up_vote
+    @questions = Question.all
     @question.up_votes += 1
     @question.save
-    redirect_to question_answer_path
+    respond_with @question
   end
 
   private
