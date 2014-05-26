@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20140524025630) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "user_type"
-    t.boolean  "enabled",    default: true
+    t.boolean  "enabled",     default: true
     t.string   "access_type"
   end
 
