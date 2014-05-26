@@ -7,32 +7,32 @@
       .image
         = image_tag "leadaboard.png", class: "round-with-border"
     .col-md-4
-      h1 Train Your Employees
+      h1 Find Analytic Talent
       p
-        | We create effective teaching material to empower
-        |  your employees with analytics talent on exactly
-        |  the processes they need to learn.
+        | Gain access to top candidates who have mastered
+        |  the analytics process. See beyond their resumes by
+        |  examaining their code and learning history.
   .divider
   .row.employer-row
     .col-md-4.col-md-offset-1
-      h1 Find Analytic Talent
+      h1 Get Learning Profiles
       p
-        | Gain access to talented students who are already
-        |  learning analytics processes that are being used
-        |  at your company and others.
+        | Already have candidates? We offer analytics on
+        |  how they stack up against other candidates.
+        |  Figure out what the candidates may need work in.
     .col-md-4.col-md-offset-3
       .image
         = image_tag "resume.png", class: "round-with-border"
   .divider
   .row.employer-row
-    .col-md-6.col-md-offset-3
+    .col-md-8.col-md-offset-2
       h2.center How This Works
       p.center
-        | Submit a proposal for a data project. <br>
-        | We transform it into scalable eLearning content.<br>
-        | Gain access to our top users.
+        | Filter by education, experience, and learning quantile. <br>
+        | Gain access to more than just the resumes by examining their project work history. <br>
+        | Expedite hiring cycles.
   .row.employer-row
-    h1.center Data Project Partners
+    h1.center Current Partners
     .row
       .col-md-3.col-md-offset-2
         .image.sponsor-logo
@@ -51,5 +51,6 @@
         = f.input :size, collection: EmployerApplication::SIZE_OPTIONS, label: "Size (Number of employees)"
         = f.input :industry, collection: EmployerApplication::INDUSTRY_OPTIONS
         = f.input :custom_industry, label: "If you selected 'Other', please type in your industry here."
-        = f.input :description, label: "Project Propsal"
+        = f.input :description, label: "Who Are You Looking For?"
         = f.submit 'Submit', class: 'flat-button'
+
