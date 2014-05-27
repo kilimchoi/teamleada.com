@@ -23,13 +23,18 @@
         .image
           = image_tag "methods.png", class: "round-with-border"
   .divider
-  .row.employer-row.center
-    .col-md-8.col-md-offset-2
-      = render partial: "codes/project_access_code"
+  - if (signed_in? && current_user.has_project_access?)
+    h2.center
+      | You've already received Early Project Access. <br>
+      | Go complete projects!
+  - else
     .row.employer-row.center
       .col-md-8.col-md-offset-2
-        h3 Want an Early Access Code?
-      .col-md-12
-        p
-          | Fill out our user survey. Indicate in the last question (Q.6) that you're interested in the product!
-        = link_to "Take me to the survey", "http://www.surveygizmo.com/s3/1645296/Handbook-Pt-III-Reader-Survey", target: "_blank", class: "flat-button"
+        = render partial: "codes/project_access_code"
+      .row.employer-row.center
+        .col-md-8.col-md-offset-2
+          h3 Want an Early Access Code?
+        .col-md-12
+          p
+            | Fill out our user survey. Indicate in the last question (Q.6) that you're interested in the product!
+          = link_to "Take me to the survey", "http://www.surveygizmo.com/s3/1645296/Handbook-Pt-III-Reader-Survey", target: "_blank", class: "flat-button"
