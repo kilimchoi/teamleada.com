@@ -43,7 +43,7 @@ class UsersController < ApplicationController
       existing = current_user.codes.where(value: params[:code]).count > 0
       if existing
         flash[:danger] = "You have already used that code."
-        redirect_to student_path
+        redirect_to learn_path
       else
         unless current_user.add_code(@code)
           flash[:error] = "We are sorry. It looks like this code has expired and is no longer valid. Please contact us if you think this is an error."
@@ -56,12 +56,12 @@ class UsersController < ApplicationController
           redirect_to projects_path
         else
           flash[:info] = "You have successfully used your code: #{@code.value}"
-          redirect_to student_path
+          redirect_to learn_path
         end
       end
     else
       flash[:danger] = "Invalid code entered."
-      redirect_to student_path
+      redirect_to learn_path
     end
   end
 
