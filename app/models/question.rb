@@ -2,6 +2,8 @@ class Question < ActiveRecord::Base
   serialize :voters, Array
   belongs_to :asker, class_name: User
 
+  validates :title, presence: true
+
   default_scope -> { order("up_votes DESC") }
 
   def pretty_post_date
