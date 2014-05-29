@@ -62,7 +62,8 @@ class PagesController < ApplicationController
   def question_answer
     @large_header = true
     @question = Question.new
-    @questions = Question.all
+    @top_questions = Question.top(7)
+    @questions = Question.not_including_top(7)
   end
 
 end

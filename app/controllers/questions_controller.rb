@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
-    @question.up_votes = 1
+    @question.vote_from_user(current_user, request.remote_ip)
     if signed_in?
       @question.asker = current_user
     end
@@ -19,13 +19,10 @@ class QuestionsController < ApplicationController
   end
 
   def up_vote
-    @questions = Question.all
-    if signed_in?
-      @question.voters.push(current_user.current_sign_in_ip)
-      # Using up_votes as a pseudo counter cache for .voters
-      @question.up_votes += 1
-      @question.save
-    end
+    @top_questions = Question.top(7)
+    @questions = Question.not_including_top(7)
+    @question.vote_from_user(current_user, request.remote_ip)
+    @question.save
     respond_with @question
   end
 
