@@ -6,7 +6,6 @@
       h1 Ask a question about Data Science!
       = simple_form_for @question do |f|
         = f.input :title, label: "Question"
-        = f.input :description
         = f.submit "Submit", class: "flat-button"
   .row
     .col-md-8.col-md-offset-2
