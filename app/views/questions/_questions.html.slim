@@ -1,9 +1,7 @@
+h1.title Top 7 Questions
+- @top_questions.each do |question|
+  = render partial: "questions/question", locals: { question: question }
+
+h1.title More Questions
 - @questions.each do |question|
-  .question-container
-    .up-votes-container
-      - unless question.has_voted? current_user
-        = link_to "", up_vote_question_path(question), method: :post, remote: true, class: "glyphicon glyphicon-chevron-up up-vote-button"
-      span.label.label-primary = question.up_votes
-    .question-text-container
-      .question-text
-        = question.title
+  = render partial: "questions/question", locals: { question: question }
