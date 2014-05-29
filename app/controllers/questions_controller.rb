@@ -20,8 +20,12 @@ class QuestionsController < ApplicationController
 
   def up_vote
     @questions = Question.all
-    @question.up_votes += 1
-    @question.save
+    if signed_in?
+      @question.voters.push(current_user.current_sign_in_ip)
+      # Using up_votes as a pseudo counter cache for .voters
+      @question.up_votes += 1
+      @question.save
+    end
     respond_with @question
   end
 

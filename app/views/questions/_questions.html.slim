@@ -1,7 +1,8 @@
 - @questions.each do |question|
   .question-container
     .up-votes-container
-      = link_to "", up_vote_question_path(question), method: :post, remote: true, class: "glyphicon glyphicon-chevron-up up-vote-button"
+      - unless question.has_voted? current_user
+        = link_to "", up_vote_question_path(question), method: :post, remote: true, class: "glyphicon glyphicon-chevron-up up-vote-button"
       span.label.label-primary = question.up_votes
     .question-text-container
       .question-text
