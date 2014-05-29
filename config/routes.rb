@@ -7,7 +7,7 @@ TeamLeada::Application.routes.draw do
 
   match 'learn', to: 'pages#student', as: :learn, via: :get
   match 'learn', to: 'users#auth_code', as: :auth_code, via: :post
-  match 'peter-norvig', to: 'pages#question_answer', as: 'question_answer', via: :get
+  match 'ask-peter', to: 'pages#question_answer', as: 'question_answer', via: :get
 
   match 'surveys/:name', to: 'surveys#show', via: :get
 
@@ -28,7 +28,7 @@ TeamLeada::Application.routes.draw do
   resources :users, only: [:show, :update]
   resources :interested_users, only: [:create]
 
-  resources :questions, path: 'peter-norvig', only: [:show, :index, :new, :create] do
+  resources :questions, path: 'ask-peter', only: [:show, :index, :new, :create] do
     member do
       match 'up-vote', to: 'questions#up_vote', as: 'up_vote', via: :post
     end
