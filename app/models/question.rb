@@ -4,7 +4,7 @@ class Question < ActiveRecord::Base
 
   validates :title, presence: true
 
-  default_scope -> { order("up_votes DESC") }
+  default_scope -> { order("up_votes DESC, created_at ASC") }
 
   def pretty_post_date
     created_at.strftime("%B %d, %Y")
