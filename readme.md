@@ -30,6 +30,11 @@ Start the server:
 
 Happy developing!
 
+## Live Reload
+
+We are currently using `livereload` so that when you edit views and assets, they are automatically updated on the web browser (no refreshing anymore).
+To use this, download the chome extension [here](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
+
 ## Heroku Deployment
 
 There's a file, `/config/initializers/_environment_variables.rb`, which contains environment variables (mostly keys) that are not safe to upload to GitHub (added to .gitignore) so if you create this file, you can set your environment variables here easily.
