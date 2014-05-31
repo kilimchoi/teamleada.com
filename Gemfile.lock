@@ -379,6 +379,7 @@ DEPENDENCIES
   foreman (~> 0.63)
   friendly_id (~> 5.0.3)
   github-pages
+  guard
   guard-livereload
   guard-rspec
   highcharts-rails (~> 3.0.0)

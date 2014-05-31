@@ -54,6 +54,7 @@ group :development, :test do
   gem 'rails_best_practices', '~> 1.15.1'
   gem 'rspec-rails', '~> 2.14.1'
   gem 'quiet_assets', '~> 1.0.2'
+  gem 'guard'
   gem 'guard-livereload'
   gem 'guard-rspec'
 end
