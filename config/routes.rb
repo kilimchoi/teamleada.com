@@ -7,6 +7,7 @@ TeamLeada::Application.routes.draw do
 
   match 'learn', to: 'pages#student', as: :learn, via: :get
   match 'learn', to: 'users#auth_code', as: :auth_code, via: :post
+  match 'ask-peter', to: 'pages#question_answer', as: 'question_answer', via: :get
 
   match 'surveys/:name', to: 'surveys#show', via: :get
 
@@ -26,6 +27,12 @@ TeamLeada::Application.routes.draw do
   match 'settings', to: 'users#edit', as: 'edit_user', via: :get
   resources :users, only: [:show, :update]
   resources :interested_users, only: [:create]
+
+  resources :questions, path: 'ask-peter', only: [:show, :index, :new, :create] do
+    member do
+      match 'up-vote', to: 'questions#up_vote', as: 'up_vote', via: :post
+    end
+  end
 
   match 'employer', to: 'employer_applications#new', as: 'new_employer', via: :get
   resources :employer_applications, path: 'employer', as: 'employer', only: [:create]
@@ -71,6 +78,7 @@ TeamLeada::Application.routes.draw do
       end
     end
     resources :employer_applications, path: "employer-applications", only: [:index, :show]
+    resources :questions, only: [:index, :show]
   end
 
   # 404 page routes
