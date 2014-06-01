@@ -3,6 +3,7 @@ ruby '2.1.1'
 
 gem 'rails', '4.0.0'
 
+gem 'nokogiri', '1.6.1'
 gem 'tilt', '1.4.1'
 gem 'sass-rails', '~> 4.0.2'
 gem 'coffee-rails', '~> 4.0.0'
@@ -54,6 +55,9 @@ group :development, :test do
   gem 'rails_best_practices', '~> 1.15.1'
   gem 'rspec-rails', '~> 2.14.1'
   gem 'quiet_assets', '~> 1.0.2'
+  gem 'guard'
+  gem 'guard-livereload'
+  gem 'guard-rspec'
 end
 
 group :test do
