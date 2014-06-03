@@ -26,9 +26,11 @@ class Question < ActiveRecord::Base
       ip_address = user.current_sign_in_ip
     end
 
-    self.voters.push(ip_address)
-    # Using up_votes as a pseudo counter cache for .voters
-    self.up_votes += 1
+    unless self.has_voted? user, ip_address
+      self.voters.push(ip_address)
+      # Using up_votes as a pseudo counter cache for .voters
+      self.up_votes += 1
+    end
   end
 
 end
