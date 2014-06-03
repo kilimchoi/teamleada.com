@@ -6,7 +6,7 @@ class Question < ActiveRecord::Base
 
   default_scope -> { order("up_votes DESC, created_at ASC") }
   scope :top, -> (amount) { order("up_votes DESC, created_at ASC").first(amount) }
-  scope :not_including_top, -> (amount) { order("up_votes DESC, created_at ASC").last(all.count - amount) }
+  scope :not_including_top, -> (amount) { order("up_votes DESC, created_at ASC").last((all.count < amount) ? 0 : all.count - amount) }
 
   def pretty_post_date
     created_at.strftime("%B %d, %Y")
