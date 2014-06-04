@@ -26,7 +26,7 @@ html
     = render partial: 'shared/analytics'
   body
     = render partial: "layouts/header"
-    - if @profile_needs_info
+    - if signed_in? && @profile_needs_info && current_user.has_missing_profile_info?
       = render partial: "shared/profile_info_modal"
     #page-container
       = render partial: "shared/flash"
