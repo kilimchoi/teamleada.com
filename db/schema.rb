@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140529060232) do
+ActiveRecord::Schema.define(version: 20140604155430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -147,11 +147,11 @@ ActiveRecord::Schema.define(version: 20140529060232) do
 
   create_table "step_statuses", force: true do |t|
     t.integer  "user_id"
-    t.integer  "step_id"
+    t.string   "step_id"
     t.boolean  "completed"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "project_id"
+    t.string   "project_id"
   end
 
   create_table "steps", id: false, force: true do |t|
