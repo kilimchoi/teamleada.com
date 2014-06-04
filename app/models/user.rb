@@ -182,7 +182,7 @@ class User < ActiveRecord::Base
     total = 0
     step_statuses.each do |step_status|
       if step_status.completed? && step_status.project == project
-        total += step_status
+        total += step_status.step.points || 1
       end
     end
     total
@@ -220,6 +220,10 @@ class User < ActiveRecord::Base
     else
       false
     end
+  end
+
+  def complete_step(step)
+    StepStatus.where(user: self, step: step, completed: true, project: step.project).first_or_create
   end
 
 end
