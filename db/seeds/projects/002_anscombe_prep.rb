@@ -57,7 +57,7 @@ vector_data_content_one = [
 ]
 vector_data_content_two = [
   ['text', 'Note that you can consider a vector as a single column of a matrix'],
-  ['text', 'This means you can apply elementary oeprations via scalar operations, as shown below.'],
+  ['text', 'This means you can apply elementary operations via scalar operations, as shown below.'],
   ['code', 'bigger_vector = vector_one * 5'],
   ['code', 'bigger_vector'],
   ['text', 'This means vector wise comparison works too!'],
