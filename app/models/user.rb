@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :submissions
-  has_many :step_status
+  has_many :step_statuses
   has_many :user_codes
   has_many :codes, through: :user_codes
   has_many :transactions
@@ -182,10 +182,14 @@ class User < ActiveRecord::Base
     total = 0
     step_statuses.each do |step_status|
       if step_status.completed? && step_status.project == project
-        total += step_status.step.points || 1
+        total += step_status.step.try(:points) || 1
       end
     end
     total
+  end
+
+  def project_progress_percentage(project)
+    completed_points(project) / project.total_points
   end
 
   def password_required?
@@ -223,7 +227,7 @@ class User < ActiveRecord::Base
   end
 
   def complete_step(step)
-    StepStatus.where(user: self, step: step, completed: true, project: step.project).first_or_create
+    StepStatus.where(user: self, step_id: step.uid, completed: true, project: step.project).first_or_create
   end
 
 end
