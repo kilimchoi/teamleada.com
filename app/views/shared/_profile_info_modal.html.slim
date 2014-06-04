@@ -1,21 +1,33 @@
-div class="modal fade" id="user-info-modal"
-  .modal-dialog.modal-sm
-    .modal-content
-      .modal-header
-        button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
-        h4.modal-title Your profile is missing some information! Don't worry, we can help you fill out your profile below:
-      = simple_form_for current_user, remote: true, html: {class: "user-info-form"} do |f|
-        ul#error_explanation[style="dislay:none;"]
-        .modal-body
-          = f.input :first_name, autofocus: true
-          = f.input :last_name
-        .modal-footer
-          = f.submit "Submit", class: "btn btn-leada"
-          button.btn.btn-danger type="button" data-dismiss="modal" Cancel
+/ TODO: Remove this and put in the controller somewhere...
+- current_user.resumes.build
+
+- if current_user.has_missing_basic_info?
+  div class="modal fade" id="user-info-modal"
+    .modal-dialog.modal-sm
+      .modal-content
+        .modal-header
+          button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
+          h4.modal-title Your profile is missing some information! Don't worry, we can help you fill out your profile below:
+          = simple_form_for current_user, remote: true, multipart: true, html: {class: "user-info-form"} do |f|
+            ul#error_explanation[style="dislay:none;"]
+            .modal-body
+              = f.input :first_name, autofocus: true
+              = f.input :last_name
+              h4.modal-title Want to land your dream data science job?
+              = f.fields_for :resumes do |resume|
+                - if resume.object.new_record?
+                  = resume.file_field :resume_file
+              = f.input :who_can_see_resume, collection: User::USER_TYPES, label: "Select who can see my resume:", selected: User::CONNECTIONS_AND_RECRUITERS
+            .modal-footer
+              = f.submit "Submit", class: "btn btn-leada"
+              button.btn.btn-danger type="button" data-dismiss="modal" Cancel
+- else
+  = render partial: "users/resume_modal", locals: { user: current_user }
 
 javascript:
   $(document).ready(function() {
     $('#user-info-modal').modal('show');
+    $('#resume-modal').modal('show');
 
     $(".user-info-form").bind("ajax:success", function(event, data, status, xhr) {
       $('#user-info-modal').modal('hide');

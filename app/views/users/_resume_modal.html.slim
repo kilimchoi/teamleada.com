@@ -1,0 +1,15 @@
+div class="modal fade" id="resume-modal"
+  .modal-dialog.modal-sm
+    .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
+        h4.modal-title Want to land your dream Data Science job? Upload your resume to start getting recruited today!
+      = simple_form_for user, multipart: true, html: {class: "resume-form"} do |f|
+        .modal-body
+          = f.fields_for :resumes do |resume|
+            - if resume.object.new_record?
+              = resume.file_field :resume_file
+          = f.input :who_can_see_resume, collection: User::USER_TYPES, label: "Select who can see my resume:", selected: User::CONNECTIONS_AND_RECRUITERS
+        .modal-footer
+          = f.submit "Submit", class: "btn btn-leada"
+          button.btn.btn-danger type="button" data-dismiss="modal" Cancel
