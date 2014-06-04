@@ -189,7 +189,7 @@ class User < ActiveRecord::Base
   end
 
   def project_progress_percentage(project)
-    completed_points(project) / project.total_points
+    (completed_points(project).to_f / project.total_points.to_f) * 100
   end
 
   def password_required?
