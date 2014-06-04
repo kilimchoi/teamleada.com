@@ -14,6 +14,7 @@ class ProjectsController < ApplicationController
     end
     @interested_user = InterestedUser.new
     @large_header = true
+    @profile_needs_info = true
   end
 
   def check_submission

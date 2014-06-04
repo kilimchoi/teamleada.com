@@ -2,6 +2,7 @@ class PagesController < ApplicationController
 
   def home
     @large_header = true
+    @profile_needs_info = true
   end
 
   def about
@@ -20,6 +21,7 @@ class PagesController < ApplicationController
   def tutoring
     @large_header = true
     @tutoring_cost = TutoringSlot::COST
+    @profile_needs_info = true
   end
 
   def tutoring_purchase
@@ -57,6 +59,7 @@ class PagesController < ApplicationController
 
   def student
     @large_header = true
+    @profile_needs_info = true
   end
 
   def question_answer
