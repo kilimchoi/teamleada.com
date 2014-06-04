@@ -153,8 +153,12 @@ class User < ActiveRecord::Base
     is_admin? || self.codes.where(access_type: "project-access").count > 0
   end
 
-  def has_missing_profile_info?
+  def has_missing_basic_info?
     first_name.nil? || last_name.nil? || username.nil? || email.nil?
+  end
+
+  def has_missing_profile_info?
+    has_missing_basic_info? || resumes.count < 1
   end
 
   def has_resume?
