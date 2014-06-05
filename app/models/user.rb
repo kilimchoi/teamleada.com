@@ -39,6 +39,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  # TODO: Remove this and put in a helper class
+  include Rails.application.routes.url_helpers
+
   has_many :submissions
   has_many :step_statuses
   has_many :lesson_statuses
@@ -171,6 +174,46 @@ class User < ActiveRecord::Base
     self.transactions.find_by(item: project).nil?
   end
 
+  def has_started_project?(project)
+    LessonStatus.where(user: self, project: project, completed: true).count +
+    StepStatus.where(user: self, project: project, completed: true).count > 0
+  end
+
+  def next_lesson_or_step_for_project_path(project)
+    next_lesson_or_step = next_lesson_or_step_for_project(project)
+    if next_lesson_or_step.class == Lesson
+      project_lesson_path(project, next_lesson_or_step)
+    else
+      project_lesson_step_path(project, next_lesson_or_step.lesson, next_lesson_or_step)
+    end
+  end
+
+  def next_lesson_or_step_for_project(project)
+    project.lessons.each do |lesson|
+      lesson_status = LessonStatus.find_by(user: self, lesson_id: lesson.uid, completed: true, project: project)
+      if lesson_status.nil?
+        return lesson
+      end
+      lesson.steps.each do |step|
+        step_status = StepStatus.find_by(user: self, step_id: step.uid, completed: true, project: project)
+        if step_status.nil?
+          return step
+        end
+      end
+    end
+    false
+  end
+
+  def next_lesson_for_project(project)
+    project.lessons.each do |lesson|
+      lesson_status = LessonStatus.find_by(user: self, lesson_id: lesson.uid, completed: true, project: project)
+      if lesson_status.nil?
+        return lesson
+      end
+    end
+    false
+  end
+
   def completed_projects
     []
   end
@@ -184,6 +227,11 @@ class User < ActiveRecord::Base
     step_statuses.each do |step_status|
       if step_status.completed? && step_status.project == project
         total += step_status.step.try(:points) || 1
+      end
+    end
+    lesson_statuses.each do |lesson_status|
+      if lesson_status.completed? && lesson_status.project == project
+        total += lesson_status.lesson.try(:points) == 0 ? 1 : lesson_status.lesson.points
       end
     end
     total
@@ -229,6 +277,10 @@ class User < ActiveRecord::Base
 
   def complete_step(step)
     StepStatus.where(user: self, step_id: step.uid, completed: true, project: step.project).first_or_create
+  end
+
+  def complete_lesson(lesson)
+    LessonStatus.where(user: self, lesson_id: lesson.uid, completed: true, project: lesson.project).first_or_create
   end
 
 end
