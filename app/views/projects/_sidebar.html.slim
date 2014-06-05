@@ -1,12 +1,32 @@
+- has_completed = true
+
 .sidebar
   h3.sidebar-title = link_to project.title, project_path(project)
 
   ul.sidebar-lessons
     - project.lessons.each do |lesson|
-      = active_or_completed_sidebar_link lesson.title, project_lesson_path(project, lesson), class: "sidebar-lesson #{'fa-check-circle completed-item' if current_user.completed? lesson}"
+      - unless current_user.completed?(lesson)
+        - has_completed = false
+      - if has_completed
+        = active_or_completed_sidebar_link lesson.title, project_lesson_path(project, lesson), class: "sidebar-lesson #{'fa-check-circle completed-item' if has_completed}"
+      - else
+        li.sidebar-lesson.disabled
+          = lesson.title
       ul.sidebar-steps
         - lesson.steps.each do |step|
-          = active_or_completed_sidebar_link step.title, project_lesson_step_path(project, lesson, step), class: "sidebar-step #{'fa-check-circle completed-item' if current_user.completed? step}"
+          - unless current_user.completed?(step)
+            - has_completed = false
+          - if has_completed
+            = active_or_completed_sidebar_link step.title, project_lesson_step_path(project, lesson, step), class: "sidebar-step #{'fa-check-circle completed-item' if has_completed}"
+          - else
+            li.sidebar-step.disabled
+              = step.title
           ul.next-steps
             - step.next_steps.each do |next_step|
-              = active_or_completed_sidebar_link next_step.title, project_lesson_step_path(project, lesson, next_step), class: "sidebar-next-step #{'fa-check-circle completed-item' if current_user.completed? next_step}"
+              - unless current_user.has_completed?(next_step)
+                - has_completed = false
+              - if has_completed
+                = active_or_completed_sidebar_link next_step.title, project_lesson_step_path(project, lesson, next_step), class: "sidebar-next-step #{'fa-check-circle completed-item' if has_completed}"
+              - else
+                li.sidebar-next-step.disabled
+                  = next_step.title
