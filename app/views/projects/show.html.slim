@@ -24,6 +24,9 @@
             - if @project.has_leaderboard?
               h2 Leaderboard
               = render partial: "projects/leaderboard", locals: {project: @project}
+            - if current_user.has_started_project? @project
+              h2 Looks like you've already started this project!
+              = link_to "Continue where you left off", current_user.next_lesson_or_step_for_project_path(@project), class: 'flat-button step-button'
             h2 Choose an option from below:
             ul
             - @project.lessons.each do |lesson|
