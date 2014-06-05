@@ -4,7 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  user_id    :integer
-#  step_id    :integer
+#  step_id    :string(255)
 #  completed  :boolean
 #  created_at :datetime
 #  updated_at :datetime
