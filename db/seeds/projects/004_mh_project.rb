@@ -427,7 +427,7 @@ data_cleaning_content_two = [
   ['text', 'Keeping in mind for the client "Martin\'s Travel Agency", we assume that reservations under the same number are a result multiple bookings for vacations.'],
   ['text', 'Verification with the client proves this to be a relatively common occurence. Since we do not want to artificially inflate our conversion numbers we must de-duplicate these conversions into single ones.'],
   ['text', 'Luckily duplicate conversions are contained within the test/control groups so we do not have to do additional filtering besides de-duplication.'],
-  ['next_steps', nil],
+  ['lesson_links', nil],
 ]
 
 data_cleaning_lesson = Lesson.create!(
