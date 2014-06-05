@@ -71,3 +71,10 @@
   opacity: 0.5;
 }
 
+.fa {
+  display: block;
+}
+
+.fa:before {
+  margin-right: 5px;
+}

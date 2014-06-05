@@ -8,7 +8,7 @@
       - unless current_user.completed?(lesson)
         - has_completed = false
       - if has_completed
-        = active_or_completed_sidebar_link lesson.title, project_lesson_path(project, lesson), class: "sidebar-lesson #{'fa-check-circle completed-item' if has_completed}"
+        = active_or_completed_sidebar_link lesson.title, project_lesson_path(project, lesson), class: "sidebar-lesson #{'fa fa-check-circle completed-item' if has_completed}"
       - else
         li.sidebar-lesson.disabled
           = lesson.title
@@ -17,7 +17,7 @@
           - unless current_user.completed?(step)
             - has_completed = false
           - if has_completed
-            = active_or_completed_sidebar_link step.title, project_lesson_step_path(project, lesson, step), class: "sidebar-step #{'fa-check-circle completed-item' if has_completed}"
+            = active_or_completed_sidebar_link step.title, project_lesson_step_path(project, lesson, step), class: "sidebar-step #{'fa fa-check-circle completed-item' if has_completed}"
           - else
             li.sidebar-step.disabled
               = step.title
@@ -26,7 +26,7 @@
               - unless current_user.has_completed?(next_step)
                 - has_completed = false
               - if has_completed
-                = active_or_completed_sidebar_link next_step.title, project_lesson_step_path(project, lesson, next_step), class: "sidebar-next-step #{'fa-check-circle completed-item' if has_completed}"
+                = active_or_completed_sidebar_link next_step.title, project_lesson_step_path(project, lesson, next_step), class: "sidebar-next-step #{'fa fa-check-circle completed-item' if has_completed}"
               - else
                 li.sidebar-next-step.disabled
                   = next_step.title
