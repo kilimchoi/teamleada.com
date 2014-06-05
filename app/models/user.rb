@@ -39,8 +39,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  # TODO: Remove this and put in a helper class
+  include Rails.application.routes.url_helpers
+
   has_many :submissions
-  has_many :step_status
+  has_many :step_statuses
+  has_many :lesson_statuses
   has_many :user_codes
   has_many :codes, through: :user_codes
   has_many :transactions
@@ -170,8 +174,62 @@ class User < ActiveRecord::Base
     self.company.projects.include? project
   end
 
+  def completed?(item)
+    # TODO: Change this to a case, when. For some reason it wasn't working...does it use ==?
+    if item.class == Project
+      # TODO: Calculate when a user has finished project. Could use points but is there a better way?
+      false
+    elsif item.class == Lesson
+      !LessonStatus.find_by(user: self, lesson_id: item.uid, project: item.project, completed: true).nil?
+    elsif item.class == Step
+      !StepStatus.find_by(user: self, step_id: item.uid, project: item.project, completed: true).nil?
+    else
+      false
+    end
+  end
+
   def has_not_paid_for_project?(project)
     self.transactions.find_by(item: project).nil?
+  end
+
+  def has_started_project?(project)
+    LessonStatus.where(user: self, project: project, completed: true).count +
+    StepStatus.where(user: self, project: project, completed: true).count > 0
+  end
+
+  def next_lesson_or_step_for_project_path(project)
+    next_lesson_or_step = next_lesson_or_step_for_project(project)
+    if next_lesson_or_step.class == Lesson
+      project_lesson_path(project, next_lesson_or_step)
+    else
+      project_lesson_step_path(project, next_lesson_or_step.lesson, next_lesson_or_step)
+    end
+  end
+
+  def next_lesson_or_step_for_project(project)
+    project.lessons.each do |lesson|
+      lesson_status = LessonStatus.find_by(user: self, lesson_id: lesson.uid, completed: true, project: project)
+      if lesson_status.nil?
+        return lesson
+      end
+      lesson.steps.each do |step|
+        step_status = StepStatus.find_by(user: self, step_id: step.uid, completed: true, project: project)
+        if step_status.nil?
+          return step
+        end
+      end
+    end
+    false
+  end
+
+  def next_lesson_for_project(project)
+    project.lessons.each do |lesson|
+      lesson_status = LessonStatus.find_by(user: self, lesson_id: lesson.uid, completed: true, project: project)
+      if lesson_status.nil?
+        return lesson
+      end
+    end
+    false
   end
 
   def completed_projects
@@ -186,10 +244,19 @@ class User < ActiveRecord::Base
     total = 0
     step_statuses.each do |step_status|
       if step_status.completed? && step_status.project == project
-        total += step_status
+        total += step_status.step.try(:points) || 1
+      end
+    end
+    lesson_statuses.each do |lesson_status|
+      if lesson_status.completed? && lesson_status.project == project
+        total += lesson_status.lesson.try(:points) == 0 ? 1 : lesson_status.lesson.points
       end
     end
     total
+  end
+
+  def project_progress_percentage(project)
+    (completed_points(project).to_f / project.total_points.to_f) * 100
   end
 
   def password_required?
@@ -224,6 +291,14 @@ class User < ActiveRecord::Base
     else
       false
     end
+  end
+
+  def complete_step(step)
+    StepStatus.where(user: self, step_id: step.uid, completed: true, project: step.project).first_or_create
+  end
+
+  def complete_lesson(lesson)
+    LessonStatus.where(user: self, lesson_id: lesson.uid, completed: true, project: lesson.project).first_or_create
   end
 
 end

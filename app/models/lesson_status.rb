@@ -1,18 +1,18 @@
 # == Schema Information
 #
-# Table name: step_statuses
+# Table name: lesson_statuses
 #
 #  id         :integer          not null, primary key
+#  lesson_id  :string(255)
 #  user_id    :integer
-#  step_id    :string(255)
-#  completed  :boolean
+#  project_id :integer
+#  completed  :boolean          default(FALSE)
 #  created_at :datetime
 #  updated_at :datetime
-#  project_id :integer
 #
 
-class StepStatus < ActiveRecord::Base
+class LessonStatus < ActiveRecord::Base
   belongs_to :user
-  belongs_to :step
+  belongs_to :lesson
   belongs_to :project
 end

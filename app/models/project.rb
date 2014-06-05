@@ -50,10 +50,12 @@ class Project < ActiveRecord::Base
   EXPERT = "Expert"
   DIFFICULTIES = [BEGINNER, INTERMEDIATE, ADVANCED, EXPERT]
 
+  # Before Filters
   def set_url
     self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize
   end
 
+  # Attributes
   def cost_in_dollars
     if cost.nil?
       "$0"
@@ -81,6 +83,18 @@ class Project < ActiveRecord::Base
     project_path(self)
   end
 
+  def total_points
+    total = 0
+    lessons.each do |lesson|
+      total += lesson.points == 0 ? 1 : lesson.points
+      lesson.steps.each do |step|
+        total += step.points || 1
+      end
+    end
+    total
+  end
+
+  # Submissions
   def check_submission(file)
     # Method to check the submission that the user uploaded
     solution_file = File.expand_path("#{Rails.root}/db/project_solutions/#{"%03d" % self.number}-#{self.url}.csv", __FILE__)
@@ -115,16 +129,6 @@ class Project < ActiveRecord::Base
         return index + 1
       end
     end
-  end
-
-  def total_points
-    total = 0
-    lessons.each do |lesson|
-      lesson.steps.each do |step|
-        total += step.points
-      end
-    end
-    total
   end
 
 end
