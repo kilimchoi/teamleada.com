@@ -191,7 +191,7 @@ data_matching_slide = Slide.create!(
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 initial_setup_step_content = [
-  ['text', 'Lets now load our data into RStudio.'],
+  ['text', 'Let\'s now load our data into RStudio.'],
   ['text', 'Because we are missing a lot of data, we set the parameter na.strings = "" in the read.csv() function. This way any blank values are set to NA. This will make it easier to see which values in our dataset are missing.'],
   ['code', 'raw_abandoned_data <- read.csv("Abandoned_Data_Seed.csv", head = T, na.strings = "", stringsAsFactors = F)'],
   ['code', 'raw_reservation_data <- read.csv("Reservation_Data_Seed.csv", head = T, na.strings = "", stringsAsFactors = F)'],
@@ -671,7 +671,7 @@ z_test_content_two = [
 
 z_test_content_three = [
   ['text', 'We can now determine how extreme the occurence of this test statistic was based on the normal distribution. This test statistic when divded by the standard error becomes the well known z-score. '],
-  ['text', 'The z-score basically says, how many SEs away our observed test statistic is from what we would expect and what we expect is the null hypothesis, that the difference between the two proportions is zero.'],
+  ['text', 'The z-score basically says, how many SDs away our observed test statistic is from what we would expect and what we expect is the null hypothesis, that the difference between the two proportions is zero.'],
   ['code', 'z_score <- (test_proportion - control_proportion) / SE'],
   ['text', 'What is our Z score rounded to the tens digit?'],
   ['quiz', 'mh_4'],
