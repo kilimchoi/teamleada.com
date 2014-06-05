@@ -41,6 +41,7 @@ class User < ActiveRecord::Base
 
   has_many :submissions
   has_many :step_statuses
+  has_many :lesson_statuses
   has_many :user_codes
   has_many :codes, through: :user_codes
   has_many :transactions

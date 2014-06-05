@@ -86,6 +86,7 @@ class Project < ActiveRecord::Base
   def total_points
     total = 0
     lessons.each do |lesson|
+      total += lesson.points || 1
       lesson.steps.each do |step|
         total += step.points || 1
       end
