@@ -170,6 +170,18 @@ class User < ActiveRecord::Base
     self.company.projects.include? project
   end
 
+  def completed?(item)
+    case item.class
+    when Project
+      # TODO: Calculate when a user has finished project. Could use points but is there a better way?
+      false
+    when Lesson
+      !LessonStatus.find_by(user: self, lesson_id: item.uid, project: item.project, completed: true).nil?
+    when Step
+      !StepStatus.find_by(user: self, step_id: item.uid, project: item.project, completed: true).nil?
+    end
+  end
+
   def has_not_paid_for_project?(project)
     self.transactions.find_by(item: project).nil?
   end
