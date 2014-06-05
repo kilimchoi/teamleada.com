@@ -3,10 +3,10 @@
 
   ul.sidebar-lessons
     - project.lessons.each do |lesson|
-      = active_or_completed_sidebar_link lesson.title, project_lesson_path(project, lesson), class: "sidebar-lesson #{'completed-item' if current_user.completed? lesson}"
+      = active_or_completed_sidebar_link lesson.title, project_lesson_path(project, lesson), class: "sidebar-lesson #{'fa-check-circle completed-item' if current_user.completed? lesson}"
       ul.sidebar-steps
         - lesson.steps.each do |step|
-          = active_or_completed_sidebar_link step.title, project_lesson_step_path(project, lesson, step), class: "sidebar-step"
+          = active_or_completed_sidebar_link step.title, project_lesson_step_path(project, lesson, step), class: "sidebar-step #{'fa-check-circle completed-item' if current_user.completed? step}"
           ul.next-steps
             - step.next_steps.each do |next_step|
-              = active_or_completed_sidebar_link next_step.title, project_lesson_step_path(project, lesson, next_step), class: "sidebar-next-step"
+              = active_or_completed_sidebar_link next_step.title, project_lesson_step_path(project, lesson, next_step), class: "sidebar-next-step #{'fa-check-circle completed-item' if current_user.completed? next_step}"
