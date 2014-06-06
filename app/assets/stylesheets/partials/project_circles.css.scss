@@ -83,3 +83,15 @@
 .price-tag {
   margin-top: 10px;
 }
+
+.project-completed {
+  font-size: 200px;
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}
+
+.no-hover:hover {
+  text-decoration: none;
+  color: #428bca;
+}

@@ -27,6 +27,7 @@
               = render partial: "projects/leaderboard", locals: {project: @project}
             - if current_user.has_finished_project? @project
               h2 Congrats! You have successfully finished this data project.
+              = link_to "Take me to more projects!", projects_path, class: 'flat-button step-button'
             - elsif current_user.has_started_project? @project
               h2 Looks like you've already started this project!
               = link_to "Continue where you left off", current_user.next_lesson_or_step_for_project_path(@project), class: 'flat-button step-button'
