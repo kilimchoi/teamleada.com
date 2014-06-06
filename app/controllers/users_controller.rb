@@ -13,6 +13,15 @@ class UsersController < ApplicationController
   end
 
   def update
+    # TODO: This is hacky, should make a validation that does this.
+    if params[:is_resume_form]
+      if params[:user]["resumes_attributes"].nil?
+        respond_to do |format|
+          format.json { render json: {data: {error: "You must attach your resume in order to upload it."}}, status: :unprocessable_entity }
+        end
+        return
+      end
+    end
     if @user.update_attributes(user_params)
       if params[:user].has_key? :password
         @user.password_updated!
@@ -21,7 +30,7 @@ class UsersController < ApplicationController
       respond_to do |format|
         format.json { render json: {data: {first_name: @user.first_name, last_name: @user.last_name}}, status: :ok }
         format.html {
-          flash[:info] = "You have successfully uploaded your resume viewable by: #{@user.who_can_see_resume}."
+          flash[:info] = "You have successfully uploaded your resume!"
           redirect_to user_path(@user)
         }
       end
@@ -29,10 +38,6 @@ class UsersController < ApplicationController
       puts @user.errors.messages
       respond_to do |format|
         format.json { render json: {data: {full_messages: @user.errors.full_messages, errors: @user.errors.messages.to_a}}, status: :unprocessable_entity }
-        format.html {
-          flash[:error] = "There was a problem uploading your resume."
-          redirect_to user_path(@user)
-        }
       end
     end
   end
