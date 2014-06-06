@@ -30,8 +30,13 @@
             - if @user.in_progress_projects.count == 0
               h4 You do not currently have any in progress projects yet.
             - @user.in_progress_projects.each do |project|
-              = link_to project, class: "flat-button step-button" do
-                span.fa.fa-circle-o-notch = project.title
+              = link_to project.title, project
+              .progress
+                - percentage = current_user.project_progress_percentage(project)
+                .progress-bar aria-valuenow="#{percentage}" aria-valuemin="0" aria-valuemax="100" style="width: #{percentage}%"
+                  = percentage
+                  | %
+
             h3.title Badges
             h4 You have not earned any badges yet.
 
