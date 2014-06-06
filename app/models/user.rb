@@ -43,10 +43,15 @@ class User < ActiveRecord::Base
   include Rails.application.routes.url_helpers
 
   has_many :submissions
+
   has_many :step_statuses
   has_many :lesson_statuses
+  has_many :project_statuses
+  has_many :started_projects, through: :project_statuses
+
   has_many :user_codes
   has_many :codes, through: :user_codes
+
   has_many :transactions
 
   has_many :resumes
@@ -177,8 +182,7 @@ class User < ActiveRecord::Base
   def completed?(item)
     # TODO: Change this to a case, when. For some reason it wasn't working...does it use ==?
     if item.class == Project
-      # TODO: Calculate when a user has finished project. Could use points but is there a better way?
-      false
+      !ProjectStatus.find_by(user: self, project: item, completed: true).nil?
     elsif item.class == Lesson
       !LessonStatus.find_by(user: self, lesson_id: item.uid, project: item.project, completed: true).nil?
     elsif item.class == Step
@@ -197,9 +201,15 @@ class User < ActiveRecord::Base
     StepStatus.where(user: self, project: project, completed: true).count > 0
   end
 
+  def has_finished_project?(project)
+    !ProjectStatus.find_by(user: self, project: project, completed: true).nil?
+  end
+
   def next_lesson_or_step_for_project_path(project)
     next_lesson_or_step = next_lesson_or_step_for_project(project)
-    if next_lesson_or_step.class == Lesson
+    if next_lesson_or_step == false
+      nil
+    elsif next_lesson_or_step.class == Lesson
       project_lesson_path(project, next_lesson_or_step)
     else
       project_lesson_step_path(project, next_lesson_or_step.lesson, next_lesson_or_step)
@@ -233,11 +243,11 @@ class User < ActiveRecord::Base
   end
 
   def completed_projects
-    []
+    project_statuses.where(completed: true).collect{ |project_status| project_status.project }
   end
 
   def in_progress_projects
-    []
+    project_statuses.where(completed: false).collect{ |project_status| project_status.project }
   end
 
   def completed_points(project)

@@ -9,10 +9,13 @@
             - slice.each do |project|
               .col-sm-4
                 .ih-item.circle.effect13.left_to_right
-                  = link_to "", data: { toggle: "modal", target: "##{project.url}" }, onclick: "modalPageView('#{project.full_url}')" do
+                  = link_to "", data: { toggle: "modal", target: "##{project.url}" }, onclick: "modalPageView('#{project.full_url}')", class: "no-hover" do
                     .project-circle
                       .front-text
                         h3 = project.title
+                        - if signed_in? && current_user.has_finished_project?(project)
+                          span.project-completed.fa.fa-check
+
                         span [class="label label-#{project.difficulty_tag} difficulty-tag"]
                           ' Difficulty -
                           = project.difficulty

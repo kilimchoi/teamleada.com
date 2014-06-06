@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
   load_resource only: [:show_interest]
 
   def show
+    ProjectStatus.where(user: current_user, project: @project).first_or_create
   end
 
   def index
@@ -72,6 +73,14 @@ class ProjectsController < ApplicationController
       flash[:danger] = "There was an error saving your interest, please try again."
       redirect_to :back
     end
+  end
+
+  def complete
+    @project_status = ProjectStatus.find_by(user: current_user, project: @project)
+    @project_status.completed = true
+    @project_status.save
+    flash[:info] = "Congratulations! You have completed the #{@project.title} project!"
+    redirect_to @project
   end
 
 end
