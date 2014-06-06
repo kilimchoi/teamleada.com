@@ -66,7 +66,7 @@ begin_two_content = [
   ['text', 'You\'ll be predicting how many individuals from the "Test" dataset survived. To give you a sense for the submission, download this file and submit it for grading! In the file, we simply predict that all of the males died and all of the females survived.'],
   ['link' , 'https://s3.amazonaws.com/leada/titanic_data/FirstSubmission.csv'],
   ['submit', nil],
-  #['next_steps', nil],
+  ['next_steps', nil],
 ]
 
 begin_lesson = Step.create!(
