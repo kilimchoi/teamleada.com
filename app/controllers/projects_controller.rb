@@ -75,4 +75,12 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def complete
+    @project_status = ProjectStatus.find_by(user: current_user, project: @project)
+    @project_status.completed = true
+    @project_status.save
+    flash[:info] = "Congratulations! You have completed the #{@project.title} project!"
+    redirect_to @project
+  end
+
 end
