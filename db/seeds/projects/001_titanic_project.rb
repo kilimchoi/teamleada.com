@@ -49,7 +49,7 @@ welcome_lesson_slide_one = Slide.create!(
 ################################################################################
 
 begin_one_content = [
-  ['text', 'You are supposed to have RStudio open in another screen with our tutorial and following along by copying and pasting code snippets we provide. Navigate through the project by clicking on the left sidebar.'],
+  ['text', 'You are supposed to have RStudio open in another screen with our tutorial and following along by entering the code snippets we provide.'],
   ['text', 'This project is both a lesson and a competition! We guide you through building a basic predictive model using classification trees and into a submission onto the Leadaboard! To increase your score it is then up to you to build a better model.'],
   ['text', 'We give some hints in the "Increase Your Score" section but it is mostly up to you to take the lesson we provided and expand upon it on your own!'],
   ['text', 'To begin, you first need to install the tools necessary for data analysis! Watch the following video to onboard your computer with R, Rstudio, and setting your working directory.'],
@@ -437,8 +437,9 @@ increase_score_three_content = [
   ['code','  }'],
   ['code', '}'],
   ['text', 'What other variables can you think of that might help the predictive model?'],
-  ['feedback', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
-  ['project_link', 'Back to the lessons page'],
+  #['feedback', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
+  #['project_link', 'Back to the lessons page'],
+  ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
 
 increase_score_lesson = Lesson.create!(
