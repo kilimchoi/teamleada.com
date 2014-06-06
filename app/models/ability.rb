@@ -21,12 +21,12 @@ class Ability
       if user.is_company?
         # Only employees
         can :show, Company
-        can [:show, :check_submission], Project do |project|
+        can [:show, :check_submission, :complete], Project do |project|
           user.company.projects.include? project
         end
       else
         # Only students
-        can [:show, :check_submission], Project do |project|
+        can [:show, :check_submission, :complete], Project do |project|
           user.has_project_access? && (!project.paid || !user.has_not_paid_for_project?(project))
         end
       end
