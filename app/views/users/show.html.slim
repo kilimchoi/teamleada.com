@@ -21,13 +21,17 @@
 
           .col-md-5.col-md-offset-2
             h3.title Completed Projects
-            h4 You have not completed any projects yet.
+            - if @user.completed_projects.count == 0
+              h4 You have not completed any projects yet.
             - @user.completed_projects.each do |project|
-              = project.title
+              = link_to project, class: "flat-button step-button" do
+                span.fa.fa-trophy = project.title
             h3.title In Progress Projects
-            h4 You have not started any projects yet.
+            - if @user.in_progress_projects.count == 0
+              h4 You do not currently have any in progress projects yet.
             - @user.in_progress_projects.each do |project|
-              = project.title
+              = link_to project, class: "flat-button step-button" do
+                span.fa.fa-circle-o-notch = project.title
             h3.title Badges
             h4 You have not earned any badges yet.
 
