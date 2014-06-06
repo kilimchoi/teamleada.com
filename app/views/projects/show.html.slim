@@ -30,7 +30,7 @@
               = link_to "Continue where you left off", current_user.next_lesson_or_step_for_project_path(@project), class: 'flat-button step-button'
             - else
               h2 Looks like you haven't started this project!
-              = link_to "Get started now!", project_lesson_path(@project, @project.lessons.first), class: 'flat-button, step-button'
+              = link_to "Get started now!", project_lesson_path(@project, @project.lessons.first), class: 'flat-button step-button'
             h2 Choose an option from below:
             ul
             - @project.lessons.each do |lesson|
