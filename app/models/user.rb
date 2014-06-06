@@ -182,8 +182,7 @@ class User < ActiveRecord::Base
   def completed?(item)
     # TODO: Change this to a case, when. For some reason it wasn't working...does it use ==?
     if item.class == Project
-      # TODO: Calculate when a user has finished project. Could use points but is there a better way?
-      false
+      !ProjectStatus.find_by(user: self, project: item, completed: true).nil?
     elsif item.class == Lesson
       !LessonStatus.find_by(user: self, lesson_id: item.uid, project: item.project, completed: true).nil?
     elsif item.class == Step
@@ -198,13 +197,14 @@ class User < ActiveRecord::Base
   end
 
   def has_started_project?(project)
-    LessonStatus.where(user: self, project: project, completed: true).count +
-    StepStatus.where(user: self, project: project, completed: true).count > 0
+    !ProjectStatus.find_by(user: self, project: project).nil?
   end
 
   def next_lesson_or_step_for_project_path(project)
     next_lesson_or_step = next_lesson_or_step_for_project(project)
-    if next_lesson_or_step.class == Lesson
+    if next_lesson_or_step == false
+      nil
+    elsif next_lesson_or_step.class == Lesson
       project_lesson_path(project, next_lesson_or_step)
     else
       project_lesson_step_path(project, next_lesson_or_step.lesson, next_lesson_or_step)
