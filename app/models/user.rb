@@ -233,7 +233,7 @@ class User < ActiveRecord::Base
   end
 
   def completed_projects
-    []
+
   end
 
   def in_progress_projects
