@@ -50,6 +50,19 @@
 - elsif content_type == "feedback"
   a.fragment.flat-button href=content target="_blank"
     = "Please give us feedback!"
+- elsif content_type == "finish_project_button"
+  p.fragment
+    - if defined? step
+      = link_to "Complete Project!", complete_project_path(step.main_lesson.project), method: :post, class: 'flat-button step-button', onclick: 'openUrl("' + content + '")'
+    - if defined? lesson
+      = link_to "Complete Project!", complete_project_path(lesson.project), method: :post, class: 'flat-button step-button', onclick: 'openUrl("' + content + '")'
 - else
   p.fragment.content-error
     = "ERR: Unknown Content Type. Contact dev pls: tristan@teamleada.com"
+
+javascript:
+  $(document).ready(function() {
+    openUrl = function(url) {
+      window.open(url, '_blank');
+    }
+  });
