@@ -200,6 +200,10 @@ class User < ActiveRecord::Base
     !ProjectStatus.find_by(user: self, project: project).nil?
   end
 
+  def has_finished_project?(project)
+    !ProjectStatus.find_by(user: self, project: project, completed: true).nil?
+  end
+
   def next_lesson_or_step_for_project_path(project)
     next_lesson_or_step = next_lesson_or_step_for_project(project)
     if next_lesson_or_step == false
