@@ -378,8 +378,9 @@ summary_content_one = [
 	['text', 'Don\'t worry if you don\'t yet fully grasp all the concepts.'],
 	['text', 'You\'ll become more familair as you do the data projects. This bootcamp is just to get your feet wet.'],
 	['text', 'You\'re now ready to take on Anscombe. Charge on!'],
-	['feedback', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
-	['project_link', 'Back to the lessons page'],
+	#['feedback', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
+	#['project_link', 'Back to the lessons page'],
+	['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
 summary_lesson = Lesson.create!(
   title: "Anscombe Bootcamp Summary",
