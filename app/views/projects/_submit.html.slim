@@ -1,7 +1,7 @@
 - if signed_in?
   = form_tag submission_project_path(@project), multipart: true do
     = file_field_tag "file", class: "fragment"
-    = submit_tag "Submit Your Work", class: 'flat-button step-button fragment'
+    = submit_tag "Submit Your Work", class: 'flat-button step-button fragment', id: "submit_buton"
 - else
   p
     | In order to make a submission, you must sign up!
