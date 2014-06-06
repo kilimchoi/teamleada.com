@@ -47,6 +47,7 @@ class User < ActiveRecord::Base
   has_many :step_statuses
   has_many :lesson_statuses
   has_many :project_statuses
+  has_many :started_projects, through: :project_statuses
 
   has_many :user_codes
   has_many :codes, through: :user_codes
@@ -237,11 +238,11 @@ class User < ActiveRecord::Base
   end
 
   def completed_projects
-
+    project_statuses.where(completed: true).collect{ |project_status| project_status.project }
   end
 
   def in_progress_projects
-    []
+    project_statuses.where(completed: false).collect{ |project_status| project_status.project }
   end
 
   def completed_points(project)
