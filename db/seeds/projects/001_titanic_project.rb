@@ -54,16 +54,16 @@ begin_one_content = [
   ['text', 'We give some hints in the "Increase Your Score" section but it is mostly up to you to take the lesson we provided and expand upon it on your own!'],
   ['text', 'To begin, you first need to install the tools necessary for data analysis! Watch the following video to onboard your computer with R, Rstudio, and setting your working directory.'],
   ['video', 'OXdcpbDSzxU'],
-  ['text', 'If you have already installed R, Rstudio, and are familiar with working directories, then you can skip this step'],
+  ['text', 'If you have already installed R, Rstudio, and are familiar with working directories, then you can skip this step.'],
 ]
 
 begin_two_content = [
-  ['text', 'Now we will download the data we will analyze and build our predictive model. Make sure to save them in the correct working directory.'],
+  ['text', 'Now we will download our raw data. Make sure to save them in the correct working directory.'],
   ['text', 'Download the "Train" dataset here:'],
   ['link', 'http://leada.s3.amazonaws.com/titanic_data/train.csv'],
   ['text', 'Download the "Test" dataset here:'],
   ['link', 'http://leada.s3.amazonaws.com/titanic_data/test.csv'],
-  ['text', 'What you submit to Leada are predictions for whether the passengers in the "Test" dataset survived. To give you a sense for the submission file of this data project, download this file and submit it for grading! Instead of building a model we just predict that all of the males died and all of the females survived.'],
+  ['text', 'You\'ll be predicting how many individuals from the "Test" dataset survived. To give you a sense for the submission, download this file and submit it for grading! In the file, we simply predict that all of the males died and all of the females survived.'],
   ['link' , 'https://s3.amazonaws.com/leada/titanic_data/FirstSubmission.csv'],
   ['submit', nil],
   ['next_steps', nil],
