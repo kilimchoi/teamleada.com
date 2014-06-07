@@ -278,7 +278,8 @@ apply_ctree_one_content = [
   ['user_code', '#@TODO Include UID'],
   ['text', 'What did you do the evaluate the model?'],
   ['user_response', '#@TODO Include UID'],
-  ['text', 'Don\'t forget to make a submission! If you need help, checkout the submission help section.']
+  ['text', 'Don\'t forget to make a submission! If you need help, checkout the submission help section.'],
+  ['next_steps', nil],
 ]
 
 apply_ctree = Step.create!(
@@ -295,18 +296,42 @@ apply_ctree_slide_one = Slide.create!(
 
 ################################################################################
 
+submission_guide_content = [
+  ['text', 'Remember that the file you submit to Leada must be a CSV file!'],
+  ['text', 'You also want to make sure that your submission file is of the following format:'],
+  ['text', 'Has exactly two columns titled "PassengerId" and "Prediction"'],
+  ['text', 'Has the correct type of data and has no missing values'],
+  ['text', 'It should be in the exact same format as the first file you submitted which you can again see below'],
+  ['link', 'https://s3.amazonaws.com/leada/titanic_data/FirstSubmission'],
+  ['next_steps', nil],
+]
+
+submission_guide_lesson = Lesson.create!(
+  title: "Titanic Submission Help",
+  project: project,
+  lesson_id: 3,
+)
+
+submission_guide_slide = Slide.create!(
+  content: submission_guide_content,
+  parent: submission_guide_lesson,
+  slide_id: 0,
+)
+
+################################################################################
 increase_score_one_content = [
   ['text', 'Now that you have created a predictive model, work on improving it!'],
   ['text', 'How do you think you can improve the model?'],
   ['user_response', '#@TODO Include UID'],
   ['text', 'If you did try increasing your score, paste in the relevant snippet here:'],
   ['user_code', '#@TODO Include UID'],
+  ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
 
 increase_score_lesson = Lesson.create!(
   title: "Increase Your Score",
   project: project,
-  lesson_id: 3,
+  lesson_id: 4,
 )
 
 increate_score_slide_one = Slide.create!(
@@ -317,28 +342,6 @@ increate_score_slide_one = Slide.create!(
 
 ################################################################################
 
-submission_guide_content = [
-  ['text', 'Remember that the file you submit to Leada must be a CSV file!'],
-  ['text', 'You also want to make sure that your submission file is of the following format:'],
-  ['text', 'Has exactly two columns titled "PassengerId" and "Prediction"'],
-  ['text', 'Has the correct type of data and has no missing values'],
-  ['text', 'It should be in the exact same format as the first file you submitted which you can again see below'],
-  ['link', 'https://s3.amazonaws.com/leada/titanic_data/FirstSubmission'],
-]
-
-submission_guide_lesson = Lesson.create!(
-  title: "Submission Help",
-  project: project,
-  lesson_id: 4,
-)
-
-submission_guide_slide = Slide.create!(
-  content: submission_guide_content,
-  parent: submission_guide_lesson,
-  slide_id: 0,
-)
-
-################################################################################
 
 
 
