@@ -35,6 +35,7 @@ $(document).ready(function() {
   });
 
   loadContent = function() {
+    //DEPRECATE: I'm pretty sure this is no longer used - Tristan
     var time = 400;
     var lessons = $(".content-text, .content-code, .content-image, .content-link, .content-video, content-quiz, .individual-step");
     lessons.each(function(index) {
