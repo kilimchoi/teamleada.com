@@ -79,8 +79,10 @@ data_content_slide_two = Slide.create!(
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 experiment_content_one = [
-	['text', 'The analytics team designed an experiment where the Abandoned observations were randomly split into test and control groups with a 50-50 split. The Abandoned observations in the test group were retargeted with advertisements online for a period of 7 days.'],
-	['text', 'The control group was never show any advertisements. The Reservation observations include observations from both the test and control.'],
+	['text', 'The analytics team designed an experiment where the Abandoned observations were randomly split into test and control groups with a 50-50 split.'],
+	['text', 'The Abandoned observations in the test group were retargeted with advertisements online for a period of 7 days.'],
+	['text', 'The control group was never show any advertisements.'],
+	['text', 'The Reservation observations include observations from both the test and control.'],
 	['next_steps', nil]
 ]
 
