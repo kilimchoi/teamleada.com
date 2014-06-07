@@ -56,10 +56,49 @@ welcome_lesson_slide_one = Slide.create!(
 
 ################################################################################
 
+work_with_data_content = [
+  ['text', 'In this project you are given two datasets "Train" and "Test". You will be using the "Train" dataset to build your model. This model will create predictions for passenger survival for the "Train" dataset.'],
+  ['text', 'In analytics we call this "training the model", hence the name "Train" for the dataset. Then, using the model you built you will predict whether the passengers in the "Test" dataset survived based on the model you created, hence the name "Test" for the other dataset!'],
+  ['lesson_links', nil],
+]
 
+work_with_data_lesson = Lesson.create!(
+  title: "Work with the Raw Data",
+  project: project,
+  lesson_id: 1,
+)
 
+work_with_data_slide_one = Slide.create!(
+  content: work_with_data_content,
+  parent: work_with_data_lesson,
+  slide_id: 0,
+)
 
+################################################################################
 
+train_data_content = [
+  ['text', 'To begin working with the data we need to read in the data into R.'],
+  ['text', 'Accomplish the following and paste the corresponding code.'],
+  ['text', '- Load the train and test data via read.csv(). Name the raw loaded data "trainData" and "testData"'],
+  ['text', '- Print the first few rows (and/or the last few rows) of the data.'],
+  ['user_code', '#@TODO probabl a UID here'],
+  ['text', 'Any Comment on the data?'],
+  ['user_response'. '#@TODO probabl a UID here'],
+]
+
+train_data_step = Step.create!(
+  title: "Train Data",
+  lesson: work_with_data_lesson,
+  step_id: 0,
+)
+
+train_data_slide_one = Slide.create!(
+  content: train_data_content,
+  parent: train_data_step,
+  slide_id: 0,
+)
+
+################################################################################
 
 
 
