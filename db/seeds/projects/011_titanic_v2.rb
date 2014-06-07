@@ -130,28 +130,44 @@ train_visualize_slide_one = Slide.create!(
 )
 
 ################################################################################
-train_visualize_content = [
-  ['text', 'It is good to first visualize the data to get a general understanding of the patterns and trends of the data. Lets look at the survival rate of our passengers filtered by Sex.'],
-  ['text', 'Your intuition might be that the women had a higher chance of survival because the boat adhered to the "Women and Children First" standard. We first create a table and call it "counts". Then we use the barplot() function in R.'],
-  ['code', 'counts <- table(trainData$Survived, trainData$Sex)'],
-  ['code', 'barplot(counts, xlab = "Gender", ylab = "Number of People", main = "Survival by Sex")'],
-  ['code', 'counts[2] / (counts[1] + counts[2])'],
-  ['code', 'counts[4] / (counts[3] + counts[4])'],
-  ['text', 'The lighter areas indicate survival and notice that our intuition was correct! 74.2% of women survived vs. 18.9% of men. We can use this to improve our model.'],
+train_clean_content_one = [
+  ['text', 'Cleaning data is typically one of the most time consuming parts to data analysis. We will cover a major topic in cleaning which is what to do with missing values.'],
+  ['text', 'If you noticed, there are several missing values for the "Age" variable for our observations. You can see by coding the following:'],
+  ['code', 'trainData$Age'],
+  ['text', 'Notice how there are tons of NA\'s. Filling in these NA\'s can improve our model so we will make inferences on the missing age variables. A simple proxy is the average age of all of the passengers. '],
+  ['text', 'We write a for loop which goes through each row of our "Train" dataset and if the Age column is "NA" then we input the average age.'],
+  ['text', 'We first calculate the mean age and ignore the NAs'],
+  ['code', 'mean_age <- round(mean(trainData$Age,na.rm=T), digits = 3)'],
+]
+
+train_clean_content_two = [
+  ['text', 'Then we loop through the observations in the dataset and if the age value is missing we assign it to be the mean age'],
+  ['code', 'for (i in 1:nrow(trainData)) {'],
+  ['code', '  if (is.na(trainData$Age[i])) {'],
+  ['code', '    trainData$Age[i] <- mean_age'],
+  ['code', '  }'],
+  ['code', '}'],
   ['next_steps', nil]
 ]
 
-train_visualize_step = Step.create!(
-  title: "Visualize Train Data",
+train_clean_step = Step.create!(
+  title: "Clean Train Data",
   previous_step: train_data_step,
-  step_id: 1,
+  step_id: 2,
 )
 
-train_visualize_slide_one = Slide.create!(
-  content: train_visualize_content,
-  parent: train_visualize_step,
+train_clean_slide_one = Slide.create!(
+  content: train_clean_content_one,
+  parent: train_clean_step,
   slide_id: 0,
 )
+
+train_clean_slide_two = Slide.create!(
+  content: train_clean_content_two,
+  parent: train_clean_step,
+  slide_id: 1,
+)
+
 ################################################################################
 
 
