@@ -29,6 +29,7 @@ new_tatanic_intro_content_one = [
   ['text', 'This project is based off of the historic sinking of the Titanic; you are asked to build a model which predicts which passengers survived!'],
   ['text', 'We\'ll be guiding you through a series of analysis stages.'],
   ['text', 'As you complete the steps, paste in your code and responses!'],
+  ['text', 'try to write your responses as concise as possible.'],
   ['text', 'Next, we\'ll get you setup with downloading the data.'],
 ]
 
@@ -110,7 +111,7 @@ train_data_slide_one = Slide.create!(
 train_visualize_content = [
   ['text', 'Now that we have the data, let\' build some Vizualizations'],
   ['text', 'Our intuition might be that the women had a higher chance of survival, because the boat adhered to the "Women and Children First" standard.'],
-  ['text', 'What Vizualization would help us check this assumption? Paste your code below: '],
+  ['text', 'What Vizualization would help us check this assumption? Write the code and paste it below:'],
   ['user_code', '#@TODO probabl a UID here'],
   ['text', 'What vizualization(s) did you build? Why? What do you see?'],
   ['user_response', '#@TODO probabl a UID here'],
@@ -131,27 +132,18 @@ train_visualize_slide_one = Slide.create!(
 
 ################################################################################
 train_clean_content_one = [
-  ['text', 'Cleaning data is typically one of the most time consuming parts to data analysis. We will cover a major topic in cleaning which is what to do with missing values.'],
-  ['text', 'If you noticed, there are several missing values for the "Age" variable for our observations. You can see by coding the following:'],
-  ['code', 'trainData$Age'],
-  ['text', 'Notice how there are tons of NA\'s. Filling in these NA\'s can improve our model so we will make inferences on the missing age variables. A simple proxy is the average age of all of the passengers. '],
-  ['text', 'We write a for loop which goes through each row of our "Train" dataset and if the Age column is "NA" then we input the average age.'],
-  ['text', 'We first calculate the mean age and ignore the NAs'],
-  ['code', 'mean_age <- round(mean(trainData$Age,na.rm=T), digits = 3)'],
-]
-
-train_clean_content_two = [
-  ['text', 'Then we loop through the observations in the dataset and if the age value is missing we assign it to be the mean age'],
-  ['code', 'for (i in 1:nrow(trainData)) {'],
-  ['code', '  if (is.na(trainData$Age[i])) {'],
-  ['code', '    trainData$Age[i] <- mean_age'],
-  ['code', '  }'],
-  ['code', '}'],
+  ['text', 'Now let\'s see if we need to do any cleaning.'],
+  ['text', 'What do you notice about the data that might need cleaning/correcting? How do you plan on correcting them?'],
+  ['user_response', '#@TODO probabl a UID here.'],
+  ['text', 'Write the code that does the cleaning.'],
+  ['user_code', '#@TODO probabl a UID here'],
+  ['text', 'Do you have any afterthoughts on the cleaning you did?'],
+  ['user_response', '#@TODO probabl a UID here'],
   ['next_steps', nil]
 ]
 
 train_clean_step = Step.create!(
-  title: "Clean Train Data",
+  title: "Clean Titanic Train Data",
   previous_step: train_data_step,
   step_id: 2,
 )
@@ -160,12 +152,6 @@ train_clean_slide_one = Slide.create!(
   content: train_clean_content_one,
   parent: train_clean_step,
   slide_id: 0,
-)
-
-train_clean_slide_two = Slide.create!(
-  content: train_clean_content_two,
-  parent: train_clean_step,
-  slide_id: 1,
 )
 
 ################################################################################
