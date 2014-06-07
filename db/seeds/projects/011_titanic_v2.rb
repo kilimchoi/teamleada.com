@@ -156,6 +156,147 @@ train_clean_slide_one = Slide.create!(
 
 ################################################################################
 
+test_data_content = [
+  ['text', 'Now we will do the same analysis to the testData.'],
+  ['text', 'Paste below the code you used to explore the data'],
+  ['user_code', '#@TODO probabl a UID here'],
+  ['next_steps', nil],
+]
+
+test_data_step = Step.create!(
+  title: "Titanic Test Data",
+  lesson: work_with_data_lesson,
+  step_id: 3,
+)
+
+test_data_slide_one = Slide.create!(
+  content: test_data_content,
+  parent: test_data_step,
+  slide_id: 0,
+)
+
+test_data_step.add_required_steps([train_visualize_step, train_clean_step])
+################################################################################
+
+test_visualize_content = [
+  ['text', 'Visualizing the "Test" dataset is important because you want to make sure that the two datasets are consistent with each other.'],
+  ['text', 'Otherwise when building a model on the "Train" dataset your creating a model for new data that has no similarity with the old data and will result in poor predictions!'],
+  ['text', 'Create some vizualization to see if the Test data looks similar to the Train Data'],
+  ['user_code', '#@TODO probabl a UID here'],
+  ['text', 'What vizualization did you build? Why did you build it?'],
+  ['user_response', '#@TODO probabl a UID here'],
+  ['next_steps', nil]
+]
+
+test_visualize_step = Step.create!(
+  title:"Visualize Titanic Test Data",
+  previous_step: test_data_step,
+  step_id: 4,
+)
+
+test_visualize_slide_one = Slide.create!(
+  content: test_visualize_content,
+  parent: test_visualize_step,
+  slide_id: 0,
+)
+################################################################################
+
+test_clean_one_content = [
+  ['text', 'Now clean the testData the same way we cleaned the Train Data'],
+  ['user_code', '#@TODO probabl a UID here'],
+  ['next_steps', nil],
+]
+
+test_clean = Step.create!(
+  title: "Clean Titanic Test Data",
+  previous_step: test_data_step,
+  step_id: 5,
+)
+
+test_clean_slide_one = Slide.create!(
+  content: test_clean_one_content,
+  parent: test_clean,
+  slide_id: 0,
+)
+################################################################################
+# Analytics
+analytics_tools_one_content = [
+  ['text', 'In this section we\'ll be building a model to make predictions.'],
+  ['text', 'You\'ll get to choose which ever model you\'d like to fit.'],
+  ['lesson_links', nil],
+]
+
+analytics_tools_lesson = Lesson.create!(
+  title: "Titanic Analytics Tools",
+  project: project,
+  lesson_id: 2,
+)
+
+analytics_slide_one = Slide.create!(
+  content: analytics_tools_one_content,
+  parent: analytics_tools_lesson,
+  slide_id: 0,
+)
+################################################################################
+
+learn_ctree_one_content = [
+  ['text', 'What model do you plan on building?'],
+  ['user_response', '#@TODO Include UID'],
+  ['text', 'Why did you choose this model?'],
+  ['user_response', '#@TODO Include UID'],
+]
+
+learn_ctree_two_content = [
+  ['text', 'What are some of the variables that you\'re going to use?'],
+  ['user_response', '#@TODO Include UID'],
+  ['text', 'How will you chosoe them?'],
+  ['user_response', '#@TODO Include UID'],
+  ['next_steps', nil],
+]
+
+learn_ctree = Step.create!(
+  title: "Model Building Plan",
+  lesson: analytics_tools_lesson,
+  step_id: 0,
+)
+
+learn_ctree_slide_one = Slide.create!(
+  content: learn_ctree_one_content,
+  parent: learn_ctree,
+  slide_id: 0,
+)
+
+learn_ctree_slide_two = Slide.create!(
+  content: learn_ctree_two_content,
+  parent: learn_ctree,
+  slide_id: 1,
+)
+################################################################################
+
+apply_ctree_one_content = [
+  ['text', 'Now let\'s actually build the model. Paste your code below:'],
+  ['user_code', '#@TODO Include UID'],
+  ['text', 'What did you do the evaluate the model?'],
+  ['user_response', '#@TODO Include UID'],
+]
+
+
+apply_ctree = Step.create!(
+  title: "Apply the Model",
+  lesson: analytics_tools_lesson,
+  step_id: 1,
+)
+
+apply_ctree_slide_one = Slide.create!(
+  content: apply_ctree_one_content,
+  parent: apply_ctree,
+  slide_id: 0,
+)
+
+
+
+
+
 
 
 
