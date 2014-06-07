@@ -278,8 +278,8 @@ apply_ctree_one_content = [
   ['user_code', '#@TODO Include UID'],
   ['text', 'What did you do the evaluate the model?'],
   ['user_response', '#@TODO Include UID'],
+  ['text', 'Don\'t forget to make a submission! If you need help, checkout the submission help section.']
 ]
-
 
 apply_ctree = Step.create!(
   title: "Apply the Model",
@@ -295,15 +295,25 @@ apply_ctree_slide_one = Slide.create!(
 
 ################################################################################
 
+increase_score_one_content = [
+  ['text', 'Now that you have created a predictive model, work on improving it!'],
+  ['text', 'How do you think you can improve the model?'],
+  ['user_response', '#@TODO Include UID'],
+  ['text', 'If you did try increasing your score, paste in the relevant snippet here:'],
+  ['user_code', '#@TODO Include UID'],
+]
+
 increase_score_lesson = Lesson.create!(
   title: "Increase Your Score",
   project: project,
   lesson_id: 3,
 )
 
-
-
-
+increate_score_slide_one = Slide.create!(
+  content: increase_score_one_content,
+  parent: increase_score_lesson,
+  slide_id: 0,
+)
 
 ################################################################################
 
