@@ -437,8 +437,6 @@ increase_score_three_content = [
   ['code','  }'],
   ['code', '}'],
   ['text', 'What other variables can you think of that might help the predictive model?'],
-  #['feedback', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
-  #['project_link', 'Back to the lessons page'],
   ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
 
@@ -466,6 +464,7 @@ increate_score_slide_three = Slide.create!(
   slide_id: 2,
 )
 
+################################################################################
 
 submission_guide_content = [
   ['text', 'Remember that the file you submit to Leada must be a CSV file!'],
@@ -487,6 +486,5 @@ submission_guide_slide = Slide.create!(
   parent: submission_guide_lesson,
   slide_id: 0,
 )
-
 
 ################################################################################
