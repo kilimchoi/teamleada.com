@@ -139,7 +139,7 @@ data_matching_content_one = [
 	['text', 'First explain how you define a match between the Abandoned and Reservation data sets.'],
 	['user_response', '#@TODO Include UID'],
 	['text', 'Next submit code which performs the data matching under the assumptions you previously defined.'],
-	['text', 'PUT SOME BOX FOR CODE SUBMISSION'],
+	['user_code', '#@TODO Include UID'],
 	['next_steps', nil]
 ]
 
@@ -160,7 +160,7 @@ data_matching_slide = Slide.create!(
 
 data_cleaning_content_one = [
 	['text', 'Submit code which performs data de-duplication and cleaning.'],
-	['text', 'PUT SOME BOX FOR CODE SUBMISSION'],
+	['user_code', '#@TODO Include UID'],
 	['next_steps', nil]
 ]
 
@@ -185,7 +185,7 @@ stat_analysis_content_one = [
 	['text', 'Define the null hypothesis and determine the appropriate statistical analysis'],
 	['user_response', '#@TODO Include UID'],
 	['text', 'Submit code which performs the statistical analysis'],
-	['text', 'BOX FOR CODE SUBMISSION'],
+	['user_code', '#@TODO Include UID'],
 	['text', 'Submit a conclusion of the results and 95% confidence interval. How effective was the MightyHive advertising campaign product?'],
 	['user_response', '#@TODO Include UID'],
 ]
