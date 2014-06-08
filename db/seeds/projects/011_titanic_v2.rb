@@ -29,7 +29,7 @@ new_tatanic_intro_content_one = [
   ['text', 'This project is based off of the historic sinking of the Titanic; you are asked to build a model which predicts which passengers survived!'],
   ['text', 'We\'ll be guiding you through a series of analysis stages.'],
   ['text', 'As you complete the steps, paste in your code and responses!'],
-  ['text', 'try to write your responses as concise as possible.'],
+  ['text', 'Try to keep your responses to be as concise as possible.'],
   ['text', 'Next, we\'ll get you setup with downloading the data.'],
 ]
 
@@ -87,7 +87,6 @@ train_data_content = [
   ['text', 'Accomplish the following and paste the corresponding code.'],
   ['text', '- Separately load the train and test data via read.csv(). Name the raw loaded data "trainData" and "testData"'],
   ['text', '- Print the first few rows (and/or the last few rows) of the data.'],
-  ['text', 'Paste the code you wrote to accomplish the tasks:'],
   ['user_code', '#@TODO probabl a UID here'],
   ['text', 'Do you have any thoughts on the data?'],
   ['user_response', '#@TODO probabl a UID here'],
