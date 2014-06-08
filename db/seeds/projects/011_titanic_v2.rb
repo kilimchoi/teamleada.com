@@ -108,8 +108,8 @@ train_data_slide_one = Slide.create!(
 ################################################################################
 
 train_visualize_content = [
-  ['text', 'Now that we have the data, let\' build some Vizualizations'],
-  ['text', 'Our intuition might be that the women had a higher chance of survival, because the boat adhered to the "Women and Children First" standard.'],
+  ['text', 'Now that we have the data, let\' build some Vizualizations.'],
+  ['text', 'Our intuition might be that the women had a higher chance of survival, because the boat might have adhered to the "Women and Children First" standard.'],
   ['text', 'What Vizualization would help us check this assumption? Write the code and paste it below:'],
   ['user_code', '#@TODO probabl a UID here'],
   ['text', 'What vizualization(s) did you build? Why? What do you see?'],
@@ -157,7 +157,7 @@ train_clean_slide_one = Slide.create!(
 
 test_data_content = [
   ['text', 'Now we will do the same analysis to the testData.'],
-  ['text', 'Paste below the code you used to explore the data'],
+  ['text', 'Paste below the code you used to lightly explore the data.'],
   ['user_code', '#@TODO probabl a UID here'],
   ['next_steps', nil],
 ]
@@ -179,10 +179,11 @@ test_data_step.add_required_steps([train_visualize_step, train_clean_step])
 
 test_visualize_content = [
   ['text', 'Visualizing the "Test" dataset is important because you want to make sure that the two datasets are consistent with each other.'],
-  ['text', 'Otherwise when building a model on the "Train" dataset your creating a model for new data that has no similarity with the old data and will result in poor predictions!'],
-  ['text', 'Create some vizualization to see if the Test data looks similar to the Train Data'],
+  ['text', 'Otherwise when building a model on the "Train" dataset, you\'re creating a model on the old data which has no resemblance with new data.'],
+  ['text', 'Such scenario occurs in production and can lead to poor real-time performance.'],
+  ['text', 'Now create some vizualizations to see if the Test data looks similar to the Train Data.'],
   ['user_code', '#@TODO probabl a UID here'],
-  ['text', 'What vizualization did you build? Why did you build it?'],
+  ['text', 'What vizualization(s) did you build? Why did you build it?'],
   ['user_response', '#@TODO probabl a UID here'],
   ['next_steps', nil]
 ]
@@ -201,7 +202,7 @@ test_visualize_slide_one = Slide.create!(
 ################################################################################
 
 test_clean_one_content = [
-  ['text', 'Now clean the testData the same way we cleaned the Train Data'],
+  ['text', 'Now clean the testData the same way we cleaned the Train Data.'],
   ['user_code', '#@TODO probabl a UID here'],
   ['next_steps', nil],
 ]
@@ -220,8 +221,8 @@ test_clean_slide_one = Slide.create!(
 ################################################################################
 # Analytics
 analytics_tools_one_content = [
-  ['text', 'In this section we\'ll be building a model to make predictions.'],
-  ['text', 'You\'ll get to choose which ever model you\'d like to fit.'],
+  ['text', 'In this section we\'ll build the actual model to make predictions.'],
+  ['text', 'You\'ll get to choose the model you want to fit.'],
   ['lesson_links', nil],
 ]
 
@@ -248,7 +249,7 @@ learn_ctree_one_content = [
 learn_ctree_two_content = [
   ['text', 'What are some of the variables that you\'re going to use?'],
   ['user_response', '#@TODO Include UID'],
-  ['text', 'How will you chosoe them?'],
+  ['text', 'How will you choose them?'],
   ['user_response', '#@TODO Include UID'],
   ['next_steps', nil],
 ]
