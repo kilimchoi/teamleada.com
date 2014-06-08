@@ -137,7 +137,7 @@ challenge_slide_two = Slide.create!(
 
 data_matching_content_one = [
 	['text', 'First explain how you define a match between the Abandoned and Reservation data sets.'],
-	['text', 'PUT SOME BOX FOR FREE RESPONSE'],
+	['user_response', '#@TODO Include UID'],
 	['text', 'Next submit code which performs the data matching under the assumptions you previously defined.'],
 	['text', 'PUT SOME BOX FOR CODE SUBMISSION'],
 	['next_steps', nil]
@@ -183,11 +183,11 @@ data_cleaning_slide = Slide.create!(
 
 stat_analysis_content_one = [
 	['text', 'Define the null hypothesis and determine the appropriate statistical analysis'],
-	['text', 'BOX FOR FREE RESPONSE'],
+	['user_response', '#@TODO Include UID'],
 	['text', 'Submit code which performs the statistical analysis'],
 	['text', 'BOX FOR CODE SUBMISSION'],
 	['text', 'Submit a conclusion of the results and 95% confidence interval. How effective was the MightyHive advertising campaign product?'],
-	['text', 'BOX FOR FREE RESPONSE'],
+	['user_response', '#@TODO Include UID'],
 ]
 
 stat_analysis_step = Step.create!(
