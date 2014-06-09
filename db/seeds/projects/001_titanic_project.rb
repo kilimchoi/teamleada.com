@@ -316,7 +316,7 @@ learn_ctree_two_content = [
 
 learn_ctree_three_content = [
   ['text', 'In general, overfitting is when you find patterns in the data that does not generalize to new datasets. If you look hard enough, you can find patterns in any dataset.'],
-  ['text', 'There are two main advantages to building a classification tree model. (1) They require very little data preparationi and cleaning. (2) Classification models are easy to interpret and explain to others!'],
+  ['text', 'There are two main advantages to building a classification tree model. (1) They require very little data preparation and cleaning. (2) Classification models are easy to interpret and explain to others!'],
   ['next_steps', nil],
 ]
 
