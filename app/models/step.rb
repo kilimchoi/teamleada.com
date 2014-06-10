@@ -53,7 +53,7 @@ class Step < ActiveRecord::Base
   end
 
   def page_title
-    "#{project.title} - #{lesson.title} - #{self.title}"
+    "#{project.title} - #{main_lesson.title} - #{self.title}"
   end
 
   def total_points

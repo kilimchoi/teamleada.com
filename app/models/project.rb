@@ -95,7 +95,7 @@ class Project < ActiveRecord::Base
   end
 
   def steps
-    lessons.collect{ |lesson| lesson.steps }.flatten
+    lessons.collect{ |lesson| lesson.steps + lesson.steps.collect{ |step| step.next_steps }.flatten }.flatten
   end
 
   # Submissions

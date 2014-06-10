@@ -53,9 +53,9 @@
 - elsif content_type == "finish_project_button"
   p.fragment
     - if defined? step
-      = link_to "Complete Project!", complete_project_path(step.main_lesson.project), method: :post, class: 'flat-button step-button', onclick: 'openUrl("' + content + '")'
+      = link_to "Complete Project!", complete_project_path(step.main_lesson.project), method: :post, class: 'flat-button step-button', onclick: "#{current_user.completed?(step.main_lesson.project) ? 'openUrl(\"' + content + '\")' : ''}"
     - if defined? lesson
-      = link_to "Complete Project!", complete_project_path(lesson.project), method: :post, class: 'flat-button step-button', onclick: 'openUrl("' + content + '")'
+      = link_to "Complete Project!", complete_project_path(lesson.project), method: :post, class: 'flat-button step-button', onclick: "#{current_user.completed?(lesson.project) ? 'openUrl(\"' + content + '\")' : ''}"
 - elsif content_type == 'user_response'
   p.fragment
    | ****TEXT BOX for user responses here.

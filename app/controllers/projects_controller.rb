@@ -77,10 +77,15 @@ class ProjectsController < ApplicationController
 
   def complete
     @project_status = ProjectStatus.find_by(user: current_user, project: @project)
-    @project_status.completed = true
-    @project_status.save
-    flash[:info] = "Congratulations! You have completed the #{@project.title} project!"
-    redirect_to @project
+    if current_user.completed_points(@project) == @project.total_points
+      @project_status.completed = true
+      @project_status.save
+      flash[:info] = "Congratulations! You have completed the #{@project.title} project!"
+      redirect_to @project
+    else
+      flash[:error] = "You have not completed all of the lessons for this project!"
+      redirect_to current_user.next_lesson_or_step_for_project_path(@project)
+    end
   end
 
 end

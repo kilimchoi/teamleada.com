@@ -38,5 +38,12 @@
             ul
             - @project.lessons.each do |lesson|
               .lesson-link.center
-                = link_to lesson.title, project_lesson_path(@project, lesson), class: 'flat-button step-button'
+                - if signed_in? && current_user.completed?(lesson)
+                  = link_to lesson.title, project_lesson_path(@project, lesson), class: 'flat-button step-button fa fa-check-circle'
+                - elsif signed_in? && current_user.next_lesson_for_project(@project) == lesson
+                  = link_to lesson.title, project_lesson_path(@project, lesson), class: 'flat-button step-button fa fa-circle'
+                - else
+                  li.flat-button.step-button.not-completed-item
+                    = lesson.title
+
 
