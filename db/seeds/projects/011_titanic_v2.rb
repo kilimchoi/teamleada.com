@@ -108,9 +108,9 @@ train_data_slide_one = Slide.create!(
 ################################################################################
 
 train_visualize_content = [
-  ['text', 'Now that we have the data, let\' build some Vizualizations.'],
+  ['text', 'Now that we have the data, let\'s build some vizualizations.'],
   ['text', 'Our intuition might be that the women had a higher chance of survival, because the boat might have adhered to the "Women and Children First" standard.'],
-  ['text', 'What Vizualization would help us check this assumption? Write the code and paste it below:'],
+  ['text', 'What vizualization would help us check this assumption? Write the code and paste it below:'],
   ['user_code', '#@TODO probabl a UID here'],
   ['text', 'What vizualization(s) did you build? Why? What do you see?'],
   ['user_response', '#@TODO probabl a UID here'],
@@ -157,7 +157,7 @@ train_clean_slide_one = Slide.create!(
 
 test_data_content = [
   ['text', 'Now we will do the same analysis to the testData.'],
-  ['text', 'Paste below the code you used to lightly explore the data.'],
+  ['text', 'Paste below the code you used to lightly explore the testData.'],
   ['user_code', '#@TODO probabl a UID here'],
   ['next_steps', nil],
 ]
@@ -299,8 +299,8 @@ apply_ctree_slide_one = Slide.create!(
 submission_guide_content = [
   ['text', 'Remember that the file you submit to Leada must be a CSV file!'],
   ['text', 'You also want to make sure that your submission file is of the following format:'],
-  ['text', 'Has exactly two columns titled "PassengerId" and "Prediction".'],
-  ['text', 'Has the correct type of data and has no missing values.'],
+  ['text', '- Has exactly two columns titled "PassengerId" and "Prediction".'],
+  ['text', '- Has the correct type of data and has no missing values.'],
   ['text', 'It should be in the exact same format as the first file you submitted (see below):'],
   ['link', 'https://s3.amazonaws.com/leada/titanic_data/FirstSubmission'],
   ['next_steps', nil],
