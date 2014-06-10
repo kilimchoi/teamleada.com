@@ -62,6 +62,10 @@
 - elsif content_type == 'user_code'
   p.fragment
     #code-editor
+    javascript:
+      $(document).ready(function() {
+        var editor = ace.edit("code-editor");
+      });
 - else
   p.fragment.content-error
     = "ERR: Unknown Content Type. Contact dev pls: tristan@teamleada.com"
@@ -71,6 +75,4 @@ javascript:
     openUrl = function(url) {
       window.open(url, '_blank');
     }
-
-    var editor = ace.edit("code-editor");
   });
