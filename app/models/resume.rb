@@ -25,6 +25,7 @@ class Resume < ActiveRecord::Base
     }
 
   validates_attachment_content_type :resume_file, content_type: "application/pdf"
+  validates_attachment_size :resume_file, less_than: 10.megabytes
 
   def pretty_upload_date
     created_at.strftime("%B %d, %Y")
