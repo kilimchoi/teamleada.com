@@ -3,14 +3,14 @@
 .container.full-container
   .row
     .col-md-8.col-md-offset-2
-      h1 Ask a question about Data Science!
+      h1 Ask a question to one of the worlds leading Data Scientist!
       p
-        | Peter Norvig is a Director of Research at Google Inc; previously he directed Google's core search algorithms group. He is co-author of Artificial Intelligence: A Modern Approach, the leading textbook in the field, and co-teacher of an Artificial Intelligence class that signed up 160,000 students, helping to kick off the current round of massive open online classes. He is a AAAI Fellow, ACM Fellow, and American Academy of Arts & Sciences Member.
+        | Peter Norvig is a Director of Research at Google Inc; previously he directed Google's core search algorithms group. He is co-author of <a href="http://aima.cs.berkeley.edu/" target="_blank">Artificial Intelligence: A Modern Approach</a>, the leading textbook in the field, and co-teacher of an <a href="https://www.udacity.com/wiki/frontpage" target ="_blank">Artificial Intelligence class that signed up 160,000 students</a>, helping to kick off the current round of massive open online classes. He is a <a href="http://awards.acm.org/award_winners/norvig_4663209.cfm" target="_blank">AAAI Fellow</a>, <a href="http://awards.acm.org/award_winners/norvig_4663209.cfm" target="_blank">ACM Fellow</a>, and <a href="https://www.amacad.org/default.aspx" target ="_blank">American Academy of Arts & Sciences Member</a>.
   .row
     .col-md-8.col-md-offset-2
       = simple_form_for @question do |f|
         = f.input :title, label: "Question", placeholder: "ex: What do you see happening in the Data Science field in the next 3 years?", input_html: { rows: 8 }
-        = link_to "Submission Guidelines", question_guidelines_path, class: "flat-button step-button"
+        = link_to "Guidelines / How This Works", question_guidelines_path, class: "flat-button step-button"
         = f.submit "Submit", class: "flat-button step-button"
   .row
     .col-md-8.col-md-offset-2
