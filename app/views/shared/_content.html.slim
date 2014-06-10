@@ -1,3 +1,10 @@
+- if defined? step
+  - project = step.main_lesson.project
+- elsif defined? lesson
+  - project = lesson.project
+- else
+  - project = nil
+
 - if content_type == 'text'
   p.fragment
     = content
@@ -17,7 +24,7 @@
 - elsif content_type == 'lesson_links'
   p.fragment
     - lesson.steps.each do |step|
-      = link_to step.title, project_lesson_step_path(lesson.project, lesson, step), class: "flat-button step-button"
+      = link_to step.title, project_lesson_step_path(project, lesson, step), class: "flat-button step-button"
 - elsif content_type == 'next_steps'
   p.fragment
     - if defined? step
@@ -34,13 +41,10 @@
 - elsif content_type == 'previous_step'
   p.fragment
     - if defined? step
-      = link_to "Back to #{step.previous_step.title}", project_lesson_step_path(step.main_lesson.project, step.main_lesson, step.previous_step), class: "flat-button step-button"
+      = link_to "Back to #{step.previous_step.title}", project_lesson_step_path(project, step.main_lesson, step.previous_step), class: "flat-button step-button"
 - elsif content_type == 'project_link'
   p.fragment
-    - if defined? step
-      = link_to content, project_path(step.main_lesson.project), class: 'flat-button step-button'
-    - if defined? lesson
-      = link_to content, project_path(lesson.project), class: 'flat-button step-button'
+    = link_to content, project_path(project), class: 'flat-button step-button'
 - elsif content_type == 'quiz'
   p.fragment
     = render partial: "shared/quiz", locals: {quiz_id: content}
@@ -52,16 +56,17 @@
     = "Please give us feedback!"
 - elsif content_type == "finish_project_button"
   p.fragment
-    - if defined? step
-      = link_to "Complete Project!", complete_project_path(step.main_lesson.project), method: :post, class: 'flat-button step-button', onclick: "#{current_user.has_all_project_points?(step.main_lesson.project) ? 'openUrl("' + content + '")' : ''}"
-    - if defined? lesson
-      = link_to "Complete Project!", complete_project_path(lesson.project), method: :post, class: 'flat-button step-button', onclick: "#{current_user.has_all_project_points?(lesson.project) ? 'openUrl("' + content + '")' : ''}"
+      = link_to "Complete Project!", complete_project_path(project), method: :post, class: 'flat-button step-button', onclick: "#{current_user.has_all_project_points?(project) ? 'openUrl("' + content + '")' : ''}"
 - elsif content_type == 'user_response'
   p.fragment
    | ****TEXT BOX for user responses here.
 - elsif content_type == 'user_code'
   p.fragment
-    #code-editor
+    = simple_form_for code_submission_project_path(project), remote: true, html: {class: 'form-vertical'} do |f|
+      .form-inputs
+        = f.input :content, input_html: { id: "code-editor" }
+      .form-actions
+        = f.submit "Submit", class: "flat-button step-button"
     javascript:
       $(document).ready(function() {
         var editor = ace.edit("code-editor");
