@@ -254,7 +254,7 @@ class User < ActiveRecord::Base
     total = 0
     step_statuses.each do |step_status|
       if step_status.completed? && step_status.project == project
-        total += step_status.step.points
+        total += step_status.step.total_points
       end
     end
     lesson_statuses.each do |lesson_status|
@@ -266,7 +266,7 @@ class User < ActiveRecord::Base
   end
 
   def project_progress_percentage(project)
-    (completed_points(project).to_f / project.total_points.to_f) * 100
+    ((completed_points(project).to_f / project.total_points.to_f) * 100).round(1)
   end
 
   def password_required?
