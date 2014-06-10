@@ -56,8 +56,8 @@ class Step < ActiveRecord::Base
     "#{project.title} - #{lesson.title} - #{self.title}"
   end
 
-  def points
-    self.points + next_steps.sum(:points)
+  def total_points
+    self.points + next_steps.collect{ |step| step.total_points }.sum
   end
 
   def main_lesson
