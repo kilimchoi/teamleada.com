@@ -38,6 +38,10 @@ class UsersController < ApplicationController
       puts @user.errors.messages
       respond_to do |format|
         format.json { render json: {data: {full_messages: @user.errors.full_messages, errors: @user.errors.messages.to_a}}, status: :unprocessable_entity }
+        format.html {
+          flash[:error] = "There was a problem uploading your resume. Your resume must be a pdf."
+          redirect_to user_path(@user)
+        }
       end
     end
   end
