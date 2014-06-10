@@ -18,6 +18,8 @@
 //= require highcharts
 //= require highcharts/highcharts-more
 //= require modal
+//= require ace/ace
+//= require ace/theme-github
 
 $(document).ready(function() {
   //load heap data here.
