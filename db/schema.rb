@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140610060736) do
+ActiveRecord::Schema.define(version: 20140610063524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -119,7 +119,6 @@ ActiveRecord::Schema.define(version: 20140610060736) do
   end
 
   create_table "questions", force: true do |t|
-    t.string   "title"
     t.text     "description"
     t.integer  "up_votes",    default: 0
     t.datetime "created_at"
@@ -127,6 +126,7 @@ ActiveRecord::Schema.define(version: 20140610060736) do
     t.integer  "asker_id"
     t.text     "voters"
     t.boolean  "hidden",      default: false
+    t.text     "title"
   end
 
   create_table "quizzes", force: true do |t|
