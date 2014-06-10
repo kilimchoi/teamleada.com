@@ -50,6 +50,10 @@ class Lesson < ActiveRecord::Base
     lesson_id
   end
 
+  def page_title
+    "#{project.title} - #{self.title}"
+  end
+
   def next_link
     potential_lesson_uid = self.uid[0..-2] + (lesson_id + 1).to_s
     potential_next_lesson = Lesson.find_by_uid(potential_lesson_uid)

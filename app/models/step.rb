@@ -52,6 +52,10 @@ class Step < ActiveRecord::Base
     step_id
   end
 
+  def page_title
+    "#{project.title} - #{lesson.title} - #{self.title}"
+  end
+
   def main_lesson
     unless lesson.nil?
       lesson
