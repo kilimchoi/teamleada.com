@@ -46,4 +46,8 @@ module ApplicationHelper
     link_to title, params.merge(:sort => column, :direction => direction, page: nil), {:class => css_class}
   end
 
+  def prompt_user
+    rand(1..100) <= 20
+  end
+
 end
