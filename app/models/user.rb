@@ -174,6 +174,10 @@ class User < ActiveRecord::Base
     self.resumes.count > 0
   end
 
+  def has_all_project_points?(project)
+    project.total_points <= completed_points(project)
+  end
+
   def owns_project?(project)
     return false if !self.is_company? || self.company.nil?
     self.company.projects.include? project
