@@ -254,12 +254,12 @@ class User < ActiveRecord::Base
     total = 0
     step_statuses.each do |step_status|
       if step_status.completed? && step_status.project == project
-        total += step_status.step.try(:points) || 1
+        total += step_status.step.points
       end
     end
     lesson_statuses.each do |lesson_status|
       if lesson_status.completed? && lesson_status.project == project
-        total += lesson_status.lesson.try(:points) == 0 ? 1 : lesson_status.lesson.points
+        total += lesson_status.lesson.points
       end
     end
     total
