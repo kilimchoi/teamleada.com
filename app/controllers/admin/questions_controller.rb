@@ -8,9 +8,9 @@ class Admin::QuestionsController < Admin::BaseController
   end
 
   def hide
-    @question.hidden = true
+    @question.hidden = !@question.hidden
     @question.save
-    flash[:info] = "You have successfully hidden the question: #{@question.title}"
+    flash[:info] = "You have successfully #{!@question.hidden? ? 'un' : ''}hidden the question: #{@question.title}"
     redirect_to admin_questions_path
   end
 
