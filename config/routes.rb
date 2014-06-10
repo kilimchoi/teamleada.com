@@ -81,7 +81,7 @@ TeamLeada::Application.routes.draw do
     resources :employer_applications, path: "employer-applications", only: [:index, :show]
     resources :questions, only: [:index, :show] do
       member do
-        match 'hide', to: 'questions#hide', as: :hide_question, via: :post
+        match 'hide', to: 'questions#hide', as: :hide, via: :post
       end
     end
   end
