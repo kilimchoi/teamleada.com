@@ -70,6 +70,7 @@ class PagesController < ApplicationController
   end
 
   def question_guidelines
+    @large_header = true
   end
 
 end
