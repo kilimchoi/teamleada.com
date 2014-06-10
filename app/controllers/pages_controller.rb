@@ -69,4 +69,7 @@ class PagesController < ApplicationController
     @questions = Question.not_including_top(7)
   end
 
+  def question_guidelines
+  end
+
 end

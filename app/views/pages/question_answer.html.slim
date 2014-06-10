@@ -10,7 +10,8 @@
     .col-md-8.col-md-offset-2
       = simple_form_for @question do |f|
         = f.input :title, label: "Question", placeholder: "ex: What do you see happening in the Data Science field in the next 3 years?", input_html: { rows: 8 }
-        = f.submit "Submit", class: "flat-button"
+        = link_to "Submission Guidelines", question_guidelines_path, class: "flat-button step-button"
+        = f.submit "Submit", class: "flat-button step-button"
   .row
     .col-md-8.col-md-offset-2
       #questions-table
