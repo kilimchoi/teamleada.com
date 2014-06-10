@@ -7,12 +7,15 @@
         th User
         th Date posted
         th Up Votes
+        th Hide
         - @questions.each do |question|
-          tr
-            td = question.title
-            - unless question.asker.nil?
-              td = link_to question.asker.name, admin_user_path(question.asker)
-            - else
-              td anonymous
-            td = question.pretty_post_date
-            td = question.up_votes
+          - unless question.hidden?
+            tr
+              td = question.title
+              - unless question.asker.nil?
+                td = link_to question.asker.name, admin_user_path(question.asker)
+              - else
+                td anonymous
+              td = question.pretty_post_date
+              td = question.up_votes
+              td = link_to "Hide", admin_hide_question_path(question), method: :post
