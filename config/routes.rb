@@ -79,7 +79,11 @@ TeamLeada::Application.routes.draw do
       end
     end
     resources :employer_applications, path: "employer-applications", only: [:index, :show]
-    resources :questions, only: [:index, :show]
+    resources :questions, only: [:index, :show] do
+      member do
+        match 'hide', to: 'questions#hide', as: :hide, via: :post
+      end
+    end
   end
 
   # 404 page routes

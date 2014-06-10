@@ -1,9 +1,10 @@
-.question-container
-  .up-votes-container
-    - unless question.has_voted? current_user, request.remote_ip
-      = link_to "", up_vote_question_path(question), method: :post, remote: true, class: "glyphicon glyphicon-chevron-up up-vote-button"
-    span.label.label-primary = question.up_votes
-  .question-text-container
-    .question-text
-      = question.title
+- unless question.hidden?
+  .question-container
+    .up-votes-container
+      - unless question.has_voted? current_user, request.remote_ip
+        = link_to "", up_vote_question_path(question), method: :post, remote: true, class: "glyphicon glyphicon-chevron-up up-vote-button"
+      span.label.label-primary = question.up_votes
+    .question-text-container
+      .question-text
+        = question.title
 
