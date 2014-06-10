@@ -30,6 +30,12 @@ javascript:
     $('#user-info-modal').modal('show');
     $('#resume-modal').modal('show');
 
+    if ($("#user-info-modal").length > 0) {
+      modalPageView('/user-info');
+    } else if ($("#resume-modal").length > 0) {
+      modalPageView('/resume');
+    }
+
     $(".user-info-form").bind("ajax:success", function(event, data, status, xhr) {
       $('#user-info-modal').modal('hide');
       fields = data.data;
