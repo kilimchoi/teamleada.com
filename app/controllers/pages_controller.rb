@@ -69,4 +69,8 @@ class PagesController < ApplicationController
     @questions = Question.not_including_top(7)
   end
 
+  def question_guidelines
+    @large_header = true
+  end
+
 end

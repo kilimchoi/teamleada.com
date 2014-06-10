@@ -8,6 +8,7 @@ TeamLeada::Application.routes.draw do
   match 'learn', to: 'pages#student', as: :learn, via: :get
   match 'learn', to: 'users#auth_code', as: :auth_code, via: :post
   match 'ask-peter', to: 'pages#question_answer', as: 'question_answer', via: :get
+  match 'ask-peter/guidelines', to: 'pages#question_guidelines', as: 'question_guidelines', via: :get
 
   match 'surveys/:name', to: 'surveys#show', via: :get
 
