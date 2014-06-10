@@ -44,6 +44,7 @@ TeamLeada::Application.routes.draw do
       match 'interest', to: 'projects#show_interest', as: 'interest', via: :post
       match 'purchase', to: 'charges#create', as: 'purchase', via: [:post]
       match 'complete', to: 'projects#complete', as: 'complete', via: :post
+      match 'code-submission', to: 'projects#submit_code', as: 'code_submission', via: :post
     end
 
     resources :lessons, only: [:show] do
