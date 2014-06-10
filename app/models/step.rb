@@ -56,6 +56,10 @@ class Step < ActiveRecord::Base
     "#{project.title} - #{lesson.title} - #{self.title}"
   end
 
+  def points
+    self.points + next_steps.sum(:points)
+  end
+
   def main_lesson
     unless lesson.nil?
       lesson

@@ -86,12 +86,16 @@ class Project < ActiveRecord::Base
   def total_points
     total = 0
     lessons.each do |lesson|
-      total += lesson.points == 0 ? 1 : lesson.points
+      total += lesson.points
       lesson.steps.each do |step|
-        total += step.points || 1
+        total += step.points
       end
     end
     total
+  end
+
+  def steps
+    lessons.collect{ |lesson| lesson.steps }.flatten
   end
 
   # Submissions
