@@ -19,6 +19,7 @@
 //= require highcharts/highcharts-more
 //= require modal
 //= require right_sidebar
+//= require pace.min
 //= require ace/ace
 //= require ace/theme-github
 
