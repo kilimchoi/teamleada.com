@@ -88,11 +88,13 @@ train_data_content = [
   ['text', '- Separately load the train and test data via read.csv(). Name the raw loaded data "trainData" and "testData"'],
   ['text', '- Print the first few rows (and/or the last few rows) of the data.'],
   ['user_code', '#@TODO probabl a UID here'],
+]
+
+train_data_content_two = [
   ['text', 'Do you have any thoughts on the data?'],
   ['user_response', '#@TODO probabl a UID here'],
   ['next_steps', nil]
 ]
-
 train_data_step = Step.create!(
   title: "Titanic Train Data",
   lesson: work_with_data_lesson,
@@ -104,7 +106,11 @@ train_data_slide_one = Slide.create!(
   parent: train_data_step,
   slide_id: 0,
 )
-
+train_data_slide_two = Slide.create!(
+  content: train_data_content_two,
+  parent: train_data_step,
+  slide_id: 1,
+)
 ################################################################################
 
 train_visualize_content = [
@@ -112,6 +118,9 @@ train_visualize_content = [
   ['text', 'Our intuition might be that the women had a higher chance of survival, because the boat might have adhered to the "Women and Children First" standard.'],
   ['text', 'What vizualization would help us check this assumption? Write the code and paste it below:'],
   ['user_code', '#@TODO probabl a UID here'],
+]
+
+train_visualize_content_two = [
   ['text', 'What vizualization(s) did you build? Why? What do you see?'],
   ['user_response', '#@TODO probabl a UID here'],
   ['next_steps', nil],
@@ -129,16 +138,29 @@ train_visualize_slide_one = Slide.create!(
   slide_id: 0,
 )
 
+train_visualize_slide_two = Slide.create!(
+  content: train_visualize_content_two,
+  parent: train_visualize_step,
+  slide_id: 1,
+)
+
+
 ################################################################################
 train_clean_content_one = [
   ['text', 'Now let\'s see if we need to do any cleaning.'],
   ['text', 'What do you notice about the data that might need cleaning/correcting? How do you plan on correcting them?'],
   ['user_response', '#@TODO probabl a UID here.'],
+]
+
+train_clean_content_two = [
   ['text', 'Write the code that does the cleaning.'],
   ['user_code', '#@TODO probabl a UID here'],
+]
+
+train_clean_content_three = [
   ['text', 'Do you have any afterthoughts on the cleaning you did?'],
   ['user_response', '#@TODO probabl a UID here'],
-  ['next_steps', nil]
+  ['next_steps', nil],
 ]
 
 train_clean_step = Step.create!(
@@ -149,6 +171,18 @@ train_clean_step = Step.create!(
 
 train_clean_slide_one = Slide.create!(
   content: train_clean_content_one,
+  parent: train_clean_step,
+  slide_id: 0,
+)
+
+train_clean_slide_two = Slide.create!(
+  content: train_clean_content_two,
+  parent: train_clean_step,
+  slide_id: 0,
+)
+
+train_clean_slide_three = Slide.create!(
+  content: train_clean_content_three,
   parent: train_clean_step,
   slide_id: 0,
 )
@@ -183,9 +217,12 @@ test_visualize_content = [
   ['text', 'Such scenario occurs in production and can lead to poor real-time performance.'],
   ['text', 'Now create some vizualizations to see if the Test data looks similar to the Train Data.'],
   ['user_code', '#@TODO probabl a UID here'],
+]
+
+test_visualize_content_two = [
   ['text', 'What vizualization(s) did you build? Why did you build it?'],
   ['user_response', '#@TODO probabl a UID here'],
-  ['next_steps', nil]
+  ['next_steps', nil],
 ]
 
 test_visualize_step = Step.create!(
@@ -198,6 +235,11 @@ test_visualize_slide_one = Slide.create!(
   content: test_visualize_content,
   parent: test_visualize_step,
   slide_id: 0,
+)
+test_visualize_slide_one = Slide.create!(
+  content: test_visualize_content_two,
+  parent: test_visualize_step,
+  slide_id: 1,
 )
 ################################################################################
 
@@ -242,13 +284,19 @@ analytics_slide_one = Slide.create!(
 learn_ctree_one_content = [
   ['text', 'What model do you plan on building?'],
   ['user_response', '#@TODO Include UID'],
+]
+
+learn_ctree_two_content = [
   ['text', 'Why did you choose this model?'],
   ['user_response', '#@TODO Include UID'],
 ]
 
-learn_ctree_two_content = [
+learn_ctree_three_content = [
   ['text', 'What are some of the variables that you\'re going to use?'],
   ['user_response', '#@TODO Include UID'],
+]
+
+learn_ctree_four_content = [
   ['text', 'How will you choose them?'],
   ['user_response', '#@TODO Include UID'],
   ['next_steps', nil],
@@ -271,11 +319,24 @@ learn_ctree_slide_two = Slide.create!(
   parent: learn_ctree,
   slide_id: 1,
 )
+learn_ctree_slide_two = Slide.create!(
+  content: learn_ctree_three_content,
+  parent: learn_ctree,
+  slide_id: 3,
+)
+learn_ctree_slide_two = Slide.create!(
+  content: learn_ctree_four_content,
+  parent: learn_ctree,
+  slide_id: 4,
+)
 ################################################################################
 
 apply_ctree_one_content = [
   ['text', 'Now let\'s actually build the model. Paste your code below:'],
   ['user_code', '#@TODO Include UID'],
+]
+
+apply_ctree_two_content = [
   ['text', 'What did you do to evaluate the model?'],
   ['user_response', '#@TODO Include UID'],
   ['text', 'Don\'t forget to make a submission! If you need help, checkout the submission help section.'],
@@ -294,6 +355,11 @@ apply_ctree_slide_one = Slide.create!(
   slide_id: 0,
 )
 
+apply_ctree_slide_one = Slide.create!(
+  content: apply_ctree_two_content,
+  parent: apply_ctree,
+  slide_id: 1,
+)
 ################################################################################
 
 submission_guide_content = [
@@ -323,6 +389,9 @@ increase_score_one_content = [
   ['text', 'Now that you have created a predictive model, work on improving it!'],
   ['text', 'How do you think you can improve the model?'],
   ['user_response', '#@TODO Include UID'],
+]
+
+increase_score_two_content = [
   ['text', 'If you did try increasing your score, paste in the relevant snippets here:'],
   ['user_code', '#@TODO Include UID'],
   ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
@@ -340,13 +409,13 @@ increate_score_slide_one = Slide.create!(
   slide_id: 0,
 )
 
+increate_score_slide_one = Slide.create!(
+  content: increase_score_two_content,
+  parent: increase_score_lesson,
+  slide_id: 0,
+)
+
 ################################################################################
-
-
-
-
-
-
 
 
 
