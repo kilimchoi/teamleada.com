@@ -412,7 +412,7 @@ increate_score_slide_one = Slide.create!(
 increate_score_slide_one = Slide.create!(
   content: increase_score_two_content,
   parent: increase_score_lesson,
-  slide_id: 0,
+  slide_id: 1,
 )
 
 ################################################################################
