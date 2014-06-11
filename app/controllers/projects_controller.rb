@@ -103,14 +103,14 @@ class ProjectsController < ApplicationController
   end
 
   def resource
-    @submission = CodeSubmission.where(user: current_user, project: @project, parent_type: params[:parent_type], parent_id: params[:parent_id], slide_index: params[:slide_index]).first
+    @submission = CodeSubmission.find_by(user: current_user, project: @project, parent_type: params[:parent_type], parent_id: params[:parent_id], slide_index: params[:slide_index])
     if @submission
       respond_to do |format|
         format.json { render json: {content: @submission.content}, status: :ok }
       end
     else
       respond_to do |format|
-        format.json { render json: {}, status: :unprocessible_entity}
+        format.json { render json: {content: ""}, status: :ok}
       end
     end
   end

@@ -48,6 +48,7 @@ $(document).ready(function() {
         editor.setValue(data.content);
       },
       failure: function(data) {
+        editor.setValue("");
       }
     });
     return false;
