@@ -27,5 +27,20 @@
 
 .reveal {
   margin-left: 300px; // for the sidebar
+//  margin-right: 300px; // for the right sidebar
   width: auto;
+
+  @include breakpoint($medium-screen) {
+    margin-left: 250px;
+//    margin-right: 250px;
+  }
+
+  @include breakpoint($small-screen) {
+    margin-left: 200px;
+//    margin-right: 200px;
+  }
+}
+
+.reveal .controls {
+  right: 60px;
 }

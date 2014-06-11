@@ -26,6 +26,9 @@ gem 'stripe', git: 'https://github.com/stripe/stripe-ruby'
 gem 'will_paginate', '~> 3.0'
 gem 'best_in_place', github: 'negativetwelve/best_in_place'
 
+# Code Submissions
+gem 'ace-rails-ap'
+
 # Notifications
 gem 'toastr-rails'
 gem 'toastr-rails-sass', '~> 2.0.1'

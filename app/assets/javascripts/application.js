@@ -18,6 +18,12 @@
 //= require highcharts
 //= require highcharts/highcharts-more
 //= require modal
+//= require right_sidebar
+//= require pace.min
+//= require spin.min
+//= require ladda.min
+//= require ace/ace
+//= require ace/theme-github
 
 $(document).ready(function() {
   //load heap data here.
@@ -47,4 +53,7 @@ $(document).ready(function() {
 
   // Best In Place
   $(".best_in_place").best_in_place();
+
+  // Ladda
+  Ladda.bind('.ladda-button', { timeout: 1000 });
 });

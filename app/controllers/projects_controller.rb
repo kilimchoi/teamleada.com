@@ -88,4 +88,31 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def submit_resource
+    @submission = CodeSubmission.where(user: current_user, project: @project, parent_type: params[:parent_type], parent_id: params[:parent_id], slide_index: params[:slide_index]).first_or_initialize
+    @submission.content = params[:content]
+    if @submission.save
+      respond_to do |format|
+        format.json { render json: {}, status: :ok }
+      end
+    else
+      respond_to do |format|
+        format.json { render json: {}, status: :unprocessible_entity}
+      end
+    end
+  end
+
+  def resource
+    @submission = CodeSubmission.where(user: current_user, project: @project, parent_type: params[:parent_type], parent_id: params[:parent_id], slide_index: params[:slide_index]).first
+    if @submission
+      respond_to do |format|
+        format.json { render json: {content: @submission.content}, status: :ok }
+      end
+    else
+      respond_to do |format|
+        format.json { render json: {}, status: :unprocessible_entity}
+      end
+    end
+  end
+
 end

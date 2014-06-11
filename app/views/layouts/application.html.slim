@@ -31,10 +31,15 @@ html
     #page-container
       = render partial: "shared/flash"
       - if params[:controller] == "lessons" || params[:controller] == "steps"
+        / TODO: Remove this and actually make sure only one sidebar loads
+        - rendered = false
         - unless @lesson.nil?
+          - rendered = true
           = render partial: "projects/sidebar", locals: {project: @lesson.project}
-        - unless @step.nil?
+          = render partial: "projects/right_sidebar", locals: {item: @lesson}
+        - unless @step.nil? || rendered
           = render partial: "projects/sidebar", locals: {project: @step.main_lesson.project}
+          = render partial: "projects/right_sidebar", locals: {item: @step}
 
       - if is_admin_namespace?
         .container-fluid.full-container

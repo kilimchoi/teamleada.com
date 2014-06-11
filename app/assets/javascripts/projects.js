@@ -7,10 +7,15 @@ function initializeReveal() {
   // https://github.com/hakimel/reveal.js#configuration
   Reveal.initialize({
     maxScale: 10,
-    controls: false,
+    controls: true,
     progress: true,
     history: true,
     backgroundTransition: 'slide',
+    transition: 'linear',
+    center: true,
+    touch: true,
+    embedded: true,
+    mouseWheel: true,
     transition: 'linear'
 
     // Optional libraries used to extend on reveal.js

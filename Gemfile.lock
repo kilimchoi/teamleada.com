@@ -19,6 +19,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     RedCloth (4.2.9)
+    ace-rails-ap (2.0.1)
     actionmailer (4.0.0)
       actionpack (= 4.0.0)
       mail (~> 2.5.3)
@@ -344,6 +345,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ace-rails-ap
   animate-rails
   annotate (~> 2.6.1)
   aws-sdk (~> 1.5.7)

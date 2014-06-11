@@ -120,6 +120,10 @@ module ChartsHelper
     chart_from_model(timeframe, EmployerApplication, "Employer Applications (past 30 days)", "Total number of employer applications submitted")
   end
 
+  def code_submission_chart(timeframe)
+    chart_from_model(timeframe, CodeSubmission, "Code Submissions (past 30 days)", "Total number of code submissions")
+  end
+
   # Multiple line graphs
   def multiple_projects_chart(timeframe)
     multiline_chart_from_model(timeframe, ProjectInterest, :project_id, Project, :title, "Project interest (past 30 days)", "Total number of interest in specific projects")

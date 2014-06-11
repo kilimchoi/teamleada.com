@@ -11,6 +11,14 @@
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   overflow-y: scroll;
+
+  @include breakpoint($medium-screen) {
+    width: 250px;
+  }
+
+  @include breakpoint($small-screen) {
+    width: 200px;
+  }
 }
 
 .sidebar-title {
