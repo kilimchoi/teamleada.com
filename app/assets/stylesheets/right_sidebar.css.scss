@@ -1,0 +1,19 @@
+.right-sidebar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  width: 50px;
+  height: 100%;
+  padding-top: 70px;
+  background: $founders-rock-blue;
+  color: white;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  overflow-y: scroll;
+}
+
+.right-sidebar-title {
+  margin: 20px;
+}
+
