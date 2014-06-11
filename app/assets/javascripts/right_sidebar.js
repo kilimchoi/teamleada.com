@@ -9,12 +9,12 @@ $(document).ready(function() {
     editor.setTheme("ace/theme/github");
 
     editor.on("change", function(event) {
-      console.log('changed');
       saveSubmission(url, objectClass, objectId, Reveal.getIndices().h, editor.getValue());
     });
   }
 
   saveSubmission = function(url, objectClass, objectId, slideIndex, text) {
+    Pace.restart();
     var data = JSON.stringify({
       parent_id: objectId,
       parent_type: objectClass,
@@ -29,10 +29,10 @@ $(document).ready(function() {
       contentType: "application/json; charset=utf-8",
       dataType: "json",
       success: function(data) {
-        console.log('success');
+
       },
       failure: function(data) {
-        console.log('fail');
+
       }
     });
     return false;

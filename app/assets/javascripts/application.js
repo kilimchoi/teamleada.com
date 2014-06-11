@@ -20,6 +20,8 @@
 //= require modal
 //= require right_sidebar
 //= require pace.min
+//= require spin.min
+//= require ladda.min
 //= require ace/ace
 //= require ace/theme-github
 
