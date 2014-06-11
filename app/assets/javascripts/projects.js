@@ -1,6 +1,5 @@
 //= require reveal
 
-var slideNumber = 0;
 initializeReveal();
 
 function initializeReveal() {

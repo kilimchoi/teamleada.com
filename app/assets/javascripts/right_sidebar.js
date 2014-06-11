@@ -1,14 +1,28 @@
 var editor;
+var l;
 
 $(document).ready(function() {
 
+  $("#close-code-button").click(function(event) {
+    $("#code-submit-button").hide();
+    $("#close-code-button").hide();
+    $("#right-sidebar").css("width", 50);
+  })
+
+  saveButtonStartProgress = function() {
+    $("#code-submit-button").click();
+  }
+
   openSidebar = function(url, objectClass, objectId) {
-    $("#right-sidebar").css("width", 800);
+    $("#right-sidebar").animate({width: 800});
+    $("#code-submit-button").show();
+    $("#close-code-button").show();
     editor = ace.edit("code-editor");
     editor.focus();
     editor.setTheme("ace/theme/github");
 
     editor.on("change", function(event) {
+      saveButtonStartProgress();
       saveSubmission(url, objectClass, objectId, Reveal.getIndices().h, editor.getValue());
     });
   }
@@ -29,10 +43,8 @@ $(document).ready(function() {
       contentType: "application/json; charset=utf-8",
       dataType: "json",
       success: function(data) {
-
       },
       failure: function(data) {
-
       }
     });
     return false;
