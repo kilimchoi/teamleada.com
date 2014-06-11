@@ -28,6 +28,28 @@ $(document).ready(function() {
     });
   }
 
+  getSubmission = function(url, objectClass, objectId, slideIndex) {
+    Pace.restart();
+    var data = JSON.stringify({
+      parent_id: objectId,
+      parent_type: objectClass,
+      slide_index: slideIndex
+    });
+
+    $.ajax({
+      type: 'GET',
+      url: url + '/resource',
+      data: data,
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function(data) {
+      },
+      failure: function(data) {
+      }
+    });
+    return false;
+  }
+
   saveSubmission = function(url, objectClass, objectId, slideIndex, text) {
     Pace.restart();
     var data = JSON.stringify({
