@@ -178,11 +178,14 @@ h1, h2, h3, h4, h5 {
 
 .reveal .slides section .fragment {
   font-size: 70%;
-  //margin: 4px;
 }
 
 .content-error {
   color: red;
   background: lightgray;
   box-shadow: 10px 10px 5px #888888;
+}
+
+.full-width {
+  width: 100%;
 }

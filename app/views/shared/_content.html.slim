@@ -27,27 +27,27 @@
 - elsif content_type == 'lesson_links'
   p.fragment
     - lesson.steps.each do |step|
-      = link_to step.title, project_lesson_step_path(project, lesson, step), class: "flat-button step-button"
+      = link_to step.title, project_lesson_step_path(project, lesson, step), class: "flat-button full-width"
 - elsif content_type == 'next_steps'
   p.fragment
     - if defined? step
       - if not step.next_link.nil?
-        = link_to "Next Step", step.next_link, class: "flat-button step-button"
+        = link_to "Next Step", step.next_link, class: "flat-button full-width"
       - elsif not step.lesson.nil?
-        = link_to "Next Section", step.lesson.next_link, class: "flat-button step-button"
+        = link_to "Next Section", step.lesson.next_link, class: "flat-button full-width"
           /this is sketch as fuck, we're dealing with when a step belongs to a step, but next level up is a lesson... Specifically titanic clean_data.
       - elsif not step.previous_step.nil?
-        = link_to "Next Section", step.previous_step.lesson.next_link, class: "flat-button step-button"
+        = link_to "Next Section", step.previous_step.lesson.next_link, class: "flat-button full-width"
     - elsif defined? lesson
-      = link_to "Next Section", lesson.next_link, class: "flat-button step-button"
+      = link_to "Next Section", lesson.next_link, class: "flat-button full-width"
 
 - elsif content_type == 'previous_step'
   p.fragment
     - if defined? step
-      = link_to "Back to #{step.previous_step.title}", project_lesson_step_path(project, step.main_lesson, step.previous_step), class: "flat-button step-button"
+      = link_to "Back to #{step.previous_step.title}", project_lesson_step_path(project, step.main_lesson, step.previous_step), class: "flat-button full-width"
 - elsif content_type == 'project_link'
   p.fragment
-    = link_to content, project_path(project), class: 'flat-button step-button'
+    = link_to content, project_path(project), class: 'flat-button full-width'
 - elsif content_type == 'quiz'
   p.fragment
     = render partial: "shared/quiz", locals: {quiz_id: content}
@@ -59,7 +59,7 @@
     = "Please give us feedback!"
 - elsif content_type == "finish_project_button"
   p.fragment
-    = link_to "Complete Project!", complete_project_path(project), method: :post, class: 'flat-button step-button', onclick: "#{current_user.has_all_project_points?(project) ? 'openUrl("' + content + '")' : ''}"
+    = link_to "Complete Project!", complete_project_path(project), method: :post, class: 'flat-button full-width', onclick: "#{current_user.has_all_project_points?(project) ? 'openUrl("' + content + '")' : ''}"
 - elsif content_type == 'user_response'
   p.fragment
    | ****TEXT BOX for user responses here.
@@ -70,7 +70,7 @@
       .form-inputs
         = f.input :content
       .form-actions
-        = f.submit "Submit", class: "flat-button step-button"
+        = f.submit "Submit", class: "flat-button full-width"
     javascript:
       $(document).ready(function() {
         var editor = ace.edit("code-editor");
