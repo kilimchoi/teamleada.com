@@ -54,16 +54,11 @@ TeamLeada::Application.routes.draw do
     end
   end
 
-  #resources :quizzes do
-  #  collection do
-  #    get :check_answer
-  #  end
-  #end
-
   match 'quizzes/check_answer', to: 'quizzes#check_answer', via: :get
 
   resources :companies, only: [:show]
 
+  # Admin
   namespace :admin do
     match '/', to: redirect('/admin/dashboard'), via: :get
     match 'dashboard', to: 'pages#dashboard', via: :get
@@ -88,6 +83,7 @@ TeamLeada::Application.routes.draw do
         match 'hide', to: 'questions#hide', as: :hide, via: :post
       end
     end
+    resources :code_submissions, only: [:index, :show]
   end
 
   # 404 page routes
