@@ -1,4 +1,5 @@
 /*
+ *= require reveal
  *= require reveal-theme/simple
  */
 
@@ -8,5 +9,4 @@
 @import "main";
 @import "buttons";
 @import "sidebar";
-@import "reveal";
 @import "reveal_overrides";
