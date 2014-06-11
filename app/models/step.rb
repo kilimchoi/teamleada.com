@@ -31,6 +31,8 @@ class Step < ActiveRecord::Base
 
   has_many :slides, as: :parent, dependent: :destroy
 
+  has_many :code_submissions, as: :parent
+
   before_create :set_url
   before_create :set_uid
 

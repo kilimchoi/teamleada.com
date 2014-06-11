@@ -1,9 +1,12 @@
 - if defined? step
   - project = step.main_lesson.project
+  - item = step
 - elsif defined? lesson
   - project = lesson.project
+  - item = lesson
 - else
   - project = nil
+  - item = nil
 
 - if content_type == 'text'
   p.fragment
@@ -56,13 +59,14 @@
     = "Please give us feedback!"
 - elsif content_type == "finish_project_button"
   p.fragment
-      = link_to "Complete Project!", complete_project_path(project), method: :post, class: 'flat-button step-button', onclick: "#{current_user.has_all_project_points?(project) ? 'openUrl("' + content + '")' : ''}"
+    = link_to "Complete Project!", complete_project_path(project), method: :post, class: 'flat-button step-button', onclick: "#{current_user.has_all_project_points?(project) ? 'openUrl("' + content + '")' : ''}"
 - elsif content_type == 'user_response'
   p.fragment
    | ****TEXT BOX for user responses here.
 - elsif content_type == 'user_code'
-  p.fragment
-    = simple_form_for code_submission_project_path(project), remote: true, html: {class: 'form-vertical'} do |f|
+  - item.code_submissions.build
+  .fragment
+    = simple_form_for item.code_submissions.last, url: code_submission_project_path(project), remote: true do |f|
       .form-inputs
         = f.input :content
       .form-actions
