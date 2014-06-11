@@ -9,8 +9,13 @@ javascript:
   var editor;
   $(document).ready(function() {
     editor = ace.edit("code-viewer");
+    editor.setOptions({
+      readOnly: true,
+      highlightActiveLine: false
+    });
+    editor.renderer.$cursorLayer.element.style.opacity = 0;
     editor.setTheme("ace/theme/github");
     // TODO: Fix this hack before we get hacked.
     var content = "#{@code_submission.content.gsub("\n", "\\n").html_safe.gsub('"', '\"').html_safe}";
-    editor.setValue(content);
+    editor.setValue(content, -1);
   });
