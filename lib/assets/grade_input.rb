@@ -6,11 +6,7 @@ def whitespace_pass(answer, user_input)
 	'''
 	space_removed_input = user_input.gsub(/\s+/, "")
 	space_removed_answer = answer.gsub(/\s+/, "")
-	if (space_removed_input == space_removed_answer)
-		return true
-	else
-		return false
-	end
+	space_removed_input == space_removed_answer
 end
 
 def equalsign_pass(answer, user_input)
@@ -23,12 +19,7 @@ def equalsign_pass(answer, user_input)
 
 	equalized_input = space_removed_input.gsub('<-', '=')
 	equalized_answer = space_removed_answer.gsub('<-', '=')
-
-	if (equalized_input == equalized_answer)
-		return true
-	else
-		return false
-	end
+	equalized_input == equalized_answer
 end
 
 def compare_inputs(answer, user_input)
@@ -36,16 +27,7 @@ def compare_inputs(answer, user_input)
 	Given the correct code "answer" and "user_input", returns True if the user_input
 	renders the same code
 	'''
-
-	if (answer == user_input)
-		return true
-	elsif whitespace_pass(answer, user_input)
-		return true
-	elsif equalsign_pass(answer, user_input)
-		return true
-	else
-		return false
-	end
+	answer == user_input || whitespace_pass(answer, user_input) || equalsign_pass(answer, user_input)
 end
 
 puts compare_inputs("my_numbers = c(6, 7, 8)", "my_numbers= c(6, 7,8)")
