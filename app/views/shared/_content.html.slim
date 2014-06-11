@@ -62,10 +62,10 @@
     = link_to "Complete Project!", complete_project_path(project), method: :post, class: 'flat-button full-width', onclick: "#{current_user.has_all_project_points?(project) ? 'openUrl("' + content + '")' : ''}"
 - elsif content_type == 'user_response'
   p.fragment
-   | ****TEXT BOX for user responses here.
+    = link_to "Enter a response", "#", onclick: "openSidebar('#{project.full_url}', '#{item.class}', '#{item.uid}')", class: "flat-button full-width"
 - elsif content_type == 'user_code'
   p.fragment
-    | NO USER CODE. REMOVE THIS NOW.
+    = link_to "Submit your code now", "#", onclick: "openSidebar('#{project.full_url}', '#{item.class}', '#{item.uid}')", class: "flat-button full-width"
 - else
   p.fragment.content-error
     = "ERR: Unknown Content Type. Contact dev pls: tristan@teamleada.com"
