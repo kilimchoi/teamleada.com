@@ -33,8 +33,10 @@ html
       - if params[:controller] == "lessons" || params[:controller] == "steps"
         - unless @lesson.nil?
           = render partial: "projects/sidebar", locals: {project: @lesson.project}
+          = render partial: "projects/right_sidebar", locals: {item: @lesson}
         - unless @step.nil?
           = render partial: "projects/sidebar", locals: {project: @step.main_lesson.project}
+          = render partial: "projects/right_sidebar", locals: {item: @step}
 
       - if is_admin_namespace?
         .container-fluid.full-container
