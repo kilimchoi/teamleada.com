@@ -178,13 +178,13 @@ train_clean_slide_one = Slide.create!(
 train_clean_slide_two = Slide.create!(
   content: train_clean_content_two,
   parent: train_clean_step,
-  slide_id: 0,
+  slide_id: 1,
 )
 
 train_clean_slide_three = Slide.create!(
   content: train_clean_content_three,
   parent: train_clean_step,
-  slide_id: 0,
+  slide_id: 2,
 )
 
 ################################################################################
