@@ -10,16 +10,16 @@ $(document).ready(function() {
 
     editor.on("change", function(event) {
       console.log('changed');
-      saveSubmission(url, objectClass, objectId, editor.getValue());
+      saveSubmission(url, objectClass, objectId, Reveal.getIndices().h, editor.getValue());
     });
   }
 
-  saveSubmission = function(url, objectClass, objectId, slideId, text) {
+  saveSubmission = function(url, objectClass, objectId, slideIndex, text) {
     var data = JSON.stringify({
       parent_id: objectId,
       parent_type: objectClass,
       content: text,
-      slide_id: slideId
+      slide_index: slideIndex
     });
 
     $.ajax({
