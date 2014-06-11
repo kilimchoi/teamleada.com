@@ -17,3 +17,13 @@
   margin: 20px;
 }
 
+.submit-button-container {
+  position: relative;
+}
+
+#code-submit-button {
+  position: absolute;
+  top: 80px;
+  right: 20px;
+  z-index: 2;
+}
