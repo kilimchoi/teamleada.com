@@ -1,0 +1,16 @@
+.container.full-container
+  .row
+    .col-md-12
+      h1.title = @code_submission.user.name
+      h3 = @code_submission.project.title
+      #code-viewer
+
+javascript:
+  var editor;
+  $(document).ready(function() {
+    editor = ace.edit("code-viewer");
+    editor.setTheme("ace/theme/github");
+    // TODO: Fix this hack before we get hacked.
+    var content = "#{@code_submission.content.gsub("\n", "\\n").html_safe.gsub('"', '\"').html_safe}";
+    editor.setValue(content);
+  });
