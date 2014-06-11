@@ -19,8 +19,10 @@ $(document).ready(function() {
     $("#close-code-button").show();
     editor = ace.edit("code-editor");
     editor.resize();
-    editor.focus();
     editor.setTheme("ace/theme/github");
+    getSubmission(url, objectClass, objectId, Reveal.getIndices().h);
+
+    editor.focus();
 
     editor.on("change", function(event) {
       saveButtonStartProgress();
@@ -37,12 +39,13 @@ $(document).ready(function() {
     });
 
     $.ajax({
-      type: 'GET',
+      type: 'POST',
       url: url + '/resource',
       data: data,
       contentType: "application/json; charset=utf-8",
       dataType: "json",
       success: function(data) {
+        editor.setValue(data.content);
       },
       failure: function(data) {
       }
