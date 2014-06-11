@@ -18,6 +18,7 @@ $(document).ready(function() {
     $("#code-submit-button").show();
     $("#close-code-button").show();
     editor = ace.edit("code-editor");
+    editor.resize();
     editor.focus();
     editor.setTheme("ace/theme/github");
 
