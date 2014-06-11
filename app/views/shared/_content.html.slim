@@ -64,17 +64,8 @@
   p.fragment
    | ****TEXT BOX for user responses here.
 - elsif content_type == 'user_code'
-  - item.code_submissions.build
-  .fragment
-    = simple_form_for item.code_submissions.last, url: code_submission_project_path(project), remote: true do |f|
-      .form-inputs
-        = f.input :content
-      .form-actions
-        = f.submit "Submit", class: "flat-button full-width"
-    javascript:
-      $(document).ready(function() {
-        var editor = ace.edit("code-editor");
-      });
+  p.fragment
+    | NO USER CODE. REMOVE THIS NOW.
 - else
   p.fragment.content-error
     = "ERR: Unknown Content Type. Contact dev pls: tristan@teamleada.com"
