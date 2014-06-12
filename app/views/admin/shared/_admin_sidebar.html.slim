@@ -13,3 +13,5 @@
     .panel-heading Charts
     ul.list-group
       = active_admin_link "Dashboard", admin_dashboard_path, class: "list-group-item"
+      - Chart::CATEGORIES.each do |category|
+        = active_admin_link "Charts for #{category}", admin_chart_category_path(category), class: "list-group-item"
