@@ -22,7 +22,7 @@ class Slide < ActiveRecord::Base
 
   validates_presence_of :slide_id
 
-  default_scope order('slide_id ASC')
+  default_scope { order('slide_id ASC') }
 
   def set_uid
     if parent_type == "Step"
