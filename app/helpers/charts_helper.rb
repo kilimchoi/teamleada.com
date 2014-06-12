@@ -49,6 +49,25 @@ module ChartsHelper
     )
   end
 
+  def chart_for_timeframe(chart, start_date, end_date)
+    overall_values = Hash.new
+    days = Day.where("date > ? AND date < ?", start_date.to_s, end_date.to_s)
+    chart.metrics.each do |metric|
+      values = MetricEntries.where(metric: metric, day: days).order(:day_id).pluck(:values)
+
+      overall_values[metric.title] = values
+    end
+
+    categories = days.pluck(:date).map{ |date| date.strftime("%B %d") }
+
+    chart(
+      title,
+      y_axis_label,
+      categories,
+      values,
+    )
+  end
+
   def multiline_chart_from_model(timeframe, model, join_key, label_model, label_key, title, y_axis)
     object_ids = model.all.pluck join_key
 
