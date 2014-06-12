@@ -1,5 +1,6 @@
 #admin-sidebar
   #admin-sidebar-items.list-group
+    = active_admin_link "Dashboard", admin_dashboard_path, class: "list-group-item"
     = active_admin_link "Users", admin_users_path, class: "list-group-item"
     = active_admin_link "Resumes", admin_resumes_path, class: "list-group-item"
     = active_admin_link "Companies", admin_companies_path, class: "list-group-item"
@@ -12,6 +13,6 @@
   #admin-sidebar-chart-links.panel.panel-default
     .panel-heading Charts
     ul.list-group
-      = active_admin_link "Dashboard", admin_dashboard_path, class: "list-group-item"
+      = active_admin_link "Realtime Charts", admin_realtime_charts_path, class: "list-group-item"
       - Chart::CATEGORIES.each do |category|
         = active_admin_link "Charts for #{category}", admin_chart_category_path(category), class: "list-group-item"
