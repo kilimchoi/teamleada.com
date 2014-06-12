@@ -58,13 +58,13 @@ module ChartsHelper
       overall_values[metric.title] = values
     end
 
-    categories = days.pluck(:date).map{ |date| date.strftime("%B %d") }
+    categories = days.pluck(:date)
 
     chart(
-      title,
-      y_axis_label,
+      chart.title,
+      chart.y_axis_label,
       categories,
-      values,
+      overall_values,
     )
   end
 
