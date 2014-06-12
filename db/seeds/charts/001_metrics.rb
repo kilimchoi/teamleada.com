@@ -5,6 +5,12 @@ metrics = [
     title: "All Users",
     method: "created_before?",
   },
+  {
+    uid: 1,
+    model: "ProjectStatus",
+    title: "Number of In Progress Projects",
+    method: "created_before_and_not_completed?",
+  }
 ]
 
 

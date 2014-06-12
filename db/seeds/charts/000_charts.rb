@@ -17,6 +17,12 @@ charts = [
     title: "Project Interest",
     y_axis_label: "Total number of interest in specific projects",
   },
+  {
+    uid: 3,
+    category: "projects",
+    title: "Project Completion over time",
+    y_axis_label: "Total number of projects",
+  },
 ]
 
 charts.each do |chart_info|
