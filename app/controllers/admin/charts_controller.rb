@@ -7,8 +7,8 @@ class Admin::ChartsController < Admin::BaseController
   def show
   end
 
-  def category
-
+  def show_by_category
+    @charts = Chart.where(category: params[:category])
   end
 
 end
