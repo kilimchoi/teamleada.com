@@ -17,6 +17,12 @@ metrics = [
     title: "Number of Completed Projects",
     method: "created_before_and_completed?",
   },
+  {
+    uid: 3,
+    model: "ProjectStatus",
+    title: "All Project Interactions",
+    method: "created_before?",
+  },
 ]
 
 

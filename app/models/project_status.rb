@@ -10,4 +10,8 @@ class ProjectStatus < ActiveRecord::Base
   def created_before_and_completed?(day)
     created_at <= day.date.tomorrow && completed?
   end
+
+  def created_before?(day)
+    created_at <= day.date.tomorrow
+  end
 end
