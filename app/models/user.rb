@@ -286,13 +286,15 @@ class User < ActiveRecord::Base
 
   #########################################################################################
   # Chart Methods
+  #
+  # All methods in this list must take in a day and return a boolean.
   #########################################################################################
-  def is_user?
-    true
+  def is_user?(day)
+    created_at <= day.date.tomorrow
   end
 
-  def confirmed_email?
-    confirmed?
+  def confirmed_email?(day)
+    confirmed_at <= day.date.tomorrow
   end
 
   #########################################################################################
