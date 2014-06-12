@@ -1,0 +1,8 @@
+.container-fluid.full-container
+  .row
+    .col-md-12
+      h1
+        ' Charts for
+        = params[:category].humanize
+      - @charts.each do |chart|
+        = chart_for_timeframe(chart, 30.days.ago, Date.today)
