@@ -58,6 +58,7 @@ module ChartsHelper
       overall_values[metric.title] = values
     end
     categories = days.pluck(:date)
+    puts overall_values
 
     multichart(
       chart.title,
