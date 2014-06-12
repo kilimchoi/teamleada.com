@@ -6,10 +6,12 @@
         th User
         th Email
         th Project
+        th Submitted At
         th Link
         - @code_submissions.each do |code_submission|
           tr
             td = link_to code_submission.user.name, admin_user_path(code_submission.user)
             td = code_submission.user.email
             td = link_to code_submission.project.title, admin_project_path(code_submission.project)
+            td = code_submission.pretty_submitted_date
             td = link_to "View", admin_code_submission_path(code_submission)
