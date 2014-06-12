@@ -53,14 +53,13 @@ module ChartsHelper
     overall_values = Hash.new
     days = Day.where("date > ? AND date < ?", start_date.to_s, end_date.to_s)
     chart.metrics.each do |metric|
-      values = MetricEntries.where(metric: metric, day: days).order(:day_id).pluck(:values)
+      values = MetricEntry.where(metric: metric, day_id: days.pluck(:uid)).order(:day_id).pluck(:value).map{ |value| value.to_f }
 
       overall_values[metric.title] = values
     end
-
     categories = days.pluck(:date)
 
-    chart(
+    multichart(
       chart.title,
       chart.y_axis_label,
       categories,
