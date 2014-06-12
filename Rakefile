@@ -26,4 +26,19 @@ task :user_defaults => :environment do
   end
 end
 
+# Charts
+task :backfill_today => :environment do
+  Metric.all.each do |metric|
+    puts "Backfilling today for #{metric.title}"
+    metric.backfill_today
+  end
+end
+
+task :backfill_all => :environment do
+  Metric.all.each do |metric|
+    puts "Backfilling 100 days for #{metric.title}"
+    metric.backfill_to_today(100.days.ago)
+  end
+end
+
 task default: [:blog]

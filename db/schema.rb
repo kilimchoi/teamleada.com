@@ -11,10 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140611073348) do
+ActiveRecord::Schema.define(version: 20140612083500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "chart_metrics", force: true do |t|
+    t.integer  "chart_id"
+    t.integer  "metric_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "charts", id: false, force: true do |t|
+    t.string   "category"
+    t.string   "title"
+    t.string   "y_axis_label"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "uid",          null: false
+  end
 
   create_table "code_submissions", force: true do |t|
     t.text     "content"
@@ -50,6 +66,13 @@ ActiveRecord::Schema.define(version: 20140611073348) do
     t.datetime "updated_at"
   end
 
+  create_table "days", id: false, force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "uid",        null: false
+    t.date     "date"
+  end
+
   create_table "employer_applications", force: true do |t|
     t.string   "name"
     t.string   "email"
@@ -65,6 +88,14 @@ ActiveRecord::Schema.define(version: 20140611073348) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "launches", id: false, force: true do |t|
+    t.integer  "day_id"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "uid",        null: false
   end
 
   create_table "leaderboards", force: true do |t|
@@ -95,6 +126,23 @@ ActiveRecord::Schema.define(version: 20140611073348) do
     t.integer  "lesson_id"
     t.string   "uid",                            null: false
     t.integer  "points",             default: 1
+  end
+
+  create_table "metric_entries", force: true do |t|
+    t.integer  "metric_id"
+    t.integer  "day_id"
+    t.decimal  "value",      precision: 20, scale: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "metrics", id: false, force: true do |t|
+    t.string   "model"
+    t.string   "title"
+    t.string   "method"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "uid",        null: false
   end
 
   create_table "project_interests", force: true do |t|
