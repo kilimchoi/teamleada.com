@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140611073348) do
+ActiveRecord::Schema.define(version: 20140612053138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "charts", force: true do |t|
+    t.string   "category"
+    t.string   "title"
+    t.string   "y_axis_label"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "code_submissions", force: true do |t|
     t.text     "content"
