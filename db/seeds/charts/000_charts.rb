@@ -1,26 +1,30 @@
-# Users
-sign_ups_chart = Chart.where(uid: 0).first_or_create!
-sign_ups_chart.update(
-  category: "users",
-  title: "Sign ups on Leada over time",
-  y_axis_label: "Total number of sign ups",
-)
-puts "Created chart: #{sign_ups_chart.title}"
+charts = [
+  {
+    uid: 0,
+    category: "users",
+    title: "Sign ups on Leada over time",
+    y_axis_label: "Total number of sign ups",
+  },
+  {
+    uid: 1,
+    category: "users",
+    title: "Number of users by type over time",
+    y_axis_label: "Total number of users",
+  },
+  {
+    uid: 2,
+    category: "projects",
+    title: "Project Interest",
+    y_axis_label: "Total number of interest in specific projects",
+  },
+]
 
-user_types_chart = Chart.where(uid: 1).first_or_create!
-user_types_chart.update(
-  category: "users",
-  title: "Number of users by type over time",
-  y_axis_label: "Total number of users",
-)
-puts "Created chart: #{user_types_chart.title}"
-
-
-# Projects
-project_interest_chart = Chart.where(uid: 2).first_or_create!
-project_interest_chart.update(
-  category: "projects",
-  title: "Project Interest",
-  y_axis_label: "Total number of interest in specific projects",
-)
-puts "Created chart: #{project_interest_chart.title}"
+charts.each do |chart_info|
+  new_chart = Chart.where(uid: chart_info[:uid]).first_or_create!
+  new_chart.update(
+    category: chart_info[:category],
+    title: chart_info[:title],
+    y_axis_label: chart_info[:y_axis_label],
+  )
+  puts "Created chart: #{new_chart.title}"
+end
