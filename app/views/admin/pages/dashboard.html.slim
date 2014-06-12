@@ -3,7 +3,26 @@
 .container-fluid.full-container
   .row
     .col-md-12
-      h1 Admin Dashboard
+      h1.title Admin Dashboard
       .row
         .col-md-12
-
+          = high_chart("users_chart", @users_chart)
+      .row
+        .col-md-5
+          h2 Newest Users
+          table.table.table-striped
+            th Name
+            th Email
+            - @new_users.each do |user|
+              tr
+                td = link_to user.name, admin_user_path(user)
+                td = user.email
+        .col-md-5.col-md-offset-2
+          h2 Newest Resume Uploads
+          table.table.table-striped
+            th Name
+            th Link
+            - @new_resumes.each do |resume|
+              tr
+                td = link_to resume.user.name, admin_user_path(resume.user)
+                td = link_to resume.filename, resume.resume_file.url

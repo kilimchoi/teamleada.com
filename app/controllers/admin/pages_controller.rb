@@ -2,6 +2,9 @@ class Admin::PagesController < Admin::BaseController
   include ChartsHelper
 
   def dashboard
+    @users_chart = users_chart(30.days.ago)
+    @new_users = User.last(5).reverse
+    @new_resumes = Resume.last(5).reverse
   end
 
   def realtime_charts
