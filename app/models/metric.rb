@@ -18,6 +18,10 @@ class Metric < ActiveRecord::Base
     end
   end
 
+  def backfill_today
+    backfill_day(Day.where(date: Date.today.to_date).first_or_create)
+  end
+
   def backfill_day(day)
     metric_entry = MetricEntry.where(day: day, metric: self).first_or_create
     metric_entry.value = get_value(day)
