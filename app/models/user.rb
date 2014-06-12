@@ -289,11 +289,11 @@ class User < ActiveRecord::Base
   #
   # All methods in this list must take in a day and return a boolean.
   #########################################################################################
-  def is_user?(day)
+  def created_before?(day)
     created_at <= day.date.tomorrow
   end
 
-  def confirmed_email?(day)
+  def confirmed_email_before?(day)
     confirmed_at <= day.date.tomorrow
   end
 

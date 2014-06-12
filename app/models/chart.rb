@@ -4,5 +4,5 @@ class Chart < ActiveRecord::Base
   has_many :chart_metrics
   has_many :metrics, through: :chart_metrics
 
-  CATEGORIES = ["users"]
+  CATEGORIES = ["users", "projects"]
 end
