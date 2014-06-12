@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140612060826) do
+ActiveRecord::Schema.define(version: 20140612060933) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -126,6 +126,14 @@ ActiveRecord::Schema.define(version: 20140612060826) do
     t.integer  "lesson_id"
     t.string   "uid",                            null: false
     t.integer  "points",             default: 1
+  end
+
+  create_table "metric_entries", force: true do |t|
+    t.integer  "metric_id"
+    t.integer  "day_id"
+    t.decimal  "value",      precision: 20, scale: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "metrics", id: false, force: true do |t|
