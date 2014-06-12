@@ -5,4 +5,4 @@
         ' Charts for
         = params[:category].humanize
       - @charts.each do |chart|
-        = chart_for_timeframe(chart, 30.days.ago, Date.today)
+        = high_chart(chart.title.downcase.parameterize, chart_for_timeframe(chart, 30.days.ago, Date.today))
