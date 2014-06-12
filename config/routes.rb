@@ -84,6 +84,8 @@ TeamLeada::Application.routes.draw do
       end
     end
     resources :code_submissions, only: [:index, :show]
+    resources :charts, only: [:show]
+    match 'charts/:category', to: "charts#show_by_category", as: :category, via: :get
   end
 
   # 404 page routes
