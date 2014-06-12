@@ -10,7 +10,13 @@ metrics = [
     model: "ProjectStatus",
     title: "Number of In Progress Projects",
     method: "created_before_and_not_completed?",
-  }
+  },
+  {
+    uid: 2,
+    model: "ProjectStatus",
+    title: "Number of Completed Projects",
+    method: "created_before_and_completed?",
+  },
 ]
 
 
