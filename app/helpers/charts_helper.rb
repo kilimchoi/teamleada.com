@@ -51,13 +51,13 @@ module ChartsHelper
 
   def chart_for_timeframe(chart, start_date, end_date)
     overall_values = Hash.new
-    days = Day.where("date > ? AND date < ?", start_date.to_s, end_date.to_s)
+    days = Day.where("date >= ? AND date <= ?", start_date.to_date, end_date.to_date)
     chart.metrics.each do |metric|
       values = MetricEntry.where(metric: metric, day_id: days.pluck(:uid)).order(:day_id).pluck(:value).map{ |value| value.to_f }
 
       overall_values[metric.title] = values
     end
-    categories = days.pluck(:date)
+    categories = days.collect{ |day| day.pretty_date }
     puts overall_values
 
     multichart(
