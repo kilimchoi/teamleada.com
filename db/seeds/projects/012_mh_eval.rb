@@ -136,7 +136,7 @@ challenge_slide_two = Slide.create!(
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 data_matching_content_one = [
-	['text', 'First explain how you define a match between the Abandoned and Reservation data sets.'],
+	['text', 'First explain how you define a match between the Abandoned and Reservation data sets. There is no correct answer, use your best judgement and maximize the number of possible matches.'],
 	['user_response', '#@TODO Include UID'],
 	['text', 'Next submit code which performs the data matching under the assumptions you previously defined.'],
 	['user_code', '#@TODO Include UID'],
@@ -159,7 +159,9 @@ data_matching_slide = Slide.create!(
 
 
 data_cleaning_content_one = [
-	['text', 'Submit code which performs data de-duplication and cleaning.'],
+	['text', 'After determining the total number of matched observations you should notice some data must be de-duplicated. Some customers make multiple reservations and should be distilled to one. Submit code which performs data de-duplication and cleaning so that you can perform analysis on the dataset.'],
+	['text', 'First submit an explanation for your cleaning process. Then submit the code.'],
+	['user_response', '#@TODO Include UID'],
 	['user_code', '#@TODO Include UID'],
 	['next_steps', nil]
 ]
@@ -186,7 +188,7 @@ stat_analysis_content_one = [
 	['user_response', '#@TODO Include UID'],
 	['text', 'Submit code which performs the statistical analysis'],
 	['user_code', '#@TODO Include UID'],
-	['text', 'Submit a conclusion of the results and 95% confidence interval. How effective was the MightyHive advertising campaign product?'],
+	['text', 'Submit a conclusion of the results and the 95% confidence interval. How effective was the MightyHive advertising product?'],
 	['user_response', '#@TODO Include UID'],
 ]
 
