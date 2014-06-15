@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: metrics
+#
+#  model      :string(255)
+#  title      :string(255)
+#  method     :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#  uid        :integer          not null, primary key
+#
+
 class Metric < ActiveRecord::Base
   self.primary_key = "uid"
 

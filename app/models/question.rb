@@ -3,13 +3,14 @@
 # Table name: questions
 #
 #  id          :integer          not null, primary key
-#  title       :string(255)
 #  description :text
 #  up_votes    :integer          default(0)
 #  created_at  :datetime
 #  updated_at  :datetime
 #  asker_id    :integer
 #  voters      :text
+#  hidden      :boolean          default(FALSE)
+#  title       :text
 #
 
 class Question < ActiveRecord::Base
