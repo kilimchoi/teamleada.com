@@ -15,13 +15,13 @@ module ChartsHelper
     end
   end
 
-  def multichart(title, y_axis_text, x_axis_categories, overall_values_hash)
+  def multichart(title, start_date, default_interval, y_axis_text, overall_values_hash)
     LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: title)
-      f.xAxis(categories: x_axis_categories)
+      f.xAxis(type: 'datetime', minRange: 14 * 24 * 3600 * 1000)
 
       overall_values_hash.each_pair do |key, values|
-        f.series(name: key, yAxis: 0, data: values)
+        f.series(name: key, yAxis: 0, pointInterval: 24 * 3600, pointStart: start_date, data: values)
       end
 
       f.yAxis [
@@ -29,7 +29,7 @@ module ChartsHelper
       ]
 
       f.legend(align: 'right', verticalAlign: 'top', y: 75, x: 0, layout: 'vertical')
-      f.chart({defaultSeriesType: "line"})
+      f.chart({defaultSeriesType: "line", zoomType: 'x'})
     end
   end
 
@@ -57,13 +57,12 @@ module ChartsHelper
 
       overall_values[metric.title] = values
     end
-    categories = days.collect{ |day| day.pretty_date }
-    puts overall_values
 
     multichart(
       chart.title,
+      start_date,
+      24 * 3600 * 1000,
       chart.y_axis_label,
-      categories,
       overall_values,
     )
   end
