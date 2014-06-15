@@ -58,9 +58,15 @@ TeamLeada::Application.routes.draw do
 
   resources :companies, only: [:show]
 
+  # Company / Recruitment
+  namespace :company, path: "r" do
+    match '/', to: redirect('/r/dashboard'), via: :get
+    match 'dashboard', to: 'pages#dashboard', via: :get
+  end
+
   # Admin
-  namespace :admin do
-    match '/', to: redirect('/admin/dashboard'), via: :get
+  namespace :admin, path: "a" do
+    match '/', to: redirect('/a/dashboard'), via: :get
     match 'dashboard', to: 'pages#dashboard', via: :get
 
     resources :users, only: [:index, :show]
