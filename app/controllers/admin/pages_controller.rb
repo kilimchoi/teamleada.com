@@ -16,4 +16,7 @@ class Admin::PagesController < Admin::BaseController
     @code_submission_chart = code_submission_chart(30.days.ago)
   end
 
+  def company_dashboards
+  end
+
 end
