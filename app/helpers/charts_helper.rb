@@ -15,7 +15,7 @@ module ChartsHelper
     end
   end
 
-  def multichart(title, start_date, default_interval, y_axis_text, overall_values_hash)
+  def multichart(title, start_date, y_axis_text, overall_values_hash)
     LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: title)
       f.xAxis(type: 'datetime', minRange: 14 * 24 * 3600 * 1000)
@@ -61,7 +61,6 @@ module ChartsHelper
     multichart(
       chart.title,
       start_date,
-      24 * 3600 * 1000,
       chart.y_axis_label,
       overall_values,
     )
@@ -87,8 +86,8 @@ module ChartsHelper
 
     multichart(
       title,
+      timeframe.to_date,
       y_axis,
-      categories,
       overall_values,
     )
   end
@@ -115,8 +114,8 @@ module ChartsHelper
 
     multichart(
       title,
+      timeframe.to_date,
       y_axis,
-      categories,
       overall_values,
     )
   end
