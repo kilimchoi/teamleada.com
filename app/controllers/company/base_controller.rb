@@ -1,4 +1,6 @@
 class Company::BaseController < ApplicationController
+  # TODO don't use before filter, we want to be able to use authorize_resource class: false
+  # but for some reason it's not working for static pages inside a controller.
   before_filter :check_role
 
   private
