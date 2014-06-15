@@ -16,3 +16,8 @@
       = active_admin_link "Realtime Charts", admin_realtime_charts_path, class: "list-group-item"
       - Chart::CATEGORIES.each do |category|
         = active_admin_link "Charts for #{category.humanize}", admin_chart_category_path(category), class: "list-group-item"
+
+  #admin-sidebar-company.panel.panel-default
+    .panel-heading Company Dashboards
+    ul.list-group
+      
