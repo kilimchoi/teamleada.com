@@ -47,7 +47,7 @@ module ApplicationHelper
   end
 
   def prompt_user
-    rand(1..100) <= 20
+    rand(1..100) <= 20 && current_user.is_student?
   end
 
 end
