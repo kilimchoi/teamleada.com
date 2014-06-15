@@ -62,6 +62,8 @@ TeamLeada::Application.routes.draw do
   namespace :company, path: "r" do
     match '/', to: redirect('/r/dashboard'), via: :get
     match 'dashboard', to: 'pages#dashboard', via: :get
+
+    resources :users, only: [:index, :show]
   end
 
   # Admin
