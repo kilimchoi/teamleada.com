@@ -157,6 +157,10 @@ class User < ActiveRecord::Base
     ['recruiter', 'employee'].include? role
   end
 
+  def is_student?
+    role.nil? || role == "student"
+  end
+
   def has_project_access?
     # TODO: Change it so that project-access is not hard-coded
     is_admin? || self.codes.where(access_type: "project-access").count > 0

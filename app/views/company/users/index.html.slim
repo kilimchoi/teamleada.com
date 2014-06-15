@@ -1,0 +1,19 @@
+= provide(:page_title, "Browse Users")
+
+.container-fluid.full-container
+  .row
+    .col-md-12
+      h1.title Browse Users
+
+      .row
+        .col-md-5
+          .user-card
+            h3.title Anonymous User
+
+        .col-md-5.col-md-offset-2
+          .project-card
+            h3.title Example Project Overview
+
+      .row
+        .col-md-4.col-md-offset-4
+          = link_to "Start viewing profiles now!", company_user_path(@users.first), class: "flat-button full-width"

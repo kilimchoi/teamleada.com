@@ -48,6 +48,14 @@ html
               = render partial: "admin/shared/admin_sidebar"
             .col-md-10
               = yield
+
+      - elsif is_company_namespace?
+        .container-fluid.full-container
+          .row
+            .col-md-2
+              = render partial: "company/shared/company_sidebar"
+            .col-md-10
+              = yield
       - else
         = yield
 

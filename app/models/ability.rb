@@ -19,7 +19,9 @@ class Ability
       can [:show, :edit, :update], User, id: user.id
 
       if user.is_company?
-        # Only employees
+        # Only companies
+        can :view, User
+
         can :show, Company
         can [:show, :check_submission, :complete, :submit_resource, :purchase, :resource], Project do |project|
           user.company.projects.include? project

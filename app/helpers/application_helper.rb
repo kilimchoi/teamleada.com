@@ -39,6 +39,10 @@ module ApplicationHelper
     params[:controller].split('/').first == 'admin'
   end
 
+  def is_company_namespace?
+    params[:controller].split('/').first == 'company'
+  end
+
   def sortable(column, title = nil)
     title ||= column.titleize
     css_class = (column == sort_column) ? "current #{sort_direction}" : nil
@@ -47,7 +51,7 @@ module ApplicationHelper
   end
 
   def prompt_user
-    rand(1..100) <= 20
+    rand(1..100) <= 20 && current_user.is_student?
   end
 
 end
