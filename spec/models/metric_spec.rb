@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: metrics
+#
+#  model      :string(255)
+#  title      :string(255)
+#  method     :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#  uid        :integer          not null, primary key
+#
+
 require 'spec_helper'
 
 describe Metric do

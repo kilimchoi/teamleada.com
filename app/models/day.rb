@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: days
+#
+#  created_at :datetime
+#  updated_at :datetime
+#  uid        :integer          not null, primary key
+#  date       :date
+#
+
 class Day < ActiveRecord::Base
   self.primary_key = "uid"
 

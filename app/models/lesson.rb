@@ -12,6 +12,7 @@
 #  url                :string(255)
 #  lesson_id          :integer
 #  uid                :string(255)      not null, primary key
+#  points             :integer          default(1)
 #
 
 class Lesson < ActiveRecord::Base

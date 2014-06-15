@@ -10,9 +10,9 @@
 #  updated_at       :datetime
 #  title            :string(255)
 #  url              :string(255)
-#  points           :integer
 #  step_id          :integer
 #  uid              :string(255)      not null, primary key
+#  points           :integer          default(1)
 #
 
 class Step < ActiveRecord::Base
