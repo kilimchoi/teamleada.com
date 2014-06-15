@@ -1,0 +1,8 @@
+= provide(:page_title, @user.username)
+
+.container-fluid.full-container
+  .row
+    .col-md-12
+      h3.title Completed Projects
+      - @user.completed_projects.each do|project|
+        = project.title
