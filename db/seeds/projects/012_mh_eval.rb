@@ -2,7 +2,7 @@
 main_page_content = [
   ['text','MightyHive is an advertising technology company that uses retargeting methods to send ads to users online. One product, “Call Center Remarketing”, uses call center log data to retarget those consumers online which did not make a purchase.'],
   ['text', 'You are tasked with determining the effectiveness of one of their advertising campaigns with a vacation rental client “Martin’s Travel Agency”.'],
-  ['text', 'You will be submitting both code and written responses of your analysis and recommendations to the CEO.'],
+  ['text', 'You will be submitting both code and written responses of your analysis and final recommendations.'],
 ]
 
 
@@ -188,12 +188,13 @@ data_cleaning_slide = Slide.create!(
 
 
 stat_analysis_content_one = [
-	['text', 'Define the null hypothesis and determine the appropriate statistical analysis'],
+	['text', 'Define the null hypothesis and determine the appropriate statistical analysis.'],
 	['user_response', '#@TODO Include UID'],
 	['text', 'Submit code which performs the statistical analysis including the calculation of the 95% confidence interval.'],
 	['user_code', '#@TODO Include UID'],
 	['text', 'Submit a conclusion of the results. How effective was the MightyHive advertising product?'],
 	['user_response', '#@TODO Include UID'],
+	['next_steps', nil],
 ]
 
 stat_analysis_step = Step.create!(
