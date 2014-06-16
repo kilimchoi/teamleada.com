@@ -11,10 +11,14 @@
                 .profile-photo-selector
                   = image_tag "default_avatar.png", class: "profile-image"
                 .popover-container
-                  .add-profile-photo-button
-                    = link_to "#", data: { toggle: "dropdown" }, class: "add-profile-photo-link" do
+                  .add-profile-photo-button.dropdown
+                    = link_to "#", data: { toggle: "dropdown" }, class: "add-profile-photo-link", id: "add-profile-photo-dropdown" do
                       span.fa.fa-camera.camera-button
                       .profile-photo-text Update Profile Picture
+                    ul.dropdown-menu[role="menu" aria-labelledby="add-profile-photo-dropdown"]
+                      li
+                        = link_to "#" do
+                          span.fa.fa-photo Upload a Photo...
 
             h1.title.profile-name.clearfix
               = @user.name

@@ -23,7 +23,6 @@
 }
 
 .popover-container {
-  overflow: hidden;
   width: 170px;
   height: 60px;
   position: absolute;
@@ -102,4 +101,8 @@
 
 .add-profile-photo-link:hover .camera-button {
   bottom: 15px;
+}
+
+.add-profile-photo-button.dropdown {
+  position: initial;
 }
