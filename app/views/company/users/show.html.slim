@@ -15,5 +15,8 @@
 
         .row
           .col-md-12
-            - @user.code_submissions.each do |code_submission|
-
+            .panel-group#code-submissions
+              - @user.code_submissions.each do |code_submission|
+                .panel.panel-default
+                  h4.panel-title
+                    a href="code#{code_submissions.slide_id}", data: { toggle: "collapse", parent: "#code-submissions" }

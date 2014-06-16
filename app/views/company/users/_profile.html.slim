@@ -9,7 +9,7 @@
   .col-md-12
     h3.title Completed Projects
     - user.completed_projects.each do|project|
-      = link_to project, class: "flat-button step-button" do
+      = link_to project_company_user_path(user, project), class: "flat-button step-button" do
         span.fa.fa-trophy = project.title
 
 .row
