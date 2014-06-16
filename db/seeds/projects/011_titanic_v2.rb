@@ -19,6 +19,7 @@ project = Project.create!(
   has_submit: true,
   uid: 11,
   difficulty: 'Intermediate',
+  company_overview: 'In this project, users are asked to construct a model to predict the survival of a passenger on the Titanic using giventraining and testing datasets.',
 )
 ################################################################################
 
@@ -95,6 +96,7 @@ train_data_content_two = [
   ['user_response', '#@TODO probabl a UID here'],
   ['next_steps', nil]
 ]
+
 train_data_step = Step.create!(
   title: "Titanic Train Data",
   lesson: work_with_data_lesson,
@@ -110,6 +112,20 @@ train_data_slide_two = Slide.create!(
   content: train_data_content_two,
   parent: train_data_step,
   slide_id: 1,
+)
+
+train_data_context = SubmissionContext.create!(
+  title: "Reading in the Data"
+  description: "User is asked to load the train and test data using read.csv() and print part of the data",
+  slide: train_data_slide_one,
+  submission_context_id: 0,
+)
+
+train_data_context_two = SubmissionContext.create!(
+  titel: "Thoughts on the Data"
+  description: "User is asked to share thoughts on the data",
+  slide: train_data_slide_two,
+  submission_context_id: 0,
 )
 ################################################################################
 
@@ -142,6 +158,20 @@ train_visualize_slide_two = Slide.create!(
   content: train_visualize_content_two,
   parent: train_visualize_step,
   slide_id: 1,
+)
+
+train_visualize_context = SubmissionContext.create!(
+  title: "Visualization for Training Data"
+  description: "User is asked to come up with visualizations to confirm the intuition that women have a higher chance of survival",
+  slide: train_visualize_slide_one,
+  submission_context_id: 0,
+)
+
+train_visualize_context_two = SubmissionContext.create!(
+  title: "Reasoning for the visualization"
+  description: "User is asked to explain the reasoning for creating the visualization(s) she implemented",
+  slide: train_visualize_slide_two,
+  submission_context_id: 0,
 )
 
 
@@ -187,6 +217,26 @@ train_clean_slide_three = Slide.create!(
   slide_id: 2,
 )
 
+train_clean_context = SubmissionContext.create!(
+  title: "Thoughts on Cleaning the Data"
+  description: "User is asked to provide thoughts on how to clean the data",
+  slide: train_clean_slide_one,
+  submission_context_id: 0,
+  )
+
+train_clean_context_two = SubmissionContext.create!(
+  title: "Codes for Cleaning the Data"
+  description: "User is asked to provide the codes for cleaning the data",
+  slide: train_clean_slide_two,
+  submission_context_id: 0,
+  )
+
+train_clean_context_three = SubmissionContext.create!(
+  title: "Afterthoughts on Cleaning the Data"
+  description: "User is asked to provide afterthoughts on data cleaning",
+  slide: train_clean_slide_three,
+  submission_context_id: 0,
+  )
 ################################################################################
 
 test_data_content = [
@@ -208,6 +258,12 @@ test_data_slide_one = Slide.create!(
   slide_id: 0,
 )
 
+test_data_context = SubmissionContext.create!(
+  title: "Exploring Test Data"
+  description: "User is asked to perform similar analysis on the testData",
+  slide: test_data_slide_one,
+  submission_context_id: 0,
+  )
 test_data_step.add_required_steps([train_visualize_step, train_clean_step])
 ################################################################################
 
@@ -236,10 +292,25 @@ test_visualize_slide_one = Slide.create!(
   parent: test_visualize_step,
   slide_id: 0,
 )
-test_visualize_slide_one = Slide.create!(
+
+test_visualize_slide_two = Slide.create!(
   content: test_visualize_content_two,
   parent: test_visualize_step,
   slide_id: 1,
+)
+
+test_visualize_context = SubmissionContext.create!(
+  title: "Codes for Test Visualization"
+  description: "User is asked to construct visualizations to see if the testData is similar to trainData",
+  slide: test_visualize_slide_one,
+  submission_context_id: 0,
+)
+
+test_visualize_context_two = SubmissionContext.create!(
+  title: "Reasoning for Test Visualization"
+  description: "User is asked to elaborate on the reasoning for the visualization",
+  slide: test_visualize_slide_two,
+  submission_context_id: 0,
 )
 ################################################################################
 
@@ -259,6 +330,13 @@ test_clean_slide_one = Slide.create!(
   content: test_clean_one_content,
   parent: test_clean,
   slide_id: 0,
+)
+
+test_clean_context = SubmissionContext.create!(
+  title: "Codes for Cleaning Test Data"
+  description: "User is asked to provide the codes for cleaning the Test Data",
+  slide: test_clean_slide_one,
+  submission_context_id: 0,
 )
 ################################################################################
 # Analytics
@@ -319,15 +397,43 @@ learn_ctree_slide_two = Slide.create!(
   parent: learn_ctree,
   slide_id: 1,
 )
-learn_ctree_slide_two = Slide.create!(
+learn_ctree_slide_three = Slide.create!(
   content: learn_ctree_three_content,
   parent: learn_ctree,
   slide_id: 3,
 )
-learn_ctree_slide_two = Slide.create!(
+learn_ctree_slide_four = Slide.create!(
   content: learn_ctree_four_content,
   parent: learn_ctree,
   slide_id: 4,
+)
+
+learn_ctree_context = SubmissionContext.create!(
+  title: "Type of Model"
+  description: "User is asked to specify the type of model she is building",
+  slide: learn_ctree_slide_one,
+  submission_context_id: 0,
+)
+
+learn_ctree_context_two = SubmissionContext.create!(
+  title: "Reasoning for the Model"
+  description: "User is asked to explain why she chose that model",
+  slide: learn_ctree_slide_two,
+  submission_context_id: 0,
+)
+
+learn_ctree_context_three = SubmissionContext.create!(
+  title: "Variables for the Model"
+  description: "User is asked to describe the variables to be used in the model",
+  slide: learn_ctree_slide_three,
+  submission_context_id: 0,
+)
+
+learn_ctree_context_four = SubmissionContext.create!(
+  title: "Choosing Variables for the Model"
+  description: "User is asked how to choose the variables for the model",
+  slide: learn_ctree_slide_four,
+  submission_context_id: 0,
 )
 ################################################################################
 
@@ -355,10 +461,24 @@ apply_ctree_slide_one = Slide.create!(
   slide_id: 0,
 )
 
-apply_ctree_slide_one = Slide.create!(
+apply_ctree_slide_two = Slide.create!(
   content: apply_ctree_two_content,
   parent: apply_ctree,
   slide_id: 1,
+)
+
+apply_ctree_context = SubmissionContext.create!(
+  title: "Codes for the Model"
+  description: "User is asked to build the model described earlier",
+  slide: apply_ctree_slide_one,
+  submission_context_id: 0,
+)
+
+apply_ctree_context_two = SubmissionContext.create!(
+  title: "Evaluating the Model"
+  description: "User is asked to explain ways to evaluate the model",
+  slide: apply_ctree_slide_two,
+  submission_context_id: 0,
 )
 ################################################################################
 
@@ -403,16 +523,23 @@ increase_score_lesson = Lesson.create!(
   lesson_id: 4,
 )
 
-increate_score_slide_one = Slide.create!(
+increase_score_slide_one = Slide.create!(
   content: increase_score_one_content,
   parent: increase_score_lesson,
   slide_id: 0,
 )
 
-increate_score_slide_one = Slide.create!(
+increase_score_slide_one = Slide.create!(
   content: increase_score_two_content,
   parent: increase_score_lesson,
   slide_id: 1,
+)
+
+increase_score_context = SubmissionContext.create!(
+  title: "Improving the Model"
+  description: "User is asked to describe ways to improve her model",
+  slide: increase_score_slide_one,
+  submission_context_id: 0,
 )
 
 ################################################################################
