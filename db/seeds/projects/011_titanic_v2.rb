@@ -115,14 +115,14 @@ train_data_slide_two = Slide.create!(
 )
 
 train_data_context = SubmissionContext.create!(
-  title: "Reading in the Data"
+  title: "Reading in the Data",
   description: "User is asked to load the train and test data using read.csv() and print part of the data",
   slide: train_data_slide_one,
   submission_context_id: 0,
 )
 
 train_data_context_two = SubmissionContext.create!(
-  titel: "Thoughts on the Data"
+  titel: "Thoughts on the Data",
   description: "User is asked to share thoughts on the data",
   slide: train_data_slide_two,
   submission_context_id: 0,
@@ -161,14 +161,14 @@ train_visualize_slide_two = Slide.create!(
 )
 
 train_visualize_context = SubmissionContext.create!(
-  title: "Visualization for Training Data"
+  title: "Visualization for Training Data",
   description: "User is asked to come up with visualizations to confirm the intuition that women have a higher chance of survival",
   slide: train_visualize_slide_one,
   submission_context_id: 0,
 )
 
 train_visualize_context_two = SubmissionContext.create!(
-  title: "Reasoning for the visualization"
+  title: "Reasoning for the visualization",
   description: "User is asked to explain the reasoning for creating the visualization(s) she implemented",
   slide: train_visualize_slide_two,
   submission_context_id: 0,
@@ -218,21 +218,21 @@ train_clean_slide_three = Slide.create!(
 )
 
 train_clean_context = SubmissionContext.create!(
-  title: "Thoughts on Cleaning the Data"
+  title: "Thoughts on Cleaning the Data",
   description: "User is asked to provide thoughts on how to clean the data",
   slide: train_clean_slide_one,
   submission_context_id: 0,
   )
 
 train_clean_context_two = SubmissionContext.create!(
-  title: "Codes for Cleaning the Data"
+  title: "Codes for Cleaning the Data",
   description: "User is asked to provide the codes for cleaning the data",
   slide: train_clean_slide_two,
   submission_context_id: 0,
   )
 
 train_clean_context_three = SubmissionContext.create!(
-  title: "Afterthoughts on Cleaning the Data"
+  title: "Afterthoughts on Cleaning the Data",
   description: "User is asked to provide afterthoughts on data cleaning",
   slide: train_clean_slide_three,
   submission_context_id: 0,
@@ -300,14 +300,14 @@ test_visualize_slide_two = Slide.create!(
 )
 
 test_visualize_context = SubmissionContext.create!(
-  title: "Codes for Test Visualization"
+  title: "Codes for Test Visualization",
   description: "User is asked to construct visualizations to see if the testData is similar to trainData",
   slide: test_visualize_slide_one,
   submission_context_id: 0,
 )
 
 test_visualize_context_two = SubmissionContext.create!(
-  title: "Reasoning for Test Visualization"
+  title: "Reasoning for Test Visualization",
   description: "User is asked to elaborate on the reasoning for the visualization",
   slide: test_visualize_slide_two,
   submission_context_id: 0,
@@ -333,7 +333,7 @@ test_clean_slide_one = Slide.create!(
 )
 
 test_clean_context = SubmissionContext.create!(
-  title: "Codes for Cleaning Test Data"
+  title: "Codes for Cleaning Test Data",
   description: "User is asked to provide the codes for cleaning the Test Data",
   slide: test_clean_slide_one,
   submission_context_id: 0,
@@ -409,28 +409,28 @@ learn_ctree_slide_four = Slide.create!(
 )
 
 learn_ctree_context = SubmissionContext.create!(
-  title: "Type of Model"
+  title: "Type of Model",
   description: "User is asked to specify the type of model she is building",
   slide: learn_ctree_slide_one,
   submission_context_id: 0,
 )
 
 learn_ctree_context_two = SubmissionContext.create!(
-  title: "Reasoning for the Model"
+  title: "Reasoning for the Model",
   description: "User is asked to explain why she chose that model",
   slide: learn_ctree_slide_two,
   submission_context_id: 0,
 )
 
 learn_ctree_context_three = SubmissionContext.create!(
-  title: "Variables for the Model"
+  title: "Variables for the Model",
   description: "User is asked to describe the variables to be used in the model",
   slide: learn_ctree_slide_three,
   submission_context_id: 0,
 )
 
 learn_ctree_context_four = SubmissionContext.create!(
-  title: "Choosing Variables for the Model"
+  title: "Choosing Variables for the Model",
   description: "User is asked how to choose the variables for the model",
   slide: learn_ctree_slide_four,
   submission_context_id: 0,
@@ -468,14 +468,14 @@ apply_ctree_slide_two = Slide.create!(
 )
 
 apply_ctree_context = SubmissionContext.create!(
-  title: "Codes for the Model"
+  title: "Codes for the Model",
   description: "User is asked to build the model described earlier",
   slide: apply_ctree_slide_one,
   submission_context_id: 0,
 )
 
 apply_ctree_context_two = SubmissionContext.create!(
-  title: "Evaluating the Model"
+  title: "Evaluating the Model",
   description: "User is asked to explain ways to evaluate the model",
   slide: apply_ctree_slide_two,
   submission_context_id: 0,
@@ -536,7 +536,7 @@ increase_score_slide_one = Slide.create!(
 )
 
 increase_score_context = SubmissionContext.create!(
-  title: "Improving the Model"
+  title: "Improving the Model",
   description: "User is asked to describe ways to improve her model",
   slide: increase_score_slide_one,
   submission_context_id: 0,
