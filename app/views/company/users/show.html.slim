@@ -3,36 +3,7 @@
 .container-fluid.full-container
   .row
     .col-md-5
-      .row
-        .col-md-12
-          .profile-photo-container
-            = image_tag @user.profile_photo, class: "profile-image"
-          .company-profile-name
-            h3.title.float-left.clearfix Anonymous User
-
-      .row
-        .col-md-12
-          h3.title Completed Projects
-          - @user.completed_projects.each do|project|
-            = link_to project, class: "flat-button step-button" do
-              span.fa.fa-trophy = project.title
-
-      .row
-        .col-md-12
-          h3.title In Progress Projects
-          - @user.in_progress_projects.each do |project|
-            = link_to project.title, project
-            .progress
-              - percentage = current_user.project_progress_percentage(project)
-              .progress-bar aria-valuenow="#{percentage}" aria-valuemin="0" aria-valuemax="100" style="width: #{percentage}%"
-                = percentage
-                | %
-
-      .row
-        .col-md-12
-          h3.title Skills
-          p
-            | Python, R, MapReduce
+      = render partial: "company/users/profile", locals: { user: @user }
 
     .col-md-5.col-md-offset-2
       - unless @project.nil?
