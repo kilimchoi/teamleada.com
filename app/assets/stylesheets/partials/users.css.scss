@@ -106,3 +106,32 @@
 .add-profile-photo-button.dropdown {
   position: initial;
 }
+
+.hidden-upload {
+  opacity: 0;
+}
+
+#hidden-photo-upload {
+  position: absolute;
+  opacity: 0;
+  right: 0;
+  bottom: 0;
+  height: 300px;
+  margin: 0;
+}
+
+.dropdown-menu > li > form.simple_form > div > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.428571429;
+  color: #333333;
+  white-space: nowrap;
+}
+
+.dropdown-menu > li > form.simple_form > div > a:hover {
+  text-decoration: none;
+  background-color: whitesmoke;
+  color: #262626;
+}
