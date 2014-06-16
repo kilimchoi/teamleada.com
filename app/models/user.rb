@@ -55,6 +55,7 @@ class User < ActiveRecord::Base
   has_many :transactions
 
   has_many :resumes
+  has_many :profile_photos
 
   belongs_to :company
 
@@ -308,6 +309,7 @@ class User < ActiveRecord::Base
     secret = Devise.friendly_token
     new_token = Devise.token_generator.digest(User, :confirmation_token, secret)
     self.confirmation_token = new_token
+    # TODO: Probably shouldn't be doing this...
     self.save(validate: false)
     secret
   end
