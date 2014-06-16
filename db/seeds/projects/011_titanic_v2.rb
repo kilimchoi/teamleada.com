@@ -122,7 +122,7 @@ train_data_context = SubmissionContext.create!(
 )
 
 train_data_context_two = SubmissionContext.create!(
-  titel: "Thoughts on the Data",
+  title: "Thoughts on the Data",
   description: "User is asked to share thoughts on the data",
   slide: train_data_slide_two,
   submission_context_id: 0,
@@ -259,7 +259,7 @@ test_data_slide_one = Slide.create!(
 )
 
 test_data_context = SubmissionContext.create!(
-  title: "Exploring Test Data"
+  title: "Exploring Test Data",
   description: "User is asked to perform similar analysis on the testData",
   slide: test_data_slide_one,
   submission_context_id: 0,
