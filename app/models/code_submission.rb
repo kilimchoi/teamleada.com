@@ -25,7 +25,8 @@ class CodeSubmission < ActiveRecord::Base
   end
 
   def submission_context
-    slide.submission_context
+    # TODO: Until we have submssion contexts, show the slide title?
+    slide.submission_context || SubmissionContext.new(title: "Submission title")
   end
 
   def pretty_submitted_date

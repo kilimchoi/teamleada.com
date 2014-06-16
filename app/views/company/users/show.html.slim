@@ -18,6 +18,7 @@
             .panel-group#code-submissions
               - @user.code_submissions.each do |code_submission|
                 .panel.panel-default
-                  h4.panel-title
-                    a href="#code-#{code_submission.parent_id}" data={ toggle: "collapse", parent: "#code-submissions" }
-                      = code_submission.submission_context.title
+                  .panel-heading
+                    h4.panel-title
+                      a href="#code-#{code_submission.parent_id}" data={ toggle: "collapse", parent: "#code-submissions" }
+                        = code_submission.submission_context.title
