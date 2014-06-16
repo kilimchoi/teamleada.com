@@ -2,7 +2,7 @@
 main_page_content = [
   ['text','MightyHive is an advertising technology company that uses retargeting methods to send ads to users online. One product, “Call Center Remarketing”, uses call center log data to retarget those consumers online which did not make a purchase.'],
   ['text', 'You are tasked with determining the effectiveness of one of their advertising campaigns with a vacation rental client “Martin’s Travel Agency”.'],
-  ['text', 'You will be submitting both code and written response of your analysis and recommendations.'],
+  ['text', 'You will be submitting both code and written responses of your analysis and final recommendations.'],
 ]
 
 
@@ -22,8 +22,9 @@ puts "============ Created project: #{project.title}."
 
 
 project_overview_content = [
-  ['text', 'This data project is based off of work that was directly done by the analytics team at MightyHive.'],
+  ['text', 'This data challenge is based off of work that was directly done by the analytics team at MightyHive.'],
   ['text', 'We will first begin by describing the data you are provided and the context of the problem MightyHive was facing.'],
+  ['text', 'You may complete this challenge in the following languages: R, Python, & MATLAB but the preferred language is R.'],
   ['lesson_links', nil]
 ]
 
@@ -53,12 +54,15 @@ data_content_one = [
 
 data_content_two = [
 	['text', 'The schema for both of the data sets is provided below:'],
-	['text', 'Caller_ID - A unique ID given to each incoming phone call to the call center\nSession - The Year/Month/Day/Time of each incoming phone call to the call center\nIncoming_Phone - Phone number identified using caller indentification\nContact_Phone - Phone number the caller submits'],
+	['text', 'Caller_ID - A unique ID given to each incoming phone call to the call center'],
+	['text', 'Session - The Year/Month/Day/Time of each incoming phone call to the call center'],
+	['text', 'Incoming_Phone - Phone number identified using caller indentification'],
+	['text', 'Contact_Phone - Phone number the caller submits'],
 	['next_steps', nil]
 ]
 
 data_content_step = Step.create!(
-  title: "Data Set",
+  title: "Data Sets",
   lesson: project_overview_lesson,
   step_id: 0,
 )
@@ -79,10 +83,10 @@ data_content_slide_two = Slide.create!(
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 experiment_content_one = [
-	['text', 'The analytics team designed an experiment where the Abandoned observations were randomly split into test and control groups with a 50-50 split.'],
+	['text', 'The analytics team designed an experiment where the Abandoned observations were randomly split into test and control groups with an approximate 50-50 split.'],
 	['text', 'The Abandoned observations in the test group were retargeted with advertisements online for a period of 7 days.'],
 	['text', 'The control group was never show any advertisements.'],
-	['text', 'The Reservation observations include observations from both the test and control.'],
+	['text', 'The Reservation observations include observations from both the test and control groups.'],
 	['next_steps', nil]
 ]
 
@@ -102,16 +106,16 @@ experiment_slide = Slide.create!(
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 challenge_content_one = [
-	['text', 'Your task is to analyze the data provided and return a conclusion of the effectiveness of the MightyHive Call Center Remarketing product. There are three subchallenges to completing this project.'],
+	['text', 'Your task is to analyze the data provided and return a conclusion of the effectiveness of the MightyHive Call Center Remarketing product. There are three sub-challenges to completing this project.'],
 	['text', 'Data Matching'],
-	['text', 'You must determine how many of the observations in the Abandoned data set match with observations in the Reservation data set. Define what constitutes a match with your own assumptions and explain your thought process in your submission.'],
+	['text', 'You must determine how many of the observations in the Abandoned data set match with observations in the Reservation data set. Define what constitutes a match with your own assumptions and explain your thought process in your submission as well as the code which implements the matching.'],
 	['text', 'Data Cleaning'],
 	['text', 'With a list of all of the matched Reservation observations some data de-duplication and cleaning must be performed. Some customers make multiple bookings for reservations and these must be distilled to a single reservation. There are also some observations which need to be removed.'],
 ]
 
 challenge_content_two = [
 	['text', 'Statistical Analysis'],
-	['text', 'Determine and conduct the appropriate statistical analysis. Define your null hypothesis and the 95% confidence interval for the change in proportion.'],
+	['text', 'Determine and conduct the appropriate statistical analysis. Define your null hypothesis and the 95% confidence interval for the change in proportion of Abandoned observations to Reservation observations between test and control groups.'],
 	['lesson_links', nil]
 ]
 
@@ -184,12 +188,13 @@ data_cleaning_slide = Slide.create!(
 
 
 stat_analysis_content_one = [
-	['text', 'Define the null hypothesis and determine the appropriate statistical analysis'],
+	['text', 'Define the null hypothesis and determine the appropriate statistical analysis.'],
 	['user_response', '#@TODO Include UID'],
-	['text', 'Submit code which performs the statistical analysis'],
+	['text', 'Submit code which performs the statistical analysis including the calculation of the 95% confidence interval.'],
 	['user_code', '#@TODO Include UID'],
-	['text', 'Submit a conclusion of the results and the 95% confidence interval. How effective was the MightyHive advertising product?'],
+	['text', 'Submit a conclusion of the results. How effective was the MightyHive advertising product?'],
 	['user_response', '#@TODO Include UID'],
+	['next_steps', nil],
 ]
 
 stat_analysis_step = Step.create!(
@@ -204,7 +209,25 @@ stat_analysis_slide = Slide.create!(
 	slide_id: 0,
 )
 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
+
+return_code_one = [
+	['text', 'Submit all of your code for this data challenge below:'],
+	['user_code', '#@TODO Include UID'],
+]
+
+return_code_lesson = Lesson.create!(
+	title: "Full Code Submission",
+	project: project,
+	lesson_id: 2,
+)
+
+return_code_slide = Slide.create!(
+	content: return_code_one,
+	parent: return_code_lesson,
+	slide_id: 0,
+)
 
 
 
