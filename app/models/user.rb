@@ -43,6 +43,7 @@ class User < ActiveRecord::Base
   include Rails.application.routes.url_helpers
 
   has_many :submissions
+  has_many :code_submissions
 
   has_many :step_statuses
   has_many :lesson_statuses
@@ -152,7 +153,11 @@ class User < ActiveRecord::Base
   end
 
   def profile_photo
-    profile_photos.last.photo
+    if has_profile_photo?
+      profile_photos.last.photo.url
+    else
+      "default_avatar.png"
+    end
   end
 
   def is_admin?

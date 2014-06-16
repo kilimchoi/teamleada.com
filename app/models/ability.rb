@@ -20,7 +20,7 @@ class Ability
 
       if user.is_company?
         # Only companies
-        can :view, User
+        can [:view, :show_project], User
 
         can :show, Company
         can [:show, :check_submission, :complete, :submit_resource, :purchase, :resource], Project do |project|

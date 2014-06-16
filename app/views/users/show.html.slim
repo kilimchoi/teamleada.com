@@ -9,10 +9,7 @@
             .photo-container
               .profile-image-container
                 .profile-photo-selector
-                  - if @user.has_profile_photo?
-                    = image_tag @user.profile_photo.url, class: "profile-image"
-                  - else
-                    = image_tag "default_avatar.png", class: "profile-image"
+                  = image_tag @user.profile_photo, class: "profile-image"
                 - if current_user == @user
                   .popover-container
                     .add-profile-photo-button.dropdown
