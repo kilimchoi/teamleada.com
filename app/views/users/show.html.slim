@@ -11,6 +11,9 @@
           | )
         .row
           .col-md-5
+            - if @user == current_user
+              h3.title Are you looking for opportunities?
+              = best_in_place current_user, :looking_for_opportunities, type: :checkbox, collection: [raw("<i class='fa fa-square-o'>No thanks, not right now</i>"), raw("<i class='fa fa-check-square-o'>Yes, of course!</i>")]
             h3.title Resume
             - if @user.has_resume?
               = render partial: "users/resume_preview", locals: { resume: @user.resume }
