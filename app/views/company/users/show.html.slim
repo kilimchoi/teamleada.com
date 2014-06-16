@@ -10,3 +10,10 @@
         .row
           .col-md-12
             h3.title Project Overview
+            p.project-overview
+              = @project.company_description
+
+        .row
+          .col-md-12
+            - @user.code_submissions.each do |code_submission|
+
