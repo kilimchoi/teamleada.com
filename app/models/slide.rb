@@ -17,6 +17,7 @@ class Slide < ActiveRecord::Base
 
   serialize :content, Array
   belongs_to :parent, polymorphic: true, primary_key: :uid
+  has_many :submission_contexts
 
   before_create :set_uid
 
@@ -31,4 +32,9 @@ class Slide < ActiveRecord::Base
       self.uid = "p#{parent.project.uid}_l#{parent.lesson_id}_sl#{slide_id}"
     end
   end
+
+  def submission_context
+    submission_contexts.first
+  end
+
 end

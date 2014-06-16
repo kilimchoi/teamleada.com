@@ -24,6 +24,10 @@ class CodeSubmission < ActiveRecord::Base
     parent.slides[slide_index]
   end
 
+  def submission_context
+    slide.submission_context
+  end
+
   def pretty_submitted_date
     created_at.strftime("%B %d, %Y at %l:%M %p")
   end
