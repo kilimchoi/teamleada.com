@@ -4,5 +4,7 @@
   .row
     .col-md-12
       h3.title Completed Projects
+      .profile-photo-container
+        = image_tag @user.profile_photo, class: "profile-image"
       - @user.completed_projects.each do|project|
         = project.title
