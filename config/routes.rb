@@ -65,7 +65,7 @@ TeamLeada::Application.routes.draw do
 
     resources :users, path: "browse", only: [:index, :show] do
       member do
-        match 'projects/:project_id', to: 'users#show_project', via: :get
+        match 'projects/:project_id', to: 'users#show_project', as: :project, via: :get
       end
     end
   end
