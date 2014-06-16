@@ -69,6 +69,7 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true, on: :update
 
   accepts_nested_attributes_for :resumes
+  accepts_nested_attributes_for :profile_photos
 
   extend FriendlyId
   friendly_id :username, use: :finders

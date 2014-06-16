@@ -13,5 +13,4 @@ class ProfilePhoto < ActiveRecord::Base
 
   validates_attachment_content_type :photo, content_type: /image/
   validates_attachment_size :photo, less_than: 10.megabytes
-
 end
