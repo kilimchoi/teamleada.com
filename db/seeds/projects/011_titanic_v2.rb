@@ -92,7 +92,7 @@ train_data_content = [
 ]
 
 train_data_content_two = [
-  ['text', 'Do you have any thoughts on the data?'],
+  ['text', 'Do you have any questions about the data? '],
   ['user_response', '#@TODO probabl a UID here'],
   ['next_steps', nil]
 ]
@@ -489,11 +489,14 @@ submission_guide_content = [
   ['text', '- Has the correct type of data and has no missing values.'],
   ['text', 'It should be in the exact same format as the first file you submitted (see below):'],
   ['link', 'https://s3.amazonaws.com/leada/titanic_data/FirstSubmission'],
+  ['submit', nil],
+  ['text' ,'Don\'t forget to submit the entire codebase here:'],
+  ['user_code', 'a place for the user to paste the entire code.'],
   ['next_steps', nil],
 ]
 
 submission_guide_lesson = Lesson.create!(
-  title: "Titanic Submission Help",
+  title: "Titanic Result Submission Help",
   project: project,
   lesson_id: 3,
 )
