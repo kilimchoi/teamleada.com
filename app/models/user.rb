@@ -151,6 +151,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def profile_photo
+    profile_photos.last.photo
+  end
+
   def is_admin?
     role == 'admin'
   end
@@ -178,6 +182,10 @@ class User < ActiveRecord::Base
 
   def has_resume?
     self.resumes.count > 0
+  end
+
+  def has_profile_photo?
+    self.profile_photos.count > 0
   end
 
   def has_all_project_points?(project)
