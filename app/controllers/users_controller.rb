@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user.resumes.build
+    @user.profile_photos.build
   end
 
   def edit
@@ -80,10 +81,17 @@ class UsersController < ApplicationController
     params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation,
                                  :who_can_see_profile, :who_can_send_friend_requests, :who_can_contact,
                                  :who_can_lookup_using_email, :who_can_lookup_by_name,
-                                 :resume_file, :who_can_see_resume, resumes_attributes: [
-                                   :id,
-                                   :resume_file,
-                                 ])
+                                 :looking_for_opportunities, :photo,
+                                 :resume_file, :who_can_see_resume, {
+                                   resumes_attributes: [
+                                     :id,
+                                     :resume_file,
+                                   ],
+                                   profile_photos_attributes: [
+                                     :id,
+                                     :photo,
+                                   ]
+                                 })
   end
 
 end

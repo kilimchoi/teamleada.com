@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140615193916) do
+ActiveRecord::Schema.define(version: 20140616042711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -144,6 +144,16 @@ ActiveRecord::Schema.define(version: 20140615193916) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "uid",        null: false
+  end
+
+  create_table "profile_photos", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "project_interests", force: true do |t|
@@ -280,12 +290,12 @@ ActiveRecord::Schema.define(version: 20140615193916) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                        default: "", null: false
-    t.string   "encrypted_password",           default: "", null: false
+    t.string   "email",                        default: "",    null: false
+    t.string   "encrypted_password",           default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                default: 0,  null: false
+    t.integer  "sign_in_count",                default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -308,6 +318,7 @@ ActiveRecord::Schema.define(version: 20140615193916) do
     t.string   "who_can_lookup_using_email"
     t.string   "who_can_lookup_by_name"
     t.string   "who_can_see_resume"
+    t.boolean  "looking_for_opportunities",    default: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

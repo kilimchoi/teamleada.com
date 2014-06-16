@@ -55,6 +55,7 @@ class User < ActiveRecord::Base
   has_many :transactions
 
   has_many :resumes
+  has_many :profile_photos
 
   belongs_to :company
 
@@ -68,6 +69,7 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true, on: :update
 
   accepts_nested_attributes_for :resumes
+  accepts_nested_attributes_for :profile_photos
 
   extend FriendlyId
   friendly_id :username, use: :finders
@@ -149,6 +151,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def profile_photo
+    profile_photos.last.photo
+  end
+
   def is_admin?
     role == 'admin'
   end
@@ -176,6 +182,10 @@ class User < ActiveRecord::Base
 
   def has_resume?
     self.resumes.count > 0
+  end
+
+  def has_profile_photo?
+    self.profile_photos.count > 0
   end
 
   def has_all_project_points?(project)
@@ -308,6 +318,7 @@ class User < ActiveRecord::Base
     secret = Devise.friendly_token
     new_token = Devise.token_generator.digest(User, :confirmation_token, secret)
     self.confirmation_token = new_token
+    # TODO: Probably shouldn't be doing this...
     self.save(validate: false)
     secret
   end

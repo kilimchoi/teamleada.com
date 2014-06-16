@@ -1,3 +1,137 @@
 #user_remember_me {
   margin-right: 5px;
 }
+
+.photo-container {
+  float: left;
+}
+
+.profile-name {
+  float: left;
+}
+
+.profile-image-container {
+  margin-top: 10px;
+  margin-right: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  -webkit-border-radius: 3px;
+  padding: 1px;
+}
+
+.profile-photo-selector {
+  overflow: hidden;
+}
+
+.popover-container {
+  width: 170px;
+  height: 60px;
+  position: absolute;
+  top: auto;
+  bottom: 0px;
+  z-index: 5;
+}
+
+.profile-image {
+  width: 170px;
+  border: 4px solid #fff;
+  -webkit-border-radius: 2px;
+}
+
+.add-profile-photo-link {
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  width: 171px;
+  z-index: 5;
+  font-size: 22px;
+  overflow: hidden;
+  -webkit-transition: top .1s ease-out;
+}
+
+.add-profile-photo-link:before, .add-profile-photo-link:after {
+  background: #000;
+  background: rgba(0, 0, 0, .6);
+  background: -webkit-gradient(linear, center top, center bottom, from(transparent), color-stop(.8, rgba(0, 0, 0, .6)), to(rgba(0, 0, 0, .6)));
+  background: -webkit-linear-gradient(transparent, rgba(0, 0, 0, .6) 80%, rgba(0, 0, 0, .6) 100%);
+  content: '';
+  height: 200%;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  -webkit-transition: top .1s ease-out;
+}
+
+.add-profile-photo-link:before {
+  top: 20%;
+}
+
+.add-profile-photo-link:hover:before {
+  top: -100%;
+}
+
+.add-profile-photo-link, .add-profile-photo-link:hover, .add-profile-photo-link:focus {
+  color: black;
+}
+
+.add-profile-photo-link:hover {
+  text-decoration: none;
+}
+
+.profile-photo-text {
+  opacity: 0;
+  -webkit-transition: opacity .1s ease-out;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 8px 12px 8px 40px;
+}
+
+.add-profile-photo-link:hover .profile-photo-text {
+  opacity: 1;
+  text-decoration: none;
+}
+
+.camera-button {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  -webkit-transition: bottom .1s ease-out;
+}
+
+.add-profile-photo-link:hover .camera-button {
+  bottom: 15px;
+}
+
+.add-profile-photo-button.dropdown {
+  position: initial;
+}
+
+.hidden-upload {
+  opacity: 0;
+}
+
+#hidden-photo-upload {
+  position: absolute;
+  opacity: 0;
+  right: 0;
+  bottom: 0;
+  height: 300px;
+  margin: 0;
+}
+
+.dropdown-menu > li > form.simple_form > div > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.428571429;
+  color: #333333;
+  white-space: nowrap;
+}
+
+.dropdown-menu > li > form.simple_form > div > a:hover {
+  text-decoration: none;
+  background-color: whitesmoke;
+  color: #262626;
+}
