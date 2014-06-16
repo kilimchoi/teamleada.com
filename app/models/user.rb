@@ -43,6 +43,7 @@ class User < ActiveRecord::Base
   include Rails.application.routes.url_helpers
 
   has_many :submissions
+  has_many :code_submissions
 
   has_many :step_statuses
   has_many :lesson_statuses
