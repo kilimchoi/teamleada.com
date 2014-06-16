@@ -34,6 +34,8 @@ class Slide < ActiveRecord::Base
   end
 
   def submission_context
+    # We only have one submission context per slide for now. This was added for the future when we might
+    # want to have more than one submission per slide.
     submission_contexts.first
   end
 
