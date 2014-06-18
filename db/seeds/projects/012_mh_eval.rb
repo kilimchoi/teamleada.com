@@ -165,6 +165,19 @@ data_matching_slide_two = Slide.create!(
 	slide_id: 1,
 )
 
+data_matching_context = SubmissionContext.create!(
+  title: "Data Matching Response",
+  description: "User is asked to explain how he/she joined the 2 csv datasets.",
+  slide: data_matching_slide,
+  submission_context_id: 0,
+)
+
+data_matching_context_two = SubmissionContext.create!(
+  title: "Data Matching Code",
+  description: "User is asked to write code that matches (conditionally joins) 2 datasets in csv.",
+  slide: data_matching_slide_two,
+  submission_context_id: 0,
+)
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 data_cleaning_content_one = [
@@ -197,6 +210,19 @@ data_cleaning_slide_two = Slide.create!(
 	slide_id: 1,
 )
 
+data_matching_context = SubmissionContext.create!(
+  title: "Data Cleaning Response",
+  description: "User is asked to explain how he/she plans to clean the MightyHive datasets",
+  slide: data_cleaning_slide,
+  submission_context_id: 0,
+)
+
+data_matching_context_two = SubmissionContext.create!(
+  title: "Data Cleaning Code",
+  description: "User is asked to asked write the code that cleans the MightyHive datasets",
+  slide: data_cleaning_slide_two,
+  submission_context_id: 0,
+)
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 stat_analysis_content_one = [
@@ -221,7 +247,7 @@ stat_analysis_step = Step.create!(
 	step_id: 2,
 )
 
-stat_analysis_slide_two = Slide.create!(
+stat_analysis_slide_one = Slide.create!(
 	content: stat_analysis_content_one,
 	parent: stat_analysis_step,
 	slide_id: 0,
@@ -231,11 +257,28 @@ stat_analysis_slide_two = Slide.create!(
 	parent: stat_analysis_step,
 	slide_id: 1,
 )
-
 stat_analysis_slide_three = Slide.create!(
 	content: stat_analysis_content_three,
 	parent: stat_analysis_step,
 	slide_id: 2,
+)
+stat_analysis_context = SubmissionContext.create!(
+  title: "Data Analysis Response",
+  description: "User is asked to define the null hypothesis of the statistical test in MightyHive.",
+  slide: stat_analysis_slide_one,
+  submission_context_id: 0,
+)
+stat_analysis_context_two = SubmissionContext.create!(
+  title: "Data Matching Response",
+  description: "User is asked to write the code that tests the null hypothesis for MightyHive.",
+  slide: stat_analysis_slide_two,
+  submission_context_id: 0,
+)
+stat_analysis_context_three = SubmissionContext.create!(
+  title: "Data Matching Response",
+  description: "User is asked to interpret the result and write a conclusion for MigtyHive",
+  slide: stat_analysis_slide_three,
+  submission_context_id: 0,
 )
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -258,7 +301,6 @@ return_code_slide = Slide.create!(
 )
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-
 presentation_one = [
 	['text', 'Submit a video presenting your conclusions no longer than 2 minutes. Production quality is not important.'],
 	['user_response', ' '],
@@ -277,5 +319,12 @@ presentation_slide = Slide.create!(
 	content: presentation_one,
 	parent: presentation_lesson,
 	slide_id: 0,
+)
+
+return_code_context = SubmissionContext.create!(
+  title: "Entire Source Code",
+  description: "User is asked to paste the entire source code used for the MightyHive project.",
+  slide: return_code_slide,
+  submission_context_id: 0,
 )
 
