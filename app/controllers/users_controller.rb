@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     if params[:is_resume_form]
       if params[:user]["resumes_attributes"].nil?
         respond_to do |format|
-          format.json { render json: {data: {error: "You must attach your resume in order to upload it."}}, status: :unprocessable_entity }
+          format.json { render json: {data: {error: "You must attach your file in order to upload it."}}, status: :unprocessable_entity }
         end
         return
       end
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       respond_to do |format|
         format.json { render json: {data: {first_name: @user.first_name, last_name: @user.last_name}}, status: :ok }
         format.html {
-          flash[:info] = "You have successfully uploaded your resume!"
+          flash[:info] = "You have successfully uploaded your file!"
           redirect_to user_path(@user)
         }
       end

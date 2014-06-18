@@ -31,6 +31,7 @@
 #  who_can_lookup_using_email   :string(255)
 #  who_can_lookup_by_name       :string(255)
 #  who_can_see_resume           :string(255)
+#  looking_for_opportunities    :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base
@@ -154,7 +155,12 @@ class User < ActiveRecord::Base
 
   def profile_photo
     if has_profile_photo?
-      profile_photos.last.photo.url
+      photo = profile_photos.last
+      if photo.new_record?
+        profile_photos.last(2).first.photo.url
+      else
+        photo.photo.url
+      end
     else
       "default_avatar.png"
     end
