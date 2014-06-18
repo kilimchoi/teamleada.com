@@ -28,7 +28,6 @@ project_overview_content = [
   ['lesson_links', nil]
 ]
 
-
 project_overview_lesson = Lesson.create!(
   title: "Project Overview",
   project: project,
@@ -79,7 +78,6 @@ data_content_slide_two = Slide.create!(
   slide_id: 1,
 )
 
-
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 experiment_content_one = [
@@ -101,7 +99,6 @@ experiment_slide = Slide.create!(
 	parent: experiment_content_step,
 	slide_id: 0,
 )
-
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -168,7 +165,6 @@ data_matching_slide_two = Slide.create!(
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
 
 data_cleaning_content_one = [
 	['text', 'After determining the total number of matched observations you should notice some data must be de-duplicated. Some customers make multiple reservations and should be distilled to one. Submit code which performs data de-duplication and cleaning so that you can perform analysis on the dataset.'],
@@ -242,12 +238,10 @@ stat_analysis_slide_three = Slide.create!(
 )
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-
 return_code_one = [
  ['text', 'Submit all of your code for this data challenge below:'],
  ['user_code', '#@TODO Include UID'],
  ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
-
 ]
 
 return_code_lesson = Lesson.create!(
