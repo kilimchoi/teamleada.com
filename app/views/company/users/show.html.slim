@@ -16,7 +16,7 @@
         .row
           .col-md-12
             .panel-group#code-submissions
-              - @user.code_submissions.each do |code_submission|
+              - @user.code_submissions_for_project(@project).each do |code_submission|
                 .panel.panel-default
                   .panel-heading
                     h4.panel-title
