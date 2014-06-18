@@ -5,9 +5,9 @@
 main_page_content = [
   ['text', 'In this project, we wish to build a web scraper for Statricks, an analytics technology company that aggregates price data on used good'],
   ['text', 'This project is designed to test you abilities to:'],
-  ['text', '1. build efficient and elegant algorithms in python'],
-  ['text', '2. navigate through terse html files'],
-  ['text', '3. utilize existing packages in python'],
+  ['text', '1. Build efficient and elegant algorithms in python'],
+  ['text', '2. Navigate through terse html files'],
+  ['text', '3. Utilize existing packages in python'],
 ]
 
 project = Project.create!(
@@ -35,6 +35,7 @@ projectOverview_content0 = [
   ['text', '1. build efficient and elegant algorithms in python'],
   ['text', '2. navigate through terse html files'],
   ['text', '3. utilize existing packages in python'],
+  ['lesson_links', nil],
 ]
 
 projectOverview = Lesson.create!(
@@ -56,6 +57,7 @@ projectOverview_background_content0 = [
   ['text', 'By aggregating price data from different sources, Statricks provides price trends for users to find good deals when buying and maximize returns when selling in the used goods market.'],
   ['text', 'In order for price trends to be accurate, Statricks needs to get data from varied sources (think eBay, craigslist, and CarMax) – while some of these sources have Application Programming Interface (API) in place (e.g. eBay) that allows easy access for data acquisition, a majority of them do not.'],
   ['text', 'As a result, we need to “scrape” these websites to get the pricing data we want.'],
+  ['next_steps', nil],
 ]
 
 
@@ -78,6 +80,7 @@ projectOverview_ourGoal_content0 = [
   ['text', 'Specifically, we need an automated way of doing two things:'],
   ['text', '1. find the URL for each and every boat being listed on the entire website'],
   ['text', '2. for each boat, find and store the unique boat information (title, contact number, price etc)'],
+  ['next_steps', nil],
 ]
 
 
@@ -99,6 +102,7 @@ projectOverview_resources_content0 = [
   ['text', 'For both tasks, you might find these two popular python packages very helpful:'],
   ['text', '1. BeautifulSoup'],
   ['text', '2. Requests'],
+  ['next_steps', nil],
 ]
 
 
@@ -119,9 +123,8 @@ projectOverview_resources_slide0 = Slide.create!(
 ##############################################
 
 crawler_content0 = [
-  ['text', 'Before we begin to extract details from a boat listing, we need to first find the URL of that particular
-        webpage and read the content of the html file. Since we are interested in ALL of the listtings, we need 
-        to make a class of functions that will help us do this'],
+  ['text', 'Before we begin to extract details from a boat listing, we need to first find the URL of that particular webpage and read the content of the html file. Since we are interested in ALL of the listtings, we need to make a class of functions that will help us do this'],
+  ['lesson_links', nil],
 ]
 
 
@@ -143,6 +146,7 @@ crawler_slide0 = Slide.create!(
 crawler_getRaw_content0 = [
   ['text', 'Let us start by creating a function that when given a raw URL link, queries and returns the raw html file'],
   ['user_code', ''],
+  ['next_steps', nil],
 ]
 
 
@@ -164,6 +168,7 @@ crawler_getRaw_slide0 = Slide.create!(
 crawler_getListing_content0 = [
   ['text', 'Next, given a raw html of a single search result page, we want to extract the list of URL links to actual listings.'],
   ['user_code', ''],
+  ['next_steps', nil],
 ]
 
 
@@ -184,6 +189,7 @@ crawler_getListing_slide0 = Slide.create!(
 crawler_scrapeSearch_content0 = [
   ['text', 'Lastly, with a given link for search results, we want a list of links to individual listings'],
   ['user_code', ''],
+  ['next_steps', nil],
 ]
 
 
@@ -204,6 +210,7 @@ crawler_scrapeSearch_slide0 = Slide.create!(
 ######################################################
 extract_content0 = [
   ['text', 'Before we begin to extract details from a boat listing, we need to first find the URL of that particular webpage and read the content of the html file. Since we are interested in ALL of the listtings, we need to make a class of functions that will help us do this'],
+  ['lesson_links', nil],
 ]
 
 
@@ -225,6 +232,7 @@ extract_slide0 = Slide.create!(
 extract_uid_content0 = [
   ['text', 'Given URL, write a function that returns the unique identifier (UID) of the listing'],
   ['user_code', ''],
+  ['next_steps', nil],
 ]
 
 
@@ -245,6 +253,7 @@ extract_uid_slide0 = Slide.create!(
 extract_title_content0 = [
   ['text', 'Given a beautifulsoup object, write a function that returns the title of an individual listing page'],
   ['user_code', ''],
+  ['next_steps', nil],
 ]
 
 
@@ -265,6 +274,7 @@ extract_title_slide0 = Slide.create!(
 extract_price_content0 = [
   ['text', 'Given a beautifulsoup object, write a function that returns the price of an individual listing page'],
   ['user_code', ''],
+  ['next_steps', nil],
 ]
 
 
@@ -285,6 +295,7 @@ extract_price_slide0 = Slide.create!(
 extract_description_content0 = [
   ['text', 'Given a beautifulsoup object, write a function that returns the description of an individual listing page'],
   ['user_code', ''],
+  ['next_steps', nil],
 ]
 
 
@@ -305,6 +316,7 @@ extract_description_slide0 = Slide.create!(
 extract_img_content0 = [
   ['text', 'Given a beautifulsoup object, write a function that returns the image URL of an individual listing page'],
   ['user_code', ''],
+  ['next_steps', nil],
 ]
 
 
@@ -325,6 +337,7 @@ extract_img_slide0 = Slide.create!(
 extract_phone_content0 = [
   ['text', 'Given a beautifulsoup object, write a function that returns the phone number of an individual listing page'],
   ['user_code', ''],
+  ['next_steps', nil],
 ]
 
 
@@ -345,6 +358,7 @@ extract_phone_slide0 = Slide.create!(
 extract_details_content0 = [
   ['text', 'Given a beautifulsoup object, write a function that returns the details section of an individual listing page'],
   ['user_code', ''],
+  ['next_steps', nil],
 ]
 
 
@@ -368,6 +382,7 @@ extract_details_slide0 = Slide.create!(
 
 allTogether_content0 = [
   ['text', 'We are almost there!'],
+  ['lesson_links', nil],
 ]
 
 
@@ -388,6 +403,7 @@ allTogether_slide0 = Slide.create!(
 allTogether_save_content0 = [
   ['text', 'Lastly we want a way of storing the output into a .csv file'],
   ['user_code', ''],
+  ['next_steps', nil],
 ]
 
 
@@ -408,6 +424,7 @@ allTogether_save_slide0 = Slide.create!(
 allTogether_algo_content0 = [
   ['text', 'Put the finishing touches, tidy up the documentations and submit all your codes here:'],
   ['user_code', ''],
+  ['next_steps', nil],
 ]
 
 
