@@ -36,7 +36,7 @@ class Metric < ActiveRecord::Base
 
   def backfill_day(day)
     metric_entry = MetricEntry.where(day: day, metric: self).first_or_create
-    metric_entry.value = get_value(day)
+    metric_entry.value = self.send(collection_method, day)
     metric_entry.save
   end
 

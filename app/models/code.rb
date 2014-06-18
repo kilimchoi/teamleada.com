@@ -23,12 +23,12 @@ class Code < ActiveRecord::Base
 
   ACCESS_TYPES = ["project-access"]
 
-  def project_access_created_before?(day)
+  def num_users_with_project_access_created_before?(day)
     # TODO: Don't hard code 'project-access'
     if access_type != 'project-access'
       0
     else
-      users.where("created_at <= ?", day.date.tomorrow).count
+      users.where("user.created_at <= ?", day.date.tomorrow).count
     end
   end
 
