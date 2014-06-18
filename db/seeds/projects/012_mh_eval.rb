@@ -174,8 +174,11 @@ data_cleaning_content_one = [
 	['text', 'After determining the total number of matched observations you should notice some data must be de-duplicated. Some customers make multiple reservations and should be distilled to one. Submit code which performs data de-duplication and cleaning so that you can perform analysis on the dataset.'],
 	['text', 'First submit an explanation for your cleaning process. Then submit the code.'],
 	['user_response', '#@TODO Include UID'],
+]
+
+data_cleaning_content_two = [
 	['user_code', '#@TODO Include UID'],
-	['next_steps', nil]
+	['next_steps', nil],
 ]
 
 data_cleaning_step = Step.create!(
@@ -184,12 +187,18 @@ data_cleaning_step = Step.create!(
 	step_id: 1,
 )
 
-
 data_cleaning_slide = Slide.create!(
 	content: data_cleaning_content_one,
 	parent: data_cleaning_step,
 	slide_id: 0,
 )
+
+data_cleaning_slide_two = Slide.create!(
+	content: data_cleaning_content_two,
+	parent: data_cleaning_step,
+	slide_id: 0,
+)
+
 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
