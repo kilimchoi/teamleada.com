@@ -28,7 +28,7 @@ class Code < ActiveRecord::Base
     if access_type != 'project-access'
       0
     else
-      users.where("user.created_at <= ?", day.date.tomorrow).count
+      users.where("users.created_at <= ?", day.date.tomorrow).count
     end
   end
 
