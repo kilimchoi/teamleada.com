@@ -51,8 +51,8 @@
 .add-profile-photo-link:before, .add-profile-photo-link:after {
   background: #000;
   background: rgba(0, 0, 0, .6);
-  background: -webkit-gradient(linear, center top, center bottom, from(transparent), color-stop(.8, rgba(0, 0, 0, .6)), to(rgba(0, 0, 0, .6)));
-  background: -webkit-linear-gradient(transparent, rgba(0, 0, 0, .6) 80%, rgba(0, 0, 0, .6) 100%);
+  background: -webkit-gradient(linear, center top, center bottom, from(transparent), color-stop(.5, rgba(0, 0, 0, .6)), to(rgba(0, 0, 0, .6)));
+  background: -webkit-linear-gradient(transparent, rgba(0, 0, 0, .6) 50%, rgba(0, 0, 0, .6) 100%);
   content: '';
   height: 200%;
   position: absolute;
@@ -80,6 +80,7 @@
 }
 
 .profile-photo-text {
+  color: white;
   opacity: 0;
   -webkit-transition: opacity .1s ease-out;
   font-size: 12px;
@@ -93,6 +94,7 @@
 }
 
 .camera-button {
+  color: white;
   position: absolute;
   left: 10px;
   bottom: 10px;
