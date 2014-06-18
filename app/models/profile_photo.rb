@@ -17,6 +17,7 @@ class ProfilePhoto < ActiveRecord::Base
 
   has_attached_file :photo,
     storage: :s3,
+    url: ':s3_domain_url',
     s3_credentials: S3_CREDENTIALS,
     path: '/profile_photos/:style/:id/:filename',
     styles: {
