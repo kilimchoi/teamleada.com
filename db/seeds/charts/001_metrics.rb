@@ -23,6 +23,12 @@ metrics = [
     title: "All Project Interactions",
     method: "created_before?",
   },
+  {
+    uid: 4,
+    model: "Code",
+    title: "Users with project access",
+    method: "project_access_created_before?",
+  },
 ]
 
 
