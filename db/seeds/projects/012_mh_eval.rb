@@ -24,7 +24,7 @@ puts "============ Created project: #{project.title}."
 project_overview_content = [
   ['text', 'This data challenge is based off of work that was directly done by the analytics team at MightyHive.'],
   ['text', 'We will first begin by describing the data you are provided and the context of the problem MightyHive was facing.'],
-  ['text', 'You may complete this challenge in the following languages: R, Python, & MATLAB but the preferred language is R.'],
+  ['text', 'You may complete this challenge in the following languages: R, Python, & MATLAB, but the preferred language is R.'],
   ['lesson_links', nil]
 ]
 
