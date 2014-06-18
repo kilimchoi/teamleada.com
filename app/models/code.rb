@@ -22,4 +22,10 @@ class Code < ActiveRecord::Base
   default_scope -> { order(:created_at) }
 
   ACCESS_TYPES = ["project-access"]
+
+  def project_access_before_created?(day)
+    # TODO: Don't hard code 'project-access'
+    created_at <= day.date.tomorrow && access_type == 'project-access'
+  end
+
 end
