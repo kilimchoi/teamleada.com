@@ -22,4 +22,14 @@ class Code < ActiveRecord::Base
   default_scope -> { order(:created_at) }
 
   ACCESS_TYPES = ["project-access"]
+
+  def num_users_with_project_access_created_before?(day)
+    # TODO: Don't hard code 'project-access'
+    if access_type != 'project-access'
+      0
+    else
+      users.where("users.created_at <= ?", day.date.tomorrow).count
+    end
+  end
+
 end

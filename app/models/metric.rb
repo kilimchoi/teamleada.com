@@ -36,7 +36,7 @@ class Metric < ActiveRecord::Base
 
   def backfill_day(day)
     metric_entry = MetricEntry.where(day: day, metric: self).first_or_create
-    metric_entry.value = get_value(day)
+    metric_entry.value = self.send(collection_method, day)
     metric_entry.save
   end
 
@@ -44,8 +44,17 @@ class Metric < ActiveRecord::Base
     model.constantize
   end
 
-  def get_value(day)
-    model_class.all.select{ |object| object.send(method, day) }.count
+  # Collection Methods
+  def get_values(day)
+    model_class.all.select{ |object| object.send(method, day) }
+  end
+
+  def get_count(day)
+    get_values(day).count
+  end
+
+  def get_sum(day)
+    get_values(day).sum
   end
 
 end
