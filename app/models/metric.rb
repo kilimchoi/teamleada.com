@@ -45,16 +45,20 @@ class Metric < ActiveRecord::Base
   end
 
   # Collection Methods
-  def get_values(day)
+  def get_filter(day)
     model_class.all.select{ |object| object.send(method, day) }
   end
 
+  def get_map(day)
+    model_class.all.collect{ |object| object.send(method, day) }
+  end
+
   def get_count(day)
-    get_values(day).count
+    get_filter(day).count
   end
 
   def get_sum(day)
-    get_values(day).sum
+    get_map(day).sum
   end
 
 end
