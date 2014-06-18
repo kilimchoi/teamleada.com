@@ -242,7 +242,7 @@ stat_analysis_slide_three = Slide.create!(
 return_code_one = [
  ['text', 'Submit all of your code for this data challenge below:'],
  ['user_code', '#@TODO Include UID'],
- ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
+ ['next_steps', nil],
 ]
 
 return_code_lesson = Lesson.create!(
@@ -256,6 +256,26 @@ return_code_slide = Slide.create!(
 	parent: return_code_lesson,
 	slide_id: 0,
 )
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 
+presentation_one = [
+	['text', 'Submit a video presenting your conclusions no longer than 2 minutes. Production quality is not important.'],
+	['user_response', ' '],
+	['text', 'Submit a two slide google presentation of your analysis and conclusion. Your video can explain the results of your slide.'],
+	['submit', nil],
+	['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
+]
+
+presentation_lesson = Lesson.create!(
+	title: "Presentation Submission",
+	project: project,
+	lesson_id: 3,
+)
+
+presentation_slide = Slide.create!(
+	content: presentation_one,
+	parent: presentation_lesson,
+	slide_id: 0,
+)
 
