@@ -13,6 +13,11 @@ class ProjectsController < ApplicationController
     if signed_in? && current_user.is_company?
       @projects = current_user.company.projects
     end
+
+    @data_lessons = @projects.where(category: Project::LESSON)
+    @data_challenges = @projects.where(category: Project::CHALLENGE)
+    @coming_soon = @projects.where(category: Project::COMING_SOON)
+
     @interested_user = InterestedUser.new
     @large_header = true
     @profile_needs_info = true
