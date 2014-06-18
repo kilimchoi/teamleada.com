@@ -8,9 +8,15 @@
 .row
   .col-md-12
     h3.title Completed Projects
-    - user.completed_projects.each do|project|
+    h4.title Data Challenges
+    - user.completed_projects.select{ |project| project.category == Project::CHALLENGE }.each do|project|
       = link_to project_company_user_path(user, project), class: "flat-button step-button" do
         span.fa.fa-trophy = project.title
+    h4.title Data Lessons
+    - user.completed_projects.select{ |project| project.category == Project::LESSON }.each do|project|
+      = link_to project_company_user_path(user, project), class: "flat-button step-button" do
+        span.fa.fa-trophy = project.title
+
 
 .row
   .col-md-12
