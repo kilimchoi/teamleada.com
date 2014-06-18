@@ -10,9 +10,9 @@ main_page_load = [
 ]
 
 project = Project.create!(
-  title: "Kaggle New Proj Approach",
+  title: "Titanic: Machine Learning from Disaster",
   description: main_page_load,
-  short_description: "This is the new titanic project",
+  short_description: "In this data challenge you will complete the entire process of data analysis from cleaning to building a predictive model. This data challenge is for users with experience in R and a familiarty to machine learning concepts",
   number: 11,
   enabled: true,
   has_leaderboard: true,

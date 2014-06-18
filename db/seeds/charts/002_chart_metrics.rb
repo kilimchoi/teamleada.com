@@ -9,11 +9,13 @@ all_users = Metric.find(0)
 number_of_in_progress_projects = Metric.find(1)
 number_of_completed_projects = Metric.find(2)
 all_project_interactions = Metric.find(3)
+users_with_project_access = Metric.find(4)
 
 # Chart Metrics
 ChartMetric.where(chart: sign_ups_chart, metric: all_users).first_or_create!
 
 ChartMetric.where(chart: users_by_type_chart, metric: all_users).first_or_create!
+ChartMetric.where(chart: users_by_type_chart, metric: users_with_project_access).first_or_create!
 
 ChartMetric.where(chart: project_completion_chart, metric: number_of_in_progress_projects).first_or_create!
 ChartMetric.where(chart: project_completion_chart, metric: number_of_completed_projects).first_or_create!
