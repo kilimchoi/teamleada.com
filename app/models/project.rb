@@ -51,6 +51,10 @@ class Project < ActiveRecord::Base
   EXPERT = "Expert"
   DIFFICULTIES = [BEGINNER, INTERMEDIATE, ADVANCED, EXPERT]
 
+  LESSON = "lesson"
+  CHALLENGE = "challenge"
+  COMING_SOON = "coming_soon"
+
   # Before Filters
   def set_url
     self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize
