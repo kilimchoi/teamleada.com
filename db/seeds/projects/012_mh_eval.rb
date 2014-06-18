@@ -247,7 +247,7 @@ stat_analysis_step = Step.create!(
 	step_id: 2,
 )
 
-stat_analysis_slide_two = Slide.create!(
+stat_analysis_slide_one = Slide.create!(
 	content: stat_analysis_content_one,
 	parent: stat_analysis_step,
 	slide_id: 0,
@@ -257,11 +257,28 @@ stat_analysis_slide_two = Slide.create!(
 	parent: stat_analysis_step,
 	slide_id: 1,
 )
-
 stat_analysis_slide_three = Slide.create!(
 	content: stat_analysis_content_three,
 	parent: stat_analysis_step,
 	slide_id: 2,
+)
+stat_analysis_context = SubmissionContext.create!(
+  title: "Data Analysis Response",
+  description: "User is asked to define the null hypothesis of the statistical test in MightyHive.",
+  slide: stat_analysis_slide_one,
+  submission_context_id: 0,
+)
+stat_analysis_context_two = SubmissionContext.create!(
+  title: "Data Matching Response",
+  description: "User is asked to write the code that tests the null hypothesis for MightyHive.",
+  slide: stat_analysis_slide_two,
+  submission_context_id: 0,
+)
+stat_analysis_context_three = SubmissionContext.create!(
+  title: "Data Matching Response",
+  description: "User is asked to interpret the result and write a conclusion for MigtyHive",
+  slide: stat_analysis_slide_three,
+  submission_context_id: 0,
 )
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
