@@ -273,6 +273,10 @@ class User < ActiveRecord::Base
     project_statuses.where(completed: false).collect{ |project_status| project_status.project }
   end
 
+  def code_submissions_for_project(project)
+    code_submissions.where(project: project)
+  end
+
   def completed_points(project)
     total = 0
     step_statuses.each do |step_status|
