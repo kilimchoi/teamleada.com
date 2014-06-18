@@ -300,5 +300,10 @@ return_code_slide = Slide.create!(
 	slide_id: 0,
 )
 
-
+return_code_context = SubmissionContext.create!(
+  title: "Entire Source Code",
+  description: "User is asked to paste the entire source code used for the MightyHive project.",
+  slide: return_code_slide,
+  submission_context_id: 0,
+)
 
