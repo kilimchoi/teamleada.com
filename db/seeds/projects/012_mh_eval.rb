@@ -177,6 +177,7 @@ data_cleaning_content_one = [
 ]
 
 data_cleaning_content_two = [
+	['text', 'Paste your code below:'],
 	['user_code', '#@TODO Include UID'],
 	['next_steps', nil],
 ]
@@ -196,19 +197,22 @@ data_cleaning_slide = Slide.create!(
 data_cleaning_slide_two = Slide.create!(
 	content: data_cleaning_content_two,
 	parent: data_cleaning_step,
-	slide_id: 0,
+	slide_id: 1,
 )
 
-
-
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
 
 stat_analysis_content_one = [
 	['text', 'Define the null hypothesis and determine the appropriate statistical analysis.'],
 	['user_response', '#@TODO Include UID'],
+]
+
+stat_analysis_content_two = [
 	['text', 'Submit code which performs the statistical analysis including the calculation of the 95% confidence interval.'],
 	['user_code', '#@TODO Include UID'],
+]
+
+stat_analysis_content_three = [
 	['text', 'Submit a conclusion of the results. How effective was the MightyHive advertising product?'],
 	['user_response', '#@TODO Include UID'],
 	['next_steps', nil],
@@ -220,12 +224,22 @@ stat_analysis_step = Step.create!(
 	step_id: 2,
 )
 
-stat_analysis_slide = Slide.create!(
+stat_analysis_slide_two = Slide.create!(
 	content: stat_analysis_content_one,
 	parent: stat_analysis_step,
 	slide_id: 0,
 )
+stat_analysis_slide_two = Slide.create!(
+	content: stat_analysis_content_two,
+	parent: stat_analysis_step,
+	slide_id: 1,
+)
 
+stat_analysis_slide_three = Slide.create!(
+	content: stat_analysis_content_three,
+	parent: stat_analysis_step,
+	slide_id: 2,
+)
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 
