@@ -19,6 +19,7 @@ project = Project.create!(
   has_submit: true,
   uid: 1,
   difficulty: 'Intermediate',
+  category: Project::CHALLENGE,
 )
 ################################################################################
 
