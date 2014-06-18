@@ -244,8 +244,10 @@ stat_analysis_slide_three = Slide.create!(
 
 
 return_code_one = [
-	['text', 'Submit all of your code for this data challenge below:'],
-	['user_code', '#@TODO Include UID'],
+ ['text', 'Submit all of your code for this data challenge below:'],
+ ['user_code', '#@TODO Include UID'],
+ ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
+
 ]
 
 return_code_lesson = Lesson.create!(
