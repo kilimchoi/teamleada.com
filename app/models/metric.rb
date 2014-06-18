@@ -44,8 +44,16 @@ class Metric < ActiveRecord::Base
     model.constantize
   end
 
-  def get_value(day)
-    model_class.all.select{ |object| object.send(method, day) }.count
+  def get_values(day)
+    model_class.all.select{ |object| object.send(method, day) }
+  end
+
+  def get_count(day)
+    get_values(day).count
+  end
+
+  def get_sum(day)
+    get_values(day).sum
   end
 
 end
