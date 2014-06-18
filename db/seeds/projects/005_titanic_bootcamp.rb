@@ -13,6 +13,7 @@ project = Project.create!(
   enabled: true,
   uid: 5,
   difficulty: 'Beginner',
+  category: Project::LESSON,
 )
 
 
