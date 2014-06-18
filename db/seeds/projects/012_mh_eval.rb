@@ -29,7 +29,6 @@ project_overview_content = [
   ['lesson_links', nil]
 ]
 
-
 project_overview_lesson = Lesson.create!(
   title: "Project Overview",
   project: project,
@@ -80,7 +79,6 @@ data_content_slide_two = Slide.create!(
   slide_id: 1,
 )
 
-
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 experiment_content_one = [
@@ -102,7 +100,6 @@ experiment_slide = Slide.create!(
 	parent: experiment_content_step,
 	slide_id: 0,
 )
-
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -143,9 +140,12 @@ challenge_slide_two = Slide.create!(
 data_matching_content_one = [
 	['text', 'First explain how you define a match between the Abandoned and Reservation data sets. There is no correct answer, use your best judgement and maximize the number of possible matches.'],
 	['user_response', '#@TODO Include UID'],
+]
+
+data_matching_content_two = [
 	['text', 'Next submit code which performs the data matching under the assumptions you previously defined.'],
 	['user_code', '#@TODO Include UID'],
-	['next_steps', nil]
+	['next_steps', nil],
 ]
 
 data_matching_step = Step.create!(
@@ -159,16 +159,24 @@ data_matching_slide = Slide.create!(
 	parent: data_matching_step,
 	slide_id: 0,
 )
+data_matching_slide_two = Slide.create!(
+	content: data_matching_content_two,
+	parent: data_matching_step,
+	slide_id: 1,
+)
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
 
 data_cleaning_content_one = [
 	['text', 'After determining the total number of matched observations you should notice some data must be de-duplicated. Some customers make multiple reservations and should be distilled to one. Submit code which performs data de-duplication and cleaning so that you can perform analysis on the dataset.'],
 	['text', 'First submit an explanation for your cleaning process. Then submit the code.'],
 	['user_response', '#@TODO Include UID'],
+]
+
+data_cleaning_content_two = [
+	['text', 'Paste your code below:'],
 	['user_code', '#@TODO Include UID'],
-	['next_steps', nil]
+	['next_steps', nil],
 ]
 
 data_cleaning_step = Step.create!(
@@ -177,22 +185,31 @@ data_cleaning_step = Step.create!(
 	step_id: 1,
 )
 
-
 data_cleaning_slide = Slide.create!(
 	content: data_cleaning_content_one,
 	parent: data_cleaning_step,
 	slide_id: 0,
 )
 
+data_cleaning_slide_two = Slide.create!(
+	content: data_cleaning_content_two,
+	parent: data_cleaning_step,
+	slide_id: 1,
+)
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
 
 stat_analysis_content_one = [
 	['text', 'Define the null hypothesis and determine the appropriate statistical analysis.'],
 	['user_response', '#@TODO Include UID'],
+]
+
+stat_analysis_content_two = [
 	['text', 'Submit code which performs the statistical analysis including the calculation of the 95% confidence interval.'],
 	['user_code', '#@TODO Include UID'],
+]
+
+stat_analysis_content_three = [
 	['text', 'Submit a conclusion of the results. How effective was the MightyHive advertising product?'],
 	['user_response', '#@TODO Include UID'],
 	['next_steps', nil],
@@ -204,18 +221,28 @@ stat_analysis_step = Step.create!(
 	step_id: 2,
 )
 
-stat_analysis_slide = Slide.create!(
+stat_analysis_slide_two = Slide.create!(
 	content: stat_analysis_content_one,
 	parent: stat_analysis_step,
 	slide_id: 0,
 )
+stat_analysis_slide_two = Slide.create!(
+	content: stat_analysis_content_two,
+	parent: stat_analysis_step,
+	slide_id: 1,
+)
 
+stat_analysis_slide_three = Slide.create!(
+	content: stat_analysis_content_three,
+	parent: stat_analysis_step,
+	slide_id: 2,
+)
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-
 return_code_one = [
-	['text', 'Submit all of your code for this data challenge below:'],
-	['user_code', '#@TODO Include UID'],
+ ['text', 'Submit all of your code for this data challenge below:'],
+ ['user_code', '#@TODO Include UID'],
+ ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
 
 return_code_lesson = Lesson.create!(
