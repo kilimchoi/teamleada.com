@@ -164,16 +164,17 @@ data_matching_slide_two = Slide.create!(
 	parent: data_matching_step,
 	slide_id: 1,
 )
-train_data_context = SubmissionContext.create!(
-  title: "Data Matching Code",
-  description: "User is asked to write code that matches (conditionally joins) 2 datasets in csv.",
+
+data_matching_context = SubmissionContext.create!(
+  title: "Data Matching Response",
+  description: "User is asked to explain how he/she joined the 2 csv datasets.",
   slide: data_matching_slide,
   submission_context_id: 0,
 )
 
-train_data_context_two = SubmissionContext.create!(
-  title: "Data Matching Response",
-  description: "User is asked to explain how he/she joined the 2 csv datasets.",
+data_matching_context_two = SubmissionContext.create!(
+  title: "Data Matching Code",
+  description: "User is asked to write code that matches (conditionally joins) 2 datasets in csv.",
   slide: data_matching_slide_two,
   submission_context_id: 0,
 )
@@ -209,6 +210,19 @@ data_cleaning_slide_two = Slide.create!(
 	slide_id: 1,
 )
 
+data_matching_context = SubmissionContext.create!(
+  title: "Data Cleaning Response",
+  description: "User is asked to explain how he/she plans to clean the MightyHive datasets",
+  slide: data_cleaning_slide,
+  submission_context_id: 0,
+)
+
+data_matching_context_two = SubmissionContext.create!(
+  title: "Data Cleaning Code",
+  description: "User is asked to asked write the code that cleans the MightyHive datasets",
+  slide: data_cleaning_slide_two,
+  submission_context_id: 0,
+)
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 stat_analysis_content_one = [
