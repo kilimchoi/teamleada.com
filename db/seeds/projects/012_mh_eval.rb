@@ -7,7 +7,7 @@ main_page_content = [
 
 
 project = Project.create!(
-  title:"MightyHive Eval",
+  title:"MightyHive: AdTech Analytics",
   description: main_page_content,
   short_description: "A project sponsored by Mightyhive, an advertising technology company. This data is based on a real problem that the analytics team at MightyHive encountered. You will perform data cleaning, de-duplication, and statistical analysis to determine the results of their marketing technology.",
   number: 12,
