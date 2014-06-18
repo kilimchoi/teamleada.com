@@ -107,14 +107,14 @@ experiment_slide = Slide.create!(
 
 challenge_content_one = [
 	['text', 'Your task is to analyze the data provided and return a conclusion of the effectiveness of the MightyHive Call Center Remarketing product. There are three sub-challenges to completing this project.'],
-	['text', 'Data Matching'],
+	['text', 'Data Matching:'],
 	['text', 'You must determine how many of the observations in the Abandoned data set match with observations in the Reservation data set. Define what constitutes a match with your own assumptions and explain your thought process in your submission as well as the code which implements the matching.'],
-	['text', 'Data Cleaning'],
+	['text', 'Data Cleaning:'],
 	['text', 'With a list of all of the matched Reservation observations some data de-duplication and cleaning must be performed. Some customers make multiple bookings for reservations and these must be distilled to a single reservation. There are also some observations which need to be removed.'],
 ]
 
 challenge_content_two = [
-	['text', 'Statistical Analysis'],
+	['text', 'Statistical Analysis:'],
 	['text', 'Determine and conduct the appropriate statistical analysis. Define your null hypothesis and the 95% confidence interval for the change in proportion of Abandoned observations to Reservation observations between test and control groups.'],
 	['lesson_links', nil]
 ]
