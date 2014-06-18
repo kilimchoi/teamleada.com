@@ -16,6 +16,7 @@
 #  paid              :boolean          default(FALSE)
 #  uid               :integer          not null, primary key
 #  difficulty        :string(255)
+#  company_overview  :text
 #
 
 class Project < ActiveRecord::Base

@@ -31,6 +31,7 @@
 #  who_can_lookup_using_email   :string(255)
 #  who_can_lookup_by_name       :string(255)
 #  who_can_see_resume           :string(255)
+#  looking_for_opportunities    :boolean          default(FALSE)
 #
 
 FactoryGirl.define do

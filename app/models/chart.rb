@@ -2,12 +2,13 @@
 #
 # Table name: charts
 #
-#  category     :string(255)
-#  title        :string(255)
-#  y_axis_label :string(255)
-#  created_at   :datetime
-#  updated_at   :datetime
-#  uid          :integer          not null, primary key
+#  category          :string(255)
+#  title             :string(255)
+#  y_axis_label      :string(255)
+#  created_at        :datetime
+#  updated_at        :datetime
+#  uid               :integer          not null, primary key
+#  default_timeframe :date
 #
 
 class Chart < ActiveRecord::Base
