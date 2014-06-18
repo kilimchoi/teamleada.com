@@ -4,11 +4,11 @@
   .row
     .col-md-12
       .projects-container
-        h1.title Data Lessons
-        = render partial: "projects/projects", locals: { projects: @data_lessons }
-
         h1.title Data Challenges
         = render partial: "projects/projects", locals: { projects: @data_challenges }
+
+        h1.title Data Lessons
+        = render partial: "projects/projects", locals: { projects: @data_lessons }
 
         h1.title Coming Soon!
         = render partial: "projects/projects", locals: { projects: @coming_soon }
