@@ -14,7 +14,7 @@ project = Project.create!(
   description: main_page_content,
   short_description: "A data project created by Kaggle, a data science competition website. In this project you will go through the entire process of data analysis from cleaning to building a predictive model. This project is for users with experience in R and an introduction to machine learning concepts.",
   number: 1,
-  enabled: true,
+  enabled: false,
   has_leaderboard: true,
   has_submit: true,
   uid: 1,
