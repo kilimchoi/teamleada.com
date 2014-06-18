@@ -25,7 +25,11 @@ class Code < ActiveRecord::Base
 
   def project_access_created_before?(day)
     # TODO: Don't hard code 'project-access'
-    created_at <= day.date.tomorrow && access_type == 'project-access'
+    if access_type != 'project-access'
+      0
+    else
+      users.where("created_at <= ?", day.date.tomorrow).count
+    end
   end
 
 end

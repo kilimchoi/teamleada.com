@@ -44,6 +44,7 @@ class Metric < ActiveRecord::Base
     model.constantize
   end
 
+  # Collection Methods
   def get_values(day)
     model_class.all.select{ |object| object.send(method, day) }
   end
