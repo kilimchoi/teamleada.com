@@ -142,9 +142,12 @@ challenge_slide_two = Slide.create!(
 data_matching_content_one = [
 	['text', 'First explain how you define a match between the Abandoned and Reservation data sets. There is no correct answer, use your best judgement and maximize the number of possible matches.'],
 	['user_response', '#@TODO Include UID'],
+]
+
+data_matching_content_two = [
 	['text', 'Next submit code which performs the data matching under the assumptions you previously defined.'],
 	['user_code', '#@TODO Include UID'],
-	['next_steps', nil]
+	['next_steps', nil],
 ]
 
 data_matching_step = Step.create!(
@@ -157,6 +160,11 @@ data_matching_slide = Slide.create!(
 	content: data_matching_content_one,
 	parent: data_matching_step,
 	slide_id: 0,
+)
+data_matching_slide_two = Slide.create!(
+	content: data_matching_content_two,
+	parent: data_matching_step,
+	slide_id: 1,
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
