@@ -16,7 +16,7 @@ project = Project.create!(
   number: 2,
   enabled: true,
   uid: 2,
-  difficulty: 'Beginner'
+  difficulty: 'Beginner',
   category: Project::LESSON,
 )
 
