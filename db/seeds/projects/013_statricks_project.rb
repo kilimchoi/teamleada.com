@@ -3,23 +3,24 @@
 # @description:   web scraper project for boattrader.com in python
 
 main_page_content = [
-  ['text', 'In this project, we wish to build a web scraper for Statricks, an analytics technology company that aggregates price data on used good'],
-  ['text', 'This project is designed to test you abilities to:'],
-  ['text', '1. Build efficient and elegant algorithms in python'],
+  ['text', 'In this project, you are tasked with building a web scraper for Statricks, an analytics technology company that aggregates price data on used goods.'],
+  ['text', 'This project is designed to test your abilities to:'],
+  ['text', '1. Building an effective and efficient data collection script in python'],
   ['text', '2. Navigate through terse html files'],
-  ['text', '3. Utilize existing packages in python'],
+  ['text', '3. Utilize existing packages in python to your advantage'],
 ]
 
 project = Project.create!(
   title: "Statricks: Data Collection with Python",
   description: main_page_content,
-  short_description: "A data project created by Statricks, an analytics technology company. In this project you will build a web scraper to extract listing information. This project is for users with experience in Python and some HTML.",
+  short_description: "A project sponsored by Statricks, an analytics technology company. In this data challenge you will build a web scraper to extract listing information. This data challenge is for users with experience in Python and some HTML.",
   number: 13,
   enabled: true,
   has_leaderboard: false,
   has_submit: false,
   uid: 13,
   difficulty: 'Advanced',
+  category: Project::CHALLENGE,
 )
 
 puts "============ Created project: #{project.title}."
@@ -30,11 +31,11 @@ puts "============ Created project: #{project.title}."
 ############################################
 
 projectOverview_content0 = [
-  ['text', 'In this project, we wish to build a web scraper for Statricks, an analytics technology company that aggregates price data on used good'],
+  ['text', 'In this project, you are tasked with building a web scraper for Statricks, an analytics technology company that aggregates price data on used goods'],
   ['text', 'This project is designed to test you abilities to:'],
-  ['text', '1. build efficient and elegant algorithms in python'],
-  ['text', '2. navigate through terse html files'],
-  ['text', '3. utilize existing packages in python'],
+  ['text', '1. Building an effective and efficient data collection script in python'],
+  ['text', '2. Navigate through terse html files'],
+  ['text', '3. Utilize existing packages in python to your advantage'],
   ['lesson_links', nil],
 ]
 
@@ -55,7 +56,7 @@ projectOverview_slide0 = Slide.create!(
 projectOverview_background_content0 = [
   ['text', 'Statricks is an analytics technology company specializing in pricing used goods.'],
   ['text', 'By aggregating price data from different sources, Statricks provides price trends for users to find good deals when buying and maximize returns when selling in the used goods market.'],
-  ['text', 'In order for price trends to be accurate, Statricks needs to get data from varied sources (think eBay, craigslist, and CarMax) – while some of these sources have Application Programming Interface (API) in place (e.g. eBay) that allows easy access for data acquisition, a majority of them do not.'],
+  ['text', 'In order for price trends to be accurate, Statricks needs to get data from varied sources (think eBay, craigslist, and CarMax) – while some of these sources have an Application Programming Interface (API) in place (e.g. eBay) that allows easy access for data acquisition, a majority of them do not.'],
   ['text', 'As a result, we need to “scrape” these websites to get the pricing data we want.'],
   ['next_steps', nil],
 ]
@@ -76,10 +77,10 @@ projectOverview_background_slide0 = Slide.create!(
 ########## -- PROJECT OVERVIEW: Our Goal -- ##########
 
 projectOverview_ourGoal_content0 = [
-  ['text', 'We’re tasked with making a web scraper in python for www.boattrader.com, a website that specializes in used boats, to retrieve the information we need. '],
-  ['text', 'Specifically, we need an automated way of doing two things:'],
-  ['text', '1. find the URL for each and every boat being listed on the entire website'],
-  ['text', '2. for each boat, find and store the unique boat information (title, contact number, price etc)'],
+  ['text', 'You are tasked with making a web scraper in python for www.boattrader.com, a website that specializes in used boats, to retrieve the information Statricks would typically desire.'],
+  ['text', 'Speifically, we need an automated way of doing two things:'],
+  ['text', '1. Find the URL for each and every boat being listed on the entire website'],
+  ['text', '2. For each boat, find and store the unique boat information (title, contact number, price etc)'],
   ['next_steps', nil],
 ]
 
@@ -123,7 +124,7 @@ projectOverview_resources_slide0 = Slide.create!(
 ##############################################
 
 crawler_content0 = [
-  ['text', 'Before we begin to extract details from a boat listing, we need to first find the URL of that particular webpage and read the content of the html file. Since we are interested in ALL of the listtings, we need to make a class of functions that will help us do this'],
+  ['text', 'Before we begin to extract details from a boat listing, we need to first find the URL of that particular webpage and read the content of the html file. Since we are interested in ALL of the listtings, we need to make a class of functions that will help us do this.'],
   ['lesson_links', nil],
 ]
 
@@ -422,14 +423,14 @@ allTogether_save_slide0 = Slide.create!(
 ########## -- ALL TOGETHER: A Functioning Algorithm -- ##########
 
 allTogether_algo_content0 = [
-  ['text', 'Put the finishing touches, tidy up the documentations and submit all your codes here:'],
+  ['text', 'Submit all of your code for this data challenge here:'],
   ['user_code', ''],
   ['next_steps', nil],
 ]
 
 
 allTogether_algo = Step.create!(
-  title: "A Functioning Algorithm",
+  title: "Full Code Submission",
   lesson: allTogether,
   step_id: 1,
 )

@@ -12,6 +12,7 @@ project = Project.create!(
   cost: 500,
   uid: 9,
   difficulty: 'Advanced',
+  category: Project::COMING_SOON,
 )
 
 ################################################################################

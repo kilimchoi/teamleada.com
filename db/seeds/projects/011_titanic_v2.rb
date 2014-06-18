@@ -17,6 +17,7 @@ project = Project.create!(
   enabled: true,
   has_leaderboard: true,
   has_submit: true,
+  category: Project::CHALLENGE,
   uid: 11,
   difficulty: 'Intermediate',
   company_overview: 'In this project, users are asked to construct a model to predict the survival of a passenger on the Titanic using giventraining and testing datasets.',

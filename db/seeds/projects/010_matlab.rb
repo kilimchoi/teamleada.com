@@ -11,6 +11,7 @@ project = Project.create!(
   enabled: false,
   uid: 10,
   difficulty: 'Beginner'
+  category: Project::COMING_SOON,
 )
 
 ################################################################################
