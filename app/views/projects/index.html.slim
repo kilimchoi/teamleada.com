@@ -22,8 +22,8 @@
                         .clearfix
                         - if project.paid?
                           span.label.label-success.price-tag
-                            ' Company Sponsored -
-                            = project.cost_in_dollars
+                            ' Company Sponsored
+                            /= project.cost_in_dollars
 
                     .info
                       p = project.short_description
