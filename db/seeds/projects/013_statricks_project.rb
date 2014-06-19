@@ -77,7 +77,9 @@ projectOverview_background_slide0 = Slide.create!(
 ########## -- PROJECT OVERVIEW: Our Goal -- ##########
 
 projectOverview_ourGoal_content0 = [
-  ['text', 'You are tasked with making a web scraper in python for www.boattrader.com, a website that specializes in used boats, to retrieve the information Statricks would typically desire.'],
+  ['text', 'You are tasked with making a web scraper in python for the following website:'],
+  ['link', "www.boattrader.com"],
+  ['text', 'It\'s a website that specializes in used boats.'],
   ['text', 'Speifically, we need an automated way of doing two things:'],
   ['text', '1. Find the URL for each and every boat being listed on the entire website'],
   ['text', '2. For each boat, find and store the unique boat information (title, contact number, price etc)'],
