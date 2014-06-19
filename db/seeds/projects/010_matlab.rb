@@ -8,7 +8,7 @@ project = Project.create!(
   description: main_page_content,
   short_description: "This data project focuses on introducing users to MATLAB and creating a simple classifier for recordings of patients performing a visual categorization task.",
   number: 10,
-  enabled: false,
+  enabled: true,
   uid: 10,
   difficulty: 'Beginner',
   category: Project::COMING_SOON,
