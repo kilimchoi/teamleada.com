@@ -163,6 +163,13 @@ crawler_getRaw_slide0 = Slide.create!(
   slide_id: 0,
 )
 
+crawler_getRaw_context0 = SubmissionContext.create!(
+  title: "Raw HTML.",
+  description: "User is asked to create a function that queries and returns the raw html file when given a raw URL link.",
+  slide: crawler_getRaw_slide0,
+  submission_context_id: 0,
+)
+
 
 ########## -- BUILDING A CRAWLER: get_listing_urls -- ##########
 
@@ -185,6 +192,14 @@ crawler_getListing_slide0 = Slide.create!(
   slide_id: 0,
 )
 
+crawler_getListing_context0 = SubmissionContext.create!(
+  title: "List of URLs.",
+  description: "User is asked to create a function that extracts the list of URL links to actual listings when given a raw html of a single search result page.",
+  slide: crawler_getListing_slide0,
+  submission_context_id: 0,
+)
+
+
 ########## -- BUILDING A CRAWLER: scrape_search_results -- ##########
 
 crawler_scrapeSearch_content0 = [
@@ -205,6 +220,14 @@ crawler_scrapeSearch_slide0 = Slide.create!(
   parent: crawler_scrapeSearch,
   slide_id: 0,
 )
+
+crawler_scrapeSearch_context0 = SubmissionContext.create!(
+  title: "Links to Individual Listings.",
+  description: "User is asked to create a function that creates a list of links to individual listings when given a link for search results.",
+  slide: crawler_scrapeSearch_slide0,
+  submission_context_id: 0,
+)
+
 
 ######################################################
 ########## -- Extracting Listing Details -- ##########
@@ -249,6 +272,14 @@ extract_uid_slide0 = Slide.create!(
   slide_id: 0,
 )
 
+extract_uid_context0 = SubmissionContext.create!(
+  title: "Extract Unique ID.",
+  description: "User is asked to write a function that returns the unique identifier (UID) of the listing given a listing URL.",
+  slide: extract_uid_slide0,
+  submission_context_id: 0,
+)
+
+
 ########## -- EXTRACTING LISTING DETAILS: get_title -- ##########
 
 extract_title_content0 = [
@@ -269,6 +300,14 @@ extract_title_slide0 = Slide.create!(
   parent: extract_title,
   slide_id: 0,
 )
+
+extract_title_context0 = SubmissionContext.create!(
+  title: "Extract Title.",
+  description: "User is asked to write a function that returns the title of the listing given a beautifulsoup object.",
+  slide: extract_title_slide0,
+  submission_context_id: 0,
+)
+
 
 ########## -- EXTRACTING LISTING DETAILS: get_price -- ##########
 
@@ -291,6 +330,14 @@ extract_price_slide0 = Slide.create!(
   slide_id: 0,
 )
 
+extract_price_context0 = SubmissionContext.create!(
+  title: "Extract Price.",
+  description: "The user is asked to write a function that returns the price of the listing given a beautifulsoup object",
+  slide: extract_price_slide0,
+  submission_context_id: 0,
+)
+
+
 ########## -- EXTRACTING LISTING DETAILS: get_description -- ##########
 
 extract_description_content0 = [
@@ -311,6 +358,14 @@ extract_description_slide0 = Slide.create!(
   parent: extract_description,
   slide_id: 0,
 )
+
+extract_description_context0 = SubmissionContext.create!(
+  title: "Extract Description.",
+  description: "User is asked to write a function that returns the description of a listing given a beautifulsoup object",
+  slide: extract_description_slide0,
+  submission_context_id: 0,
+)
+
 
 ########## -- EXTRACTING LISTING DETAILS: get_img_URL -- ##########
 
@@ -333,10 +388,18 @@ extract_img_slide0 = Slide.create!(
   slide_id: 0,
 )
 
+extract_img_context0 = SubmissionContext.create!(
+  title: "Extract Image URL.",
+  description: "User is asked to write a function that returns the image URL of a listing given a beautifulsoup object.",
+  slide: extract_img_slide0,
+  submission_context_id: 0,
+)
+
+
 ########## -- EXTRACTING LISTING DETAILS: get_phone_num -- ##########
 
 extract_phone_content0 = [
-  ['text', 'Given a beautifulsoup object, write a function that returns the phone number of an individual listing page'],
+  ['text', 'Given a beautifulsoup object, write a function that returns the phone number of an individual listing page.'],
   ['user_code', ''],
   ['next_steps', nil],
 ]
@@ -353,6 +416,14 @@ extract_phone_slide0 = Slide.create!(
   parent: extract_phone,
   slide_id: 0,
 )
+
+extract_phone_context0 = SubmissionContext.create!(
+  title: "Extract Phone Number.",
+  description: "User is asked to write a function that returns the phone number of a listing given a beautifulsoup object.",
+  slide: extract_phone_slide0,
+  submission_context_id: 0,
+)
+
 
 ########## -- EXTRACTING LISTING DETAILS: get_details -- ##########
 
@@ -373,6 +444,13 @@ extract_details_slide0 = Slide.create!(
   content: extract_details_content0,
   parent: extract_details,
   slide_id: 0,
+)
+
+extract_details_context0 = SubmissionContext.create!(
+  title: "Extract Details.",
+  description: "User is asked to write a function that returns the details of a listing given a beautifulsoup object.",
+  slide: extract_details_slide0,
+  submission_context_id: 0,
 )
 
 
@@ -420,10 +498,18 @@ allTogether_save_slide0 = Slide.create!(
   slide_id: 0,
 )
 
+allTogether_save_context0 = SubmissionContext.create!(
+  title: "Saving Output",
+  description: "User is asked to save the output into a .csv file",
+  slide: allTogether_save_slide0,
+  submission_context_id: 0,
+)
+
+
 ########## -- ALL TOGETHER: A Functioning Algorithm -- ##########
 
 allTogether_algo_content0 = [
-  ['text', 'Submit all of your code for this data challenge here:'],
+  ['text', 'Properly document and format your codes for this data challenge and submit them here:'],
   ['user_code', ''],
   ['next_steps', nil],
 ]
@@ -440,3 +526,13 @@ allTogether_algo_slide0 = Slide.create!(
   parent: allTogether_algo,
   slide_id: 0,
 )
+
+allTogether_algo_context0 = SubmissionContext.create!(
+  title: "Full Code Submission",
+  description: "User is asked to submit all the codes written properly formatted",
+  slide: allTogether_algo_slide0,
+  submission_context_id: 0,
+)
+
+
+
