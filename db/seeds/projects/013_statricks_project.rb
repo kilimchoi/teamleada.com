@@ -5,7 +5,7 @@
 main_page_content = [
   ['text', 'In this project, you are tasked with building a web scraper for Statricks, an analytics technology company that aggregates price data on used goods.'],
   ['text', 'This project is designed to test your abilities to:'],
-  ['text', '1. Building an effective and efficient data collection script in python'],
+  ['text', '1. Build an effective and efficient data collection script in python'],
   ['text', '2. Navigate through terse html files'],
   ['text', '3. Utilize existing packages in python to your advantage'],
 ]
@@ -31,7 +31,7 @@ puts "============ Created project: #{project.title}."
 ############################################
 
 projectOverview_content0 = [
-  ['text', 'In this project, you are tasked with building a web scraper for Statricks, an analytics technology company that aggregates price data on used goods'],
+  ['text', 'In this project, you are tasked with building a web scraper for Statricks, an analytics technology company that aggregates price data on used goods.'],
   ['text', 'This project is designed to test you abilities to:'],
   ['text', '1. Building an effective and efficient data collection script in python'],
   ['text', '2. Navigate through terse html files'],
@@ -55,8 +55,8 @@ projectOverview_slide0 = Slide.create!(
 
 projectOverview_background_content0 = [
   ['text', 'Statricks is an analytics technology company specializing in pricing used goods.'],
-  ['text', 'By aggregating price data from different sources, Statricks provides price trends for users to find good deals when buying and maximize returns when selling in the used goods market.'],
-  ['text', 'In order for price trends to be accurate, Statricks needs to get data from varied sources (think eBay, craigslist, and CarMax) – while some of these sources have an Application Programming Interface (API) in place (e.g. eBay) that allows easy access for data acquisition, a majority of them do not.'],
+  ['text', 'By aggregating price data from different sources, Statricks provides price trends for users to find good deals when buying, and maximize returns when selling used goods'],
+  ['text', 'In order for price trends to be accurate, Statricks needs data from various sources (eBay, craigslist, and CarMax) – while some of these sources have Application Programming Interfaces (APIs) in place that enable easy data acquisition, a majority of them do not.'],
   ['text', 'As a result, we need to “scrape” these websites to get the pricing data we want.'],
   ['next_steps', nil],
 ]
