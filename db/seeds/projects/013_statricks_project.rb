@@ -126,7 +126,8 @@ projectOverview_resources_slide0 = Slide.create!(
 ##############################################
 
 crawler_content0 = [
-  ['text', 'Before we begin to extract details from a boat listing, we need to first find the URL of that particular webpage and read the content of the html file. Since we are interested in ALL of the listtings, we need to make a class of functions that will help us do this.'],
+  ['text', 'Before we begin to extract details from a boat listing, we need to first find the URL of that particular webpage and read the content of the html file.'],
+  ['text', 'Since we are interested in ALL of the listtings, we need to make a class of functions that will help us do this.'],
   ['lesson_links', nil],
 ]
 
@@ -147,7 +148,7 @@ crawler_slide0 = Slide.create!(
 ########## -- BUILDING A CRAWLER: get_raw_html -- ##########
 
 crawler_getRaw_content0 = [
-  ['text', 'Let us start by creating a function that when given a raw URL link, queries and returns the raw html file'],
+  ['text', 'Let us start by creating a function that when given a raw URL link, queries and returns the raw html file.'],
   ['user_code', ''],
   ['next_steps', nil],
 ]
