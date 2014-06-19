@@ -8,7 +8,7 @@ project = Project.create!(
   description: main_page_content,
   short_description: "Using data from the Bay Area Bike Share you will learn how to create a simple reccomendation algorithm for potential customers. This project will introduce you to Python for data analysis and machine learning. This project is for intermediate level students.",
   number: 8,
-  enabled: false,
+  enabled: true,
   uid: 8,
   difficulty: 'Advanced',
   category: Project::COMING_SOON,
