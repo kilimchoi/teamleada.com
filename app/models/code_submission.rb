@@ -18,6 +18,8 @@ class CodeSubmission < ActiveRecord::Base
   belongs_to :user
   belongs_to :project
 
+  has_many :code_submission_evaluations
+
   default_scope { order(:created_at) }
 
   def slide
