@@ -128,6 +128,7 @@ projectOverview_resources_slide0 = Slide.create!(
 crawler_content0 = [
   ['text', 'Before we begin to extract details from a boat listing, we need to first find the URL of that particular webpage and read the content of the html file.'],
   ['text', 'Since we are interested in ALL of the listtings, we need to make a class of functions that will help us do this.'],
+  ['text', 'Make sure to name your functions as specified in the left navigation bar.']
   ['lesson_links', nil],
 ]
 
@@ -148,7 +149,7 @@ crawler_slide0 = Slide.create!(
 ########## -- BUILDING A CRAWLER: get_raw_html -- ##########
 
 crawler_getRaw_content0 = [
-  ['text', 'Let us start by creating a function that when given a raw URL link, queries and returns the raw html file.'],
+  ['text', 'Let us start by creating a function that when given a raw URL link, queries and returns the raw html file as String.'],
   ['user_code', ''],
   ['next_steps', nil],
 ]
@@ -168,7 +169,7 @@ crawler_getRaw_slide0 = Slide.create!(
 
 crawler_getRaw_context0 = SubmissionContext.create!(
   title: "Raw HTML.",
-  description: "User is asked to create a function that queries and returns the raw html file when given a raw URL link.",
+  description: "User is asked to create a function that queries and returns the raw html when given a raw URL link.",
   slide: crawler_getRaw_slide0,
   submission_context_id: 0,
 )
