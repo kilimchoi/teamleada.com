@@ -38,4 +38,8 @@ class CodeSubmission < ActiveRecord::Base
     created_at.strftime("%B %d, %Y at %l:%M %p")
   end
 
+  def has_evaluation_by_user?(user)
+    code_submission_evaluations.where(reviewer: user).count > 0
+  end
+
 end
