@@ -1,8 +1,11 @@
 = provide(:page_title, @user.name)
 
-.container.full-container
+.container-fluid.full-container
   .row
-    .col-md-12
+    .col-md-2
+      = render partial: "users/user_sidebar", locals: { user: @user }
+
+    .col-md-10
       .user-container
         .row
           .col-md-12
