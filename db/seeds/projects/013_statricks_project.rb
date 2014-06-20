@@ -128,7 +128,7 @@ projectOverview_resources_slide0 = Slide.create!(
 crawler_content0 = [
   ['text', 'Before we begin to extract details from a boat listing, we need to first find the URL of that particular webpage and read the content of the html file.'],
   ['text', 'Since we are interested in ALL of the listtings, we need to make a class of functions that will help us do this.'],
-  ['text', 'Make sure to name your functions as specified in the left navigation bar.']
+  ['text', 'Make sure to name your functions as specified in the left navigation bar.'],
   ['lesson_links', nil],
 ]
 
@@ -204,17 +204,26 @@ crawler_getListing_context0 = SubmissionContext.create!(
 )
 
 
-########## -- BUILDING A CRAWLER: scrape_search_results -- ##########
+########## -- BUILDING A CRAWLER: generate_search_links -- ##########
 
 crawler_scrapeSearch_content0 = [
-  ['text', 'Lastly, with a given link for search results, we want a list of links to individual listings'],
-  ['user_code', ''],
+  ['text', 'Lastly, we want to generate search result links.'],
+  ['text', 'Do a sample boat search to see what the url looks like.'],
+  ['text', 'What do you notice? Perhaps the URL seems structured?'],
+  ['text', 'Well, that\'s because the URL is a REST endpoint.'],
+  ['text', 'Do you see a way to generate the search result links? Try a few different searches (and visit multiple result pages). Explain below:'],
+
+  ['user_response', 'User Response here!'],
+]
+
+crawler_scrapeSearch_content1 = [
+  ['text', 'Now write the code that generates a series of search result pages\' url.'],
+  ['user_code', 'User Code here'],
   ['next_steps', nil],
 ]
 
-
 crawler_scrapeSearch = Step.create!(
-  title: "scrape_search_results",
+  title: "generate_search_url",
   lesson: crawler,
   step_id: 2,
 )
@@ -225,11 +234,24 @@ crawler_scrapeSearch_slide0 = Slide.create!(
   slide_id: 0,
 )
 
+crawler_scrapeSearch_slide1 = Slide.create!(
+  content: crawler_scrapeSearch_content1,
+  parent: crawler_scrapeSearch,
+  slide_id: 1,
+)
+
 crawler_scrapeSearch_context0 = SubmissionContext.create!(
-  title: "Links to Individual Listings.",
-  description: "User is asked to create a function that creates a list of links to individual listings when given a link for search results.",
+  title: "Generate Search Links - Response",
+  description: "User is asked explain how he/she plans to generate search result page url, given that it is REST.",
   slide: crawler_scrapeSearch_slide0,
   submission_context_id: 0,
+)
+
+crawler_scrapeSearch_context1 = SubmissionContext.create!(
+  title: "Generate Search Links - Code",
+  description: "User is asked write code that generates a formatted REST urls that represent search page results.",
+  slide: crawler_scrapeSearch_slide1,
+  submission_context_id: 1,
 )
 
 
