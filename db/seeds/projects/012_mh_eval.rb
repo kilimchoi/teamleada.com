@@ -299,27 +299,6 @@ return_code_slide = Slide.create!(
 	parent: return_code_lesson,
 	slide_id: 0,
 )
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-presentation_one = [
-	['text', 'Submit a video presenting your conclusions no longer than 2 minutes. Production quality is not important.'],
-	['user_response', ' '],
-	['text', 'Submit a two slide google presentation of your analysis and conclusion. Your video can explain the results of your slide.'],
-	['submit', nil],
-	['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
-]
-
-presentation_lesson = Lesson.create!(
-	title: "Presentation Submission",
-	project: project,
-	lesson_id: 3,
-)
-
-presentation_slide = Slide.create!(
-	content: presentation_one,
-	parent: presentation_lesson,
-	slide_id: 0,
-)
 
 return_code_context = SubmissionContext.create!(
   title: "Entire Source Code",
@@ -328,3 +307,47 @@ return_code_context = SubmissionContext.create!(
   submission_context_id: 0,
 )
 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+presentation_one = [
+ ['text', 'Submit a link to two slide google presentation of your analysis and conclusion.'],
+ ['user_response', ''],
+]
+
+presentation_two = [
+ ['text', 'Submit a link to a video of you presenting your conclusions no longer than 2 minutes. Production quality is not important.'],
+ ['user_response', ''],
+ ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
+]
+
+presentation_lesson = Lesson.create!(
+	title: "Presentation Submission",
+	project: project,
+	lesson_id: 3,
+)
+
+presentation_slide_one = Slide.create!(
+	content: presentation_one,
+	parent: presentation_lesson,
+	slide_id: 0,
+)
+
+presentation_slide_two = Slide.create!(
+	content: presentation_two,
+	parent: presentation_lesson,
+	slide_id: 1,
+)
+
+presentation_context = SubmissionContext.create!(
+  title: "Presentation - slides",
+  description: "User is asked create a 2 slides presentation for the project.",
+  slide: presentation_slide_one,
+  submission_context_id: 0,
+)
+
+return_code_context = SubmissionContext.create!(
+  title: "Presentation - video",
+  description: "User is asked to create a video presentation (no longer than 2 min) of the slides.",
+  slide: presentation_slide_two,
+  submission_context_id: 0,
+)
