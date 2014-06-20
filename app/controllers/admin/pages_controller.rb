@@ -19,4 +19,10 @@ class Admin::PagesController < Admin::BaseController
   def company_dashboards
   end
 
+  def page_view_charts
+    @seven_day_engagement = page_views_chart(7.days.ago)
+    @one_day_engagement = one_day_chart
+    @page_views = PageView.where("created_at > ?", 1.day.ago).group(:url).count
+  end
+
 end

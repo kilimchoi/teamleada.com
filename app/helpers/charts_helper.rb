@@ -1,10 +1,10 @@
 module ChartsHelper
 
-  def chart(title, start_date, y_axis_text, values)
+  def time_chart(title, start_date, time_interval, y_axis_text, values)
     LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: title)
-      f.xAxis(type: 'datetime', minRange: 14 * 24 * 3600 * 1000)
-      f.series(name: y_axis_text, yAxis: 0, data: values, pointInterval: 24 * 3600, pointStart: start_date)
+      f.xAxis(type: 'datetime', minRange: 3600 * 1000)
+      f.series(name: y_axis_text, yAxis: 0, data: values, pointInterval: time_interval, pointStart: start_date)
 
       f.yAxis [
         {title: {text: y_axis_text, margin: 70}, min: 0},
@@ -15,10 +15,14 @@ module ChartsHelper
     end
   end
 
+  def chart(title, start_date, y_axis_text, values)
+    time_chart(title, start_date, 24 * 3600, y_axis_text, values)
+  end
+
   def multichart(title, start_date, y_axis_text, overall_values_hash)
     LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: title)
-      f.xAxis(type: 'datetime', minRange: 14 * 24 * 3600 * 1000)
+      f.xAxis(type: 'datetime', minRange: 3600 * 1000)
 
       overall_values_hash.each_pair do |key, values|
         f.series(name: key, yAxis: 0, pointInterval: 24 * 3600, pointStart: start_date, data: values)
@@ -33,7 +37,7 @@ module ChartsHelper
     end
   end
 
-  def chart_from_model(timeframe, model, title, y_axis)
+  def time_chart_from_model(timeframe, time_interval, model, title, y_axis)
     zeros = Hash[(timeframe.to_date..Date.today).map { |day| [ day, [] ] }]
     data = zeros.merge(model.where("created_at > ?", timeframe).group_by{ |user| user.created_at.to_date })
     categories = data.keys.map{ |date| date.strftime("%B %d")}
@@ -41,12 +45,17 @@ module ChartsHelper
     sum = model.where("created_at < ?", timeframe).count
     values = data.values.map{ |array| sum += array.count }
 
-    chart(
+    time_chart(
       title,
       timeframe.to_date,
+      time_interval,
       y_axis,
       values,
     )
+  end
+
+  def chart_from_model(timeframe, model, title, y_axis)
+    time_chart_from_model(timeframe, 24 * 3600, model, title, y_axis)
   end
 
   def chart_for_timeframe(chart, start_date, end_date)
@@ -148,6 +157,14 @@ module ChartsHelper
 
   def detailed_users_chart(timeframe)
     comparison_chart(timeframe, User, Code, :access_type, "project-access", "Users with project access compared to all users", "Total number of sign ups")
+  end
+
+  def page_views_chart(timeframe)
+    chart_from_model(timeframe, PageView, "PageViews in the last 7 days", "Total number of PageViews")
+  end
+
+  def one_day_chart
+    time_chart_from_model(1.day.ago, 3600, PageView, "PageViews in the past 24 hours", "Total number of PageViews")
   end
 
 end
