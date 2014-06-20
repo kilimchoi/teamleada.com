@@ -484,12 +484,17 @@ extract_details_context0 = SubmissionContext.create!(
 ########################################
 
 all_together_content0 = [
-  ['text', 'We are almost there!'],
+  ['text', 'Now to put everything together.'],
+  ['text', 'Consider the following:'],
+  ['text', '1. You have the code that generates the search results.'],
+  ['text', '2. You have the code that grabs the URL of the invidual listing page from search results.'],
+  ['text', '3. You have the functions that extract various information from the listing page.'],
+  ['text', 'Now you have to put it together!'],
   ['lesson_links', nil],
 ]
 
 all_together = Lesson.create!(
-  title: "All Together",
+  title: "The Complete Scraper",
   project: project,
   lesson_id: 3,
 )
@@ -498,6 +503,56 @@ all_together_slide0 = Slide.create!(
   content: all_together_content0,
   parent: all_together,
   slide_id: 0,
+)
+
+########## -- ALL TOGETHER: Put everything Together -- ##########
+all_together_put_together_content_0 = [
+  ['text', 'Put the module together into a single file.'],
+  ['text', 'You can organize the code however you deem fit.'],
+  ['text', 'Make sure you comment on how to run it.'],
+  ['text', 'Also be prepared to explain why you organized it the way you did.'],
+  ['text', 'Paste the entire codebase below. Don\'t forget to comment on how to run the code!'],
+  ['user_code', ''],
+]
+
+all_together_put_together_content_1 = [
+  ['text', 'How did you organize the code?'],
+  ['text', 'What were some of the issues you considered?'],
+  ['text', 'Why did you organize it that way?'],
+  ['text', 'Explain any relevant thoughts below:'],
+  ['user_response', ''],
+  ['next_steps', nil],
+]
+
+all_put_together = Step.create!(
+  title: "Combining the Modules",
+  lesson: all_together,
+  step_id: 0,
+)
+
+all_together_put_slides_0 = Slide.create!(
+  content:all_together_put_together_content_0,
+  parent: all_put_together,
+  slide_id: 0,
+)
+
+all_together_put_slides_1 = Slide.create!(
+  content:all_together_put_together_content_1,
+  parent: all_put_together,
+  slide_id: 1,
+)
+
+all_together_put_code_context = SubmissionContext.create!(
+  title: "Complete Module - code",
+  description: "User is asked to put together the entire modules, effectively creating a working scarper.",
+  slide: all_together_put_slides_0,
+  submission_context_id: 0,
+)
+all_together_put_response_context = SubmissionContext.create!(
+  title: "Complete Module - response",
+  description: "User is asked to explain process/how/why they organized the scraper code.",
+  slide: all_together_put_slides_1,
+  submission_context_id: 1,
 )
 
 ########## -- ALL TOGETHER: Saving the Output -- ##########
@@ -511,7 +566,7 @@ all_together_save_content0 = [
 all_together_save = Step.create!(
   title: "Saving the Output",
   lesson: all_together,
-  step_id: 0,
+  step_id: 1,
 )
 
 all_together_save_slide0 = Slide.create!(
@@ -553,6 +608,4 @@ all_together_algo_context0 = SubmissionContext.create!(
   slide: all_together_algo_slide0,
   submission_context_id: 0,
 )
-
-
 
