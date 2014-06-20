@@ -22,6 +22,17 @@ class Admin::CodeSubmissionsController < Admin::BaseController
     end
   end
 
+  def update_evaluation
+    @code_submission_evaluation = CodeSubmissionEvaluation.find_by(reviewer: current_user, code_submission: @code_submission)
+    if @code_submission_evaluation.update_attributes(evaluation_params)
+      flash[:info] = "Your evaluation was updated."
+      redirect_to admin_code_submission_path(@code_submission)
+    else
+      flash[:error] = "There was an error updating your evaluation."
+      redirect_to admin_code_submission_path(@code_submission)
+    end
+  end
+
   private
 
   def evaluation_params
