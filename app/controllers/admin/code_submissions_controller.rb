@@ -5,6 +5,7 @@ class Admin::CodeSubmissionsController < Admin::BaseController
   end
 
   def show
+    @evaluation = CodeSubmissionEvaluation.new(code_submission: @code_submission)
   end
 
 end
