@@ -10,15 +10,10 @@
       .row
         .col-md-12
           h3.title Completed Projects
-          table.table.table-striped
-            th Project
-            th # Evaluations
-            = @completed_projects.each do |project|
-              tr
-                td = project.title
-                td = @user.evaluations_for_project(project).count
+          = render partial: "users/projects", locals: { user: @user, projects: @user.completed_projects }
 
     .col-md-6
       .row
         .col-md-12
           h3.title In Progress Projects
+          = render partial: "users/projects", locals: { user: @user, projects: @user.in_progress_projects }
