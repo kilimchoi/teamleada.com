@@ -43,7 +43,6 @@ project_overview_slide = Slide.create!(
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-
 data_content_one = [
 	['text', 'The Abandoned Data Set:'],
 	['link', 'https://s3.amazonaws.com/leada/mh_data/Abandoned_Data_Seed.csv'],
@@ -349,5 +348,5 @@ return_code_context = SubmissionContext.create!(
   title: "Presentation - video",
   description: "User is asked to create a video presentation (no longer than 2 min) of the slides.",
   slide: presentation_slide_two,
-  submission_context_id: 0,
+  submission_context_id: 1,
 )

@@ -61,7 +61,6 @@ project_overview_background_content0 = [
   ['next_steps', nil],
 ]
 
-
 project_overview_background = Step.create!(
   title: "Background",
   lesson: project_overview,
@@ -174,7 +173,6 @@ crawler_getRaw_context0 = SubmissionContext.create!(
   submission_context_id: 0,
 )
 
-
 ########## -- BUILDING A CRAWLER: get_listing_urls -- ##########
 
 crawler_getListing_content0 = [
@@ -201,7 +199,6 @@ crawler_getListing_context0 = SubmissionContext.create!(
   slide: crawler_getListing_slide0,
   submission_context_id: 0,
 )
-
 
 ########## -- BUILDING A CRAWLER: generate_search_links -- ##########
 
@@ -253,7 +250,6 @@ crawler_scrape_search_context1 = SubmissionContext.create!(
   submission_context_id: 1,
 )
 
-
 ######################################################
 ########## -- Extracting Listing Details -- ##########
 ######################################################
@@ -266,7 +262,6 @@ extract_content0 = [
   ['lesson_links', nil],
 ]
 
-
 extract = Lesson.create!(
   title: "Extracting Listing Details",
   project: project,
@@ -278,7 +273,6 @@ extract_slide0 = Slide.create!(
   parent: extract,
   slide_id: 0,
 )
-
 
 ########## -- EXTRACTING LISTING DETAILS: get_UID -- ##########
 
@@ -309,7 +303,6 @@ extract_uid_context0 = SubmissionContext.create!(
   submission_context_id: 0,
 )
 
-
 ########## -- EXTRACTING LISTING DETAILS: get_title -- ##########
 
 extract_title_content0 = [
@@ -338,7 +331,6 @@ extract_title_context0 = SubmissionContext.create!(
   submission_context_id: 0,
 )
 
-
 ########## -- EXTRACTING LISTING DETAILS: get_price -- ##########
 
 extract_price_content0 = [
@@ -346,7 +338,6 @@ extract_price_content0 = [
   ['user_code', ''],
   ['next_steps', nil],
 ]
-
 
 extract_price = Step.create!(
   title: "get_price",
@@ -367,7 +358,6 @@ extract_price_context0 = SubmissionContext.create!(
   submission_context_id: 0,
 )
 
-
 ########## -- EXTRACTING LISTING DETAILS: get_description -- ##########
 
 extract_description_content0 = [
@@ -375,7 +365,6 @@ extract_description_content0 = [
   ['user_code', ''],
   ['next_steps', nil],
 ]
-
 
 extract_description = Step.create!(
   title: "get_description",
@@ -395,7 +384,6 @@ extract_description_context0 = SubmissionContext.create!(
   slide: extract_description_slide0,
   submission_context_id: 0,
 )
-
 
 ########## -- EXTRACTING LISTING DETAILS: get_img_URL -- ##########
 
@@ -459,7 +447,6 @@ extract_details_content0 = [
   ['next_steps', nil],
 ]
 
-
 extract_details = Step.create!(
   title: "get_details",
   lesson: extract,
@@ -493,7 +480,7 @@ all_together_content0 = [
   ['lesson_links', nil],
 ]
 
-all_together = Lesson.create!(
+all_together_lesson = Lesson.create!(
   title: "The Complete Scraper",
   project: project,
   lesson_id: 3,
@@ -501,14 +488,16 @@ all_together = Lesson.create!(
 
 all_together_slide0 = Slide.create!(
   content: all_together_content0,
-  parent: all_together,
+  parent: all_together_lesson,
   slide_id: 0,
 )
 
-########## -- ALL TOGETHER: Put everything Together -- ##########
+########## -- ALL TOGETHER: A Functioning Algorithm -- ##########
+
 all_together_put_together_content_0 = [
   ['text', 'Put the module together into a single file.'],
   ['text', 'You can organize the code however you deem fit.'],
+  ['text', 'For now, you can have the code print the information extracted. We\'ll get to outputting/storing data last.'],
   ['text', 'Make sure you comment on how to run it.'],
   ['text', 'Also be prepared to explain why you organized it the way you did.'],
   ['text', 'Paste the entire codebase below. Don\'t forget to comment on how to run the code!'],
@@ -524,21 +513,21 @@ all_together_put_together_content_1 = [
   ['next_steps', nil],
 ]
 
-all_put_together = Step.create!(
+combining_module_step = Step.create!(
   title: "Combining the Modules",
-  lesson: all_together,
+  lesson: all_together_lesson,
   step_id: 0,
 )
 
 all_together_put_slides_0 = Slide.create!(
   content:all_together_put_together_content_0,
-  parent: all_put_together,
+  parent: combining_module_step,
   slide_id: 0,
 )
 
 all_together_put_slides_1 = Slide.create!(
   content:all_together_put_together_content_1,
-  parent: all_put_together,
+  parent: combining_module_step,
   slide_id: 1,
 )
 
@@ -548,6 +537,7 @@ all_together_put_code_context = SubmissionContext.create!(
   slide: all_together_put_slides_0,
   submission_context_id: 0,
 )
+
 all_together_put_response_context = SubmissionContext.create!(
   title: "Complete Module - response",
   description: "User is asked to explain process/how/why they organized the scraper code.",
@@ -555,57 +545,50 @@ all_together_put_response_context = SubmissionContext.create!(
   submission_context_id: 1,
 )
 
-########## -- ALL TOGETHER: Saving the Output -- ##########
+########################################
+#### -- Concluding Section -- ##########
+########################################
 
-all_together_save_content0 = [
-  ['text', 'Lastly we want a way of storing the output into a .csv file'],
-  ['user_code', ''],
-  ['next_steps', nil],
+concluding_section = [
+  ['text', 'Now that you have a working scraper, you\'ll have to present your process!'],
+  ['text', 'We\'re going to ask you to create (and present) a 3 slide presentation'],
+  ['text', 'On the first 2 slides, explain the what you did with the scraper.'],
+  ['text', 'On the last page, you\'ll be asked to explain how you\'d store the scraped data.'],
 ]
 
-all_together_save = Step.create!(
-  title: "Saving the Output",
-  lesson: all_together,
-  step_id: 1,
+presentation_one = [
+ ['text', 'Submit a link to a google presentation (3 slides) of your analysis and conclusion.'],
+ ['user_response', ''],
+]
+
+presentation_two = [
+ ['text', 'Submit a link to a video of you presenting your conclusions (2 min max). Production quality is not important.'],
+ ['user_response', ''],
+ ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
+]
+
+presentation_lesson = Lesson.create!(
+  title: "Final Presentation - Statricks",
+  project: project,
+  lesson_id: 3,
 )
 
-all_together_save_slide0 = Slide.create!(
-  content: all_together_save_content0,
-  parent: all_together_save,
+all_together_slide0 = Slide.create!(
+  content: concluding_section,
+  parent: presentation_lesson,
   slide_id: 0,
 )
 
-all_together_save_context0 = SubmissionContext.create!(
-  title: "Saving Output",
-  description: "User is asked to save the output into a .csv file",
-  slide: all_together_save_slide0,
-  submission_context_id: 0,
+presentation_slide_one = Slide.create!(
+  content: presentation_one,
+  parent: presentation_lesson,
+  slide_id: 1,
 )
 
-########## -- ALL TOGETHER: A Functioning Algorithm -- ##########
-
-all_together_algo_content0 = [
-  ['text', 'Properly document and format your codes for this data challenge and submit them here:'],
-  ['user_code', ''],
-  ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
-]
-
-all_together_algo = Step.create!(
-  title: "Full Code Submission",
-  lesson: all_together,
-  step_id: 1,
+presentation_slide_one = Slide.create!(
+  content: presentation_two,
+  parent: presentation_lesson,
+  slide_id: 2,
 )
 
-all_together_algo_slide0 = Slide.create!(
-  content: all_together_algo_content0,
-  parent: all_together_algo,
-  slide_id: 0,
-)
-
-all_together_algo_context0 = SubmissionContext.create!(
-  title: "Full Code Submission",
-  description: "User is asked to submit all the codes written properly formatted.",
-  slide: all_together_algo_slide0,
-  submission_context_id: 0,
-)
-
+###############################################################################################
