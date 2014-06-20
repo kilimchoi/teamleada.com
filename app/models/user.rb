@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
 
   has_many :submissions
   has_many :code_submissions
-  has_many :code_submissions_evaluations, foreign_key: :reviewee_id
+  has_many :code_submission_evaluations, foreign_key: :reviewee_id
 
   has_many :step_statuses
   has_many :lesson_statuses

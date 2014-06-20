@@ -31,6 +31,7 @@ TeamLeada::Application.routes.draw do
     member do
       match 'projects', to: 'users#projects', as: :projects, via: :get
       match 'projects/:project_id', to: 'users#project', as: :project, via: :get
+      match 'projects/:project_id/evaluations', to: 'users#project_evaluations', as: :project_evaluations, via: :get
     end
   end
 
