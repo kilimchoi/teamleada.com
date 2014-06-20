@@ -212,8 +212,8 @@ crawler_scrapeSearch_content0 = [
   ['text', 'What do you notice? Perhaps the URL seems structured?'],
   ['text', 'Well, that\'s because the URL is a REST endpoint.'],
   ['text', 'Do you see a way to generate the search result links? Try a few different searches (and visit multiple result pages). Explain below:'],
-
   ['user_response', 'User Response here!'],
+  ['text', 'Don\' forget to think about how you would want to parameterize the function.'],
 ]
 
 crawler_scrapeSearch_content1 = [
@@ -259,7 +259,11 @@ crawler_scrapeSearch_context1 = SubmissionContext.create!(
 ########## -- Extracting Listing Details -- ##########
 ######################################################
 extract_content0 = [
-  ['text', 'Before we begin to extract details from a boat listing, we need to first find the URL of that particular webpage and read the content of the html file. Since we are interested in ALL of the listtings, we need to make a class of functions that will help us do this'],
+  ['text', 'To extract information from a boat listing, we need to find the URL of that particular webpage.'],
+  ['text', 'We already built the modules to help us achieve that!'],
+  ['text', 'We first use the "generate_search_url" with some parameter to load a search result url.'],
+  ['text', 'Then you can use the "get_listing_urls" function to get individual url.'],
+  ['text', 'Once you have the raw html to a single listing page, the following functinos will come in handy.'],
   ['lesson_links', nil],
 ]
 
@@ -280,7 +284,8 @@ extract_slide0 = Slide.create!(
 ########## -- EXTRACTING LISTING DETAILS: get_UID -- ##########
 
 extract_uid_content0 = [
-  ['text', 'Given URL, write a function that returns the unique identifier (UID) of the listing'],
+  ['text', 'Given a URL, write a function that returns the unique identifier (UID) of the listing.'],
+  ['text', 'HINT: perhaps the "get_raw_html" will be useful!'],
   ['user_code', ''],
   ['next_steps', nil],
 ]
