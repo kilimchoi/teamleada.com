@@ -4,3 +4,14 @@
       h1.title PageView Charts
       = high_chart("seven_day_chart", @seven_day_engagement)
       = high_chart("one_day_chart", @one_day_engagement)
+
+  .row
+    .col-md-12
+      table.table.table-striped
+        th URL
+        th Views
+        th Unique Users
+        - @page_views.each do |page_view|
+          tr
+            td = page_view[0]
+            td = page_view[1]

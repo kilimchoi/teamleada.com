@@ -3,7 +3,7 @@ module ChartsHelper
   def time_chart(title, start_date, time_interval, y_axis_text, values)
     LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: title)
-      f.xAxis(type: 'datetime', minRange: 7 * 24 * 3600 * 1000)
+      f.xAxis(type: 'datetime', minRange: 3600 * 1000)
       f.series(name: y_axis_text, yAxis: 0, data: values, pointInterval: time_interval, pointStart: start_date)
 
       f.yAxis [
@@ -22,7 +22,7 @@ module ChartsHelper
   def multichart(title, start_date, y_axis_text, overall_values_hash)
     LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: title)
-      f.xAxis(type: 'datetime', minRange: 7 * 24 * 3600 * 1000)
+      f.xAxis(type: 'datetime', minRange: 3600 * 1000)
 
       overall_values_hash.each_pair do |key, values|
         f.series(name: key, yAxis: 0, pointInterval: 24 * 3600, pointStart: start_date, data: values)
