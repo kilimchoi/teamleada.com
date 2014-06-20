@@ -75,6 +75,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def projects_index
+    @completed_projects = @user.completed_projects
+    @in_progress_projects = @user.in_progress_projects
+  end
+
+  def show_project
+    @project = Project.find(params[:project_id])
+  end
+
   private
 
   def user_params
