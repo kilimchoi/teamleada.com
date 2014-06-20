@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140620055405) do
+ActiveRecord::Schema.define(version: 20140620055612) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -158,6 +158,11 @@ ActiveRecord::Schema.define(version: 20140620055405) do
     t.datetime "updated_at"
     t.string   "viewed_user_id"
   end
+
+  add_index "page_views", ["url"], name: "index_page_views_on_url", using: :btree
+  add_index "page_views", ["user_id", "viewed_user_id"], name: "index_page_views_on_user_id_and_viewed_user_id", using: :btree
+  add_index "page_views", ["user_id"], name: "index_page_views_on_user_id", using: :btree
+  add_index "page_views", ["viewed_user_id"], name: "index_page_views_on_viewed_user_id", using: :btree
 
   create_table "profile_photos", force: true do |t|
     t.integer  "user_id"
