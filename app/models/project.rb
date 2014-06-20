@@ -33,6 +33,9 @@ class Project < ActiveRecord::Base
   has_many :transactions, as: :item
   has_many :interested_users, class_name: ProjectInterest
 
+  has_many :code_submissions
+  has_many :code_submission_evaluations
+
   before_create :set_url
 
   validates :title, uniqueness: true

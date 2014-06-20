@@ -13,6 +13,7 @@ class Admin::CodeSubmissionsController < Admin::BaseController
     @code_submission_evaluation.reviewee = @code_submission.user
     @code_submission_evaluation.reviewer = current_user
     @code_submission_evaluation.code_submission = @code_submission
+    @code_submissino_evaluation.project = @code_submission.project
     if @code_submission_evaluation.save
       flash[:info] = "Your evalaution was saved."
       redirect_to admin_code_submission_path(@code_submission)
