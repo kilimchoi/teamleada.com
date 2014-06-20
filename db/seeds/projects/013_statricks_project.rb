@@ -153,7 +153,6 @@ crawler_getRaw_content0 = [
   ['next_steps', nil],
 ]
 
-
 crawler_getRaw = Step.create!(
   title: "get_raw_html",
   lesson: crawler,
@@ -470,7 +469,7 @@ extract_details_context0 = SubmissionContext.create!(
 ########## -- All Together -- ##########
 ########################################
 
-all_together_content0 = [
+all_together_content_zero = [
   ['text', 'Now to put everything together.'],
   ['text', 'Consider the following:'],
   ['text', '1. You have the code that generates the search results.'],
@@ -487,7 +486,7 @@ all_together_lesson = Lesson.create!(
 )
 
 all_together_slide0 = Slide.create!(
-  content: all_together_content0,
+  content: all_together_content_zero,
   parent: all_together_lesson,
   slide_id: 0,
 )
@@ -549,11 +548,12 @@ all_together_put_response_context = SubmissionContext.create!(
 #### -- Concluding Section -- ##########
 ########################################
 
-concluding_section = [
+presentation_zero = [
   ['text', 'Now that you have a working scraper, you\'ll have to present your process!'],
-  ['text', 'We\'re going to ask you to create (and present) a 3 slide presentation'],
-  ['text', 'On the first 2 slides, explain the what you did with the scraper.'],
-  ['text', 'On the last page, you\'ll be asked to explain how you\'d store the scraped data.'],
+  ['text', 'We\'re going to ask you to create (and present) a 3 slide presentation.'],
+  ['text', 'On the first 2 slides, explain what you did with the scraper.'],
+  ['text', 'On the last (3rd) slide, explain how you would store the scraped data.'],
+  ['text', 'The last slide is about design. You won\'t be asked to code up your plan, but be ready to explain it.'],
 ]
 
 presentation_one = [
@@ -570,22 +570,22 @@ presentation_two = [
 presentation_lesson = Lesson.create!(
   title: "Final Presentation - Statricks",
   project: project,
-  lesson_id: 3,
+  lesson_id: 4,
 )
 
-all_together_slide0 = Slide.create!(
-  content: concluding_section,
+all_together_slide_one = Slide.create!(
+  content: presentation_zero,
   parent: presentation_lesson,
   slide_id: 0,
 )
 
-presentation_slide_one = Slide.create!(
+presentation_slide_two= Slide.create!(
   content: presentation_one,
   parent: presentation_lesson,
   slide_id: 1,
 )
 
-presentation_slide_one = Slide.create!(
+presentation_slide_three = Slide.create!(
   content: presentation_two,
   parent: presentation_lesson,
   slide_id: 2,
