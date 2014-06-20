@@ -1,10 +1,10 @@
 table.table.table-striped
   th Project
-  th # Evaluations
-  th View Evaluations
+  th # Feedback
+  th View Feedack
   - projects.each do |project|
     tr
       td = project.title
       td = user.evaluations_for_project(project).count
-      td = link_to "Evaluations", project_evaluations_user_path(user, project)
+      td = link_to "Feedback", project_feedback_user_path(user, project)
 

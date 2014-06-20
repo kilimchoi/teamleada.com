@@ -84,7 +84,7 @@ class UsersController < ApplicationController
     @project = Project.find(params[:project_id])
   end
 
-  def project_evaluations
+  def project_feedback
     @project = Project.find(params[:project_id])
   end
 
