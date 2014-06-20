@@ -1,4 +1,4 @@
-from_the_beginning = Date.parse("5/5/2014")
+from_the_beginning = Date.parse("3/26/2014")
 one_month = 30.days.ago
 
 charts = [
