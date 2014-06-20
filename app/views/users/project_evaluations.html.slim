@@ -1,0 +1,9 @@
+.container-fluid.full-container
+  .row
+    .col-md-12
+      h1.title
+        ' Evaluations for
+        = @project.title
+
+  - @user.evaluations_for_project(@project).each do |evaluation|
+    = evaluation.description
