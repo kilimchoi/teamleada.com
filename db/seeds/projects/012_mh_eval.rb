@@ -310,12 +310,12 @@ return_code_context = SubmissionContext.create!(
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 presentation_one = [
- ['text', 'Submit a link to two slide google presentation of your analysis and conclusion.'],
+ ['text', 'Submit a link to a google presentation (2 slides) of your analysis and conclusion.'],
  ['user_response', ''],
 ]
 
 presentation_two = [
- ['text', 'Submit a link to a video of you presenting your conclusions no longer than 2 minutes. Production quality is not important.'],
+ ['text', 'Submit a link to a video of you presenting your conclusions (2 min max). Production quality is not important.'],
  ['user_response', ''],
  ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
