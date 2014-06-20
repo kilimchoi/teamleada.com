@@ -26,7 +26,15 @@ TeamLeada::Application.routes.draw do
   end
 
   match 'settings', to: 'users#edit', as: 'edit_user', via: :get
-  resources :users, only: [:show, :update]
+
+  resources :users, only: [:show, :update] do
+    member do
+      match 'projects', to: 'users#projects', as: :projects, via: :get
+      match 'projects/:project_id', to: 'users#project', as: :project, via: :get
+      match 'projects/:project_id/feedback', to: 'users#project_feedback', as: :project_feedback, via: :get
+    end
+  end
+
   resources :interested_users, only: [:create]
 
   resources :questions, path: 'ask-peter', only: [:show, :index, :new, :create] do

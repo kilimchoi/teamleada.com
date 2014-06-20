@@ -56,6 +56,15 @@ html
               = render partial: "company/shared/company_sidebar"
             .col-md-10
               = yield
+
+      - elsif is_user_controller?
+        .container-fluid.full-container
+          .row
+            .col-md-2
+              = render partial: "users/user_sidebar"
+            .col-md-10
+              = yield
+
       - else
         = yield
 

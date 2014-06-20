@@ -43,6 +43,10 @@ module ApplicationHelper
     params[:controller].split('/').first == 'company'
   end
 
+  def is_user_controller?
+    params[:controller] == "users"
+  end
+
   def sortable(column, title = nil)
     title ||= column.titleize
     css_class = (column == sort_column) ? "current #{sort_direction}" : nil
