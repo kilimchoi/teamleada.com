@@ -4,6 +4,22 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   after_filter :store_location
+  before_filter :log_request
+
+  # Logging methods
+  def log_request
+    PageView.create(
+      user: current_user,
+      url: request.fullpath,
+      controller: params[:controller],
+      action: params[:action],
+      parameters: params,
+      properties: {},
+    )
+  end
+
+  def log_event(properties)
+  end
 
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
