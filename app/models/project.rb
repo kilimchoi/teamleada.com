@@ -17,6 +17,7 @@
 #  uid               :integer          not null, primary key
 #  difficulty        :string(255)
 #  company_overview  :text
+#  category          :string(255)
 #
 
 class Project < ActiveRecord::Base
