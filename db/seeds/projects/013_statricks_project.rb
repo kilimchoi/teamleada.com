@@ -284,7 +284,7 @@ extract_slide0 = Slide.create!(
 
 extract_uid_content0 = [
   ['text', 'Given a URL, write a function that returns the unique identifier (UID) of the listing.'],
-  ['text', 'HINT: perhaps the "get_raw_html" will be useful!'],
+  ['text', 'HINT: perhaps the "get_raw_html()" will be useful!'],
   ['user_code', ''],
   ['next_steps', nil],
 ]
@@ -313,7 +313,7 @@ extract_uid_context0 = SubmissionContext.create!(
 ########## -- EXTRACTING LISTING DETAILS: get_title -- ##########
 
 extract_title_content0 = [
-  ['text', 'Given a beautifulsoup object, write a function that returns the title of an individual listing page'],
+  ['text', 'Given a beautifulsoup object, write a function that returns the title of an individual listing page.'],
   ['user_code', ''],
   ['next_steps', nil],
 ]
@@ -342,7 +342,7 @@ extract_title_context0 = SubmissionContext.create!(
 ########## -- EXTRACTING LISTING DETAILS: get_price -- ##########
 
 extract_price_content0 = [
-  ['text', 'Given a beautifulsoup object, write a function that returns the price of an individual listing page'],
+  ['text', 'Given a beautifulsoup object, write a function that returns the price of an individual listing page.'],
   ['user_code', ''],
   ['next_steps', nil],
 ]
@@ -362,7 +362,7 @@ extract_price_slide0 = Slide.create!(
 
 extract_price_context0 = SubmissionContext.create!(
   title: "Extract Price.",
-  description: "The user is asked to write a function that returns the price of the listing given a beautifulsoup object",
+  description: "The user is asked to write a function that returns the price of the listing given a beautifulsoup object.",
   slide: extract_price_slide0,
   submission_context_id: 0,
 )
@@ -371,7 +371,7 @@ extract_price_context0 = SubmissionContext.create!(
 ########## -- EXTRACTING LISTING DETAILS: get_description -- ##########
 
 extract_description_content0 = [
-  ['text', 'Given a beautifulsoup object, write a function that returns the description of an individual listing page'],
+  ['text', 'Given a beautifulsoup object, write a function that returns the description of an individual listing page.'],
   ['user_code', ''],
   ['next_steps', nil],
 ]
@@ -391,7 +391,7 @@ extract_description_slide0 = Slide.create!(
 
 extract_description_context0 = SubmissionContext.create!(
   title: "Extract Description.",
-  description: "User is asked to write a function that returns the description of a listing given a beautifulsoup object",
+  description: "User is asked to write a function that returns the description of a listing given a beautifulsoup object.",
   slide: extract_description_slide0,
   submission_context_id: 0,
 )
@@ -400,11 +400,10 @@ extract_description_context0 = SubmissionContext.create!(
 ########## -- EXTRACTING LISTING DETAILS: get_img_URL -- ##########
 
 extract_img_content0 = [
-  ['text', 'Given a beautifulsoup object, write a function that returns the image URL of an individual listing page'],
+  ['text', 'Given a beautifulsoup object, write a function that returns a list of image URLs of an individual listing page.'],
   ['user_code', ''],
   ['next_steps', nil],
 ]
-
 
 extract_img = Step.create!(
   title: "get_img_URL",
@@ -425,15 +424,13 @@ extract_img_context0 = SubmissionContext.create!(
   submission_context_id: 0,
 )
 
-
 ########## -- EXTRACTING LISTING DETAILS: get_phone_num -- ##########
 
 extract_phone_content0 = [
-  ['text', 'Given a beautifulsoup object, write a function that returns the phone number of an individual listing page.'],
+  ['text', 'Given a beautifulsoup object, write a function that returns the phone number in an individual listing page.'],
   ['user_code', ''],
   ['next_steps', nil],
 ]
-
 
 extract_phone = Step.create!(
   title: 'get_phone_num',
@@ -454,11 +451,10 @@ extract_phone_context0 = SubmissionContext.create!(
   submission_context_id: 0,
 )
 
-
 ########## -- EXTRACTING LISTING DETAILS: get_details -- ##########
 
 extract_details_content0 = [
-  ['text', 'Given a beautifulsoup object, write a function that returns the details section of an individual listing page'],
+  ['text', 'Given a beautifulsoup object, write a function that returns the "details section" of an individual listing page.'],
   ['user_code', ''],
   ['next_steps', nil],
 ]
@@ -478,7 +474,7 @@ extract_details_slide0 = Slide.create!(
 
 extract_details_context0 = SubmissionContext.create!(
   title: "Extract Details.",
-  description: "User is asked to write a function that returns the details of a listing given a beautifulsoup object.",
+  description: "User is asked to write a function that returns the \"details section\" of a listing given a beautifulsoup object.",
   slide: extract_details_slide0,
   submission_context_id: 0,
 )
@@ -487,12 +483,10 @@ extract_details_context0 = SubmissionContext.create!(
 ########## -- All Together -- ##########
 ########################################
 
-
 all_together_content0 = [
-  ['text', 'We are almost there!']
+  ['text', 'We are almost there!'],
   ['lesson_links', nil],
 ]
-
 
 all_together = Lesson.create!(
   title: "All Together",
@@ -500,17 +494,13 @@ all_together = Lesson.create!(
   lesson_id: 3,
 )
 
-
 all_together_slide0 = Slide.create!(
-  content:
-all_together_content0,
-  parent:
-all_together,
+  content: all_together_content0,
+  parent: all_together,
   slide_id: 0,
 )
 
 ########## -- ALL TOGETHER: Saving the Output -- ##########
-
 
 all_together_save_content0 = [
   ['text', 'Lastly we want a way of storing the output into a .csv file'],
@@ -518,67 +508,49 @@ all_together_save_content0 = [
   ['next_steps', nil],
 ]
 
-
-
 all_together_save = Step.create!(
   title: "Saving the Output",
-  lesson:
-all_together,
+  lesson: all_together,
   step_id: 0,
 )
 
-
 all_together_save_slide0 = Slide.create!(
-  content:
-all_together_save_content0,
-  parent:
-all_together_save,
+  content: all_together_save_content0,
+  parent: all_together_save,
   slide_id: 0,
 )
-
 
 all_together_save_context0 = SubmissionContext.create!(
   title: "Saving Output",
   description: "User is asked to save the output into a .csv file",
-  slide:
-all_together_save_slide0,
+  slide: all_together_save_slide0,
   submission_context_id: 0,
 )
 
-
 ########## -- ALL TOGETHER: A Functioning Algorithm -- ##########
-
 
 all_together_algo_content0 = [
   ['text', 'Properly document and format your codes for this data challenge and submit them here:'],
   ['user_code', ''],
-  ['next_steps', nil],
+  ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
-
-
 
 all_together_algo = Step.create!(
   title: "Full Code Submission",
-  lesson:
-all_together,
+  lesson: all_together,
   step_id: 1,
 )
 
-
 all_together_algo_slide0 = Slide.create!(
-  content:
-all_together_algo_content0,
-  parent:
-all_together_algo,
+  content: all_together_algo_content0,
+  parent: all_together_algo,
   slide_id: 0,
 )
 
-
 all_together_algo_context0 = SubmissionContext.create!(
   title: "Full Code Submission",
-  description: "User is asked to submit all the codes written properly formatted",
-  slide:
-all_together_algo_slide0,
+  description: "User is asked to submit all the codes written properly formatted.",
+  slide: all_together_algo_slide0,
   submission_context_id: 0,
 )
 
