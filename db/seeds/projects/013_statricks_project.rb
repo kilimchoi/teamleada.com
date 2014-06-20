@@ -548,7 +548,7 @@ all_together_put_response_context = SubmissionContext.create!(
 #### -- Concluding Section -- ##########
 ########################################
 
-presentation_zero = [
+presentation_one = [
   ['text', 'Now that you have a working scraper, you\'ll have to present your process!'],
   ['text', 'We\'re going to ask you to create (and present) a 3 slide presentation.'],
   ['text', 'On the first 2 slides, explain what you did with the scraper.'],
@@ -556,12 +556,12 @@ presentation_zero = [
   ['text', 'The last slide is about design. You won\'t be asked to code up your plan, but be ready to explain it.'],
 ]
 
-presentation_one = [
+presentation_two = [
  ['text', 'Submit a link to a google presentation (3 slides) of your analysis and conclusion.'],
  ['user_response', ''],
 ]
 
-presentation_two = [
+presentation_three = [
  ['text', 'Submit a link to a video of you presenting your conclusions (2 min max). Production quality is not important.'],
  ['user_response', ''],
  ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
@@ -574,21 +574,32 @@ presentation_lesson = Lesson.create!(
 )
 
 all_together_slide_one = Slide.create!(
-  content: presentation_zero,
+  content: presentation_one,
   parent: presentation_lesson,
   slide_id: 0,
 )
 
 presentation_slide_two= Slide.create!(
-  content: presentation_one,
+  content: presentation_two,
   parent: presentation_lesson,
   slide_id: 1,
 )
 
 presentation_slide_three = Slide.create!(
-  content: presentation_two,
+  content: presentation_three,
   parent: presentation_lesson,
   slide_id: 2,
 )
+presentation_context = SubmissionContext.create!(
+  title: "Presentation - slides",
+  description: "User is asked create a 3 slides presentation for the statricks project.",
+  slide: presentation_slide_two,
+  submission_context_id: 0,
+)
 
-###############################################################################################
+return_code_context = SubmissionContext.create!(
+  title: "Presentation - video",
+  description: "User is asked to create a video presentation (no longer than 2 min) of the statricks slides.",
+  slide: presentation_slide_three,
+  submission_context_id: 1,
+)
