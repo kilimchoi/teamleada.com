@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   after_filter :store_location
-  before_filter :log_request
+#  after_filter :log_request
 
   # Logging methods
   def log_request

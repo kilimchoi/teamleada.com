@@ -44,7 +44,7 @@ module ApplicationHelper
   end
 
   def is_user_controller?
-    params[:controller] == "users"
+    params[:controller] == "users" && params[:action] != "edit"
   end
 
   def sortable(column, title = nil)
