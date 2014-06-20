@@ -30,7 +30,7 @@ puts "============ Created project: #{project.title}."
 ########## -- PROJECT OVERVIEW -- ##########
 ############################################
 
-projectOverview_content0 = [
+project_overview_content0 = [
   ['text', 'In this project, you are tasked with building a web scraper for Statricks, an analytics technology company that aggregates price data on used goods.'],
   ['text', 'This project is designed to test you abilities to:'],
   ['text', '1. Building an effective and efficient data collection script in python'],
@@ -39,21 +39,21 @@ projectOverview_content0 = [
   ['lesson_links', nil],
 ]
 
-projectOverview = Lesson.create!(
+project_overview = Lesson.create!(
   title: "Project Overview",
   project: project,
   lesson_id: 0,
 )
 
-projectOverview_slide0 = Slide.create!(
-  content: projectOverview_content0,
-  parent: projectOverview,
+project_overview_slide0 = Slide.create!(
+  content: project_overview_content0,
+  parent: project_overview,
   slide_id: 0,
 )
 
 ########## -- PROJECT OVERVIEW: Background -- ##########
 
-projectOverview_background_content0 = [
+project_overview_background_content0 = [
   ['text', 'Statricks is an analytics technology company specializing in pricing used goods.'],
   ['text', 'By aggregating price data from different sources, Statricks provides price trends for users to find good deals when buying, and maximize returns when selling used goods'],
   ['text', 'In order for price trends to be accurate, Statricks needs data from various sources (eBay, craigslist, and CarMax) – while some of these sources have Application Programming Interfaces (APIs) in place that enable easy data acquisition, a majority of them do not.'],
@@ -62,21 +62,21 @@ projectOverview_background_content0 = [
 ]
 
 
-projectOverview_background = Step.create!(
+project_overview_background = Step.create!(
   title: "Background",
-  lesson: projectOverview,
+  lesson: project_overview,
   step_id: 0,
 )
 
-projectOverview_background_slide0 = Slide.create!(
-  content: projectOverview_background_content0,
-  parent: projectOverview_background,
+project_overview_background_slide0 = Slide.create!(
+  content: project_overview_background_content0,
+  parent: project_overview_background,
   slide_id: 0,
 )
 
 ########## -- PROJECT OVERVIEW: Our Goal -- ##########
 
-projectOverview_ourGoal_content0 = [
+project_overview_our_goal_content0 = [
   ['text', 'You are tasked with making a web scraper in python for the following website:'],
   ['link', "www.boattrader.com"],
   ['text', 'It\'s a website that specializes in used boats.'],
@@ -87,21 +87,21 @@ projectOverview_ourGoal_content0 = [
 ]
 
 
-projectOverview_ourGoal = Step.create!(
+project_overview_our_goal = Step.create!(
   title: "Our Goal",
-  lesson: projectOverview,
+  lesson: project_overview,
   step_id: 1,
 )
 
-projectOverview_ourGoal_slide0 = Slide.create!(
-  content: projectOverview_ourGoal_content0,
-  parent: projectOverview_ourGoal,
+project_overview_our_goal_slide0 = Slide.create!(
+  content: project_overview_our_goal_content0,
+  parent: project_overview_our_goal,
   slide_id: 0,
 )
 
 ########## -- PROJECT OVERVIEW: Resources -- ##########
 
-projectOverview_resources_content0 = [
+project_overview_resources_content0 = [
   ['text', 'For both tasks, you might find these two popular python packages very helpful:'],
   ['text', '1. BeautifulSoup'],
   ['text', '2. Requests'],
@@ -109,15 +109,15 @@ projectOverview_resources_content0 = [
 ]
 
 
-projectOverview_resources = Step.create!(
+project_overview_resources = Step.create!(
   title: "Resources",
-  lesson: projectOverview,
+  lesson: project_overview,
   step_id: 2,
 )
 
-projectOverview_resources_slide0 = Slide.create!(
-  content: projectOverview_resources_content0,
-  parent: projectOverview_resources,
+project_overview_resources_slide0 = Slide.create!(
+  content: project_overview_resources_content0,
+  parent: project_overview_resources,
   slide_id: 0,
 )
 
@@ -183,7 +183,6 @@ crawler_getListing_content0 = [
   ['next_steps', nil],
 ]
 
-
 crawler_getListing = Step.create!(
   title: "get_listing_urls",
   lesson: crawler,
@@ -206,7 +205,7 @@ crawler_getListing_context0 = SubmissionContext.create!(
 
 ########## -- BUILDING A CRAWLER: generate_search_links -- ##########
 
-crawler_scrapeSearch_content0 = [
+crawler_scrape_search_content0 = [
   ['text', 'Lastly, we want to generate search result links.'],
   ['text', 'Do a sample boat search to see what the url looks like.'],
   ['text', 'What do you notice? Perhaps the URL seems structured?'],
@@ -216,41 +215,41 @@ crawler_scrapeSearch_content0 = [
   ['text', 'Don\' forget to think about how you would want to parameterize the function.'],
 ]
 
-crawler_scrapeSearch_content1 = [
+crawler_scrape_search_content1 = [
   ['text', 'Now write the code that generates a series of search result pages\' url.'],
   ['user_code', 'User Code here'],
   ['next_steps', nil],
 ]
 
-crawler_scrapeSearch = Step.create!(
+crawler_scrape_search = Step.create!(
   title: "generate_search_url",
   lesson: crawler,
   step_id: 2,
 )
 
-crawler_scrapeSearch_slide0 = Slide.create!(
-  content: crawler_scrapeSearch_content0,
-  parent: crawler_scrapeSearch,
+crawler_scrape_search_slide0 = Slide.create!(
+  content: crawler_scrape_search_content0,
+  parent: crawler_scrape_search,
   slide_id: 0,
 )
 
-crawler_scrapeSearch_slide1 = Slide.create!(
-  content: crawler_scrapeSearch_content1,
-  parent: crawler_scrapeSearch,
+crawler_scrape_search_slide1 = Slide.create!(
+  content: crawler_scrape_search_content1,
+  parent: crawler_scrape_search,
   slide_id: 1,
 )
 
-crawler_scrapeSearch_context0 = SubmissionContext.create!(
+crawler_scrape_search_context0 = SubmissionContext.create!(
   title: "Generate Search Links - Response",
   description: "User is asked explain how he/she plans to generate search result page url, given that it is REST.",
-  slide: crawler_scrapeSearch_slide0,
+  slide: crawler_scrape_search_slide0,
   submission_context_id: 0,
 )
 
-crawler_scrapeSearch_context1 = SubmissionContext.create!(
+crawler_scrape_search_context1 = SubmissionContext.create!(
   title: "Generate Search Links - Code",
   description: "User is asked write code that generates a formatted REST urls that represent search page results.",
-  slide: crawler_scrapeSearch_slide1,
+  slide: crawler_scrape_search_slide1,
   submission_context_id: 1,
 )
 
@@ -484,84 +483,102 @@ extract_details_context0 = SubmissionContext.create!(
   submission_context_id: 0,
 )
 
-
-
 ########################################
 ########## -- All Together -- ##########
 ########################################
 
-allTogether_content0 = [
-  ['text', 'We are almost there!'],
+
+all_together_content0 = [
+  ['text', 'We are almost there!']
   ['lesson_links', nil],
 ]
 
 
-allTogether = Lesson.create!(
+all_together = Lesson.create!(
   title: "All Together",
   project: project,
   lesson_id: 3,
 )
 
-allTogether_slide0 = Slide.create!(
-  content: allTogether_content0,
-  parent: allTogether,
+
+all_together_slide0 = Slide.create!(
+  content:
+all_together_content0,
+  parent:
+all_together,
   slide_id: 0,
 )
 
 ########## -- ALL TOGETHER: Saving the Output -- ##########
 
-allTogether_save_content0 = [
+
+all_together_save_content0 = [
   ['text', 'Lastly we want a way of storing the output into a .csv file'],
   ['user_code', ''],
   ['next_steps', nil],
 ]
 
 
-allTogether_save = Step.create!(
+
+all_together_save = Step.create!(
   title: "Saving the Output",
-  lesson: allTogether,
+  lesson:
+all_together,
   step_id: 0,
 )
 
-allTogether_save_slide0 = Slide.create!(
-  content: allTogether_save_content0,
-  parent: allTogether_save,
+
+all_together_save_slide0 = Slide.create!(
+  content:
+all_together_save_content0,
+  parent:
+all_together_save,
   slide_id: 0,
 )
 
-allTogether_save_context0 = SubmissionContext.create!(
+
+all_together_save_context0 = SubmissionContext.create!(
   title: "Saving Output",
   description: "User is asked to save the output into a .csv file",
-  slide: allTogether_save_slide0,
+  slide:
+all_together_save_slide0,
   submission_context_id: 0,
 )
 
 
 ########## -- ALL TOGETHER: A Functioning Algorithm -- ##########
 
-allTogether_algo_content0 = [
+
+all_together_algo_content0 = [
   ['text', 'Properly document and format your codes for this data challenge and submit them here:'],
   ['user_code', ''],
   ['next_steps', nil],
 ]
 
 
-allTogether_algo = Step.create!(
+
+all_together_algo = Step.create!(
   title: "Full Code Submission",
-  lesson: allTogether,
+  lesson:
+all_together,
   step_id: 1,
 )
 
-allTogether_algo_slide0 = Slide.create!(
-  content: allTogether_algo_content0,
-  parent: allTogether_algo,
+
+all_together_algo_slide0 = Slide.create!(
+  content:
+all_together_algo_content0,
+  parent:
+all_together_algo,
   slide_id: 0,
 )
 
-allTogether_algo_context0 = SubmissionContext.create!(
+
+all_together_algo_context0 = SubmissionContext.create!(
   title: "Full Code Submission",
   description: "User is asked to submit all the codes written properly formatted",
-  slide: allTogether_algo_slide0,
+  slide:
+all_together_algo_slide0,
   submission_context_id: 0,
 )
 
