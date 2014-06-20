@@ -45,6 +45,7 @@ class User < ActiveRecord::Base
 
   has_many :submissions
   has_many :code_submissions
+  has_many :code_submissions_evaluations, foreign_key: :reviewee_id
 
   has_many :step_statuses
   has_many :lesson_statuses
@@ -300,6 +301,10 @@ class User < ActiveRecord::Base
 
   def project_progress_percentage(project)
     ((completed_points(project).to_f / project.total_points.to_f) * 100).round(1)
+  end
+
+  def evaluations_for_project(project)
+    self.code_submission_evaluations.where(project: project)
   end
 
   def password_required?
