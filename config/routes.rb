@@ -46,6 +46,7 @@ TeamLeada::Application.routes.draw do
   match 'employer', to: 'employer_applications#new', as: 'new_employer', via: :get
   resources :employer_applications, path: 'employer', as: 'employer', only: [:create]
 
+  match 'projects/how-this-works', to: 'pages#how_this_works', as: :project_faq, via: :get
   resources :projects, only: [:show, :index] do
     member do
       match 'submit', to: 'projects#check_submission', as: 'submission', via: :post

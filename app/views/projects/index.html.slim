@@ -4,7 +4,10 @@
   .row
     .col-md-12
       .projects-container
-        h1.title Data Challenges
+        h1.title
+          ' Data Challenges
+          small
+            = link_to "How this works", project_faq_path
         = render partial: "projects/projects", locals: { projects: @data_challenges }
 
         h1.title Data Lessons

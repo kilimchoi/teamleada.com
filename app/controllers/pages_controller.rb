@@ -73,4 +73,8 @@ class PagesController < ApplicationController
     @large_header = true
   end
 
+  def how_this_works
+    @large_header = true
+  end
+
 end
