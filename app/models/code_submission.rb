@@ -18,6 +18,8 @@ class CodeSubmission < ActiveRecord::Base
   belongs_to :user
   belongs_to :project
 
+  has_many :code_submission_evaluations
+
   default_scope { order(:created_at) }
 
   def slide
@@ -34,6 +36,10 @@ class CodeSubmission < ActiveRecord::Base
 
   def pretty_submitted_date
     created_at.strftime("%B %d, %Y at %l:%M %p")
+  end
+
+  def has_evaluation_by_user?(user)
+    code_submission_evaluations.where(reviewer: user).count > 0
   end
 
 end

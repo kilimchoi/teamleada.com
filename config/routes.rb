@@ -97,7 +97,12 @@ TeamLeada::Application.routes.draw do
         match 'hide', to: 'questions#hide', as: :hide, via: :post
       end
     end
-    resources :code_submissions, only: [:index, :show]
+
+    resources :code_submissions, path: "code-submissions", only: [:index, :show] do
+      member do
+        match 'evaluate', to: 'code_submissions#evaluate', as: :evaluate, via: :post
+      end
+    end
 
     match 'charts/category/realtime', to: "pages#realtime_charts", as: :realtime_charts, via: :get
     match 'charts/category/page-views', to: "pages#page_view_charts", as: :page_view_charts, via: :get
