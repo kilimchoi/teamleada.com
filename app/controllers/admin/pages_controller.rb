@@ -21,6 +21,7 @@ class Admin::PagesController < Admin::BaseController
 
   def page_view_charts
     @seven_day_engagement = page_views_chart(7.days.ago)
+    @one_day_engagement = one_day_chart
   end
 
 end
