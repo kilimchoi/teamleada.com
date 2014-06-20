@@ -15,10 +15,19 @@ class ApplicationController < ActionController::Base
       action: params[:action],
       parameters: params,
       properties: {},
+      viewed_user_id: viewed_user_id(params)
     )
   end
 
   def log_event(properties)
+  end
+
+  def viewed_user_id(params)
+    if params[:controller] == "users" && params[:action] == "show"
+      params[:id]
+    else
+      nil
+    end
   end
 
   def store_location
