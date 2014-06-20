@@ -98,7 +98,9 @@ TeamLeada::Application.routes.draw do
       end
     end
     resources :code_submissions, only: [:index, :show]
+
     match 'charts/category/realtime', to: "pages#realtime_charts", as: :realtime_charts, via: :get
+    match 'charts/category/page-views', to: "pages#page_view_charts", as: :page_view_charts, via: :get
     match 'charts/category/:category', to: "charts#show_by_category", as: :chart_category, via: :get
     resources :charts, only: [:show]
   end

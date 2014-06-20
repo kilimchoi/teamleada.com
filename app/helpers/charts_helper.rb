@@ -150,4 +150,8 @@ module ChartsHelper
     comparison_chart(timeframe, User, Code, :access_type, "project-access", "Users with project access compared to all users", "Total number of sign ups")
   end
 
+  def page_views_chart(timeframe)
+    chart_from_model(timeframe, PageView, "PageViews in the last 7 days", "Total number of PageViews")
+  end
+
 end
