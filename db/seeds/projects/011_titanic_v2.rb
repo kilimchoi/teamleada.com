@@ -168,7 +168,7 @@ train_visualize_context = SubmissionContext.create!(
   description: "User is asked to come up with visualizations to confirm the intuition that women have a higher chance of survival",
   slide: train_visualize_slide_one,
   submission_context_id: 0,
-  submission_type: SubmissionContext:CODE,
+  submission_type: SubmissionContext::CODE,
 )
 
 train_visualize_context_two = SubmissionContext.create!(
@@ -176,7 +176,7 @@ train_visualize_context_two = SubmissionContext.create!(
   description: "User is asked to explain the reasoning for creating the visualization(s) she implemented",
   slide: train_visualize_slide_two,
   submission_context_id: 0,
-  submission_type: SubmissionContext:RESPONSE,
+  submission_type: SubmissionContext::RESPONSE,
 )
 
 
@@ -523,6 +523,14 @@ submission_guide_slide = Slide.create!(
   content: submission_guide_content,
   parent: submission_guide_lesson,
   slide_id: 0,
+)
+
+increase_score_context = SubmissionContext.create!(
+  title: "Complete Code",
+  description: "User is asked to submit the entire src code",
+  slide: subimssion_guide_slide,
+  submission_context_id: 0,
+  submission_type: SubmissionContext::COMPLETE_CODE,
 )
 
 ################################################################################
