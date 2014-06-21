@@ -12,6 +12,7 @@ class ConfirmationsController < Devise::ConfirmationsController
 
     if !resource.nil? && resource.confirmed?
       self.resource.confirm!
+      flash[:info] = "You have successfully changed your email address."
       sign_in_and_redirect resource_name, resource
       return
     elsif resource.nil?
