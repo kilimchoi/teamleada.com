@@ -42,7 +42,7 @@ module ChartsHelper
   end
 
   def hourly_chart_for_model(timeframe, model, title, y_axis)
-    zeros = Hash[(nearest_hour_floor(timeframe).to_i..nearest_hour_floor(Time.now).to_i).step(3600) { | hour| [ Time.at(hour), [] ] }]
+    zeros = Hash[(nearest_hour_floor(timeframe).to_i..nearest_hour_floor(Time.now).to_i).step(3600).map { |hour| [ Time.at(hour), [] ] }]
     data = zeros.merge(model.where("created_at > ?", timeframe).group_by{ |user| nearest_hour_floor(user.created_at) })
     sum = model.where("created_at < ?", timeframe).count
     values = data.values.map{ |array| sum += array.count }
