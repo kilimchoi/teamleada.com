@@ -19,9 +19,12 @@
 #
 
 class Impression < ActiveRecord::Base
+  include Impressionist::CounterCache
+  Impressionist::SetupAssociation.new(self).set
+  after_save :impressionable_counter_cache_updatable?
 
-  def hello
-    "hello"
+  def model
+    impressionable_type.constantize
   end
 
 end

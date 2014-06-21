@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/negativetwelve/impressionist.git
-  revision: 98141626a9d16f78eb6717c1ed7ef9677d0ae10e
+  revision: 4d600913c1a69758b8a825fa7db01cf4883c86b0
   specs:
     impressionist (1.5.1)
       httpclient (~> 2.2)
@@ -341,7 +341,7 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.39)
-    tzinfo-data (1.2013.7)
+    tzinfo-data (1.2013.6)
     uglifier (2.5.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
