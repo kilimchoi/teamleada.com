@@ -157,7 +157,11 @@ GEM
     httparty (0.13.1)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
+    httpclient (2.4.0)
     i18n (0.6.9)
+    impressionist (1.5.1)
+      httpclient (~> 2.2)
+      nokogiri (~> 1.5)
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
@@ -370,6 +374,7 @@ DEPENDENCIES
   guard-livereload
   guard-rspec
   highcharts-rails (~> 3.0.0)
+  impressionist (= 1.5.1)
   jbuilder (~> 1.2)
   jquery-rails (~> 2.2.1)
   lazy_high_charts (~> 1.5.2)

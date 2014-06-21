@@ -25,6 +25,7 @@ gem 'friendly_id', '~> 5.0.3'
 gem 'stripe', git: 'https://github.com/stripe/stripe-ruby'
 gem 'will_paginate', '~> 3.0'
 gem 'best_in_place', github: 'negativetwelve/best_in_place'
+gem 'impressionist', '1.5.1'
 
 # Code Submissions
 gem 'ace-rails-ap'
