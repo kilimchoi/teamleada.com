@@ -15,6 +15,14 @@ GIT
       nokogiri (~> 1.5)
 
 GIT
+  remote: git://github.com/negativetwelve/lazy_high_charts.git
+  revision: a03fad9bec9305187df286ff17d2b1f8d0bb1ecb
+  specs:
+    lazy_high_charts (1.5.4)
+      bundler (>= 1.0)
+      hash-deep-merge
+
+GIT
   remote: https://github.com/stripe/stripe-ruby
   revision: bb9388384f8bade9cf257e5907679e7afaab85a6
   specs:
@@ -185,9 +193,6 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     kramdown (1.0.2)
-    lazy_high_charts (1.5.4)
-      bundler (>= 1.0)
-      hash-deep-merge
     liquid (2.5.1)
     listen (2.7.9)
       celluloid (>= 0.15.2)
@@ -341,7 +346,7 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.39)
-    tzinfo-data (1.2013.5)
+    tzinfo-data (1.2013.4)
     uglifier (2.5.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
@@ -382,7 +387,7 @@ DEPENDENCIES
   impressionist!
   jbuilder (~> 1.2)
   jquery-rails (~> 2.2.1)
-  lazy_high_charts (~> 1.5.2)
+  lazy_high_charts!
   newrelic_rpm
   nokogiri (= 1.6.1)
   paperclip (~> 4.1)

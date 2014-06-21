@@ -36,7 +36,7 @@ gem 'toastr-rails-sass', '~> 2.0.1'
 
 # Charts
 gem 'highcharts-rails', '~> 3.0.0'
-gem 'lazy_high_charts', '~> 1.5.2'
+gem 'lazy_high_charts', github: 'negativetwelve/lazy_high_charts'
 
 # Search
 gem 'pg_search'
