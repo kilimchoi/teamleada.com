@@ -60,6 +60,11 @@ class User < ActiveRecord::Base
   has_many :resumes
   has_many :profile_photos
 
+  has_many :impressions
+  has_many :profile_views, class_name: Impression,
+                           foreign_key: :impressionable_id,
+                           primary_key: :username
+
   belongs_to :company
 
   default_scope -> { order(:created_at) }
