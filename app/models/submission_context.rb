@@ -18,6 +18,9 @@ class SubmissionContext < ActiveRecord::Base
 
   belongs_to :slide
 
+  CODE = "code"
+  RESPONSE = "response"
+
   def set_uid
     self.uid = "#{slide.uid}_sc#{submission_context_id}"
   end
