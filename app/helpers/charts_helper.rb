@@ -179,11 +179,11 @@ module ChartsHelper
   end
 
   def page_views_chart(timeframe)
-    chart_from_model(timeframe, PageView, "PageViews in the last 7 days", "Total number of PageViews")
+    chart_from_model(timeframe, Impression, "PageViews in the last 7 days", "Total number of PageViews")
   end
 
   def one_day_chart
-    hourly_chart_for_model(1.day.ago, PageView, "PageViews in the past 24 hours", "Total number of PageViews")
+    hourly_chart_for_model(1.day.ago, Impression, "PageViews in the past 24 hours", "Total number of PageViews")
   end
 
 end
