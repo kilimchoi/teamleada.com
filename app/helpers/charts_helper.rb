@@ -45,7 +45,7 @@ module ChartsHelper
     zeros = Hash[(nearest_hour_floor(timeframe).to_i..nearest_hour_floor(Time.now).to_i).step(3600).map { |hour| [ Time.at(hour), [] ] }]
     data = zeros.merge(model.where("created_at > ?", timeframe).group_by{ |user| nearest_hour_floor(user.created_at) })
     sum = model.where("created_at < ?", timeframe).count
-    values = data.values.map{ |array| sum += array.count }
+    values = data.values.map{ |array| array.count }
 
     time_chart(
       title,
@@ -56,13 +56,19 @@ module ChartsHelper
     )
   end
 
-  def time_chart_from_model(timeframe, time_interval, model, title, y_axis)
+  def time_chart_from_model(timeframe, time_interval, model, title, y_axis, method)
     zeros = Hash[(timeframe.to_date..Date.today).map { |day| [ day, [] ] }]
     data = zeros.merge(model.where("created_at > ?", timeframe).group_by{ |user| user.created_at.to_date })
     categories = data.keys.map{ |date| date.strftime("%B %d")}
 
     sum = model.where("created_at < ?", timeframe).count
-    values = data.values.map{ |array| sum += array.count }
+    
+    case method
+    when "count"
+      values = data.values.map{ |array| array.count }
+    else
+      values = data.values.map{ |array| sum += array.count }
+    end
 
     time_chart(
       title,
@@ -73,8 +79,12 @@ module ChartsHelper
     )
   end
 
+  def chart_from_model_method(timeframe, model, title, y_axis, method)
+    time_chart_from_model(timeframe, 24 * 3600, model, title, y_axis, method)
+  end
+
   def chart_from_model(timeframe, model, title, y_axis)
-    time_chart_from_model(timeframe, 24 * 3600, model, title, y_axis)
+    time_chart_from_model(timeframe, 24 * 3600, model, title, y_axis, "sum")
   end
 
   def chart_for_timeframe(chart, start_date, end_date)
@@ -179,7 +189,7 @@ module ChartsHelper
   end
 
   def page_views_chart(timeframe)
-    chart_from_model(timeframe, Impression, "PageViews in the last 7 days", "Total number of PageViews")
+    chart_from_model_method(timeframe, Impression, "PageViews in the last 7 days", "Total number of PageViews", "count")
   end
 
   def one_day_chart
