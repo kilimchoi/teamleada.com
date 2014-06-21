@@ -14,6 +14,8 @@
 #
 
 class CodeSubmission < ActiveRecord::Base
+  include ActionView::Helpers::JavaScriptHelper
+
   belongs_to :parent, polymorphic: true, primary_key: :uid
   belongs_to :user
   belongs_to :project
@@ -40,6 +42,10 @@ class CodeSubmission < ActiveRecord::Base
 
   def has_evaluation_by_user?(user)
     code_submission_evaluations.where(reviewer: user).count > 0
+  end
+
+  def safe_content
+    escape_javascript content.html_safe
   end
 
 end
