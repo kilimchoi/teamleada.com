@@ -10,6 +10,7 @@
 #  created_at         :datetime
 #  updated_at         :datetime
 #  code_submission_id :integer
+#  project_id         :integer
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
