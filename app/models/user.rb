@@ -60,6 +60,8 @@ class User < ActiveRecord::Base
   has_many :resumes
   has_many :profile_photos
 
+  has_many :impressions
+
   belongs_to :company
 
   default_scope -> { order(:created_at) }
