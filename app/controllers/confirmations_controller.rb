@@ -11,6 +11,7 @@ class ConfirmationsController < Devise::ConfirmationsController
     self.resource = resource_class.find_by_confirmation_token digested_token
 
     if !resource.nil? && resource.confirmed?
+      self.resource.confirm!
       sign_in_and_redirect resource_name, resource
       return
     elsif resource.nil?
