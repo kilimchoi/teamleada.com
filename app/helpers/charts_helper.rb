@@ -37,6 +37,25 @@ module ChartsHelper
     end
   end
 
+  def nearest_hour_floor(time)
+    Time.at((time.to_f / 3600).floor * 3600)
+  end
+
+  def hourly_chart_for_model(timeframe, model, title, y_axis)
+    zeros = Hash[(nearest_hour_floor(timeframe).to_i..nearest_hour_floor(Time.now).to_i).step(3600) { | hour| [ Time.at(hour), [] ] }]
+    data = zeros.merge(model.where("created_at > ?", timeframe).group_by{ |user| nearest_hour_floor(user.created_at) })
+    sum = model.where("created_at < ?", timeframe).count
+    values = data.values.map{ |array| sum += array.count }
+
+    time_chart(
+      title,
+      nearest_hour_floor(timeframe),
+      3600,
+      y_axis,
+      values,
+    )
+  end
+
   def time_chart_from_model(timeframe, time_interval, model, title, y_axis)
     zeros = Hash[(timeframe.to_date..Date.today).map { |day| [ day, [] ] }]
     data = zeros.merge(model.where("created_at > ?", timeframe).group_by{ |user| user.created_at.to_date })
@@ -164,7 +183,7 @@ module ChartsHelper
   end
 
   def one_day_chart
-    time_chart_from_model(1.day.ago, 3600, PageView, "PageViews in the past 24 hours", "Total number of PageViews")
+    hourly_chart_for_model(1.day.ago, PageView, "PageViews in the past 24 hours", "Total number of PageViews")
   end
 
 end
