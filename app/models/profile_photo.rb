@@ -27,4 +27,25 @@ class ProfilePhoto < ActiveRecord::Base
 
   validates_attachment_content_type :photo, content_type: /image/
   validates_attachment_size :photo, less_than: 10.megabytes
+
+  def pretty_upload_date
+    created_at.strftime("%B %d, %Y")
+  end
+
+  def first_name
+    user.first_name
+  end
+
+  def last_name
+    user.last_name
+  end
+
+  def version
+    user.profile_photos.index(self) + 1
+  end
+
+  def filename
+    photo_file_name
+  end
+
 end
