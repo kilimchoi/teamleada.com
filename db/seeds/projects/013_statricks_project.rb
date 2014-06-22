@@ -171,6 +171,7 @@ crawler_getRaw_context0 = SubmissionContext.create!(
   description: "User is asked to create a function that queries and returns the raw html when given a raw URL link.",
   slide: crawler_getRaw_slide0,
   submission_context_id: 0,
+  submission_type: SubmissionContext::CODE,
 )
 
 ########## -- BUILDING A CRAWLER: get_listing_urls -- ##########
@@ -198,6 +199,7 @@ crawler_getListing_context0 = SubmissionContext.create!(
   description: "User is asked to create a function that extracts the list of URL links to actual listings when given a raw html of a single search result page.",
   slide: crawler_getListing_slide0,
   submission_context_id: 0,
+  submission_type: SubmissionContext::CODE,
 )
 
 ########## -- BUILDING A CRAWLER: generate_search_links -- ##########
@@ -241,6 +243,7 @@ crawler_scrape_search_context0 = SubmissionContext.create!(
   description: "User is asked explain how he/she plans to generate search result page url, given that it is REST.",
   slide: crawler_scrape_search_slide0,
   submission_context_id: 0,
+  submission_type: SubmissionContext::RESPONSE,
 )
 
 crawler_scrape_search_context1 = SubmissionContext.create!(
@@ -248,6 +251,7 @@ crawler_scrape_search_context1 = SubmissionContext.create!(
   description: "User is asked write code that generates a formatted REST urls that represent search page results.",
   slide: crawler_scrape_search_slide1,
   submission_context_id: 1,
+  submission_type: SubmissionContext::CODE,
 )
 
 ######################################################
@@ -301,6 +305,7 @@ extract_uid_context0 = SubmissionContext.create!(
   description: "User is asked to write a function that returns the unique identifier (UID) of the listing given a listing URL.",
   slide: extract_uid_slide0,
   submission_context_id: 0,
+  submission_type: SubmissionContext::CODE,
 )
 
 ########## -- EXTRACTING LISTING DETAILS: get_title -- ##########
@@ -329,6 +334,7 @@ extract_title_context0 = SubmissionContext.create!(
   description: "User is asked to write a function that returns the title of the listing given a beautifulsoup object.",
   slide: extract_title_slide0,
   submission_context_id: 0,
+  submission_type: SubmissionContext::CODE,
 )
 
 ########## -- EXTRACTING LISTING DETAILS: get_price -- ##########
@@ -356,6 +362,7 @@ extract_price_context0 = SubmissionContext.create!(
   description: "The user is asked to write a function that returns the price of the listing given a beautifulsoup object.",
   slide: extract_price_slide0,
   submission_context_id: 0,
+  submission_type: SubmissionContext::CODE,
 )
 
 ########## -- EXTRACTING LISTING DETAILS: get_description -- ##########
@@ -383,6 +390,7 @@ extract_description_context0 = SubmissionContext.create!(
   description: "User is asked to write a function that returns the description of a listing given a beautifulsoup object.",
   slide: extract_description_slide0,
   submission_context_id: 0,
+  submission_type: SubmissionContext::CODE,
 )
 
 ########## -- EXTRACTING LISTING DETAILS: get_img_URL -- ##########
@@ -410,6 +418,7 @@ extract_img_context0 = SubmissionContext.create!(
   description: "User is asked to write a function that returns the image URL of a listing given a beautifulsoup object.",
   slide: extract_img_slide0,
   submission_context_id: 0,
+  submission_type: SubmissionContext::CODE,
 )
 
 ########## -- EXTRACTING LISTING DETAILS: get_phone_num -- ##########
@@ -437,6 +446,7 @@ extract_phone_context0 = SubmissionContext.create!(
   description: "User is asked to write a function that returns the phone number of a listing given a beautifulsoup object.",
   slide: extract_phone_slide0,
   submission_context_id: 0,
+  submission_type: SubmissionContext::CODE,
 )
 
 ########## -- EXTRACTING LISTING DETAILS: get_details -- ##########
@@ -464,6 +474,7 @@ extract_details_context0 = SubmissionContext.create!(
   description: "User is asked to write a function that returns the \"details section\" of a listing given a beautifulsoup object.",
   slide: extract_details_slide0,
   submission_context_id: 0,
+  submission_type: SubmissionContext::CODE,
 )
 
 ########################################
@@ -536,6 +547,7 @@ all_together_put_code_context = SubmissionContext.create!(
   description: "User is asked to put together the entire modules, effectively creating a working scarper.",
   slide: all_together_put_slides_0,
   submission_context_id: 0,
+  submission_type: SubmissionContext::COMPLETE_CODE,
 )
 
 all_together_put_response_context = SubmissionContext.create!(
@@ -543,6 +555,7 @@ all_together_put_response_context = SubmissionContext.create!(
   description: "User is asked to explain process/how/why they organized the scraper code.",
   slide: all_together_put_slides_1,
   submission_context_id: 1,
+  submission_type: SubmissionContext::RESPONSE,
 )
 
 ########################################
@@ -596,6 +609,7 @@ presentation_context = SubmissionContext.create!(
   description: "User is asked create a 3 slides presentation for the statricks project.",
   slide: presentation_slide_two,
   submission_context_id: 0,
+  submission_type: SubmissionContext::PRES_SLIDES_LINK,
 )
 
 return_code_context = SubmissionContext.create!(
@@ -603,4 +617,5 @@ return_code_context = SubmissionContext.create!(
   description: "User is asked to create a video presentation (no longer than 2 min) of the statricks slides.",
   slide: presentation_slide_three,
   submission_context_id: 1,
+  submission_type: SubmissionContext::PRES_VIDEO_LINK,
 )
