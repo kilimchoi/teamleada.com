@@ -195,6 +195,16 @@ ActiveRecord::Schema.define(version: 20140625080729) do
     t.integer  "points",             default: 1
   end
 
+  create_table "messages", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "rich_content_id"
+    t.string   "rich_content_type"
+    t.text     "content"
+    t.boolean  "is_draft"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "metric_entries", force: true do |t|
     t.integer  "metric_id"
     t.integer  "day_id"
