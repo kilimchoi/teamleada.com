@@ -243,7 +243,7 @@ train_clean_context_three = SubmissionContext.create!(
   description: "User is asked to provide afterthoughts on data cleaning",
   slide: train_clean_slide_three,
   submission_context_id: 0,
-  submission_type: SubmissionContext::Response,
+  submission_type: SubmissionContext::RESPONSE,
   )
 ################################################################################
 
@@ -528,7 +528,7 @@ submission_guide_slide = Slide.create!(
 increase_score_context = SubmissionContext.create!(
   title: "Complete Code",
   description: "User is asked to submit the entire src code",
-  slide: subimssion_guide_slide,
+  slide: submission_guide_slide,
   submission_context_id: 0,
   submission_type: SubmissionContext::COMPLETE_CODE,
 )
