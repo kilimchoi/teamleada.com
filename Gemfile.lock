@@ -23,6 +23,14 @@ GIT
       hash-deep-merge
 
 GIT
+  remote: git://github.com/negativetwelve/obfuscate_id.git
+  revision: 01bc64c9f404185044ddd052cd3705fb2ad3d574
+  specs:
+    obfuscate_id (0.0.4)
+      rails (>= 4.0.0)
+      scatter_swap (~> 0.0.3)
+
+GIT
   remote: https://github.com/stripe/stripe-ruby
   revision: bb9388384f8bade9cf257e5907679e7afaab85a6
   specs:
@@ -314,6 +322,7 @@ GEM
       sass (~> 3.2.0)
       sprockets (~> 2.8, <= 2.11.0)
       sprockets-rails (~> 2.0)
+    scatter_swap (0.0.3)
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
@@ -402,6 +411,7 @@ DEPENDENCIES
   lazy_high_charts!
   newrelic_rpm
   nokogiri (= 1.6.1)
+  obfuscate_id!
   paperclip (~> 4.1)
   pg (= 0.17.1)
   pg_search
