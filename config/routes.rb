@@ -86,6 +86,7 @@ TeamLeada::Application.routes.draw do
 
     resources :users, only: [:index, :show]
     resources :resumes, only: [:index, :show]
+    resources :profile_photos, path: 'profile-photos', only: [:index]
 
     match 'company-dashboards', to: 'pages#company_dashboards', as: "company_dashboards", via: :get
     resources :companies do
