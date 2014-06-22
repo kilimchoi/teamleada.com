@@ -203,6 +203,7 @@ ActiveRecord::Schema.define(version: 20140625080729) do
     t.boolean  "is_draft"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "conversation_id"
   end
 
   create_table "metric_entries", force: true do |t|
