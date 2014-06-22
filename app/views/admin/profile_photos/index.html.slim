@@ -1,0 +1,17 @@
+.container-fluid.full-container
+  .row
+    .col-md-12
+      h1 All Profile Photos
+      table.table.table-striped
+        th First Name
+        th Last Name
+        th Version
+        th Upload date
+        th Link to photo
+        - @profile_photos.each do |profile_photo|
+          tr
+            td = profile_photo.first_name
+            td = profile_photo.last_name
+            td = profile_photo.version
+            td = profile_photo.pretty_upload_date
+            td = link_to profile_photo.filename, profile_photo.photo.url
