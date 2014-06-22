@@ -22,8 +22,7 @@
               });
               editor.renderer.$cursorLayer.element.style.opacity = 0;
               editor.setTheme("ace/theme/github");
-              // TODO: Fix this hack before we get hacked.
-              var content = "#{code_submission.content.gsub("\n", "\\n").html_safe.gsub('"', '\"').html_safe}";
+              var content = "#{@code_submission.safe_content}";
               editor.setValue(content, -1);
             });
       .col-md-6

@@ -7,6 +7,22 @@ GIT
       rails (~> 4.0)
 
 GIT
+  remote: git://github.com/negativetwelve/impressionist.git
+  revision: 466aa6aa5774ca60683fa20e2f238a4d190dbdb2
+  specs:
+    impressionist (1.5.1)
+      httpclient (~> 2.2)
+      nokogiri (~> 1.5)
+
+GIT
+  remote: git://github.com/negativetwelve/lazy_high_charts.git
+  revision: a9710e8b8cbcc51ad7f0c845350430e56e815f98
+  specs:
+    lazy_high_charts (1.5.4)
+      bundler (>= 1.0)
+      hash-deep-merge
+
+GIT
   remote: https://github.com/stripe/stripe-ruby
   revision: bb9388384f8bade9cf257e5907679e7afaab85a6
   specs:
@@ -121,7 +137,7 @@ GEM
     ffi (1.9.3)
     font-awesome-rails (4.1.0.0)
       railties (>= 3.2, < 5.0)
-    foreman (0.71.0)
+    foreman (0.74.0)
       dotenv (~> 0.11.1)
       thor (~> 0.19.1)
     formatador (0.2.5)
@@ -157,6 +173,7 @@ GEM
     httparty (0.13.1)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
+    httpclient (2.4.0)
     i18n (0.6.9)
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
@@ -176,15 +193,12 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     kramdown (1.0.2)
-    lazy_high_charts (1.5.4)
-      bundler (>= 1.0)
-      hash-deep-merge
     liquid (2.5.1)
-    listen (2.7.8)
+    listen (2.7.9)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
-    lumberjack (1.0.6)
+    lumberjack (1.0.7)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -219,7 +233,7 @@ GEM
     pygments.rb (0.5.4)
       posix-spawn (~> 0.3.6)
       yajl-ruby (~> 1.1.0)
-    quiet_assets (1.0.2)
+    quiet_assets (1.0.3)
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -332,7 +346,7 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.39)
-    tzinfo-data (1.2013.8)
+    tzinfo-data (1.2013.3)
     uglifier (2.5.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
@@ -370,9 +384,10 @@ DEPENDENCIES
   guard-livereload
   guard-rspec
   highcharts-rails (~> 3.0.0)
+  impressionist!
   jbuilder (~> 1.2)
   jquery-rails (~> 2.2.1)
-  lazy_high_charts (~> 1.5.2)
+  lazy_high_charts!
   newrelic_rpm
   nokogiri (= 1.6.1)
   paperclip (~> 4.1)

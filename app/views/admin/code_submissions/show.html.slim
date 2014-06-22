@@ -6,6 +6,7 @@
         '  -
         = @code_submission.user.email
       h3 = @code_submission.project.title
+      #code-viewer
 
     .col-md-5.col-md-offset-2
       h1.title Your Evaluation
@@ -24,7 +25,6 @@ javascript:
     });
     editor.renderer.$cursorLayer.element.style.opacity = 0;
     editor.setTheme("ace/theme/github");
-    // TODO: Fix this hack before we get hacked.
-    var content = "#{@code_submission.content.gsub("\n", "\\n").html_safe.gsub('"', '\"').html_safe}";
+    var content = "#{@code_submission.safe_content}";
     editor.setValue(content, -1);
   });
