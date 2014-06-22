@@ -73,6 +73,11 @@ class User < ActiveRecord::Base
                            foreign_key: :impressionable_id,
                            primary_key: :username
 
+  has_many :initiated_conversations, class_name: Conversation, foreign_key: :starter_id
+  has_many :messages
+  has_many :conversation_users
+  has_many :conversations, through: :conversation_users
+
   belongs_to :company
 
   default_scope -> { order(:created_at) }
