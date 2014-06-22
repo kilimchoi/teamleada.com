@@ -169,6 +169,7 @@ data_matching_context = SubmissionContext.create!(
   description: "User is asked to explain how he/she joined the 2 csv datasets.",
   slide: data_matching_slide,
   submission_context_id: 0,
+  submission_type: SubmissionContext::RESPONSE,
 )
 
 data_matching_context_two = SubmissionContext.create!(
@@ -176,6 +177,7 @@ data_matching_context_two = SubmissionContext.create!(
   description: "User is asked to write code that matches (conditionally joins) 2 datasets in csv.",
   slide: data_matching_slide_two,
   submission_context_id: 0,
+  submission_type: SubmissionContext::CODE,
 )
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -214,6 +216,7 @@ data_matching_context = SubmissionContext.create!(
   description: "User is asked to explain how he/she plans to clean the MightyHive datasets",
   slide: data_cleaning_slide,
   submission_context_id: 0,
+  submission_type: SubmissionContext::RESPONSE,
 )
 
 data_matching_context_two = SubmissionContext.create!(
@@ -221,6 +224,7 @@ data_matching_context_two = SubmissionContext.create!(
   description: "User is asked to asked write the code that cleans the MightyHive datasets",
   slide: data_cleaning_slide_two,
   submission_context_id: 0,
+  submission_type: SubmissionContext::CODE,
 )
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -266,18 +270,21 @@ stat_analysis_context = SubmissionContext.create!(
   description: "User is asked to define the null hypothesis of the statistical test in MightyHive.",
   slide: stat_analysis_slide_one,
   submission_context_id: 0,
+  submission_type: SubmissionContext::RESPONSE,
 )
 stat_analysis_context_two = SubmissionContext.create!(
   title: "Data Matching Response",
   description: "User is asked to write the code that tests the null hypothesis for MightyHive.",
   slide: stat_analysis_slide_two,
   submission_context_id: 0,
+  submission_type: SubmissionContext::CODE,
 )
 stat_analysis_context_three = SubmissionContext.create!(
   title: "Data Matching Response",
   description: "User is asked to interpret the result and write a conclusion for MigtyHive",
   slide: stat_analysis_slide_three,
   submission_context_id: 0,
+  submission_type: SubmissionContext::RESPONSE,
 )
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -304,6 +311,7 @@ return_code_context = SubmissionContext.create!(
   description: "User is asked to paste the entire source code used for the MightyHive project.",
   slide: return_code_slide,
   submission_context_id: 0,
+  submission_type: SubmissionContext::COMPLETE_CODE,
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -342,6 +350,7 @@ presentation_context = SubmissionContext.create!(
   description: "User is asked create a 2 slides presentation for the project.",
   slide: presentation_slide_one,
   submission_context_id: 0,
+  submission_type: SubmissionContext::PRES_SLIDES_LINK,
 )
 
 return_code_context = SubmissionContext.create!(
@@ -349,4 +358,5 @@ return_code_context = SubmissionContext.create!(
   description: "User is asked to create a video presentation (no longer than 2 min) of the slides.",
   slide: presentation_slide_two,
   submission_context_id: 1,
+  submission_type: SubmissionContext::PRES_VIDEO_LINK,
 )
