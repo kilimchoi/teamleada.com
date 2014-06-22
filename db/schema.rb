@@ -82,6 +82,13 @@ ActiveRecord::Schema.define(version: 20140625080729) do
     t.datetime "updated_at"
   end
 
+  create_table "conversations", force: true do |t|
+    t.integer  "starter_id"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "days", id: false, force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
