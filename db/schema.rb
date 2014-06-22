@@ -321,6 +321,7 @@ ActiveRecord::Schema.define(version: 20140621221457) do
     t.datetime "updated_at"
     t.string   "uid",                   null: false
     t.string   "title"
+    t.string   "submission_type"
   end
 
   create_table "submissions", force: true do |t|

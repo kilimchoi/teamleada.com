@@ -120,6 +120,7 @@ train_data_context = SubmissionContext.create!(
   description: "User is asked to load the train and test data using read.csv() and print part of the data",
   slide: train_data_slide_one,
   submission_context_id: 0,
+  submission_type: SubmissionContext::CODE,
 )
 
 train_data_context_two = SubmissionContext.create!(
@@ -127,6 +128,7 @@ train_data_context_two = SubmissionContext.create!(
   description: "User is asked to share thoughts on the data",
   slide: train_data_slide_two,
   submission_context_id: 0,
+  submission_type: SubmissionContext::RESPONSE,
 )
 ################################################################################
 
@@ -166,6 +168,7 @@ train_visualize_context = SubmissionContext.create!(
   description: "User is asked to come up with visualizations to confirm the intuition that women have a higher chance of survival",
   slide: train_visualize_slide_one,
   submission_context_id: 0,
+  submission_type: SubmissionContext::CODE,
 )
 
 train_visualize_context_two = SubmissionContext.create!(
@@ -173,6 +176,7 @@ train_visualize_context_two = SubmissionContext.create!(
   description: "User is asked to explain the reasoning for creating the visualization(s) she implemented",
   slide: train_visualize_slide_two,
   submission_context_id: 0,
+  submission_type: SubmissionContext::RESPONSE,
 )
 
 
@@ -223,6 +227,7 @@ train_clean_context = SubmissionContext.create!(
   description: "User is asked to provide thoughts on how to clean the data",
   slide: train_clean_slide_one,
   submission_context_id: 0,
+  submission_type: SubmissionContext::RESPONSE,
   )
 
 train_clean_context_two = SubmissionContext.create!(
@@ -230,6 +235,7 @@ train_clean_context_two = SubmissionContext.create!(
   description: "User is asked to provide the codes for cleaning the data",
   slide: train_clean_slide_two,
   submission_context_id: 0,
+  submission_type: SubmissionContext::CODE,
   )
 
 train_clean_context_three = SubmissionContext.create!(
@@ -237,6 +243,7 @@ train_clean_context_three = SubmissionContext.create!(
   description: "User is asked to provide afterthoughts on data cleaning",
   slide: train_clean_slide_three,
   submission_context_id: 0,
+  submission_type: SubmissionContext::RESPONSE,
   )
 ################################################################################
 
@@ -264,6 +271,7 @@ test_data_context = SubmissionContext.create!(
   description: "User is asked to perform similar analysis on the testData",
   slide: test_data_slide_one,
   submission_context_id: 0,
+  submission_type: SubmissionContext::CODE,
   )
 test_data_step.add_required_steps([train_visualize_step, train_clean_step])
 ################################################################################
@@ -305,6 +313,7 @@ test_visualize_context = SubmissionContext.create!(
   description: "User is asked to construct visualizations to see if the testData is similar to trainData",
   slide: test_visualize_slide_one,
   submission_context_id: 0,
+  submission_type: SubmissionContext::CODE,
 )
 
 test_visualize_context_two = SubmissionContext.create!(
@@ -312,6 +321,7 @@ test_visualize_context_two = SubmissionContext.create!(
   description: "User is asked to elaborate on the reasoning for the visualization",
   slide: test_visualize_slide_two,
   submission_context_id: 0,
+  submission_type: SubmissionContext::RESPONSE,
 )
 ################################################################################
 
@@ -338,6 +348,7 @@ test_clean_context = SubmissionContext.create!(
   description: "User is asked to provide the codes for cleaning the Test Data",
   slide: test_clean_slide_one,
   submission_context_id: 0,
+  submission_type: SubmissionContext::CODE,
 )
 ################################################################################
 # Analytics
@@ -414,6 +425,7 @@ learn_ctree_context = SubmissionContext.create!(
   description: "User is asked to specify the type of model she is building",
   slide: learn_ctree_slide_one,
   submission_context_id: 0,
+  submission_type: SubmissionContext::RESPONSE,
 )
 
 learn_ctree_context_two = SubmissionContext.create!(
@@ -421,6 +433,7 @@ learn_ctree_context_two = SubmissionContext.create!(
   description: "User is asked to explain why she chose that model",
   slide: learn_ctree_slide_two,
   submission_context_id: 0,
+  submission_type: SubmissionContext::RESPONSE,
 )
 
 learn_ctree_context_three = SubmissionContext.create!(
@@ -428,6 +441,7 @@ learn_ctree_context_three = SubmissionContext.create!(
   description: "User is asked to describe the variables to be used in the model",
   slide: learn_ctree_slide_three,
   submission_context_id: 0,
+  submission_type: SubmissionContext::RESPONSE,
 )
 
 learn_ctree_context_four = SubmissionContext.create!(
@@ -435,6 +449,7 @@ learn_ctree_context_four = SubmissionContext.create!(
   description: "User is asked how to choose the variables for the model",
   slide: learn_ctree_slide_four,
   submission_context_id: 0,
+  submission_type: SubmissionContext::RESPONSE,
 )
 ################################################################################
 
@@ -473,6 +488,7 @@ apply_ctree_context = SubmissionContext.create!(
   description: "User is asked to build the model described earlier",
   slide: apply_ctree_slide_one,
   submission_context_id: 0,
+  submission_type: SubmissionContext::CODE,
 )
 
 apply_ctree_context_two = SubmissionContext.create!(
@@ -480,6 +496,7 @@ apply_ctree_context_two = SubmissionContext.create!(
   description: "User is asked to explain ways to evaluate the model",
   slide: apply_ctree_slide_two,
   submission_context_id: 0,
+  submission_type: SubmissionContext::RESPONSE,
 )
 ################################################################################
 
@@ -506,6 +523,14 @@ submission_guide_slide = Slide.create!(
   content: submission_guide_content,
   parent: submission_guide_lesson,
   slide_id: 0,
+)
+
+increase_score_context = SubmissionContext.create!(
+  title: "Complete Code",
+  description: "User is asked to submit the entire src code",
+  slide: submission_guide_slide,
+  submission_context_id: 0,
+  submission_type: SubmissionContext::COMPLETE_CODE,
 )
 
 ################################################################################
@@ -544,6 +569,7 @@ increase_score_context = SubmissionContext.create!(
   description: "User is asked to describe ways to improve her model",
   slide: increase_score_slide_one,
   submission_context_id: 0,
+  submission_type: SubmissionContext::RESPONSE,
 )
 
 ################################################################################
