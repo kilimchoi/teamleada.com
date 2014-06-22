@@ -12,7 +12,7 @@
       p
         |some details about why Brian is sucha great guy
     .col-md-4.col-md-offset-2
-      div class="ih-item circle effect10 top_to_bottom"
+      div class="ih-item circle effect3 right_to_left"
         a href="#"
           div class="img"
             .image
@@ -25,9 +25,9 @@
 
   .row.about-row
     .col-md-4.col-md-offset-2
-      div class="ih-item circle effect10 top_to_bottom"
+      div class="ih-item circle effect3 left_to_right"
         a href="#"
-          div class="img"
+          div class="img left_to_right_img"
             .image
               = image_tag "Tristan.png", class: "headshots-with-border"
           div class="info"
@@ -44,7 +44,7 @@
       p
         |some details about why Mark is sucha great guy
     .col-md-4.col-md-offset-2
-      div class="ih-item circle effect10 top_to_bottom"
+      div class="ih-item circle effect3 right_to_left"
         a href="#"
           div class="img"
             .image
@@ -59,31 +59,31 @@
     h1.center
       | Advisors
     .col-md-4
-      div class="ih-item circle effect10 top_to_bottom"
+      div.advisor_circle class="ih-item circle effect10 top_to_bottom"
         a href="#"
-          div class="img"
+          div class="img advisor_img"
             .image
-              = image_tag "Greg.jpg", class: "headshots-with-border"
+              = image_tag "Greg.jpg"
           div class="info"
             h3
               | Greg Lamp
             p
               | CTO | yhat
     .col-md-4
-      div class="ih-item circle effect10 top_to_bottom"
+      div.advisor_circle class="ih-item circle effect10 top_to_bottom"
         a href="#"
-          div class="img"
+          div class="img advisor_img"
             .image
-              = image_tag "Aditya.png", class: "headshots-with-border"
+              = image_tag "Aditya.png"
           div class="info"
             h3
               | Aditya G
             p
               | Statistics Professor at UC Bekeley
     .col-md-4
-      div class="ih-item circle effect10 top_to_bottom"
+      div.advisor_circle class="ih-item circle effect10 top_to_bottom"
         a href="#"
-          div class="img"
+          div class="img advisor_img"
             .image
               = image_tag "na.jpg", class: "headshots-with-border"
           div class="info"
@@ -94,8 +94,6 @@
 
 
 
-
-        
 /*
   .col-md-2.col-md-offset-1
     .image
