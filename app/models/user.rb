@@ -43,23 +43,31 @@ class User < ActiveRecord::Base
   # TODO: Remove this and put in a helper class
   include Rails.application.routes.url_helpers
 
+  # Submissions
   has_many :submissions
   has_many :code_submissions
   has_many :code_submission_evaluations, foreign_key: :reviewee_id
 
+  # Project completion
   has_many :step_statuses
   has_many :lesson_statuses
   has_many :project_statuses
   has_many :started_projects, through: :project_statuses
 
+  # Invites and Access Codes
   has_many :user_codes
   has_many :codes, through: :user_codes
+  has_many :invites
+  has_many :invited_users, through: :invites
 
+  # Purchases
   has_many :transactions
 
+  # Uploads
   has_many :resumes
   has_many :profile_photos
 
+  # Page views
   has_many :impressions
   has_many :profile_views, class_name: Impression,
                            foreign_key: :impressionable_id,
@@ -209,6 +217,14 @@ class User < ActiveRecord::Base
     project.total_points <= completed_points(project)
   end
 
+  def has_invited_friends?
+    invites.count > 0
+  end
+
+  def has_invites_remaining?
+    invites.count < Invite::INVITES
+  end
+
   def owns_project?(project)
     return false if !self.is_company? || self.company.nil?
     self.company.projects.include? project
@@ -350,6 +366,11 @@ class User < ActiveRecord::Base
 
   def password_updated!
     self.update_attribute(:updated_password_at, Time.now)
+  end
+
+  def unconfirm!
+    self.confirmed_at = nil
+    self.save(validate: false)
   end
 
   def add_code(code)
