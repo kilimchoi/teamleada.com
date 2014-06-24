@@ -17,7 +17,6 @@ class Ability
     elsif !user.new_record?
       # Anyone with an account (employee and student)
       can [:show, :edit, :update, :project, :projects, :project_feedback], User, id: user.id
-      can [:index, :create], Invite
 
       if user.is_company?
         # Only companies
@@ -32,6 +31,8 @@ class Ability
         can [:show, :check_submission, :complete, :submit_resource, :purchase, :resource], Project do |project|
           user.has_project_access? && (!project.paid || !user.has_not_paid_for_project?(project))
         end
+
+        can [:index, :create], Invite
       end
     end
   end

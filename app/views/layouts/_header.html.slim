@@ -18,7 +18,7 @@ header#header
           - else
             = active_li_link "Home", root_path
 
-          - if signed_in?
+          - if signed_in? && current_user.is_student?
             = active_li_link "Invite", invites_path
 
           - if signed_in? && current_user.is_company?
