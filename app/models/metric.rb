@@ -31,6 +31,10 @@ class Metric < ActiveRecord::Base
     end
   end
 
+  def backfill_yesterday
+    backfill_day(Day.where(date: Date.yesterday.to_date).first_or_create)
+  end
+
   def backfill_today
     backfill_day(Day.where(date: Date.today.to_date).first_or_create)
   end

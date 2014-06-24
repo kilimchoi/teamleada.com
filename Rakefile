@@ -41,4 +41,11 @@ task :backfill_all => :environment do
   end
 end
 
+task :backfill_yesterday => :environment do
+  Metric.all.each do |metric|
+    puts "Backfilling yesterday for #{metric.title}"
+    metric.backfill_yesterday
+  end
+end
+
 task default: [:blog]
