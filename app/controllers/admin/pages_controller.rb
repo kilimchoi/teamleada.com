@@ -7,6 +7,7 @@ class Admin::PagesController < Admin::BaseController
     @new_users = User.last(5).reverse
     @new_resumes = Resume.last(5).reverse
     @new_profile_photos = ProfilePhoto.last(5).reverse
+    @new_code_submissions = CodeSubmission.last(5).reverse
   end
 
   def realtime_charts

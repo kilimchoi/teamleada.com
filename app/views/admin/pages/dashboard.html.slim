@@ -42,3 +42,14 @@
               tr
                 td = link_to profile_photo.user.name, admin_user_path(profile_photo.user)
                 td = link_to profile_photo.filename, profile_photo.photo.url
+    .col-md-6
+      .row
+        .col-md-12
+          h2 Newest Code Submissions
+          table.table.table-striped
+            th Name
+            th Link
+            - @new_code_submissions.each do |code_submission|
+              tr
+                td = link_to code_submission.user.name, admin_user_path(code_submission.user)
+                td = link_to "View", admin_code_submission_path(code_submission)
