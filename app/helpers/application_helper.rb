@@ -55,7 +55,7 @@ module ApplicationHelper
   end
 
   def prompt_user
-    rand(1..100) <= 20 && current_user.is_student?
+    rand(1..100) <= 20 && current_user.is_student? && current_user.has_project_access?
   end
 
 end
