@@ -30,3 +30,15 @@
               tr
                 td = link_to resume.user.name, admin_user_path(resume.user)
                 td = link_to resume.filename, resume.resume_file.url
+  .row
+    .col-md-6
+      .row
+        .col-md-12
+          h2 Newest Profile Photos
+          table.table.table-striped
+            th Name
+            th Link
+            - @new_profile_photos.each do |profile_photo|
+              tr
+                td = link_to profile_photo.user.name, admin_user_path(profile_photo.user)
+                td = link_to profile_photo.filename, profile_photo.photo.url
