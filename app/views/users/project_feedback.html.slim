@@ -2,7 +2,7 @@
   .row
     .col-md-12
       h1.title
-        ' Evaluations for
+        ' Feedback for
         = @project.title
 
   - @user.code_submissions_for_project(@project).each do |code_submission|
