@@ -29,6 +29,11 @@ class Invite < ActiveRecord::Base
 
   # Chart Methods
   def invited_user_created_before?(day)
+    !accepted_at.nil? && accepted_at <= day.date.tomorrow
+  end
+
+  def invite_sent_before?(day)
+    created_at <= day.date.tomorrow
   end
 
 end

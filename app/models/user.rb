@@ -130,6 +130,10 @@ class User < ActiveRecord::Base
 
   def set_dates
     self.updated_password_at = Time.now
+    if self.invited?
+      self.invite.accepted_at = Time.now
+      self.invite.save
+    end
   end
 
   def set_privacy_preferences
@@ -223,6 +227,10 @@ class User < ActiveRecord::Base
 
   def has_invites_remaining?
     invites.count < Invite::INVITES
+  end
+
+  def invited?
+    !self.invite.nil?
   end
 
   def owns_project?(project)
@@ -326,6 +334,10 @@ class User < ActiveRecord::Base
 
   def evaluations_for_project(project)
     self.code_submission_evaluations.where(project: project)
+  end
+
+  def invite
+    Invite.find_by(invited_user_id: self.id)
   end
 
   def password_required?
