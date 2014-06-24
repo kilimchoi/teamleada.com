@@ -25,13 +25,21 @@
               td = invite.accepted?
               td = invite.pretty_created_at_date
 
-      h1
-        ' You love Leada? Your friends will too. You have
-        strong
-          = Invite::INVITES - current_user.invites.count
-        |  invites remaining.
-      h3
-        ' Invite just
-        strong
-          = Invite::INVITES - current_user.invites.count
-        |  more friends to receive exclusive access to our data projects.
+      - if current_user.has_invites_remaining?
+        h1
+          ' You love Leada? Your friends will too. You have
+          strong
+            = Invite::INVITES - current_user.invites.count
+          |  invites remaining.
+        h3
+          ' Invite just
+          strong
+            = Invite::INVITES - current_user.invites.count
+          |  more friends to receive exclusive access to our data projects.
+      - else
+        h1
+          ' Congratulations, you have invited
+          strong
+            = current_user.invites.count
+          '  users. Check out the
+          = link_to "projects page!", projects_path

@@ -221,6 +221,10 @@ class User < ActiveRecord::Base
     invites.count > 0
   end
 
+  def has_invites_remaining?
+    invites.count < Invite::INVITES
+  end
+
   def owns_project?(project)
     return false if !self.is_company? || self.company.nil?
     self.company.projects.include? project
