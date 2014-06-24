@@ -3,7 +3,7 @@
     .col-md-12
       h1
         | All Users - (
-        = @users.count
+        = @users.size
         | )
 
       = form_tag admin_users_path, method: :get, id: "users_search" do
