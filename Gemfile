@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
 
-gem 'rails', '4.0.0'
+gem 'rails', '4.1.0'
 
 gem 'nokogiri', '1.6.1'
 gem 'tilt', '1.4.1'
