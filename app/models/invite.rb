@@ -20,6 +20,7 @@ class Invite < ActiveRecord::Base
     current_user.invites << self
     @user = User.new(email: self.invited_email)
     @user.skip_confirmation!
+    @user.save(validate: false)
     @user.confirmed_at = nil
     @user.save(validate: false)
     self.invited_user = @user
