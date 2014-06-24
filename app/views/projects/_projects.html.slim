@@ -2,7 +2,7 @@
   .row
     - slice.each do |project|
       .col-sm-4
-        .ih-item.circle.effect13.left_to_right
+        .proj-modal class="no-hover" aria-hidden="true"
           = link_to "", data: { toggle: "modal", target: "##{project.url}" }, onclick: "modalPageView('#{project.full_url}')", class: "no-hover" do
             .project-circle
               .front-text
@@ -18,7 +18,6 @@
                   span.label.label-success.price-tag
                     ' Company Sponsored
                     /= project.cost_in_dollars
-
-            .info
-              p = project.short_description
+              .info
+                 = project.short_description
 
