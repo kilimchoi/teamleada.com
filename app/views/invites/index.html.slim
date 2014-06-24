@@ -1,0 +1,38 @@
+= provide(:page_title, "Invite Your Friends")
+
+.container.full-container
+  .row
+    .col-md-12
+      h1.title Invite Your Friends
+
+      = form_tag @invite, method: :post do |f|
+        .input-group
+          = text_field_tag :invited_email, params[:invited_email], class: "form-control small-form", placeholder: "Email Address"
+          span.input-group-btn
+            = submit_tag "Invite your friend to Leada!", class: "btn btn-leada"
+
+  .row
+    .col-md-12
+      - if current_user.has_invited_friends?
+        h1.title Your Invited Friends
+        table.table.table-striped
+        th Email Address
+        th Accepted Invite?
+        th Invite Sent
+        - current_user.invites.each do |invite|
+          tr
+            td = invite.invited_email
+            td = invite.accepted?
+            td = invite.created_at
+
+      - else
+        h1
+          ' You love Leada? Your friends will too. You have
+          strong
+            = Invite::INVITES - current_user.invites.count
+          |  invites remaining.
+        h3
+          ' Invite just
+          strong
+            = Invite::INVITES - current_user.invites.count
+          |  more friends to receive exclusive access to our data projects.
