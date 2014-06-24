@@ -48,6 +48,12 @@ Since we use Git to deploy to Heroku, this file won't be included, so you'll hav
 
     heroku config:set SECRET_KEY=secret-password
 
+## Backup Database and Restore Locally
+
+    heroku pgbackups:capture --app teamleada
+    curl -o latest.dump `heroku pgbackups:url --app teamleada`
+    pg_restore --verbose --clean --no-acl --no-owner -h localhost -U mark -d teada_development latest.dump
+
 ## Current Deployments at:
 * [Production](http://teamleada.com)
 * [Deployment Main](http://teamleada-stage.herokuapp.com)
