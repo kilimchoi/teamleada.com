@@ -5,11 +5,11 @@
     .col-md-12
       h1.title Invite Your Friends
 
-      = form_tag @invite, method: :post do |f|
+      = form_for @invite do |f|
         .input-group
-          = text_field_tag :invited_email, params[:invited_email], class: "form-control small-form", placeholder: "Email Address"
+          = f.text_field :invited_email, { value: params[:invited_email], class: "form-control small-form", placeholder: "Email Address" }
           span.input-group-btn
-            = submit_tag "Invite your friend to Leada!", class: "btn btn-leada"
+            = f.submit "Invite your friend to Leada!", class: "btn btn-leada"
 
   .row
     .col-md-12
