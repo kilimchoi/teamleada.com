@@ -23,6 +23,7 @@ class Impression < ActiveRecord::Base
   Impressionist::SetupAssociation.new(self).set
   after_save :impressionable_counter_cache_updatable?
 
+  # TODO: These numbers are hard coded for production...let's not do that.
   scope :non_admin, -> { where("user_id NOT IN (?)", [1, 2, 3, 404]) }
 
   def model
