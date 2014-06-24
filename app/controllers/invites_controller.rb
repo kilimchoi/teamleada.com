@@ -10,12 +10,12 @@ class InvitesController < ApplicationController
     @invite = Invite.new(invite_params)
     user = User.find_by(email: @invite.invited_email)
     if current_user.invites.count < Invite::INVITES && user.nil? && @invite.save
+      @invite.send_user_invite!(current_user)
       if current_user.invites.count == Invite::INVITES
         unless current_user.has_project_access?
           current_user.add_code Code.find_by(user_type: "viral-test-1")
         end
       end
-      @invite.send_user_invite!(current_user)
       if Invite::INVITES - current_user.invites.count == 0
         message = "#{@invite.invited_email} has been invited to Leada! Congratulations, you now have access to our data projects! <a href='/projects'>Check them out here!</a>"
       else
