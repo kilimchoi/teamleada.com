@@ -1,4 +1,4 @@
-.ih-item.circle {
+.proj-modal {
   position: relative;
   width: 280px;
   height: 280px;
@@ -9,7 +9,7 @@
   background-color: #2d637f;
 }
 
-.ih-item.circle .project-circle:before {
+.proj-modal .project-circle:before {
   position: absolute;
   display: block;
   content: '';
@@ -19,14 +19,14 @@
   box-shadow: inset 0 0 0 16px rgba(255, 255, 255, 0.6), 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-.ih-item.circle .project-circle {
+.proj-modal .project-circle {
   position: relative;
   width: 280px;
   height: 280px;
   border-radius: 50%;
 }
 
-.ih-item.circle.effect13 .info {
+.proj-modal .info {
   background: #333333;
   background: rgba(0, 0, 0, 0.6);
   opacity: 0;
@@ -65,7 +65,7 @@
     }
   }
 
-  .ih-item.circle.effect13 .info p {
+  .proj-modal .info p {
     border: none;
     height: 90%;
     overflow-y: hidden;
