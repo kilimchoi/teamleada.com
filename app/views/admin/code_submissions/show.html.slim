@@ -5,7 +5,10 @@
         = @code_submission.user.name
         '  -
         = @code_submission.user.email
-      h3 = @code_submission.project.title
+      h3.title = @code_submission.project.title
+      h4.title = @code_submission.submission_context.title
+      p
+        = @code_submission.submission_context.description
       #code-viewer
 
     .col-md-5.col-md-offset-2
