@@ -28,6 +28,10 @@ class CodeSubmission < ActiveRecord::Base
     parent.slides[slide_index]
   end
 
+  def uid
+    "#{parent_id}_cs#{slide_index}"
+  end
+
   def submission_context
     # TODO: Until we have submssion contexts, show the slide title?
     slide.submission_context || SubmissionContext.new(

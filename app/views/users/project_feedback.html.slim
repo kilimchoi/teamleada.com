@@ -12,11 +12,11 @@
           h3.title = code_submission.submission_context.title
           p
             = code_submission.submission_context.description
-          .code-viewer-container[id="code-viewer-#{code_submission.parent_id}"]
+          .code-viewer-container[id="code-viewer-#{code_submission.uid}"]
             javascript:
               var editor;
               $(document).ready(function() {
-                editor = ace.edit("code-viewer-#{code_submission.parent_id}");
+                editor = ace.edit("code-viewer-#{code_submission.uid}");
                 editor.setOptions({
                   readOnly: true,
                   highlightActiveLine: false
