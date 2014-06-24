@@ -13,6 +13,11 @@ class Invite < ActiveRecord::Base
   end
 
   def send_user_invite!
+    @user = User.new(email: self.invited_email)
+    @user.skip_confirmation!
+    @user.save(validate: false)
+    self.invited_user = @user
+    self.save
     InviteMailer.invite_email(self).deliver
   end
 
