@@ -2,9 +2,13 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  impressionist
+  impressionist if: :valid_impression?
 
   after_filter :store_location
+
+  def valid_impression?
+    true unless controller_name == "projects" && action_name == "submit_resource"
+  end
 
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
