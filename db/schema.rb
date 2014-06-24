@@ -78,12 +78,43 @@ ActiveRecord::Schema.define(version: 20140624055335) do
     t.datetime "updated_at"
   end
 
+  create_table "conversation_users", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "conversation_id"
+    t.boolean  "unread",          default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "conversations", force: true do |t|
+    t.integer  "starter_id"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "days", id: false, force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "uid",        null: false
     t.date     "date"
   end
+
+  create_table "delayed_jobs", force: true do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "employer_applications", force: true do |t|
     t.string   "name"
@@ -174,6 +205,17 @@ ActiveRecord::Schema.define(version: 20140624055335) do
     t.integer  "lesson_id"
     t.string   "uid",                            null: false
     t.integer  "points",             default: 1
+  end
+
+  create_table "messages", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "rich_content_id"
+    t.string   "rich_content_type"
+    t.text     "content"
+    t.boolean  "is_draft"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "conversation_id"
   end
 
   create_table "metric_entries", force: true do |t|
