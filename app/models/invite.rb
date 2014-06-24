@@ -21,8 +21,7 @@ class Invite < ActiveRecord::Base
     @user = User.new(email: self.invited_email)
     @user.skip_confirmation!
     @user.save(validate: false)
-    @user.confirmed_at = nil
-    @user.save(validate: false)
+    @user.unconfirm!
     self.invited_user = @user
     self.save
     InviteMailer.invite_email(self).deliver

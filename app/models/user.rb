@@ -368,6 +368,11 @@ class User < ActiveRecord::Base
     self.update_attribute(:updated_password_at, Time.now)
   end
 
+  def unconfirm!
+    self.confirmed_at = nil
+    self.save(validate: false)
+  end
+
   def add_code(code)
     if code.enabled?
       self.codes << code
