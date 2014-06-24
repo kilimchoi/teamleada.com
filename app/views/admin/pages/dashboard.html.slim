@@ -7,8 +7,10 @@
       .row
         .col-md-12
           = high_chart("users_chart", @users_chart)
+  .row
+    .col-md-6
       .row
-        .col-md-5
+        .col-md-12
           h2 Newest Users
           table.table.table-striped
             th Name
@@ -17,7 +19,9 @@
               tr
                 td = link_to user.name, admin_user_path(user)
                 td = user.email
-        .col-md-5.col-md-offset-2
+    .col-md-6
+      .row
+        .col-md-12
           h2 Newest Resume Uploads
           table.table.table-striped
             th Name
