@@ -27,4 +27,8 @@ class Invite < ActiveRecord::Base
     InviteMailer.invite_email(self).deliver
   end
 
+  # Chart Methods
+  def invited_user_created_before?(day)
+  end
+
 end

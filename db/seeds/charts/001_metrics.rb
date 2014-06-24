@@ -34,6 +34,13 @@ metrics = [
     method: "num_users_with_project_access_created_before?",
     collection_method: "get_sum",
   },
+  {
+    uid: 5,
+    model: "Invite",
+    title: "Invited Users",
+    method: "invited_user_created_before?",
+    collection_method: "get_count",
+  }
 ]
 
 
