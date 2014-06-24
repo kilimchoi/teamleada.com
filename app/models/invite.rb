@@ -9,7 +9,7 @@ class Invite < ActiveRecord::Base
                             uniqueness: true
 
   def accepted?
-    invited_user.confirmed? ? "Yes" : "No"
+    !invited_user.nil? && invited_user.confirmed? ? "Yes" : "No"
   end
 
   def pretty_created_at_date
@@ -19,6 +19,8 @@ class Invite < ActiveRecord::Base
   def send_user_invite!(current_user)
     current_user.invites << self
     @user = User.new(email: self.invited_email)
+    @user.skip_confirmation!
+    @user.confirmed_at = nil
     @user.save(validate: false)
     self.invited_user = @user
     self.save
