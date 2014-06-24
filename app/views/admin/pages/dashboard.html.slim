@@ -4,9 +4,35 @@
   .row
     .col-md-12
       h1.title Admin Dashboard
+
+  .row
+    .col-md-12
       .row
-        .col-md-12
-          = high_chart("users_chart", @users_chart)
+        .col-md-3
+          .well.center
+            h3 Weekly Page Views
+            strong
+              = @weekly_impressions.count
+        .col-md-3
+          .well.center
+            h3 Daily Page Views
+            strong
+              = @daily_impressions.count
+        .col-md-3
+          .well.center
+            h3 Non-admin Weekly Page Views
+            strong
+              = @weekly_impressions.non_admin.count
+        .col-md-3
+          .well.center
+            h3 Non-admin Daily Page Views
+            strong
+              = @daily_impressions.non_admin.count
+
+  .row
+    .col-md-12
+      = high_chart("users_chart", @users_chart)
+
   .row
     .col-md-6
       .row

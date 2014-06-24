@@ -8,6 +8,9 @@ class Admin::PagesController < Admin::BaseController
     @new_resumes = Resume.last(5).reverse
     @new_profile_photos = ProfilePhoto.last(5).reverse
     @new_code_submissions = CodeSubmission.last(5).reverse
+
+    @weekly_impressions = Impression.where("created_at >= ?", 7.days.ago.to_date)
+    @daily_impressions = Impression.where("created_at >= ?", Date.today.to_date)
   end
 
   def realtime_charts
