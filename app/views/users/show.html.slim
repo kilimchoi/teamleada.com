@@ -40,8 +40,9 @@
         h3.title Resume
         - if @user.has_resume?
           = render partial: "users/resume_preview", locals: { resume: @user.resume }
-          = link_to "Upload a new resume", "#", data: {toggle: "modal", target: "#resume-modal"}, class: "flat-button"
-        - else
+          - if @user == current_user
+            = link_to "Upload a new resume", "#", data: {toggle: "modal", target: "#resume-modal"}, class: "flat-button"
+        - elsif @user == current_user
           h4 Looks like you haven't uploaded a resume yet.
           = link_to "Upload one now!", "#", data: {toggle: "modal", target: "#resume-modal"}, class: "flat-button"
 
@@ -58,7 +59,7 @@
         - @user.in_progress_projects.each do |project|
           = link_to project.title, project
           .progress
-            - percentage = current_user.project_progress_percentage(project)
+            - percentage = @user.project_progress_percentage(project)
             .progress-bar aria-valuenow="#{percentage}" aria-valuemin="0" aria-valuemax="100" style="width: #{percentage}%"
               = percentage
               | %
