@@ -5,6 +5,8 @@ TeamLeada::Application.routes.draw do
   match 'tutoring', to: 'pages#tutoring', via: :get
   match 'tutoring/purchase', to: 'pages#tutoring_purchase', as: 'tutoring_purchase', via: :post
 
+  match 'invite', to: 'invites#index', as: 'inviteinvites#index', as: 'invites', via: :get
+
   match 'learn', to: 'pages#student', as: :learn, via: :get
   match 'learn', to: 'users#auth_code', as: :auth_code, via: :post
   match 'ask-peter', to: 'pages#question_answer', as: 'question_answer', via: :get
