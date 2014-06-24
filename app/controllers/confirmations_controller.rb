@@ -32,6 +32,11 @@ class ConfirmationsController < Devise::ConfirmationsController
         resource.role = "student"
         resource.save
       end
+      if resource.invited?
+        invite = resource.invite
+        invite.accepted_at = Time.now
+        invite.save
+      end
       flash[:info] = "Your account has been confirmed. Check out some of our data projects!"
       sign_in resource_name, resource
       respond_with resource, location: after_confirmation_path_for(resource)

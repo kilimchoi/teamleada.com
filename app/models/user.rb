@@ -130,10 +130,6 @@ class User < ActiveRecord::Base
 
   def set_dates
     self.updated_password_at = Time.now
-    if self.invited?
-      self.invite.accepted_at = Time.now
-      self.invite.save
-    end
   end
 
   def set_privacy_preferences
