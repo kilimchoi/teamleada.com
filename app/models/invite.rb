@@ -12,9 +12,13 @@ class Invite < ActiveRecord::Base
     !invited_user.nil?
   end
 
-  def send_user_invite!
+  def pretty_created_at_date
+    created_at.strftime("%B %d, %Y")
+  end
+
+  def send_user_invite!(current_user)
+    current_user.invites << self
     @user = User.new(email: self.invited_email)
-    @user.skip_confirmation!
     @user.save(validate: false)
     self.invited_user = @user
     self.save
