@@ -5,28 +5,32 @@
         ' Feedback for
         = @project.title
 
-  - @user.code_submissions_for_project(@project).each do |code_submission|
-    .row
-      .col-md-6
-        h3.title = code_submission.submission_context.title
-        p
-          = code_submission.submission_context.description
-        .code-viewer-container[id="code-viewer-#{code_submission.parent_id}"]
-          javascript:
-            var editor;
-            $(document).ready(function() {
-              editor = ace.edit("code-viewer-#{code_submission.parent_id}");
-              editor.setOptions({
-                readOnly: true,
-                highlightActiveLine: false
+  - if @user.code_submissions_for_project(@project).count > 0
+    - @user.code_submissions_for_project(@project).each do |code_submission|
+      .row
+        .col-md-6
+          h3.title = code_submission.submission_context.title
+          p
+            = code_submission.submission_context.description
+          .code-viewer-container[id="code-viewer-#{code_submission.parent_id}"]
+            javascript:
+              var editor;
+              $(document).ready(function() {
+                editor = ace.edit("code-viewer-#{code_submission.parent_id}");
+                editor.setOptions({
+                  readOnly: true,
+                  highlightActiveLine: false
+                });
+                editor.renderer.$cursorLayer.element.style.opacity = 0;
+                editor.setTheme("ace/theme/github");
+                var content = "#{code_submission.safe_content}";
+                editor.setValue(content, -1);
               });
-              editor.renderer.$cursorLayer.element.style.opacity = 0;
-              editor.setTheme("ace/theme/github");
-              var content = "#{@code_submission.safe_content}";
-              editor.setValue(content, -1);
-            });
-      .col-md-6
-        h3.title Feedback
-        - code_submission.code_submission_evaluations.each do |evaluation|
-          .evaluation-description
-            = evaluation.description
+        .col-md-6
+          h3.title Feedback
+          - code_submission.code_submission_evaluations.each do |evaluation|
+            .evaluation-description
+              = evaluation.description
+
+  - else
+    h1 You will receive feedback 3 days after a complete submission! Check back then!
