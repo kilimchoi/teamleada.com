@@ -40,7 +40,14 @@ metrics = [
     title: "Invited Users",
     method: "invited_user_created_before?",
     collection_method: "get_count",
-  }
+  },
+  {
+    uid: 6,
+    model: "Invite",
+    title: "Invites Sent",
+    method: "invite_sent_before?",
+    collection_method: "get_count",
+  },
 ]
 
 

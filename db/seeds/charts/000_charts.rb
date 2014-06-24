@@ -1,4 +1,5 @@
 from_the_beginning = Date.parse("26/3/2014")
+invites_enabled = Date.parse("23/6/2014")
 one_month = 30.days.ago
 
 charts = [
@@ -29,6 +30,13 @@ charts = [
     title: "Project Completion over time",
     y_axis_label: "Total number of projects",
     default_timeframe: from_the_beginning,
+  },
+  {
+    uid: 4,
+    category: "invites",
+    title: "Invites Sent over time",
+    y_axis_label: "Total Invites sent out",
+    default_timeframe: invites_enabled,
   },
 ]
 
