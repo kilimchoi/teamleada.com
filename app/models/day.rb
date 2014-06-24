@@ -10,6 +10,7 @@
 
 class Day < ActiveRecord::Base
   self.primary_key = "uid"
+  has_many :metric_entries
 
   before_create :set_uid
 
