@@ -9,7 +9,7 @@ class Invite < ActiveRecord::Base
                             uniqueness: true
 
   def accepted?
-    !invited_user.nil?
+    invited_user.confirmed? ? "Yes" : "No"
   end
 
   def pretty_created_at_date
