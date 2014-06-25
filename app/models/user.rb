@@ -309,6 +309,11 @@ class User < ActiveRecord::Base
     project_statuses.where(completed: true).collect{ |project_status| project_status.project }
   end
 
+  def completed_projects_with_submissions
+    project_status_ids = project_statuses.select{ |project_status| project_status.completed && project_status.completed_all_submissions? }
+    project_statuses.where(id: project_status_ids).collect{ |project_status| project_status.project }
+  end
+
   def in_progress_projects
     project_statuses.where(completed: false).collect{ |project_status| project_status.project }
   end
