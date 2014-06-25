@@ -15,6 +15,8 @@
 class SubmissionContext < ActiveRecord::Base
   self.primary_key = "uid"
 
+  include Rails.application.routes.url_helpers
+
   validates :submission_type, presence: true
   validates :slide_id, presence: true
 
@@ -40,6 +42,15 @@ class SubmissionContext < ActiveRecord::Base
 
   def set_project
     self.project_id = self.slide.parent.project.uid
+  end
+
+  def path
+    item = slide.parent
+    if item.is_a? Step
+      project_lesson_step_path(project, item.main_lesson, item)
+    else
+      project_lesson_path(project, item)
+    end
   end
 
 end
