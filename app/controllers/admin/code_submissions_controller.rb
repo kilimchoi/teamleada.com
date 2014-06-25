@@ -1,5 +1,5 @@
 class Admin::CodeSubmissionsController < Admin::BaseController
-  load_and_authorize_resource
+  load_and_authorize_resource except: [:evaluate, :update_evaluation]
 
   def index
     if params[:tab] == "completed_projects"
@@ -16,6 +16,7 @@ class Admin::CodeSubmissionsController < Admin::BaseController
   end
 
   def evaluate
+    @code_submission = CodeSubmission.find(params[:code_submission_id])
     @code_submission_evaluation = CodeSubmissionEvaluation.new(evaluation_params)
     @code_submission_evaluation.reviewee = @code_submission.user
     @code_submission_evaluation.reviewer = current_user
@@ -23,21 +24,22 @@ class Admin::CodeSubmissionsController < Admin::BaseController
     @code_submission_evaluation.project = @code_submission.project
     if @code_submission_evaluation.save
       flash[:info] = "Your evalaution was saved."
-      redirect_to admin_code_submission_path(@code_submission)
+      redirect_to code_submissions_admin_user_path(@code_submission.user, @code_submission.project)
     else
       flash[:error] = "There was an error creating your evaluation."
-      redirect_to admin_code_submission_path(@code_submission)
+      redirect_to code_submissions_admin_user_path(@code_submission.user, @code_submission.project)
     end
   end
 
   def update_evaluation
+    @code_submission = CodeSubmission.find(params[:code_submission_id])
     @code_submission_evaluation = CodeSubmissionEvaluation.find_by(reviewer: current_user, code_submission: @code_submission)
     if @code_submission_evaluation.update_attributes(evaluation_params)
       flash[:info] = "Your evaluation was updated."
-      redirect_to admin_code_submission_path(@code_submission)
+      redirect_to code_submissions_admin_user_path(@code_submission.user, @code_submission.project)
     else
       flash[:error] = "There was an error updating your evaluation."
-      redirect_to admin_code_submission_path(@code_submission)
+      redirect_to code_submissions_admin_user_path(@code_submission.user, @code_submission.project)
     end
   end
 

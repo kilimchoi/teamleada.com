@@ -12,6 +12,16 @@ class Admin::UsersController < Admin::BaseController
   def show
   end
 
+  def show_code_submissions
+    @project = Project.find(params[:project_id])
+    @code_submissions = @user.code_submissions_for_project(@project).paginate(page: params[:page])
+  end
+
+  def show_code_submission
+    @code_submission = CodeSubmission.find(params[:code_submission_id])
+    @evaluation = CodeSubmissionEvaluation.where(code_submission: @code_submission, reviewer: current_user).first_or_initialize
+  end
+
   private
 
   def sort_column
