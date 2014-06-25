@@ -558,20 +558,27 @@ increase_score_slide_one = Slide.create!(
   slide_id: 0,
 )
 
-increase_score_slide_one = Slide.create!(
+increase_score_slide_two = Slide.create!(
   content: increase_score_two_content,
   parent: increase_score_lesson,
   slide_id: 1,
 )
 
 increase_score_context = SubmissionContext.create!(
-  title: "Improving the Model",
+  title: "Improving the Model - Text",
   description: "User is asked to describe ways to improve her model",
   slide: increase_score_slide_one,
   submission_context_id: 0,
   submission_type: SubmissionContext::RESPONSE,
 )
 
+increase_score_code = SubmissionContext.create!(
+  title: "Improving the Model - Code",
+  description: "User is asked to paste the code used to increase the score, if attempted",
+  slide: increase_score_slide_two,
+  submission_context_id: 0,
+  submission_type: SubmissionContext::CODE,
+)
 ################################################################################
 
 
