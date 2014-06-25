@@ -109,6 +109,10 @@ class User < ActiveRecord::Base
                   against: [[:first_name, 'A'], [:last_name, 'A'], [:email, 'A'], [:username, 'A']],
                   using: {tsearch: {prefix: true, normalization: 2}}
 
+  def == other_user
+    self.email == other_user.email
+  end
+
   #########################################################################################
   # Validations
   #########################################################################################
