@@ -89,6 +89,7 @@ TeamLeada::Application.routes.draw do
 
     resources :users, only: [:index, :show] do
       member do
+        match 'projects/:project_id/publish-feedback', to: 'users#publish_feedback', as: :publish_feedback, via: :get
         match 'projects/:project_id/code-submissions', to: 'users#show_code_submissions', as: :code_submissions, via: :get
         match 'projects/:project_id/code-submissions/:code_submission_id', to: 'users#show_code_submission', as: :code_submission, via: :get
         match 'projects/:project_id/code-submissions/:code_submission_id/evaluate', to: 'code_submissions#evaluate', as: :evaluate, via: :post

@@ -410,4 +410,10 @@ class User < ActiveRecord::Base
     LessonStatus.where(user: self, lesson_id: lesson.uid, completed: true, project: lesson.project).first_or_create
   end
 
+  # Mailer
+  def publish_evaluations(evaluations)
+    @evaluations = evaluations
+    EvaluationMailer.send_feedback(self).deliver
+  end
+
 end
