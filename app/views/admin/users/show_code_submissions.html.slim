@@ -1,0 +1,10 @@
+.container-fluid.full-container
+  .row
+    .col-md-12
+      h1.title = @user.name
+      h3.title
+        ' Submissions for:
+        = @project.title
+  .row
+    .col-md-12
+      = render partial: "admin/code_submissions/tab_all_code_submissions"

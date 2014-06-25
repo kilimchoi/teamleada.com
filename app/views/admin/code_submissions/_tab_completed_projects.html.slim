@@ -7,7 +7,7 @@ table.table.table-striped
   th Submission Graded?
   - @project_statuses.each do |project_status|
     tr
-      td = link_to "View", "#"
+      td = link_to "View", code_submissions_admin_user_path(project_status.user, project_status.project)
       td = link_to project_status.user.name, admin_user_path(project_status.user)
       td = project_status.project.title
       td = project_status.completed_on
