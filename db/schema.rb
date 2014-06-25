@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140625054840) do
+ActiveRecord::Schema.define(version: 20140625080729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20140625054840) do
     t.integer  "statistics"
     t.integer  "curiosity"
     t.integer  "communication"
+    t.boolean  "visible",            default: false
   end
 
   create_table "code_submissions", force: true do |t|
