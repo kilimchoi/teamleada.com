@@ -364,6 +364,33 @@ class User < ActiveRecord::Base
   #########################################################################################
   # Methods
   #########################################################################################
+
+  def self.connect_to_linkedin(auth, signed_in_resource=nil)
+    if auth.provider == 'linkedin'
+      user = User.where(:linkedin_id => auth.uid).first
+    end
+    if user
+      return user
+    else
+      registered_user = User.where(:email => auth.info.email).first
+      if registered_user
+        return registered_user
+      else
+        byebug
+        user = User.create(first_name:auth.info.first_name,
+                            last_name:auth.info.last_name,
+                            linkedin_id:auth.uid,
+                            #provider:auth.provider,
+                            #uid:auth.uid,
+                            email:auth.info.email,
+                            password:Devise.friendly_token[0,20],
+                          )
+        user.skip_confirmation!
+        return user
+      end
+    end
+  end
+
   def generate_new_token
     secret = Devise.friendly_token
     new_token = Devise.token_generator.digest(User, :confirmation_token, secret)
