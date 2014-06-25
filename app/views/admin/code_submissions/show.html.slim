@@ -12,9 +12,14 @@
       #code-viewer
 
     .col-md-5.col-md-offset-2
+      - unless @evaluation.new_record?
+        .alert.alert-success You have already evaluated this code submission.
       h1.title Your Evaluation
       = simple_form_for @evaluation, url: evaluate_admin_code_submission_path do |f|
-        = f.input :score, collection: 1..10
+        = f.input :computer_science, collection: 1..10
+        = f.input :statistics, collection: 1..10
+        = f.input :curiosity, collection: 1..10
+        = f.input :communication, collection: 1..10
         = f.input :description, input_html: { rows: 5 }
         = f.submit "Submit", class: "flat-button full-width"
 

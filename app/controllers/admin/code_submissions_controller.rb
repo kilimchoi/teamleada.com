@@ -37,7 +37,11 @@ class Admin::CodeSubmissionsController < Admin::BaseController
   private
 
   def evaluation_params
-    params.require(:code_submission_evaluation).permit(:score, :description)
+    params.require(:code_submission_evaluation).permit(:description,
+                                                       :computer_science,
+                                                       :statistics,
+                                                       :curiosity,
+                                                       :communication)
   end
 
 end
