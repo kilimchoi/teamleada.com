@@ -24,9 +24,9 @@ class Admin::UsersController < Admin::BaseController
 
   def publish_feedback
     @project = Project.find(params[:project_id])
-    @evaluations = CodeSubmissionEvaluations.where(reviewee: @user, project: @project)
-    @user.publish_evaluations(@evaluations)
-    redirect_to code_submissions_admin_user(@user, @project)
+    @evaluations = CodeSubmissionEvaluation.where(reviewee: @user, project: @project)
+    @user.publish_evaluations(@project, @evaluations)
+    redirect_to code_submissions_admin_user_path(@user, @project)
   end
 
   private
