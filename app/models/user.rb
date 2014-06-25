@@ -334,7 +334,7 @@ class User < ActiveRecord::Base
         total += lesson_status.lesson.points
       end
     end
-    total
+    total + code_submissions_for_project(project).count
   end
 
   def project_progress_percentage(project)
