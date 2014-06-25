@@ -1,4 +1,4 @@
-class AddProviderToUsers < ActiveRecord::Migration
+class AddLinkedInIdToUsers < ActiveRecord::Migration
   def change
     add_column :users, :linkedin_id, :string
   end
