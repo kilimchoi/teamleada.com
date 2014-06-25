@@ -50,6 +50,10 @@ class CodeSubmission < ActiveRecord::Base
     code_submission_evaluations.where(reviewer: user).count > 0
   end
 
+  def has_evaluation?
+    code_submission_evaluations.count > 0
+  end
+
   def safe_content
     escape_javascript content.html_safe
   end
