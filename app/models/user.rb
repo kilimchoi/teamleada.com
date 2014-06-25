@@ -272,6 +272,10 @@ class User < ActiveRecord::Base
     project.submission_contexts.count != self.code_submissions_for_project(project).count
   end
 
+  def has_completed_submission?(submission_context)
+    self.code_submissions_for_project(submission_context.project).select{ |code_submission| code_submission.submission_context == submission_context }.count > 0
+  end
+
   def next_lesson_or_step_for_project_path(project)
     next_lesson_or_step = next_lesson_or_step_for_project(project)
     if next_lesson_or_step == false
@@ -328,8 +332,11 @@ class User < ActiveRecord::Base
 
   def first_missing_code_submission(project)
     project.submission_contexts.each do |submission_context|
-      
+      unless self.has_completed_submission? submission_context
+        return submission_context
+      end
     end
+    false
   end
 
   def completed_points(project)
