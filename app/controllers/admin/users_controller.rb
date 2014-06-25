@@ -26,6 +26,7 @@ class Admin::UsersController < Admin::BaseController
     @project = Project.find(params[:project_id])
     @evaluations = CodeSubmissionEvaluation.where(reviewee: @user, project: @project)
     @user.publish_evaluations(@project, @evaluations)
+    flash[:info] = "You have published feedback for #{@user.name}."
     redirect_to code_submissions_admin_user_path(@user, @project)
   end
 
