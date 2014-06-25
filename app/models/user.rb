@@ -414,6 +414,7 @@ class User < ActiveRecord::Base
   def publish_evaluations(project, evaluations)
     evaluations.each do |evaluation|
       evaluation.visible = true
+      evaluation.save
     end
     EvaluationMailer.send_feedback(self, project, evaluations).deliver
   end
