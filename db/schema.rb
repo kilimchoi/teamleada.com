@@ -426,8 +426,6 @@ ActiveRecord::Schema.define(version: 20140625054840) do
     t.string   "who_can_lookup_by_name"
     t.string   "who_can_see_resume"
     t.boolean  "looking_for_opportunities",    default: false
-    t.string   "location"
-    t.text     "bio"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
