@@ -87,7 +87,11 @@ TeamLeada::Application.routes.draw do
     match '/', to: redirect('/a/dashboard'), via: :get
     match 'dashboard', to: 'pages#dashboard', via: :get
 
-    resources :users, only: [:index, :show]
+    resources :users, only: [:index, :show] do
+      member do
+        match 'projects/:project_id/code-submissions', to: 'users#show_code_submissions', as: :code_submissions, via: :get
+      end
+    end
     resources :resumes, only: [:index, :show]
     resources :profile_photos, path: 'profile-photos', only: [:index]
 
