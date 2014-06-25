@@ -7,32 +7,9 @@
 
   .row
     .col-md-12
-      h1 = params[:tab].titleize
+      h1 = params[:tab].try(:titleize) || "All Code Submissions"
 
-      - if valid_code_submissions_tab(params[:tab])
+      - if valid_code_submissions_tab?(params[:tab])
         = render partial: "admin/code_submissions/tab_#{params[:tab]}"
       - else
         = render partial: "admin/code_submissions/tab_all_code_submissions"
-      = will_paginate @code_submissions
-      table.table.table-striped
-        th Link
-        th User
-        th Email
-        th Project
-        th Submitted At
-        th Evaluated by me?
-        th # Evaluations
-        - @code_submissions.each do |code_submission|
-          tr
-            td = link_to "View", admin_code_submission_path(code_submission)
-            td = link_to code_submission.user.name, admin_user_path(code_submission.user)
-            td = code_submission.user.email
-            td = link_to code_submission.project.title, admin_project_path(code_submission.project)
-            td = code_submission.pretty_submitted_date
-            td
-              - if code_submission.has_evaluation_by_user?(current_user)
-                span.label.label-success Yes
-              - else
-                span.label.label-danger No
-            td = code_submission.code_submission_evaluations.count
-
