@@ -7,6 +7,7 @@ table.table.table-striped
   th Submitted At
   th Evaluated?
   th # Evaluations
+  th Slide ID
   - @code_submissions.each do |code_submission|
     tr
       td = link_to "View", code_submission_admin_user_path(code_submission.user, code_submission.project, code_submission)
@@ -20,4 +21,5 @@ table.table.table-striped
         - else
           span.label.label-danger No
       td = code_submission.code_submission_evaluations.count
+      td = code_submission.slide.uid
 
