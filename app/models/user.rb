@@ -221,6 +221,10 @@ class User < ActiveRecord::Base
     project.total_points <= completed_points(project)
   end
 
+  def has_submitted_all_code_submissions_for_project?(project)
+    project.code_submissions
+  end
+
   def has_invited_friends?
     invites.count > 0
   end
@@ -303,6 +307,11 @@ class User < ActiveRecord::Base
 
   def completed_projects
     project_statuses.where(completed: true).collect{ |project_status| project_status.project }
+  end
+
+  def completed_projects_with_submissions
+    project_status_ids = project_statuses.select{ |project_status| project_status.completed && project_status.completed_all_submissions? }
+    project_statuses.where(id: project_status_ids).collect{ |project_status| project_status.project }
   end
 
   def in_progress_projects
@@ -399,6 +408,15 @@ class User < ActiveRecord::Base
 
   def complete_lesson(lesson)
     LessonStatus.where(user: self, lesson_id: lesson.uid, completed: true, project: lesson.project).first_or_create
+  end
+
+  # Mailer
+  def publish_evaluations(project, evaluations)
+    evaluations.each do |evaluation|
+      evaluation.visible = true
+      evaluation.save
+    end
+    EvaluationMailer.send_feedback(self, project, evaluations).deliver
   end
 
 end

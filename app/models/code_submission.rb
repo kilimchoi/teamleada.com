@@ -24,6 +24,8 @@ class CodeSubmission < ActiveRecord::Base
 
   default_scope { order(:created_at) }
 
+  ADMIN_TABS = ["completed_projects", "all_code_submissions"]
+
   def slide
     parent.slides[slide_index]
   end
@@ -46,6 +48,10 @@ class CodeSubmission < ActiveRecord::Base
 
   def has_evaluation_by_user?(user)
     code_submission_evaluations.where(reviewer: user).count > 0
+  end
+
+  def has_evaluation?
+    code_submission_evaluations.count > 0
   end
 
   def safe_content

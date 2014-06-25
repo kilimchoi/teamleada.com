@@ -18,9 +18,10 @@ class SubmissionContext < ActiveRecord::Base
   validates :submission_type, presence: true
   validates :slide_id, presence: true
 
-  before_create :set_uid
+  before_create :set_properties
 
   belongs_to :slide
+  belongs_to :project
 
   CODE = "code" #code snippets
   COMPLETE_CODE = "complete_code" #complete src code for a project 
@@ -28,8 +29,17 @@ class SubmissionContext < ActiveRecord::Base
   PRES_SLIDES_LINK = "presentation_slides_link" #url to the presentation slides
   PRES_VIDEO_LINK = "presentation_vid_linK" #url to the presentation video
 
+  def set_properties
+    self.set_uid
+    self.set_project
+  end
+
   def set_uid
     self.uid = "#{slide.uid}_sc#{submission_context_id}"
+  end
+
+  def set_project
+    self.project_id = self.slide.parent.project.uid
   end
 
 end
