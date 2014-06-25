@@ -39,7 +39,7 @@ class SubmissionContext < ActiveRecord::Base
   end
 
   def set_project
-    self.project_id = 
+    self.project_id = self.slide.parent.project.uid
   end
 
 end

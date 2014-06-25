@@ -3,7 +3,8 @@ class Admin::CodeSubmissionsController < Admin::BaseController
 
   def index
     if params[:tab] == "completed_projects"
-      @project_statuses = ProjectStatus.where(completed: true).paginate(page: params[:page])
+      @project_statuses = ProjectStatus.all.select{ |project_status| project_status.completed && project_status.completed_all_submissions? }
+      @project_statuses = ProjectStatus.where(id: @project_statuses).paginate(page: params[:page])
     else
       @code_submissions = @code_submissions.paginate(page: params[:page])
     end

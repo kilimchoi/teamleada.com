@@ -14,6 +14,14 @@ class ProjectStatus < ActiveRecord::Base
   belongs_to :user
   belongs_to :project
 
+  def completed_all_submissions?
+    project.submission_contexts.count > 0 && user.code_submissions_for_project(project).count == project.submission_contexts.count
+  end
+
+  def completed_on
+    updated_at.strftime("%B %d, %Y at %l:%M %p")
+  end
+
   # Chart methods
   def created_before_and_not_completed?(day)
     created_at <= day.date.tomorrow && !completed?
