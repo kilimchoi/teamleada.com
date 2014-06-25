@@ -268,6 +268,10 @@ class User < ActiveRecord::Base
     !ProjectStatus.find_by(user: self, project: project, completed: true).nil?
   end
 
+  def is_missing_code_submission?(project)
+    project.submission_contexts.count != self.code_submissions_for_project(project).count
+  end
+
   def next_lesson_or_step_for_project_path(project)
     next_lesson_or_step = next_lesson_or_step_for_project(project)
     if next_lesson_or_step == false
@@ -320,6 +324,12 @@ class User < ActiveRecord::Base
 
   def code_submissions_for_project(project)
     code_submissions.where(project: project)
+  end
+
+  def first_missing_code_submission(project)
+    project.submission_contexts.each do |submission_context|
+      
+    end
   end
 
   def completed_points(project)
