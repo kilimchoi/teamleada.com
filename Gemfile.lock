@@ -167,6 +167,7 @@ GEM
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
     hash-deep-merge (0.1.1)
+    hashie (2.1.2)
     highcharts-rails (3.0.10)
       railties (>= 3.1)
     highline (1.6.21)
@@ -215,6 +216,15 @@ GEM
     newrelic_rpm (3.8.1.221)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
+    oauth (0.4.7)
+    omniauth (1.2.1)
+      hashie (>= 1.2, < 3)
+      rack (~> 1.0)
+    omniauth-linkedin (0.2.0)
+      omniauth-oauth (~> 1.0)
+    omniauth-oauth (1.0.1)
+      oauth
+      omniauth (~> 1.0)
     orm_adapter (0.5.0)
     paperclip (4.1.1)
       activemodel (>= 3.0.0)
@@ -396,6 +406,8 @@ DEPENDENCIES
   lazy_high_charts!
   newrelic_rpm
   nokogiri (= 1.6.1)
+  omniauth
+  omniauth-linkedin
   paperclip (~> 4.1)
   pg (= 0.17.1)
   pg_search

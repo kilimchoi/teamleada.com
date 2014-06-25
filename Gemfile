@@ -27,6 +27,10 @@ gem 'will_paginate', '~> 3.0'
 gem 'best_in_place', github: 'negativetwelve/best_in_place'
 gem 'impressionist', github: 'negativetwelve/impressionist'
 
+#LinkedIn Integration
+gem 'omniauth'
+gem 'omniauth-linkedin'
+
 # Code Submissions
 gem 'ace-rails-ap'
 
