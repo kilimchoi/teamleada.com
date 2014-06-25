@@ -166,7 +166,7 @@ data_matching_slide_two = Slide.create!(
 
 data_matching_context = SubmissionContext.create!(
   title: "Data Matching Response",
-  description: "User is asked to explain how he/she joined the 2 csv datasets.",
+  description: "Explain how you define a match between the Abandoned and Reservation data sets. There is no correct answer, use your best judgement and maximize the number of possible matches.",
   slide: data_matching_slide,
   submission_context_id: 0,
   submission_type: SubmissionContext::RESPONSE,
@@ -174,7 +174,7 @@ data_matching_context = SubmissionContext.create!(
 
 data_matching_context_two = SubmissionContext.create!(
   title: "Data Matching Code",
-  description: "User is asked to write code that matches (conditionally joins) 2 datasets in csv.",
+  description: "Submit code which performs the data matching under the assumptions you previously defined.",
   slide: data_matching_slide_two,
   submission_context_id: 0,
   submission_type: SubmissionContext::CODE,
@@ -213,7 +213,7 @@ data_cleaning_slide_two = Slide.create!(
 
 data_matching_context = SubmissionContext.create!(
   title: "Data Cleaning Response",
-  description: "User is asked to explain how he/she plans to clean the MightyHive datasets",
+  description: "Submit an explanation for your cleaning process",
   slide: data_cleaning_slide,
   submission_context_id: 0,
   submission_type: SubmissionContext::RESPONSE,
@@ -221,7 +221,7 @@ data_matching_context = SubmissionContext.create!(
 
 data_matching_context_two = SubmissionContext.create!(
   title: "Data Cleaning Code",
-  description: "User is asked to asked write the code that cleans the MightyHive datasets",
+  description: "Submit code which performs the cleaning.",
   slide: data_cleaning_slide_two,
   submission_context_id: 0,
   submission_type: SubmissionContext::CODE,
@@ -267,21 +267,21 @@ stat_analysis_slide_three = Slide.create!(
 )
 stat_analysis_context = SubmissionContext.create!(
   title: "Data Analysis Response",
-  description: "User is asked to define the null hypothesis of the statistical test in MightyHive.",
+  description: "Define the null hypothesis and determine the appropriate statistical analysis.",
   slide: stat_analysis_slide_one,
   submission_context_id: 0,
   submission_type: SubmissionContext::RESPONSE,
 )
 stat_analysis_context_two = SubmissionContext.create!(
   title: "Data Matching Response",
-  description: "User is asked to write the code that tests the null hypothesis for MightyHive.",
+  description: "Submit code which performs the statistical analysis including the calculation of the 95% confidence interval.",
   slide: stat_analysis_slide_two,
   submission_context_id: 0,
   submission_type: SubmissionContext::CODE,
 )
 stat_analysis_context_three = SubmissionContext.create!(
   title: "Data Matching Response",
-  description: "User is asked to interpret the result and write a conclusion for MigtyHive",
+  description: "Submit a conclusion of the results. How effective was the MightyHive advertising product?",
   slide: stat_analysis_slide_three,
   submission_context_id: 0,
   submission_type: SubmissionContext::RESPONSE,
@@ -289,7 +289,7 @@ stat_analysis_context_three = SubmissionContext.create!(
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 return_code_one = [
- ['text', 'Submit all of your code for this data challenge below:'],
+ ['text', 'Submit all of the code you wrote to complete this data challenge below:'],
  ['user_code', '#@TODO Include UID'],
  ['next_steps', nil],
 ]
@@ -308,7 +308,7 @@ return_code_slide = Slide.create!(
 
 return_code_context = SubmissionContext.create!(
   title: "Entire Source Code",
-  description: "User is asked to paste the entire source code used for the MightyHive project.",
+  description: "Submit all of your code for this data challenge below:",
   slide: return_code_slide,
   submission_context_id: 0,
   submission_type: SubmissionContext::COMPLETE_CODE,
@@ -317,12 +317,12 @@ return_code_context = SubmissionContext.create!(
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 presentation_one = [
- ['text', 'Submit a link to a google presentation (2 slides) of your analysis and conclusion.'],
+ ['text', 'Submit a link to a google presentation (2-3 slides) of your analysis and conclusion. Make sure to edit the visibility options in the sharing settings to "Anyone with the link".'],
  ['user_response', ''],
 ]
 
 presentation_two = [
- ['text', 'Submit a link to a video of you presenting your conclusions (2 min max). Production quality is not important.'],
+ ['text', 'Submit a link to a youtube video of you presenting your conclusions (2 min max). Production quality is not important.'],
  ['user_response', ''],
  ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
@@ -347,7 +347,7 @@ presentation_slide_two = Slide.create!(
 
 presentation_context = SubmissionContext.create!(
   title: "Presentation - slides",
-  description: "User is asked create a 2 slides presentation for the project.",
+  description: "Submit a 2-3 deck presentation of your analysis and conclusions.",
   slide: presentation_slide_one,
   submission_context_id: 0,
   submission_type: SubmissionContext::PRES_SLIDES_LINK,
@@ -355,7 +355,7 @@ presentation_context = SubmissionContext.create!(
 
 return_code_context = SubmissionContext.create!(
   title: "Presentation - video",
-  description: "User is asked to create a video presentation (no longer than 2 min) of the slides.",
+  description: "Submit a video presenting your analysis and conclusion to the 'CEO'",
   slide: presentation_slide_two,
   submission_context_id: 1,
   submission_type: SubmissionContext::PRES_VIDEO_LINK,
