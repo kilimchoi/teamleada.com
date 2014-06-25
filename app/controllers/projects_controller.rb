@@ -88,7 +88,7 @@ class ProjectsController < ApplicationController
       flash[:info] = "Congratulations! You have completed the #{@project.title} project!"
       redirect_to @project
     else
-      flash[:error] = "You have not completed all of the lessons for this project!"
+      flash[:error] = "You have not completed all of the lessons, steps, and code submissions for this project!"
       redirect_to current_user.next_lesson_or_step_for_project_path(@project)
     end
   end

@@ -268,6 +268,14 @@ class User < ActiveRecord::Base
     !ProjectStatus.find_by(user: self, project: project, completed: true).nil?
   end
 
+  def is_missing_code_submission?(project)
+    project.submission_contexts.count != self.code_submissions_for_project(project).count
+  end
+
+  def has_completed_submission?(submission_context)
+    self.code_submissions_for_project(submission_context.project).select{ |code_submission| code_submission.submission_context == submission_context }.count > 0
+  end
+
   def next_lesson_or_step_for_project_path(project)
     next_lesson_or_step = next_lesson_or_step_for_project(project)
     if next_lesson_or_step == false
@@ -285,10 +293,20 @@ class User < ActiveRecord::Base
       if lesson_status.nil?
         return lesson
       end
+      lesson.slides.each do |slide|
+        if slide.has_submission_contexts? && !self.has_completed_submission?(slide.submission_context)
+          return lesson
+        end
+      end
       lesson.steps.each do |step|
         step_status = StepStatus.find_by(user: self, step_id: step.uid, completed: true, project: project)
         if step_status.nil?
           return step
+        end
+        step.slides.each do |slide|
+          if slide.has_submission_contexts? && !self.has_completed_submission?(slide.submission_context)
+            return step
+          end
         end
       end
     end
@@ -322,6 +340,15 @@ class User < ActiveRecord::Base
     code_submissions.where(project: project)
   end
 
+  def first_missing_code_submission(project)
+    project.submission_contexts.each do |submission_context|
+      unless self.has_completed_submission? submission_context
+        return submission_context
+      end
+    end
+    false
+  end
+
   def completed_points(project)
     total = 0
     step_statuses.each do |step_status|
@@ -334,7 +361,7 @@ class User < ActiveRecord::Base
         total += lesson_status.lesson.points
       end
     end
-    total
+    total + code_submissions_for_project(project).count
   end
 
   def project_progress_percentage(project)

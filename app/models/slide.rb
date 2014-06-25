@@ -39,4 +39,8 @@ class Slide < ActiveRecord::Base
     submission_contexts.first
   end
 
+  def has_submission_contexts?
+    submission_contexts.count > 0
+  end
+
 end

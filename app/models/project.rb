@@ -101,7 +101,11 @@ class Project < ActiveRecord::Base
         total += step.total_points
       end
     end
-    total
+    total + code_submission_points
+  end
+
+  def code_submission_points
+    submission_contexts.count
   end
 
   def steps
