@@ -412,12 +412,12 @@ learn_ctree_slide_two = Slide.create!(
 learn_ctree_slide_three = Slide.create!(
   content: learn_ctree_three_content,
   parent: learn_ctree,
-  slide_id: 3,
+  slide_id: 2,
 )
 learn_ctree_slide_four = Slide.create!(
   content: learn_ctree_four_content,
   parent: learn_ctree,
-  slide_id: 4,
+  slide_id: 3,
 )
 
 learn_ctree_context = SubmissionContext.create!(
