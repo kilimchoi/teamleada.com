@@ -7,7 +7,7 @@ users = [
 def create_users(usernames)
   usernames.each do |username|
     email = "#{username}@#{username}.com"
-    if User.find_by(email: email).nil?
+    if User.find_by(email: email, username: username).nil?
       new_user = User.create(username: username, email: email, password: "password", role: 'admin')
       new_user.confirm!
       puts "Created user: #{new_user.username}."
