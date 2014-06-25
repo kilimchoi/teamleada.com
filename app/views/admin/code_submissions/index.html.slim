@@ -2,6 +2,7 @@
   .row
     .col-md-12
       h1 All Code Submissions
+      = will_paginate @code_submissions
       table.table.table-striped
         th Link
         th User
@@ -23,3 +24,4 @@
               - else
                 span.label.label-danger No
             td = code_submission.code_submission_evaluations.count
+

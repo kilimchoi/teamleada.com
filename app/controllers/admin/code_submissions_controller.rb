@@ -2,6 +2,7 @@ class Admin::CodeSubmissionsController < Admin::BaseController
   load_and_authorize_resource
 
   def index
+    @code_submissions = @code_submissions.paginate(page: params[:page])
   end
 
   def show
