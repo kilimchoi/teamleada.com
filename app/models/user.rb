@@ -221,6 +221,10 @@ class User < ActiveRecord::Base
     project.total_points <= completed_points(project)
   end
 
+  def has_submitted_all_code_submissions_for_project?(project)
+    project.code_submissions
+  end
+
   def has_invited_friends?
     invites.count > 0
   end

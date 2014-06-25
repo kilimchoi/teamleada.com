@@ -2,7 +2,11 @@ class Admin::CodeSubmissionsController < Admin::BaseController
   load_and_authorize_resource
 
   def index
-    @code_submissions = @code_submissions.paginate(page: params[:page])
+    if params[:tab] == "completed_projects"
+      @project_statuses = ProjectStatus.where(completed: true).paginate(page: params[:page])
+    else
+      @code_submissions = @code_submissions.paginate(page: params[:page])
+    end
   end
 
   def show
