@@ -293,10 +293,20 @@ class User < ActiveRecord::Base
       if lesson_status.nil?
         return lesson
       end
+      lesson.slides.each do |slide|
+        if slide.has_submission_contexts? && !self.has_completed_submission?(slide.submission_context)
+          return lesson
+        end
+      end
       lesson.steps.each do |step|
         step_status = StepStatus.find_by(user: self, step_id: step.uid, completed: true, project: project)
         if step_status.nil?
           return step
+        end
+        step.slides.each do |slide|
+          if slide.has_submission_contexts? && !self.has_completed_submission?(slide.submission_context)
+            return step
+          end
         end
       end
     end
