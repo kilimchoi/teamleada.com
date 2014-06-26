@@ -21,6 +21,32 @@ class ConfirmationsController < Devise::ConfirmationsController
     end
   end
 
+  def linkedin_confirm
+    byebug
+
+    @original_token = params[resource_name].try(:[], :confirmation_token)
+    self.resource = resource_class.find_by_confirmation_token! @original_token
+    resource.assign_attributes(permitted_params)
+
+    if resource.valid? && resource.password_match?
+      self.resource.confirm!
+      if resource.role.nil?
+        resource.role = "student"
+        resource.save
+      end
+      if resource.invited?
+        invite = resource.invite
+        invite.accepted_at = Time.now
+        invite.save
+      end
+      flash[:info] = "Your account has been confirmed. Check out some of our data projects!"
+      sign_in resource_name, resource
+      respond_with resource, location: after_confirmation_path_for(resource)
+    else
+      render :action => 'show'
+    end
+  end
+
   def confirm
     @original_token = params[resource_name].try(:[], :confirmation_token)
     self.resource = resource_class.find_by_confirmation_token! @original_token
