@@ -14,9 +14,9 @@ class ProjectsController < ApplicationController
       @projects = current_user.company.projects
     end
 
-    @data_lessons = @projects.where(category: Project::LESSON, enabled: true)
-    @data_challenges = @projects.where(category: Project::CHALLENGE, enabled: true)
-    @coming_soon = @projects.where(category: Project::COMING_SOON, enabled: true)
+    @data_lessons = @projects.where(category: Project::LESSON, enabled: true).reverse
+    @data_challenges = @projects.where(category: Project::CHALLENGE, enabled: true).reverse
+    @coming_soon = @projects.where(category: Project::COMING_SOON, enabled: true).reverse
 
     @interested_user = InterestedUser.new
     @large_header = true
