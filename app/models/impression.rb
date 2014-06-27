@@ -24,7 +24,7 @@ class Impression < ActiveRecord::Base
   after_save :impressionable_counter_cache_updatable?
 
   # TODO: These numbers are hard coded for production...let's not do that.
-  scope :non_admin, -> { where("user_id = ? OR user_id NOT IN (?)", nil, [1, 2, 3, 404]) }
+  scope :non_admin, -> { where(user_id: nil) + where("user_id NOT IN (?)", User.admin.pluck(:id)) }
 
   def model
     impressionable_type.constantize

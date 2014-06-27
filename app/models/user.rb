@@ -76,6 +76,7 @@ class User < ActiveRecord::Base
   belongs_to :company
 
   default_scope -> { order(:created_at) }
+  scope :admin, -> { where(role: "admin") }
   # TODO: Add scope for User.with_project_access
 
   validates_format_of :username, :with => /\A[A-Za-z0-9]*\z/
