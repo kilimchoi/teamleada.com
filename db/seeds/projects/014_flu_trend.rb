@@ -25,8 +25,8 @@ data_acquisition_content = [
   ['text', 'Put the downloaded data into a folder; remember to set the working directory to that particular folder.'],
   ['text', 'Eg:'],
   ['code', "setwd('/Users/James/Desktop/quandl_flu/')"],
- 	['text', "Then read the data into R via read.csv()"],
- 	['code', "rawFluData <- read.csv(\"FLUCOUNTRY.CSV\", header = TRUE, stringsAsFactors = FALSE)"],
+  ['text', "Then read the data into R via read.csv()"],
+  ['code', "rawFluData <- read.csv(\"FLUCOUNTRY.CSV\", header = TRUE, stringsAsFactors = FALSE)"],
   ['text', "Now we're ready to begin the analysis!"],
   ['next_steps', nil],
 ]
