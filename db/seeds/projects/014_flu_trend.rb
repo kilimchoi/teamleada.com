@@ -277,7 +277,7 @@ time_series_data_content = [
 ]
 
 time_series_data_lesson = Lesson.create!(
-  title: "Time Series Model",
+  title: "Time Series Model Prep",
   project: project,
   lesson_id: 3,
 )
@@ -405,7 +405,31 @@ time_series_differencing_slide_three = Slide.create!(
   slide_id: 2,
 )
 
-############### Diferencing ##############
+############### Final ACF Analysis ##############
+
+time_series_differencing_content_one = [
+  ['text', "Reset plotting area, in case your plotting area is cluttered."],
+  ['text', "You don't have to do this everytime, but it makes following the post easier."],
+  ['code', 'par(mfrow=c(1, 1))'],
+  ['code', 'plot.new()'],
+  ['code', 'par(mfrow=c(2, 1)) #set to 2-by-1'],
+  ['code', "acf(cleanedFluData$diff_1.1, lag.max = 160, main=\"ACF Lag=(1,1)\")"],
+  ['code', "pacf(cleanedFluData$diff_1.1, lag.max = 160, main=\"PACF (Partial ACF) Lag=(1,1)\")"],
+  ['text', ''], #@TODO EXPLAIN
+  ['next_steps', ''],
+]
+
+time_series_differencing_step = Step.create!(
+  title: "Final ACF Analysis",
+  lesson: time_series_data_lesson,
+  step_id: 3,
+)
+
+time_series_differencing_slide = Slide.create!(
+  content: time_series_differencing_content_one,
+  parent: time_series_differencing_step,
+  slide_id: 0,
+)
 
 ##############
 ######## SPARE ###
