@@ -13,7 +13,7 @@ class QuizzesController < ApplicationController
       render :text => "couldn't find quiz id: " + params[:quiz_id]
       return
     end
-    if @result.answer == params[:user_input] #if answer is same as what user inputed @TODO clean user input.
+    if @result.answer.to_s.downcase == params[:user_input].to_s.downcase #if answer is same as what user inputed @TODO clean user input.
       render :text => "correct" #"correct" is used as key, don't change
     else
       render :text => "incorrect"
