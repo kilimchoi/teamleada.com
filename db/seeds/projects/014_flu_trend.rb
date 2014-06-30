@@ -238,10 +238,11 @@ remove_missing_content_one = [
 
 remove_missing_content_two = [
   ['text', "Since we have 28 differet countries, let's take an average and name it the \"World\"."],
-  ['code', 'cleanedFluData$World = rowMeans(cleanedFluData[, -which(names(cleanedFluData) == "Date")], na.rm=TRUE)'],
+  ['code', 'cleanedFluData$World = rowMeans(cleanedFluData[,
+    -which(names(cleanedFluData) == "Date")], na.rm=TRUE)'],
   ['text', 'Now let\'s plot the averaged "World" data.'],
-  ['code', "plot (cleanedFluData$World ~ cleanedFluData$Date, main=\"Aggregated Flu Trend\", xlab='Time',
-      ylab='Cases / Week', type='l', col='blue')"],
+  ['code', "plot (cleanedFluData$World ~ cleanedFluData$Date, main=\"Aggregated Flu Trend\",
+    xlab='Time', ylab='Cases / Week', type='l', col='blue')"],
   ['text', 'This looks like a decent piece of data to fit a time series model.'],
   ['text', 'The first few thing we have to do is removing seasonality and de-trending in the data.'],
   ['text', "There doesn't actually seem to be any strong trend with the data (thank goodness), so we'll concentrate on removing seasonality."],
@@ -249,7 +250,7 @@ remove_missing_content_two = [
 ]
 
 remove_missing_step = Step.create!(
-  title: "Analyze Missing Data",
+  title: "Remove Missing Data",
   lesson: missing_data_lesson,
   step_id: 1,
 )
