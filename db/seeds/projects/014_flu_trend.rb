@@ -44,7 +44,7 @@ data_acquisition_slide = Slide.create!(
 )
 
 ################################################################################
-##############Data Exploration##################################################
+###########  Data Exploration  #################################################
 ################################################################################
 
 data_exploration_content = [
@@ -89,23 +89,63 @@ cleaning_step = Step.create!(
   step_id: 0,
 )
 
-view_data_slide = Slide.create!(
+cleaning_slide_one = Slide.create!(
   content: cleaning_content_one,
   parent: cleaning_step,
   slide_id: 0,
 )
 
-view_data_slide_two = Slide.create!(
+cleaning_slide_two = Slide.create!(
   content: cleaning_content_two,
   parent: cleaning_step,
   slide_id: 1,
 )
 
+############### Plotting ##############
 
+plotting_content_one = [
+  ['text', "Now we're ready to plot the data"],
+  ['code', 'par(mfrow=c(1,1)) #setting to the default plot param'],
+  ['text', 'We plot on a fresh canvas via plot()'],
+  ['code', "plot(rawFluData$Canada ~ rawFluData$Date, main=\"Flu Trend Compared\", xlab='Time',
+      ylab='Cases / Week', type='l', col='blue') #what happened?"],
+  ['text', 'We add the lines via lines(), so that it draws on top of the alread-plotted canvas.'],
+  ['code', "lines(rawFluData$South.Africa ~ rawFluData$Date,
+      xlab='Time', ylab='Cases / Week', col='green') #what happened?"],
+  ['code', "lines (rawFluData$Austria ~ rawFluData$Date,
+      xlab='Time', ylab='Cases / Week', type='l', col='red') #what happened?"],
+  ['code', 'legend(\'topleft\', c("Canada","Austria", "South Africa"), lty=1, col=c("blue", "red", "green"),
+       bty=\'l\', cex=1.25, box.lwd = 1.2, box.col = "black")'],
+  ]
 
+plotting_content_two = [
+  ['text', "What do we notice here?"],
+  ['text', "The green line (for South Africa) indicates a certain number of missing."],
+  ['text', 'This occurs up to about year 2005'],
+  ['text', 'This could be problematic.'],
+  ['text', 'Could there be more more missing data?'],
+  ['text', "If we ignore the missing data, it'll surely invalidate some of our other analysis."],
+  ['next_steps'],
+]
 
+plotting_step = Step.create!(
+  title: "Plotting",
+  lesson: data_exploration_lesson,
+  step_id: 1,
+)
 
+view_data_slide = Slide.create!(
+  content: plotting_content_one,
+  parent: plotting_step,
+  slide_id: 0,
+)
 
+view_data_slide_two = Slide.create!(
+  content: plotting_content_two,
+  parent: plotting_step,
+  slide_id: 1,
+)
 
-
-
+################################################################################
+##############  Missing Data  ##################################################
+################################################################################
