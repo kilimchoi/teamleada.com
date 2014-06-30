@@ -382,7 +382,7 @@ time_series_differencing_content_three = [
 ]
 
 time_series_differencing_step = Step.create!(
-  title: "differencing",
+  title: "Differencing",
   lesson: time_series_data_lesson,
   step_id: 1,
 )
@@ -536,6 +536,52 @@ arime_prediction_slide = Slide.create!(
 )
 
 ############### Predicting via ARIMA ##############
+
+arime_evaluation_content_one = [
+  ['text', "par(mfrow=c(2, 1))"],
+  ['code', "Let's look at the ACF of the RESIDUALS of the model (rememver that we already looked at the ACF of the raw data)."],
+  ['code', 'acf(flu_arima$resid, lag.max = 160, main ="ACF of fitted residuals")'],
+  ['code', 'pacf(flu_arima$resid, lag.max = 160, main = "PACF of fitted residuals")'],
+  ['code', 'tsdiag(flu_arima)'],
+  ['text', "Now we'll construct new x-y series to vizualize."],
+  ['text', "Note that we will generate the x-variables via seq() function."],
+]
+
+arime_evaluation_step = Step.create!(
+  title: "Evaluation",
+  lesson: arima_data_lesson,
+  step_id: 2,
+)
+
+arime_evaluation_slide = Slide.create!(
+  content: arime_evaluation_content_one,
+  parent: arime_evaluation_step,
+  slide_id: 0,
+)
+
+################################################################################
+##############  Construct ARIMA model  #########################################
+################################################################################
+
+
+conclusion_content = [
+  ['text', "Write some conclusion breh"],
+  ['text', ""],
+  ['lesson_links', nil],
+]
+
+conclusion_lesson = Lesson.create!(
+  title: "Conclusion",
+  project: project,
+  lesson_id: 5,
+)
+
+conclusion_slide = Slide.create!(
+  content: conclusion_content,
+  parent: conclusion_lesson,
+  slide_id: 0,
+)
+
 
 ##############
 ######## SPARE ###
