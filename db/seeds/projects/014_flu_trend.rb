@@ -302,9 +302,9 @@ time_series_setup_content_two = [
   ['text', "Additionally we'll be using the acf() function to evaluate the data."],
   ['text', "acf() returns the estimates for auto-covariance function, which can be plotted to evaluate the data."],
   ['code', 'help(acf)'],
-  ['text', 'The idea behind differencing is to reduce the data to white-noise, which should have acf below the dotted blue line that it plots.'],
-  ['text', "In the next section, we'll be plotting the acf of the differenced data."],
-  ['text', "Don't forget to check whether the acf follows the guildines we listed here."],
+  ['text', 'The idea behind differencing is to reduce the data to white-noise, which should have ACF below the dotted blue line that it plots.'],
+  ['text', "In the next section, we'll be plotting the ACF of the differenced data."],
+  ['text', "Don't forget to check whether the ACF follows the guildines we listed here."],
 
 ]
 
@@ -345,6 +345,67 @@ time_series_setup_slide_three = Slide.create!(
   parent: time_series_setup_step,
   slide_id: 2,
 )
+
+############### Diferencing ##############
+
+time_series_differencing_content_one = [
+  ['text', "First we'll do a lag=52 differencing. This means we're minusing each data point by the the data point from 52 observations ago."],
+  ['text', 'In our context, this means subtracting by the data from 52 weeks ago, i.e. 1 year'],
+  ['text', 'This stems from assumning that flu has a seasonality of one year.'],
+  ['text', 'Does that sound about right? Does flu trend have a one-year cycle?'],
+  ['code', 'cleanedFluData$diff_52 = c(diff(cleanedFluData$World, lag=52), rep(0,52))'],
+  ['code', "plot (cleanedFluData$diff_52 ~ cleanedFluData$Date, main=\"Once Differenced Flu Data lag=52\", xlab='Time', ylab='Cases / Week', type='l', col='brown')"],
+  ['code', "acf(cleanedFluData$diff_52, lag.max = 160, main=\"ACF for lag=(52)\", col='brown')"],
+]
+
+time_series_differencing_content_two = [
+  ['text', 'In this plot, we first difference by 52, then we difference by the the immediately previous observation.'],
+  ['code', 'cleanedFluData$diff_52.1 = c(diff(diff(cleanedFluData$World, lag=52)), rep(0,53))'],
+  ['code', "plot (cleanedFluData$diff_52.1 ~ cleanedFluData$Date, main=\"Twice Differenced Flu Data lag=(52,1)\", xlab='Time', ylab='Cases / Week', type='l', col='gray')"],
+  ['text', "acf(cleanedFluData$diff_52.1, lag.max = 160, main=\"ACF for lag=(51, 1)\", col='gray')"],
+  ['text', 'What about simply differencing by the immediately previously observation?'],
+  ['code', 'cleanedFluData$diff_1 = c(diff(cleanedFluData$World), rep(0,1))'],
+  ['code', "plot (cleanedFluData$diff_1 ~ cleanedFluData$Date, main=\"Once Differenced Flu Data lag=1\", xlab='Time', ylab='Cases / Week', type='l', col='orange')"],
+  ['code', "acf(cleanedFluData$diff_1, lag.max = 160, main=\"ACF for lag=(1)\", col='orange')"],
+]
+
+time_series_differencing_content_three = [
+  ['text', "Lastly we'll try differencing twice, both with a lag of 1 (meaning immeditely previously observation)."],
+  ['text', "From experience, this differencing method seems to always work out."],
+  ['code', 'cleanedFluData$diff_1.1 = c(diff(diff(cleanedFluData$World)), rep(0,2))'],
+  ['code', "plot (cleanedFluData$diff_1.1 ~ cleanedFluData$Date, main=\"Twice Differenced Flu Data lag=(1,1)\", xlab='Time', ylab='Cases / Week', type='l', col='purple')"],
+  ['code', 'acf(cleanedFluData$diff_1.1, lag.max = 160, main="ACF for lag=(1, 1)", col=\'purple\')'],
+  ['text', 'Now Let\'s compare the plot. Use Zoom to get a better view.'],
+  ['text', 'Remember what we said about ACF and the blue dotted lines?'],
+  ['text', 'Which method seems to work best?'], #@TODO Include img here
+  ['next_steps', '']
+]
+
+time_series_differencing_step = Step.create!(
+  title: "differencing",
+  lesson: time_series_data_lesson,
+  step_id: 1,
+)
+
+time_series_differencing_slide = Slide.create!(
+  content: time_series_differencing_content_one,
+  parent: time_series_differencing_step,
+  slide_id: 0,
+)
+
+time_series_differencing_slide_two = Slide.create!(
+  content: time_series_differencing_content_two,
+  parent: time_series_differencing_step,
+  slide_id: 1,
+)
+
+time_series_differencing_slide_three = Slide.create!(
+  content: time_series_differencing_content_three,
+  parent: time_series_differencing_step,
+  slide_id: 2,
+)
+
+############### Diferencing ##############
 
 ##############
 ######## SPARE ###
