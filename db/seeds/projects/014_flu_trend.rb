@@ -457,8 +457,7 @@ arima_data_slide = Slide.create!(
 
 time_series_differencing_content_one = [
   ['text', "Reset plotting area, in case your plotting area is cluttered."],
-  ['code', "flu_arima = arima(cleanedFluData$World, seasonal = list(order = c(0, 2, 2), period = 52),
-                    order = c(2,0,0), method=\"CSS-ML\") # c(0,0,2)"],
+  ['code', "flu_arima = arima(cleanedFluData$World, seasonal = list(order = c(0, 2, 2), period = 52), order = c(2,0,0), method=\"CSS-ML\") # c(0,0,2)"],
   ['code', 'flu_arima$aic'],
   ['next_steps', ''],
 ]
@@ -484,7 +483,7 @@ arime_prediction_content_one = [
   ['code', 'class(flu_fcast) #Check what is returned'],
   ['code', 'flu_fcast'],
   ['text', "Now we'll construct new x-y series to vizualize."],
-  ['text', "Note that we generate the x-variables via seq() function."],
+  ['text', "Note that we will generate the x-variables via seq() function."],
 ]
 
 arime_prediction_content_two = [
@@ -509,8 +508,8 @@ arime_prediction_content_three = [
   ['text', 'How does the prediction look?'],
   ['text', 'The blue lines represent the relatively possible outcomes (SE lines). You might have noticed that the SE lines expand extremely rapidly'],
   ['text',' This tells us that the model loses a lot of predictive confidence relatively fast.'],
+  ['next_steps', ''],
 ]
-
 
 arime_prediction_step = Step.create!(
   title: "Prediction",
