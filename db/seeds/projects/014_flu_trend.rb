@@ -225,4 +225,79 @@ analysis_missing_slide_three = Slide.create!(
   slide_id: 2,
 )
 
+############### Removal (Missing Data) ##############
+
+remove_missing_content_one = [
+  ['text', "We do a vector operation to only retain entries where the Date variable is newer than '2005-12-31'."],
+  ['text', "Note that we convert '2005-12-13' via as.Date to achieve the desired conversion."],
+  ['code', "cleanedFluData = rawFluData[rawFluData$Date > as.Date('2005-12-31'),]"],
+  ['text', "We now have a set of workable data."],
+  ['text', "Note that though the data is \"complete\", we're still not sure about it's underlying integrity;"],
+  ['text', "there still might have been error in data entry and collection."],
+]
+
+remove_missing_content_two = [
+  ['text', "Since we have 28 differet countries, let's take an average and name it the \"World\"."],
+  ['code', 'cleanedFluData$World = rowMeans(cleanedFluData[, -which(names(cleanedFluData) == "Date")], na.rm=TRUE)'],
+  ['text', 'Now let\'s plot the averaged "World" data.'],
+  ['code', "plot (cleanedFluData$World ~ cleanedFluData$Date, main=\"Aggregated Flu Trend\", xlab='Time',
+      ylab='Cases / Week', type='l', col='blue')"],
+  ['text', 'This looks like a decent piece of data to fit a time series model.'],
+  ['text', 'The first few thing we have to do is removing seasonality and de-trending in the data.'],
+  ['text', "There doesn't actually seem to be any strong trend with the data (thank goodness), so we'll concentrate on removing seasonality."],
+  ['next_steps', ''],
+]
+
+remove_missing_step = Step.create!(
+  title: "Analyze Missing Data",
+  lesson: missing_data_lesson,
+  step_id: 1,
+)
+
+remove_missing_slide_one = Slide.create!(
+  content: remove_missing_content_one,
+  parent: remove_missing_step,
+  slide_id: 0,
+)
+
+remove_missing_slide_two = Slide.create!(
+  content: remove_missing_content_two,
+  parent: remove_missing_step,
+  slide_id: 1,
+)
+
+################################################################################
+##############  Time Series Model  #############################################
+################################################################################
+
+
+##############
+######## SPARE ###
+########
+
+remove_missing_content_three = [
+  ['text', ''],
+  ['text', ''],
+  ['text', ''],
+  ['text', ''],
+  ['text', ''],
+  ['text', ''],
+  ['text', ''],
+  ['text', ''],
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
