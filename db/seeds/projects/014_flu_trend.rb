@@ -274,7 +274,6 @@ quiz = Quiz.create!(
   answer:"2",
 )
 
-
 remove_missing_step = Step.create!(
   title: "Remove Missing Data",
   lesson: missing_data_lesson,
@@ -317,21 +316,23 @@ time_series_data_slide = Slide.create!(
 ############### Set up ##############
 
 time_series_setup_content_one = [
-  ['text', "We remove seasonality and trend, we're going to rely on Differencing."],
+  ['text', "In order to remove seasonality and trend, we're going to rely on Differencing."],
   ['text', "In R, we do differcing using diff() function."],
   ['code', 'help(diff)'],
   ['code', 'diff(c(1,2,5,10))'],
-  ['text', "Try constructing a few other vectors and differencing."],
+  ['text', "How many values remain after the previous diff()?"],
+  ['quiz', 'ft_3'],
+  ['text', "Try constructing a few other vectors and apply differencing."],
 ]
 
 time_series_setup_content_two = [
   ['text', "Additionally we'll be using the acf() function to evaluate the data."],
   ['text', "acf() returns the estimates for auto-covariance function, which can be plotted to evaluate the data."],
   ['code', 'help(acf)'],
-  ['text', 'The idea behind differencing is to reduce the data to white-noise, which should have ACF below the dotted blue line that it plots.'],
+  ['text', 'The idea behind differencing is to reduce the data to white-noise, which should have ACF below the dotted blue line that it plots (you\'ll see this soon).'],
+  ['text', 'Moreover, your ACF should also lack pattern and appear random.'],
   ['text', "In the next section, we'll be plotting the ACF of the differenced data."],
   ['text', "Don't forget to check whether the ACF follows the guildines we listed here."],
-
 ]
 
 time_series_setup_content_three = [
@@ -343,10 +344,15 @@ time_series_setup_content_three = [
   ['text', "Since we're dividing the area into 8, the plots will be smaller. \"Zoom\" to open a larager view."],
   ['text', "WARN: When plotting, you might get a 'Error in plot.new() : figure margins too large' message."],
   ['text', "This generally means the plotting area is too small for the plot you're making (esp since we just divided the plot area into 8 pieces)."],
-  ['text', "If you're working in Rstudio, shrink the environment/history view on the top-right corner of your IDE. "],
+  ['text', "If you're working in Rstudio, shrink the environment/history view on the top-right corner of your IDE."],
   ['text', "This will give the plotting area more room to work."],
   ['next_steps', '']
 ]
+
+quiz = Quiz.create!(
+  quiz_id: "ft_3",
+  answer: "3",
+)
 
 time_series_setup_step = Step.create!(
   title: "Setup",
@@ -376,32 +382,35 @@ time_series_setup_slide_three = Slide.create!(
 
 time_series_differencing_content_one = [
   ['text', "First we'll do a lag=52 differencing. This means we're minusing each data point by the the data point from 52 observations ago."],
-  ['text', 'In our context, this means subtracting by the data from 52 weeks ago, i.e. 1 year'],
-  ['text', 'This stems from assumning that flu has a seasonality of one year.'],
+  ['text', 'In our context, this means subtracting by the data from 52 weeks (i.e. 1 year) ago.'],
+  ['text', 'This stems from assuming that flu has a seasonality of one year.'],
   ['text', 'Does that sound about right? Does flu trend have a one-year cycle?'],
   ['code', 'cleanedFluData$diff_52 = c(diff(cleanedFluData$World, lag=52), rep(0,52))'],
   ['code', "plot (cleanedFluData$diff_52 ~ cleanedFluData$Date, main=\"Once Differenced Flu Data lag=52\", xlab='Time', ylab='Cases / Week', type='l', col='brown')"],
   ['code', "acf(cleanedFluData$diff_52, lag.max = 160, main=\"ACF for lag=(52)\", col='brown')"],
+  ['text', "Also, we padded the differenced data via rep() method (see help(rep))."],
+  ['text', "Remember earlier when you differenced; differencing shaves away one data point each time."],
+  ['text', "Let's add the rest of the plots so we can compare."],
 ]
 
 time_series_differencing_content_two = [
-  ['text', 'In this plot, we first difference by 52, then we difference by the the immediately previous observation.'],
+  ['text', 'In this plot, we first difference by 52, then we difference by the the immediately previous observation. This is known as twice differencing.'],
   ['code', 'cleanedFluData$diff_52.1 = c(diff(diff(cleanedFluData$World, lag=52)), rep(0,53))'],
   ['code', "plot (cleanedFluData$diff_52.1 ~ cleanedFluData$Date, main=\"Twice Differenced Flu Data lag=(52,1)\", xlab='Time', ylab='Cases / Week', type='l', col='gray')"],
-  ['text', "acf(cleanedFluData$diff_52.1, lag.max = 160, main=\"ACF for lag=(51, 1)\", col='gray')"],
-  ['text', 'What about simply differencing by the immediately previously observation?'],
+  ['code', "acf(cleanedFluData$diff_52.1, lag.max = 160, main=\"ACF for lag=(51, 1)\", col='gray')"],
+  ['text', 'What about simply differencing once by the immediately previous observation?'],
   ['code', 'cleanedFluData$diff_1 = c(diff(cleanedFluData$World), rep(0,1))'],
   ['code', "plot (cleanedFluData$diff_1 ~ cleanedFluData$Date, main=\"Once Differenced Flu Data lag=1\", xlab='Time', ylab='Cases / Week', type='l', col='orange')"],
   ['code', "acf(cleanedFluData$diff_1, lag.max = 160, main=\"ACF for lag=(1)\", col='orange')"],
 ]
 
 time_series_differencing_content_three = [
-  ['text', "Lastly we'll try differencing twice, both with a lag of 1 (meaning immeditely previously observation)."],
+  ['text', "Lastly we'll try differencing twice again, but both times with a lag of 1 (meaning immediately previous observations)."],
   ['text', "From experience, this differencing method seems to always work out."],
   ['code', 'cleanedFluData$diff_1.1 = c(diff(diff(cleanedFluData$World)), rep(0,2))'],
   ['code', "plot (cleanedFluData$diff_1.1 ~ cleanedFluData$Date, main=\"Twice Differenced Flu Data lag=(1,1)\", xlab='Time', ylab='Cases / Week', type='l', col='purple')"],
   ['code', 'acf(cleanedFluData$diff_1.1, lag.max = 160, main="ACF for lag=(1, 1)", col=\'purple\')'],
-  ['text', 'Now Let\'s compare the plot. Use Zoom to get a better view.'],
+  ['text', 'Now let\'s compare the plot. Use zoom to get a better view.'],
   ['text', 'Remember what we said about ACF and the blue dotted lines?'],
   ['text', 'Which method seems to work best?'], #@TODO Include img here
   ['next_steps', '']
@@ -435,13 +444,13 @@ time_series_differencing_slide_three = Slide.create!(
 
 time_series_differencing_content_one = [
   ['text', "Reset plotting area, in case your plotting area is cluttered."],
-  ['text', "You don't have to do this everytime, but it makes following the post easier."],
+  ['text', "You don't have to do this everytime, but it makes following along easier."],
   ['code', 'par(mfrow=c(1, 1))'],
   ['code', 'plot.new()'],
   ['code', 'par(mfrow=c(2, 1)) #set to 2-by-1'],
   ['code', "acf(cleanedFluData$diff_1.1, lag.max = 160, main=\"ACF Lag=(1,1)\")"],
   ['code', "pacf(cleanedFluData$diff_1.1, lag.max = 160, main=\"PACF (Partial ACF) Lag=(1,1)\")"],
-  ['text', ''], #@TODO EXPLAIN
+  ['missing_to_do', ''], #@TODO EXPLAIN
   ['next_steps', ''],
 ]
 
