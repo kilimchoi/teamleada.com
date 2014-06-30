@@ -422,7 +422,7 @@ time_series_differencing_content_one = [
 time_series_differencing_step = Step.create!(
   title: "Final ACF Analysis",
   lesson: time_series_data_lesson,
-  step_id: 3,
+  step_id: 2,
 )
 
 time_series_differencing_slide = Slide.create!(
@@ -430,6 +430,113 @@ time_series_differencing_slide = Slide.create!(
   parent: time_series_differencing_step,
   slide_id: 0,
 )
+
+################################################################################
+##############  Construct ARIMA model  #########################################
+################################################################################
+
+arima_data_content = [
+  ['text', "Now we're ready to fit a time series model, specifically ARIMA (Autoregressive Integrated Moving Average)."],
+  ['text', ""],
+  ['lesson_links', nil],
+]
+
+arima_data_lesson = Lesson.create!(
+  title: "ARIMA Model",
+  project: project,
+  lesson_id: 4,
+)
+
+arima_data_slide = Slide.create!(
+  content: arima_data_content,
+  parent: arima_data_lesson,
+  slide_id: 0,
+)
+
+############### Building ARIMA ##############
+
+time_series_differencing_content_one = [
+  ['text', "Reset plotting area, in case your plotting area is cluttered."],
+  ['code', "flu_arima = arima(cleanedFluData$World, seasonal = list(order = c(0, 2, 2), period = 52),
+                    order = c(2,0,0), method=\"CSS-ML\") # c(0,0,2)"],
+  ['code', 'flu_arima$aic'],
+  ['next_steps', ''],
+]
+
+time_series_differencing_step = Step.create!(
+  title: "Build",
+  lesson: arima_data_lesson,
+  step_id: 0,
+)
+
+time_series_differencing_slide = Slide.create!(
+  content: time_series_differencing_content_one,
+  parent: time_series_differencing_step,
+  slide_id: 0,
+)
+
+############### Predicting via ARIMA ##############
+
+arime_prediction_content_one = [
+  ['text', "Now that the model is built, we'll ask it to predict the trend over the next 104 periods (2 years)"],
+  ['code', "ahead=104 #52 weeks"],
+  ['code', 'flu_fcast = predict(flu_arima, n.ahead = ahead)'],
+  ['code', 'class(flu_fcast) #Check what is returned'],
+  ['code', 'flu_fcast'],
+  ['text', "Now we'll construct new x-y series to vizualize."],
+  ['text', "Note that we generate the x-variables via seq() function."],
+]
+
+arime_prediction_content_two = [
+  ['text', "length.out=ahead means to generate up to ahead variable (which we set to be 104 ahead). by='1 week' specifis that we want to increment by one week at a time."],
+  ['code', 'newx = c(rev(seq(cleanedFluData$Date[1], length.out=ahead, by="1 week")), cleanedFluData$Date)'],
+  ['text', 'We simply append the forecast data for the new y.'],
+  ['code', 'newy = c(flu_fcast$pred, cleanedFluData$World)'],
+  ['text', 'We then generate raw plot.'],
+  ['code', 'par(mfrow=c(1, 1))'],
+  ['code', 'plot.new()'],
+  ['code', 'plot(newx, newy, type = "l", xlab = "weeks", ylab = "values", col=\'brown\',
+     main = "World Flu Trend Plot including the 52-week forecast")'],
+]
+
+arime_prediction_content_three = [
+  ['text', "Plot over the old plot for the new data point to make it easier to see."],
+  ['code', 'points(newx[1:ahead], flu_fcast$pred, col = "red", type = "l", lwd=5)'],
+  ['text', 'We simply append the forecast data for the new y.'],
+  ['text', 'Add in the Standard Error curve.'],
+  ['code', 'points(newx[1:ahead], rev(flu_fcast$pred - 2*flu_fcast$se), col = "blue", type = "l", lwd=3)'],
+  ['code', 'points(newx[1:ahead], rev(flu_fcast$pred + 2*flu_fcast$se), col = "blue", type = "l", lwd=3)'],
+  ['text', 'How does the prediction look?'],
+  ['text', 'The blue lines represent the relatively possible outcomes (SE lines). You might have noticed that the SE lines expand extremely rapidly'],
+  ['text',' This tells us that the model loses a lot of predictive confidence relatively fast.'],
+]
+
+
+arime_prediction_step = Step.create!(
+  title: "Prediction",
+  lesson: arima_data_lesson,
+  step_id: 1,
+)
+
+arime_prediction_slide = Slide.create!(
+  content: arime_prediction_content_one,
+  parent: arime_prediction_step,
+  slide_id: 0,
+)
+
+arime_prediction_slide = Slide.create!(
+  content: arime_prediction_content_two,
+  parent: arime_prediction_step,
+  slide_id: 1,
+)
+
+arime_prediction_slide = Slide.create!(
+  content: arime_prediction_content_three,
+  parent: arime_prediction_step,
+  slide_id: 2,
+)
+
+############### Predicting via ARIMA ##############
 
 ##############
 ######## SPARE ###
