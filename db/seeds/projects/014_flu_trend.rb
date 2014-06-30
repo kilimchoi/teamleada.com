@@ -149,3 +149,80 @@ view_data_slide_two = Slide.create!(
 ################################################################################
 ##############  Missing Data  ##################################################
 ################################################################################
+
+missing_data_content = [
+  ['text', "Let's Analyze the missing data count."],
+  ['lesson_links', nil],
+]
+
+missing_data_lesson = Lesson.create!(
+  title: "Missing Data",
+  project: project,
+  lesson_id: 2,
+)
+
+missing_data_slide = Slide.create!(
+  content: missing_data_content,
+  parent: missing_data_lesson,
+  slide_id: 0,
+)
+
+############### Analysis (Missing Data) ##############
+
+analysis_missing_content_one = [
+  ['text', "Let's plot the number of missing counrtries for each year."],
+  ['text', "We'll use the apply() to apply a function (which we will explain in a bit)"],
+  ['text', "We use the 'MARGIN' variable to indicate that we want to apply across the rows of our Data Frame."],
+  ['text', "checkout help(apply) for more info."],
+  ['text', "The function we apply is (we don't give it a name, making it an anonymous function):"],
+  ['code', "function(x) {
+     return (sum(is.na(x)))
+}"],
+  ]
+
+analysis_missing_content_two = [
+  ['text', "The previous anonymous function accepts an x (in this case a row in the form of a vector), which we feed into is.na()."],
+  ['text', "is.na(x) will convert the given row into a vector of True/Fase depending on if the value is NA."],
+  ['text', 'We finally call sum() on the True/False vector where True/False is auto-converted to 1/0 and summed to get a number.'],
+  ['text', 'This number represents the total number of NA entries across a row.'],
+  ['text', 'We now have our missing entries per year (per row) across countries.'],
+  ['code', "missingCount = apply(rawFluData, MARGIN=1, function(x){return (sum(is.na(x)))})"],
+]
+
+analysis_missing_content_three = [
+  ['text', "We then plot it across the years"],
+  ['code', "plot(missingCount ~ rawFluData$Date, type='h',
+    main='Missing Data in Flu Trend (28 Total)'],
+    xlab='Date', ylab='Missing Countries', col='red')"],
+  ['text', 'It looks like there was quite a bit of data missing prior to 2006.'],
+  ['text', 'In fact prior to 2004, only a few countries had flu data.'],
+  ['text', 'We can either choose a proxy to fill the missing data, or choose toignore it.'],
+  ['text', "For our analysis we'll ignore/remove data entries prior to 2006."],
+  ['next_steps',''],
+]
+
+analysis_missing_step = Step.create!(
+  title: "Analyze Missing Data",
+  lesson: missing_data_lesson,
+  step_id: 0,
+)
+
+analysis_missing_slide_one = Slide.create!(
+  content: analysis_missing_content_one,
+  parent: analysis_missing_step,
+  slide_id: 0,
+)
+
+analysis_missing_slide_two = Slide.create!(
+  content: analysis_missing_content_two,
+  parent: analysis_missing_step,
+  slide_id: 1,
+)
+
+analysis_missing_slide_three = Slide.create!(
+  content: analysis_missing_content_three,
+  parent: analysis_missing_step,
+  slide_id: 2,
+)
+
+
