@@ -270,7 +270,82 @@ remove_missing_slide_two = Slide.create!(
 ################################################################################
 ##############  Time Series Model  #############################################
 ################################################################################
+time_series_data_content = [
+  ['text', "The onverall concept behind time series model involves removing trend and seasonality (effectively reducing it to white noise.)"],
+  ['text', "Once you achieve that, you can fit a time series model to help you make predictions."],
+  ['lesson_links', nil],
+]
 
+time_series_data_lesson = Lesson.create!(
+  title: "Time Series Model",
+  project: project,
+  lesson_id: 2,
+)
+
+time_series_data_slide = Slide.create!(
+  content: time_series_data_content,
+  parent: time_series_data_lesson,
+  slide_id: 0,
+)
+
+############### Set up ##############
+
+time_series_setup_content_one = [
+  ['text', "We remove seasonality and trend, we're going to rely on Differencing."],
+  ['text', "In R, we do differcing using diff() function."],
+  ['code', 'help(diff)'],
+  ['code', 'diff(c(1,2,5,10))'],
+  ['text', "Try constructing a few other vectors and differencing."],
+  ]
+
+time_series_setup_content_two = [
+  ['text', "Additionally we'll be using the acf() function to evaluate the data."],
+  ['text', "acf() returns the estimates for auto-covariance function, which can be plotted to evaluate the data."],
+  ['code', 'help(acf)'],
+  ['text', 'The idea behind differencing is to reduce the data to white-noise, which should have acf below the dotted blue line that it plots.'],
+  ['text', "In the next section, we'll be plotting the acf of the differenced data."],
+  ['text', "Don't forget to check whether the acf follows the guildines we listed here."],
+
+]
+
+time_series_setup_content_three = [
+  ['text', "Now let's setup R to split the plotting area to 4 by 2 (4 rows, 2 column) in case your plots are cluttered."],
+  ['code', 'par(mfrow=c(4, 2))'],
+  ['text', 'We then create a blank canvas via the following.'],
+  ['text', 'plot.new()'],
+  ['text', 'This will enable us to do side-by-side comparison.'],
+  ['text', "Since we're dividing the area into 8, the plots will be smaller. Use \"Zoom\" to open a larager view."],
+  ['text', "WARN: When plotting below, you might get a 'Error in plot.new() : figure margins too large' message."],
+  ['text', "This generally means the plotting area is too small for the plot you're making (esp since we just divided the plot area into 8 pieces)."],
+  ['text', "If you're working in Rstudio, shrink the environment/history tab/block on the top-right corner of your IDE. "],
+  ['text', "This will give the plotting area more rom to work it."],
+]
+
+"We'll also reset the plotting area just in case your plots are cluttered."
+
+time_series_setup_step = Step.create!(
+  title: "Setup",
+  lesson: data_exploration_lesson,
+  step_id: 0,
+)
+
+time_series_setup_slide = Slide.create!(
+  content: time_series_setup_content_one,
+  parent: time_series_setup_step,
+  slide_id: 0,
+)
+
+time_series_setup_slide_two = Slide.create!(
+  content: time_series_setup_content_two,
+  parent: time_series_setup_slide,
+  slide_id: 1,
+)
+
+time_series_setup_slide_three = Slide.create!(
+  content: time_series_setup_content_three,
+  parent: time_series_setup_slide,
+  slide_id: 2,
+)
 
 ##############
 ######## SPARE ###
