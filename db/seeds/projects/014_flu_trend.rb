@@ -538,13 +538,14 @@ arime_prediction_slide = Slide.create!(
 ############### Predicting via ARIMA ##############
 
 arime_evaluation_content_one = [
-  ['text', "par(mfrow=c(2, 1))"],
-  ['code', "Let's look at the ACF of the RESIDUALS of the model (rememver that we already looked at the ACF of the raw data)."],
+  ['code', "par(mfrow=c(2, 1))"],
+  ['text', "Let's look at the ACF of the RESIDUALS of the model (rememver that we already looked at the ACF of the raw data)."],
   ['code', 'acf(flu_arima$resid, lag.max = 160, main ="ACF of fitted residuals")'],
   ['code', 'pacf(flu_arima$resid, lag.max = 160, main = "PACF of fitted residuals")'],
   ['code', 'tsdiag(flu_arima)'],
   ['text', "Now we'll construct new x-y series to vizualize."],
   ['text', "Note that we will generate the x-variables via seq() function."],
+  ['next_steps', ''],
 ]
 
 arime_evaluation_step = Step.create!(
@@ -567,7 +568,8 @@ arime_evaluation_slide = Slide.create!(
 conclusion_content = [
   ['text', "Write some conclusion breh"],
   ['text', ""],
-  ['lesson_links', nil],
+  ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
+
 ]
 
 conclusion_lesson = Lesson.create!(
