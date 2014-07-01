@@ -416,11 +416,33 @@ class User < ActiveRecord::Base
         return registered_user
       else
         byebug
+        phone_num = auth.extra.raw_info.phoneNumbers.values[1][0].phoneNumber
+
         user = User.new(first_name: auth.info.first_name,
-          last_name: auth.info.last_name,
-          linkedin_id: auth.uid,
-          email:auth.info.email,
-          password:Devise.friendly_token[0,20],)
+          last_name:            auth.info.last_name,
+          linkedin_id:          auth.uid,
+          email:                auth.info.email,
+          location:             auth.info.location.name,
+          country_code:         auth.extra.raw_info.location.country.code,
+          bio:                  auth.extra.raw_info.summary,
+          image:                auth.extra.raw_info.pictureUrls.values[1][0],
+          nickname:             auth.info.nickname,
+          phone:                auth.extra.raw_info.phoneNumbers.values[1][0].phoneNumber,
+          headline:             auth.info.headline,
+          indutry:              auth.info.industry,
+          public_prof_url:      auth.info.urls.public_profile,
+
+          date_of_birth:        Date.new(auth.extra.raw_info.dateOfBirth.year, auth.extra.raw_info.dateOfBirth.month, auth.extra.raw_info.dateOfBirth.day),
+          school_name:          auth.extra.raw_info.educations.values[1][0].schoolName,
+          grad_year:            auth.extra.raw_info.educations.values[1][0].endDate.year,
+          interests:            auth.extra.raw_info.interests,
+          job_bookmarks_count:  auth.extra.raw_info.jobBookmarks._total,
+          job_total_count:      auth.extra.raw_info.positions._total,
+          publications_count:   auth.extra.raw_info.publications._total,
+          recom_count:          auth.extra.raw_info.recommendationsReceived._total,
+          skills_count:         auth.extra.raw_info.skills._total,
+
+          password:        Devise.friendly_token[0,20],)
         user.skip_confirmation!
         user.save
         return user
