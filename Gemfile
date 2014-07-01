@@ -28,6 +28,7 @@ gem 'will_paginate', '~> 3.0'
 gem 'best_in_place', github: 'negativetwelve/best_in_place'
 gem 'impressionist', github: 'negativetwelve/impressionist'
 gem 'obfuscate_id', github: 'negativetwelve/obfuscate_id'
+gem 'rails4-autocomplete', '1.1.0'
 
 # Code Submissions
 gem 'ace-rails-ap'

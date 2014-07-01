@@ -267,6 +267,8 @@ GEM
       rails (>= 4.0.0)
     rails-reveal-js (2.6.1.2)
       railties (~> 4.0)
+    rails4-autocomplete (1.1.0)
+      rails (>= 3.0)
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
@@ -419,6 +421,7 @@ DEPENDENCIES
   rails (= 4.1.0)
   rails-rename (~> 1.0.0)
   rails-reveal-js (~> 2.6.1.2)
+  rails4-autocomplete (= 1.1.0)
   rails_12factor
   rails_best_practices (~> 1.15.1)
   rspec-rails (~> 2.14.1)
