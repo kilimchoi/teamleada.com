@@ -39,7 +39,8 @@ TeamLeada::Application.routes.draw do
   end
 
   # Messages
-  match 'messages', to: 'conversations#index', as: :conversations, via: :get
+  resources :conversations, path: :messages, only: [:show, :index] do
+  end
 
   resources :interested_users, only: [:create]
 
