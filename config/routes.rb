@@ -42,6 +42,7 @@ TeamLeada::Application.routes.draw do
   match 'messages', to: 'messages#create', as: 'messages', via: :post
   match 'conversations', to: 'conversations#create', as: 'create_conversation', via: :post
   resources :conversations, path: :messages, only: [:show, :index, :new] do
+    get :autocomplete_user_name, on: :collection
   end
 
   resources :interested_users, only: [:create]
