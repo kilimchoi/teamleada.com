@@ -8,12 +8,11 @@ class Conversation < ActiveRecord::Base
 
   accepts_nested_attributes_for :messages
 
-  before_save :update_last_message_sent_at
-
   default_scope -> { order('last_message_sent_at DESC') }
 
   def update_last_message_sent_at
     self.last_message_sent_at = last_message.created_at
+    self.save
   end
 
   def last_message
