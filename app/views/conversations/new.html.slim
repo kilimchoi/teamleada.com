@@ -14,7 +14,7 @@
               = simple_form_for @conversation, url: :create_conversation do |f|
                 .content-header-to-field
                   .controls
-                    = autocomplete_field_tag :recipients, '', autocomplete_user_name_conversations_path, placeholder: "To:", class: "form-control", id_element: '#some-element', multiple: true, data: { 'auto-focus' => true, 'delimiter' => ', ' }
+                    = autocomplete_field_tag :recipients, '', autocomplete_user_name_conversations_path, placeholder: "To:", class: "form-control", multiple: true, id_element: '', update_elements: {}, data: { 'auto-focus' => true, 'delimiter' => ', ' }
                 .content-body
                   = f.simple_fields_for :messages do |m|
                     = m.input :content, input_html: { rows: 5 }, label: false, placeholder: "Leave a message"
