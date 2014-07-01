@@ -5,4 +5,7 @@ class ConversationsController < ApplicationController
     @conversations = current_user.conversations
   end
 
+  def show
+  end
+
 end
