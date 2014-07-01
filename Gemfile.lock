@@ -391,7 +391,7 @@ DEPENDENCIES
   binding_of_caller (~> 0.7.2)
   bootstrap-sass (~> 3.1.1)
   bullet (~> 4.8.0)
-  byebug
+  byebug (= 3.1.2)
   cancancan (~> 1.7)
   coffee-rails (~> 4.0.0)
   commands (~> 0.2.1)
