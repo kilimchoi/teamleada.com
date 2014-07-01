@@ -404,7 +404,7 @@ class User < ActiveRecord::Base
   #########################################################################################
 
   def self.connect_to_linkedin(auth, signed_in_resource=nil)
-    byebug
+    #byebug
     if auth.provider == 'linkedin'
       user = User.find_by(linkedin_id: auth.uid)
     end
@@ -415,7 +415,6 @@ class User < ActiveRecord::Base
       if registered_user
         return registered_user
       else
-        byebug
         user = User.new(first_name: auth.info.first_name,
           last_name:            auth.info.last_name,
           linkedin_id:          auth.uid,
