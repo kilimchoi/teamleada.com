@@ -416,8 +416,6 @@ class User < ActiveRecord::Base
         return registered_user
       else
         byebug
-        phone_num = auth.extra.raw_info.phoneNumbers.values[1][0].phoneNumber
-
         user = User.new(first_name: auth.info.first_name,
           last_name:            auth.info.last_name,
           linkedin_id:          auth.uid,
