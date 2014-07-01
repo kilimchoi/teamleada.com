@@ -38,8 +38,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable
+  :recoverable, :rememberable, :trackable, :validatable,
+  :omniauthable
 
   # TODO: Remove this and put in a helper class
   include Rails.application.routes.url_helpers
@@ -71,8 +71,8 @@ class User < ActiveRecord::Base
   # Page views
   has_many :impressions
   has_many :profile_views, class_name: Impression,
-                           foreign_key: :impressionable_id,
-                           primary_key: :username
+  foreign_key: :impressionable_id,
+  primary_key: :username
 
   belongs_to :company
 
@@ -107,8 +107,8 @@ class User < ActiveRecord::Base
 
   include PgSearch
   pg_search_scope :search,
-                  against: [[:first_name, 'A'], [:last_name, 'A'], [:email, 'A'], [:username, 'A']],
-                  using: {tsearch: {prefix: true, normalization: 2}}
+  against: [[:first_name, 'A'], [:last_name, 'A'], [:email, 'A'], [:username, 'A']],
+  using: {tsearch: {prefix: true, normalization: 2}}
 
   #########################################################################################
   # Validations
@@ -365,32 +365,6 @@ class User < ActiveRecord::Base
   # Methods
   #########################################################################################
 
-  def self.connect_to_linkedin(auth, signed_in_resource=nil)
-    if auth.provider == 'linkedin'
-      user = User.where(:linkedin_id => auth.uid).first
-    end
-    if user
-      return user
-    else
-      registered_user = User.where(:email => auth.info.email).first
-      if registered_user
-        return registered_user
-      else
-        byebug
-        user = User.create(first_name:auth.info.first_name,
-                            last_name:auth.info.last_name,
-                            linkedin_id:auth.uid,
-                            #provider:auth.provider,
-                            #uid:auth.uid,
-                            email:auth.info.email,
-                            password:Devise.friendly_token[0,20],
-                          )
-        user.skip_confirmation!
-        return user
-      end
-    end
-  end
-
   def generate_new_token
     secret = Devise.friendly_token
     new_token = Devise.token_generator.digest(User, :confirmation_token, secret)
@@ -425,4 +399,32 @@ class User < ActiveRecord::Base
     LessonStatus.where(user: self, lesson_id: lesson.uid, completed: true, project: lesson.project).first_or_create
   end
 
+  #########################################################################################
+  # Static Methods
+  #########################################################################################
+
+  def self.connect_to_linkedin(auth, signed_in_resource=nil)
+    byebug
+    if auth.provider == 'linkedin'
+      user = User.find_by(linkedin_id: auth.uid)
+    end
+    if user
+      return user
+    else
+      registered_user = User.find_by(email: auth.info.email)
+      if registered_user
+        return registered_user
+      else
+        byebug
+        user = User.new(first_name: auth.info.first_name,
+          last_name: auth.info.last_name,
+          linkedin_id: auth.uid,
+          email:auth.info.email,
+          password:Devise.friendly_token[0,20],)
+        user.skip_confirmation!
+        user.save
+        return user
+      end
+    end
+  end
 end
