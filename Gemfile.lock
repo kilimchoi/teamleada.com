@@ -426,9 +426,9 @@ DEPENDENCIES
   lazy_high_charts!
   newrelic_rpm
   nokogiri (= 1.6.1)
+  obfuscate_id!
   omniauth
   omniauth-linkedin
-  obfuscate_id!
   paperclip (~> 4.1)
   pg (= 0.17.1)
   pg_search
