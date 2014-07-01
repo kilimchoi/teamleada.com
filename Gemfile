@@ -3,7 +3,7 @@ ruby '2.1.2'
 
 gem 'rails', '4.1.0'
 
-gem 'byebug'
+gem 'byebug', '3.1.2'
 gem 'nokogiri', '1.6.1'
 gem 'tilt', '1.4.1'
 gem 'sass-rails', '~> 4.0.2'
