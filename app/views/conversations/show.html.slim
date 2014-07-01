@@ -7,5 +7,4 @@
 
       .messages-container
         - @conversation.messages.each do |message|
-          .message-container
-            = message.user.name
+          = render partial: "conversations/user_message", locals: { message: message }
