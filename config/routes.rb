@@ -24,14 +24,13 @@ TeamLeada::Application.routes.draw do
                        sessions: 'sessions',
                        confirmations: 'confirmations',
                        passwords: 'passwords',
-                       omniauth_callbacks: 'omniauth_callbacks' 
+                       omniauth_callbacks: 'omniauth_callbacks'
                      }
-
-  match 'linkedin_confirm', to: "confirmations#linkedin_confirm", as: :linkedin_confirm, via: :patch
 
   devise_scope :user do
     match 'confirm', to: "confirmations#confirm", as: :confirm, via: :patch
-    match 'linkedin_confirm2', to: "confirmations#linkedin_confirm2", as: :linkedin_confirm2, via: :patch
+    match 'linkedin-confirm', to: "confirmations#linkedin_confirm", as: :linkedin_confirm, via: :patch
+    match 'linkedin-confirm', to: "confirmations#show_linkedin_confirm", as: :show_linkedin_confirm, via: :get
   end
 
   match 'settings', to: 'users#edit', as: 'edit_user', via: :get
