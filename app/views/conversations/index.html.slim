@@ -5,8 +5,6 @@
     .col-md-12
       h1.title Messages
 
-      .conversations-container
+      ul.conversations-list
         - @conversations.each do |conversation|
-          .conversation-container
-            h3.title
-              = link_to conversation.title, conversation_path(conversation)
+          = render partial: "conversations/conversation", locals: { conversation: conversation }

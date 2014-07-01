@@ -1,0 +1,10 @@
+li.conversation-item
+  .conversation-container
+    h4.conversation-title
+      = conversation.title
+    ul.conversation-metadata
+      li.last-message-by
+        = link_to conversation.last_message.user.name, user_path(conversation.last_message.user)
+      li.last-message-sent-at
+        = time_ago_in_words(conversation.last_message.updated_at)
+        |  ago
