@@ -2,6 +2,7 @@ users = [
   'mark',
   'brian',
   'tristan',
+  'guang',
 ]
 
 def create_users(usernames)
