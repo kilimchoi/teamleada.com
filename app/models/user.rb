@@ -77,6 +77,7 @@ class User < ActiveRecord::Base
   belongs_to :company
 
   default_scope -> { order(:created_at) }
+  scope :admin, -> { where(role: "admin") }
   # TODO: Add scope for User.with_project_access
 
   validates_format_of :username, :with => /\A[A-Za-z0-9]*\z/
@@ -109,6 +110,10 @@ class User < ActiveRecord::Base
   pg_search_scope :search,
   against: [[:first_name, 'A'], [:last_name, 'A'], [:email, 'A'], [:username, 'A']],
   using: {tsearch: {prefix: true, normalization: 2}}
+
+  def == other_user
+    self.email == other_user.email
+  end
 
   #########################################################################################
   # Validations
@@ -218,6 +223,10 @@ class User < ActiveRecord::Base
     project.total_points <= completed_points(project)
   end
 
+  def has_submitted_all_code_submissions_for_project?(project)
+    project.code_submissions
+  end
+
   def has_invited_friends?
     invites.count > 0
   end
@@ -261,6 +270,14 @@ class User < ActiveRecord::Base
     !ProjectStatus.find_by(user: self, project: project, completed: true).nil?
   end
 
+  def is_missing_code_submission?(project)
+    project.submission_contexts.count != self.code_submissions_for_project(project).count
+  end
+
+  def has_completed_submission?(submission_context)
+    self.code_submissions_for_project(submission_context.project).select{ |code_submission| code_submission.submission_context == submission_context }.count > 0
+  end
+
   def next_lesson_or_step_for_project_path(project)
     next_lesson_or_step = next_lesson_or_step_for_project(project)
     if next_lesson_or_step == false
@@ -278,10 +295,20 @@ class User < ActiveRecord::Base
       if lesson_status.nil?
         return lesson
       end
+      lesson.slides.each do |slide|
+        if slide.has_submission_contexts? && !self.has_completed_submission?(slide.submission_context)
+          return lesson
+        end
+      end
       lesson.steps.each do |step|
         step_status = StepStatus.find_by(user: self, step_id: step.uid, completed: true, project: project)
         if step_status.nil?
           return step
+        end
+        step.slides.each do |slide|
+          if slide.has_submission_contexts? && !self.has_completed_submission?(slide.submission_context)
+            return step
+          end
         end
       end
     end
@@ -302,12 +329,26 @@ class User < ActiveRecord::Base
     project_statuses.where(completed: true).collect{ |project_status| project_status.project }
   end
 
+  def completed_projects_with_submissions
+    project_status_ids = project_statuses.select{ |project_status| project_status.completed && project_status.completed_all_submissions? }
+    project_statuses.where(id: project_status_ids).collect{ |project_status| project_status.project }
+  end
+
   def in_progress_projects
     project_statuses.where(completed: false).collect{ |project_status| project_status.project }
   end
 
   def code_submissions_for_project(project)
     code_submissions.where(project: project)
+  end
+
+  def first_missing_code_submission(project)
+    project.submission_contexts.each do |submission_context|
+      unless self.has_completed_submission? submission_context
+        return submission_context
+      end
+    end
+    false
   end
 
   def completed_points(project)
@@ -322,7 +363,7 @@ class User < ActiveRecord::Base
         total += lesson_status.lesson.points
       end
     end
-    total
+    total + code_submissions_for_project(project).count
   end
 
   def project_progress_percentage(project)
@@ -399,6 +440,16 @@ class User < ActiveRecord::Base
     LessonStatus.where(user: self, lesson_id: lesson.uid, completed: true, project: lesson.project).first_or_create
   end
 
+  # Mailer
+  def publish_evaluations(project, evaluations)
+    evaluations.each do |evaluation|
+      evaluation.visible = true
+      evaluation.save
+    end
+    EvaluationMailer.send_feedback(self, project, evaluations).deliver
+  end
+
+
   #########################################################################################
   # Static Methods
   #########################################################################################
@@ -446,4 +497,5 @@ class User < ActiveRecord::Base
       end
     end
   end
+
 end

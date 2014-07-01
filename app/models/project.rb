@@ -33,6 +33,7 @@ class Project < ActiveRecord::Base
   has_many :transactions, as: :item
   has_many :interested_users, class_name: ProjectInterest
 
+  has_many :submission_contexts
   has_many :code_submissions
   has_many :code_submission_evaluations
 
@@ -100,7 +101,11 @@ class Project < ActiveRecord::Base
         total += step.total_points
       end
     end
-    total
+    total + code_submission_points
+  end
+
+  def code_submission_points
+    submission_contexts.count
   end
 
   def steps

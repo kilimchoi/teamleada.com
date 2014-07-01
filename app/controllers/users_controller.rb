@@ -94,7 +94,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation,
                                  :who_can_see_profile, :who_can_send_friend_requests, :who_can_contact,
                                  :who_can_lookup_using_email, :who_can_lookup_by_name,
-                                 :looking_for_opportunities, :photo,
+                                 :looking_for_opportunities, :photo, :bio,
                                  :resume_file, :who_can_see_resume, {
                                    resumes_attributes: [
                                      :id,

@@ -14,9 +14,9 @@ class ProjectsController < ApplicationController
       @projects = current_user.company.projects
     end
 
-    @data_lessons = @projects.where(category: Project::LESSON, enabled: true)
-    @data_challenges = @projects.where(category: Project::CHALLENGE, enabled: true)
-    @coming_soon = @projects.where(category: Project::COMING_SOON, enabled: true)
+    @data_lessons = @projects.where(category: Project::LESSON, enabled: true).reverse
+    @data_challenges = @projects.where(category: Project::CHALLENGE, enabled: true).reverse
+    @coming_soon = @projects.where(category: Project::COMING_SOON, enabled: true).reverse
 
     @interested_user = InterestedUser.new
     @large_header = true
@@ -88,7 +88,7 @@ class ProjectsController < ApplicationController
       flash[:info] = "Congratulations! You have completed the #{@project.title} project!"
       redirect_to @project
     else
-      flash[:error] = "You have not completed all of the lessons for this project!"
+      flash[:error] = "You have not completed all of the lessons, steps, and code submissions for this project!"
       redirect_to current_user.next_lesson_or_step_for_project_path(@project)
     end
   end

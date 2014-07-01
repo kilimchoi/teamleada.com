@@ -32,6 +32,13 @@
             |  (
             = @user.username
             | )
+          .user-bio.clearfix
+            .user-bio-form
+              .bio-container
+                - if @user == current_user
+                  = best_in_place current_user, :bio, type: :textarea, nil: "Click here to enter a brief bio about yourself!", inner_class: "form-control"
+                - else
+                  = @user.bio
     .row
       .col-md-5
         - if @user == current_user

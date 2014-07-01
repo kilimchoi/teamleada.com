@@ -15,12 +15,15 @@
 class SubmissionContext < ActiveRecord::Base
   self.primary_key = "uid"
 
+  include Rails.application.routes.url_helpers
+
   validates :submission_type, presence: true
   validates :slide_id, presence: true
 
-  before_create :set_uid
+  before_create :set_properties
 
   belongs_to :slide
+  belongs_to :project
 
   CODE = "code" #code snippets
   COMPLETE_CODE = "complete_code" #complete src code for a project 
@@ -28,8 +31,26 @@ class SubmissionContext < ActiveRecord::Base
   PRES_SLIDES_LINK = "presentation_slides_link" #url to the presentation slides
   PRES_VIDEO_LINK = "presentation_vid_linK" #url to the presentation video
 
+  def set_properties
+    self.set_uid
+    self.set_project
+  end
+
   def set_uid
     self.uid = "#{slide.uid}_sc#{submission_context_id}"
+  end
+
+  def set_project
+    self.project_id = self.slide.parent.project.uid
+  end
+
+  def path
+    item = slide.parent
+    if item.is_a? Step
+      project_lesson_step_path(project, item.main_lesson, item)
+    else
+      project_lesson_path(project, item)
+    end
   end
 
 end

@@ -6,14 +6,8 @@
         ' 's projects
 
   .row
-    .col-md-6
+    .col-md-12
       .row
         .col-md-12
-          h3.title Completed Projects
-          = render partial: "users/projects", locals: { user: @user, projects: @user.completed_projects }
-
-    .col-md-6
-      .row
-        .col-md-12
-          h3.title In Progress Projects
-          = render partial: "users/projects", locals: { user: @user, projects: @user.in_progress_projects }
+          h3.title Data Challenge Submission Status
+          = render partial: "users/projects", locals: { user: @user, projects: @user.completed_projects_with_submissions }

@@ -262,7 +262,7 @@ extract_content0 = [
   ['text', 'We already built the modules to help us achieve that!'],
   ['text', 'We first use the "generate_search_url" with some parameter to load a search result url.'],
   ['text', 'Then you can use the "get_listing_urls" function to get individual url.'],
-  ['text', 'Once you have the raw html to a single listing page, the following functinos will come in handy.'],
+  ['text', 'Once you have the raw html to a single listing page, the following functions will come in handy.'],
   ['lesson_links', nil],
 ]
 
