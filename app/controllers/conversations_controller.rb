@@ -1,5 +1,6 @@
 class ConversationsController < ApplicationController
   load_and_authorize_resource
+  autocomplete :user, :name, full: true, display_value: :search_name, extra_data: [:username]
 
   def index
     @conversations = current_user.conversations
@@ -15,6 +16,8 @@ class ConversationsController < ApplicationController
 
   def create
     @conversation = Conversation.new(conversation_params)
+    @conversation.add_users_from_search(params[:recipients])
+    ConversationUser.create(user: current_user, conversation: @conversation, unread: false)
     @conversation.starter = current_user
     if @conversation.save
       redirect_to conversation_path(@conversation)

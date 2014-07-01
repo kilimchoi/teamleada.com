@@ -11,14 +11,14 @@
             = link_to user_path(current_user) do
               = image_tag current_user.profile_photo, class: "message-profile-photo"
           .content-container
-            .content-header-to-field
               = simple_form_for @conversation, url: :create_conversation do |f|
-                .controls
-                  = text_field_tag :recipients, nil, { placeholder: "To:", class: "form-control" }
+                .content-header-to-field
+                  .controls
+                    = autocomplete_field_tag :recipients, '', autocomplete_user_name_conversations_path, { placeholder: "To:", class: "form-control", 'data-delimiter' => ', ', multiple: true }
                 .content-body
                   = f.simple_fields_for :messages do |m|
                     = m.input :content, input_html: { rows: 5 }, label: false, placeholder: "Leave a message"
                     = m.input :user_id, as: :hidden, input_html: { value: current_user.id }
                     = m.input :is_draft, as: :hidden, input_html: { value: false }
-                    .content-form-actions.clearfix
+                .content-form-actions.clearfix
                   = f.submit "Send Message", class: "flat-button float-right"
