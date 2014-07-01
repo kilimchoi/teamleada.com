@@ -428,8 +428,8 @@ ActiveRecord::Schema.define(version: 20140701184558) do
     t.string   "who_can_lookup_by_name"
     t.string   "who_can_see_resume"
     t.boolean  "looking_for_opportunities",    default: false
-    t.string   "location"
     t.text     "bio"
+    t.string   "location"
     t.string   "linkedin_id"
     t.string   "nickname"
     t.string   "image"
@@ -446,8 +446,8 @@ ActiveRecord::Schema.define(version: 20140701184558) do
     t.integer  "publications_count"
     t.integer  "recom_count"
     t.integer  "skills_count"
-    t.string   "country_code"
     t.string   "name"
+    t.string   "country_code"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
