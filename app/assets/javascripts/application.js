@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.all
-//= require autocomplete-rails
 //= require best_in_place
 //= require toastr
 //= require bootstrap
@@ -26,6 +25,7 @@
 //= require ladda.min
 //= require ace/ace
 //= require ace/theme-github
+//= require autocomplete-rails
 
 $(document).ready(function() {
   //load heap data here.
