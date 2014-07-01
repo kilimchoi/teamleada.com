@@ -1,0 +1,11 @@
+= provide(:page_title, @conversation.title)
+
+.container.full-container
+  .row
+    .col-md-12
+      h1.title = @conversation.title
+
+      .messages-container
+        - @conversation.messages.each do |message|
+          .message-container
+            = message.user.name
