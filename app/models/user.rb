@@ -97,6 +97,7 @@ class User < ActiveRecord::Base
   friendly_id :username, use: :finders
 
   before_create :set_defaults
+  before_save :set_name
 
   self.per_page = 50
   SETTINGS_TABS = ['account', 'privacy']
@@ -138,6 +139,10 @@ class User < ActiveRecord::Base
     self.set_privacy_preferences
   end
 
+  def set_name
+    self.name = "#{first_name} #{last_name}"
+  end
+
   def set_dates
     self.updated_password_at = Time.now
   end
@@ -154,12 +159,8 @@ class User < ActiveRecord::Base
   #########################################################################################
   # Attributes
   #########################################################################################
-  def name
-    if first_name && last_name
-      "#{first_name} #{last_name}"
-    else
-      "<full name not entered>"
-    end
+  def search_name
+    "#{name} (#{username})"
   end
 
   def resume
