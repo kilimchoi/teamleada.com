@@ -206,6 +206,8 @@ GEM
     jquery-rails (2.2.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (4.2.1)
+      railties (>= 3.2.16)
     json (1.8.1)
     kramdown (1.0.2)
     liquid (2.5.1)
@@ -410,6 +412,7 @@ DEPENDENCIES
   impressionist!
   jbuilder (~> 1.2)
   jquery-rails (~> 2.2.1)
+  jquery-ui-rails (~> 4.2.1)
   lazy_high_charts!
   newrelic_rpm
   nokogiri (= 1.6.1)
