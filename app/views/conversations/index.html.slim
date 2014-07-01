@@ -5,4 +5,7 @@
     .col-md-12
       h1.title Messages
 
-
+      .conversations-container
+        - @conversations.each do |conversation|
+          .conversation-container
+            h3.title conversation.title
