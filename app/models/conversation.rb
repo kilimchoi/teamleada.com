@@ -1,5 +1,5 @@
 class Conversation < ActiveRecord::Base
-  obfuscate_id spin: ENV['SPIN']
+  obfuscate_id spin: 12122121
 
   belongs_to :starter, class_name: User
   has_many :conversation_users

@@ -1,5 +1,5 @@
 class Message < ActiveRecord::Base
-  obfuscate_id spin: ENV['SPIN']
+  obfuscate_id spin: 12122121
 
   belongs_to :user
   belongs_to :conversation
