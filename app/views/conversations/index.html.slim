@@ -3,7 +3,10 @@
 .container.full-container
   .row
     .col-md-12
-      h1.title Messages
+      .messages-title
+        .message-controls
+          = link_to "New Message", new_conversation_path, class: "flat-button small-btn"
+        h1.title Messages
 
       ul.conversations-list
         - @conversations.each do |conversation|

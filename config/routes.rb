@@ -40,7 +40,7 @@ TeamLeada::Application.routes.draw do
 
   # Messages
   match 'messages', to: 'messages#create', as: 'messages', via: :post
-  resources :conversations, path: :messages, only: [:show, :index] do
+  resources :conversations, path: :messages, only: [:show, :index, :new] do
   end
 
   resources :interested_users, only: [:create]
