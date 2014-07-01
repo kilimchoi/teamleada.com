@@ -6,6 +6,7 @@ class ConversationsController < ApplicationController
   end
 
   def show
+    @message = Message.new
   end
 
 end

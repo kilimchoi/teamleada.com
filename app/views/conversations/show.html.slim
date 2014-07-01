@@ -8,3 +8,18 @@
       .messages-container
         - @conversation.messages.each do |message|
           = render partial: "conversations/user_message", locals: { message: message }
+
+      .reply-container
+        .message-container
+          .message-user-profile-pic
+            = link_to user_path(current_user) do
+              = image_tag current_user.profile_photo, class: "message-profile-photo"
+          .content-container
+            .content-header
+              h4.message-header-text
+                | Write a reply below
+            .content-body
+              = simple_form_for @message, url: :conversations do |f|
+                = f.input :content, input_html: { rows: 5 }, label: false, placeholder: "Leave a reply"
+                .content-form-actions.clearfix
+                  = f.submit "Reply", class: "flat-button float-right"
