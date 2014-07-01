@@ -9,4 +9,7 @@ class ConversationsController < ApplicationController
     @message = Message.new
   end
 
+  def create
+  end
+
 end

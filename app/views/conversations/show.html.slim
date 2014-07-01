@@ -21,5 +21,6 @@
             .content-body
               = simple_form_for @message, url: :conversations do |f|
                 = f.input :content, input_html: { rows: 5 }, label: false, placeholder: "Leave a reply"
+                = f.input :conversation_id, as: :hidden, input_html: { value: @conversation.id }
                 .content-form-actions.clearfix
                   = f.submit "Reply", class: "flat-button float-right"
