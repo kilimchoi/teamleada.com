@@ -429,7 +429,6 @@ ActiveRecord::Schema.define(version: 20140701184558) do
     t.string   "who_can_see_resume"
     t.boolean  "looking_for_opportunities",    default: false
     t.text     "bio"
-    t.string   "location"
     t.string   "linkedin_id"
     t.string   "nickname"
     t.string   "image"
