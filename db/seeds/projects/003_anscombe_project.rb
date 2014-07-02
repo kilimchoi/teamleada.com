@@ -338,7 +338,7 @@ data_two_post_content_two = [
 
 data_two_post_content_three = [
   ['text', 'By default, the trained model only has x-values from the original data set. That\'s about 11 values.'],
-  ['text', 'We\'ll manually ask the model to predict 1000 granular data points and conncet them as a line.'],
+  ['text', 'We\'ll manually ask the model to predict 1000 granular data points and connect them as a line.'],
   ['text', 'We\'ll first generate the granular x-values. We\'ll use seq() to achieve that. But what does seq() do?'],
   ['code', 'help(seq) #now you know!'],
   ['code', 'xvalues = seq(4, 14, 0.01)'],
@@ -472,7 +472,7 @@ data_four_post_content_three = [
   ['link', 'http://i.imgur.com/N9eZrMK.gif'],
   ['text', 'x=19 can represents majestic-evil cats (and we observed only one of these cats)'],
   ['link', 'http://i.imgur.com/JM6dTOC.jpg'],
-  ['text', 'There is no way to tell. But it doens\'t make sense to throw a linear model at this data.'],
+  ['text', 'There is no way to tell. But it doesn\'t make sense to throw a linear model at this data.'],
   ['text', 'Ultimately, linear models are powerful tools.'],
   ['text', 'But you have to keep in mind that you can\'t simply throw data into a model and expect results.'],
 ]
