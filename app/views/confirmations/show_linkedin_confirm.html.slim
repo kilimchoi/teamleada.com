@@ -8,6 +8,6 @@
           = form.input :username
           = form.input :password
           = form.input :password_confirmation
-          = form.input :confirmation_token, :as => :hidden, :value => @original_token
+          = form.input :confirmation_token, as: :hidden, value: @original_token
         .form.actions
           = form.submit "Confirm Account", class: "flat-button"
