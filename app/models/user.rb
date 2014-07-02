@@ -461,7 +461,6 @@ class User < ActiveRecord::Base
   #########################################################################################
 
   def self.connect_to_linkedin(auth, signed_in_resource=nil)
-    #byebug
     if auth.provider == 'linkedin'
       user = User.find_by(linkedin_id: auth.uid)
     end
