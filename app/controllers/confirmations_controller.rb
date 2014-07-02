@@ -54,7 +54,7 @@ class ConfirmationsController < Devise::ConfirmationsController
       sign_in User, @user
       respond_with @user, location: after_confirmation_path_for(@user)
     else
-      render :action => 'show_linkedin_confirm'
+      action: 'show_linkedin_confirm'
     end
   end
 
