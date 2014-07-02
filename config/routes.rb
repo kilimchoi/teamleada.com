@@ -15,8 +15,6 @@ TeamLeada::Application.routes.draw do
 
   match 'surveys/:name', to: 'surveys#show', via: :get
 
-  #devise_for :users, :controllers => { : omniauth_callbacks => "omniauth_callbacks" }
-
   devise_for :users, path: '',
                      path_names: { sign_in: 'login', sign_up: 'sign-up', sign_out: 'logout'},
                      controllers: {
