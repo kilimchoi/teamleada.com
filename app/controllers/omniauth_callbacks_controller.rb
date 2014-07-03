@@ -1,7 +1,6 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def linkedin
-    #byebug
     if env["omniauth.auth"].nil?
       flash[:error] = "You must be authorized via linkedin to view this page."
       redirect_to new_login_url
