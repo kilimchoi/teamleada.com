@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140703004321) do
+ActiveRecord::Schema.define(version: 20140621221457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,16 +36,12 @@ ActiveRecord::Schema.define(version: 20140703004321) do
   create_table "code_submission_evaluations", force: true do |t|
     t.integer  "reviewer_id"
     t.integer  "reviewee_id"
+    t.integer  "score"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "code_submission_id"
     t.integer  "project_id"
-    t.integer  "computer_science"
-    t.integer  "statistics"
-    t.integer  "curiosity"
-    t.integer  "communication"
-    t.boolean  "visible",            default: false
   end
 
   create_table "code_submissions", force: true do |t|
@@ -80,22 +76,6 @@ ActiveRecord::Schema.define(version: 20140703004321) do
     t.integer  "company_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "conversation_users", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "conversation_id"
-    t.boolean  "unread",          default: true
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "conversations", force: true do |t|
-    t.integer  "starter_id"
-    t.string   "title"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.datetime "last_message_sent_at"
   end
 
   create_table "days", id: false, force: true do |t|
@@ -147,7 +127,6 @@ ActiveRecord::Schema.define(version: 20140703004321) do
     t.datetime "updated_at"
     t.string   "impressionable_id"
     t.string   "url"
-    t.string   "user_agent"
   end
 
   add_index "impressions", ["controller_name", "action_name", "ip_address"], name: "controlleraction_ip_index", using: :btree
@@ -161,15 +140,6 @@ ActiveRecord::Schema.define(version: 20140703004321) do
 
   create_table "interested_users", force: true do |t|
     t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "invites", force: true do |t|
-    t.integer  "user_id"
-    t.string   "invited_email"
-    t.datetime "accepted_at"
-    t.integer  "invited_user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -210,17 +180,6 @@ ActiveRecord::Schema.define(version: 20140703004321) do
     t.integer  "lesson_id"
     t.string   "uid",                            null: false
     t.integer  "points",             default: 1
-  end
-
-  create_table "messages", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "rich_content_id"
-    t.string   "rich_content_type"
-    t.text     "content"
-    t.boolean  "is_draft"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "conversation_id"
   end
 
   create_table "metric_entries", force: true do |t|
@@ -363,7 +322,6 @@ ActiveRecord::Schema.define(version: 20140703004321) do
     t.string   "uid",                   null: false
     t.string   "title"
     t.string   "submission_type"
-    t.integer  "project_id"
   end
 
   create_table "submissions", force: true do |t|
@@ -428,26 +386,6 @@ ActiveRecord::Schema.define(version: 20140703004321) do
     t.string   "who_can_lookup_by_name"
     t.string   "who_can_see_resume"
     t.boolean  "looking_for_opportunities",    default: false
-    t.string   "location"
-    t.text     "bio"
-    t.string   "name"
-    t.string   "nickname"
-    t.string   "image"
-    t.string   "phone"
-    t.string   "headline"
-    t.string   "indutry"
-    t.string   "public_prof_url"
-    t.datetime "date_of_birth"
-    t.string   "school_name"
-    t.integer  "grad_year"
-    t.text     "interests"
-    t.integer  "job_bookmarks_count"
-    t.integer  "job_total_count"
-    t.integer  "publications_count"
-    t.integer  "recom_count"
-    t.integer  "skills_count"
-    t.string   "country_code"
-    t.string   "linkedin_id"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
