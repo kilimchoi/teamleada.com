@@ -10,7 +10,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       flash[:notice] = "Logged in via LinkedIn!"
       sign_in_and_redirect @user, :event => :authentication
     else
-      #byebug
       session["devise.linkedin_uid"] = request.env["omniauth.auth"].uid
       redirect_to show_linkedin_confirm_path
     end

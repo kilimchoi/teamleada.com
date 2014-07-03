@@ -22,7 +22,6 @@ class ConfirmationsController < Devise::ConfirmationsController
   end
 
   def show_linkedin_confirm
-    byebug
     #omniauth = request.env["omniauth.auth"]
     if signed_in?
       flash[:warning] = "You're already logged in!"
@@ -31,7 +30,6 @@ class ConfirmationsController < Devise::ConfirmationsController
       flash[:danger] = "You need to authenticate via LinkedIn first!"
       redirect_to root_path
     else
-      #byebug
       @user = User.find_by(linkedin_id: session["devise.linkedin_uid"])
     end
   end
@@ -41,7 +39,6 @@ class ConfirmationsController < Devise::ConfirmationsController
     @user.assign_attributes(permitted_params)
 
     if @user.valid? && @user.password_match?
-      #@user.confirm!
       if @user.role.nil?
         @user.role = "student"
         @user.save
@@ -55,7 +52,7 @@ class ConfirmationsController < Devise::ConfirmationsController
       sign_in User, @user
       respond_with @user, location: after_confirmation_path_for(@user)
     else
-      render :action => 'show_linkedin_confirm'
+      render action: :'show_linkedin_confirm'
     end
   end
 
