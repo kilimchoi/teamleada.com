@@ -1,9 +1,5 @@
 class ConfirmationsController < Devise::ConfirmationsController
-<<<<<<< HEAD
-   #before_filter :signed_in_user, only: [:linkedin_confirm]
-=======
 
->>>>>>> tristan_fix_linkdein
   def show
     if params[:confirmation_token].present?
       @original_token = params[:confirmation_token]
