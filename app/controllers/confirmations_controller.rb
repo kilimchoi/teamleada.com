@@ -1,5 +1,5 @@
 class ConfirmationsController < Devise::ConfirmationsController
-
+   #before_filter :signed_in_user, only: [:linkedin_confirm]
   def show
     if params[:confirmation_token].present?
       @original_token = params[:confirmation_token]
@@ -22,6 +22,7 @@ class ConfirmationsController < Devise::ConfirmationsController
   end
 
   def show_linkedin_confirm
+    #byebug
     omniauth = request.env["omniauth.auth"]
     if signed_in?
       flash[:warning] = "You're already logged in!"
@@ -54,7 +55,7 @@ class ConfirmationsController < Devise::ConfirmationsController
       sign_in User, @user
       respond_with @user, location: after_confirmation_path_for(@user)
     else
-      action: 'show_linkedin_confirm'
+      render :action => 'show_linkedin_confirm'
     end
   end
 
