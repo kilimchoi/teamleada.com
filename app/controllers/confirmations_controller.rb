@@ -1,9 +1,5 @@
 class ConfirmationsController < Devise::ConfirmationsController
 
-  before_filter
-  before_filter :signed_in_user, only: [:linkedin_confirm]
-  #before_action :require_not_logged_in
-
   def show
     if params[:confirmation_token].present?
       @original_token = params[:confirmation_token]
@@ -26,11 +22,12 @@ class ConfirmationsController < Devise::ConfirmationsController
   end
 
   def show_linkedin_confirm
-    omniauth = request.env["omniauth.auth"]
+    byebug
+    #omniauth = request.env["omniauth.auth"]
     if signed_in?
       flash[:warning] = "You're already logged in!"
       redirect_to projects_path # halts request cycle
-    elsif omniauth.nil?
+    elsif session["devise.linkedin_uid"].nil? #omniauth.nil?
       flash[:danger] = "You need to authenticate via LinkedIn first!"
       redirect_to root_path
     else
@@ -44,7 +41,7 @@ class ConfirmationsController < Devise::ConfirmationsController
     @user.assign_attributes(permitted_params)
 
     if @user.valid? && @user.password_match?
-      @user.confirm!
+      #@user.confirm!
       if @user.role.nil?
         @user.role = "student"
         @user.save
