@@ -211,6 +211,10 @@ GEM
       railties (>= 3.2.16)
     json (1.8.1)
     kramdown (1.0.2)
+    linkedin (0.4.7)
+      hashie (~> 2.0)
+      multi_json (~> 1.0)
+      oauth (~> 0.4)
     liquid (2.5.1)
     listen (2.7.9)
       celluloid (>= 0.15.2)
@@ -424,6 +428,7 @@ DEPENDENCIES
   jquery-rails (~> 3.1.1)
   jquery-ui-rails (~> 4.2.1)
   lazy_high_charts!
+  linkedin
   newrelic_rpm
   nokogiri (= 1.6.1)
   obfuscate_id!
