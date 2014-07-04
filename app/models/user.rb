@@ -467,7 +467,7 @@ class User < ActiveRecord::Base
     if user
       return user
     else
-      registered_user = User.find_by(email: auth.info.email)
+      registered_user = User.find_by(email: (auth.info.email rescue nil))
       if registered_user
         return registered_user
       else
