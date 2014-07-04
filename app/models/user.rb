@@ -498,7 +498,7 @@ class User < ActiveRecord::Base
         (auth.extra.raw_info.skills._total rescue nil).nil? ? nil : registered_user.update(skills_count: auth.extra.raw_info.skills._total)
 
         puts "conncet_to_linkedin: uid + " + registered_user.linkedin_id
-        registered_user.save
+        registered_user.save!
         return registered_user
       else
         user = User.new(first_name: (auth.info.first_name rescue nil),
@@ -529,7 +529,7 @@ class User < ActiveRecord::Base
 
         user.skip_confirmation!
         user.generate_new_token
-        user.save
+        user.save!
         puts "conenct_to_linked_in USER:"
         puts user.name
         return user
