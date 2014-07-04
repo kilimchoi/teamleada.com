@@ -23,7 +23,7 @@ class ConfirmationsController < Devise::ConfirmationsController
 
   def show_linkedin_confirm
     #omniauth = request.env["omniauth.auth"]
-    puts "SHOW"
+    puts "SHOW + id: " + session["devise.linkedin_uid"]
     #byebug
     if signed_in?
       flash[:warning] = "You're already logged in!"
