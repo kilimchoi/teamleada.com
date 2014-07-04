@@ -22,9 +22,6 @@ class ConfirmationsController < Devise::ConfirmationsController
   end
 
   def show_linkedin_confirm
-    #omniauth = request.env["omniauth.auth"]
-    puts "SHOW + id: " + session["devise.linkedin_uid"]
-    #byebug
     if signed_in?
       flash[:warning] = "You're already logged in!"
       redirect_to projects_path # halts request cycle
@@ -33,10 +30,7 @@ class ConfirmationsController < Devise::ConfirmationsController
       redirect_to root_path
     else
       @user = User.find_by(linkedin_id: session["devise.linkedin_uid"])
-      puts "SHOW_LNKD_CONFIRM: " + @user.email
     end
-    #flash[:danger] = "WTF happened"
-    #redirect_to root_path
   end
 
   def linkedin_confirm
