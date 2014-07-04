@@ -472,7 +472,7 @@ class User < ActiveRecord::Base
       if registered_user #should update linkedin
         (auth.info.first_name rescue nil).nil? ? nil : registered_user.update(first_name: auth.info.first_name)
         (auth.info.last_name rescue nil).nil? ? nil : registered_user.update(last_name: auth.info.last_name)
-        (auth.uid rescue nil).nil ? nil : registered_user.update(linkedin_id: auth.uid)
+        (auth.uid rescue nil).nil? ? nil : registered_user.update(linkedin_id: auth.uid)
 
         (auth.info.nickname rescue nil).nil? ? nil: registered_user.update(nickname: auth.info.nickname)
         (auth.extra.raw_info.location.name rescue nil).nil? ? nil : registered_user.update(location: auth.extra.raw_info.location.name)
