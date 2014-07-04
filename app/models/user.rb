@@ -470,6 +470,9 @@ class User < ActiveRecord::Base
     else
       registered_user = User.find_by(email: (auth.info.email rescue nil))
       if registered_user #should update linkedin
+        puts "First Name : " + auth.info.first_name
+        puts "uid : " + auth.uid
+
         (auth.info.first_name rescue nil).nil? ? nil : registered_user.update(first_name: auth.info.first_name)
         (auth.info.last_name rescue nil).nil? ? nil : registered_user.update(last_name: auth.info.last_name)
         (auth.uid rescue nil).nil? ? nil : registered_user.update(linkedin_id: auth.uid)
@@ -494,6 +497,7 @@ class User < ActiveRecord::Base
         (auth.extra.raw_info.recommendationsReceived._total rescue nil).nil? ? nil : registered_user.update(recom_count: auth.extra.raw_info.recommendationsReceived._total)
         (auth.extra.raw_info.skills._total rescue nil).nil? ? nil : registered_user.update(skills_count: auth.extra.raw_info.skills._total)
 
+        puts "conncet_to_linkedin: uid + " + registered_user.linkedin_id
         return registered_user
       else
         user = User.new(first_name: (auth.info.first_name rescue nil),
