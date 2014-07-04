@@ -461,6 +461,7 @@ class User < ActiveRecord::Base
   #########################################################################################
 
   def self.connect_to_linkedin(auth, signed_in_resource=nil)
+    puts "connect: LNKD_ID: " + auth.uid
     if auth.provider == 'linkedin'
       user = User.find_by(linkedin_id: auth.uid)
     end
@@ -499,6 +500,8 @@ class User < ActiveRecord::Base
         user.skip_confirmation!
         user.generate_new_token
         user.save
+        puts "conenct_to_linked_in USER:"
+        puts user.name
         return user
       end
     end
