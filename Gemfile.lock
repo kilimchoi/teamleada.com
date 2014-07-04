@@ -180,6 +180,7 @@ GEM
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
     hash-deep-merge (0.1.1)
+    hashie (2.1.2)
     highcharts-rails (3.0.10)
       railties (>= 3.1)
     highline (1.6.21)
@@ -210,6 +211,10 @@ GEM
       railties (>= 3.2.16)
     json (1.8.1)
     kramdown (1.0.2)
+    linkedin (0.4.7)
+      hashie (~> 2.0)
+      multi_json (~> 1.0)
+      oauth (~> 0.4)
     liquid (2.5.1)
     listen (2.7.9)
       celluloid (>= 0.15.2)
@@ -230,6 +235,15 @@ GEM
     newrelic_rpm (3.9.0.229)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
+    oauth (0.4.7)
+    omniauth (1.2.1)
+      hashie (>= 1.2, < 3)
+      rack (~> 1.0)
+    omniauth-linkedin (0.2.0)
+      omniauth-oauth (~> 1.0)
+    omniauth-oauth (1.0.1)
+      oauth
+      omniauth (~> 1.0)
     orm_adapter (0.5.0)
     paperclip (4.1.1)
       activemodel (>= 3.0.0)
@@ -414,9 +428,12 @@ DEPENDENCIES
   jquery-rails (~> 3.1.1)
   jquery-ui-rails (~> 4.2.1)
   lazy_high_charts!
+  linkedin
   newrelic_rpm
   nokogiri (= 1.6.1)
   obfuscate_id!
+  omniauth
+  omniauth-linkedin
   paperclip (~> 4.1)
   pg (= 0.17.1)
   pg_search

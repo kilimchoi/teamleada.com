@@ -31,6 +31,11 @@ gem 'impressionist', github: 'negativetwelve/impressionist'
 gem 'obfuscate_id', github: 'negativetwelve/obfuscate_id'
 gem 'rails4-autocomplete', '1.1.0'
 
+#LinkedIn Integration
+gem 'omniauth'
+gem 'omniauth-linkedin'
+gem 'linkedin'
+
 # Code Submissions
 gem 'ace-rails-ap'
 

@@ -25,4 +25,8 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
 
+  def after_sign_in_path_for(resource) #added for omniauth signin redirect
+    #This will always go to projecs_path ater signing in.
+    projects_path || request.env['omniauth.origin'] || stored_location_for(resource) || root_path
+  end
 end

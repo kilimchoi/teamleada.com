@@ -21,3 +21,6 @@
 /config/database.yml
 
 .DS_Store
+
+# Ignore the db dump file
+*.dump

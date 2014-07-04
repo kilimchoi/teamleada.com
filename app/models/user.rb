@@ -38,7 +38,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
-         :recoverable, :rememberable, :trackable, :validatable
+  :recoverable, :rememberable, :trackable, :validatable,
+  :omniauthable
 
   # TODO: Remove this and put in a helper class
   include Rails.application.routes.url_helpers
@@ -70,8 +71,8 @@ class User < ActiveRecord::Base
   # Page views
   has_many :impressions
   has_many :profile_views, class_name: Impression,
-                           foreign_key: :impressionable_id,
-                           primary_key: :username
+  foreign_key: :impressionable_id,
+  primary_key: :username
 
   has_many :initiated_conversations, class_name: Conversation, foreign_key: :starter_id
   has_many :messages
@@ -113,8 +114,8 @@ class User < ActiveRecord::Base
 
   include PgSearch
   pg_search_scope :search,
-                  against: [[:first_name, 'A'], [:last_name, 'A'], [:email, 'A'], [:username, 'A']],
-                  using: {tsearch: {prefix: true, normalization: 2}}
+  against: [[:first_name, 'A'], [:last_name, 'A'], [:email, 'A'], [:username, 'A']],
+  using: {tsearch: {prefix: true, normalization: 2}}
 
   def == other_user
     self.email == other_user.email
@@ -410,6 +411,7 @@ class User < ActiveRecord::Base
   #########################################################################################
   # Methods
   #########################################################################################
+
   def generate_new_token
     secret = Devise.friendly_token
     new_token = Devise.token_generator.digest(User, :confirmation_token, secret)
@@ -451,6 +453,55 @@ class User < ActiveRecord::Base
       evaluation.save
     end
     EvaluationMailer.send_feedback(self, project, evaluations).deliver
+  end
+
+
+  #########################################################################################
+  # Static Methods
+  #########################################################################################
+
+  def self.connect_to_linkedin(auth, signed_in_resource=nil)
+    if auth.provider == 'linkedin'
+      user = User.find_by(linkedin_id: auth.uid)
+    end
+    if user
+      return user
+    else
+      registered_user = User.find_by(email: auth.info.email)
+      if registered_user
+        return registered_user
+      else
+        user = User.new(first_name: (auth.info.first_name rescue nil),
+          last_name:            (auth.info.last_name rescue nil),
+          linkedin_id:          (auth.uid rescue nil),
+          email:                (auth.info.email rescue nil),
+          nickname:             (auth.info.nickname rescue nil),
+          location:             (auth.extra.raw_info.location.name rescue nil),
+          country_code:         (auth.extra.raw_info.location.country.code rescue nil),
+          bio:                  (auth.extra.raw_info.summary rescue nil),
+          image:                (auth.extra.raw_info.pictureUrls.values[1][0] rescue nil),
+          phone:                (auth.extra.raw_info.phoneNumbers.values[1][0].phoneNumber rescue nil),
+          headline:             (auth.info.headline rescue nil),
+          indutry:              (auth.info.industry rescue nil),
+          public_prof_url:      (auth.info.urls.public_profile rescue nil),
+
+          date_of_birth:        (Date.new((auth.extra.raw_info.dateOfBirth.year rescue nil), (auth.extra.raw_info.dateOfBirth.month rescue nil), (auth.extra.raw_info.dateOfBirth.day rescue nil)) rescue nil),
+          school_name:          (auth.extra.raw_info.educations.values[1][0].schoolName rescue nil),
+          grad_year:            (auth.extra.raw_info.educations.values[1][0].endDate.year rescue nil),
+          interests:            (auth.extra.raw_info.interests rescue nil),
+          job_bookmarks_count:  (auth.extra.raw_info.jobBookmarks._total rescue nil),
+          job_total_count:      (auth.extra.raw_info.positions._total rescue nil),
+          publications_count:   (auth.extra.raw_info.publications._total rescue nil),
+          recom_count:          (auth.extra.raw_info.recommendationsReceived._total rescue nil),
+          skills_count:         (auth.extra.raw_info.skills._total rescue nil),
+
+          password:             Devise.friendly_token[0,20],)
+        user.skip_confirmation!
+        user.generate_new_token
+        user.save
+        return user
+      end
+    end
   end
 
 end
