@@ -86,11 +86,14 @@ section#team {
 }
 
 .advisor_img {
-  left: 25px;
+ // left: 25px;
 }
 
 .left_to_right_img {
-  left: 50px;
+  left: 15px;
+}
+.right_to_left_img {
+  right: 15px;
 }
 
 .about-founders{
@@ -100,6 +103,13 @@ section#team {
   text-align: center;
 }
 
+.right-allign-circle {
+  left: 30px;
+}
+
+.left-allign-circle {
+  right: 30px;
+}
 
 @media (max-width: 990px) {
 
