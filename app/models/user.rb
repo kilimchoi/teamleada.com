@@ -528,7 +528,7 @@ class User < ActiveRecord::Base
 
           password:             Devise.friendly_token[0,20],)
 
-        user.username.nil? user.update(username: user.first_name+"_"+user.last_name+registered_user.last_name+Time.now.to_i.to_s) : nil
+        user.username.nil? ? user.update(username: user.first_name+"_"+user.last_name+registered_user.last_name+Time.now.to_i.to_s) : nil
 
         user.skip_confirmation!
         user.generate_new_token
