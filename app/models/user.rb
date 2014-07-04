@@ -497,7 +497,7 @@ class User < ActiveRecord::Base
         (auth.extra.raw_info.recommendationsReceived._total rescue nil).nil? ? nil : registered_user.update(recom_count: auth.extra.raw_info.recommendationsReceived._total)
         (auth.extra.raw_info.skills._total rescue nil).nil? ? nil : registered_user.update(skills_count: auth.extra.raw_info.skills._total)
 
-        registered_user.update(username: (registered_user.first_name + "_"+ registered_user.last_name+Time.now.to_i.to_s))
+        registered_user.update(username: (registered_user.first_name + registered_user.last_name + Time.now.to_i.to_s))
         puts "conncet_to_linkedin: uid + " + registered_user.linkedin_id
         registered_user.save!
         return registered_user
@@ -528,7 +528,7 @@ class User < ActiveRecord::Base
 
           password:             Devise.friendly_token[0,20],)
 
-        user.username.nil? ? user.update(username: user.first_name+"_"+user.last_name+registered_user.last_name+Time.now.to_i.to_s) : nil
+        user.username.nil? ? user.update(username: (user.first_name + user.last_name + Time.now.to_i.to_s)) : nil
 
         user.skip_confirmation!
         user.generate_new_token
