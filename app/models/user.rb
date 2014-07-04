@@ -471,32 +471,33 @@ class User < ActiveRecord::Base
       if registered_user
         return registered_user
       else
-        user = User.new(first_name: auth.info.first_name,
-          last_name:            auth.info.last_name,
-          linkedin_id:          auth.uid,
-          email:                auth.info.email,
-          nickname:             auth.info.nickname,
-          location:             auth.extra.raw_info.location.name,
-          country_code:         auth.extra.raw_info.location.country.code,
-          bio:                  auth.extra.raw_info.summary,
-          image:                auth.extra.raw_info.pictureUrls.values[1][0],
-          phone:                auth.extra.raw_info.phoneNumbers.values[1][0].phoneNumber,
-          headline:             auth.info.headline,
-          indutry:              auth.info.industry,
-          public_prof_url:      auth.info.urls.public_profile,
+        user = User.new(first_name: (auth.info.first_name rescue nil),
+          last_name:            (auth.info.last_name rescue nil),
+          linkedin_id:          (auth.uid rescue nil),
+          email:                (auth.info.email rescue nil),
+          nickname:             (auth.info.nickname rescue nil),
+          location:             (auth.extra.raw_info.location.name rescue nil),
+          country_code:         (auth.extra.raw_info.location.country.code rescue nil),
+          bio:                  (auth.extra.raw_info.summary rescue nil),
+          image:                (auth.extra.raw_info.pictureUrls.values[1][0] rescue nil),
+          phone:                (auth.extra.raw_info.phoneNumbers.values[1][0].phoneNumber rescue nil),
+          headline:             (auth.info.headline rescue nil),
+          indutry:              (auth.info.industry rescue nil),
+          public_prof_url:      (auth.info.urls.public_profile rescue nil),
 
-          date_of_birth:        Date.new(auth.extra.raw_info.dateOfBirth.year, auth.extra.raw_info.dateOfBirth.month, auth.extra.raw_info.dateOfBirth.day),
-          school_name:          auth.extra.raw_info.educations.values[1][0].schoolName,
-          grad_year:            auth.extra.raw_info.educations.values[1][0].endDate.year,
-          interests:            auth.extra.raw_info.interests,
-          job_bookmarks_count:  auth.extra.raw_info.jobBookmarks._total,
-          job_total_count:      auth.extra.raw_info.positions._total,
-          publications_count:   auth.extra.raw_info.publications._total,
-          recom_count:          auth.extra.raw_info.recommendationsReceived._total,
-          skills_count:         auth.extra.raw_info.skills._total,
+          date_of_birth:        (Date.new((auth.extra.raw_info.dateOfBirth.year rescue nil), (auth.extra.raw_info.dateOfBirth.month rescue nil), (auth.extra.raw_info.dateOfBirth.day rescue nil)) rescue nil),
+          school_name:          (auth.extra.raw_info.educations.values[1][0].schoolName rescue nil),
+          grad_year:            (auth.extra.raw_info.educations.values[1][0].endDate.year rescue nil),
+          interests:            (auth.extra.raw_info.interests rescue nil),
+          job_bookmarks_count:  (auth.extra.raw_info.jobBookmarks._total rescue nil),
+          job_total_count:      (auth.extra.raw_info.positions._total rescue nil),
+          publications_count:   (auth.extra.raw_info.publications._total rescue nil),
+          recom_count:          (auth.extra.raw_info.recommendationsReceived._total rescue nil),
+          skills_count:         (auth.extra.raw_info.skills._total rescue nil),
 
-          password:        Devise.friendly_token[0,20],)
+          password:             Devise.friendly_token[0,20],)
         user.skip_confirmation!
+        user.generate_new_token
         user.save
         return user
       end
