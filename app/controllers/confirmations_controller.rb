@@ -45,6 +45,7 @@ class ConfirmationsController < Devise::ConfirmationsController
     @user.assign_attributes(permitted_params)
 
     if @user.valid? && @user.password_match?
+      @user.confirm!
       if @user.role.nil?
         @user.role = "student"
         @user.save

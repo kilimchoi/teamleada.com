@@ -8,7 +8,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @user = User.connect_to_linkedin(request.env["omniauth.auth"], current_user)
       puts "CALLBACK @user:email " + @user.email
       puts "CALLBACK @user:linkedin_id " + @user.linkedin_id
-      if @user.username != nil
+      if @user.username != nil && @user.confirmed?
         flash[:notice] = "Logged in via LinkedIn!"
         sign_in_and_redirect @user, :event => :authentication
       else
