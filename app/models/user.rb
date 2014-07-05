@@ -381,6 +381,14 @@ class User < ActiveRecord::Base
     self.code_submission_evaluations.where(project: project)
   end
 
+  def unread_conversations
+    self.conversation_users.where(unread: true)
+  end
+
+  def unread_conversations_count
+    unread_conversations.count
+  end
+
   def invite
     Invite.find_by(invited_user_id: self.id)
   end
