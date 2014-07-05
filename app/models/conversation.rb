@@ -2,9 +2,9 @@ class Conversation < ActiveRecord::Base
   obfuscate_id spin: 12122121
 
   belongs_to :starter, class_name: User
-  has_many :conversation_users
+  has_many :conversation_users, dependent: :destroy
   has_many :users, through: :conversation_users
-  has_many :messages
+  has_many :messages, dependent: :destroy
 
   accepts_nested_attributes_for :messages
 
@@ -12,6 +12,7 @@ class Conversation < ActiveRecord::Base
 
   def update_last_message_sent_at
     self.last_message_sent_at = last_message.created_at
+
     self.save
   end
 
@@ -25,6 +26,10 @@ class Conversation < ActiveRecord::Base
     else
       users.pluck(:first_name).to_sentence
     end
+  end
+
+  def is_unread?(user)
+    self.conversation_users.find_by(user: user).unread?
   end
 
   def add_users_from_search(search_query)
