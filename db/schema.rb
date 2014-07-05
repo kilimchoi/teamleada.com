@@ -441,8 +441,8 @@ ActiveRecord::Schema.define(version: 20140705005928) do
     t.boolean  "looking_for_opportunities",    default: false
     t.string   "location"
     t.text     "bio"
-    t.string   "linkedin_id"
     t.string   "name"
+    t.string   "linkedin_id"
     t.string   "nickname"
     t.string   "image"
     t.string   "phone"
