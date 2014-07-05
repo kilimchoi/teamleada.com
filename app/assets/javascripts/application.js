@@ -56,6 +56,8 @@ $(document).ready(function() {
   // Best In Place
   $(".best_in_place").best_in_place();
 
+  $(".has-tooltip").tooltip();
+
   // Ladda
   Ladda.bind('.ladda-button', { timeout: 1000 });
 });
