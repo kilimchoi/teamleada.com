@@ -15,6 +15,13 @@
   list-style: none;
 }
 
+.conversation-unread-icon {
+  float: left;
+  margin-left: -24px;
+  margin-top: 12px;
+  color: #428bca;
+}
+
 .conversation-item {
   position: relative;
   display: block;
