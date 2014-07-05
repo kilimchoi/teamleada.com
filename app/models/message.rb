@@ -9,6 +9,7 @@ class Message < ActiveRecord::Base
 
   def update_conversation
     self.conversation.update_last_message_sent_at
+    self.conversation.mark_unread_for_everyone_except(self.user)
   end
 
 end

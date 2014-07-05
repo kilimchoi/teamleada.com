@@ -32,6 +32,30 @@ class Conversation < ActiveRecord::Base
     self.conversation_users.find_by(user: user).unread?
   end
 
+  # Methods
+  def mark_as_read(user)
+    conversation_user = self.conversation_users.find_by(user: user)
+    conversation_user.unread = false
+    conversation_user.save
+  end
+
+  def mark_unread_for_everyone_except(user)
+    conversation_users.each do |conversation_user|
+      unless conversation_user.user == user
+        conversation_user.unread = true
+        conversation_user.save
+      end
+    end
+  end
+
+  def mark_as_unread_for_users(users)
+    conversation_users = self.conversation_users.where(user: users)
+    conversation_users.each do |conversation_user|
+      conversation_user.unread = true
+      conversation_user.save
+    end
+  end
+
   def add_users_from_search(search_query)
     names = search_query.split(", ")
     usernames = names.map{ |name| name[/\(.*?\)/][1..-2] }
