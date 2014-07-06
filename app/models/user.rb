@@ -83,7 +83,9 @@ class User < ActiveRecord::Base
   belongs_to :company
 
   default_scope -> { order(:created_at) }
-  scope :admin, -> { where(role: "admin") }
+  scope :admins, -> { where(role: "admin") }
+  scope :students, -> { where(role: "student") }
+  scope :employers, -> { where(role: "employer") + where(role: "recruiter") }
   # TODO: Add scope for User.with_project_access
 
   validates_format_of :username, :with => /\A[A-Za-z0-9]*\z/
@@ -120,6 +122,26 @@ class User < ActiveRecord::Base
 
   def == other_user
     self.email == other_user.email
+  end
+
+  #
+  # Class Methods
+  #
+  class << self
+
+    def filter(role)
+      case role
+      when "admins"
+        self.admins
+      when "students"
+        self.students
+      when "employers"
+        self.employers
+      else
+        self.all
+      end
+    end
+
   end
 
   #########################################################################################
