@@ -87,8 +87,8 @@ class User < ActiveRecord::Base
   scope :students, -> { where(role: "student") }
   scope :employers, -> { where(role: "employer") + where(role: "recruiter") }
   scope :has_not_started_projects, -> { where("id NOT IN (SELECT DISTINCT(user_id) FROM project_statuses)") }
-  scope :with_project_access, -> { }
-  # TODO: Add scope for User.with_project_access
+  scope :with_project_access, -> { where(has_project_access: true) }
+  scope :without_project_access, -> { where(has_project_access: false) }
 
   validates_format_of :username, :with => /\A[A-Za-z0-9]*\z/
   validates :username, uniqueness: {case_sensitive: false, allow_blank: true}
