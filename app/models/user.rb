@@ -87,6 +87,7 @@ class User < ActiveRecord::Base
   scope :students, -> { where(role: "student") }
   scope :employers, -> { where(role: "employer") + where(role: "recruiter") }
   scope :has_not_started_projects, -> { where("id NOT IN (SELECT DISTINCT(user_id) FROM project_statuses)") }
+  scope :with_project_access, -> { }
   # TODO: Add scope for User.with_project_access
 
   validates_format_of :username, :with => /\A[A-Za-z0-9]*\z/
@@ -118,8 +119,8 @@ class User < ActiveRecord::Base
 
   include PgSearch
   pg_search_scope :search,
-  against: [[:first_name, 'A'], [:last_name, 'A'], [:email, 'A'], [:username, 'A']],
-  using: {tsearch: {prefix: true, normalization: 2}}
+                  against: [[:first_name, 'A'], [:last_name, 'A'], [:email, 'A'], [:username, 'A']],
+                  using: {tsearch: {prefix: true, normalization: 2}}
 
   def == other_user
     self.email == other_user.email
