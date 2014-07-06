@@ -36,8 +36,9 @@ header#header
         ul.nav.navbar-nav.navbar-right
           - if signed_in?
             li
-              = image_tag current_user.profile_photo, class: "navbar-profile-photo"
-              = link_to current_user.username, user_path(current_user)
+              = link_to user_path(current_user) do
+                = image_tag current_user.profile_photo, class: "navbar-profile-photo"
+                span.navbar-name = current_user.username
 
             / span.unread-messages-badge = current_user.unread_conversations_count
             li
