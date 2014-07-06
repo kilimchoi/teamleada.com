@@ -93,16 +93,52 @@
 
 // Navbar notifications
 .conversation-cards {
+  padding: 0px;
   width: 430px;
 }
 
 .conversation-card {
   border-top: 1px solid #e6e6e6;
-  height: 50px;
+  height: 60px;
+}
+
+.conversation-image {
+  float: left;
 }
 
 .conversation-card-photo {
-  width: 30px;
-  margin-left: 5px;
+  width: 50px;
+  height: 50px;
+  margin-right: 8px;
   border-radius: 3px;
+}
+
+.dropdown-menu > li > a.conversation-link {
+  padding: 4px 20px 4px 8px;
+}
+
+.conversation-card-title {
+  padding-top: 2px;
+  color: #333;
+}
+
+.conversation-last-message {
+  color: gray;
+  float: left;
+}
+
+.conversation-last-message-name {
+  color: gray;
+  float: left;
+}
+
+.conversation-last-message-content {
+  color: gray;
+  float: left;
+}
+
+.conversation-last-message-timestamp {
+  color: gray;
+  font-size: 10px;
+  float: left;
 }

@@ -1,15 +1,18 @@
 ul.dropdown-menu.conversation-cards
   - user.conversations.first(5).each do |conversation|
     li.conversation-card
-      = link_to conversation_path(conversation) do
-        .conversation-image
-          = image_tag conversation.starter.profile_photo, class: "conversation-card-photo"
-        .conversation-title
-          = conversation.display_title
-        .conversation-last-message
-          .conversation-last-message-name
-            = conversation.last_message.user.name
-          .conversation-last-message-content
-            = conversation.last_message.content
-          .conversation-last-message-timestamp
-            = conversation.last_message_sent_at
+      = link_to conversation_path(conversation), class: "conversation-link" do
+        .clearfix
+          .conversation-image
+            = image_tag conversation.starter.profile_photo, class: "conversation-card-photo"
+          .clearfix
+            .conversation-card-title
+              = conversation.display_title
+            .conversation-last-message
+              .conversation-last-message-name
+                = conversation.last_message.user.first_name
+                | :
+              .conversation-last-message-content
+                = conversation.last_message.content
+              .conversation-last-message-timestamp
+                = time_ago_in_words(conversation.last_message_sent_at)
