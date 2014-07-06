@@ -118,27 +118,21 @@
 }
 
 .conversation-card-title {
+  font-size: 12px;
   padding-top: 2px;
   color: #333;
 }
 
 .conversation-last-message {
   color: gray;
-  float: left;
-}
-
-.conversation-last-message-name {
-  color: gray;
-  float: left;
 }
 
 .conversation-last-message-content {
+  font-size: 12px;
   color: gray;
-  float: left;
 }
 
 .conversation-last-message-timestamp {
   color: gray;
   font-size: 10px;
-  float: left;
 }

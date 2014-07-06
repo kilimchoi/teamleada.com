@@ -20,6 +20,10 @@ class Conversation < ActiveRecord::Base
     messages.last
   end
 
+  def last_message_content
+    "#{last_message.user.first_name}: #{last_message.content}"
+  end
+
   def display_title
     unless title.nil?
       title
