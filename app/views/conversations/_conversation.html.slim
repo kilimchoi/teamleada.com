@@ -1,6 +1,8 @@
 li.conversation-item
   .conversation-container
     h4.conversation-title
+      - if conversation.is_unread?(current_user)
+        span.conversation-unread-icon.fa.fa-circle
       = conversation.display_title
     ul.conversation-metadata
       li.last-message-by

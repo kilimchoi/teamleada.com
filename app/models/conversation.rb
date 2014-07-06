@@ -2,9 +2,9 @@ class Conversation < ActiveRecord::Base
   obfuscate_id spin: 12122121
 
   belongs_to :starter, class_name: User
-  has_many :conversation_users
+  has_many :conversation_users, dependent: :destroy
   has_many :users, through: :conversation_users
-  has_many :messages
+  has_many :messages, dependent: :destroy
 
   accepts_nested_attributes_for :messages
 
@@ -12,6 +12,7 @@ class Conversation < ActiveRecord::Base
 
   def update_last_message_sent_at
     self.last_message_sent_at = last_message.created_at
+
     self.save
   end
 
@@ -19,11 +20,43 @@ class Conversation < ActiveRecord::Base
     messages.last
   end
 
+  def last_message_content
+    "#{last_message.user.first_name}: #{last_message.content}"
+  end
+
   def display_title
     unless title.nil?
       title
     else
       users.pluck(:first_name).to_sentence
+    end
+  end
+
+  def is_unread?(user)
+    self.conversation_users.find_by(user: user).unread?
+  end
+
+  # Methods
+  def mark_as_read(user)
+    conversation_user = self.conversation_users.find_by(user: user)
+    conversation_user.unread = false
+    conversation_user.save
+  end
+
+  def mark_unread_for_everyone_except(user)
+    conversation_users.each do |conversation_user|
+      unless conversation_user.user == user
+        conversation_user.unread = true
+        conversation_user.save
+      end
+    end
+  end
+
+  def mark_as_unread_for_users(users)
+    conversation_users = self.conversation_users.where(user: users)
+    conversation_users.each do |conversation_user|
+      conversation_user.unread = true
+      conversation_user.save
     end
   end
 

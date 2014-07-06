@@ -2,6 +2,7 @@ class InvitesController < ApplicationController
   load_and_authorize_resource
 
   def index
+    @large_header = true
     @invite = current_user.invites.build
     @invites = current_user.invites.select{ |invite| !invite.new_record? }
   end

@@ -1,11 +1,11 @@
-$navbar-padding-top: 25px;
-$navbar-padding-bottom: 25px;
+$navbar-padding-top: 15px;
+$navbar-padding-bottom: 15px;
 
 .navbar {
   z-index: 1;
   border-radius: 0px;
   margin-bottom: 0px;
-  height: 70px;
+  height: 50px;
 }
 
 .navbar-default {
@@ -35,9 +35,9 @@ $navbar-padding-bottom: 25px;
 }
 
 .navbar-toggle {
-  padding: 15px 10px;
-  margin-top: 12px;
-  margin-bottom: 12px;
+  padding: 10px;
+  margin-top: 6px;
+  margin-bottom: 6px;
 }
 
 .navbar-default .navbar-nav > li > a.flat-button-header {
