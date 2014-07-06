@@ -20,4 +20,9 @@ class CodeSubmissionEvaluation < ActiveRecord::Base
   belongs_to :project
 
   validates :description, presence: true
+
+  def pretty_created_at
+    created_at.strftime("%B %d, %Y")
+  end
+
 end
