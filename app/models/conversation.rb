@@ -28,10 +28,14 @@ class Conversation < ActiveRecord::Base
     if !title.nil?
       title
     elsif users.count == 2
-      users.where('users.id != ?', starter.id).first.name
+      other_users.first.name
     else
       users.pluck(:first_name).to_sentence
     end
+  end
+
+  def other_users
+    users.where('users.id != ?', starter.id)
   end
 
   def is_unread?(user)
@@ -63,6 +67,7 @@ class Conversation < ActiveRecord::Base
   end
 
   def add_users_from_search(search_query)
+    # TODO(mark): This is hacky, we should instead grab the ids and send them in the query somehow.
     names = search_query.split(", ")
     usernames = names.map{ |name| name[/\(.*?\)/][1..-2] }
     usernames.each do |username|
