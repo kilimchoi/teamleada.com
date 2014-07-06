@@ -24,3 +24,7 @@
 
 # Ignore the db dump file
 *.dump
+
+# Ignore ruby gemset files
+.ruby-version
+.ruby-gemset
