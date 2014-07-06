@@ -200,6 +200,33 @@ class User < ActiveRecord::Base
   #
   # Instance Methods
   #
+  def name
+    name_attribute = read_attribute(:name)
+    if name_attribute.nil? || name_attribute.blank?
+      email
+    else
+      name_attribute.titleize
+    end
+  end
+
+  def first_name
+    first_name_attribute = read_attribute(:first_name)
+    if first_name_attribute.nil?
+      username
+    else
+      first_name_attribute.capitalize
+    end
+  end
+
+  def last_name
+    last_name_attribute = read_attribute(:last_name)
+    if last_name_attribute.nil?
+      ""
+    else
+      last_name_attribute.capitalize
+    end
+  end
+
   def search_name
     "#{name} (#{username})"
   end
