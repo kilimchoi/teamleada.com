@@ -42,7 +42,8 @@ header#header
 
             li.dropdown
               = link_to "#", class: "dropdown-toggle", data: { toggle: "dropdown" } do
-                span.label.label-danger.navbar-unread-conversations-badge = current_user.unread_conversations_count
+                - if current_user.unread_conversations_count > 0
+                  span.label.label-danger.navbar-unread-conversations-badge = current_user.unread_conversations_count
                 span.navbar-icon.has-tooltip.fa.fa-envelope*{"data-toggle" => "tooltip", "data-placement" => "bottom", "data-title" => "Messages"}
               = render partial: "header/messages", locals: { user: current_user }
             li

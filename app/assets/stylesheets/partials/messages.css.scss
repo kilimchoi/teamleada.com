@@ -102,6 +102,18 @@
   height: 60px;
 }
 
+.conversation-card:first-child {
+  border-top: none;
+}
+
+.dropdown-menu > li > a.conversation-card:hover {
+  background: #f4f6f9;
+}
+
+.dropdown-menu > li > a.conversation-card.new-message:hover {
+  background: #e7ebf2;
+}
+
 .conversation-image {
   float: left;
 }
@@ -135,4 +147,8 @@
 .conversation-last-message-timestamp {
   color: gray;
   font-size: 10px;
+}
+
+.new-message {
+  background: #e8edf3;
 }

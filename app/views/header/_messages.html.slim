@@ -1,6 +1,6 @@
 ul.dropdown-menu.conversation-cards
   - user.conversations.first(5).each do |conversation|
-    li.conversation-card
+    li.conversation-card class="#{'new-message' if conversation.is_unread?(user)}"
       = link_to conversation_path(conversation), class: "conversation-link" do
         .clearfix
           .conversation-image
