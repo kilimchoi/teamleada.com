@@ -89,6 +89,7 @@ class User < ActiveRecord::Base
   scope :has_not_started_projects, -> { where("id NOT IN (SELECT DISTINCT(user_id) FROM project_statuses)") }
   scope :with_project_access, -> { where(has_project_access: true) }
   scope :without_project_access, -> { where(has_project_access: false) }
+  scope :alphabetically, -> { order("name ASC") }
 
   validates_format_of :username, :with => /\A[A-Za-z0-9]*\z/
   validates :username, uniqueness: {case_sensitive: false, allow_blank: true}
