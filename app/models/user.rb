@@ -145,7 +145,7 @@ class User < ActiveRecord::Base
       end
     end
 
-    def self.connect_to_linkedin(auth, signed_in_resource=nil)
+    def connect_to_linkedin(auth, signed_in_resource=nil)
       if auth.provider == 'linkedin'
         user = User.find_by(linkedin_id: auth.uid)
       end
