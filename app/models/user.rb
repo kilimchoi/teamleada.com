@@ -229,7 +229,7 @@ class User < ActiveRecord::Base
     role.nil? || role == "student"
   end
 
-  def has_project_access?
+  def has_project_access_from_code?
     # TODO: Change it so that project-access is not hard-coded
     is_admin? || self.codes.where(access_type: "project-access").count > 0
   end
