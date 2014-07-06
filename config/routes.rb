@@ -130,7 +130,7 @@ TeamLeada::Application.routes.draw do
       end
     end
 
-    resources :code_submissions, path: "code-submissions", only: [:index, :show] do
+    resources :code_submissions, path: "code-submissions", only: [:index] do
       member do
         match 'evaluate', to: 'code_submissions#evaluate', as: :evaluate, via: :post
         match 'evaluate', to: 'code_submissions#update_evaluation', as: :update_evaluation, via: :patch
