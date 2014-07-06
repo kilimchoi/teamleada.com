@@ -40,9 +40,11 @@ header#header
                 = image_tag current_user.profile_photo, class: "navbar-profile-photo"
                 span.navbar-name = current_user.username
 
-            / span.unread-messages-badge = current_user.unread_conversations_count
-            li
-              = link_to "", conversations_path, class: "navbar-icon has-tooltip fa fa-envelope", data: { toggle: "tooltip", placement: "bottom", title: "Messages" }
+            li.dropdown
+              = link_to "#", class: "dropdown-toggle", data: { toggle: "dropdown" } do
+                span.label.label-danger.navbar-unread-conversations-badge = current_user.unread_conversations_count
+                span.navbar-icon.has-tooltip.fa.fa-envelope*{"data-toggle" => "tooltip", "data-placement" => "bottom", "data-title" => "Messages"}
+              = render partial: "header/messages", locals: { user: current_user }
             li
               = link_to "", edit_user_path(tab: "account"), class: "navbar-icon has-tooltip fa fa-gears", data: { toggle: "tooltip", placement: "bottom", title: "Account Settings" }
             li
