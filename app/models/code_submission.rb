@@ -24,7 +24,7 @@ class CodeSubmission < ActiveRecord::Base
 
   default_scope { order(:created_at) }
 
-  ADMIN_TABS = ["completed_projects", "all_code_submissions"]
+  ADMIN_TABS = ["completed_projects", "all_code_submissions", "by_project"]
 
   def slide
     parent.slides[slide_index]
