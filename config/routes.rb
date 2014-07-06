@@ -104,7 +104,7 @@ TeamLeada::Application.routes.draw do
         match 'projects/:project_id/code-submissions/:code_submission_id', to: 'users#show_code_submission', as: :code_submission, via: :get
         match 'projects/:project_id/code-submissions/:code_submission_id/evaluate', to: 'code_submissions#evaluate', as: :evaluate, via: :post
         match 'projects/:project_id/code-submissions/:code_submission_id/evaluate', to: 'code_submissions#update_evaluation', as: :update_evaluation, via: :patch
-        match 'projects/:project_id/code-submissions/:code_submission_id/evaluations', to: 'evaluations#index', as: :evaluations, via: :get
+        match 'projects/:project_id/code-submissions/:code_submission_id/evaluations', to: 'code_submission_evaluations#index', as: :evaluations, via: :get
       end
     end
     resources :resumes, only: [:index, :show]
