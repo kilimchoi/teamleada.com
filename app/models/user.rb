@@ -465,6 +465,11 @@ class User < ActiveRecord::Base
 
   def add_code(code)
     if code.enabled?
+      # TODO(mark): Change from hard coded 'project-access'
+      if code.access_type == "project-access"
+        self.has_project_access = true
+        self.save
+      end
       self.codes << code
     else
       false
