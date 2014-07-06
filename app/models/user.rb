@@ -145,11 +145,27 @@ class User < ActiveRecord::Base
       end
     end
 
+    def self.connect_to_linkedin(auth, signed_in_resource=nil)
+      if auth.provider == 'linkedin'
+        user = User.find_by(linkedin_id: auth.uid)
+      end
+      unless user.nil?
+        return user
+      else
+        registered_user = User.find_by(email: (auth.info.email rescue nil))
+        if registered_user
+          return registered_user.update_with_linked_in_params(auth)
+        else
+          return User.new_with_linked_in_params(auth)
+        end
+      end
+    end
+
   end
 
-  #########################################################################################
+  #
   # Validations
-  #########################################################################################
+  #
   def check_username
     if !self.new_record?
       if username.blank?
@@ -158,9 +174,9 @@ class User < ActiveRecord::Base
     end
   end
 
-  #########################################################################################
+  #
   # Before filter
-  #########################################################################################
+  #
   def set_defaults
     self.set_dates
     self.set_privacy_preferences
@@ -183,9 +199,9 @@ class User < ActiveRecord::Base
     self.who_can_see_resume = CONNECTIONS_AND_RECRUITERS
   end
 
-  #########################################################################################
-  # Attributes
-  #########################################################################################
+  #
+  # Instance Methods
+  #
   def search_name
     "#{name} (#{username})"
   end
@@ -429,11 +445,10 @@ class User < ActiveRecord::Base
     password == password_confirmation && !password.blank?
   end
 
-  #########################################################################################
-  # Chart Methods
   #
+  # Chart Methods
   # All methods in this list must take in a day and return a boolean.
-  #########################################################################################
+  #
   def created_before?(day)
     created_at <= day.date.tomorrow
   end
@@ -442,10 +457,9 @@ class User < ActiveRecord::Base
     confirmed_at <= day.date.tomorrow
   end
 
-  #########################################################################################
+  #
   # Methods
-  #########################################################################################
-
+  #
   def generate_new_token
     secret = Devise.friendly_token
     new_token = Devise.token_generator.digest(User, :confirmation_token, secret)
@@ -485,90 +499,15 @@ class User < ActiveRecord::Base
     LessonStatus.where(user: self, lesson_id: lesson.uid, completed: true, project: lesson.project).first_or_create
   end
 
+  #
   # Mailer
+  #
   def publish_evaluations(project, evaluations)
     evaluations.each do |evaluation|
       evaluation.visible = true
       evaluation.save
     end
     EvaluationMailer.send_feedback(self, project, evaluations).deliver
-  end
-
-
-  #########################################################################################
-  # Static Methods
-  #########################################################################################
-
-  def self.connect_to_linkedin(auth, signed_in_resource=nil)
-    if auth.provider == 'linkedin'
-      user = User.find_by(linkedin_id: auth.uid)
-    end
-    if user
-      return user
-    else
-      registered_user = User.find_by(email: (auth.info.email rescue nil))
-      if registered_user #should update linkedin
-        (auth.info.first_name rescue nil).nil? ? nil : registered_user.update(first_name: auth.info.first_name)
-        (auth.info.last_name rescue nil).nil? ? nil : registered_user.update(last_name: auth.info.last_name)
-        (auth.uid rescue nil).nil? ? nil : registered_user.update(linkedin_id: auth.uid)
-
-        (auth.info.nickname rescue nil).nil? ? nil: registered_user.update(nickname: auth.info.nickname)
-        (auth.extra.raw_info.location.name rescue nil).nil? ? nil : registered_user.update(location: auth.extra.raw_info.location.name)
-        (auth.extra.raw_info.location.country.code rescue nil).nil? ? nil : registered_user.update(country_code: auth.extra.raw_info.location.country.code)
-        (auth.extra.raw_info.summary rescue nil).nil? ? nil : registered_user.update(bio: auth.extra.raw_info.summary)
-        (auth.extra.raw_info.pictureUrls.values[1][0] rescue nil).nil? ? nil : registered_user.update(image: auth.extra.raw_info.pictureUrls.values[1][0])
-        (auth.extra.raw_info.phoneNumbers.values[1][0].phoneNumber rescue nil).nil? ? nil : registered_user.update(phone: auth.extra.raw_info.phoneNumbers.values[1][0].phoneNumber)
-        (auth.info.headline rescue nil).nil? ? nil : registered_user.update(headline: auth.info.headline)
-        (auth.info.industry rescue nil).nil? ? nil : registered_user.update(indutry: auth.info.industry)
-        (auth.info.urls.public_profile rescue nil).nil? ? nil : registered_user.update(public_prof_url: auth.info.urls.public_profile)
-
-        registered_user.update(date_of_birth: (Date.new((auth.extra.raw_info.dateOfBirth.year rescue nil), (auth.extra.raw_info.dateOfBirth.month rescue nil), (auth.extra.raw_info.dateOfBirth.day rescue nil)) rescue nil))
-        (auth.extra.raw_info.educations.values[1][0].schoolName rescue nil).nil? ? nil : registered_user.update(school_name: auth.extra.raw_info.educations.values[1][0].schoolName)
-        (auth.extra.raw_info.educations.values[1][0].endDate.year rescue nil).nil? ? nil : registered_user.update(grad_year: auth.extra.raw_info.educations.values[1][0].endDate.year)
-        (auth.extra.raw_info.interests rescue nil).nil? ? nil : registered_user.update(interests: auth.extra.raw_info.interests)
-        (auth.extra.raw_info.jobBookmarks._total rescue nil).nil? ? nil : registered_user.update(job_bookmarks_count: auth.extra.raw_info.jobBookmarks._total)
-        (auth.extra.raw_info.positions._total rescue nil).nil? ? nil : registered_user.update(job_total_count: auth.extra.raw_info.positions._total)
-        (auth.extra.raw_info.publications._total rescue nil).nil? ? nil : registered_user.update(publications_count: auth.extra.raw_info.publications._total)
-        (auth.extra.raw_info.recommendationsReceived._total rescue nil).nil? ? nil : registered_user.update(recom_count: auth.extra.raw_info.recommendationsReceived._total)
-        (auth.extra.raw_info.skills._total rescue nil).nil? ? nil : registered_user.update(skills_count: auth.extra.raw_info.skills._total)
-
-        registered_user.skip_confirmation!
-        registered_user.save(validate: false)
-        return registered_user
-      else
-        user = User.new(first_name: (auth.info.first_name rescue nil),
-          last_name:            (auth.info.last_name rescue nil),
-          linkedin_id:          (auth.uid rescue nil),
-          email:                (auth.info.email rescue nil),
-          nickname:             (auth.info.nickname rescue nil),
-          location:             (auth.extra.raw_info.location.name rescue nil),
-          country_code:         (auth.extra.raw_info.location.country.code rescue nil),
-          bio:                  (auth.extra.raw_info.summary rescue nil),
-          image:                (auth.extra.raw_info.pictureUrls.values[1][0] rescue nil),
-          phone:                (auth.extra.raw_info.phoneNumbers.values[1][0].phoneNumber rescue nil),
-          headline:             (auth.info.headline rescue nil),
-          indutry:              (auth.info.industry rescue nil),
-          public_prof_url:      (auth.info.urls.public_profile rescue nil),
-
-          date_of_birth:        (Date.new((auth.extra.raw_info.dateOfBirth.year rescue nil), (auth.extra.raw_info.dateOfBirth.month rescue nil), (auth.extra.raw_info.dateOfBirth.day rescue nil)) rescue nil),
-          school_name:          (auth.extra.raw_info.educations.values[1][0].schoolName rescue nil),
-          grad_year:            (auth.extra.raw_info.educations.values[1][0].endDate.year rescue nil),
-          interests:            (auth.extra.raw_info.interests rescue nil),
-          job_bookmarks_count:  (auth.extra.raw_info.jobBookmarks._total rescue nil),
-          job_total_count:      (auth.extra.raw_info.positions._total rescue nil),
-          publications_count:   (auth.extra.raw_info.publications._total rescue nil),
-          recom_count:          (auth.extra.raw_info.recommendationsReceived._total rescue nil),
-          skills_count:         (auth.extra.raw_info.skills._total rescue nil),
-
-          password:             Devise.friendly_token[0,20],)
-
-        user.skip_confirmation!
-        user.generate_new_token
-        user.save(validate: false)
-        user.unconfirm!
-        return user
-      end
-    end
   end
 
 end
