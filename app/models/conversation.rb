@@ -24,18 +24,18 @@ class Conversation < ActiveRecord::Base
     "#{last_message.user.first_name}: #{last_message.content}"
   end
 
-  def display_title
+  def display_title(user)
     if !title.nil?
       title
     elsif users.count == 2
-      other_users.first.name
+      other_users(user).first.name
     else
       users.pluck(:first_name).to_sentence
     end
   end
 
-  def other_users
-    users.where('users.id != ?', starter.id)
+  def other_users(user)
+    users.where('users.id != ?', user.id)
   end
 
   def is_unread?(user)

@@ -10,7 +10,7 @@ ul.dropdown-menu.conversation-cards
             = image_tag conversation.starter.profile_photo, class: "conversation-card-photo"
           .clearfix
             .conversation-card-title
-              = conversation.display_title
+              = conversation.display_title(current_user)
             .conversation-last-message
               .conversation-last-message-content
                 = conversation.last_message_content
