@@ -25,8 +25,10 @@ class Conversation < ActiveRecord::Base
   end
 
   def display_title
-    unless title.nil?
+    if !title.nil?
       title
+    elsif users.count == 2
+      users.where('users.id != ?', starter.id).first.name
     else
       users.pluck(:first_name).to_sentence
     end
