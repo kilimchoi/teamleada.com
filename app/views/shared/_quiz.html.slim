@@ -1,9 +1,10 @@
 form class="fragment quiz_box" quiz_id="#{quiz_id}"
-  <span class="quiz_title" quiz_id="#{quiz_id}">  CHECK </span>
+  span class="quiz_title" quiz_id="#{quiz_id}"
   input  placeholder="your answer here" type="text" class="quiz_input" quiz_id="#{quiz_id}"
   input value="Check Answer" type="button" class="quiz_submit_button" quiz_id="#{quiz_id}" id= "#{quiz_id}"
   = image_tag "ajax-loader.gif", class: "loading-gif", id: "waiting", quiz_id: "#{quiz_id}"
-  <span class="eval_result" quiz_id="#{quiz_id}"></span>
+  span class="eval_result" quiz_id="#{quiz_id}"
+
 javascript:
   $(document).ready(function() {
   //answer_box
@@ -16,7 +17,7 @@ javascript:
     });
     $("##{quiz_id}").click(function () {
       $(quiz_id_selector+".loading-gif").css("visibility", "visible");
-      $(quiz_id_selector+".quiz_box").css("background", "yellow");
+      //$(quiz_id_selector+".quiz_box").css("background", "yellow");
       $(quiz_id_selector+".eval_result").text("");
 
       var input = this;
@@ -41,13 +42,18 @@ javascript:
       setTimeout(function() {
         $(quiz_id_selector+".loading-gif").css("visibility", "hidden");
         if (correct){
-          $(quiz_id_selector+".quiz_box").css("background", "#00B2A5");
+          toastr.success("correct!");
+          //$(quiz_id_selector+".quiz_box").css("background", "#00B2A5");
           $(quiz_id_selector+".eval_result").text("Correct!");
+
         } else {
           input.disabled = false;
+          toastr.error("incorrect!");
           $(quiz_id_selector+".quiz_input").removeAttr("disabled");
-          $(quiz_id_selector+".quiz_box").css("background", "red");
+          //$(quiz_id_selector+".quiz_box").css("background", "red");
           $(quiz_id_selector+".eval_result").text("Try Again");
+          $(quiz_id_selector+".eval_result").css("background-color", "red");
+
         }
       }, 1000);
     });
