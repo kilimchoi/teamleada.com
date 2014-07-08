@@ -12,7 +12,7 @@ module UsersHelper
     (auth.extra.raw_info.pictureUrls.values[1][0] rescue nil).nil? ? nil : registered_user.update(image: auth.extra.raw_info.pictureUrls.values[1][0])
     (auth.extra.raw_info.phoneNumbers.values[1][0].phoneNumber rescue nil).nil? ? nil : registered_user.update(phone: auth.extra.raw_info.phoneNumbers.values[1][0].phoneNumber)
     (auth.info.headline rescue nil).nil? ? nil : registered_user.update(headline: auth.info.headline)
-    (auth.info.industry rescue nil).nil? ? nil : registered_user.update(indutry: auth.info.industry)
+    (auth.info.industry rescue nil).nil? ? nil : registered_user.update(industry: auth.info.industry)
     (auth.info.urls.public_profile rescue nil).nil? ? nil : registered_user.update(public_prof_url: auth.info.urls.public_profile)
 
     registered_user.update(date_of_birth: (Date.new((auth.extra.raw_info.dateOfBirth.year rescue nil), (auth.extra.raw_info.dateOfBirth.month rescue nil), (auth.extra.raw_info.dateOfBirth.day rescue nil)) rescue nil))
@@ -43,10 +43,9 @@ module UsersHelper
       image:                (auth.extra.raw_info.pictureUrls.values[1][0] rescue nil),
       phone:                (auth.extra.raw_info.phoneNumbers.values[1][0].phoneNumber rescue nil),
       headline:             (auth.info.headline rescue nil),
-      indutry:              (auth.info.industry rescue nil),
-      public_prof_url:      (auth.info.urls.public_profile rescue nil),
-
+      industry:             (auth.info.industry rescue nil),
       date_of_birth:        (Date.new((auth.extra.raw_info.dateOfBirth.year rescue nil), (auth.extra.raw_info.dateOfBirth.month rescue nil), (auth.extra.raw_info.dateOfBirth.day rescue nil)) rescue nil),
+
       school_name:          (auth.extra.raw_info.educations.values[1][0].schoolName rescue nil),
       grad_year:            (auth.extra.raw_info.educations.values[1][0].endDate.year rescue nil),
       interests:            (auth.extra.raw_info.interests rescue nil),
@@ -55,6 +54,7 @@ module UsersHelper
       publications_count:   (auth.extra.raw_info.publications._total rescue nil),
       recom_count:          (auth.extra.raw_info.recommendationsReceived._total rescue nil),
       skills_count:         (auth.extra.raw_info.skills._total rescue nil),
+      public_prof_url:      (auth.info.urls.public_profile rescue nil),
 
       password:             Devise.friendly_token[0,20],
     )
