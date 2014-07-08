@@ -14,6 +14,8 @@ class Company < ActiveRecord::Base
   has_many :projects, through: :company_projects
   has_many :employees, class_name: User
 
+  has_many :jobs
+
   validates :name, uniqueness: true, presence: true
 
   before_create :set_url
