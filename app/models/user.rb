@@ -81,6 +81,7 @@ class User < ActiveRecord::Base
   has_many :job_recommendations
   has_many :enrollments
   has_many :universities, through: :enrollments
+  has_many :publications
   
   # Messaging
   has_many :initiated_conversations, class_name: Conversation, foreign_key: :starter_id
