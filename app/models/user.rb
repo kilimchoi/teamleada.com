@@ -76,9 +76,11 @@ class User < ActiveRecord::Base
                            primary_key: :username
 
   # LinkedIn
+  has_many :job_experiences
   has_many :jobs, through: :job_experiences
   has_many :job_recommendations
-  has_many :universities, through: :educations
+  has_many :enrollments
+  has_many :universities, through: :enrollments
   
   # Messaging
   has_many :initiated_conversations, class_name: Conversation, foreign_key: :starter_id

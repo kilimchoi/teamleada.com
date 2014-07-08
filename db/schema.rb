@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140707232805) do
+ActiveRecord::Schema.define(version: 20140708204103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20140707232805) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "url"
+    t.boolean  "verified?"
   end
 
   create_table "company_projects", force: true do |t|
@@ -132,6 +133,20 @@ ActiveRecord::Schema.define(version: 20140707232805) do
     t.datetime "updated_at"
   end
 
+  create_table "enrollments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "university_id"
+    t.string   "field_of_study"
+    t.string   "degree"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "enrollments", ["university_id"], name: "index_enrollments_on_university_id", using: :btree
+  add_index "enrollments", ["user_id"], name: "index_enrollments_on_user_id", using: :btree
+
   create_table "impressions", force: true do |t|
     t.string   "impressionable_type"
     t.integer  "user_id"
@@ -173,6 +188,37 @@ ActiveRecord::Schema.define(version: 20140707232805) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "job_experiences", force: true do |t|
+    t.integer  "user_id"
+    t.text     "summary"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "job_experiences", ["user_id"], name: "index_job_experiences_on_user_id", using: :btree
+
+  create_table "job_recommendations", force: true do |t|
+    t.string   "reviewer_first_name"
+    t.string   "reviewer_last_name"
+    t.string   "reviewer_linkedin_id"
+    t.integer  "reviewee_id"
+    t.string   "type"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "jobs", force: true do |t|
+    t.integer  "company_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "position_title"
+  end
+
+  add_index "jobs", ["company_id"], name: "index_jobs_on_company_id", using: :btree
 
   create_table "launches", id: false, force: true do |t|
     t.integer  "day_id"
@@ -398,6 +444,14 @@ ActiveRecord::Schema.define(version: 20140707232805) do
 
   create_table "tutoring_slots", force: true do |t|
     t.datetime "session_datetime"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "universities", force: true do |t|
+    t.string   "name"
+    t.string   "location"
+    t.boolean  "verified?"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
