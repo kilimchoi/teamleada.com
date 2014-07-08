@@ -75,6 +75,11 @@ class User < ActiveRecord::Base
                            foreign_key: :impressionable_id,
                            primary_key: :username
 
+  # LinkedIn
+  has_many :jobs, through: :job_experiences
+  has_many :educations
+
+  # Messaging
   has_many :initiated_conversations, class_name: Conversation, foreign_key: :starter_id
   has_many :messages
   has_many :conversation_users
@@ -149,6 +154,7 @@ class User < ActiveRecord::Base
 
     def connect_to_linkedin(auth, signed_in_resource=nil)
       if auth.provider == 'linkedin'
+        byebug
         user = User.find_by(linkedin_id: auth.uid)
       end
       unless user.nil?
