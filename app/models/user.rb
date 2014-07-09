@@ -168,7 +168,7 @@ class User < ActiveRecord::Base
         return user
       else
         registered_user = User.find_by(email: (auth.info.email rescue nil))
-        registered_user.nil? ? User.new_with_linked_in_params(auth) : registered_user.update_with_linked_in_params(auth)
+        registered_user.nil? ? UsersHelper.new_with_linked_in_params(auth) : registered_user.update_with_linked_in_params(auth)
       end
     end
 
