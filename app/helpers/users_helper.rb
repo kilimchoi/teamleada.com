@@ -30,11 +30,12 @@ module UsersHelper
     registered_user
   end
 
-  def extract_date(date_hash)
-    Date.new((date_hash.year rescue nil), (date_hash.month rescue nil), (date_hash.day rescue nil)) rescue nil
+  def self.extract_date(date_hash)
+    Date.new((date_hash.year rescue nil), (date_hash.month rescue nil), (date_hash.day rescue nil).nil? ? 1 : date_hash.day) rescue nil
   end
 
   def self.new_with_linked_in_params(auth)
+    byebug
     user = User.new(
       first_name:           (auth.info.first_name rescue nil),
       last_name:            (auth.info.last_name rescue nil),
@@ -48,38 +49,51 @@ module UsersHelper
       phone:                (auth.extra.raw_info.phoneNumbers.values[1][0].phoneNumber rescue nil),
       headline:             (auth.info.headline rescue nil),
       industry:             (auth.info.industry rescue nil),
-      date_of_birth:        extract_date(auth.extra.raw_info.dateOfBirth)
+      date_of_birth:        self.extract_date(auth.extra.raw_info.dateOfBirth),
+      password:             Devise.friendly_token[0,20],
       )
-    #create_jobs_table(auth, user)
+
+      user.skip_confirmation!
+      user.generate_new_token
+      user.save(validate: false)
+      user.unconfirm!
+
+    create_jobs_table(auth, user)
+
+    return user
   end
 
-  def create_jobs_table(auth, user)
+  def self.create_jobs_table(auth, user)
     byebug
     job_array = auth.extra.raw_info.positions.values[1].nil? ? [] : auth.extra.raw_info.positions.values[1] rescue nil
     if not job_array.nil?
       job_array.each do |job_entry|
         company_name = job_entry.company.name
 
-        company_id = job_entry.company.id
-        company_type = job_entry.company.type
-        company_ticker = job_entry.company.ticker
-        company_industry = job_entry.company.industry
+        company_id = job_entry.company.id.to_s
+        company_type = job_entry.company.type.to_s
+        company_ticker = job_entry.company.ticker.to_s
+        company_industry = job_entry.company.industry.to_s
 
         company = Company.where(name: company_name, linkedin_company_id: company_id, industry: company_industry,
-          type: company_type, ticker: company_ticker).first_or_create
+          company_type: company_type, ticker: company_ticker).first_or_create
 
         job_title = job_entry.title
-        job = Job.where(company: company, position_titlet: job_title).first_or_create
+        job = Job.where(company: company, position_title: job_title).first_or_create
 
-        job_summary = job_entry.summary
-        job_id = job_entry.id
-        start_date = job_entry.startDate
-        if job_entry.isCurrent
-          end_date = extra_date(job_entry.endDate)
+        job_summary = job_entry.summary.to_s
+        job_id = job_entry.id.to_s
+        start_date = self.extract_date(job_entry.startDate)
+        if not job_entry.isCurrent
+          end_date = self.extract_date(job_entry.endDate)
         else
           end_date = nil
         end
-        created_job_experience = JobExperience.new(user: user, company: company, summary: job_summary, start_date: start_date, end_date: end_date)
+
+        created_job_experience = JobExperience.where(user: user, summary: job_summary, start_date: start_date, end_date: end_date).first_or_create
+        created_job_experience.job = job
+        created_job_experience.save
+        byebug
       end
     end
   end
