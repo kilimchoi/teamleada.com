@@ -15,6 +15,7 @@ class Company < ActiveRecord::Base
   has_many :employees, class_name: User
 
   has_many :jobs
+  has_many :users, through: :jobs
 
   validates :name, uniqueness: true, presence: true
 
