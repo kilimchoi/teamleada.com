@@ -34,7 +34,7 @@ module UsersHelper
     Date.new((date_hash.year rescue nil), (date_hash.month rescue nil), (date_hash.day rescue nil)) rescue nil
   end
 
-  def new_with_linked_in_params(auth)
+  def self.new_with_linked_in_params(auth)
     user = User.new(
       first_name:           (auth.info.first_name rescue nil),
       last_name:            (auth.info.last_name rescue nil),

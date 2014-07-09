@@ -44,6 +44,8 @@ class User < ActiveRecord::Base
   # TODO: Remove this and put in a helper class
   include Rails.application.routes.url_helpers
 
+  include UsersHelper
+
   # Submissions
   has_many :submissions
   has_many :code_submissions
