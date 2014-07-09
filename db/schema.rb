@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140708205610) do
+ActiveRecord::Schema.define(version: 20140709005933) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,10 @@ ActiveRecord::Schema.define(version: 20140708205610) do
     t.datetime "updated_at"
     t.string   "url"
     t.boolean  "verified?"
+    t.string   "linkedin_company_id"
+    t.string   "type"
+    t.string   "industry"
+    t.string   "ticker"
   end
 
   create_table "company_projects", force: true do |t|
@@ -196,8 +200,10 @@ ActiveRecord::Schema.define(version: 20140708205610) do
     t.date     "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "job_id"
   end
 
+  add_index "job_experiences", ["job_id"], name: "index_job_experiences_on_job_id", using: :btree
   add_index "job_experiences", ["user_id"], name: "index_job_experiences_on_user_id", using: :btree
 
   create_table "job_recommendations", force: true do |t|
