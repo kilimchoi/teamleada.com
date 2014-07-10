@@ -16,7 +16,7 @@ module UsersHelper
     (auth.info.urls.public_profile rescue nil).nil? ? nil : registered_user.update(public_prof_url: auth.info.urls.public_profile)
 
     registered_user.update(date_of_birth: (Date.new((auth.extra.raw_info.dateOfBirth.year rescue nil), (auth.extra.raw_info.dateOfBirth.month rescue nil), (auth.extra.raw_info.dateOfBirth.day rescue nil)) rescue nil))
-
+    (auth.extra.raw_info.jobBookmarks._total rescue nil).nil? ? nil : registered_user.update(job_bookmarks_count: auth.extra.raw_info.jobBookmarks._total)
     (auth.extra.raw_info.interests rescue nil).nil? ? nil : registered_user.update(interests: auth.extra.raw_info.interests)
 
     create_jobs_table(auth, registered_user)
@@ -51,6 +51,7 @@ module UsersHelper
       public_prof_url:      (auth.info.urls.public_profile rescue nil),
       date_of_birth:        self.extract_date(auth.extra.raw_info.dateOfBirth),
       interests:            (auth.extra.raw_info.interests rescue nil),
+      job_bookmarks_count:  (auth.extra.raw_info.jobBookmarks._total rescue nil),
       password:             Devise.friendly_token[0,20],
       )
 
@@ -61,9 +62,9 @@ module UsersHelper
 
     create_jobs_table(auth, user)
     create_enrollments_table(auth, user)
-    create_recommendation_table(auth, user)
-    create_publication_table(auth, user)
-    create_skill_table(auth, user)
+    create_recommendations_table(auth, user)
+    create_publications_table(auth, user)
+    create_skills_table(auth, user)
     return user
   end
 
@@ -173,7 +174,7 @@ module UsersHelper
         skill_id = skill_entry.id.to_s rescue nil
         skill_name = skill_entry.skill.name.to_s rescue nil
 
-        skill = Skill.where(skill: skill_name, linkedin_skill_id: skill_id).first_or_create
+        skill = Skill.where(name: skill_name, linkedin_skill_id: skill_id).first_or_create
         user_skill = UserSkill.where(user: user, skill: skill).first_or_create
       end
     end
