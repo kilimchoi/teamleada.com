@@ -31,3 +31,6 @@
 
 # Vim swp files
 *.swp
+
+# Ignore temporary uploaded files
+public/tmp

@@ -250,9 +250,9 @@ class User < ActiveRecord::Base
     if has_profile_photo?
       photo = profile_photos.last
       if photo.new_record?
-        profile_photos.last(2).first.photo.url
+        profile_photos.last(2).first.url
       else
-        photo.photo.url
+        photo.url
       end
     else
       "default_avatar.png"

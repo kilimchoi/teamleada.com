@@ -1,7 +1,19 @@
 # encoding: utf-8
 
-class ResumeUploader < CarrierWave::Uploader::Base
+class ProfilePhotoUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
+
+  version :thumb do
+    process resize_to_limit: [30, 30]
+  end
+
+  version :preview do
+    process resize_to_limit: [60, 60]
+  end
+
+  version :large do
+    process resize_to_limit: [150, 150]
+  end
 
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
@@ -11,14 +23,14 @@ class ResumeUploader < CarrierWave::Uploader::Base
     "#{Rails.root}/public/tmp/uploads"
   end
 
-  def pdf?
-    pdf_ext = %w(pdf)
+  def image?
+    image_ext = %w(jpg jpeg gif png)
     if file.respond_to?(:extension)
-      pdf_ext.include?(file.extension.downcase)
+      image_ext.include?(file.extension.downcase)
     else
       # Not all Carrierwave storages respond to :extension
       ext = file.path.split('.').last.downcase
-      pdf_ext.include?(ext)
+      image_ext.include?(ext)
     end
   rescue
     false
