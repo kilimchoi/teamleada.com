@@ -163,11 +163,12 @@ module UsersHelper
         publication.update(title: publication_title, description: publication_description, publication_date: publication_date, 
                            publisher: publication_publisher)
         publication.save
-
       end
     end
   end
 
+  def create_skill_table(auth, user)
+  end
 end
 
 '''

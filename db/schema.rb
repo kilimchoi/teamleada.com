@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140710044024) do
+ActiveRecord::Schema.define(version: 20140710064508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -213,7 +213,7 @@ ActiveRecord::Schema.define(version: 20140710044024) do
     t.string   "reviewer_last_name"
     t.string   "reviewer_linkedin_id"
     t.integer  "reviewee_id"
-    t.string   "type"
+    t.string   "recommendation_type"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -347,6 +347,7 @@ ActiveRecord::Schema.define(version: 20140710044024) do
     t.string   "publisher"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "publication_id"
   end
 
   add_index "publications", ["user_id"], name: "index_publications_on_user_id", using: :btree
@@ -388,6 +389,13 @@ ActiveRecord::Schema.define(version: 20140710044024) do
     t.string   "resume_file_content_type"
     t.integer  "resume_file_file_size"
     t.datetime "resume_file_updated_at"
+  end
+
+  create_table "skills", force: true do |t|
+    t.string   "skill_name"
+    t.string   "skill_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "slides", id: false, force: true do |t|
@@ -474,6 +482,7 @@ ActiveRecord::Schema.define(version: 20140710044024) do
     t.boolean  "verified?"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "linkedin_school_id"
   end
 
   create_table "user_codes", force: true do |t|
