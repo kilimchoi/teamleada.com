@@ -1,5 +1,7 @@
 # Website for TeamLeada.com
 
+For more comprehensive docs, go [here](docs.teamleada.com)
+
 ## Setup
 
 First, make a file for your environment variables:
