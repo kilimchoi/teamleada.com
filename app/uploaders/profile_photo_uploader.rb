@@ -3,6 +3,8 @@
 class ProfilePhotoUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
 
+  before :cache, :save_original_filename
+
   version :thumb do
     process resize_to_limit: [30, 30]
   end
@@ -17,6 +19,10 @@ class ProfilePhotoUploader < CarrierWave::Uploader::Base
 
   version :huge do
     process resize_to_limit: [500, 500]
+  end
+
+  def save_original_filename(file)
+    model.original_filename ||= file.original_filename if file.respond_to?(:original_filename)
   end
 
   def store_dir
