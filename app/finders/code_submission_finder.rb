@@ -1,6 +1,6 @@
 class CodeSubmissionFinder
 
-  def execute(user, project)
+  def execute(user, project, params)
     user.code_submissions.where(project: project)
   end
 
