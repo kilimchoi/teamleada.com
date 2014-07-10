@@ -59,7 +59,9 @@ module UsersHelper
       user.unconfirm!
 
     create_jobs_table(auth, user)
-
+    create_education_table(auth, user)
+    create_recommendation_table(auth, user)
+    create_publication_table(auth, user)
     return user
   end
 
@@ -68,12 +70,12 @@ module UsersHelper
     job_array = auth.extra.raw_info.positions.values[1].nil? ? [] : auth.extra.raw_info.positions.values[1] rescue nil
     if not job_array.nil?
       job_array.each do |job_entry|
-        company_name = job_entry.company.name
+        company_name = job_entry.company.name rescue nil
 
-        company_id = job_entry.company.id.to_s
-        company_type = job_entry.company.type.to_s
-        company_ticker = job_entry.company.ticker.to_s
-        company_industry = job_entry.company.industry.to_s
+        company_id = job_entry.company.id.to_s rescue nil
+        company_type = job_entry.company.type.to_s rescue nil
+        company_ticker = job_entry.company.ticker.to_s rescue nil
+        company_industry = job_entry.company.industry.to_s rescue nil
 
         company = Company.where(name: company_name, linkedin_company_id: company_id, industry: company_industry,
           company_type: company_type, ticker: company_ticker).first_or_create
@@ -93,16 +95,79 @@ module UsersHelper
         created_job_experience = JobExperience.where(user: user, summary: job_summary, start_date: start_date, end_date: end_date).first_or_create
         created_job_experience.job = job
         created_job_experience.save
-        byebug
       end
     end
   end
 
-  def create_education_table(auth, user)
+  def self.create_education_table(auth, user)
+    byebug
+    education_array = auth.extra.raw_info.educations.values[1].nil? ? [] : auth.extra.raw_info.educations.values[1] rescue nil
+    if not education_array.nil?
+      education_array.each do |education_entry|
+
+        education_institute_name = education_entry.schoolName rescue nil
+        education_linkedin_id = education_entry.id rescue nil
+        university = University.where(name: education_institute_name).first_or_create
+        if university.linkedin_school_id.nil?
+          university.update(linkedin_school_ud: education_linkedin_id)
+          university.save
+        end
+
+        education_degree = education_entry.degree rescue nil
+        education_field_of_study = education_entry.fieldOfStudy rescue nil
+        education_start_date = self.extract_date(education_entry.startDate) rescue nil
+        education_end_date = self.extract_date(education_entry.endDate) rescue nil
+        education_activities = education_entry.activities rescue nil
+        education_notes = education_entry.notes rescue nil
+        enrollment = Enrollment.where(user: user, university: university, field_of_study: education_field_of_study).first_or_create
+        enrollment.update(degree: education_degree, start_date: education_start_date, end_date: education_end_date, 
+                          notes: education_notes, activities: education_activities)
+        enrollment.save
+      end
+    end
   end
 
   def create_recommendation_table(auth, user)
+    byebug
+    rec_array = auth.extra.raw_info.recommendationsReceived.values[1].nil? ? [] : auth.extra.raw_info.recommendationsReceived.values[1] rescue nil
+    if not rec_array.nil?
+      rec_array.each do |rec_entry|
+        rec_giver_first = rec_entry.recommender.firstName.to_s
+        rec_giver_last = rec_enrtry.recommender.lastName.to_s
+        rec_giver_linkedin_id = rec_entry.recommender.id.to_s
+        
+        rec_text = rec_entry.recommender.recommendationText.to_s
+        rec_type = rec_entry.recommender.recommendationType.to_s
+        rec_id = rec_entry.id.to_s
+
+        recommendation = JobRecommendation.where(reviewer_first_name: rec_giver_first, reviewer_last_name: rec_giver_last,
+                                                 reviewer_linkedin_id: rec_giver_linkedin_id, reviewee: user).first_or_create
+        recommendation.update(recommendation_type: rec_type, body: rec_text)
+        recommendation.save
+      end
+    end
   end
+
+  def create_publication_table(auth, user)
+    byebug
+    publication_array = auth.extra.raw_info.publications.values[1].nil? ? [] : auth.extra.raw_info.publications.values[1] rescue nil
+    if not publication_array.nil?
+      publication_array.each do |pub_entry|
+        publication_date = self.extract_date(pub_entry.date)
+        publication_title = pub_entry.title.to_s rescue nil
+        publication_publisher = pub_entry.publisher.to_s rescue nil
+        publication_description = pub_entry.summary.to_s rescue nil
+        publication_id = pub_entry.id.to_s rescue nil
+        
+        publication = Publication.where(user: user, publication_id: publication_id)
+        publication.update(title: publication_title, description: publication_description, publication_date: publication_date, 
+                           publisher: publication_publisher)
+        publication.save
+
+      end
+    end
+  end
+
 end
 
 '''
