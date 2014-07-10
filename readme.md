@@ -1,6 +1,6 @@
 # Website for TeamLeada.com
 
-For more comprehensive docs, go [here](docs.teamleada.com)
+For more comprehensive docs, go [here.](http://docs.teamleada.com)
 
 ## Setup
 
