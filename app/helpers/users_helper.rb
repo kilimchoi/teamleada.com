@@ -20,10 +20,10 @@ module UsersHelper
     (auth.extra.raw_info.interests rescue nil).nil? ? nil : registered_user.update(interests: auth.extra.raw_info.interests)
 
     create_jobs_table(auth, registered_user)
-    create_education_table(auth, registered_user)
-    create_recommendation_table(auth, registered_user)
-    create_publication_table(auth, registered_user)
-    create_skill_table(auth, registered_user)
+    create_enrollments_table(auth, registered_user)
+    create_recommendations_table(auth, registered_user)
+    create_publications_table(auth, registered_user)
+    create_skills_table(auth, registered_user)
 
     registered_user.skip_confirmation!
     registered_user.save(validate: false)
@@ -60,7 +60,7 @@ module UsersHelper
     user.unconfirm!
 
     create_jobs_table(auth, user)
-    create_education_table(auth, user)
+    create_enrollments_table(auth, user)
     create_recommendation_table(auth, user)
     create_publication_table(auth, user)
     create_skill_table(auth, user)
@@ -102,7 +102,7 @@ module UsersHelper
     end
   end
 
-  def self.create_education_table(auth, user)
+  def self.create_enrollments_table(auth, user)
     education_array = auth.extra.raw_info.educations.values[1].nil? ? [] : auth.extra.raw_info.educations.values[1] rescue nil
     if not education_array.nil?
       education_array.each do |education_entry|
@@ -131,7 +131,7 @@ module UsersHelper
     end
   end
 
-  def self.create_recommendation_table(auth, user)
+  def self.create_recommendations_table(auth, user)
     rec_array = auth.extra.raw_info.recommendationsReceived.values[1].nil? ? [] : auth.extra.raw_info.recommendationsReceived.values[1] rescue nil
     if not rec_array.nil?
       rec_array.each do |rec_entry|
@@ -151,7 +151,7 @@ module UsersHelper
     end
   end
 
-  def self.create_publication_table(auth, user)
+  def self.create_publications_table(auth, user)
     publication_array = auth.extra.raw_info.publications.values[1].nil? ? [] : auth.extra.raw_info.publications.values[1] rescue nil
     if not publication_array.nil?
       publication_array.each do |pub_entry|
@@ -169,7 +169,7 @@ module UsersHelper
     end
   end
 
-  def self.create_skill_table(auth, user)
+  def self.create_skills_table(auth, user)
     skills_array = auth.extra.raw_info.skills.values[1].nil? ? [] : auth.extra.raw_info.skills.values[1] rescue nil
     if not skills_array.nil?
       skills_array.each do |skill_entry|
