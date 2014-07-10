@@ -44,6 +44,8 @@ class User < ActiveRecord::Base
   # TODO: Remove this and put in a helper class
   include Rails.application.routes.url_helpers
 
+  include UsersHelper
+
   # Submissions
   has_many :submissions
   has_many :code_submissions
@@ -75,6 +77,16 @@ class User < ActiveRecord::Base
                            foreign_key: :impressionable_id,
                            primary_key: :username
 
+  # LinkedIn
+  has_many :job_experiences
+  has_many :jobs, through: :job_experiences
+  has_many :companies, through: :job_experiences
+  has_many :job_recommendations, foreign_key: :reviewee_id
+  has_many :enrollments
+  has_many :universities, through: :enrollments
+  has_many :publications
+  
+  # Messaging
   has_many :initiated_conversations, class_name: Conversation, foreign_key: :starter_id
   has_many :messages
   has_many :conversation_users
@@ -155,7 +167,7 @@ class User < ActiveRecord::Base
         return user
       else
         registered_user = User.find_by(email: (auth.info.email rescue nil))
-        registered_user.nil? ? User.new_with_linked_in_params(auth) : registered_user.update_with_linked_in_params(auth)
+        registered_user.nil? ? UsersHelper.new_with_linked_in_params(auth) : UsersHelper.update_with_linked_in_params(auth, registered_user)
       end
     end
 
