@@ -5,8 +5,6 @@ class UsersController < ApplicationController
   respond_to :html, :json
 
   def show
-    @user.resumes.build
-    @user.profile_photos.build
   end
 
   def edit
@@ -27,7 +25,9 @@ class UsersController < ApplicationController
       if params[:user].has_key? :password
         @user.password_updated!
       end
-      sign_in(@user, bypass: true)
+      if !signed_in?
+        sign_in(@user, bypass: true)
+      end
       respond_to do |format|
         format.json { render json: {data: {first_name: @user.first_name, last_name: @user.last_name}}, status: :ok }
         format.html {
