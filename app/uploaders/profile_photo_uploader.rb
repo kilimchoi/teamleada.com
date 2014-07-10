@@ -15,6 +15,10 @@ class ProfilePhotoUploader < CarrierWave::Uploader::Base
     process resize_to_limit: [150, 150]
   end
 
+  version :huge do
+    process resize_to_limit: [500, 500]
+  end
+
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
