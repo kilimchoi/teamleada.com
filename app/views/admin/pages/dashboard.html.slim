@@ -55,7 +55,7 @@
             - @new_resumes.each do |resume|
               tr
                 td = link_to resume.user.name, admin_user_path(resume.user)
-                td = link_to resume.filename, resume.resume_file.url
+                td = link_to "View", resume.url
   .row
     .col-md-6
       .row
