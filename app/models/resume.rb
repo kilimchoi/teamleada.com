@@ -13,13 +13,19 @@
 #
 
 class Resume < ActiveRecord::Base
+  include ::CarrierWave::Backgrounder::Delay
   mount_uploader :resume_file, ResumeUploader
+  store_in_background :resume_file
   skip_callback :save, :after, :remove_previously_stored_resume_file
 
   belongs_to :user
 
   def pretty_upload_date
     created_at.strftime("%B %d, %Y")
+  end
+
+  def url
+    resume_file_tmp || resume_file.url
   end
 
   def first_name

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140710051544) do
+ActiveRecord::Schema.define(version: 20140710054600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -323,6 +323,8 @@ ActiveRecord::Schema.define(version: 20140710051544) do
     t.integer  "resume_file_file_size"
     t.datetime "resume_file_updated_at"
     t.string   "resume_file"
+    t.boolean  "resume_file_processing",   default: false
+    t.string   "resume_file_tmp"
   end
 
   create_table "slides", id: false, force: true do |t|
