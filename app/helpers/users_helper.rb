@@ -1,6 +1,9 @@
 module UsersHelper
 
   def update_with_linked_in_params(auth)
+    byebug
+    registered_user = self
+
     (auth.info.first_name rescue nil).nil? ? nil : registered_user.update(first_name: auth.info.first_name)
     (auth.info.last_name rescue nil).nil? ? nil : registered_user.update(last_name: auth.info.last_name)
     (auth.uid rescue nil).nil? ? nil : registered_user.update(linkedin_id: auth.uid)
@@ -16,14 +19,22 @@ module UsersHelper
     (auth.info.urls.public_profile rescue nil).nil? ? nil : registered_user.update(public_prof_url: auth.info.urls.public_profile)
 
     registered_user.update(date_of_birth: (Date.new((auth.extra.raw_info.dateOfBirth.year rescue nil), (auth.extra.raw_info.dateOfBirth.month rescue nil), (auth.extra.raw_info.dateOfBirth.day rescue nil)) rescue nil))
-    (auth.extra.raw_info.educations.values[1][0].schoolName rescue nil).nil? ? nil : registered_user.update(school_name: auth.extra.raw_info.educations.values[1][0].schoolName)
-    (auth.extra.raw_info.educations.values[1][0].endDate.year rescue nil).nil? ? nil : registered_user.update(grad_year: auth.extra.raw_info.educations.values[1][0].endDate.year)
+
     (auth.extra.raw_info.interests rescue nil).nil? ? nil : registered_user.update(interests: auth.extra.raw_info.interests)
-    (auth.extra.raw_info.jobBookmarks._total rescue nil).nil? ? nil : registered_user.update(job_bookmarks_count: auth.extra.raw_info.jobBookmarks._total)
-    (auth.extra.raw_info.positions._total rescue nil).nil? ? nil : registered_user.update(job_total_count: auth.extra.raw_info.positions._total)
-    (auth.extra.raw_info.publications._total rescue nil).nil? ? nil : registered_user.update(publications_count: auth.extra.raw_info.publications._total)
-    (auth.extra.raw_info.recommendationsReceived._total rescue nil).nil? ? nil : registered_user.update(recom_count: auth.extra.raw_info.recommendationsReceived._total)
-    (auth.extra.raw_info.skills._total rescue nil).nil? ? nil : registered_user.update(skills_count: auth.extra.raw_info.skills._total)
+
+    create_jobs_table(auth, registered_user)
+    create_education_table(auth, registered_user)
+    create_recommendation_table(auth, registered_user)
+    create_publication_table(auth, registered_user)
+    create_skill_table(auth, registered_user)
+
+    #(auth.extra.raw_info.educations.values[1][0].schoolName rescue nil).nil? ? nil : registered_user.update(school_name: auth.extra.raw_info.educations.values[1][0].schoolName)
+    #(auth.extra.raw_info.educations.values[1][0].endDate.year rescue nil).nil? ? nil : registered_user.update(grad_year: auth.extra.raw_info.educations.values[1][0].endDate.year)
+    #(auth.extra.raw_info.jobBookmarks._total rescue nil).nil? ? nil : registered_user.update(job_bookmarks_count: auth.extra.raw_info.jobBookmarks._total)
+    #(auth.extra.raw_info.positions._total rescue nil).nil? ? nil : registered_user.update(job_total_count: auth.extra.raw_info.positions._total)
+    #(auth.extra.raw_info.publications._total rescue nil).nil? ? nil : registered_user.update(publications_count: auth.extra.raw_info.publications._total)
+    #(auth.extra.raw_info.recommendationsReceived._total rescue nil).nil? ? nil : registered_user.update(recom_count: auth.extra.raw_info.recommendationsReceived._total)
+    #(auth.extra.raw_info.skills._total rescue nil).nil? ? nil : registered_user.update(skills_count: auth.extra.raw_info.skills._total)
 
     registered_user.skip_confirmation!
     registered_user.save(validate: false)
@@ -49,14 +60,16 @@ module UsersHelper
       phone:                (auth.extra.raw_info.phoneNumbers.values[1][0].phoneNumber rescue nil),
       headline:             (auth.info.headline rescue nil),
       industry:             (auth.info.industry rescue nil),
+      public_prof_url:      (auth.info.urls.public_profile rescue nil),
       date_of_birth:        self.extract_date(auth.extra.raw_info.dateOfBirth),
+      interests:            (auth.extra.raw_info.interests rescue nil),
       password:             Devise.friendly_token[0,20],
       )
 
-      user.skip_confirmation!
-      user.generate_new_token
-      user.save(validate: false)
-      user.unconfirm!
+    user.skip_confirmation!
+    user.generate_new_token
+    user.save(validate: false)
+    user.unconfirm!
 
     create_jobs_table(auth, user)
     create_education_table(auth, user)
@@ -80,6 +93,7 @@ module UsersHelper
 
         company = Company.where(name: company_name, linkedin_company_id: company_id, industry: company_industry,
           company_type: company_type, ticker: company_ticker).first_or_create
+        company.verified.nil? ? company.verified = false : nil
 
         job_title = job_entry.title
         job = Job.where(company: company, position_title: job_title).first_or_create
@@ -109,8 +123,10 @@ module UsersHelper
         education_institute_name = education_entry.schoolName rescue nil
         education_linkedin_id = education_entry.id rescue nil
         university = University.where(name: education_institute_name).first_or_create
+        university.verified.nil? ? university.verified = false : nil
+
         if university.linkedin_school_id.nil?
-          university.update(linkedin_school_ud: education_linkedin_id)
+          university.update(linkedin_school_id: education_linkedin_id)
           university.save
         end
 
@@ -134,7 +150,7 @@ module UsersHelper
     if not rec_array.nil?
       rec_array.each do |rec_entry|
         rec_giver_first = rec_entry.recommender.firstName.to_s
-        rec_giver_last = rec_enrtry.recommender.lastName.to_s
+        rec_giver_last = rec_entry.recommender.lastName.to_s
         rec_giver_linkedin_id = rec_entry.recommender.id.to_s
         
         rec_text = rec_entry.recommender.recommendationText.to_s
@@ -160,7 +176,7 @@ module UsersHelper
         publication_description = pub_entry.summary.to_s rescue nil
         publication_id = pub_entry.id.to_s rescue nil
         
-        publication = Publication.where(user: user, publication_id: publication_id)
+        publication = Publication.where(user: user, linkedin_publication_id: publication_id).first_or_create
         publication.update(title: publication_title, description: publication_description, publication_date: publication_date, 
                            publisher: publication_publisher)
         publication.save
@@ -176,7 +192,7 @@ module UsersHelper
         skill_id = skill_entry.id.to_s rescue nil
         skill_name = skill_entry.skill.name.to_s rescue nil
 
-        skill = Skill.where(skill_name: skill_name, skill_id: skill_id).first_or_create
+        skill = Skill.where(skill_name: skill_name, linkedin_skill_id: skill_id).first_or_create
         user_skill = UserSkill.where(user: user, skill: skill).first_or_create
       end
     end
@@ -186,7 +202,6 @@ end
 '''
 school_name:          (auth.extra.raw_info.educations.values[1][0].schoolName rescue nil),
 grad_year:            (auth.extra.raw_info.educations.values[1][0].endDate.year rescue nil),
-interests:            (auth.extra.raw_info.interests rescue nil),
 job_bookmarks_count:  (auth.extra.raw_info.jobBookmarks._total rescue nil),
 job_total_count:      (auth.extra.raw_info.positions._total rescue nil),
 publications_count:   (auth.extra.raw_info.publications._total rescue nil),
