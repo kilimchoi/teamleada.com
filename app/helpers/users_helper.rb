@@ -80,8 +80,6 @@ module UsersHelper
 
         company = Company.where(name: company_name, linkedin_company_id: company_id, industry: company_industry,
           company_type: company_type, ticker: company_ticker).first_or_create
-        company.verified.nil? ? company.verified = false : nil
-        company.save
 
         job_title = job_entry.title
         job = Job.where(company: company, position_title: job_title).first_or_create
@@ -110,12 +108,11 @@ module UsersHelper
         education_institute_name = education_entry.schoolName rescue nil
         education_linkedin_id = education_entry.id rescue nil
         university = University.where(name: education_institute_name).first_or_create
-        university.verified.nil? ? university.verified = false : nil
 
         if university.linkedin_school_id.nil?
           university.update(linkedin_school_id: education_linkedin_id)
+          university.save
         end
-        university.save
 
         education_degree = education_entry.degree rescue nil
         education_field_of_study = education_entry.fieldOfStudy rescue nil
