@@ -33,6 +33,7 @@ TeamLeada::Application.routes.draw do
 
   match 'settings', to: 'users#edit', as: 'edit_user', via: :get
 
+  match 'change-role', to: "users#change_role", as: :user_change_role, via: :get
   resources :users, only: [:show, :update] do
     member do
       match 'projects', to: 'users#projects', as: :projects, via: :get

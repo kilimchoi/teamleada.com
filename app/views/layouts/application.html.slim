@@ -25,6 +25,8 @@ html
     = csrf_meta_tags
     = render partial: 'shared/analytics'
   body
+    - if Rails.env.development?
+      = render partial: "shared/debug_bar"
     = render partial: "layouts/header"
     - if signed_in? && @profile_needs_info && current_user.has_missing_profile_info?
       = render partial: "shared/profile_info_modal"
