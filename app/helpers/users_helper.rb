@@ -173,7 +173,7 @@ module UsersHelper
         skill_id = skill_entry.id.to_s rescue nil
         skill_name = skill_entry.skill.name.to_s rescue nil
 
-        skill = Skill.where(skill_name: skill_name, linkedin_skill_id: skill_id).first_or_create
+        skill = Skill.where(skill: skill_name, linkedin_skill_id: skill_id).first_or_create
         user_skill = UserSkill.where(user: user, skill: skill).first_or_create
       end
     end
