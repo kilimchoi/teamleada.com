@@ -1,0 +1,6 @@
+#debug-bar
+  .debug-items
+    ' Change role to:
+    = link_to "student", user_change_role_path(role: "student")
+    = link_to "recruiter", user_change_role_path(role: "recruiter")
+    = link_to "admin", user_change_role_path(role: "admin")
