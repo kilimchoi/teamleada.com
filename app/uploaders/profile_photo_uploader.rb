@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class ProfilePhotoUploaderUploader < CarrierWave::Uploader::Base
+class ProfilePhotoUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
 
   version :thumb do

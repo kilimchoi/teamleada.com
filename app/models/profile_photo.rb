@@ -14,9 +14,9 @@
 
 class ProfilePhoto < ActiveRecord::Base
   include ::CarrierWave::Backgrounder::Delay
-  mount_uploader :profile_photo_file, ResumeUploader
-  store_in_background :profile_photo_file
-  skip_callback :save, :after, :remove_previously_stored_profile_photo_file
+  mount_uploader :photo, ProfilePhotoUploader
+  store_in_background :photo
+  skip_callback :save, :after, :remove_previously_stored_photo
 
   belongs_to :user
 
