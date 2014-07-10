@@ -12,6 +12,10 @@ Copy over the `database.yml` file from `config/sample/database.yml` to `config/d
 
     cp config/sample/database.yml config/database.yml
 
+If you don't have postgres installed, install it now:
+
+    brew install postgres
+
 Create the database using:
 
     rake db:create
@@ -29,6 +33,13 @@ Start the server:
     rails s
 
 Happy developing!
+
+## Image Processing
+
+You're going to have to install Imagemagick and redis:
+
+    brew install imagemagick
+    brew install redis
 
 ## Background jobs
 
