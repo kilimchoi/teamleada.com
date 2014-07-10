@@ -1,7 +1,6 @@
 module UsersHelper
 
   def self.update_with_linked_in_params(auth, registered_user)
-    #registered_user = self
     (auth.info.first_name rescue nil).nil? ? nil : registered_user.update(first_name: auth.info.first_name)
     (auth.info.last_name rescue nil).nil? ? nil : registered_user.update(last_name: auth.info.last_name)
     (auth.uid rescue nil).nil? ? nil : registered_user.update(linkedin_id: auth.uid)
