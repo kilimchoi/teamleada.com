@@ -25,7 +25,11 @@ class Resume < ActiveRecord::Base
   end
 
   def url
-    resume_file_tmp || resume_file.url
+    resume_file_tmp_url || resume_file.url
+  end
+
+  def resume_file_tmp_url
+    "/tmp/uploads/#{resume_file_tmp}" unless resume_file_tmp.nil?
   end
 
   def first_name
