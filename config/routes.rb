@@ -97,6 +97,8 @@ TeamLeada::Application.routes.draw do
     match '/', to: redirect('/a/dashboard'), via: :get
     match 'dashboard', to: 'pages#dashboard', via: :get
 
+    resources :features, only: [:index]
+
     resources :users, only: [:index, :show] do
       member do
         match 'projects/:project_id/publish-feedback', to: 'users#publish_feedback', as: :publish_feedback, via: :get
