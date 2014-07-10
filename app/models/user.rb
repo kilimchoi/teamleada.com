@@ -38,8 +38,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
-  :recoverable, :rememberable, :trackable, :validatable,
-  :omniauthable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable
 
   # TODO: Remove this and put in a helper class
   include Rails.application.routes.url_helpers

@@ -35,6 +35,7 @@ gem 'sidekiq', '~> 3.2.1'
 # Uploads
 gem 'carrierwave', '~> 0.10.0'
 gem 'fog', '~> 1.22.1'
+gem 'rmagick', '~> 2.13.2'
 
 # LinkedIn Integration
 gem 'omniauth'
