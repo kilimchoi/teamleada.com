@@ -153,6 +153,13 @@ ActiveRecord::Schema.define(version: 20140710083554) do
   add_index "enrollments", ["university_id"], name: "index_enrollments_on_university_id", using: :btree
   add_index "enrollments", ["user_id"], name: "index_enrollments_on_user_id", using: :btree
 
+  create_table "features", force: true do |t|
+    t.boolean  "enabled"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+  end
+
   create_table "impressions", force: true do |t|
     t.string   "impressionable_type"
     t.integer  "user_id"
@@ -303,6 +310,9 @@ ActiveRecord::Schema.define(version: 20140710083554) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.boolean  "photo_processing",   default: false
+    t.string   "photo_tmp"
+    t.string   "photo"
   end
 
   create_table "project_interests", force: true do |t|
@@ -389,6 +399,9 @@ ActiveRecord::Schema.define(version: 20140710083554) do
     t.string   "resume_file_content_type"
     t.integer  "resume_file_file_size"
     t.datetime "resume_file_updated_at"
+    t.string   "resume_file"
+    t.boolean  "resume_file_processing",   default: false
+    t.string   "resume_file_tmp"
   end
 
   create_table "skills", force: true do |t|
@@ -534,8 +547,8 @@ ActiveRecord::Schema.define(version: 20140710083554) do
     t.boolean  "looking_for_opportunities",    default: false
     t.string   "location"
     t.text     "bio"
-    t.string   "linkedin_id"
     t.string   "name"
+    t.string   "linkedin_id"
     t.string   "nickname"
     t.string   "image"
     t.string   "phone"

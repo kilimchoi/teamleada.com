@@ -40,12 +40,13 @@ header#header
                 = image_tag current_user.profile_photo, class: "navbar-profile-photo"
                 span.navbar-name = current_user.username
 
-            li.dropdown
-              = link_to "#", class: "dropdown-toggle", data: { toggle: "dropdown" } do
-                - if current_user.unread_conversations_count > 0
-                  span.label.label-danger.navbar-unread-conversations-badge = current_user.unread_conversations_count
-                span.navbar-icon.has-tooltip.fa.fa-envelope*{"data-toggle" => "tooltip", "data-placement" => "bottom", "data-title" => "Messages"}
-              = render partial: "header/messages", locals: { user: current_user }
+            - if Feature.enabled?("messaging")
+              li.dropdown
+                = link_to "#", class: "dropdown-toggle", data: { toggle: "dropdown" } do
+                  - if current_user.unread_conversations_count > 0
+                    span.label.label-danger.navbar-unread-conversations-badge = current_user.unread_conversations_count
+                  span.navbar-icon.has-tooltip.fa.fa-envelope*{"data-toggle" => "tooltip", "data-placement" => "bottom", "data-title" => "Messages"}
+                = render partial: "header/messages", locals: { user: current_user }
             li
               = link_to "", edit_user_path(tab: "account"), class: "navbar-icon has-tooltip fa fa-gears", data: { toggle: "tooltip", placement: "bottom", title: "Account Settings" }
             li

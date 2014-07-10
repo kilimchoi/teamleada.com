@@ -1,12 +1,10 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
-  skip_authorize_resource only: :auth_code
+  skip_authorize_resource only: [:auth_code, :change_role]
 
   respond_to :html, :json
 
   def show
-    @user.resumes.build
-    @user.profile_photos.build
   end
 
   def edit
@@ -27,7 +25,9 @@ class UsersController < ApplicationController
       if params[:user].has_key? :password
         @user.password_updated!
       end
-      sign_in(@user, bypass: true)
+      if !signed_in?
+        sign_in(@user, bypass: true)
+      end
       respond_to do |format|
         format.json { render json: {data: {first_name: @user.first_name, last_name: @user.last_name}}, status: :ok }
         format.html {
@@ -86,6 +86,13 @@ class UsersController < ApplicationController
 
   def project_feedback
     @project = Project.find(params[:project_id])
+  end
+
+  def change_role
+    redirect_to root_path and return unless Rails.env.development?
+    current_user.role = params[:role]
+    current_user.save
+    redirect_to root_path
   end
 
   private

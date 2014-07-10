@@ -28,3 +28,9 @@
 # Ignore ruby gemset files
 .ruby-version
 .ruby-gemset
+
+# Vim swp files
+*.swp
+
+# Ignore temporary uploaded files
+public/tmp

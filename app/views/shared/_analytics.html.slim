@@ -17,7 +17,7 @@ javascript:
   woopra.identify({
     email: '"#{signed_in? ? current_user.email : 'visitor'}"',
     name: '"#{signed_in? ? current_user.name : 'visitor'}"',
-    company: '"#{signed_in? && current_user.is_company? ? current_user.company.name : 'no company'}"'
+    company: '"#{signed_in? && current_user.is_company? ? current_user.company.try(:name) : 'no company'}"'
   });
 
   woopra.track();

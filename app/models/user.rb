@@ -38,8 +38,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
-  :recoverable, :rememberable, :trackable, :validatable,
-  :omniauthable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable
 
   # TODO: Remove this and put in a helper class
   include Rails.application.routes.url_helpers
@@ -262,9 +262,9 @@ class User < ActiveRecord::Base
     if has_profile_photo?
       photo = profile_photos.last
       if photo.new_record?
-        profile_photos.last(2).first.photo.url
+        profile_photos.last(2).first.url
       else
-        photo.photo.url
+        photo.url
       end
     else
       "default_avatar.png"
