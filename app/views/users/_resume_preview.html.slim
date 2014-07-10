@@ -3,4 +3,4 @@
     h4
       ' Latest resume uploaded on
       = resume.pretty_upload_date
-    = link_to "Most recent resume", resume.resume_file.url, target:"_blank", class: "flat-button"
+    = link_to "Most recent resume", resume.url, target:"_blank", class: "flat-button"
