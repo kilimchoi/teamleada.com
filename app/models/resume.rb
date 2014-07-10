@@ -13,7 +13,9 @@
 #
 
 class Resume < ActiveRecord::Base
+  include ::CarrierWave::Backgrounder::Delay
   mount_uploader :resume_file, ResumeUploader
+  process_in_background :resume_file
   skip_callback :save, :after, :remove_previously_stored_resume_file
 
   belongs_to :user
