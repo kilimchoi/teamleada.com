@@ -62,6 +62,7 @@ module UsersHelper
     create_education_table(auth, user)
     create_recommendation_table(auth, user)
     create_publication_table(auth, user)
+    create_skill_table(auth, user)
     return user
   end
 
@@ -127,7 +128,7 @@ module UsersHelper
     end
   end
 
-  def create_recommendation_table(auth, user)
+  def self.create_recommendation_table(auth, user)
     byebug
     rec_array = auth.extra.raw_info.recommendationsReceived.values[1].nil? ? [] : auth.extra.raw_info.recommendationsReceived.values[1] rescue nil
     if not rec_array.nil?
@@ -148,7 +149,7 @@ module UsersHelper
     end
   end
 
-  def create_publication_table(auth, user)
+  def self.create_publication_table(auth, user)
     byebug
     publication_array = auth.extra.raw_info.publications.values[1].nil? ? [] : auth.extra.raw_info.publications.values[1] rescue nil
     if not publication_array.nil?
@@ -167,7 +168,18 @@ module UsersHelper
     end
   end
 
-  def create_skill_table(auth, user)
+  def self.create_skill_table(auth, user)
+    byebug
+    skills_array = auth.extra.raw_info.skills.values[1].nil? ? [] : auth.extra.raw_info.skills.values[1] rescue nil
+    if not skills_array.nil?
+      skills_array.each do |skill_entry|
+        skill_id = skill_entry.id.to_s rescue nil
+        skill_name = skill_entry.skill.name.to_s rescue nil
+
+        skill = Skill.where(skill_name: skill_name, skill_id: skill_id).first_or_create
+        user_skill = UserSkill.where(user: user, skill: skill).first_or_create
+      end
+    end
   end
 end
 
