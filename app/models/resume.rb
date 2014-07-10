@@ -48,4 +48,8 @@ class Resume < ActiveRecord::Base
     user.resumes.index(self) + 1
   end
 
+  def filename
+    original_filename
+  end
+
 end
