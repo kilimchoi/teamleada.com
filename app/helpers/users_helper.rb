@@ -82,6 +82,7 @@ module UsersHelper
         company = Company.where(name: company_name, linkedin_company_id: company_id, industry: company_industry,
           company_type: company_type, ticker: company_ticker).first_or_create
         company.verified.nil? ? company.verified = false : nil
+        company.save
 
         job_title = job_entry.title
         job = Job.where(company: company, position_title: job_title).first_or_create
@@ -114,8 +115,8 @@ module UsersHelper
 
         if university.linkedin_school_id.nil?
           university.update(linkedin_school_id: education_linkedin_id)
-          university.save
         end
+        university.save
 
         education_degree = education_entry.degree rescue nil
         education_field_of_study = education_entry.fieldOfStudy rescue nil
@@ -135,12 +136,12 @@ module UsersHelper
     rec_array = auth.extra.raw_info.recommendationsReceived.values[1].nil? ? [] : auth.extra.raw_info.recommendationsReceived.values[1] rescue nil
     if not rec_array.nil?
       rec_array.each do |rec_entry|
-        rec_giver_first = rec_entry.recommender.firstName.to_s
-        rec_giver_last = rec_entry.recommender.lastName.to_s
-        rec_giver_linkedin_id = rec_entry.recommender.id.to_s
+        rec_giver_first = rec_entry.recommender.firstName.to_s rescue nil
+        rec_giver_last = rec_entry.recommender.lastName.to_s rescue nil
+        rec_giver_linkedin_id = rec_entry.recommender.id.to_s rescue nil
         
-        rec_text = rec_entry.recommender.recommendationText.to_s
-        rec_type = rec_entry.recommender.recommendationType.to_s
+        rec_text = rec_entry.recommender.recommendationText.to_s rescue nil
+        rec_type = rec_entry.recommender.recommendationType.to_s rescue nil
         rec_id = rec_entry.id.to_s
 
         recommendation = JobRecommendation.where(reviewer_first_name: rec_giver_first, reviewer_last_name: rec_giver_last,
