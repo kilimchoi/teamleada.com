@@ -7,6 +7,10 @@ class ResumeUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
+  def cache_dir
+    "#{Rails.root}/public/tmp/uploads"
+  end
+
   def pdf?
     pdf_ext = %w(pdf)
     if file.respond_to?(:extension)

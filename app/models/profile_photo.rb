@@ -24,6 +24,14 @@ class ProfilePhoto < ActiveRecord::Base
     created_at.strftime("%B %d, %Y")
   end
 
+  def url
+    photo_tmp_url || photo.url(:large)
+  end
+
+  def photo_tmp_url
+    "/tmp/uploads/#{photo_tmp}" unless photo_tmp.nil?
+  end
+
   def first_name
     user.first_name
   end
