@@ -24,6 +24,10 @@ class Resume < ActiveRecord::Base
     created_at.strftime("%B %d, %Y")
   end
 
+  def url
+    resume_file_tmp || resume_file.url
+  end
+
   def first_name
     user.first_name
   end

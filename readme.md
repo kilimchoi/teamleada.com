@@ -30,6 +30,12 @@ Start the server:
 
 Happy developing!
 
+## Background jobs
+
+To start Sidekiq, run the command:
+
+    sidekiq -q uploads
+
 ## Live Reload
 
 We are currently using `livereload` so that when you edit views and assets, they are automatically updated on the web browser (no refreshing anymore).
