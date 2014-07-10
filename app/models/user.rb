@@ -81,7 +81,7 @@ class User < ActiveRecord::Base
   has_many :job_experiences
   has_many :jobs, through: :job_experiences
   has_many :companies, through: :job_experiences
-  has_many :job_recommendations
+  has_many :job_recommendations, foreign_key: :reviewee_id
   has_many :enrollments
   has_many :universities, through: :enrollments
   has_many :publications
