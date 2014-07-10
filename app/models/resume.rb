@@ -24,6 +24,8 @@ class Resume < ActiveRecord::Base
 
   belongs_to :user
 
+  default_scope { order(:created_at) }
+
   def pretty_upload_date
     created_at.strftime("%B %d, %Y")
   end
