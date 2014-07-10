@@ -10,6 +10,7 @@
 #  uid                   :string(255)      not null, primary key
 #  title                 :string(255)
 #  submission_type       :string(255)
+#  project_id            :integer
 #
 
 class SubmissionContext < ActiveRecord::Base

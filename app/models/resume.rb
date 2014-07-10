@@ -10,6 +10,10 @@
 #  resume_file_content_type :string(255)
 #  resume_file_file_size    :integer
 #  resume_file_updated_at   :datetime
+#  resume_file              :string(255)
+#  resume_file_processing   :boolean          default(FALSE)
+#  resume_file_tmp          :string(255)
+#  original_filename        :string(255)
 #
 
 class Resume < ActiveRecord::Base

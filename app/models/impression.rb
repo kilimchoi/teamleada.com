@@ -16,6 +16,8 @@
 #  created_at          :datetime
 #  updated_at          :datetime
 #  impressionable_id   :string(255)
+#  url                 :string(255)
+#  user_agent          :string(255)
 #
 
 class Impression < ActiveRecord::Base

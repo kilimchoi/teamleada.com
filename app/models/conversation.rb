@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: conversations
+#
+#  id                   :integer          not null, primary key
+#  starter_id           :integer
+#  title                :string(255)
+#  created_at           :datetime
+#  updated_at           :datetime
+#  last_message_sent_at :datetime
+#
+
 class Conversation < ActiveRecord::Base
   obfuscate_id spin: 12122121
 

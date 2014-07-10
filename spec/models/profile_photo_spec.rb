@@ -10,6 +10,10 @@
 #  photo_content_type :string(255)
 #  photo_file_size    :integer
 #  photo_updated_at   :datetime
+#  photo_processing   :boolean          default(FALSE)
+#  photo_tmp          :string(255)
+#  photo              :string(255)
+#  original_filename  :string(255)
 #
 
 require 'spec_helper'
