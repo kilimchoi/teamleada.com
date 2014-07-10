@@ -44,8 +44,4 @@ class Resume < ActiveRecord::Base
     user.resumes.index(self) + 1
   end
 
-  def filename
-    resume_file_file_name
-  end
-
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140710101054) do
+ActiveRecord::Schema.define(version: 20140710105104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -313,6 +313,7 @@ ActiveRecord::Schema.define(version: 20140710101054) do
     t.boolean  "photo_processing",   default: false
     t.string   "photo_tmp"
     t.string   "photo"
+    t.string   "original_filename"
   end
 
   create_table "project_interests", force: true do |t|
@@ -402,6 +403,7 @@ ActiveRecord::Schema.define(version: 20140710101054) do
     t.string   "resume_file"
     t.boolean  "resume_file_processing",   default: false
     t.string   "resume_file_tmp"
+    t.string   "original_filename"
   end
 
   create_table "skills", force: true do |t|
