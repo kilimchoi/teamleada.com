@@ -1,3 +1,9 @@
+v 1.0.4
+  - LinkedIn Integration
+  - Debug bar
+  - Background uploading
+  - Feature Toggles
+
 v 1.0.3
   - Messages and Conversations
   - Redesigned navbar with messages widget
