@@ -14,6 +14,8 @@
 
 class Resume < ActiveRecord::Base
   mount_uploader :resume_file, ResumeUploader
+  skip_callback :save, :after, :remove_previously_stored_resume_file
+
   belongs_to :user
 
   def pretty_upload_date
