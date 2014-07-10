@@ -13,20 +13,12 @@
 #
 
 class ProfilePhoto < ActiveRecord::Base
+  include ::CarrierWave::Backgrounder::Delay
+  mount_uploader :profile_photo_file, ResumeUploader
+  store_in_background :profile_photo_file
+  skip_callback :save, :after, :remove_previously_stored_profile_photo_file
+
   belongs_to :user
-
-  has_attached_file :photo,
-    storage: :s3,
-    s3_credentials: S3_CREDENTIALS,
-    path: '/profile_photos/:style/:id/:filename',
-    styles: {
-      preview: "600x600#",
-      large: "300x300#",
-      thumb: "160x160#"
-    }
-
-  validates_attachment_content_type :photo, content_type: /image/
-  validates_attachment_size :photo, less_than: 10.megabytes
 
   def pretty_upload_date
     created_at.strftime("%B %d, %Y")
