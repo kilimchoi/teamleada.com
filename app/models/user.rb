@@ -161,7 +161,6 @@ class User < ActiveRecord::Base
 
     def connect_to_linkedin(auth, signed_in_resource=nil)
       if auth.provider == 'linkedin'
-        byebug
         user = User.find_by(linkedin_id: auth.uid)
       end
       unless user.nil?

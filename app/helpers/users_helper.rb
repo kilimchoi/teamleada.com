@@ -1,7 +1,6 @@
 module UsersHelper
 
   def self.update_with_linked_in_params(auth, registered_user)
-    byebug
     #registered_user = self
     (auth.info.first_name rescue nil).nil? ? nil : registered_user.update(first_name: auth.info.first_name)
     (auth.info.last_name rescue nil).nil? ? nil : registered_user.update(last_name: auth.info.last_name)
@@ -27,14 +26,6 @@ module UsersHelper
     create_publication_table(auth, registered_user)
     create_skill_table(auth, registered_user)
 
-    #(auth.extra.raw_info.educations.values[1][0].schoolName rescue nil).nil? ? nil : registered_user.update(school_name: auth.extra.raw_info.educations.values[1][0].schoolName)
-    #(auth.extra.raw_info.educations.values[1][0].endDate.year rescue nil).nil? ? nil : registered_user.update(grad_year: auth.extra.raw_info.educations.values[1][0].endDate.year)
-    #(auth.extra.raw_info.jobBookmarks._total rescue nil).nil? ? nil : registered_user.update(job_bookmarks_count: auth.extra.raw_info.jobBookmarks._total)
-    #(auth.extra.raw_info.positions._total rescue nil).nil? ? nil : registered_user.update(job_total_count: auth.extra.raw_info.positions._total)
-    #(auth.extra.raw_info.publications._total rescue nil).nil? ? nil : registered_user.update(publications_count: auth.extra.raw_info.publications._total)
-    #(auth.extra.raw_info.recommendationsReceived._total rescue nil).nil? ? nil : registered_user.update(recom_count: auth.extra.raw_info.recommendationsReceived._total)
-    #(auth.extra.raw_info.skills._total rescue nil).nil? ? nil : registered_user.update(skills_count: auth.extra.raw_info.skills._total)
-
     registered_user.skip_confirmation!
     registered_user.save(validate: false)
     registered_user
@@ -45,7 +36,6 @@ module UsersHelper
   end
 
   def self.new_with_linked_in_params(auth)
-    byebug
     user = User.new(
       first_name:           (auth.info.first_name rescue nil),
       last_name:            (auth.info.last_name rescue nil),
@@ -79,7 +69,6 @@ module UsersHelper
   end
 
   def self.create_jobs_table(auth, user)
-    byebug
     job_array = auth.extra.raw_info.positions.values[1].nil? ? [] : auth.extra.raw_info.positions.values[1] rescue nil
     if not job_array.nil?
       job_array.each do |job_entry|
@@ -114,7 +103,6 @@ module UsersHelper
   end
 
   def self.create_education_table(auth, user)
-    byebug
     education_array = auth.extra.raw_info.educations.values[1].nil? ? [] : auth.extra.raw_info.educations.values[1] rescue nil
     if not education_array.nil?
       education_array.each do |education_entry|
@@ -144,7 +132,6 @@ module UsersHelper
   end
 
   def self.create_recommendation_table(auth, user)
-    byebug
     rec_array = auth.extra.raw_info.recommendationsReceived.values[1].nil? ? [] : auth.extra.raw_info.recommendationsReceived.values[1] rescue nil
     if not rec_array.nil?
       rec_array.each do |rec_entry|
@@ -165,7 +152,6 @@ module UsersHelper
   end
 
   def self.create_publication_table(auth, user)
-    byebug
     publication_array = auth.extra.raw_info.publications.values[1].nil? ? [] : auth.extra.raw_info.publications.values[1] rescue nil
     if not publication_array.nil?
       publication_array.each do |pub_entry|
@@ -184,7 +170,6 @@ module UsersHelper
   end
 
   def self.create_skill_table(auth, user)
-    byebug
     skills_array = auth.extra.raw_info.skills.values[1].nil? ? [] : auth.extra.raw_info.skills.values[1] rescue nil
     if not skills_array.nil?
       skills_array.each do |skill_entry|
@@ -197,23 +182,3 @@ module UsersHelper
     end
   end
 end
-
-'''
-school_name:          (auth.extra.raw_info.educations.values[1][0].schoolName rescue nil),
-grad_year:            (auth.extra.raw_info.educations.values[1][0].endDate.year rescue nil),
-job_bookmarks_count:  (auth.extra.raw_info.jobBookmarks._total rescue nil),
-job_total_count:      (auth.extra.raw_info.positions._total rescue nil),
-publications_count:   (auth.extra.raw_info.publications._total rescue nil),
-recom_count:          (auth.extra.raw_info.recommendationsReceived._total rescue nil),
-skills_count:         (auth.extra.raw_info.skills._total rescue nil),
-public_prof_url:      (auth.info.urls.public_profile rescue nil),
-
-password:             Devise.friendly_token[0,20],
-)
-user.skip_confirmation!
-user.generate_new_token
-user.save(validate: false)
-user.unconfirm!
-user
-end
-'''
