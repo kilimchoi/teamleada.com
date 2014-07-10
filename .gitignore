@@ -28,3 +28,6 @@
 # Ignore ruby gemset files
 .ruby-version
 .ruby-gemset
+
+# Vim swp files
+*.swp
