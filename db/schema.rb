@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140710074114) do
+ActiveRecord::Schema.define(version: 20140710083554) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 20140710074114) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "url"
-    t.boolean  "verified?"
+    t.boolean  "verified"
     t.string   "linkedin_company_id"
     t.string   "company_type"
     t.string   "industry"
@@ -479,7 +479,7 @@ ActiveRecord::Schema.define(version: 20140710074114) do
   create_table "universities", force: true do |t|
     t.string   "name"
     t.string   "location"
-    t.boolean  "verified?"
+    t.boolean  "verified"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "linkedin_school_id"
@@ -543,14 +543,8 @@ ActiveRecord::Schema.define(version: 20140710074114) do
     t.string   "industry"
     t.string   "public_prof_url"
     t.datetime "date_of_birth"
-    t.string   "school_name"
-    t.integer  "grad_year"
     t.text     "interests"
     t.integer  "job_bookmarks_count"
-    t.integer  "job_total_count"
-    t.integer  "publications_count"
-    t.integer  "recom_count"
-    t.integer  "skills_count"
     t.string   "country_code"
     t.boolean  "has_project_access",           default: false
   end
