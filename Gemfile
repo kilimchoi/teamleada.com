@@ -30,6 +30,7 @@ gem 'best_in_place', github: 'negativetwelve/best_in_place'
 gem 'impressionist', github: 'negativetwelve/impressionist'
 gem 'obfuscate_id', github: 'negativetwelve/obfuscate_id'
 gem 'rails4-autocomplete', '1.1.0'
+gem 'sidekiq', '~> 3.2.1'
 
 #LinkedIn Integration
 gem 'omniauth'
