@@ -281,6 +281,8 @@ class User < ActiveRecord::Base
       else
         photo.url
       end
+    elsif has_linkedin_profile_photo?
+      linkedin_profile_image_url
     else
       "default_avatar.png"
     end
@@ -317,6 +319,10 @@ class User < ActiveRecord::Base
 
   def has_profile_photo?
     self.profile_photos.count > 0
+  end
+
+  def has_linkedin_profile_photo?
+    !self.linkedin_profile_image_url.empty?
   end
 
   def has_all_project_points?(project)
