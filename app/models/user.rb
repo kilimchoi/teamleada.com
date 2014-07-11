@@ -32,21 +32,40 @@
 #  who_can_lookup_by_name       :string(255)
 #  who_can_see_resume           :string(255)
 #  looking_for_opportunities    :boolean          default(FALSE)
+#  location                     :string(255)
+#  bio                          :text
+#  linkedin_id                  :string(255)
+#  name                         :string(255)
+#  nickname                     :string(255)
+#  image                        :string(255)
+#  phone                        :string(255)
+#  headline                     :string(255)
+#  industry                     :string(255)
+#  public_prof_url              :string(255)
+#  date_of_birth                :datetime
+#  interests                    :text
+#  job_bookmarks_count          :integer
+#  country_code                 :string(255)
+#  has_project_access           :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable
 
   # TODO: Remove this and put in a helper class
   include Rails.application.routes.url_helpers
+
+  include UsersHelper
 
   # Submissions
   has_many :submissions
   has_many :code_submissions
   has_many :code_submission_evaluations, foreign_key: :reviewee_id
+  has_many :quiz_submissions
 
   # Project completion
   has_many :step_statuses
@@ -73,11 +92,33 @@ class User < ActiveRecord::Base
                            foreign_key: :impressionable_id,
                            primary_key: :username
 
+  # LinkedIn
+  has_many :job_experiences
+  has_many :jobs, through: :job_experiences
+  has_many :companies, through: :job_experiences
+  has_many :job_recommendations, foreign_key: :reviewee_id
+  has_many :enrollments
+  has_many :universities, through: :enrollments
+  has_many :publications
+  
+  # Messaging
+  has_many :initiated_conversations, class_name: Conversation, foreign_key: :starter_id
+  has_many :messages
+  has_many :conversation_users
+  has_many :conversations, through: :conversation_users
+
   belongs_to :company
 
   default_scope -> { order(:created_at) }
-  scope :admin, -> { where(role: "admin") }
-  # TODO: Add scope for User.with_project_access
+  scope :admins, -> { where(role: "admin") }
+  scope :students, -> { where(role: "student") }
+  scope :employers, -> { where(role: "employer") + where(role: "recruiter") }
+  scope :has_not_started_projects, -> { where("id NOT IN (SELECT DISTINCT(user_id) FROM project_statuses)") }
+  scope :with_project_access, -> { where(has_project_access: true) }
+  scope :without_project_access, -> { where(has_project_access: false) }
+  scope :alphabetically, -> { order("name ASC") }
+  scope :has_not_completed_sign_up, -> { where(confirmed_at: nil) }
+  scope :missing_name, -> { where("name IS NULL OR first_name IS NULL or last_name IS NULL") }
 
   validates_format_of :username, :with => /\A[A-Za-z0-9]*\z/
   validates :username, uniqueness: {case_sensitive: false, allow_blank: true}
@@ -92,6 +133,7 @@ class User < ActiveRecord::Base
   friendly_id :username, use: :finders
 
   before_create :set_defaults
+  before_save :set_name
 
   self.per_page = 50
   SETTINGS_TABS = ['account', 'privacy']
@@ -114,9 +156,41 @@ class User < ActiveRecord::Base
     self.email == other_user.email
   end
 
-  #########################################################################################
+  #
+  # Class Methods
+  #
+  class << self
+
+    def filter(role)
+      case role
+      when "admins"
+        self.admins
+      when "students"
+        self.students
+      when "employers"
+        self.employers
+      else
+        self.all
+      end
+    end
+
+    def connect_to_linkedin(auth, signed_in_resource=nil)
+      if auth.provider == 'linkedin'
+        user = User.find_by(linkedin_id: auth.uid)
+      end
+      unless user.nil?
+        return user
+      else
+        registered_user = User.find_by(email: (auth.info.email rescue nil))
+        registered_user.nil? ? UsersHelper.new_with_linked_in_params(auth) : UsersHelper.update_with_linked_in_params(auth, registered_user)
+      end
+    end
+
+  end
+
+  #
   # Validations
-  #########################################################################################
+  #
   def check_username
     if !self.new_record?
       if username.blank?
@@ -125,12 +199,16 @@ class User < ActiveRecord::Base
     end
   end
 
-  #########################################################################################
+  #
   # Before filter
-  #########################################################################################
+  #
   def set_defaults
     self.set_dates
     self.set_privacy_preferences
+  end
+
+  def set_name
+    self.name = "#{first_name} #{last_name}"
   end
 
   def set_dates
@@ -146,15 +224,38 @@ class User < ActiveRecord::Base
     self.who_can_see_resume = CONNECTIONS_AND_RECRUITERS
   end
 
-  #########################################################################################
-  # Attributes
-  #########################################################################################
+  #
+  # Instance Methods
+  #
   def name
-    if first_name && last_name
-      "#{first_name} #{last_name}"
+    name_attribute = read_attribute(:name)
+    if name_attribute.nil? || name_attribute.blank?
+      email
     else
-      "<full name not entered>"
+      name_attribute.titleize
     end
+  end
+
+  def first_name
+    first_name_attribute = read_attribute(:first_name)
+    if first_name_attribute.nil?
+      username
+    else
+      first_name_attribute.capitalize
+    end
+  end
+
+  def last_name
+    last_name_attribute = read_attribute(:last_name)
+    if last_name_attribute.nil?
+      ""
+    else
+      last_name_attribute.capitalize
+    end
+  end
+
+  def search_name
+    "#{name} (#{username})"
   end
 
   def resume
@@ -176,9 +277,9 @@ class User < ActiveRecord::Base
     if has_profile_photo?
       photo = profile_photos.last
       if photo.new_record?
-        profile_photos.last(2).first.photo.url
+        profile_photos.last(2).first.url
       else
-        photo.photo.url
+        photo.url
       end
     else
       "default_avatar.png"
@@ -197,7 +298,7 @@ class User < ActiveRecord::Base
     role.nil? || role == "student"
   end
 
-  def has_project_access?
+  def has_project_access_from_code?
     # TODO: Change it so that project-access is not hard-coded
     is_admin? || self.codes.where(access_type: "project-access").count > 0
   end
@@ -373,6 +474,14 @@ class User < ActiveRecord::Base
     self.code_submission_evaluations.where(project: project)
   end
 
+  def unread_conversations
+    self.conversation_users.where(unread: true)
+  end
+
+  def unread_conversations_count
+    unread_conversations.count
+  end
+
   def invite
     Invite.find_by(invited_user_id: self.id)
   end
@@ -388,11 +497,10 @@ class User < ActiveRecord::Base
     password == password_confirmation && !password.blank?
   end
 
-  #########################################################################################
-  # Chart Methods
   #
+  # Chart Methods
   # All methods in this list must take in a day and return a boolean.
-  #########################################################################################
+  #
   def created_before?(day)
     created_at <= day.date.tomorrow
   end
@@ -401,9 +509,9 @@ class User < ActiveRecord::Base
     confirmed_at <= day.date.tomorrow
   end
 
-  #########################################################################################
+  #
   # Methods
-  #########################################################################################
+  #
   def generate_new_token
     secret = Devise.friendly_token
     new_token = Devise.token_generator.digest(User, :confirmation_token, secret)
@@ -424,6 +532,11 @@ class User < ActiveRecord::Base
 
   def add_code(code)
     if code.enabled?
+      # TODO(mark): Change from hard coded 'project-access'
+      if code.access_type == "project-access"
+        self.has_project_access = true
+        self.save
+      end
       self.codes << code
     else
       false
@@ -438,7 +551,9 @@ class User < ActiveRecord::Base
     LessonStatus.where(user: self, lesson_id: lesson.uid, completed: true, project: lesson.project).first_or_create
   end
 
+  #
   # Mailer
+  #
   def publish_evaluations(project, evaluations)
     evaluations.each do |evaluation|
       evaluation.visible = true

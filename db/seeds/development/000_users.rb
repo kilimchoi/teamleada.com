@@ -1,14 +1,19 @@
-users = [
-  'mark',
-  'brian',
-  'tristan',
+admins = [
+  ['Mark', 'Miyashita', 'mark@teamleada.com'],
+  ['Brian', 'Liou', 'brian@teamleada.com'],
+  ['Tristan', 'Tao', 'tristan@teamleada.com'],
+  ['Guang', 'Yang', 'guang@teamleada.com'],
 ]
 
-def create_users(usernames)
-  usernames.each do |username|
-    email = "#{username}@#{username}.com"
-    if User.find_by(email: email, username: username).nil?
-      new_user = User.create(username: username, email: email, password: "password", role: 'admin')
+students = (0..30).map{ |index| ["student#{index}", "student", "student#{index}@student.com"] }
+
+def create_users(users_info, role)
+  users_info.each do |user_info|
+    first_name = user_info[0]
+    last_name = user_info[1]
+    email = user_info[2]
+    if User.find_by(email: email, username: first_name.downcase).nil?
+      new_user = User.create(username: first_name.downcase, email: email.downcase, password: "password", role: role, first_name: first_name, last_name: last_name)
       new_user.confirm!
       puts "Created user: #{new_user.username}."
     end
@@ -16,7 +21,7 @@ def create_users(usernames)
 end
 
 # Create admins
-create_users(users)
+create_users(admins, "admin")
 
 # Create students
-create_users((0..30).map{ |index| "student#{index}" })
+create_users(students, "student")

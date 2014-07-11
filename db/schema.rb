@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140625080729) do
+ActiveRecord::Schema.define(version: 20140710105104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,11 @@ ActiveRecord::Schema.define(version: 20140625080729) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "url"
+    t.boolean  "verified",            default: false
+    t.string   "linkedin_company_id"
+    t.string   "company_type"
+    t.string   "industry"
+    t.string   "ticker"
   end
 
   create_table "company_projects", force: true do |t|
@@ -80,6 +85,22 @@ ActiveRecord::Schema.define(version: 20140625080729) do
     t.integer  "company_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "conversation_users", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "conversation_id"
+    t.boolean  "unread",          default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "conversations", force: true do |t|
+    t.integer  "starter_id"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "last_message_sent_at"
   end
 
   create_table "days", id: false, force: true do |t|
@@ -98,6 +119,29 @@ ActiveRecord::Schema.define(version: 20140625080729) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "enrollments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "university_id"
+    t.string   "field_of_study"
+    t.string   "degree"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "notes"
+    t.text     "activities"
+  end
+
+  add_index "enrollments", ["university_id"], name: "index_enrollments_on_university_id", using: :btree
+  add_index "enrollments", ["user_id"], name: "index_enrollments_on_user_id", using: :btree
+
+  create_table "features", force: true do |t|
+    t.boolean  "enabled"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
   end
 
   create_table "impressions", force: true do |t|
@@ -142,6 +186,39 @@ ActiveRecord::Schema.define(version: 20140625080729) do
     t.datetime "updated_at"
   end
 
+  create_table "job_experiences", force: true do |t|
+    t.integer  "user_id"
+    t.text     "summary"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "job_id"
+  end
+
+  add_index "job_experiences", ["job_id"], name: "index_job_experiences_on_job_id", using: :btree
+  add_index "job_experiences", ["user_id"], name: "index_job_experiences_on_user_id", using: :btree
+
+  create_table "job_recommendations", force: true do |t|
+    t.string   "reviewer_first_name"
+    t.string   "reviewer_last_name"
+    t.string   "reviewer_linkedin_id"
+    t.integer  "reviewee_id"
+    t.string   "recommendation_type"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "jobs", force: true do |t|
+    t.integer  "company_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "position_title"
+  end
+
+  add_index "jobs", ["company_id"], name: "index_jobs_on_company_id", using: :btree
+
   create_table "launches", id: false, force: true do |t|
     t.integer  "day_id"
     t.string   "title"
@@ -180,6 +257,17 @@ ActiveRecord::Schema.define(version: 20140625080729) do
     t.integer  "points",             default: 1
   end
 
+  create_table "messages", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "rich_content_id"
+    t.string   "rich_content_type"
+    t.text     "content"
+    t.boolean  "is_draft"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "conversation_id"
+  end
+
   create_table "metric_entries", force: true do |t|
     t.integer  "metric_id"
     t.integer  "day_id"
@@ -206,6 +294,10 @@ ActiveRecord::Schema.define(version: 20140625080729) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.boolean  "photo_processing",   default: false
+    t.string   "photo_tmp"
+    t.string   "photo"
+    t.string   "original_filename"
   end
 
   create_table "project_interests", force: true do |t|
@@ -242,6 +334,19 @@ ActiveRecord::Schema.define(version: 20140625080729) do
     t.string   "category"
   end
 
+  create_table "publications", force: true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.date     "publication_date"
+    t.string   "publisher"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "linkedin_publication_id"
+  end
+
+  add_index "publications", ["user_id"], name: "index_publications_on_user_id", using: :btree
+
   create_table "questions", force: true do |t|
     t.text     "description"
     t.integer  "up_votes",    default: 0
@@ -252,6 +357,17 @@ ActiveRecord::Schema.define(version: 20140625080729) do
     t.boolean  "hidden",      default: false
     t.text     "title"
   end
+
+  create_table "quiz_submissions", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "quiz_id"
+    t.string   "submitted_answer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "quiz_submissions", ["quiz_id"], name: "index_quiz_submissions_on_quiz_id", using: :btree
+  add_index "quiz_submissions", ["user_id"], name: "index_quiz_submissions_on_user_id", using: :btree
 
   create_table "quizzes", force: true do |t|
     t.string   "quiz_id"
@@ -268,6 +384,17 @@ ActiveRecord::Schema.define(version: 20140625080729) do
     t.string   "resume_file_content_type"
     t.integer  "resume_file_file_size"
     t.datetime "resume_file_updated_at"
+    t.string   "resume_file"
+    t.boolean  "resume_file_processing",   default: false
+    t.string   "resume_file_tmp"
+    t.string   "original_filename"
+  end
+
+  create_table "skills", force: true do |t|
+    t.string   "name"
+    t.string   "linkedin_skill_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "slides", id: false, force: true do |t|
@@ -348,12 +475,31 @@ ActiveRecord::Schema.define(version: 20140625080729) do
     t.datetime "updated_at"
   end
 
+  create_table "universities", force: true do |t|
+    t.string   "name"
+    t.string   "location"
+    t.boolean  "verified",           default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "linkedin_school_id"
+  end
+
   create_table "user_codes", force: true do |t|
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "code_id"
   end
+
+  create_table "user_skills", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "skill_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_skills", ["skill_id"], name: "index_user_skills_on_skill_id", using: :btree
+  add_index "user_skills", ["user_id"], name: "index_user_skills_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                        default: "",    null: false
@@ -387,6 +533,19 @@ ActiveRecord::Schema.define(version: 20140625080729) do
     t.boolean  "looking_for_opportunities",    default: false
     t.string   "location"
     t.text     "bio"
+    t.string   "linkedin_id"
+    t.string   "name"
+    t.string   "nickname"
+    t.string   "image"
+    t.string   "phone"
+    t.string   "headline"
+    t.string   "industry"
+    t.string   "public_prof_url"
+    t.datetime "date_of_birth"
+    t.text     "interests"
+    t.integer  "job_bookmarks_count"
+    t.string   "country_code"
+    t.boolean  "has_project_access",           default: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

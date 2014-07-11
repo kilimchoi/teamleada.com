@@ -16,6 +16,8 @@
 #  created_at          :datetime
 #  updated_at          :datetime
 #  impressionable_id   :string(255)
+#  url                 :string(255)
+#  user_agent          :string(255)
 #
 
 class Impression < ActiveRecord::Base
@@ -23,8 +25,7 @@ class Impression < ActiveRecord::Base
   Impressionist::SetupAssociation.new(self).set
   after_save :impressionable_counter_cache_updatable?
 
-  # TODO: These numbers are hard coded for production...let's not do that.
-  scope :non_admin, -> { where(user_id: nil) + where("user_id NOT IN (?)", User.admin.pluck(:id)) }
+  scope :non_admin, -> { where(user_id: nil) + where("user_id NOT IN (?)", User.admins.pluck(:id)) }
 
   def model
     impressionable_type.constantize

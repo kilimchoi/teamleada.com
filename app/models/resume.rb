@@ -10,25 +10,32 @@
 #  resume_file_content_type :string(255)
 #  resume_file_file_size    :integer
 #  resume_file_updated_at   :datetime
+#  resume_file              :string(255)
+#  resume_file_processing   :boolean          default(FALSE)
+#  resume_file_tmp          :string(255)
+#  original_filename        :string(255)
 #
 
 class Resume < ActiveRecord::Base
+  include ::CarrierWave::Backgrounder::Delay
+  mount_uploader :resume_file, ResumeUploader
+  process_in_background :resume_file
+  skip_callback :save, :after, :remove_previously_stored_resume_file
+
   belongs_to :user
 
-  has_attached_file :resume_file,
-    storage: :s3,
-    s3_credentials: S3_CREDENTIALS,
-    path: '/resumes/:style/:id/:filename',
-    styles: {
-      preview: "600x600#",
-      thumb: "100x100#"
-    }
-
-  validates_attachment_content_type :resume_file, content_type: "application/pdf"
-  validates_attachment_size :resume_file, less_than: 10.megabytes
+  default_scope { order(:created_at) }
 
   def pretty_upload_date
     created_at.strftime("%B %d, %Y")
+  end
+
+  def url
+    resume_file_tmp_url || resume_file.url
+  end
+
+  def resume_file_tmp_url
+    "/tmp/uploads/#{resume_file_tmp}" unless resume_file_tmp.nil?
   end
 
   def first_name
@@ -44,7 +51,7 @@ class Resume < ActiveRecord::Base
   end
 
   def filename
-    resume_file_file_name
+    original_filename
   end
 
 end

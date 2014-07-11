@@ -7,7 +7,12 @@ class ApplicationController < ActionController::Base
   after_filter :store_location
 
   def valid_impression?
-    true unless controller_name == "projects" && action_name == "submit_resource"
+    if (controller_name == "projects" && action_name == "submit_resource") ||
+       (controller_name == "conversations" && action_name == "autocomplete_user_name")
+      false
+    else
+      true
+    end
   end
 
   def store_location
@@ -25,4 +30,8 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
 
+  def after_sign_in_path_for(resource) #added for omniauth signin redirect
+    #This will always go to projecs_path ater signing in.
+    projects_path || request.env['omniauth.origin'] || stored_location_for(resource) || root_path
+  end
 end

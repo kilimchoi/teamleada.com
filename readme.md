@@ -1,5 +1,7 @@
 # Website for TeamLeada.com
 
+For more comprehensive docs, go [here.](http://docs.teamleada.com)
+
 ## Setup
 
 First, make a file for your environment variables:
@@ -11,6 +13,10 @@ We're using Devise so you should set `ENV['SECRET_KEY']` in the `_environment_va
 Copy over the `database.yml` file from `config/sample/database.yml` to `config/database.yml`:
 
     cp config/sample/database.yml config/database.yml
+
+If you don't have postgres installed, install it now:
+
+    brew install postgres
 
 Create the database using:
 
@@ -29,6 +35,19 @@ Start the server:
     rails s
 
 Happy developing!
+
+## Image Processing
+
+You're going to have to install Imagemagick and redis:
+
+    brew install imagemagick
+    brew install redis
+
+## Background jobs
+
+To start Sidekiq, run the command:
+
+    sidekiq -q uploads
 
 ## Live Reload
 
@@ -52,7 +71,16 @@ Since we use Git to deploy to Heroku, this file won't be included, so you'll hav
 
     heroku pgbackups:capture --app teamleada
     curl -o latest.dump `heroku pgbackups:url --app teamleada`
+
+Then, we have to set up our local database to include any new changes you might have made:
+
+    rake db:drop
+    rake db:create
+
     pg_restore --verbose --clean --no-acl --no-owner -h localhost -U mark -d teada_development latest.dump
+
+    rake db:migrate
+    rake db:seed
 
 ## Current Deployments at:
 * [Production](http://teamleada.com)
@@ -80,4 +108,6 @@ The following environment variables need to be set:
     S3_BUCKET_NAME
     AWS_ACCESS_KEY_ID
     AWS_SECRET_ACCESS_KEY
+    LINKEDIN_ID
+    LINKEDIN_SECRET
 

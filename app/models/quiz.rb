@@ -10,4 +10,13 @@
 #
 
 class Quiz < ActiveRecord::Base
+  has_many :quiz_submission
+
+  ###################
+  ###Static Methods##
+  ###################
+  
+  def self.sanitize_answer(answer)
+    return ActionController::Base.helpers.sanitize(answer)
+  end
 end

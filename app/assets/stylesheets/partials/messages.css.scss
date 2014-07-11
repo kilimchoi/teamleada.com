@@ -1,0 +1,182 @@
+.message-controls {
+  float: right;
+}
+
+.content-header-to-field {
+  padding: 15px;
+  word-wrap: break-word;
+  position: relative;
+}
+
+// Conversations
+.conversations-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.conversation-unread-icon {
+  float: left;
+  margin-left: -24px;
+  margin-top: 12px;
+  color: #428bca;
+}
+
+.conversation-item {
+  position: relative;
+  display: block;
+  padding: 8px 10px 10px 40px;
+  border: 1px solid #e5e5e5;
+}
+
+.conversation-title {
+  margin: 0px 60px 0px 0px;
+  word-wrap: break-word;
+  margin-bottom: 5px;
+}
+
+.conversation-metadata {
+  list-style: none;
+  color: #999999;
+  margin: 0;
+  padding: 0;
+
+  & > li {
+    display: inline-block;
+    margin-right: 4px;
+  }
+}
+
+
+// Messages
+.message-container {
+  position: relative;
+  padding-left: 64px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.message-profile-photo {
+  float: left;
+  border-radius: 4px;
+  margin-left: -64px;
+  height: 48px;
+  width: 48px;
+}
+
+.content-container {
+  border: 1px solid #eee;
+  position: relative;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+.content-header {
+  padding-left: 15px;
+  padding-right: 15px;
+  color: #777;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #eee;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.message-header-text {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 0;
+}
+
+.content-body {
+  padding: 15px;
+}
+
+// Navbar notifications
+.conversation-cards {
+  padding: 0px;
+  width: 430px;
+}
+
+.conversation-card {
+  border-top: 1px solid #e6e6e6;
+  height: 60px;
+}
+
+.conversation-card:first-child {
+  border-top: none;
+}
+
+.dropdown-menu > li > a.conversation-card:hover {
+  background: #f4f6f9;
+}
+
+.dropdown-menu > li > a.conversation-card.new-message:hover {
+  background: #e7ebf2;
+}
+
+.conversation-image {
+  float: left;
+}
+
+.conversation-card-photo {
+  width: 50px;
+  height: 50px;
+  margin-right: 8px;
+  border-radius: 3px;
+}
+
+.dropdown-menu > li > a.conversation-link {
+  padding: 4px 20px 4px 8px;
+}
+
+.conversation-card-title {
+  font-size: 12px;
+  padding-top: 2px;
+  color: #333;
+}
+
+.conversation-last-message {
+  color: gray;
+}
+
+.conversation-last-message-content {
+  font-size: 12px;
+  color: gray;
+}
+
+.conversation-last-message-timestamp {
+  color: gray;
+  font-size: 10px;
+}
+
+.new-message {
+  background: #e8edf3;
+}
+
+.conversations-dropdown-header {
+  padding: 8px;
+}
+
+.conversations-dropdown-footer {
+  border-top: 1px solid #e6e6e6;
+  padding: 8px;
+  text-align: center;
+}
+
+.new-message-dropdown {
+  float: right;
+  font-size: 12px;
+}
+
+.new-message-dropdown:hover {
+  text-decoration: none;
+}
+
+.see-all-conversations {
+  font-size: 12px;
+  display: block;
+}
+
+.see-all-conversations:hover {
+  text-decoration: none;
+}

@@ -21,21 +21,32 @@ TeamLeada::Application.routes.draw do
                        registrations: 'registrations',
                        sessions: 'sessions',
                        confirmations: 'confirmations',
-                       passwords: 'passwords'
+                       passwords: 'passwords',
+                       omniauth_callbacks: 'omniauth_callbacks'
                      }
 
   devise_scope :user do
     match 'confirm', to: "confirmations#confirm", as: :confirm, via: :patch
+    match 'linkedin-confirm', to: "confirmations#linkedin_confirm", as: :linkedin_confirm, via: :patch
+    match 'linkedin-confirm', to: "confirmations#show_linkedin_confirm", as: :show_linkedin_confirm, via: :get
   end
 
   match 'settings', to: 'users#edit', as: 'edit_user', via: :get
 
+  match 'change-role', to: "users#change_role", as: :user_change_role, via: :get
   resources :users, only: [:show, :update] do
     member do
       match 'projects', to: 'users#projects', as: :projects, via: :get
       match 'projects/:project_id', to: 'users#project', as: :project, via: :get
       match 'projects/:project_id/feedback', to: 'users#project_feedback', as: :project_feedback, via: :get
     end
+  end
+
+  # Messages
+  match 'messages', to: 'messages#create', as: 'messages', via: :post
+  match 'conversations', to: 'conversations#create', as: 'create_conversation', via: :post
+  resources :conversations, path: :messages, only: [:show, :index, :new] do
+    get :autocomplete_user_name, on: :collection
   end
 
   resources :interested_users, only: [:create]
@@ -87,6 +98,8 @@ TeamLeada::Application.routes.draw do
     match '/', to: redirect('/a/dashboard'), via: :get
     match 'dashboard', to: 'pages#dashboard', via: :get
 
+    resources :features, only: [:index]
+
     resources :users, only: [:index, :show] do
       member do
         match 'projects/:project_id/publish-feedback', to: 'users#publish_feedback', as: :publish_feedback, via: :get
@@ -94,6 +107,7 @@ TeamLeada::Application.routes.draw do
         match 'projects/:project_id/code-submissions/:code_submission_id', to: 'users#show_code_submission', as: :code_submission, via: :get
         match 'projects/:project_id/code-submissions/:code_submission_id/evaluate', to: 'code_submissions#evaluate', as: :evaluate, via: :post
         match 'projects/:project_id/code-submissions/:code_submission_id/evaluate', to: 'code_submissions#update_evaluation', as: :update_evaluation, via: :patch
+        match 'projects/:project_id/code-submissions/:code_submission_id/evaluations', to: 'code_submission_evaluations#index', as: :evaluations, via: :get
       end
     end
     resources :resumes, only: [:index, :show]
@@ -119,7 +133,7 @@ TeamLeada::Application.routes.draw do
       end
     end
 
-    resources :code_submissions, path: "code-submissions", only: [:index, :show] do
+    resources :code_submissions, path: "code-submissions", only: [:index] do
       member do
         match 'evaluate', to: 'code_submissions#evaluate', as: :evaluate, via: :post
         match 'evaluate', to: 'code_submissions#update_evaluation', as: :update_evaluation, via: :patch

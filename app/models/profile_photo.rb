@@ -10,26 +10,32 @@
 #  photo_content_type :string(255)
 #  photo_file_size    :integer
 #  photo_updated_at   :datetime
+#  photo_processing   :boolean          default(FALSE)
+#  photo_tmp          :string(255)
+#  photo              :string(255)
+#  original_filename  :string(255)
 #
 
 class ProfilePhoto < ActiveRecord::Base
+  include ::CarrierWave::Backgrounder::Delay
+  mount_uploader :photo, ProfilePhotoUploader
+  process_in_background :photo
+  skip_callback :save, :after, :remove_previously_stored_photo
+
   belongs_to :user
 
-  has_attached_file :photo,
-    storage: :s3,
-    s3_credentials: S3_CREDENTIALS,
-    path: '/profile_photos/:style/:id/:filename',
-    styles: {
-      preview: "600x600#",
-      large: "300x300#",
-      thumb: "160x160#"
-    }
-
-  validates_attachment_content_type :photo, content_type: /image/
-  validates_attachment_size :photo, less_than: 10.megabytes
+  default_scope { order(:created_at) }
 
   def pretty_upload_date
     created_at.strftime("%B %d, %Y")
+  end
+
+  def url
+    photo_tmp_url || photo.url(:large)
+  end
+
+  def photo_tmp_url
+    "/tmp/uploads/#{photo_tmp}" unless photo_tmp.nil?
   end
 
   def first_name
@@ -45,7 +51,7 @@ class ProfilePhoto < ActiveRecord::Base
   end
 
   def filename
-    photo_file_name
+    original_filename
   end
 
 end

@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.all
 //= require best_in_place
 //= require toastr
 //= require bootstrap
@@ -24,6 +25,7 @@
 //= require ladda.min
 //= require ace/ace
 //= require ace/theme-github
+//= require autocomplete-rails
 
 $(document).ready(function() {
   //load heap data here.
@@ -53,6 +55,8 @@ $(document).ready(function() {
 
   // Best In Place
   $(".best_in_place").best_in_place();
+
+  $(".has-tooltip").tooltip();
 
   // Ladda
   Ladda.bind('.ladda-button', { timeout: 1000 });

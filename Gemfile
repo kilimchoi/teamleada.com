@@ -8,7 +8,8 @@ gem 'nokogiri', '1.6.1'
 gem 'tilt', '1.4.1'
 gem 'sass-rails', '~> 4.0.2'
 gem 'coffee-rails', '~> 4.0.0'
-gem 'jquery-rails', '~> 2.2.1'
+gem 'jquery-rails', '~> 3.1.1'
+gem 'jquery-ui-rails', '~> 4.2.1'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'font-awesome-rails'
 gem 'uglifier', '>= 1.3.0'
@@ -27,6 +28,22 @@ gem 'stripe', git: 'https://github.com/stripe/stripe-ruby'
 gem 'will_paginate', '~> 3.0'
 gem 'best_in_place', github: 'negativetwelve/best_in_place'
 gem 'impressionist', github: 'negativetwelve/impressionist'
+gem 'obfuscate_id', github: 'negativetwelve/obfuscate_id'
+gem 'rails4-autocomplete', '1.1.0'
+
+# Uploads
+gem 'carrierwave', '~> 0.10.0'
+gem 'fog', '~> 1.22.1'
+gem 'rmagick', '~> 2.13.2', require: false
+
+# Background processing
+gem 'sidekiq', '~> 3.2.1'
+gem 'carrierwave_backgrounder', '~> 0.4.1'
+
+# LinkedIn Integration
+gem 'omniauth'
+gem 'omniauth-linkedin'
+gem 'linkedin'
 
 # Code Submissions
 gem 'ace-rails-ap'
