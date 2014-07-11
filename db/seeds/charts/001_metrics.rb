@@ -48,6 +48,13 @@ metrics = [
     method: "invite_sent_before?",
     collection_method: "get_count",
   },
+  {
+    uid: 7,
+    model: "User",
+    title: "LinkedIn Integrations",
+    method: "linkedin_before?",
+    collection_method: "get_count",
+  },
 ]
 
 
