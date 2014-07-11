@@ -281,7 +281,7 @@ class User < ActiveRecord::Base
       else
         photo.url
       end
-    elsif has_linkdein_prof_photo?
+    elsif has_linkedin_profile_photo?
       linkedin_prof_image_url
     else
       "default_avatar.png"
@@ -321,7 +321,7 @@ class User < ActiveRecord::Base
     self.profile_photos.count > 0
   end
 
-  def has_linkdein_prof_photo?
+  def has_linkedin_profile_photo?
     self.linkedin_prof_image_url != ''
   end
 
