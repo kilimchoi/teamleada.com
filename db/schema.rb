@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140711210536) do
+ActiveRecord::Schema.define(version: 20140711215051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -536,7 +536,7 @@ ActiveRecord::Schema.define(version: 20140711210536) do
     t.string   "linkedin_id"
     t.string   "name"
     t.string   "nickname"
-    t.string   "linkedin_prof_image_url",      default: ""
+    t.string   "linkedin_profile_image_url",   default: ""
     t.string   "phone"
     t.string   "headline"
     t.string   "industry"
