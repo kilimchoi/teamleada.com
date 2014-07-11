@@ -282,7 +282,7 @@ class User < ActiveRecord::Base
         photo.url
       end
     elsif has_linkedin_profile_photo?
-      linkedin_prof_image_url
+      linkedin_profile_image_url
     else
       "default_avatar.png"
     end
