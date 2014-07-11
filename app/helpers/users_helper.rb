@@ -9,7 +9,7 @@ module UsersHelper
     (auth.extra.raw_info.location.name rescue nil).nil? ? nil : registered_user.update(location: auth.extra.raw_info.location.name)
     (auth.extra.raw_info.location.country.code rescue nil).nil? ? nil : registered_user.update(country_code: auth.extra.raw_info.location.country.code)
     (auth.extra.raw_info.summary rescue nil).nil? ? nil : registered_user.update(bio: auth.extra.raw_info.summary)
-    (auth.extra.raw_info.pictureUrls.values[1][0] rescue nil).nil? ? nil : registered_user.update(linkedin_prof_image_url: auth.extra.raw_info.pictureUrls.values[1][0])
+    (auth.extra.raw_info.pictureUrls.values[1][0] rescue nil).nil? ? nil : registered_user.update(linkedin_profile_image_url: auth.extra.raw_info.pictureUrls.values[1][0])
     (auth.extra.raw_info.phoneNumbers.values[1][0].phoneNumber rescue nil).nil? ? nil : registered_user.update(phone: auth.extra.raw_info.phoneNumbers.values[1][0].phoneNumber)
     (auth.info.headline rescue nil).nil? ? nil : registered_user.update(headline: auth.info.headline)
     (auth.info.industry rescue nil).nil? ? nil : registered_user.update(industry: auth.info.industry)
@@ -49,7 +49,7 @@ module UsersHelper
       location:                 (auth.extra.raw_info.location.name rescue nil),
       country_code:             (auth.extra.raw_info.location.country.code rescue nil),
       bio:                      (auth.extra.raw_info.summary rescue nil),
-      linkedin_prof_image_url:  (auth.extra.raw_info.pictureUrls.values[1][0] rescue nil),
+      linkedin_profile_image_url:  (auth.extra.raw_info.pictureUrls.values[1][0] rescue nil),
       phone:                    (auth.extra.raw_info.phoneNumbers.values[1][0].phoneNumber rescue nil),
       headline:                 (auth.info.headline rescue nil),
       industry:                 (auth.info.industry rescue nil),
