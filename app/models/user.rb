@@ -508,7 +508,10 @@ class User < ActiveRecord::Base
   def confirmed_email_before?(day)
     confirmed_at <= day.date.tomorrow
   end
-
+  
+  def linkedin_before?(day)
+    !linkedin_confirmed_at.nil? && linkedin_confirmed_at <= day.date.tomorrow
+  end
   #
   # Methods
   #

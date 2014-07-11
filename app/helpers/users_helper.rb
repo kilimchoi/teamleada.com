@@ -18,6 +18,11 @@ module UsersHelper
     registered_user.update(date_of_birth: (Date.new((auth.extra.raw_info.dateOfBirth.year rescue nil), (auth.extra.raw_info.dateOfBirth.month rescue nil), (auth.extra.raw_info.dateOfBirth.day rescue nil)) rescue nil))
     (auth.extra.raw_info.jobBookmarks._total rescue nil).nil? ? nil : registered_user.update(job_bookmarks_count: auth.extra.raw_info.jobBookmarks._total)
     (auth.extra.raw_info.interests rescue nil).nil? ? nil : registered_user.update(interests: auth.extra.raw_info.interests)
+    
+    registered_user.update(linkedin_updated_at: Time.now)
+    if registered_user.linkedin_confirmed_at.nil?
+      registered_user.update(linkedin_confirmed_at: Time.now)
+    end
 
     create_jobs_table(auth, registered_user)
     create_enrollments_table(auth, registered_user)
@@ -52,6 +57,8 @@ module UsersHelper
       date_of_birth:        self.extract_date(auth.extra.raw_info.dateOfBirth),
       interests:            (auth.extra.raw_info.interests rescue nil),
       job_bookmarks_count:  (auth.extra.raw_info.jobBookmarks._total rescue nil),
+      linkedin_confirmed_at: Time.now,
+      linkedin_updated_at: Time.now,
       password:             Devise.friendly_token[0,20],
       )
 
