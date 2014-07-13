@@ -120,7 +120,7 @@ class User < ActiveRecord::Base
   scope :has_not_completed_sign_up, -> { where(confirmed_at: nil) }
   scope :missing_name, -> { where("name IS NULL OR first_name IS NULL or last_name IS NULL") }
 
-  validates_format_of :username, :with => /\A[A-Za-z0-9]*\z/
+  validates_format_of :username, :with => /\A[A-Za-z0-9_]*\z/
   validates :username, uniqueness: {case_sensitive: false, allow_blank: true}
   validate :check_username
   validates :first_name, presence: true, on: :update
