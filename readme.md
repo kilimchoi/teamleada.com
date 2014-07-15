@@ -37,14 +37,24 @@ Start the server:
 Happy developing!
 
 ## Image Processing
-
 You're going to have to install Imagemagick and redis:
 
     brew install imagemagick
     brew install redis
 
-## Background jobs
+## Redis on aws
+Install redis on ubuntu via:
 
+    wget http://download.redis.io/redis-stable.tar.gz
+    tar xvzf redis-stable.tar.gz
+    cd redis-stable
+    make 
+    sudo make install
+In redis.conf, enable "daemonize yes". Now run 
+
+    redis-server &
+
+## Background jobs
 To start Sidekiq, run the command:
 
     sidekiq -q uploads
