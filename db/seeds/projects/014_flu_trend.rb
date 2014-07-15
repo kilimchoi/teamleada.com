@@ -50,7 +50,7 @@ data_acquisition_slide = Slide.create!(
 
 data_exploration_content = [
   ['text', 'As always, we have to explore the data before we start fitting a model.'],
-  ['text', 'We\'ll do a minor amount of cleaning, followed by extensive plottings to get a better idea about the data.'],
+  ['text', 'We\'ll do a minor amount of cleaning, followed by extensive plotting to get a better idea about the data.'],
   ['lesson_links', nil],
 ]
 
@@ -189,10 +189,10 @@ missing_data_slide = Slide.create!(
 
 analysis_missing_content_one = [
   ['text', "Let's plot the number of countries with missing data for each year."],
-  ['text', "We'll use the apply() to apply a function (which we will explain in a bit)."],
+  ['text', "We'll use apply() to apply a function (which we will explain in a bit)."],
   ['text', "We use the 'MARGIN' variable to indicate that we want to apply across the rows of our Data Frame."],
-  ['text', "check out help(apply) for more info."],
-  ['text', "The function we apply is (we don't give it a name, making it an anonymous function):"],
+  ['text', "Check out help(apply) for more info."],
+  ['text', "The function we\'re going to apply is (we don't give it a name, making it an anonymous function):"],
   ['code', "function(x) {
      return (sum(is.na(x)))
 }"],
@@ -296,7 +296,8 @@ remove_missing_slide_two = Slide.create!(
 ##############  Time Series Model  #############################################
 ################################################################################
 time_series_data_content = [
-  ['text', "The overal concept behind time series model involves removing trend and seasonality (effectively reducing it to white noise.)"],
+  ['text', "The overal concept behind time series model involves first removing trend and seasonality (effectively reducing it to white noise.)"],
+  ['text', "One we have the differenced data, we'll run analysis on them."],
   ['text', "Once you achieve that, you can analyze the underlying white noise to determine the parameters required for the time series model."],
   ['lesson_links', nil],
 ]
@@ -450,7 +451,13 @@ time_series_differencing_content_one = [
   ['code', 'par(mfrow=c(2, 1)) #set to 2-by-1'],
   ['code', "acf(cleanedFluData$diff_1.1, lag.max = 160, main=\"ACF Lag=(1,1)\")"],
   ['code', "pacf(cleanedFluData$diff_1.1, lag.max = 160, main=\"PACF (Partial ACF) Lag=(1,1)\")"],
-  ['missing_to_do', ''], #@TODO EXPLAIN
+  ['text', 'ACF and PACF both consistently stay below the blue line.'], #@TODO EXPLAIN
+]
+
+time_series_differencing_content_two = [
+  ['image', 'flu_trend/flu_trend_acf_pacf.png'],
+  ['text', 'The ACF and PACF looks good here.'],
+  ['text', 'We can move on to fitting a model.'],
   ['next_steps', ''],
 ]
 
@@ -466,6 +473,11 @@ time_series_differencing_slide = Slide.create!(
   slide_id: 0,
 )
 
+time_series_differencing_slide = Slide.create!(
+  content: time_series_differencing_content_two,
+  parent: time_series_differencing_step,
+  slide_id: 1,
+)
 ################################################################################
 ##############  Construct ARIMA model  #########################################
 ################################################################################
