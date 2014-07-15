@@ -9,7 +9,7 @@ module UsersHelper
     (auth.extra.raw_info.location.name rescue nil).nil? ? nil : registered_user.update(location: auth.extra.raw_info.location.name)
     (auth.extra.raw_info.location.country.code rescue nil).nil? ? nil : registered_user.update(country_code: auth.extra.raw_info.location.country.code)
     (auth.extra.raw_info.summary rescue nil).nil? ? nil : registered_user.update(bio: auth.extra.raw_info.summary)
-    (auth.extra.raw_info.pictureUrls.values[1][0] rescue nil).nil? ? nil : registered_user.update(image: auth.extra.raw_info.pictureUrls.values[1][0])
+    (auth.extra.raw_info.pictureUrls.values[1][0] rescue nil).nil? ? nil : registered_user.update(linkedin_profile_image_url: auth.extra.raw_info.pictureUrls.values[1][0])
     (auth.extra.raw_info.phoneNumbers.values[1][0].phoneNumber rescue nil).nil? ? nil : registered_user.update(phone: auth.extra.raw_info.phoneNumbers.values[1][0].phoneNumber)
     (auth.info.headline rescue nil).nil? ? nil : registered_user.update(headline: auth.info.headline)
     (auth.info.industry rescue nil).nil? ? nil : registered_user.update(industry: auth.info.industry)
@@ -18,6 +18,11 @@ module UsersHelper
     registered_user.update(date_of_birth: (Date.new((auth.extra.raw_info.dateOfBirth.year rescue nil), (auth.extra.raw_info.dateOfBirth.month rescue nil), (auth.extra.raw_info.dateOfBirth.day rescue nil)) rescue nil))
     (auth.extra.raw_info.jobBookmarks._total rescue nil).nil? ? nil : registered_user.update(job_bookmarks_count: auth.extra.raw_info.jobBookmarks._total)
     (auth.extra.raw_info.interests rescue nil).nil? ? nil : registered_user.update(interests: auth.extra.raw_info.interests)
+    
+    registered_user.update(linkedin_updated_at: Time.now)
+    if registered_user.linkedin_confirmed_at.nil?
+      registered_user.update(linkedin_confirmed_at: Time.now)
+    end
 
     create_jobs_table(auth, registered_user)
     create_enrollments_table(auth, registered_user)
@@ -36,23 +41,25 @@ module UsersHelper
 
   def self.new_with_linked_in_params(auth)
     user = User.new(
-      first_name:           (auth.info.first_name rescue nil),
-      last_name:            (auth.info.last_name rescue nil),
-      linkedin_id:          (auth.uid rescue nil),
-      email:                (auth.info.email rescue nil),
-      nickname:             (auth.info.nickname rescue nil),
-      location:             (auth.extra.raw_info.location.name rescue nil),
-      country_code:         (auth.extra.raw_info.location.country.code rescue nil),
-      bio:                  (auth.extra.raw_info.summary rescue nil),
-      image:                (auth.extra.raw_info.pictureUrls.values[1][0] rescue nil),
-      phone:                (auth.extra.raw_info.phoneNumbers.values[1][0].phoneNumber rescue nil),
-      headline:             (auth.info.headline rescue nil),
-      industry:             (auth.info.industry rescue nil),
-      public_prof_url:      (auth.info.urls.public_profile rescue nil),
-      date_of_birth:        self.extract_date(auth.extra.raw_info.dateOfBirth),
-      interests:            (auth.extra.raw_info.interests rescue nil),
-      job_bookmarks_count:  (auth.extra.raw_info.jobBookmarks._total rescue nil),
-      password:             Devise.friendly_token[0,20],
+      first_name:                  (auth.info.first_name rescue nil),
+      last_name:                   (auth.info.last_name rescue nil),
+      linkedin_id:                 (auth.uid rescue nil),
+      email:                       (auth.info.email rescue nil),
+      nickname:                    (auth.info.nickname rescue nil),
+      location:                    (auth.extra.raw_info.location.name rescue nil),
+      country_code:                (auth.extra.raw_info.location.country.code rescue nil),
+      bio:                         (auth.extra.raw_info.summary rescue nil),
+      linkedin_profile_image_url:  (auth.extra.raw_info.pictureUrls.values[1][0] rescue nil),
+      phone:                       (auth.extra.raw_info.phoneNumbers.values[1][0].phoneNumber rescue nil),
+      headline:                    (auth.info.headline rescue nil),
+      industry:                    (auth.info.industry rescue nil),
+      public_prof_url:             (auth.info.urls.public_profile rescue nil),
+      date_of_birth:               self.extract_date(auth.extra.raw_info.dateOfBirth),
+      interests:                   (auth.extra.raw_info.interests rescue nil),
+      job_bookmarks_count:         (auth.extra.raw_info.jobBookmarks._total rescue nil),
+      linkedin_confirmed_at:       Time.now,
+      linkedin_updated_at:         Time.now,
+      password:                    Devise.friendly_token[0,20],
       )
 
     user.skip_confirmation!
