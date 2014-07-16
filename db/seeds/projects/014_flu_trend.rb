@@ -635,17 +635,19 @@ arime_evaluation_content_one = [
   ['code', 'pacf(flu_arima$resid, lag.max = 160, main = "PACF of fitted residuals")'],
   ['text', "We'll also look at the tsdiag, which is essentially a diagnostic of the model"],
   ['code', "help(tsdiag)"],
-  ['code', 'tsdiag(flu_arima)'],
-  ['text', 'tsdiag will plot 3 plots.'],
+  ['code', 'tsdiag(flu_arima, gof.lag=400)'],
+  ['text', 'tsdiag() will plot 3 plots.'],
 ]
 
 arime_evaluation_content_two = [
-  ['text', 'The first plot is the residuals of the model.'],
+  ['text', 'The 1st plot is the residuals of the model.'],
   ['text', "We want to make sure that the residuals look random and evenly distributed around y=0."],
-  ['text', "The next plot is the ACF of the residuals."],
+  ['text', "The 2nd plot is the ACF of the residuals."],
   ['text', "Similar as before, we want to make sure that the ACF remains below the blue line"],
-  ['text', "The last plot is the Ljung-Box Statistic."],
-  ['text', "This time, ultimately we want to main that the p-value remains ABOVE the blue line"],
+  ['text', "The 3rd plot is the Ljung-Box Statistic."],
+  ['text', "This time, ultimately we want to confirm that the p-value remains ABOVE the blue line. For more info, check this out:"],
+  ['link', "http://support.minitab.com/en-us/minitab/17/topic-library/modeling-statistics/time-series/diagnostic-checking/what-is-the-ljung-box-q-statistic/"],
+  ['link', " http://www.itl.nist.gov/div898/software/dataplot/refman1/auxillar/ljungbox.htm"],
   ['text', "Do the plots look good for our model?"],
   ['next_steps', ''],
 ]
@@ -669,7 +671,7 @@ arime_evaluation_slide = Slide.create!(
 )
 
 ################################################################################
-##############  Construct ARIMA model  #########################################
+##############  Conclusion  ####################################################
 ################################################################################
 
 
