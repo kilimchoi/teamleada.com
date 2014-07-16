@@ -754,34 +754,3 @@ conclusion_slide = Slide.create!(
   slide_id: 0,
 )
 
-
-##############
-######## SPARE ###
-########
-
-remove_missing_content_three = [
-  ['text', ''],
-  ['text', ''],
-  ['text', ''],
-  ['text', ''],
-  ['text', ''],
-  ['text', ''],
-  ['text', ''],
-  ['text', ''],
-]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
