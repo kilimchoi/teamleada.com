@@ -18,7 +18,7 @@ class QuizzesController < ApplicationController
       quiz_submission = QuizSubmission.new(user: current_user, quiz: @result, submitted_answer: params[:user_input])
       quiz_submission.save!
 
-      if @result.answer.to_s.downcase == params[:user_input].to_s.downcase #if answer is same as what user inputed @TODO clean user input.
+      if @result.correct_answer?(sanitized_user_input)
         render :text => "correct" #"correct" is used as key, don't change
       else
         render :text => "incorrect"
