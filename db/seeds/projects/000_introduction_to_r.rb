@@ -295,7 +295,7 @@ vectors_content_one = [
   ['text', 'We now know how to store single values in R. But what if we want to store multiple values?'],
   ['text', 'We do this in R by creating vectors.'],
   ['text', 'Vectors are the way in which R stores multiple 1-dimensional data points (multiple scalars).'],
-  ['text', 'Note that Vectors are NOT the same as Lists (We\' avoid Lists for now).'],
+  ['text', 'Note that Vectors are NOT the same as Lists (We\'ve avoid Lists for now).'],
 ]
 vectors_content_two = [
   ['text', 'We\'ll start by creating a simple vector using the c() function in R. Think of c() as short for the "concatenate" function.'],

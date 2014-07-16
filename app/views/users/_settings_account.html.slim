@@ -14,10 +14,10 @@ ul.account-settings
       span = best_in_place current_user, :last_name, type: :input, data: { field: 'last name' }, activator: "#edit-last-name"
       span.edit-row Edit
   li.settings-row
-    = link_to("#", id: "edit-username", class: "row-link") do
+    // TODO: This shouldn't have to be a link with the class row-link
+    a.row-link
       span.col Username
-      span = best_in_place current_user, :username, type: :input, data: { field: 'username' }, activator: "#edit-username"
-      span.edit-row Edit
+      span = current_user.username
   li.settings-row
     = link_to("#", id: "edit-email", class: "row-link") do
       span.col Email
