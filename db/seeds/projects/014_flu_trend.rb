@@ -513,18 +513,31 @@ time_series_differencing_content_one = [
   ['text', "Now we're ready to build the model"],
   ['text', "The model building will take a while, so we'll talk about the details on the next slide."],
   ['text', "Run the command first, but we'll walk through the parameter selection."],
+  ['text', "See help to see how the parameters are set"],
+  ['code', "help(arima)"],
+  ['text', "Check out what the parameters represent."],
 ]
 
 time_series_differencing_content_two = [
-  ['code', "flu_arima = arima(cleanedFluData$World, seasonal = list(order = c(0, 2, 2), period = 52), order = c(1,0,0), method=\"CSS-ML\") # c(0,0,2)"],
-  ['text', "We use seasonal = list(order = c(X, Y, Z) period=52) [where Y and Z are 2.] because we see an MA of 2, and Seasonal MA of 2 as well."],
-  ['text', "This is because in our ACF plot, we see spikes at period 1 through 2 (the first 2 negative blips in ACF)."],
-  ['text', "Additionally, we also see blips in ACF over the blue line at period 52 and 104."],
-  ['text', "This gives us the seasonal MA of 2 (since 52 is our period, and it extends up to 104)"],
-  ['text', "Within our PACF, we see that there is a major blip at around period 52."],
-  ['text', "This give us the order = c(A,B,C), where A is 1."],
-  ['text', "Hopefully the "],
+  ['text', "Note that this might take a while."],
+  ['code', "flu_arima = arima(cleanedFluData$World,
+            seasonal = list(order = c(0, 2, 2), period = 52), 
+            order = c(1,0,0), method=\"CSS-ML\")"],
+  ['text', "The parameter selection comes from assessing the ACF and PACF."],
+  ['text', "For example, if you look back we see initial blips at ACF, up to period 2"],
+  ['text', "This gives us MA 2."],
+  ['text', "Moreover, we also see blips in ACF over the blue line at period 52 and 104."],
+  ['text', "This gives us the seasonal MA of 2 (since 52 is our period, and it blips again at 104)."],
+  ['text', "We do a similar analysis with PACF and AR."],
+]
+
+time_series_differencing_content_three = [
+  ['text', "We also do additional paramter tweaking based on AIC score to arrive at our parameters."],
+  ['link', "http://en.wikipedia.org/wiki/Akaike_information_criterion"],
+  ['code', 'flu_arima'],
   ['code', 'flu_arima$aic'],
+  ['text', "Try playing around with the model parameter."],
+  ['text', "See if you can come up with a better model!"],
   ['next_steps', ''],
 ]
 
@@ -543,9 +556,14 @@ time_series_differencing_slide = Slide.create!(
 time_series_differencing_slide_two = Slide.create!(
   content: time_series_differencing_content_two,
   parent: time_series_differencing_step,
-  slide_id: 0,
+  slide_id: 1,
 )
 
+time_series_differencing_slide_three = Slide.create!(
+  content: time_series_differencing_content_three,
+  parent: time_series_differencing_step,
+  slide_id: 2,
+)
 ############### Predicting via ARIMA ##############
 
 arime_prediction_content_one = [
