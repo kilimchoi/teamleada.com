@@ -12,6 +12,8 @@
 class Quiz < ActiveRecord::Base
   has_many :quiz_submission
 
+  validates :quiz_id, uniqueness: true, presence: true
+
   ###################
   ###Static Methods##
   ###################
