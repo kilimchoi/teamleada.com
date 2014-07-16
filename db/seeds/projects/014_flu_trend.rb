@@ -455,8 +455,9 @@ time_series_differencing_content_one = [
 ]
 
 time_series_differencing_content_two = [
-  ['image', 'flu_trend/flu_trend_acf_pacf.png'],
-  ['text', 'The ACF and PACF looks good here.'],
+  #['image', 'flu_trend/flu_trend_acf_pacf.png'],
+  ['text', 'The ACF and PACF looks good here;'],
+  ['text', 'Both ACF and PACF remains relatively below the line.'],
   ['text', 'We can move on to fitting a model.'],
   ['next_steps', ''],
 ]
@@ -473,7 +474,7 @@ time_series_differencing_slide = Slide.create!(
   slide_id: 0,
 )
 
-time_series_differencing_slide = Slide.create!(
+time_series_differencing_slide_two = Slide.create!(
   content: time_series_differencing_content_two,
   parent: time_series_differencing_step,
   slide_id: 1,
@@ -484,7 +485,10 @@ time_series_differencing_slide = Slide.create!(
 
 arima_data_content = [
   ['text', "Now we're ready to fit a time series model, specifically ARIMA (Autoregressive Integrated Moving Average)."],
-  ['text', ""],
+  ['text', "A simpler explanation:"],
+  ['link', "http://www.investopedia.com/terms/a/autoregressive-integrated-moving-average-arima.asp"],
+  ['text', "A more comprehensive explanation:"],
+  ['link', "http://www.slideshare.net/21_venkat/arima-26196965"],
   ['lesson_links', nil],
 ]
 
@@ -504,7 +508,22 @@ arima_data_slide = Slide.create!(
 
 time_series_differencing_content_one = [
   ['text', "Reset plotting area, in case your plotting area is cluttered."],
-  ['code', "flu_arima = arima(cleanedFluData$World, seasonal = list(order = c(0, 2, 2), period = 52), order = c(2,0,0), method=\"CSS-ML\") # c(0,0,2)"],
+  ['code', "par(mfrow=c(1, 1))"],
+  ['code', "plot.new()"],
+  ['text', "Now we're ready to build the model"],
+  ['text', "The model building will take a while, so we'll talk about the details on the next slide."],
+  ['text', "Run the command first, but we'll walk through the parameter selection."],
+]
+
+time_series_differencing_content_two = [
+  ['code', "flu_arima = arima(cleanedFluData$World, seasonal = list(order = c(0, 2, 2), period = 52), order = c(1,0,0), method=\"CSS-ML\") # c(0,0,2)"],
+  ['text', "We use seasonal = list(order = c(X, Y, Z) period=52) [where Y and Z are 2.] because we see an MA of 2, and Seasonal MA of 2 as well."],
+  ['text', "This is because in our ACF plot, we see spikes at period 1 through 2 (the first 2 negative blips in ACF)."],
+  ['text', "Additionally, we also see blips in ACF over the blue line at period 52 and 104."],
+  ['text', "This gives us the seasonal MA of 2 (since 52 is our period, and it extends up to 104)"],
+  ['text', "Within our PACF, we see that there is a major blip at around period 52."],
+  ['text', "This give us the order = c(A,B,C), where A is 1."],
+  ['text', "Hopefully the "],
   ['code', 'flu_arima$aic'],
   ['next_steps', ''],
 ]
@@ -517,6 +536,12 @@ time_series_differencing_step = Step.create!(
 
 time_series_differencing_slide = Slide.create!(
   content: time_series_differencing_content_one,
+  parent: time_series_differencing_step,
+  slide_id: 0,
+)
+
+time_series_differencing_slide_two = Slide.create!(
+  content: time_series_differencing_content_two,
   parent: time_series_differencing_step,
   slide_id: 0,
 )
