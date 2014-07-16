@@ -425,7 +425,7 @@ time_series_differencing_content_one = [
 ]
 
 time_series_differencing_content_two = [
-  ['text', 'In this plot, we first difference by 52, then we difference by the the immediately previous observation. This is known as twice differencing.'],
+  ['text', 'In this plot, we first difference by 52, then we difference by the the immediately previous observation. This is known as twice differencing, first by lag-52 followed by lag-1'],
   ['code', 'cleanedFluData$diff_52.1 = c(diff(diff(cleanedFluData$World, lag=52)), rep(0,53))'],
   ['code', "plot (cleanedFluData$diff_52.1 ~ cleanedFluData$Date, main=\"Twice Differenced Flu Data lag=(52,1)\", xlab='Time', ylab='Cases / Week', type='l', col='gray')"],
   ['code', "acf(cleanedFluData$diff_52.1, lag.max = 160, main=\"ACF for lag=(51, 1)\", col='gray')"],
@@ -433,15 +433,16 @@ time_series_differencing_content_two = [
   ['code', 'cleanedFluData$diff_1 = c(diff(cleanedFluData$World), rep(0,1))'],
   ['code', "plot (cleanedFluData$diff_1 ~ cleanedFluData$Date, main=\"Once Differenced Flu Data lag=1\", xlab='Time', ylab='Cases / Week', type='l', col='orange')"],
   ['code', "acf(cleanedFluData$diff_1, lag.max = 160, main=\"ACF for lag=(1)\", col='orange')"],
+  ['text', "How do the plots look? Remember, we're looking to remove any trend or seasonality!"],
 ]
 
 time_series_differencing_content_three = [
-  ['text', "Lastly we'll try differencing twice again, but both times with a lag of 1 (meaning immediately previous observations)."],
-  ['text', "From experience, this differencing method seems to always work out."],
+  ['text', "Lastly we'll try differencing twice again, but both times with a lag-1 (meaning immediately previous observations)."],
+  ['text', "From experience, this differencing method seems to always work the best."],
   ['code', 'cleanedFluData$diff_1.1 = c(diff(diff(cleanedFluData$World)), rep(0,2))'],
   ['code', "plot (cleanedFluData$diff_1.1 ~ cleanedFluData$Date, main=\"Twice Differenced Flu Data lag=(1,1)\", xlab='Time', ylab='Cases / Week', type='l', col='purple')"],
   ['code', 'acf(cleanedFluData$diff_1.1, lag.max = 160, main="ACF for lag=(1, 1)", col=\'purple\')'],
-  ['text', 'Now let\'s compare the plot. Use zoom to get a better view.'],
+  ['text', 'Now let\'s compare the plots. Use zoom to get a better view.'],
   ['text', 'Remember what we said about ACF and the blue dotted lines?'],
   ['text', 'Which method seems to work best?'], #@TODO Include img here
   ['next_steps', '']
@@ -481,14 +482,18 @@ time_series_differencing_content_one = [
   ['code', 'par(mfrow=c(2, 1)) #set to 2-by-1'],
   ['code', "acf(cleanedFluData$diff_1.1, lag.max = 160, main=\"ACF Lag=(1,1)\")"],
   ['code', "pacf(cleanedFluData$diff_1.1, lag.max = 160, main=\"PACF (Partial ACF) Lag=(1,1)\")"],
-  ['text', 'ACF and PACF both consistently stay below the blue line.'], #@TODO EXPLAIN
+  ['text', 'Now our ACF and PACF both consistently stay below the blue line.'], #@TODO EXPLAIN
 ]
 
 time_series_differencing_content_two = [
   #['image', 'flu_trend/flu_trend_acf_pacf.png'],
-  ['text', 'The ACF and PACF looks good here;'],
-  ['text', 'Both ACF and PACF remains relatively below the line.'],
-  ['text', 'We can move on to fitting a model.'],
+  ['text', 'The ACF and PACF looks good here, except for when lag=0.'],
+  ['text', "At lag=0, the ACF is still explosively high!"],
+  ['text', "But that's unavoidable. Think about it."],
+  ['text', "We're measuring the correlation of data points with different data points at a certain lag."],
+  ['text', "At lag=0, we're measuring the correlation of a data point with itself!"],
+  ['text', "This will always yield full correlation (i.e. 1), since a single data point, by definition, will always correlate with itself."],
+  ['text', 'Now we can move on to fitting a model.'],
   ['next_steps', ''],
 ]
 
@@ -540,36 +545,45 @@ time_series_differencing_content_one = [
   ['text', "Reset plotting area, in case your plotting area is cluttered."],
   ['code', "par(mfrow=c(1, 1))"],
   ['code', "plot.new()"],
-  ['text', "Now we're ready to build the model"],
-  ['text', "The model building will take a while, so we'll talk about the details on the next slide."],
-  ['text', "Run the command first, but we'll walk through the parameter selection."],
-  ['text', "See help to see how the parameters are set"],
+  ['text', "We'll first build the model."],
+  ['text', "The model building will take a while, so we'll talk about the details while it builds."],
+  ['text', "Run the command first, and then we'll walk through the parameter selection."],
+  ['text', "As always, use help() to get documentations on the new/unknown function."],
   ['code', "help(arima)"],
   ['text', "Check out what the parameters represent."],
 ]
 
 time_series_differencing_content_two = [
-  ['text', "Note that this might take a while."],
+  ['text', "*Note that this might take a while.*"],
   ['code', "flu_arima = arima(cleanedFluData$World,
             seasonal = list(order = c(0, 2, 2), period = 52), 
             order = c(1,0,0), method=\"CSS-ML\")"],
   ['text', "The parameter selection comes from assessing the ACF and PACF."],
-  ['text', "For example, if you look back we see initial blips at ACF, up to period 2"],
+  ['text', "For example, if you look back at the ACF and PACF, we see initial blips (over the blue line) for ACF from period 1 up to period 2"],
   ['text', "This gives us MA 2."],
-  ['text', "Moreover, we also see blips in ACF over the blue line at period 52 and 104."],
+  ['text', "Moreover, we also see blips in ACF over the blue line at period 52 and period 104."],
   ['text', "This gives us the seasonal MA of 2 (since 52 is our period, and it blips again at 104)."],
   ['text', "We do a similar analysis with PACF and AR."],
 ]
 
 time_series_differencing_content_three = [
-  ['text', "We also do additional paramter tweaking based on AIC score to arrive at our parameters."],
-  ['link', "http://en.wikipedia.org/wiki/Akaike_information_criterion"],
+  ['text', "We also do additional parameter tweaking based on AIC score to arrive at our parameters."],
+  ['link', "http://www.brianomeara.info/tutorials/aic"],
+  ['text', "What does AIC stand for?"],
+  ['quiz', "ft_build_0"],
   ['code', 'flu_arima'],
   ['code', 'flu_arima$aic'],
-  ['text', "Try playing around with the model parameter."],
-  ['text', "See if you can come up with a better model!"],
+  ['text', "Keep in mind that our original data might look different from yours (since you grabbed the freshest dataset from Quandl)."],
+  ['text', "That means our original parameter selection might no longer be optimal as well."],
+  ['text', "Try tweaking the parameters. (Do more complex ARIMA models take longer to build?)"],
+  ['text', "Don't spend too much time optimizing the model; save that for the corresponding Data Challenge!"],
   ['next_steps', ''],
 ]
+
+quiz = Quiz.create!(
+  quiz_id: "ft_build_0",
+  answer:"Akaike information criterion",
+)
 
 time_series_differencing_step = Step.create!(
   title: "Build",
@@ -602,6 +616,8 @@ arime_prediction_content_one = [
   ['code', 'flu_fcast = predict(flu_arima, n.ahead = ahead)'],
   ['code', 'class(flu_fcast) #Check what is returned'],
   ['code', 'flu_fcast'],
+  ['text', "What class is flu_fcast?"],
+  ['quiz', "ft_prediction_0"],
   ['text', "Now we'll construct new x-y series to vizualize."],
   ['text', "Note that we will generate the x-variables via seq() function."],
 ]
@@ -622,7 +638,7 @@ arime_prediction_content_three = [
   ['text', "Append to the old canvas with the new data point so it's easier to analyze."],
   ['code', 'points(newx[1:ahead], flu_fcast$pred, col = "red", type = "l", lwd=5)'],
   ['text', 'We simply append the forecast data for the new y.'],
-  ['text', 'Add in the Standard Error curve.'],
+  ['text', 'Add in the Standard Error curve:'],
   ['code', 'points(newx[1:ahead], rev(flu_fcast$pred - 2*flu_fcast$se), col = "blue", type = "l", lwd=3)'],
   ['code', 'points(newx[1:ahead], rev(flu_fcast$pred + 2*flu_fcast$se), col = "blue", type = "l", lwd=3)'],
   ['text', 'How does the prediction look?'],
@@ -632,6 +648,10 @@ arime_prediction_content_three = [
   ['next_steps', ''],
 ]
 
+quiz = Quiz.create!(
+  quiz_id: "ft_prediction_0",
+  answer:"list",
+)
 arime_prediction_step = Step.create!(
   title: "Prediction",
   lesson: arima_data_lesson,
@@ -660,29 +680,34 @@ arime_prediction_slide = Slide.create!(
 
 arime_evaluation_content_one = [
   ['code', "par(mfrow=c(2, 1))"],
-  ['text', "Let's look at the ACF of the RESIDUALS of the model (rememver that we already looked at the ACF of the raw data)."],
+  ['text', "Let's look at the ACF/PACF of the RESIDUALS of the model (remember that we already looked at the ACF of the raw data)."],
   ['code', 'acf(flu_arima$resid, lag.max = 160, main ="ACF of fitted residuals")'],
   ['code', 'pacf(flu_arima$resid, lag.max = 160, main = "PACF of fitted residuals")'],
-  ['text', "We'll also look at the tsdiag, which is essentially a diagnostic of the model"],
+  ['text', "We'll also look at tsdiag(), which is essentially a diagnostic of the model:"],
   ['code', "help(tsdiag)"],
   ['code', 'tsdiag(flu_arima, gof.lag=400)'],
-  ['text', 'tsdiag() will plot 3 plots.'],
+  ['text', "How many plots did tsdiag() produce?"],
+  ['quiz', 'ft_evaluation_0'],
 ]
 
 arime_evaluation_content_two = [
   ['text', 'The 1st plot is the residuals of the model.'],
   ['text', "We want to make sure that the residuals look random and evenly distributed around y=0."],
   ['text', "The 2nd plot is the ACF of the residuals."],
-  ['text', "Similar as before, we want to make sure that the ACF remains below the blue line"],
+  ['text', "Similar as before, we want to make sure that the ACF remains below the blue line."],
   ['text', "The 3rd plot is the Ljung-Box Statistic."],
-  ['text', "Ljung-Box statistic to test whether a series of observations over time are random and independent."],
-  ['text', "This time, ultimately we want to confirm that the p-value remains ABOVE the blue line. For more info, check these out:"],
+  ['text', "We use Ljung-Box statistic to test whether a series of observations over time are random and independent."],
+  ['text', "This time we want to confirm that the p-value remains ABOVE the blue line. For more info, check these out:"],
   ['link', "http://support.minitab.com/en-us/minitab/17/topic-library/modeling-statistics/time-series/diagnostic-checking/what-is-the-ljung-box-q-statistic/"],
   ['link', " http://www.itl.nist.gov/div898/software/dataplot/refman1/auxillar/ljungbox.htm"],
   ['text', "Do the plots look good for our model?"],
   ['next_steps', ''],
 ]
 
+quiz = Quiz.create!(
+  quiz_id: "ft_evaluation_0",
+  answer:"3",
+)
 arime_evaluation_step = Step.create!(
   title: "Evaluation",
   lesson: arima_data_lesson,
@@ -707,13 +732,13 @@ arime_evaluation_slide = Slide.create!(
 
 conclusion_content = [
   ['text', "We've now successfully built a time series model after some initial data exploration."],
-  ['text', "We started with a set of data."],
-  ['text', "We figured out the missing data and cleaned the data."],
-  ['text', "We differenced data to figure out the model parameters."],
-  ['text', "After building the model, we plotted the predicted values and evaluated the result."],
-  ['text', "Lastly we plotted the predicted values and saw that the SE grew relatively fast."],
-  ['text', "Lastly, don't forget to keep in mind that our model is as good our original data source."],
-  ['text', "Now you know how to build time series models!"],
+  ['text', "1. We started with a set of data."],
+  ['text', "2. We figured out the missing data points and cleaned the dataset."],
+  ['text', "3. We differenced the dataset to figure out the model parameters (we also relied on AIC)."],
+  ['text', "4. We built the model, plotted the predicted values, and saw that the SE grew relatively fast."],
+  ['text', "5. Finally we evaluated the model by looking at its residuals / tsdiag()"],
+  ['text', "Though the model looked good, don't forget to keep in mind that our model is only as good as our original data source."],
+  ['text', "Congrats, now you know how to build time series models!"],
   ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
 
