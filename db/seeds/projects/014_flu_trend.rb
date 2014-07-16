@@ -675,12 +675,16 @@ arime_evaluation_slide = Slide.create!(
 ##############  Conclusion  ####################################################
 ################################################################################
 
-
 conclusion_content = [
-  ['text', "Write some conclusion breh"],
-  ['text', ""],
+  ['text', "We've now successfully built a time series model after some initial data exploration."],
+  ['text', "We started with a set of data."],
+  ['text', "We figured out the missing data and cleaned the data."],
+  ['text', "We differenced data to figure out the model parameters."],
+  ['text', "After building the model, we plotted the predicted values and evaluated the result."],
+  ['text', "Lastly we plotted the predicted values and saw that the SE grew relatively fast."],
+  ['text', "Lastly, don't forget to keep in mind that our model is as good our original data source."],
+  ['text', "Now you know how to build time series models!"],
   ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
-
 ]
 
 conclusion_lesson = Lesson.create!(
