@@ -567,8 +567,8 @@ time_series_differencing_slide_three = Slide.create!(
 ############### Predicting via ARIMA ##############
 
 arime_prediction_content_one = [
-  ['text', "Now that the model is built, we'll ask it to predict the trend over the next 104 periods (2 years)"],
-  ['code', "ahead=104 #52 weeks"],
+  ['text', "Now that the model is built, we'll ask it to predict the trend over the next 104 periods (2 years)."],
+  ['code', "ahead=104 #104 weeks"],
   ['code', 'flu_fcast = predict(flu_arima, n.ahead = ahead)'],
   ['code', 'class(flu_fcast) #Check what is returned'],
   ['code', 'flu_fcast'],
@@ -577,7 +577,7 @@ arime_prediction_content_one = [
 ]
 
 arime_prediction_content_two = [
-  ['text', "length.out=ahead means to generate up to ahead variable (which we set to be 104 ahead). by='1 week' specifis that we want to increment by one week at a time."],
+  ['text', "length.out=ahead means to generate up to ahead variable (which we set to be 104 ahead). by='1 week', we specify that we want to increment by one week at a time."],
   ['code', 'newx = c(rev(seq(cleanedFluData$Date[1], length.out=ahead, by="1 week")), cleanedFluData$Date)'],
   ['text', 'We simply append the forecast data for the new y.'],
   ['code', 'newy = c(flu_fcast$pred, cleanedFluData$World)'],
@@ -589,14 +589,15 @@ arime_prediction_content_two = [
 ]
 
 arime_prediction_content_three = [
-  ['text', "Plot over the old plot for the new data point to make it easier to see."],
+  ['text', "Append to the old canvas with the new data point so it's easier to analyze."],
   ['code', 'points(newx[1:ahead], flu_fcast$pred, col = "red", type = "l", lwd=5)'],
   ['text', 'We simply append the forecast data for the new y.'],
   ['text', 'Add in the Standard Error curve.'],
   ['code', 'points(newx[1:ahead], rev(flu_fcast$pred - 2*flu_fcast$se), col = "blue", type = "l", lwd=3)'],
   ['code', 'points(newx[1:ahead], rev(flu_fcast$pred + 2*flu_fcast$se), col = "blue", type = "l", lwd=3)'],
   ['text', 'How does the prediction look?'],
-  ['text', 'The blue lines represent the relatively possible outcomes (SE lines). You might have noticed that the SE lines expand extremely rapidly'],
+  ['text', 'The blue lines represent the relatively possible outcomes (SE lines).'],
+  ['text', "You might have noticed that the SE lines expand rather rapidly."],
   ['text',' This tells us that the model loses a lot of predictive confidence relatively fast.'],
   ['next_steps', ''],
 ]
@@ -632,9 +633,20 @@ arime_evaluation_content_one = [
   ['text', "Let's look at the ACF of the RESIDUALS of the model (rememver that we already looked at the ACF of the raw data)."],
   ['code', 'acf(flu_arima$resid, lag.max = 160, main ="ACF of fitted residuals")'],
   ['code', 'pacf(flu_arima$resid, lag.max = 160, main = "PACF of fitted residuals")'],
+  ['text', "We'll also look at the tsdiag, which is essentially a diagnostic of the model"],
+  ['code', "help(tsdiag)"],
   ['code', 'tsdiag(flu_arima)'],
-  ['text', "Now we'll construct new x-y series to vizualize."],
-  ['text', "Note that we will generate the x-variables via seq() function."],
+  ['text', 'tsdiag will plot 3 plots.'],
+]
+
+arime_evaluation_content_two = [
+  ['text', 'The first plot is the residuals of the model.'],
+  ['text', "We want to make sure that the residuals look random and evenly distributed around y=0."],
+  ['text', "The next plot is the ACF of the residuals."],
+  ['text', "Similar as before, we want to make sure that the ACF remains below the blue line"],
+  ['text', "The last plot is the Ljung-Box Statistic."],
+  ['text', "This time, ultimately we want to main that the p-value remains ABOVE the blue line"],
+  ['text', "Do the plots look good for our model?"],
   ['next_steps', ''],
 ]
 
@@ -648,6 +660,12 @@ arime_evaluation_slide = Slide.create!(
   content: arime_evaluation_content_one,
   parent: arime_evaluation_step,
   slide_id: 0,
+)
+
+arime_evaluation_slide = Slide.create!(
+  content: arime_evaluation_content_two,
+  parent: arime_evaluation_step,
+  slide_id: 1,
 )
 
 ################################################################################
