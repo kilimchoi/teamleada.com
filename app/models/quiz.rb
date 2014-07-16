@@ -14,15 +14,14 @@ class Quiz < ActiveRecord::Base
 
   validates :quiz_id, uniqueness: true, presence: true
 
-  def compare_inputs(user_input)
+  def correct_answer?(user_input)
     '''
-    Given the correct code "answer" and "user_input", returns True if the user_input
-    renders the same code
+    Given a "user_input", returns True if the user_input matches the answer.
     '''
-    answer == user_input || whitespace_pass(user_input) || equalsign_pass(user_input)
+    answer == user_input || whitespace_and_lower_pass(user_input) || equalsign_pass(user_input)
   end
 
-  def whitespace_pass(user_input)
+  def whitespace_and_lower_pass(user_input)
     '''
     Returns T/F depending of answer == user_input, after we remove all white spaces.
     '''
