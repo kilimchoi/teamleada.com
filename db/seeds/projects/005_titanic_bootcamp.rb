@@ -11,6 +11,8 @@ project = Project.create!(
   short_description: "In this bootcamp you will be introduced to the R programming concepts necessary to fully understand the Titanic: Machine Learning from Disaster data project.",
   number: 5,
   enabled: true,
+  has_leaderboard: false,
+  has_submit: false,
   uid: 5,
   difficulty: 'Beginner',
   category: Project::LESSON,

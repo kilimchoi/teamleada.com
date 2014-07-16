@@ -26,6 +26,7 @@
 //= require ace/ace
 //= require ace/theme-github
 //= require autocomplete-rails
+//= require highlight.pack
 
 $(document).ready(function() {
   //load heap data here.
