@@ -22,6 +22,7 @@ puts "============ Created project: #{project.title}."
 data_acquisition_content = [
   ['text', "We'll first download the data from Quandl here:"],
   ['link', 'http://www.quandl.com/GOOGLEORG/FLUCOUNTRY-Flu-Trends'],
+  ['text', "Click on download and select CSV as your format"],
   ['text', 'Quandl is a great free resource for data.'],
   ['text', 'Put the downloaded data into a folder; remember to set the working directory to that particular folder.'],
   ['text', 'Eg:'],
@@ -72,6 +73,8 @@ cleaning_content_one = [
   ['text', "We'll see what kind of columns we have."],
   ['code', 'names(rawFluData) #Headers to the data.'],
   ['code', "head(rawFluData)"],
+  ['text', "How many countries do we have data for?"],
+  ['quiz', "ft_clean_1"],
   ['text', "Often times, date and time are read as strings or characters. Let's check."],
   ['code', 'class(head(rawFluData$Date))'],
   ['text', 'As we supected.'],
@@ -83,17 +86,21 @@ cleaning_content_two = [
   ['code', 'help(as.Date)'],
   ['code', 'class(as.Date("2014-03-01"))'],
   ['text', "What class did it return? Omit any quotes."],
-  ['quiz', 'ft_0'],
+  ['quiz', 'ft_clean_0'],
   ['text', "We'll save the result back into the column (overwriting it)."],
   ['code', 'rawFluData$Date = as.Date(rawFluData$Date, "%Y-%m-%d")'],
   ['next_steps'],
 ]
 
 quiz = Quiz.create!(
-  quiz_id: "ft_0",
+  quiz_id: "ft_clean_0",
   answer:"Date",
 )
 
+quiz = Quiz.create!(
+  quiz_id: "ft_clean_1",
+  answer:"28",
+)
 cleaning_step = Step.create!(
   title: "Cleaning",
   lesson: data_exploration_lesson,
@@ -126,6 +133,7 @@ plotting_content_one = [
   ['code', "lines (rawFluData$Austria ~ rawFluData$Date,
       xlab='Time', ylab='Cases / Week', type='l', col='red') #what plotted?"],
   ['code', 'legend(\'topleft\', c("Canada","Austria", "South Africa"), lty=1, col=c("blue", "red", "green"), bty=\'l\', cex=1.25, box.lwd = 1.2, box.col = "black")'],
+  ['text', "We'll only work on the plotted 3 countries for now"],
   ]
 
 plotting_content_two = [
@@ -135,13 +143,13 @@ plotting_content_two = [
   ['text', 'This could be problematic.'],
   ['text', 'Could there be more more missing data?'],
   ['text', "If we ignore the missing data, it'll surely invalidate some of our other analysis."],
-  ['text', "Which country seems to have the highest raw number of reported flu cases?"],
-  ['quiz', 'ft_1'],
+  ['text', "Which of the 3 countries seems to have the highest raw number of reported flu cases?"],
+  ['quiz', 'ft_plot_1'],
   ['next_steps'],
 ]
 
 quiz = Quiz.create!(
-  quiz_id: "ft_1",
+  quiz_id: "ft_plot_1",
   answer:"Canada",
 )
 
@@ -192,14 +200,17 @@ analysis_missing_content_one = [
   ['text', "We'll use apply() to apply a function (which we will explain in a bit)."],
   ['text', "We use the 'MARGIN' variable to indicate that we want to apply across the rows of our Data Frame."],
   ['text', "Check out help(apply) for more info."],
-  ['text', "The function we\'re going to apply is (we don't give it a name, making it an anonymous function):"],
+  ['text', "This is the function we're going to apply."],
   ['code', "function(x) {
      return (sum(is.na(x)))
 }"],
+  ['text', "Notice that the function doesn't quite have a name."],
   ]
 
 analysis_missing_content_two = [
-  ['text', "The previous anonymous function accepts an x (in this case a row in the form of a vector), which we feed into is.na()."],
+  ['text', "What do you call a function without a name? Try googleing 'nameless functions'. (hint: it's _______ Function)"],
+  ['quiz', "ft_missing_0"],
+  ['text', "The previous function accepts an x (in this case a row in the form of a vector), which we feed into is.na()."],
   ['text', "is.na(x) will convert the given row into a vector of True/Fase depending on if the value is NA."],
   ['text', 'We finally call sum() on the True/False vector where True/False is auto-converted to 1/0 and summed to get a number.'],
   ['text', 'This number represents the total number of NA entries across a row.'],
@@ -218,6 +229,11 @@ analysis_missing_content_three = [
   ['text', "For our analysis we'll ignore/remove data entries prior to 2006."],
   ['next_steps',''],
 ]
+
+quiz = Quiz.create!(
+  quiz_id: "ft_missing_0",
+  answer:"Anonymous Function",
+)
 
 analysis_missing_step = Step.create!(
   title: "Analyze Missing Data",
@@ -261,7 +277,7 @@ remove_missing_content_two = [
   ['text', 'Now let\'s plot the averaged "World" data.'],
   ['code', "plot(cleanedFluData$World ~ cleanedFluData$Date, main=\"Aggregated Flu Trend\",
     xlab='Time', ylab='Cases / Week', type='l', col='blue')"],
-  ['text', 'This looks like a decent piece of data to fit a time series model.'],
+  ['text', 'This looks like a decent piece of data to fit a time series model (As of now, mid-2014).'],
   ['text', 'The first few thing we have to do is removing seasonality and de-trending the data.'],
   ['text', "There doesn't actually seem to be any strong trend with our data (thank goodness), so we'll concentrate on removing seasonality."],
   ['text', "How many large spikes of flu outbreaks do you see?"],
@@ -297,8 +313,8 @@ remove_missing_slide_two = Slide.create!(
 ################################################################################
 time_series_data_content = [
   ['text', "The overal concept behind time series model involves first removing trend and seasonality (effectively reducing it to white noise.)"],
-  ['text', "One we have the differenced data, we'll run analysis on them."],
-  ['text', "Once you achieve that, you can analyze the underlying white noise to determine the parameters required for the time series model."],
+  ['text', "Once we have the differenced data, we'll run analysis on them."],
+  ['text', "The analysis involves looking at the underlying white noise to determine the parameters required for the time series model."],
   ['lesson_links', nil],
 ]
 
@@ -330,10 +346,14 @@ time_series_setup_content_two = [
   ['text', "Additionally we'll be using the acf() function to evaluate the data."],
   ['text', "acf() returns the estimates for auto-covariance function, which can be plotted to evaluate the data."],
   ['code', 'help(acf)'],
-  ['text', 'The idea behind differencing is to reduce the data to white-noise, which should have ACF below the dotted blue line that it plots (you\'ll see this soon).'],
+  ['text', "In the ACF's Help screen, how many different values are allowed for the 'type' paremeter?"],
+  ['quiz', "ft_setup_0"],
+  ['text', "In the ACF's Help screen, what is the default value for the 'type' parameter?"],
+  ['quiz', "ft_setup_1"],
+  ['text', 'The idea behind differencing is to reduce the data to white-noise, which should have ACF below the dotted blue line in the plot (you\'ll see this soon).'],
   ['text', 'Moreover, your ACF should also lack pattern and appear random.'],
   ['text', "In the next section, we'll be plotting the ACF of the differenced data."],
-  ['text', "Don't forget to check whether the ACF follows the guildines we listed here."],
+  ['text', "Don't forget to check whether the ACF follows the guidelines we listed here."],
 ]
 
 time_series_setup_content_three = [
@@ -353,6 +373,16 @@ time_series_setup_content_three = [
 quiz = Quiz.create!(
   quiz_id: "ft_3",
   answer: "3",
+)
+
+quiz = Quiz.create!(
+  quiz_id: "ft_setup_0",
+  answer: "3",
+)
+
+quiz = Quiz.create!(
+  quiz_id: "ft_setup_1",
+  answer: "correlation",
 )
 
 time_series_setup_step = Step.create!(
@@ -389,8 +419,8 @@ time_series_differencing_content_one = [
   ['code', 'cleanedFluData$diff_52 = c(diff(cleanedFluData$World, lag=52), rep(0,52))'],
   ['code', "plot (cleanedFluData$diff_52 ~ cleanedFluData$Date, main=\"Once Differenced Flu Data lag=52\", xlab='Time', ylab='Cases / Week', type='l', col='brown')"],
   ['code', "acf(cleanedFluData$diff_52, lag.max = 160, main=\"ACF for lag=(52)\", col='brown')"],
-  ['text', "Also, we padded the differenced data via rep() method (see help(rep))."],
-  ['text', "Remember earlier when you differenced; differencing shaves away one data point each time."],
+  ['text', "Also, we padded the differenced data with 0 via rep() method (see help(rep))."],
+  ['text', "Remember when you differenced earlier, and how differencing shaved away data point(s)."],
   ['text', "Let's add the rest of the plots so we can compare."],
 ]
 
