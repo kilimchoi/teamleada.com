@@ -59,6 +59,16 @@ To start Sidekiq, run the command from the project root directory:
 
     sidekiq -d -L sidekiq.log -q uploads
 
+## Instal Nginx
+To install nginx on ubuntu, run the following:
+    
+    sudo apt-get install nginx
+    sudo service nginx start
+    ifconfig eth0 | grep inet | awk '{ print $2 }'
+    update-rc.d nginx defaults
+
+the last comand might yield a stdout return msg, stating that it already exists.
+
 ## Live Reload
 
 We are currently using `livereload` so that when you edit views and assets, they are automatically updated on the web browser (no refreshing anymore).
