@@ -192,9 +192,13 @@ class User < ActiveRecord::Base
   # Validations
   #
   def check_username
-    if !self.new_record?
-      if username.blank?
+    if self.new_record?
+      if self.username.nil? || self.username.blank?
         errors.add(:username, "can't be blank")
+        return
+      end
+      if self.username.start_with?("_") || !/^[A-Za-z].*/.match(self.username)
+        errors.add(:username, "must start with a letter")
       end
     end
   end
