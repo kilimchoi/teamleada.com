@@ -69,6 +69,30 @@ To install nginx on ubuntu, run the following:
 
 the last comand might yield a stdout return msg, stating that it already exists.
 
+Then head to */etc/nginx/sites-available* and append the following
+
+    server {
+        listen 80;
+        server_name beta-dev.teamleada.com;
+        location / {
+                proxy_pass http://localhost:3000/;
+                proxy_redirect off;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header Host $http_host;
+        }
+    }
+
+Lastly, add to the */etc/hosts* the localhost and domain name
+
+    127.0.0.1 beta-dev.teamleada.com
+
+If you get a bad gateway, make sure rails is running. if nothing is rendering, it's not rerouting, make sure to restart nginx after you reconfigure via:
+   
+    sudo nginx -s stop
+    sudo nginx
+    
+
 ## Live Reload
 
 We are currently using `livereload` so that when you edit views and assets, they are automatically updated on the web browser (no refreshing anymore).
