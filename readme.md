@@ -55,7 +55,7 @@ In redis.conf, enable "daemonize yes". Now run
     redis-server &
 
 ## Background jobs
-To start Sidekiq, run the command from the project root directory:
+To start Sidekiq, run the command from the project root directory (ane MAKE SURE redis is running):
 
     sidekiq -d -L sidekiq.log -q uploads
 
