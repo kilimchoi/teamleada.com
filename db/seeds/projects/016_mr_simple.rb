@@ -25,7 +25,7 @@ project = Project.create!(
 ################################################################################
 puts "============ Created project: #{project.title}."
 ################################################################################
-#
+
 project_overview_content0 = [
   ['text', "In this project, you'll design and build a mapreduce algorithm to traverse graph data."],
   ['text', "Graph is a powerful data structure that is used in the following cases:"],
@@ -50,3 +50,43 @@ project_overview_slide0 = Slide.create!(
   parent: project_overview,
   slide_id: 0,
 )
+
+################################################################################
+
+project_overview = Lesson.create!(
+  title: "Algorithm / Setup",
+  project: project,
+  lesson_id: 1,
+)
+
+################################################################################
+
+project_overview = Lesson.create!(
+  title: "Mapper",
+  project: project,
+  lesson_id: 2,
+)
+################################################################################
+project_overview = Lesson.create!(
+  title: "Sort / Shuffle",
+  project: project,
+  lesson_id: 3,
+)
+
+################################################################################
+project_overview = Lesson.create!(
+  title: "Reducer",
+  project: project,
+  lesson_id: 4,
+)
+
+################################################################################
+
+project_overview = Lesson.create!(
+  title: "Conclusion",
+  project: project,
+  lesson_id: 5,
+)
+
+################################################################################
+
