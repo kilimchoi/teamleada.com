@@ -36,7 +36,7 @@ project_overview_content0 = [
   ['text', "Often times, the graph data mentioned above can't be properly analyze via a single computer (Can you think of why?)."],
   ['text', "Come in distributed system such as Hadoop to help."],
   ['text', "Here, we'll be doing simple graph traversal via mapreduce to understand the power/limitation of distributed computing."],
-  ['lesson_links', nil],
+  ['next_steps', nil],
 ]
 
 project_overview = Lesson.create!(
@@ -52,13 +52,89 @@ project_overview_slide0 = Slide.create!(
 )
 
 ################################################################################
+####### Overview ###############################################################
+################################################################################
 
-project_overview = Lesson.create!(
+setup_main_slide = [
+  ['text', "Before we dive into writing mapreduce code, we have to decide a few things."],
+  ['lesson_links', ""],
+]
+
+project_overview_lesson = Lesson.create!(
   title: "Algorithm / Setup",
   project: project,
   lesson_id: 1,
 )
 
+setup_slide_main_one = Slide.create!(
+  content: setup_main_slide,
+  parent: project_overview_lesson,
+  slide_id: 0,
+)
+
+################################################################################
+data_representation_content_one = [
+  ['text', "Before we do anything, we have to decide on the data repsentation."],
+  ['text', "There are different ways to repsentat graph data. below are some resource on graph data representation"],
+  ['link', ""],
+  ['text', "Given the context, what kind of representation do you plan to use?"],
+  ['user_response', "@TODO leave response ID here"],
+  ['next_steps', ""],
+]
+
+data_representation_step_one = Step.create!(
+  title: "Graph Representation",
+  step_id: 0,
+  lesson: project_overview_lesson,
+)
+
+data_representatino_slide_one = Slide.create!(
+  content: data_representation_content_one,
+  slide_id: 0,
+  parent: data_representation_step_one
+)
+
+data_represent_submission = SubmissionContext.create!(
+  title: "Graph Data Representation",
+  description: "User is asked to explain what kind of graph data representation he/she plans to use",
+  slide: data_representatino_slide_one,
+  submission_context_id: 0,
+  submission_type: SubmissionContext::RESPONSE,
+)
+
+################################################################################
+
+algorithm_content_one = [
+  ['text', "There are many different ways to find the shortest distance."],
+  ['text', "Don't quite worry about writing mapreduce code yet"],
+  ['text', "Describe the algorithm you plan to employ in finding the shotest path"],
+  ['text', "Why this particular algorithm? What are the strength/weakness/shortfall? Scalability?"],
+  ['user_response', "@TODO probably a submission id"],
+  ['next_steps'],
+]
+
+algorithm_step = Step.create!(
+  title: "Algorithm",
+  step_id: 1,
+  lesson: project_overview_lesson
+)
+
+algorithm_slide = Slide.create!(
+  content: algorithm_content_one,
+  slide_id: 0,
+  parent: algorithm_step
+)
+
+algorithm_design_submission = SubmissionContext.create!(
+  title: "Traversal Algorithm",
+  description: "User is asked to explain the algorithm he/she chose to utilize for the traversal.",
+  slide: algorithm_slide,
+  submission_context_id: 0,
+  submission_type: SubmissionContext::RESPONSE,
+)
+
+################################################################################
+####### Mapper Lesson ##########################################################
 ################################################################################
 
 project_overview = Lesson.create!(
