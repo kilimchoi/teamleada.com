@@ -193,8 +193,12 @@ class User < ActiveRecord::Base
   #
   def check_username
     if !self.new_record?
-      if username.blank?
+      if self.username.nil? || self.username.blank?
         errors.add(:username, "can't be blank")
+        return
+      end
+      if self.username.start_with?("_") || !/^[A-Za-z].*/.match(self.username)
+        errors.add(:username, "must start with a letter")
       end
     end
   end
@@ -322,7 +326,7 @@ class User < ActiveRecord::Base
   end
 
   def has_linkedin_profile_photo?
-    !self.linkedin_profile_image_url.empty?
+    !self.linkedin_profile_image_url.nil? && !self.linkedin_profile_image_url.empty?
   end
 
   def has_all_project_points?(project)

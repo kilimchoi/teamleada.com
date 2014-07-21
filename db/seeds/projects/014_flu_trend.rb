@@ -5,9 +5,9 @@ main_page_content = [
 ]
 
 project = Project.create!(
-  title:"Analyzing Flu Trend",
+  title:"Analyzing Flu Trends",
   description: main_page_content,
-  short_description: "A data project focused on analyzing flu trend data. We'll be building a time series model to make predictions on flu trend.",
+  short_description: "A data project focused on analyzing flu trends data. We'll be building a time series model to make predictions on flu trends.",
   number: 14,
   enabled: true,
   uid: 14,
@@ -125,7 +125,7 @@ plotting_content_one = [
   ['text', "Now we're ready to plot the data."],
   ['code', 'par(mfrow=c(1,1)) #setting to the default plot param'],
   ['text', 'We plot on a fresh canvas via plot():'],
-  ['code', "plot(rawFluData$Canada ~ rawFluData$Date, main=\"Flu Trend Compared\", xlab='Time',
+  ['code', "plot(rawFluData$Canada ~ rawFluData$Date, main=\"Flu Trends Compared\", xlab='Time',
       ylab='Cases / Week', type='l', col='blue') #what plotted?"],
   ['text', 'We add the lines via lines(), so that it draws on top of the already-plotted canvas.'],
   ['code', "lines(rawFluData$South.Africa ~ rawFluData$Date,
@@ -221,7 +221,7 @@ analysis_missing_content_two = [
 analysis_missing_content_three = [
   ['text', "We then plot it over the years:"],
   ['code', "plot(missingCount ~ rawFluData$Date, type='h',
-    main='Missing Data in Flu Trend (28 Total)'],
+    main='Missing Data in Flu Trends (28 Total)'],
     xlab='Date', ylab='Missing Countries', col='red')"],
   ['text', 'It looks like there was quite a bit of data missing prior to 2006.'],
   ['text', 'In fact, prior to 2004, only a few countries had flu data.'],
@@ -275,7 +275,7 @@ remove_missing_content_one = [
 
 remove_missing_content_two = [
   ['text', 'Now let\'s plot the averaged "World" data.'],
-  ['code', "plot(cleanedFluData$World ~ cleanedFluData$Date, main=\"Aggregated Flu Trend\",
+  ['code', "plot(cleanedFluData$World ~ cleanedFluData$Date, main=\"Aggregated Flu Trends\",
     xlab='Time', ylab='Cases / Week', type='l', col='blue')"],
   ['text', 'This looks like a decent piece of data to fit a time series model (As of now, mid-2014).'],
   ['text', 'The first few thing we have to do is removing seasonality and de-trending the data.'],
@@ -415,7 +415,7 @@ time_series_differencing_content_one = [
   ['text', "First we'll do a lag=52 differencing. This means we're minusing each data point by the the data point from 52 observations ago."],
   ['text', 'In our context, this means subtracting by the data from 52 weeks (i.e. 1 year) ago.'],
   ['text', 'This stems from assuming that flu has a seasonality of one year.'],
-  ['text', 'Does that sound about right? Does flu trend have a one-year cycle?'],
+  ['text', 'Does that sound about right? Do flu trends have one-year cycles?'],
   ['code', 'cleanedFluData$diff_52 = c(diff(cleanedFluData$World, lag=52), rep(0,52))'],
   ['code', "plot (cleanedFluData$diff_52 ~ cleanedFluData$Date, main=\"Once Differenced Flu Data lag=52\", xlab='Time', ylab='Cases / Week', type='l', col='brown')"],
   ['code', "acf(cleanedFluData$diff_52, lag.max = 160, main=\"ACF for lag=(52)\", col='brown')"],
@@ -631,7 +631,7 @@ arime_prediction_content_two = [
   ['code', 'par(mfrow=c(1, 1))'],
   ['code', 'plot.new()'],
   ['code', 'plot(newx, newy, type = "l", xlab = "weeks", ylab = "values", col=\'brown\',
-     main = "World Flu Trend Plot including the 52-week forecast")'],
+     main = "World Flu Trends Plot including the 52-week forecast")'],
 ]
 
 arime_prediction_content_three = [
