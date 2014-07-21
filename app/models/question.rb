@@ -21,7 +21,7 @@ class Question < ActiveRecord::Base
 
   default_scope -> { order("up_votes DESC, created_at ASC") }
   scope :top, -> (amount) { where(hidden: false).first(amount) }
-  scope :not_including_top, -> (amount) { where(hidden: false).last((all.count < amount) ? 0 : all.count - amount) }
+  scope :not_including_top, -> (amount) { where(hidden: false).last((all.where(hidden: false).count < amount) ? 0 : all.where(hidden: false).count - amount) }
 
   def pretty_post_date
     created_at.strftime("%B %d, %Y")
