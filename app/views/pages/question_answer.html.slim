@@ -12,9 +12,9 @@
         = f.input :title, label: "Question", placeholder: "ex: What do you see happening in the Data Science field in the next 3 years?", input_html: { rows: 8 }
         .row
           .col-md-6
-            = link_to "Guidelines / How This Works", question_guidelines_path, class: "flat-button step-button", target: "_blank"
-          .col-md-6
             = f.submit "Submit", class: "flat-button step-button col-md-6"
+          .col-md-6
+            = link_to "Guidelines / How This Works", question_guidelines_path, class: "flat-button step-button", target: "_blank"
   .row
     .col-md-12
       #questions-table
