@@ -192,7 +192,7 @@ class User < ActiveRecord::Base
   # Validations
   #
   def check_username
-    if self.new_record?
+    if !self.new_record?
       if self.username.nil? || self.username.blank?
         errors.add(:username, "can't be blank")
         return
