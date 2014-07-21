@@ -437,35 +437,47 @@ conclusion_lesson = Lesson.create!(
   lesson_id: 5,
 )
 
-conlusion_main_content_one = [
+conclusion_main_content_one = [
+  ['text', "Now we have the whole project structured."],
+  ['text', "You're ready to write the code for mapreduce"],
+  ['text', "Once you have the complete code, paste the src code below"],
+  ['user_code', ""],
+]
+
+conclusion_main_content_two = [
+  ['text', "In this project, we started with a thinking about graph data representation."],
+  ['text', "From there, we designed Mappers, Reducers, and ultimately iterations and termination."],
+  ['text', "Now try running the data G"],
+]
+
+conclusion_main_content_three = [
   ['text', ""],
 ]
 
-conlusion_main_content_two = [
-  ['text', ""],
-]
-
-conlusion_main_content_three = [
-  ['text', ""],
-]
-
-conlusion_main_slide = Slide.create(
-  content: conlusion_main_content_one,
+conclusion_main_slide_one = Slide.create(
+  content: conclusion_main_content_one,
   slide_id: 0,
-  parent: conlusion_lesson
+  parent: conclusion_lesson
 )
 
-conlusion_main_slide = Slide.create(
-  content: conlusion_main_content_two,
+conclusion_main_slide_two = Slide.create(
+  content: conclusion_main_content_two,
   slide_id: 1,
-  parent: conlusion_lesson
+  parent: conclusion_lesson
 )
 
-conlusion_main_slide = Slide.create(
-  content: conlusion_main_content_three,
-  slide_id: 2,
-  parent: conlusion_lesson
-)
+#conclusion_main_slide_three = Slide.create(
+#  content: conclusion_main_content_three,
+#  slide_id: 2,
+#  parent: conclusion_lesson
+#)
 
+src_code_submission = SubmissionContext.create!(
+  title: "MapReduce SRC code",
+  description: "User is asked to input the final src code submission for MapReduce.",
+  slide: conclusion_main_slide_one,
+  submission_context_id: 0,
+  submission_type: SubmissionContext::CODE,
+)
 ################################################################################
 
