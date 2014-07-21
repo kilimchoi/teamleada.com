@@ -10,4 +10,8 @@
       .question-text-container
         .question-text
           = simple_format(question.title)
+        .question-posted-at
+          ' Posted
+          = time_ago_in_words(question.created_at)
+          |  ago.
 
