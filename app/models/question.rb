@@ -19,9 +19,9 @@ class Question < ActiveRecord::Base
 
   validates :title, presence: true
 
-  default_scope -> { order("up_votes DESC, created_at ASC") }
-  scope :top, -> (amount) { order("up_votes DESC, created_at ASC").first(amount) }
-  scope :not_including_top, -> (amount) { order("up_votes DESC, created_at ASC").last((all.count < amount) ? 0 : all.count - amount) }
+  default_scope -> { where(hidden: false).order("up_votes DESC, created_at ASC") }
+  scope :top, -> (amount) { first(amount) }
+  scope :not_including_top, -> (amount) { last((all.count < amount) ? 0 : all.count - amount) }
 
   def pretty_post_date
     created_at.strftime("%B %d, %Y")
