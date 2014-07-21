@@ -204,7 +204,7 @@ mapper_function_slide_one = Slide.create!(
 )
 
 mapper_function_submission = SubmissionContext.create!(
-  title: "Mapper In",
+  title: "Mapper Function",
   description: "User is asked to explain the what the Mapper's primary function will be.",
   slide: mapper_function_slide_one,
   submission_context_id: 0,
@@ -248,30 +248,29 @@ reducer_lesson = Lesson.create!(
   lesson_id: 3,
 )
 
-mapper_main_content_one = [
+reducer_main_content_one = [
   ['text', "We have a working mapper. Naturally we're going to look at the reducer next."],
-  ['link', "resource to maper input help"],
+  ['link', "resource to reducer input help"],
   ['lesson_links', ""],
 ]
 
 reducer_main_slide = Slide.create(
-  content: mapper_main_content_one,
+  content: reducer_main_content_one,
   slide_id: 0,
-  parent: mapper_lesson
+  parent: reducer_lesson
 )
 
 ################################################################################
 
 reducer_input_content_one = [
-  ['text', "reducers generally have a fixed input type."],
-  ['text', "This is the input yoy can expect your reducers to intake the graph data."],
-  ['text', "What kind of input do you expect your reducer to have?"],
+  ['text', "Reducer inputs are a list of values grouped by their output key from the Mapper output."],
+  ['text', "What kind of input do you expect your reducer to have, given the Mapper you designed earlier?"],
   ['user_response', "@TODO response_id if applicable"],
   ['next_steps', ""],
 ]
 
 reducer_input_step = Step.create!(
-  title: "reducer Input",
+  title: "Reducer Input",
   step_id: 0,
   lesson: reducer_lesson
 )
@@ -292,12 +291,13 @@ reducer_input_submission = SubmissionContext.create!(
 ################################################################################
 reducer_function_content_one = [
   ['text', "What is the main function of your reducer?"],
+  ['text', "Describe in a paragraph what your reducer is going to accomplish"],
   ['user_response', "@TODO response_id if applicable"],
   ['next_steps', ""],
 ]
 
 reducer_function_step = Step.create!(
-  title: "reducer Function",
+  title: "Reducer Function",
   step_id: 1,
   lesson: reducer_lesson
 )
@@ -309,7 +309,7 @@ reducer_function_slide_one = Slide.create!(
 )
 
 reducer_function_submission = SubmissionContext.create!(
-  title: "reducer In",
+  title: "Reducer Function",
   description: "User is asked to explain the what the reducer's primary function will be.",
   slide: reducer_function_slide_one,
   submission_context_id: 0,
@@ -318,13 +318,14 @@ reducer_function_submission = SubmissionContext.create!(
 ################################################################################
 reducer_output_content_one = [
   ['text', "Lastly, you have to worry about what your reducer will output."],
-  ['text', "Keep in mind that the reducer output will eventually end up as the intput to the reducer."],
+  ['text', "Keep in mind that the reducer output will eventually be re-fed into the mapper."],
+  ['text', "You don't have to worry about the looping yet, we'll design the iteration in the next section"],
   ['user_response', "@TODO response_id if applicable"],
   ['next_steps', ""],
 ]
 
 reducer_output_step = Step.create!(
-  title: "reducer Output",
+  title: "Reducer Output",
   step_id: 2,
   lesson: reducer_lesson
 )
@@ -336,7 +337,7 @@ reducer_output_slide_one = Slide.create!(
 )
 
 reducer_output_submission = SubmissionContext.create!(
-  title: "reducer Output",
+  title: "Reducer Output",
   description: "User is asked to explain the what the reducer's primary output will be.",
   slide: reducer_output_slide_one,
   submission_context_id: 0,
