@@ -326,7 +326,7 @@ class User < ActiveRecord::Base
   end
 
   def has_linkedin_profile_photo?
-    !self.linkedin_profile_image_url.empty?
+    !self.linkedin_profile_image_url.nil? && !self.linkedin_profile_image_url.empty?
   end
 
   def has_all_project_points?(project)
