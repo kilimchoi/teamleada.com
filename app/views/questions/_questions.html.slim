@@ -1,7 +1,9 @@
 h1.title Top 7 Questions
-- @top_questions.each do |question|
-  = render partial: "questions/question", locals: { question: question }
+table.table.table-striped
+  - @top_questions.each do |question|
+    = render partial: "questions/question", locals: { question: question }
 
 h1.title More Questions
-- @questions.each do |question|
-  = render partial: "questions/question", locals: { question: question }
+table.table.table-striped
+  - @questions.each do |question|
+    = render partial: "questions/question", locals: { question: question }
