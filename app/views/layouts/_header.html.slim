@@ -19,7 +19,9 @@ header#header
             = active_li_link "Home", root_path
 
           - if Feature.enabled?("ask_peter")
-            = active_li_link "Ask Peter", question_answer_path
+            li
+              = link_to "Ask Peter", question_answer_path
+              span.label.label-danger.navbar-new-badge New!
 
           - if signed_in? && (current_user.is_student? || current_user.is_admin?)
             = active_li_link "Invite", invites_path
