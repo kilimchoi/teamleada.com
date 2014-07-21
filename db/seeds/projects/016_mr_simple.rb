@@ -288,7 +288,9 @@ reducer_input_submission = SubmissionContext.create!(
   submission_context_id: 0,
   submission_type: SubmissionContext::RESPONSE,
 )
+
 ################################################################################
+
 reducer_function_content_one = [
   ['text', "What is the main function of your reducer?"],
   ['text', "Describe in a paragraph what your reducer is going to accomplish"],
@@ -315,6 +317,7 @@ reducer_function_submission = SubmissionContext.create!(
   submission_context_id: 0,
   submission_type: SubmissionContext::RESPONSE,
 )
+
 ################################################################################
 reducer_output_content_one = [
   ['text', "Lastly, you have to worry about what your reducer will output."],
@@ -352,6 +355,76 @@ iteration_lesson = Lesson.create!(
   title: "Iteration / Stop Criterion",
   project: project,
   lesson_id: 4,
+)
+
+iteration_main_content_one = [
+  ['text', "Now that we've setup both the mapper and the iteration, we can worry about iterating."],
+  ['text', "The algorithm will continue to run until a specific stop Criterion"],
+  ['lesson_links', ""],
+]
+
+iteration_main_slide = Slide.create(
+  content: iteration_main_content_one,
+  slide_id: 0,
+  parent: iteration_lesson
+)
+
+################################################################################
+
+iteration_iterate_content_one = [
+  ['text', "Since we have a set mapper and reducer, how do you plan on iterating the algorithm?"],
+  ['user_response', "@TODO response_id if applicable"],
+  ['next_steps', ""],
+]
+
+iteration_iterate_step = Step.create!(
+  title: "Iteration",
+  step_id: 0,
+  lesson: iteration_lesson
+)
+
+iteration_iterate_slide_one = Slide.create!(
+  content: iteration_iterate_content_one,
+  slide_id: 0,
+  parent: iteration_iterate_step,
+)
+
+iteration_iterate_submission = SubmissionContext.create!(
+  title: "Interation Explanation",
+  description: "User is asked to explain how the algorithm is going to iterate.",
+  slide: iteration_iterate_slide_one,
+  submission_context_id: 0,
+  submission_type: SubmissionContext::RESPONSE,
+)
+
+################################################################################
+
+stop_criterion_content_one = [
+  ['text', "The last thing we have to worry about is the termination."],
+  ['text', "What is your termination criterion?"],
+  ['text', "Explain how you know the termination criteria is optimal"],
+  ['user_response', "@TODO response_id if applicable"],
+  ['next_steps', ""],
+]
+
+stop_criterion_step = Step.create!(
+  title: "Stop Criterion",
+  step_id: 1,
+  lesson: iteration_lesson
+)
+
+stop_criterion_slide_one = Slide.create!(
+  content: stop_criterion_content_one,
+  slide_id: 0,
+  parent: stop_criterion_step,
+)
+
+stop_criterion_submission = SubmissionContext.create!(
+  title: "Stop Criterion Explanation",
+  description: "User is asked to explain how the algorithm is going to terminate.",
+  slide: stop_criterion_slide_one,
+  submission_context_id: 0,
+  submission_type: SubmissionContext::RESPONSE,
 )
 
 ################################################################################
