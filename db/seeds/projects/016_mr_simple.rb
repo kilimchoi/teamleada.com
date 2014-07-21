@@ -75,7 +75,7 @@ setup_slide_main_one = Slide.create!(
 ################################################################################
 data_representation_content_one = [
   ['text', "Before we do anything, we have to decide on the data repsentation."],
-  ['text', "There are different ways to repsentat graph data. below are some resource on graph data representation"],
+  ['text', "There are different ways to repsentat graph data. below are some resources on graph data representation"],
   ['link', ""],
   ['text', "Given the context, what kind of representation do you plan to use?"],
   ['user_response', "@TODO leave response ID here"],
@@ -402,7 +402,7 @@ iteration_iterate_submission = SubmissionContext.create!(
 stop_criterion_content_one = [
   ['text', "The last thing we have to worry about is the termination."],
   ['text', "What is your termination criterion?"],
-  ['text', "Explain how you know the termination criteria is optimal"],
+  ['text', "Explain how you know the termination criteria is optimal."],
   ['user_response', "@TODO response_id if applicable"],
   ['next_steps', ""],
 ]
@@ -435,6 +435,36 @@ conclusion_lesson = Lesson.create!(
   title: "Conclusion",
   project: project,
   lesson_id: 5,
+)
+
+conlusion_main_content_one = [
+  ['text', ""],
+]
+
+conlusion_main_content_two = [
+  ['text', ""],
+]
+
+conlusion_main_content_three = [
+  ['text', ""],
+]
+
+conlusion_main_slide = Slide.create(
+  content: conlusion_main_content_one,
+  slide_id: 0,
+  parent: conlusion_lesson
+)
+
+conlusion_main_slide = Slide.create(
+  content: conlusion_main_content_two,
+  slide_id: 1,
+  parent: conlusion_lesson
+)
+
+conlusion_main_slide = Slide.create(
+  content: conlusion_main_content_three,
+  slide_id: 2,
+  parent: conlusion_lesson
 )
 
 ################################################################################
