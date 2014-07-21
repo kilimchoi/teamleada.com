@@ -2,7 +2,6 @@ admins = [
   ['Mark', 'Miyashita', 'mark@teamleada.com'],
   ['Brian', 'Liou', 'brian@teamleada.com'],
   ['Tristan', 'Tao', 'tristan@teamleada.com'],
-  ['Guang', 'Yang', 'guang@teamleada.com'],
 ]
 
 students = (0..30).map{ |index| ["student#{index}", "student", "student#{index}@student.com"] }
