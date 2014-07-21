@@ -18,13 +18,15 @@ header#header
           - else
             = active_li_link "Home", root_path
 
+          - if Feature.enabled?("ask_peter")
+            = active_li_link "Ask Peter", question_answer_path
+
           - if signed_in? && (current_user.is_student? || current_user.is_admin?)
             = active_li_link "Invite", invites_path
 
           - if signed_in? && current_user.is_company?
             = active_li_link "Browse Talent", company_users_path
           - elsif !signed_in?
-            /= active_li_link "Ask Peter", question_answer_path
             = active_li_link "Learners", learn_path
             = active_li_link "Employers", new_employer_path
 
