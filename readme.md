@@ -48,26 +48,26 @@ Install redis on ubuntu via:
     wget http://download.redis.io/redis-stable.tar.gz
     tar xvzf redis-stable.tar.gz
     cd redis-stable
-    make 
+    make
     sudo make install
-In redis.conf, enable "daemonize yes". Now run 
+In redis.conf, enable "daemonize yes". Now run
 
     redis-server &
 
 ## Background jobs
-To start Sidekiq, run the command from the project root directory (ane MAKE SURE redis is running):
+To start Sidekiq, run the command from the project root directory (and make sure redis is running):
 
     sidekiq -d -L sidekiq.log -q uploads
 
 ## Instal Nginx
 To install nginx on ubuntu, run the following:
-    
+
     sudo apt-get install nginx
     sudo service nginx start
     ifconfig eth0 | grep inet | awk '{ print $2 }'
     update-rc.d nginx defaults
 
-the last comand might yield a stdout return msg, stating that it already exists.
+The last comand might yield a stdout return message, stating that it already exists.
 
 Then head to */etc/nginx/sites-available* and append the following
 
@@ -83,15 +83,14 @@ Then head to */etc/nginx/sites-available* and append the following
         }
     }
 
-Lastly, add to the */etc/hosts* the localhost and domain name
+Lastly, add `localhost` and the `domain name` to */etc/hosts*
 
     127.0.0.1 beta-dev.teamleada.com
 
 If you get a bad gateway, make sure rails is running. if nothing is rendering, it's not rerouting, make sure to restart nginx after you reconfigure via:
-   
+
     sudo nginx -s stop
     sudo nginx
-    
 
 ## Live Reload
 
