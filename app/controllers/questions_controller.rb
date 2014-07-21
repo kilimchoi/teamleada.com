@@ -1,8 +1,6 @@
 class QuestionsController < ApplicationController
   load_resource
 
-  respond_to :html, :js
-
   def create
     @question = Question.new(question_params)
     @question.vote_from_user(current_user, request.remote_ip)
@@ -23,7 +21,7 @@ class QuestionsController < ApplicationController
     @questions = Question.not_including_top(7)
     @question.vote_from_user(current_user, request.remote_ip)
     @question.save
-    respond_with @question
+    redirect_to question_answer_path
   end
 
   private
