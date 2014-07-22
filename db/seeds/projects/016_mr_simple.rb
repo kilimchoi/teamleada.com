@@ -84,12 +84,12 @@ background_content_one = [
   ['text', "This means an edge exists between 2 products, if they were purchased during the same transaction."],
   ['text', "To save on memory footprint, you sample an anonymized graph dataset. below:"],
   ['link', "https://s3.amazonaws.com/leada/amazon_proj_data/amazon0601.txt.gz"],
-  ['text', "Link to the product entity is as below"],
+  ['text', "Link to the product entity is as follows:"],
   ['link', "some link"],
   ['next_steps', ""],
 ]
 
-background_step_two = [
+background_content_two = [
   []
 ]
 
@@ -105,7 +105,7 @@ background_slide_one = Slide.create!(
   parent: background_step_one
 )
 
-background_slide_one = Slide.create!(
+background_slide_two = Slide.create!(
   content: background_content_two,
   slide_id: 0,
   parent: background_step_one
