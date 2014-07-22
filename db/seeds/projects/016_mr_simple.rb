@@ -61,7 +61,7 @@ setup_main_slide = [
 ]
 
 project_overview_lesson = Lesson.create!(
-  title: "Algorithm / Setup",
+  title: "Background / Algorithm",
   project: project,
   lesson_id: 1,
 )
@@ -72,7 +72,46 @@ setup_slide_main_one = Slide.create!(
   slide_id: 0,
 )
 
+# https://s3.amazonaws.com/leada/amazon_proj_data/amazon0601.txt.gz
+
 ################################################################################
+
+background_content_one = [
+  ['text', "Imagine you're working for a leading E-Commerce giant in creating tools to help with product recommendation."],
+  ['text', "The first thing you decide to do is to build a simple system that determines the distance between 2 products."],
+  ['text', "You ask yourself, how do you determine the 'distance' between 2 products?"],
+  ['text', "After consulting with fellow engineers, you decide on using the network distance between the products that were bought during the same transaction."],
+  ['text', "This means an edge exists between 2 products, if they were purchased during the same transaction."],
+  ['text', "To save on memory footprint, you sample an anonymized graph dataset. below:"],
+  ['link', "https://s3.amazonaws.com/leada/amazon_proj_data/amazon0601.txt.gz"],
+  ['text', "Link to the product entity is as below"],
+  ['link', "some link"],
+  ['next_steps', ""],
+]
+
+background_step_two = [
+  []
+]
+
+background_step_one = Step.create!(
+  title: "MapReduce Amazon Data Background",
+  step_id: 0,
+  lesson: project_overview_lesson,
+)
+
+background_slide_one = Slide.create!(
+  content: background_content_one,
+  slide_id: 0,
+  parent: background_step_one
+)
+
+background_slide_one = Slide.create!(
+  content: background_content_two,
+  slide_id: 0,
+  parent: background_step_one
+)
+################################################################################
+
 data_representation_content_one = [
   ['text', "Before we do anything, we have to decide on the data repsentation."],
   ['text', "There are different ways to repsentat graph data. below are some resources on graph data representation"],
@@ -84,11 +123,11 @@ data_representation_content_one = [
 
 data_representation_step_one = Step.create!(
   title: "Graph Representation",
-  step_id: 0,
+  step_id: 1,
   lesson: project_overview_lesson,
 )
 
-data_representatino_slide_one = Slide.create!(
+data_representation_slide_one = Slide.create!(
   content: data_representation_content_one,
   slide_id: 0,
   parent: data_representation_step_one
@@ -97,7 +136,7 @@ data_representatino_slide_one = Slide.create!(
 data_represent_submission = SubmissionContext.create!(
   title: "Graph Data Representation",
   description: "User is asked to explain what kind of graph data representation he/she plans to use",
-  slide: data_representatino_slide_one,
+  slide: data_representation_slide_one,
   submission_context_id: 0,
   submission_type: SubmissionContext::RESPONSE,
 )
@@ -115,7 +154,7 @@ algorithm_content_one = [
 
 algorithm_step = Step.create!(
   title: "Algorithm",
-  step_id: 1,
+  step_id: 2,
   lesson: project_overview_lesson
 )
 
