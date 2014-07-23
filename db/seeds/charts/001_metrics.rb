@@ -55,6 +55,13 @@ metrics = [
     method: "linkedin_before?",
     collection_method: "get_count",
   },
+  {
+    uid: 8,
+    model: "User",
+    title: "Users with Profile Photos",
+    method: "profile_photo_before?",
+    collection_method: "get_count",
+  },
 ]
 
 
