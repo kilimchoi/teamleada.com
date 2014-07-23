@@ -85,7 +85,7 @@ background_content_one = [
   ['text', "To save on memory footprint, you sample an anonymized graph dataset. below:"],
   ['link', "https://s3.amazonaws.com/leada/amazon_proj_data/amazon0601.txt.gz"],
   ['text', "Link to the product entity is as follows:"],
-  ['link', "some link"],
+  ['link_invalid', "some link"],
 ]
 
 background_content_two = [
@@ -96,7 +96,6 @@ background_content_two = [
   ['quiz', "mr_data_edge_count"],
   ['next_steps', ""],
 ]
-
 
 quiz = Quiz.create!(
   quiz_id: "mr_data_edge_count",
@@ -131,7 +130,7 @@ data_representation_content_one = [
   ['text', "Before we do anything, we have to decide on the data repsentation."],
   ['text', "There are different ways to repsentat graph data. below are some resources on graph data representation"],
   ['link', "http://www.geeksforgeeks.org/graph-and-its-representations/"],
-  ['text', "Given the context, what kind of representation do you plan to use?"],
+  ['text', "Given the context, what kind of representation do you plan to use, and why?"],
   ['user_response', "@TODO leave response ID here"],
   ['next_steps', ""],
 ]
@@ -150,7 +149,7 @@ data_representation_slide_one = Slide.create!(
 
 data_represent_submission = SubmissionContext.create!(
   title: "Graph Data Representation",
-  description: "User is asked to explain what kind of graph data representation he/she plans to use",
+  description: "User is asked to explain what kind of graph data representation he/she plans to use.",
   slide: data_representation_slide_one,
   submission_context_id: 0,
   submission_type: SubmissionContext::RESPONSE,
@@ -160,8 +159,8 @@ data_represent_submission = SubmissionContext.create!(
 
 algorithm_content_one = [
   ['text', "There are many different ways to find the shortest distance."],
-  ['text', "Don't quite worry about writing mapreduce code yet"],
-  ['text', "Describe the algorithm you plan to employ in finding the shotest path"],
+  ['text', "Don't quite worry about writing mapreduce code yet."],
+  ['text', "Describe the algorithm you plan to employ in finding the shotest path."],
   ['text', "Why this particular algorithm? What are the strength/weakness/shortfall? Scalability?"],
   ['user_response', "@TODO probably/prefebly a submission id"],
   ['next_steps'],
@@ -192,8 +191,9 @@ algorithm_design_submission = SubmissionContext.create!(
 ################################################################################
 
 mapper_main_content_one = [
-  ['text', "Now that we've decided on an algorithm, let's think about what kind of mapper we'd need to accomplish the task"],
-  ['link', "resource to maper input help"],
+  ['text', "Now that we've decided on an algorithm, let's think about what kind of mapper we'd need to accomplish the task."],
+  ['text', "Here is some resource on MapReduce as a refresher."],
+  ['link', "http://map-reduce.wikispaces.asu.edu/"],
   ['lesson_links', ""],
 ]
 
@@ -213,7 +213,7 @@ mapper_main_slide = Slide.create(
 
 mapper_input_content_one = [
   ['text', "Mappers generally have a fixed input type."],
-  ['text', "This is the input yoy can expect your mappers to intake the graph data."],
+  ['text', "This is the input you can expect your mappers to intake the graph data."],
   ['text', "What kind of input do you expect your mapper to have?"],
   ['user_response', "@TODO response_id if applicable"],
   ['next_steps', ""],
@@ -240,6 +240,8 @@ mapper_input_submission = SubmissionContext.create!(
 )
 ################################################################################
 mapper_function_content_one = [
+  ['text', "Now we can think more about what our mappers are actually going to do."]
+  ['text', "Describe in more details about what our mappers are going to do;"],
   ['text', "What is the main function of your mapper?"],
   ['user_response', "@TODO response_id if applicable"],
   ['next_steps', ""],
@@ -267,7 +269,7 @@ mapper_function_submission = SubmissionContext.create!(
 ################################################################################
 mapper_output_content_one = [
   ['text', "Lastly, you have to worry about what your mapper will output."],
-  ['text', "Keep in mind that the mapper output will eventually end up as the intput to the reducer."],
+  ['text', "Keep in mind that the mapper output will eventually end up as the input to the reducer."],
   ['user_response', "@TODO response_id if applicable"],
   ['next_steps', ""],
 ]
@@ -304,7 +306,9 @@ reducer_lesson = Lesson.create!(
 
 reducer_main_content_one = [
   ['text', "We have a working mapper. Naturally we're going to look at the reducer next."],
-  ['link', "resource to reducer input help"],
+  ['text', "Here is another MapReduce resource, this time focusing more on application:"],
+  ['link', "http://highlyscalable.wordpress.com/2012/02/01/mapreduce-patterns/#attachment_287"],
+
   ['lesson_links', ""],
 ]
 
