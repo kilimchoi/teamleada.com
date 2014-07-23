@@ -240,7 +240,7 @@ mapper_input_submission = SubmissionContext.create!(
 )
 ################################################################################
 mapper_function_content_one = [
-  ['text', "Now we can think more about what our mappers are actually going to do."]
+  ['text', "Now we can think more about what our mappers are actually going to do."],
   ['text', "Describe in more details about what our mappers are going to do;"],
   ['text', "What is the main function of your mapper?"],
   ['user_response', "@TODO response_id if applicable"],
@@ -308,7 +308,6 @@ reducer_main_content_one = [
   ['text', "We have a working mapper. Naturally we're going to look at the reducer next."],
   ['text', "Here is another MapReduce resource, this time focusing more on application:"],
   ['link', "http://highlyscalable.wordpress.com/2012/02/01/mapreduce-patterns/#attachment_287"],
-
   ['lesson_links', ""],
 ]
 
@@ -351,7 +350,7 @@ reducer_input_submission = SubmissionContext.create!(
 
 reducer_function_content_one = [
   ['text', "What is the main function of your reducer?"],
-  ['text', "Describe in a paragraph what your reducer is going to accomplish"],
+  ['text', "Describe in a paragraph what your reducer is going to accomplish."],
   ['user_response', "@TODO response_id if applicable"],
   ['next_steps', ""],
 ]
@@ -370,7 +369,7 @@ reducer_function_slide_one = Slide.create!(
 
 reducer_function_submission = SubmissionContext.create!(
   title: "Reducer Function",
-  description: "User is asked to explain the what the reducer's primary function will be.",
+  description: "User is asked to explain what the reducer's primary function will be.",
   slide: reducer_function_slide_one,
   submission_context_id: 0,
   submission_type: SubmissionContext::RESPONSE,
@@ -417,7 +416,8 @@ iteration_lesson = Lesson.create!(
 
 iteration_main_content_one = [
   ['text', "Now that we've setup both the mapper and the iteration, we can worry about iterating."],
-  ['text', "The algorithm will continue to run until a specific stop Criterion"],
+  ['text', "The algorithm will continue to run until a specific stop Criterion."],
+  ['text', "Let's figure out those criterions"],
   ['lesson_links', ""],
 ]
 
@@ -458,7 +458,7 @@ iteration_iterate_submission = SubmissionContext.create!(
 ################################################################################
 
 stop_criterion_content_one = [
-  ['text', "The last thing we have to worry about is the termination."],
+  ['text', "The last thing we have to worry about is termination."],
   ['text', "What is your termination criterion?"],
   ['text', "Explain how you know the termination criteria is optimal."],
   ['user_response', "@TODO response_id if applicable"],
