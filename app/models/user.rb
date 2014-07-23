@@ -541,6 +541,10 @@ class User < ActiveRecord::Base
     profile_photos.count > 0 && profile_photos.first.created_at <= day.date.tomorrow
   end
 
+  def resume_uploaded_before?(day)
+    resumes.count > 0 && resumes.first.created_at <= day.date.tomorrow
+  end
+
   #
   # Methods
   #
