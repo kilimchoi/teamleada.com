@@ -344,11 +344,23 @@ class User < ActiveRecord::Base
   end
 
   def has_invites_remaining?
-    invites.count < Invite::INVITES
+    invites.count < number_of_allowed_invites
   end
 
   def invited?
     !self.invite.nil?
+  end
+
+  def number_of_allowed_invites
+    if self.is_admin?
+      Float::INFINITY
+    else
+      3
+    end
+  end
+
+  def invites_remaining
+    number_of_allowed_invites - invites.count
   end
 
   def owns_project?(project)
