@@ -62,6 +62,13 @@ metrics = [
     method: "profile_photo_before?",
     collection_method: "get_count",
   },
+  {
+    uid: 9,
+    model: "User",
+    title: "Users with a Resume",
+    method: "resume_uploaded_before?",
+    collection_method: "get_count",
+  },
 ]
 
 

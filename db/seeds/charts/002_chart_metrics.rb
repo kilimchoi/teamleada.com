@@ -15,6 +15,7 @@ invited_users = Metric.find(5)
 invites_sent = Metric.find(6)
 linkedin_integration = Metric.find(7)
 users_with_profile_photos = Metric.find(8)
+users_with_resumes = Metric.find(9)
 
 # Chart Metrics
 ChartMetric.where(chart: sign_ups_chart, metric: all_users).first_or_create!
@@ -24,6 +25,7 @@ ChartMetric.where(chart: users_by_type_chart, metric: users_with_project_access)
 ChartMetric.where(chart: users_by_type_chart, metric: invited_users).first_or_create!
 ChartMetric.where(chart: users_by_type_chart, metric: linkedin_integration).first_or_create!
 ChartMetric.where(chart: users_by_type_chart, metric: users_with_profile_photos).first_or_create!
+ChartMetric.where(chart: users_by_type_chart, metric: users_with_resumes).first_or_create!
 
 ChartMetric.where(chart: project_completion_chart, metric: number_of_in_progress_projects).first_or_create!
 ChartMetric.where(chart: project_completion_chart, metric: number_of_completed_projects).first_or_create!
