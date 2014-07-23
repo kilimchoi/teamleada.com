@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
 
-gem 'rails', '4.1.0'
+gem 'rails', '4.1.4'
 
 gem 'byebug', '3.1.2'
 gem 'nokogiri', '1.6.1'
