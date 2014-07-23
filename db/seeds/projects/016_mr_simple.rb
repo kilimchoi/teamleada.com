@@ -43,6 +43,7 @@ project_overview_content1 = [
   ['text', "We'll first start the technical spec, and you'll be asked to them once you've finalized the design"],
   ['text', "Be concise and informative in writing out your design."],
   ['text', "Imagine that your manager will read your intended design before giving you the approval to code it."],
+  ['text', "Lets get started!"],
   ['next_steps', nil],
 ]
 
@@ -54,12 +55,12 @@ project_overview_lesson = Lesson.create!(
 
 project_overview_slide0 = Slide.create!(
   content: project_overview_content0,
-  parent: project_overvie_lesson,
+  parent: project_overview_lesson,
   slide_id: 0,
 )
 
 project_overview_slide1 = Slide.create!(
-  content: project_overview_conent1,
+  content: project_overview_content1,
   parent: project_overview_lesson,
   slide_id: 1,
 )
@@ -112,6 +113,7 @@ background_content_two = [
   ['quiz', "mr_data_node_count"],
   ['text', "How many Edges are there in the data?"],
   ['quiz', "mr_data_edge_count"],
+  ['text', "The full set of data is larger, but we want to make sure that the algorithm runs on a smaller subset"],
   ['text', "Good!"],
   ['next_steps', ""],
 ]
@@ -146,8 +148,8 @@ background_slide_two = Slide.create!(
 ################################################################################
 
 data_representation_content_one = [
-  ['text', "Before we begin designning the mapreduce, we have to decide on the data repsentation."],
-  ['text', "There are different ways to repsentat graph data. below are some resources on graph data representation"],
+  ['text', "Before we begin designing the MapReduce, we have to decide on the data representation."],
+  ['text', "There are different ways to represent graph data. below are some resources on graph data representation"],
   ['link', "http://www.geeksforgeeks.org/graph-and-its-representations/"],
   ['text', "Given the context, what kind of representation do you plan to use, and why?"],
   ['user_response', "@TODO leave response ID here"],
@@ -179,7 +181,7 @@ data_represent_submission = SubmissionContext.create!(
 algorithm_content_one = [
   ['text', "There are many different ways to find the shortest distance."],
   ['text', "Don't quite worry about writing mapreduce code yet."],
-  ['text', "Describe the algorithm you plan to employ in finding the shotest path."],
+  ['text', "Describe the algorithm you plan to employ in finding the shortest path."],
   ['text', "Why this particular algorithm? What are the strength/weakness/shortfall? Scalability?"],
   ['user_response', "@TODO probably/prefebly a submission id"],
   ['next_steps'],
@@ -284,7 +286,7 @@ mapper_function_submission = SubmissionContext.create!(
 ################################################################################
 mapper_output_content_one = [
   ['text', "Lastly, you have to decide what your mapper is going to output."],
-  ['text', "Keep in mind that the mapper output will eventually end up as the input to the reducer."],
+  ['text', "Remember that the k-v output from Mapper will eventually be fed into the reducer(s)."],
   ['user_response', "@TODO response_id if applicable"],
   ['next_steps', ""],
 ]
