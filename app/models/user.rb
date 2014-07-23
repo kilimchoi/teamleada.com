@@ -344,11 +344,23 @@ class User < ActiveRecord::Base
   end
 
   def has_invites_remaining?
-    invites.count < Invite::INVITES
+    invites.count < number_of_allowed_invites
   end
 
   def invited?
     !self.invite.nil?
+  end
+
+  def number_of_allowed_invites
+    if self.is_admin?
+      Float::INFINITY
+    else
+      3
+    end
+  end
+
+  def invites_remaining
+    number_of_allowed_invites - invites.count
   end
 
   def owns_project?(project)
@@ -523,6 +535,14 @@ class User < ActiveRecord::Base
 
   def linkedin_before?(day)
     !linkedin_confirmed_at.nil? && linkedin_confirmed_at <= day.date.tomorrow
+  end
+
+  def profile_photo_before?(day)
+    profile_photos.count > 0 && profile_photos.first.created_at <= day.date.tomorrow
+  end
+
+  def resume_uploaded_before?(day)
+    resumes.count > 0 && resumes.first.created_at <= day.date.tomorrow
   end
 
   #

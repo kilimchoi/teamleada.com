@@ -21,7 +21,6 @@ table.table.table-striped
       td
         - user.codes.each do |code|
           = link_to code.value, admin_code_path(code)
-          '
 
-  = will_paginate @posts
+  = will_paginate(@users)
 

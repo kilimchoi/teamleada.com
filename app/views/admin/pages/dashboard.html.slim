@@ -8,26 +8,41 @@
   .row
     .col-md-12
       .row
-        .col-md-3
-          .well.center
-            h3 Weekly Page Views
-            strong
-              = @weekly_impressions.count
-        .col-md-3
-          .well.center
-            h3 Daily Page Views
-            strong
-              = @daily_impressions.count
-        .col-md-3
-          .well.center
-            h3 Non-admin Weekly Page Views
-            strong
-              = @weekly_impressions.non_admin.count
-        .col-md-3
-          .well.center
-            h3 Non-admin Daily Page Views
-            strong
-              = @daily_impressions.non_admin.count
+        .col-md-4
+          .panel.panel-default
+            .panel-heading Page Views (including admin)
+            ul.list-group
+              li.list-group-item
+                span.badge = @daily_impressions.count
+                | Page Views Today
+              li.list-group-item
+                span.badge = @weekly_impressions.count
+                | Page Views This Week
+
+        .col-md-4
+          .panel.panel-default
+            .panel-heading Page Views (non-admin)
+            ul.list-group
+              li.list-group-item
+                span.badge = @daily_impressions.non_admin.count
+                | Non-admin Page Views Today
+              li.list-group-item
+                span.badge = @weekly_impressions.non_admin.count
+                | Non-admin Page Views This Week
+
+        .col-md-4
+          .panel.panel-default
+            .panel-heading Important Metrics
+            ul.list-group
+              li.list-group-item
+                span.badge = @daily_project_impressions.non_admin.count
+                | Non-admin Project Page Views Today
+              li.list-group-item
+                span.badge = @daily_new_users.count
+                | New Users Today
+              li.list-group-item
+                span.badge = @daily_code_submissions.count
+                | New Code Submissions Today
 
   .row
     .col-md-12
