@@ -120,6 +120,7 @@ TeamLeada::Application.routes.draw do
         match 'add-user', to: 'companies#add_user', as: :add_user, via: :post
       end
     end
+    resources :universities, only: [:index]
     resources :projects, only: [:index, :show]
     resources :codes do
       member do

@@ -1,0 +1,14 @@
+.container-fluid.full-container
+  .row
+    .col-md-12
+      h1
+        | All Universities
+      table.table.table-striped
+        th Name
+        th Location
+        th Verified
+        - @universities.each do |university|
+          tr
+            td = university.name
+            td = university.location
+            td = university.verified
