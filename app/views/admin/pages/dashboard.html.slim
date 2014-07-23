@@ -18,12 +18,6 @@
               li.list-group-item
                 span.badge = @weekly_impressions.count
                 | Page Views This Week
-              li.list-group-item
-                span.badge = @monthly_impressions.count
-                | Page Views This Month
-              li.list-group-item
-                span.badge = @all_time_impressions.count
-                | Page Views All Time
 
         .col-md-4
           .panel.panel-default
@@ -35,12 +29,6 @@
               li.list-group-item
                 span.badge = @weekly_impressions.non_admin.count
                 | Non-admin Page Views This Week
-              li.list-group-item
-                span.badge = @monthly_impressions.non_admin.count
-                | Non-admin Page Views This Month
-              li.list-group-item
-                span.badge = @all_time_impressions.non_admin.count
-                | Non-admin Page Views All Time
 
         .col-md-4
           .panel.panel-default
