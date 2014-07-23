@@ -37,16 +37,18 @@
 #  linkedin_id                  :string(255)
 #  name                         :string(255)
 #  nickname                     :string(255)
-#  image                        :string(255)
+#  linkedin_profile_image_url   :string(255)      default("")
 #  phone                        :string(255)
 #  headline                     :string(255)
 #  industry                     :string(255)
 #  public_prof_url              :string(255)
-#  date_of_birth                :datetime
+#  date_of_birth                :date
 #  interests                    :text
 #  job_bookmarks_count          :integer
 #  country_code                 :string(255)
 #  has_project_access           :boolean          default(FALSE)
+#  linkedin_confirmed_at        :datetime
+#  linkedin_updated_at          :datetime
 #
 
 class User < ActiveRecord::Base
