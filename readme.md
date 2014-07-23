@@ -61,7 +61,7 @@ To start Sidekiq, run the command from the project root directory (and make sure
 
     sidekiq -d -L sidekiq.log -q uploads
 
-## Instal Nginx
+## Install Nginx
 To install nginx on Ubuntu, run the following:
 
     sudo apt-get install nginx
