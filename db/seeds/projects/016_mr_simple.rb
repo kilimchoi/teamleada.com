@@ -99,7 +99,7 @@ background_content_one = [
   ['text', "Imagine you're working for a leading E-Commerce giant in creating tools to help with product recommendation."],
   ['text', "The first thing you decide to do is to build a simple system that determines the distance between 2 products."],
   ['text', "You ask yourself, how do you determine the 'distance' between 2 products?"],
-  ['text', "After consulting with fellow engineers, you decide on using the network distance between the products that were bought during the same transaction."],
+  ['text', "After consulting with fellow engineers, you decide on using the shortest network distance between the products that were bought during the same transaction."],
   ['text', "This means an edge exists between 2 products, only if they were purchased during the same transaction."],
   ['text', "To save on memory footprint, you sample an anonymized graph dataset. below:"],
   ['link', "https://s3.amazonaws.com/leada/amazon_proj_data/amazon0601.txt.gz"],
@@ -184,6 +184,13 @@ algorithm_content_one = [
   ['text', "Describe the algorithm you plan to employ in finding the shortest path."],
   ['text', "Why this particular algorithm? What are the strength/weakness/shortfall? Scalability?"],
   ['user_response', "@TODO probably/prefebly a submission id"],
+]
+
+algorithm_content_two = [
+  ['text', "The algorithm (hopefully should) have a certain degree of iterative property."],
+  ['text', "In the next Mapper section, don't worry about explaining the iteration mechanics, but rather focus on a single iteration."],
+  ['text', "Same thing goes for the Reducer section."],
+  ['text', "We'll hammer out more about the iteration in the last chapter."],
   ['next_steps'],
 ]
 
@@ -233,6 +240,7 @@ mapper_main_slide = Slide.create(
 mapper_input_content_one = [
   ['text', "Mappers generally have a fixed input k-v pair."],
   ['text', "What kind of input (in key-val) do you expect your mapper to have, given the problem context?"],
+  ['text', "Add any explanation as necessary."],
   ['user_response', "@TODO response_id if applicable"],
   ['next_steps', ""],
 ]
@@ -288,6 +296,7 @@ mapper_output_content_one = [
   ['text', "Lastly, you have to decide what your mapper is going to output."],
   ['text', "Remember that the k-v output from Mapper will eventually be fed into the reducer(s)."],
   ['user_response', "@TODO response_id if applicable"],
+  ['text', "Add any explanation as necessary."],
   ['next_steps', ""],
 ]
 
@@ -322,7 +331,7 @@ reducer_lesson = Lesson.create!(
 )
 
 reducer_main_content_one = [
-  ['text', "We have a working mapper."],
+  ['text', "Now, hopefully we've designed a working Mapper."],
   ['text', "Naturally, we're going to look at the reducer next."],
   ['lesson_links', ""],
 ]
@@ -336,7 +345,7 @@ reducer_main_slide = Slide.create(
 ################################################################################
 
 reducer_input_content_one = [
-  ['text', "Reducer inputs are a list of values grouped by their output key from the Mapper output."],
+  ['text', "Reducer inputs are a list of values grouped by their output keys from the Mapper output."],
   ['text', "What kind of input do you expect your reducer to have, given the Mapper you designed earlier?"],
   ['user_response', "@TODO response_id if applicable"],
   ['next_steps', ""],
@@ -394,8 +403,8 @@ reducer_function_submission = SubmissionContext.create!(
 ################################################################################
 reducer_output_content_one = [
   ['text', "Lastly, you have to worry about what your reducer will output."],
-  ['text', "Keep in mind that the reducer output will eventually be re-fed into the mapper."],
-  ['text', "You don't have to worry about the looping yet, we'll design the iteration in the next section"],
+  ['text', "Keep in mind that (some form of) reducer output will eventually be re-fed into the mapper."],
+  ['text', "You don't have to explain the loop yet, but keep in mind that it'll eventually have to iterate."],
   ['user_response', "@TODO response_id if applicable"],
   ['next_steps', ""],
 ]
@@ -431,9 +440,9 @@ iteration_lesson = Lesson.create!(
 )
 
 iteration_main_content_one = [
-  ['text', "Now that we've setup both the mapper and the iteration, we can worry about iterating."],
-  ['text', "The algorithm will continue to run until a specific stop Criterion."],
-  ['text', "Let's figure out those criterions"],
+  ['text', "Now that we've setup both the Mapper and the Reducer, we can worry about iterating."],
+  ['text', "Hopefully you had a vague plan when designing your Mapper and Reducer."],
+  ['text', "Let's figure out those specific details."],
   ['lesson_links', ""],
 ]
 
@@ -447,6 +456,7 @@ iteration_main_slide = Slide.create(
 
 iteration_iterate_content_one = [
   ['text', "Since we have a set mapper and reducer, how do you plan on iterating the algorithm?"],
+  ['text', "Remember to talk about from a highlevel view of what you're trying to accomplish."],
   ['user_response', "@TODO response_id if applicable"],
   ['next_steps', ""],
 ]
@@ -476,7 +486,7 @@ iteration_iterate_submission = SubmissionContext.create!(
 stop_criterion_content_one = [
   ['text', "The last thing we have to worry about is termination."],
   ['text', "What is your termination criterion?"],
-  ['text', "Explain how you know the termination criteria is optimal."],
+  ['text', "Don't forget to explain how you know the termination criteria is optimal (or isn't, if you decide on using a non-optimal criterion.)"],
   ['user_response', "@TODO response_id if applicable"],
   ['next_steps', ""],
 ]
@@ -495,7 +505,7 @@ stop_criterion_slide_one = Slide.create!(
 
 stop_criterion_submission = SubmissionContext.create!(
   title: "Stop Criterion Explanation",
-  description: "User is asked to explain how the algorithm is going to terminate.",
+  description: "User is asked to explain how the algorithm is going to terminate + it's optimality",
   slide: stop_criterion_slide_one,
   submission_context_id: 0,
   submission_type: SubmissionContext::RESPONSE,
@@ -513,15 +523,16 @@ conclusion_lesson = Lesson.create!(
 
 conclusion_main_content_one = [
   ['text', "Now we have the whole project structured."],
-  ['text', "You're ready to write the code for mapreduce"],
-  ['text', "Once you have the complete code, paste the src code below"],
+  ['text', "Assume your design was approved; you're ready to write the code for MapReduce."],
+  ['text', "Once you have the complete code, paste the src code below."],
+  ['text', "Make sure you've included sufficient comments in your code!"],
   ['user_code', ""],
 ]
 
 conclusion_main_content_two = [
-  ['text', "In this project, we started with a thinking about graph data representation."],
+  ['text', "In this project, we started with thinking about graph data representation."],
   ['text', "From there, we designed Mappers, Reducers, and ultimately iterations and termination."],
-  ['text', "Now try running the data G"],
+  ['text', "Once we "],
 ]
 
 conclusion_main_content_three = [
