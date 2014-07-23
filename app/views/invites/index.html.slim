@@ -29,13 +29,15 @@
         h1
           ' You love Leada? Your friends will too. You have
           strong
-            = Invite::INVITES - current_user.invites.count
-          |  invites remaining.
+            = pluralize(Invite::INVITES - current_user.invites.count, "invite")
+          |  remaining.
         h3
           ' Invite just
           strong
             = Invite::INVITES - current_user.invites.count
-          |  more friends to receive exclusive access to our data projects.
+          '  more
+          = "friend".pluralize(Invite::INVITES - current_user.invites.count)
+          |  to receive exclusive access to our data projects.
       - else
         h1
           ' Congratulations, you have invited

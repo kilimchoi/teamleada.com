@@ -37,9 +37,10 @@ Start the server:
 Happy developing!
 
 ## Image Processing
-You're going to have to install Imagemagick and redis:
+You're going to have to install Imagemagick and Redis:
 
-    brew install imagemagick
+    brew install pkgconfig #in case imagemagick doesn't work on os X
+    brew install imagemagickb
     brew install redis
 
 ## Redis on aws
@@ -50,7 +51,8 @@ Install redis on ubuntu via:
     cd redis-stable
     make
     sudo make install
-In redis.conf, enable "daemonize yes". Now run
+
+In `redis.conf`, enable "daemonize yes". Then run:
 
     redis-server &
 
@@ -60,14 +62,14 @@ To start Sidekiq, run the command from the project root directory (and make sure
     sidekiq -d -L sidekiq.log -q uploads
 
 ## Instal Nginx
-To install nginx on ubuntu, run the following:
+To install nginx on Ubuntu, run the following:
 
     sudo apt-get install nginx
     sudo service nginx start
     ifconfig eth0 | grep inet | awk '{ print $2 }'
     update-rc.d nginx defaults
 
-The last comand might yield a stdout return message, stating that it already exists.
+The last comand might yield a stdout return message stating that it already exists.
 
 Then head to */etc/nginx/sites-available* and append the following
 

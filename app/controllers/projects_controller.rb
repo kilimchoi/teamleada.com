@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
       @projects = @projects.enabled
     end
     if signed_in? && current_user.is_company?
-      @projects = current_user.company.projects
+      @projects = current_user.try(:company).try(:projects)
     end
 
     @data_lessons = @projects.where(category: Project::LESSON, enabled: true).reverse
@@ -54,7 +54,7 @@ class ProjectsController < ApplicationController
       elsif score_improved
         flash[:info] = "Your score of #{score} improved your position on the leaderboard! Your old rank was #{old_rank} and now your rank is #{new_rank}!"
       else
-        flash[:warning] = "Your score of #{@submission.score} from last time was the same or better. Be sure to submit again to see if you improved!"
+        flash[:warning] = "You just scored #{score} which is lower than your highest score of #{@submission.score}. Be sure to submit again to see if you improved!"
       end
       redirect_to project_path(url: @project.url)
     else

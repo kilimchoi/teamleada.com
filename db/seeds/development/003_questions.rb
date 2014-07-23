@@ -17,6 +17,6 @@ questions = [
 ]
 
 questions.each do |q|
-  new_question = Question.create!(title: q[0], description: q[1], asker_id: q[2])
+  new_question = Question.where(title: q[0], description: q[1], asker_id: q[2]).first_or_create
   puts "Created question: #{new_question.title}"
 end
