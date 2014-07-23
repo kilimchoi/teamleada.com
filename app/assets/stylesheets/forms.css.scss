@@ -32,3 +32,14 @@
   content: " \f0de";
   font-family: FontAwesome;
 }
+
+.form-horizontal .checkbox {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.checkbox input[type="checkbox"] {
+  position: absolute;
+  margin-left: -20px;
+  margin-top: -7px;
+}
