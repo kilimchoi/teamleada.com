@@ -1,13 +1,13 @@
 
 main_page_content = [
-	['text', "In this project, we'll be walking through an analysis involving Time Series Data. More specifically, we'll be workign with Flu Data acquired from Quandl."],
-	['text' ,'Keep in mind that the data can contain errors. Countries with more advanced medical care can demonstrate higher and more accurate flu count.'],
+	['text', "In this project, we'll be walking through an analysis involving time series data. More specifically, we'll be working with Flu Data acquired from Quandl."],
+	['text', 'Keep in mind that the data can contain errors. Countries with more advanced medical care can demonstrate higher and more accurate flu count.'],
 ]
 
 project = Project.create!(
   title:"Analyzing Flu Trends",
   description: main_page_content,
-  short_description: "A data project focused on analyzing flu trends data. We'll be building a time series model to make predictions on flu trends.",
+  short_description: "A data project focused on analyzing flu trends data. We'll build a time series model to make predictions on flu trends.",
   number: 14,
   enabled: true,
   uid: 14,
@@ -51,7 +51,7 @@ data_acquisition_slide = Slide.create!(
 
 data_exploration_content = [
   ['text', 'As always, we have to explore the data before we start fitting a model.'],
-  ['text', 'We\'ll do a minor amount of cleaning, followed by extensive plotting to get a better idea about the data.'],
+  ['text', 'We\'ll do a minor amount of cleaning, followed by extensive plotting to get a better sense of the data.'],
   ['lesson_links', nil],
 ]
 
@@ -88,7 +88,7 @@ cleaning_content_two = [
   ['text', "What class did it return? Omit any quotes."],
   ['quiz', 'ft_clean_0'],
   ['text', "We'll save the result back into the column (overwriting it)."],
-  ['code', 'rawFluData$Date = as.Date(rawFluData$Date, "%Y-%m-%d")'],
+  ['code', 'rawFluData$Date = as.Date(rawFluData$Date, "%m/%d/%Y")'],
   ['next_steps'],
 ]
 
@@ -139,10 +139,9 @@ plotting_content_one = [
 plotting_content_two = [
   ['text', "What do we notice here?"],
   ['text', "The green line (for South Africa) shows a certain number of missing years."],
-  ['text', 'This occurs up to about year 2005.'],
-  ['text', 'This could be problematic.'],
+  ['text', 'This occurs up to about year 2005 and could be problematic.'],
   ['text', 'Could there be more more missing data?'],
-  ['text', "If we ignore the missing data, it'll surely invalidate some of our other analysis."],
+  ['text', "If we ignore the missing data, it'll surely invalidate some of our other analyses."],
   ['text', "Which of the 3 countries seems to have the highest raw number of reported flu cases?"],
   ['quiz', 'ft_plot_1'],
   ['next_steps'],
@@ -208,7 +207,7 @@ analysis_missing_content_one = [
   ]
 
 analysis_missing_content_two = [
-  ['text', "What do you call a function without a name? Try googleing 'nameless functions'. (hint: it's _______ Function)"],
+  ['text', "What do you call a function without a name? Try googling 'nameless functions'."],
   ['quiz', "ft_missing_0"],
   ['text', "The previous function accepts an x (in this case a row in the form of a vector), which we feed into is.na()."],
   ['text', "is.na(x) will convert the given row into a vector of True/Fase depending on if the value is NA."],
@@ -221,7 +220,7 @@ analysis_missing_content_two = [
 analysis_missing_content_three = [
   ['text', "We then plot it over the years:"],
   ['code', "plot(missingCount ~ rawFluData$Date, type='h',
-    main='Missing Data in Flu Trends (28 Total)'],
+    main='Missing Data in Flu Trends (28 Total)',
     xlab='Date', ylab='Missing Countries', col='red')"],
   ['text', 'It looks like there was quite a bit of data missing prior to 2006.'],
   ['text', 'In fact, prior to 2004, only a few countries had flu data.'],
@@ -264,7 +263,7 @@ analysis_missing_slide_three = Slide.create!(
 remove_missing_content_one = [
   ['text', "We do a vector operation to only retain entries where the Date variable is newer than '2005-12-31'."],
   ['text', "Note that we convert '2005-12-13' via as.Date to achieve the desired conversion."],
-  ['code', "cleanedFluData = rawFluData[rawFluData$Date > as.Date('2005-12-31'),]"],
+  ['code', "cleanedFluData = rawFluData[rawFluData$Date > as.Date('0005-12-31'),]"],
   ['text', "We now have a set of workable data."],
   ['text', "Note that though the data is \"complete\", we're still not sure about it's underlying integrity;"],
   ['text', "there still might have been error in data entry and collection."],
@@ -277,8 +276,8 @@ remove_missing_content_two = [
   ['text', 'Now let\'s plot the averaged "World" data.'],
   ['code', "plot(cleanedFluData$World ~ cleanedFluData$Date, main=\"Aggregated Flu Trends\",
     xlab='Time', ylab='Cases / Week', type='l', col='blue')"],
-  ['text', 'This looks like a decent piece of data to fit a time series model (As of now, mid-2014).'],
-  ['text', 'The first few thing we have to do is removing seasonality and de-trending the data.'],
+  ['text', 'This looks like a decent piece of data to fit a time series model (As of our current date, June 2014).'],
+  ['text', 'The first few things we have to do is remove seasonality and de-trend the data.'],
   ['text', "There doesn't actually seem to be any strong trend with our data (thank goodness), so we'll concentrate on removing seasonality."],
   ['text', "How many large spikes of flu outbreaks do you see?"],
   ['quiz', 'ft_2'],
@@ -312,7 +311,7 @@ remove_missing_slide_two = Slide.create!(
 ##############  Time Series Model  #############################################
 ################################################################################
 time_series_data_content = [
-  ['text', "The overal concept behind time series model involves first removing trend and seasonality (effectively reducing it to white noise.)"],
+  ['text', "The overall concept behind time series models involve first removing trend and seasonality (effectively reducing it to white noise.)"],
   ['text', "Once we have the differenced data, we'll run analysis on them."],
   ['text', "The analysis involves looking at the underlying white noise to determine the parameters required for the time series model."],
   ['lesson_links', nil],
@@ -334,7 +333,7 @@ time_series_data_slide = Slide.create!(
 
 time_series_setup_content_one = [
   ['text', "In order to remove seasonality and trend, we're going to rely on Differencing."],
-  ['text', "In R, we do differcing using diff() function."],
+  ['text', "In R, we do differencing using the diff() function."],
   ['code', 'help(diff)'],
   ['code', 'diff(c(1,2,5,10))'],
   ['text', "How many values remain after the previous diff()?"],
@@ -365,7 +364,7 @@ time_series_setup_content_three = [
   ['text', "Since we're dividing the area into 8, the plots will be smaller. \"Zoom\" to open a larager view."],
   ['text', "WARN: When plotting, you might get a 'Error in plot.new() : figure margins too large' message."],
   ['text', "This generally means the plotting area is too small for the plot you're making (esp since we just divided the plot area into 8 pieces)."],
-  ['text', "If you're working in Rstudio, shrink the environment/history view on the top-right corner of your IDE."],
+  ['text', "If you're working in Rstudio, shrink the environment/history view on the top-right corner of your screen."],
   ['text', "This will give the plotting area more room to work."],
   ['next_steps', '']
 ]
@@ -412,7 +411,7 @@ time_series_setup_slide_three = Slide.create!(
 ############### Diferencing ##############
 
 time_series_differencing_content_one = [
-  ['text', "First we'll do a lag=52 differencing. This means we're minusing each data point by the the data point from 52 observations ago."],
+  ['text', "First we'll do a lag=52 differencing. This means we're subtracting each data point by the the data point from 52 observations ago."],
   ['text', 'In our context, this means subtracting by the data from 52 weeks (i.e. 1 year) ago.'],
   ['text', 'This stems from assuming that flu has a seasonality of one year.'],
   ['text', 'Does that sound about right? Do flu trends have one-year cycles?'],
