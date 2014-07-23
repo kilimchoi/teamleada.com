@@ -537,6 +537,10 @@ class User < ActiveRecord::Base
     !linkedin_confirmed_at.nil? && linkedin_confirmed_at <= day.date.tomorrow
   end
 
+  def profile_photo_before?(day)
+    profile_photos.count > 0 && profile_photos.first.created_at <= day.date.tomorrow
+  end
+
   #
   # Methods
   #
