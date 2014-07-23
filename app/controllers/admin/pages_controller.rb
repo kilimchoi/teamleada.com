@@ -9,8 +9,14 @@ class Admin::PagesController < Admin::BaseController
     @new_profile_photos = ProfilePhoto.last(5).reverse
     @new_code_submissions = CodeSubmission.last(5).reverse
 
-    @weekly_impressions = Impression.where("created_at >= ?", 7.days.ago.to_date)
     @daily_impressions = Impression.where("created_at >= ?", Date.today.to_date)
+    @weekly_impressions = Impression.where("created_at >= ?", 7.days.ago.to_date)
+    @monthly_impressions = Impression.where("created_at >= ?", 30.days.ago.to_date)
+    @all_time_impressions = Impression.all
+
+    @daily_project_impressions = @daily_impressions.where(controller_name: "projects")
+    @daily_new_users = User.where("created_at >= ?", Date.today.to_date)
+    @daily_code_submissions = CodeSubmission.where("created_at >= ?", Date.today.to_date)
   end
 
   def realtime_charts
