@@ -15,6 +15,8 @@ class Admin::PagesController < Admin::BaseController
     @all_time_impressions = Impression.all
 
     @daily_project_impressions = @daily_impressions.where(controller_name: "projects")
+    @daily_new_users = User.where("created_at >= ?", Date.today.to_date)
+    @daily_code_submissions = CodeSubmission.where("created_at >= ?", Date.today.to_date)
   end
 
   def realtime_charts
