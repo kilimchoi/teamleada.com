@@ -39,7 +39,8 @@ Happy developing!
 ## Image Processing
 You're going to have to install Imagemagick and redis:
 
-    brew install imagemagick
+    brew install pkgconfig #in case imagemagick doesn't work on os X
+    brew install imagemagickb
     brew install redis
 
 ## Redis on aws
