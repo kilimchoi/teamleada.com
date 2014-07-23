@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
       @projects = @projects.enabled
     end
     if signed_in? && current_user.is_company?
-      @projects = current_user.company.projects
+      @projects = current_user.try(:company).try(:projects)
     end
 
     @data_lessons = @projects.where(category: Project::LESSON, enabled: true).reverse
