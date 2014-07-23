@@ -86,12 +86,27 @@ background_content_one = [
   ['link', "https://s3.amazonaws.com/leada/amazon_proj_data/amazon0601.txt.gz"],
   ['text', "Link to the product entity is as follows:"],
   ['link', "some link"],
-  ['next_steps', ""],
 ]
 
 background_content_two = [
-  []
+  ['text', "With amazon0601.txt, you have a list of directed edges, each representing co-purchase."],
+  ['text', "How many Nodes are there in the data?"],
+  ['quiz', "mr_data_node_count"],
+  ['text', "How many Edges are there in the data?"],
+  ['quiz', "mr_data_edge_count"],
+  ['next_steps', ""],
 ]
+
+
+quiz = Quiz.create!(
+  quiz_id: "mr_data_edge_count",
+  answer: "3387388",
+)
+
+quiz = Quiz.create!(
+  quiz_id: "mr_data_node_count",
+  answer: "403394",
+)
 
 background_step_one = Step.create!(
   title: "MapReduce Amazon Data Background",
@@ -107,7 +122,7 @@ background_slide_one = Slide.create!(
 
 background_slide_two = Slide.create!(
   content: background_content_two,
-  slide_id: 0,
+  slide_id: 1,
   parent: background_step_one
 )
 ################################################################################
