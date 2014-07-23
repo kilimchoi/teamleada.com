@@ -89,7 +89,7 @@ background_content_one = [
 ]
 
 background_content_two = [
-  ['text', "With amazon0601.txt, you have a list of directed edges, each representing co-purchase."],
+  ['text', "With amazon0601.txt, you have a list of directed edges, each representing a co-purchase."],
   ['text', "How many Nodes are there in the data?"],
   ['quiz', "mr_data_node_count"],
   ['text', "How many Edges are there in the data?"],
@@ -130,7 +130,7 @@ background_slide_two = Slide.create!(
 data_representation_content_one = [
   ['text', "Before we do anything, we have to decide on the data repsentation."],
   ['text', "There are different ways to repsentat graph data. below are some resources on graph data representation"],
-  ['link', ""],
+  ['link', "http://www.geeksforgeeks.org/graph-and-its-representations/"],
   ['text', "Given the context, what kind of representation do you plan to use?"],
   ['user_response', "@TODO leave response ID here"],
   ['next_steps', ""],
