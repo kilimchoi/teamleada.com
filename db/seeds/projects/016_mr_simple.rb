@@ -34,12 +34,19 @@ project_overview_content0 = [
   ['text', "- Biological Networks"],
   ['text', "- Web Networks"],
   ['text', "Often times, the graph data mentioned above can't be properly analyze via a single computer (Can you think of why?)."],
-  ['text', "Come in distributed system such as Hadoop to help."],
+  ['text', "Come in distributed systems (such as Hadoop) to help."],
   ['text', "Here, we'll be doing simple graph traversal via mapreduce to understand the power/limitation of distributed computing."],
+]
+
+project_overview_content1 = [
+  ['text', "Specifically in this project, we'll first begin with the design aspect."],
+  ['text', "We'll first start the technical spec, and you'll be asked to them once you've finalized the design"],
+  ['text', "Be concise and informative in writing out your design."],
+  ['text', "Imagine that your manager will read your intended design before giving you the approval to code it."],
   ['next_steps', nil],
 ]
 
-project_overview = Lesson.create!(
+project_overview_lesson = Lesson.create!(
   title: "Project Overview",
   project: project,
   lesson_id: 0,
@@ -47,8 +54,14 @@ project_overview = Lesson.create!(
 
 project_overview_slide0 = Slide.create!(
   content: project_overview_content0,
-  parent: project_overview,
+  parent: project_overvie_lesson,
   slide_id: 0,
+)
+
+project_overview_slide1 = Slide.create!(
+  content: project_overview_conent1,
+  parent: project_overview_lesson,
+  slide_id: 1,
 )
 
 ################################################################################
@@ -56,11 +69,16 @@ project_overview_slide0 = Slide.create!(
 ################################################################################
 
 setup_main_slide = [
-  ['text', "Before we dive into writing mapreduce code, we have to decide a few things."],
+  ['text', "Here are some resources on MapReduce as a refresher:"],
+  ['link', "http://map-reduce.wikispaces.asu.edu/"],
+  ['text', "This one focuses more on application:"],
+  ['link', "http://highlyscalable.wordpress.com/2012/02/01/mapreduce-patterns/#attachment_287"],
+  ['text', "Come back and refer to these resources if you're stuck!"],
+  ['text', "Now, Before we dive into writing mapreduce code, we have to decide a few things:"],
   ['lesson_links', ""],
 ]
 
-project_overview_lesson = Lesson.create!(
+background_algorithm_lesson = Lesson.create!(
   title: "Background / Algorithm",
   project: project,
   lesson_id: 1,
@@ -68,7 +86,7 @@ project_overview_lesson = Lesson.create!(
 
 setup_slide_main_one = Slide.create!(
   content: setup_main_slide,
-  parent: project_overview_lesson,
+  parent: background_algorithm_lesson,
   slide_id: 0,
 )
 
@@ -81,7 +99,7 @@ background_content_one = [
   ['text', "The first thing you decide to do is to build a simple system that determines the distance between 2 products."],
   ['text', "You ask yourself, how do you determine the 'distance' between 2 products?"],
   ['text', "After consulting with fellow engineers, you decide on using the network distance between the products that were bought during the same transaction."],
-  ['text', "This means an edge exists between 2 products, if they were purchased during the same transaction."],
+  ['text', "This means an edge exists between 2 products, only if they were purchased during the same transaction."],
   ['text', "To save on memory footprint, you sample an anonymized graph dataset. below:"],
   ['link', "https://s3.amazonaws.com/leada/amazon_proj_data/amazon0601.txt.gz"],
   ['text', "Link to the product entity is as follows:"],
@@ -94,6 +112,7 @@ background_content_two = [
   ['quiz', "mr_data_node_count"],
   ['text', "How many Edges are there in the data?"],
   ['quiz', "mr_data_edge_count"],
+  ['text', "Good!"],
   ['next_steps', ""],
 ]
 
@@ -108,9 +127,9 @@ quiz = Quiz.create!(
 )
 
 background_step_one = Step.create!(
-  title: "MapReduce Amazon Data Background",
+  title: "MapReduce Data Background",
   step_id: 0,
-  lesson: project_overview_lesson,
+  lesson: background_algorithm_lesson,
 )
 
 background_slide_one = Slide.create!(
@@ -127,7 +146,7 @@ background_slide_two = Slide.create!(
 ################################################################################
 
 data_representation_content_one = [
-  ['text', "Before we do anything, we have to decide on the data repsentation."],
+  ['text', "Before we begin designning the mapreduce, we have to decide on the data repsentation."],
   ['text', "There are different ways to repsentat graph data. below are some resources on graph data representation"],
   ['link', "http://www.geeksforgeeks.org/graph-and-its-representations/"],
   ['text', "Given the context, what kind of representation do you plan to use, and why?"],
@@ -138,7 +157,7 @@ data_representation_content_one = [
 data_representation_step_one = Step.create!(
   title: "Graph Representation",
   step_id: 1,
-  lesson: project_overview_lesson,
+  lesson: background_algorithm_lesson,
 )
 
 data_representation_slide_one = Slide.create!(
@@ -169,7 +188,7 @@ algorithm_content_one = [
 algorithm_step = Step.create!(
   title: "Algorithm",
   step_id: 2,
-  lesson: project_overview_lesson
+  lesson: background_algorithm_lesson,
 )
 
 algorithm_slide = Slide.create!(
@@ -192,8 +211,6 @@ algorithm_design_submission = SubmissionContext.create!(
 
 mapper_main_content_one = [
   ['text', "Now that we've decided on an algorithm, let's think about what kind of mapper we'd need to accomplish the task."],
-  ['text', "Here is some resource on MapReduce as a refresher."],
-  ['link', "http://map-reduce.wikispaces.asu.edu/"],
   ['lesson_links', ""],
 ]
 
@@ -212,9 +229,8 @@ mapper_main_slide = Slide.create(
 ################################################################################
 
 mapper_input_content_one = [
-  ['text', "Mappers generally have a fixed input type."],
-  ['text', "This is the input you can expect your mappers to intake the graph data."],
-  ['text', "What kind of input do you expect your mapper to have?"],
+  ['text', "Mappers generally have a fixed input k-v pair."],
+  ['text', "What kind of input (in key-val) do you expect your mapper to have, given the problem context?"],
   ['user_response', "@TODO response_id if applicable"],
   ['next_steps', ""],
 ]
@@ -241,8 +257,7 @@ mapper_input_submission = SubmissionContext.create!(
 ################################################################################
 mapper_function_content_one = [
   ['text', "Now we can think more about what our mappers are actually going to do."],
-  ['text', "Describe in more details about what our mappers are going to do;"],
-  ['text', "What is the main function of your mapper?"],
+  ['text', "Describe in more details about what our mappers are actually going to do:"],
   ['user_response', "@TODO response_id if applicable"],
   ['next_steps', ""],
 ]
@@ -261,14 +276,14 @@ mapper_function_slide_one = Slide.create!(
 
 mapper_function_submission = SubmissionContext.create!(
   title: "Mapper Function",
-  description: "User is asked to explain the what the Mapper's primary function will be.",
+  description: "User is asked to explain what the Mapper's primary function will be.",
   slide: mapper_function_slide_one,
   submission_context_id: 0,
   submission_type: SubmissionContext::RESPONSE,
 )
 ################################################################################
 mapper_output_content_one = [
-  ['text', "Lastly, you have to worry about what your mapper will output."],
+  ['text', "Lastly, you have to decide what your mapper is going to output."],
   ['text', "Keep in mind that the mapper output will eventually end up as the input to the reducer."],
   ['user_response', "@TODO response_id if applicable"],
   ['next_steps', ""],
@@ -305,9 +320,8 @@ reducer_lesson = Lesson.create!(
 )
 
 reducer_main_content_one = [
-  ['text', "We have a working mapper. Naturally we're going to look at the reducer next."],
-  ['text', "Here is another MapReduce resource, this time focusing more on application:"],
-  ['link', "http://highlyscalable.wordpress.com/2012/02/01/mapreduce-patterns/#attachment_287"],
+  ['text', "We have a working mapper."],
+  ['text', "Naturally, we're going to look at the reducer next."],
   ['lesson_links', ""],
 ]
 
