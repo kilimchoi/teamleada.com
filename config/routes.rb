@@ -1,3 +1,9 @@
+class ActionDispatch::Routing::Mapper
+  def draw(routes_name)
+    instance_eval(File.read(Rails.root.join("config/routes/#{routes_name}.rb")))
+  end
+end
+
 TeamLeada::Application.routes.draw do
   root to: 'pages#home'
 
@@ -59,93 +65,11 @@ TeamLeada::Application.routes.draw do
 
   match 'employer', to: 'employer_applications#new', as: 'new_employer', via: :get
   resources :employer_applications, path: 'employer', as: 'employer', only: [:create]
-
-  match 'projects/how-this-works', to: 'pages#how_this_works', as: :project_faq, via: :get
-  resources :projects, only: [:show, :index] do
-    member do
-      match 'submit', to: 'projects#check_submission', as: 'submission', via: :post
-      match 'interest', to: 'projects#show_interest', as: 'interest', via: :post
-      match 'purchase', to: 'charges#create', as: 'purchase', via: [:post]
-      match 'complete', to: 'projects#complete', as: 'complete', via: :post
-      match 'code-submission', to: 'projects#submit_code', as: 'code_submission', via: :post
-      match 'resource-submit', to: 'projects#submit_resource', as: 'submit_resource', via: :post
-      match 'resource', to: 'projects#resource', as: 'resource', via: :post
-    end
-
-    resources :lessons, only: [:show] do
-      resources :steps, only: [:show]
-    end
-  end
-
-  match 'quizzes/check_answer', to: 'quizzes#check_answer', via: :get
-
   resources :companies, only: [:show]
 
-  # Company / Recruitment
-  namespace :company, path: "r" do
-    match '/', to: redirect('/r/dashboard'), via: :get
-    match 'dashboard', to: 'pages#dashboard', via: :get
-
-    resources :users, path: "browse", only: [:index, :show] do
-      member do
-        match 'projects/:project_id', to: 'users#show_project', as: :project, via: :get
-      end
-    end
-  end
-
-  # Admin
-  namespace :admin, path: "a" do
-    match '/', to: redirect('/a/dashboard'), via: :get
-    match 'dashboard', to: 'pages#dashboard', via: :get
-
-    resources :features, only: [:index]
-
-    resources :users, only: [:index, :show] do
-      member do
-        match 'projects/:project_id/publish-feedback', to: 'users#publish_feedback', as: :publish_feedback, via: :get
-        match 'projects/:project_id/code-submissions', to: 'users#show_code_submissions', as: :code_submissions, via: :get
-        match 'projects/:project_id/code-submissions/:code_submission_id', to: 'users#show_code_submission', as: :code_submission, via: :get
-        match 'projects/:project_id/code-submissions/:code_submission_id/evaluate', to: 'code_submissions#evaluate', as: :evaluate, via: :post
-        match 'projects/:project_id/code-submissions/:code_submission_id/evaluate', to: 'code_submissions#update_evaluation', as: :update_evaluation, via: :patch
-        match 'projects/:project_id/code-submissions/:code_submission_id/evaluations', to: 'code_submission_evaluations#index', as: :evaluations, via: :get
-      end
-    end
-    resources :resumes, only: [:index, :show]
-    resources :profile_photos, path: 'profile-photos', only: [:index]
-
-    match 'company-dashboards', to: 'pages#company_dashboards', as: "company_dashboards", via: :get
-    resources :companies do
-      member do
-        match 'add-project', to: 'companies#add_project', as: :add_project, via: :post
-        match 'add-user', to: 'companies#add_user', as: :add_user, via: :post
-      end
-    end
-    resources :universities, only: [:index]
-    resources :projects, only: [:index, :show]
-    resources :codes do
-      member do
-        match '/', to: 'codes#update', as: :update, via: :put
-      end
-    end
-    resources :employer_applications, path: "employer-applications", only: [:index, :show]
-    resources :questions, only: [:index, :show] do
-      member do
-        match 'hide', to: 'questions#hide', as: :hide, via: :post
-      end
-    end
-
-    resources :code_submissions, path: "code-submissions", only: [:index] do
-      member do
-        match 'evaluate', to: 'code_submissions#evaluate', as: :evaluate, via: :post
-        match 'evaluate', to: 'code_submissions#update_evaluation', as: :update_evaluation, via: :patch
-      end
-    end
-
-    match 'charts/category/realtime', to: "pages#realtime_charts", as: :realtime_charts, via: :get
-    match 'charts/category/page-views', to: "pages#page_view_charts", as: :page_view_charts, via: :get
-    match 'charts/category/:category', to: "charts#show_by_category", as: :chart_category, via: :get
-    resources :charts, only: [:show]
-  end
+  draw :project_routes
+  draw :company_routes
+  draw :admin_routes
 
   # 404 page routes
   match '*path', to: 'pages#error', via: :get
