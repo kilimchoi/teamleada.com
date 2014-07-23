@@ -38,7 +38,7 @@ end
 
 task :backfill_all => :environment do
   Metric.all.each do |metric|
-    puts "Backfilling 200 days for #{metric.title}"
+    puts "Backfilling from the beginning for #{metric.title}"
     metric.backfill_to_today(from_the_beginning)
   end
 end
