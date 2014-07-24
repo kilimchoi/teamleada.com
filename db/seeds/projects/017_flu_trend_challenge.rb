@@ -196,10 +196,10 @@ submission_report_slide_one = Slide.create!(
   slide_id: 0,
 )
 
-prediciton_submission_two = SubmissionContext.create!(
+submission_reporting_submission = SubmissionContext.create!(
   title: "Time Series Report",
-  description: "User is asked to submit the reporting for the second dataset chosen.",
-  slide: submission_slide_two,
+  description: "User is asked to submit the reporting for the prediction/process.",
+  slide: submission_report_slide_one,
   submission_context_id: 0,
   submission_type: SubmissionContext::CODE,
 )
