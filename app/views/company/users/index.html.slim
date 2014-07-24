@@ -5,13 +5,14 @@
     .col-md-12
       h1.title Browse Users
 
-      .row
-        .col-sm-6.col-md-4
-          - @users.each do |user|
-            .thumbnail
-              = image_tag user.profile_photo
-              .caption
-                h3 = user.name
-                p = user.bio
-                p
-                  = link_to "View Profile", company_user_path(user), class: "btn btn-leada"
+      - @users.each_slice(4).each do |user_group|
+        .row
+          - user_group.each do |user|
+            .col-md-3
+              .thumbnail
+                = image_tag user.profile_photo, class: "company-profile-photo"
+                .caption
+                  h3 = user.name
+                  p = user.bio
+                  p
+                    = link_to "View Profile", company_user_path(user), class: "btn btn-leada"
