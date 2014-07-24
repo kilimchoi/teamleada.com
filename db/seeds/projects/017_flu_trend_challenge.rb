@@ -13,8 +13,6 @@ project = Project.create!(
   number: 17,
   enabled: true,
   uid: 17,
-  has_leaderboard: true,
-  has_submit: true,
   difficulty: 'Advanced',
   category: Project::CHALLENGE,
 )
@@ -24,8 +22,4 @@ puts "============ Created project: #{project.title}."
 ################################################################################
 
 
-data_acquisition_lesson = Lesson.create!(
-  title: "Background",
-  project: project,
-  lesson_id: 0,
-)
+
