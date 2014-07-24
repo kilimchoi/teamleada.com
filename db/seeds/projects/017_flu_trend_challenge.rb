@@ -54,9 +54,9 @@ main_page_slide = Slide.create!(
 
 deliverables_content_one = [
   ['text', "Deliverables:"],
-  ['text', "- Src Code for your prediction"],
-  ['text', "- 2 separate prediction for the 2 datasets"],
-  ['text', ""],
+  ['text', "- Src Code for your prediction."],
+  ['text', "- 2 separate prediction for the 2 datasets."],
+  ['text', "- Reporting for your result / process."],
   ['next_steps', nil],
 ]
 
@@ -76,20 +76,20 @@ main_page_slide = Slide.create!(
 #### Submission ################################################################
 ################################################################################
 
-submissino_content_one = [
+submission_content_one = [
   ['text', "Submissions:"],
-  ['text', "There will be more details at each"],
+  ['text', "There will be more details at each level:"],
   ['lesson_links', nil],
 ]
 
 deliverables_lesson = Lesson.create!(
   title: "Time Series Challenge: Submissions",
   project: project,
-  lesson_id: 1,
+  lesson_id: 2,
 )
 
 main_page_slide = Slide.create!(
-  content: deliverables_content_one,
+  content: submission_content_one,
   parent: deliverables_lesson,
   slide_id: 0,
 )
@@ -98,8 +98,10 @@ main_page_slide = Slide.create!(
 
 submission_src_content_one = [
   ['text', "Paste in your src code below:"],
+  ['text', "Make sure to have concise and informative comments."],
+  ['text', "If you used any non-standard packages, expeain the sources in the comments."],
   ['user_code', ""],
-  ['text', ""],
+  ['next_steps', ""],
 ]
 
 submission_src_step = Step.create!(
@@ -125,19 +127,18 @@ timeseries_src_submission = SubmissionContext.create!(
 ################################################################################
 
 submission_prediction_content_one = [
-  ['text', "Paste in your first prediction below:"],
+  ['text', "Paste in your 1st prediction below:"],
   ['text', "First line should specify which series you're predicting."],
-  ['text', "Then a single value on a single line, with comman optional (the submission should be 101 lines)"],
+  ['text', "From the 2nd line, include a single value per line, with comma optional (the submission should be 101 lines.)"],
   ['user_code', ""],
-  ['text', ""],
 ]
 
 submission_prediction_content_two = [
-  ['text', "Paste in your second prediction below:"],
+  ['text', "Paste in your 2nd prediction below:"],
   ['text', "First line should specify which series you're predicting."],
-  ['text', "Then a single value on a single line, with comman optional (the submission should be 101 lines)"],
+  ['text', "From the 2nd line, include a single value per line, with comma optional (the submission should be 101 lines.)"],
   ['user_code', ""],
-  ['text', ""],
+  ['next_steps', ""],
 ]
 
 submission_prediction_step = Step.create!(
@@ -180,7 +181,7 @@ submission_reporting_content_one = [
   ['text', "Written Report:"],
   ['text', "Paste in a link to your report:"],
   ['user_code', ""],
-  ['text', ""],
+  ['next_steps', ""],
 ]
 
 submission_reporting_step = Step.create!(
@@ -195,7 +196,6 @@ submission_report_slide_one = Slide.create!(
   slide_id: 0,
 )
 
-
 prediciton_submission_two = SubmissionContext.create!(
   title: "Time Series Report",
   description: "User is asked to submit the reporting for the second dataset chosen.",
@@ -204,8 +204,23 @@ prediciton_submission_two = SubmissionContext.create!(
   submission_type: SubmissionContext::CODE,
 )
 
-
-
-
-
 ################################################################################
+
+conclusion_content_one = [
+  ['text', "Congratz! You're done!"],
+  ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
+]
+
+conclusion_lesson = Lesson.create!(
+  title: "Time Series Challenge : Conlusion",
+  project: project,
+  lesson_id: 3,
+)
+
+conclusion_slide = Slide.create!(
+  content: conclusion_content_one,
+  parent: conclusion_lesson,
+  slide_id: 0,
+)
+
+
