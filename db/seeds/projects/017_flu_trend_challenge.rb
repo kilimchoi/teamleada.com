@@ -13,6 +13,8 @@ project = Project.create!(
   number: 17,
   enabled: true,
   uid: 17,
+  has_leaderboard: true,
+  has_submit: true,
   difficulty: 'Advanced',
   category: Project::CHALLENGE,
 )
