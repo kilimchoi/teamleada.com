@@ -9,7 +9,7 @@ main_page_content = [
 project = Project.create!(
   title:"Time Series Challenge",
   description: main_page_content,
-  short_description: "A project where you'll ",
+  short_description: "This is a project where you'll be asked to build a time series model on a piece of data. You're free to use any package or language. You'll be judged on the accuracy of the model as well as the complexity of the model",
   number: 17,
   enabled: true,
   uid: 17,
