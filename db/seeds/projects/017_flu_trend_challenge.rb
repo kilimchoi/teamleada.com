@@ -114,7 +114,7 @@ submission_slide_one = Slide.create!(
   slide_id: 0,
 )
 
-learn_ctree_context = SubmissionContext.create!(
+timeseries_src_submission = SubmissionContext.create!(
   title: "Time Series Src",
   description: "User is asked to submit the code used to create/predict with a time series model.",
   slide: submission_slide_one,
@@ -140,21 +140,21 @@ submission_prediction_content_two = [
   ['text', ""],
 ]
 
-submission_src_step = Step.create!(
+submission_prediction_step = Step.create!(
   title: "Prediction Submission",
   lesson: deliverables_lesson,
   step_id: 1,
 )
 
 submission_slide_one = Slide.create!(
-  content: submission_src_content_one,
-  parent: submission_src_step,
+  content: submission_prediction_content_one,
+  parent: submission_prediction_step,
   slide_id: 0,
 )
 
 submission_slide_two = Slide.create!(
-  content: submission_src_content_two,
-  parent: submission_src_step,
+  content: submission_prediction_content_two,
+  parent: submission_prediction_step,
   slide_id: 1,
 )
 
@@ -176,28 +176,29 @@ prediciton_submission_two = SubmissionContext.create!(
 
 ################################################################################
 
-report_step = Step.create!(
+submission_reporting_content_one = [
+  ['text', "Written Report:"],
+  ['text', "Paste in a link to your report:"],
+  ['user_code', ""],
+  ['text', ""],
+]
+
+submission_reporting_step = Step.create!(
   title: "Time Series: Reporting",
   lesson: deliverables_lesson,
   step_id: 2,
 )
 
-report_slide_one = Slide.create!(
-  content: submission_src_content_one,
-  parent: submission_src_step,
+submission_report_slide_one = Slide.create!(
+  content: submission_reporting_content_one,
+  parent: submission_reporting_step,
   slide_id: 0,
 )
 
-submission_prediction_content_one = [
-  ['text', "Written Report:"],
-  ['text', "Paste in a link to your report"],
-  ['user_code', ""],
-  ['text', ""],
-]
 
 prediciton_submission_two = SubmissionContext.create!(
   title: "Time Series Report",
-  description: "User is asked to submit the prediction for the second dataset chosen.",
+  description: "User is asked to submit the reporting for the second dataset chosen.",
   slide: submission_slide_two,
   submission_context_id: 0,
   submission_type: SubmissionContext::CODE,
