@@ -46,9 +46,6 @@ main_page_slide = Slide.create!(
 )
 
 ################################################################################
-
-
-################################################################################
 #### Deliverables ##############################################################
 ################################################################################
 
@@ -73,11 +70,35 @@ main_page_slide = Slide.create!(
 )
 
 ################################################################################
+#### Data Context ##############################################################
+################################################################################
+
+data_content_one = [
+  ['text', "The data for thsi project is located at:"],
+  ['link', "https://s3.amazonaws.com/leada/time_series_challenge/challenge_data.csv"],
+  ['text', "The data comes in csv format and includes headers."],
+  ['text', "All datasets have undergone a certain level of normalization."],
+  ['next_steps', nil],
+]
+
+data_lesson = Lesson.create!(
+  title: "Time Series Challenge: Data",
+  project: project,
+  lesson_id: 2,
+)
+
+main_page_slide = Slide.create!(
+  content: data_content_one,
+  parent: data_lesson,
+  slide_id: 0,
+)
+
+################################################################################
 #### Submission ################################################################
 ################################################################################
 
 submission_content_one = [
-  ['text', "Submissions:"],
+  ['text', "There are 3 different primary submission module below."],
   ['text', "There will be more details at each level:"],
   ['lesson_links', nil],
 ]
@@ -85,7 +106,7 @@ submission_content_one = [
 deliverables_lesson = Lesson.create!(
   title: "Time Series Challenge: Submissions",
   project: project,
-  lesson_id: 2,
+  lesson_id: 3,
 )
 
 main_page_slide = Slide.create!(
@@ -101,7 +122,7 @@ submission_src_content_one = [
   ['text', "Make sure to have concise and informative comments."],
   ['text', "If you used any non-standard packages, expeain the sources in the comments."],
   ['user_code', ""],
-  ['next_steps', ""],
+  ['next_steps', nil],
 ]
 
 submission_src_step = Step.create!(
@@ -138,7 +159,7 @@ submission_prediction_content_two = [
   ['text', "First line should specify which series you're predicting."],
   ['text', "From the 2nd line, include a single value per line, with comma optional (the submission should be 101 lines.)"],
   ['user_code', ""],
-  ['next_steps', ""],
+  ['next_steps', nil],
 ]
 
 submission_prediction_step = Step.create!(
@@ -181,7 +202,7 @@ submission_reporting_content_one = [
   ['text', "Written Report:"],
   ['text', "Paste in a link to your report:"],
   ['user_code', ""],
-  ['next_steps', ""],
+  ['next_steps', nil],
 ]
 
 submission_reporting_step = Step.create!(
@@ -214,7 +235,7 @@ conclusion_content_one = [
 conclusion_lesson = Lesson.create!(
   title: "Time Series Challenge: Conclusion",
   project: project,
-  lesson_id: 3,
+  lesson_id: 4,
 )
 
 conclusion_slide = Slide.create!(
