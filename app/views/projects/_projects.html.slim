@@ -9,7 +9,6 @@
                 h3 = project.title
                 - if signed_in? && current_user.has_finished_project?(project)
                   span.project-completed.fa.fa-check
-
                 span [class="label label-#{project.difficulty_tag} difficulty-tag"]
                   ' Difficulty -
                   = project.difficulty
@@ -20,4 +19,6 @@
                     /= project.cost_in_dollars
               .info
                  = project.short_description
-
+              - if project.is_new?
+                span class="label label-danger navbar-new-badge project_lable"
+                  | New!
