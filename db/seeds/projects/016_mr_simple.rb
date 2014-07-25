@@ -206,6 +206,12 @@ algorithm_slide = Slide.create!(
   parent: algorithm_step
 )
 
+algorithm_slide_two = Slide.create!(
+  content: algorithm_content_two,
+  slide_id: 1,
+  parent: algorithm_step
+)
+
 algorithm_design_submission = SubmissionContext.create!(
   title: "Traversal Algorithm",
   description: "User is asked to explain the algorithm he/she chose to utilize for the traversal.",
