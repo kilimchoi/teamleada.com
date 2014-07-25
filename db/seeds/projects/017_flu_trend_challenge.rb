@@ -25,7 +25,7 @@ puts "============ Created project: #{project.title}."
 ################################################################################
 main_page_content = [
   ['text', 'The premise of the project is as follows:'],
-  ['text', "- You are given 3 datasets."],
+  ['text', "- You are given 4 datasets."],
   ['text', "- You're asked to fit a time series model on 2 of them (choose 2, and you can ignore the rest)."],
   ['text', "- You'll have to create a prediction over the next 100 periods on both of the datasets you chose."],
   ['text', "- You'll instantly receive a score on your accuracy."],
