@@ -1,4 +1,3 @@
-
 main_page_content = [
   ['text', "In this project, you'll design and build a mapreduce algorithm to traverse graph data."],
   ['text', "Graph is a powerful data structure that is used in the following cases:"],
@@ -111,7 +110,46 @@ background_content_one = [
 background_content_two = [
   ['text', "With amazon0601.txt, you have a list of directed edges, each representing a co-purchase."],
   ['text', "How many Nodes are there in the data?"],
-  ['quiz', "mr_data_node_coundifferent ways to represent graph data. below are some resources on graph data representation"],
+  ['quiz', "mr_data_node_count"],
+  ['text', "How many Edges are there in the data?"],
+  ['quiz', "mr_data_edge_count"],
+  ['text', "The full set of data is larger, but we want to make sure that the algorithm runs on a smaller subset"],
+  ['text', "Good!"],
+  ['next_steps', ""],
+]
+
+quiz = Quiz.create!(
+  quiz_id: "mr_data_edge_count",
+  answer: "3387388",
+)
+
+quiz = Quiz.create!(
+  quiz_id: "mr_data_node_count",
+  answer: "403394",
+)
+
+background_step_one = Step.create!(
+  title: "MapReduce Data Background",
+  step_id: 0,
+  lesson: background_algorithm_lesson,
+)
+
+background_slide_one = Slide.create!(
+  content: background_content_one,
+  slide_id: 0,
+  parent: background_step_one
+)
+
+background_slide_two = Slide.create!(
+  content: background_content_two,
+  slide_id: 1,
+  parent: background_step_one
+)
+################################################################################
+
+data_representation_content_one = [
+  ['text', "Before we begin designing the MapReduce, we have to decide on the data representation."],
+  ['text', "There are different ways to represent graph data. below are some resources on graph data representation"],
   ['link', "http://www.geeksforgeeks.org/graph-and-its-representations/"],
   ['text', "Given the context, what kind of representation do you plan to use, and why?"],
   ['user_response', "@TODO leave response ID here"],
@@ -165,12 +203,6 @@ algorithm_step = Step.create!(
 algorithm_slide = Slide.create!(
   content: algorithm_content_one,
   slide_id: 0,
-  parent: algorithm_step
-)
-
-algorithm_slide = Slide.create!(
-  content: algorithm_content_two,
-  slide_id: 1,
   parent: algorithm_step
 )
 
@@ -500,11 +532,12 @@ conclusion_main_content_one = [
 conclusion_main_content_two = [
   ['text', "In this project, we started with thinking about graph data representation."],
   ['text', "From there, we designed Mappers, Reducers, and ultimately iterations and termination."],
-  ['text', "Once we "],
+  ['text', "Only after carefully desining the algorithm, did we start coding the project."],
 ]
 
 conclusion_main_content_three = [
-  ['text', ""],
+  ['text', "Congrats!"],
+  ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
 
 conclusion_main_slide_one = Slide.create(
@@ -533,4 +566,3 @@ src_code_submission = SubmissionContext.create!(
   submission_type: SubmissionContext::CODE,
 )
 ################################################################################
-
