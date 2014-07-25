@@ -18,6 +18,7 @@ project = Project.create!(
   has_submit: true,
   difficulty: 'Advanced',
   category: Project::CHALLENGE,
+  is_new: true,
 )
 
 ################################################################################
