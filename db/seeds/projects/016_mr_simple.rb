@@ -1,4 +1,3 @@
-
 main_page_content = [
   ['text', "In this project, you'll design and build a mapreduce algorithm to traverse graph data."],
   ['text', "Graph is a powerful data structure that is used in the following cases:"],
@@ -204,6 +203,12 @@ algorithm_step = Step.create!(
 algorithm_slide = Slide.create!(
   content: algorithm_content_one,
   slide_id: 0,
+  parent: algorithm_step
+)
+
+algorithm_slide_two = Slide.create!(
+  content: algorithm_content_two,
+  slide_id: 1,
   parent: algorithm_step
 )
 
@@ -567,4 +572,3 @@ src_code_submission = SubmissionContext.create!(
   submission_type: SubmissionContext::CODE,
 )
 ################################################################################
-
