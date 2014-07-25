@@ -20,6 +20,7 @@ project = Project.create!(
   uid: 16,
   difficulty: 'Expert',
   category: Project::CHALLENGE,
+  is_new: true,
 )
 
 ################################################################################
@@ -110,46 +111,7 @@ background_content_one = [
 background_content_two = [
   ['text', "With amazon0601.txt, you have a list of directed edges, each representing a co-purchase."],
   ['text', "How many Nodes are there in the data?"],
-  ['quiz', "mr_data_node_count"],
-  ['text', "How many Edges are there in the data?"],
-  ['quiz', "mr_data_edge_count"],
-  ['text', "The full set of data is larger, but we want to make sure that the algorithm runs on a smaller subset"],
-  ['text', "Good!"],
-  ['next_steps', ""],
-]
-
-quiz = Quiz.create!(
-  quiz_id: "mr_data_edge_count",
-  answer: "3387388",
-)
-
-quiz = Quiz.create!(
-  quiz_id: "mr_data_node_count",
-  answer: "403394",
-)
-
-background_step_one = Step.create!(
-  title: "MapReduce Data Background",
-  step_id: 0,
-  lesson: background_algorithm_lesson,
-)
-
-background_slide_one = Slide.create!(
-  content: background_content_one,
-  slide_id: 0,
-  parent: background_step_one
-)
-
-background_slide_two = Slide.create!(
-  content: background_content_two,
-  slide_id: 1,
-  parent: background_step_one
-)
-################################################################################
-
-data_representation_content_one = [
-  ['text', "Before we begin designing the MapReduce, we have to decide on the data representation."],
-  ['text', "There are different ways to represent graph data. below are some resources on graph data representation"],
+  ['quiz', "mr_data_node_coundifferent ways to represent graph data. below are some resources on graph data representation"],
   ['link', "http://www.geeksforgeeks.org/graph-and-its-representations/"],
   ['text', "Given the context, what kind of representation do you plan to use, and why?"],
   ['user_response', "@TODO leave response ID here"],
@@ -203,6 +165,12 @@ algorithm_step = Step.create!(
 algorithm_slide = Slide.create!(
   content: algorithm_content_one,
   slide_id: 0,
+  parent: algorithm_step
+)
+
+algorithm_slide = Slide.create!(
+  content: algorithm_content_two,
+  slide_id: 1,
   parent: algorithm_step
 )
 
