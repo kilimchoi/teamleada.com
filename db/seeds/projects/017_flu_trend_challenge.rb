@@ -10,7 +10,7 @@ main_page_content = [
 project = Project.create!(
   title:"Time Series Challenge",
   description: main_page_content,
-  short_description: "This is a project where you'll be asked to build a time series model on a piece of data. You're free to use any package or language. You'll be judged on the accuracy of the model as well as the complexity of the model",
+  short_description: "This is a project where you'll be asked to build a time series model on a piece of data. You're free to use any package or language. You'll be judged on the accuracy of the model as well as the complexity of the model.",
   number: 17,
   enabled: true,
   uid: 17,
@@ -212,7 +212,7 @@ conclusion_content_one = [
 ]
 
 conclusion_lesson = Lesson.create!(
-  title: "Time Series Challenge : Conlusion",
+  title: "Time Series Challenge: Conclusion",
   project: project,
   lesson_id: 3,
 )
