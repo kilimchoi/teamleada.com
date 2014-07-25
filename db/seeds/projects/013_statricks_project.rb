@@ -22,6 +22,8 @@ project = Project.create!(
   uid: 13,
   difficulty: 'Advanced',
   category: Project::CHALLENGE,
+  company_overview: "",
+  is_new: false,
 )
 
 puts "============ Created project: #{project.title}."
