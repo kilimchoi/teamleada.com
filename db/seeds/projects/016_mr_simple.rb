@@ -500,12 +500,11 @@ conclusion_main_content_one = [
 conclusion_main_content_two = [
   ['text', "In this project, we started with thinking about graph data representation."],
   ['text', "From there, we designed Mappers, Reducers, and ultimately iterations and termination."],
-  ['text', "Only after carefully desining the algorithm, did we start coding the project."],
+  ['text', "Once we "],
 ]
 
 conclusion_main_content_three = [
-  ['text', "Congrats!"],
-  ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
+  ['text', ""],
 ]
 
 conclusion_main_slide_one = Slide.create(
