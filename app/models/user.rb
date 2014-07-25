@@ -41,7 +41,7 @@
 #  phone                        :string(255)
 #  headline                     :string(255)
 #  industry                     :string(255)
-#  public_prof_url              :string(255)
+#  public_profile_url           :string(255)
 #  date_of_birth                :date
 #  interests                    :text
 #  job_bookmarks_count          :integer
