@@ -17,6 +17,7 @@ project = Project.create!(
   uid: 4,
   difficulty: 'Advanced',
   category: Project::LESSON,
+  is_new: false,
 )
 
 ################################################################################
