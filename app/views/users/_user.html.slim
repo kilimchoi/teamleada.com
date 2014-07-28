@@ -86,7 +86,8 @@
             - if !current_user.has_linkedin_integration?
               = link_to "Integrate LinkedIn", user_omniauth_authorize_path(:linkedin), class: "flat-button step-button"
             - else 
-              = link_to "Update to most recent LinkedIn Profile", user_omniauth_authorize_path(:linkedin)
+              p 
+                | You've already integrated your LinkedIn account!
 
 = render partial: "users/resume_modal", locals: { user: user }
 
