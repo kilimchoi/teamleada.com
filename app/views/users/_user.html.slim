@@ -24,7 +24,6 @@
                                   span.fa.fa-photo Upload a Photo...
                                   = profile_photo.file_field :photo, required: true, id: "hidden-photo-upload"
                           = hidden_field_tag :authenticity_token, form_authenticity_token
-
           h1.title.profile-name.clearfix
             = user.name
             |  (
@@ -79,7 +78,15 @@
             h3.title Connections
             h4 Looks like you don't have any connections yet.
 
-= render partial: "users/resume_modal", locals: { user: user }
+      = render partial: "users/resume_modal", locals: { user: user }
+      .col-md-6
+        .row
+          .col-md-12
+            h3.title LinkedIn Integration
+            - if !current_user.has_linkedin_integration?
+              = link_to "Integrate LinkedIn", user_omniauth_authorize_path(:linkedin), class: "flat-button step-button"
+            - else 
+              = link_to "Update to most recent LinkedIn Profile", user_omniauth_authorize_path(:linkedin)
 
 javascript:
   $(document).ready(function() {
