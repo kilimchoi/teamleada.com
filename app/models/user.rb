@@ -332,6 +332,10 @@ class User < ActiveRecord::Base
     self.profile_photos.count > 0
   end
 
+  def has_linkedin_integration?
+    !self.linkedin_confirmed_at.nil?
+  end
+
   def has_linkedin_profile_photo?
     !self.linkedin_profile_image_url.nil? && !self.linkedin_profile_image_url.empty?
   end
