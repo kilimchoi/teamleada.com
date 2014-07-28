@@ -187,7 +187,12 @@ class User < ActiveRecord::Base
         registered_user.nil? ? UsersHelper.new_with_linked_in_params(auth) : UsersHelper.update_with_linked_in_params(auth, registered_user)
       end
     end
-
+    def update_with_linkedin(auth, user)
+      #This will update everything, EXCEPT email
+      user = UsersHelper.update_with_linked_in_params(auth, user)
+      user
+    end
+ 
   end
 
   #
