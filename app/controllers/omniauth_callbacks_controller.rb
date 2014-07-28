@@ -1,7 +1,10 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def linkedin
-    if !current_user.nil? && current_user.confirmed?
+    if signed_in? && current_user.has_linkedin_integration?
+      flash[:warning] = "You've already integrated your linkedin account!"
+      redirect_to user_path(current_user)
+    elsif !current_user.nil? && current_user.confirmed?
       @user = User.update_with_linkedin(env["omniauth.auth"], current_user)
       flash[:notice] = "We've linked your LinkedIn account and grabbed the relevant profile information."
       redirect_to user_path(current_user)
