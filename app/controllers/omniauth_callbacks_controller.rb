@@ -1,7 +1,6 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def linkedin
-    byebug
     if (not current_user.nil?) &&current_user.confirmed?
       #integrate account
       @user = User.update_with_linkedin(env["omniauth.auth"], current_user)
