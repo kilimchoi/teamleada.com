@@ -38,6 +38,7 @@
 
 .flat-button:hover {
   color: white;
+  text-decoration: underline;
 }
 
 .flat-button-header {
@@ -67,8 +68,6 @@
   }
 }
 
-
-
 .round-with-border {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -81,7 +80,6 @@
   width: 200px;
   border: 5px solid #e3e3e3;
 }
-
 
 .complete { /*Complete button, will change after we get it working properly*/
  border-top: 1px solid #96d1f8;
@@ -105,11 +103,13 @@
  text-decoration: none;
  vertical-align: middle;
 }
+
 .complete:hover {
  border-top-color: #28597a;
  background: #28597a;
  color: #ccc;
 }
+
 .complete:active {
  border-top-color: #1b435e;
  background: #1b435e;
@@ -129,3 +129,4 @@
   padding-top: 20px;
   padding-bottom: 20px;
 }
+

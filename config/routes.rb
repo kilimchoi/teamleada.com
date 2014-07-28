@@ -8,8 +8,8 @@ TeamLeada::Application.routes.draw do
   root to: 'pages#home'
 
   match 'about', to: 'pages#about', via: :get
-  match 'tutoring', to: 'pages#tutoring', via: :get
-  match 'tutoring/purchase', to: 'pages#tutoring_purchase', as: 'tutoring_purchase', via: :post
+  #match 'tutoring', to: 'pages#tutoring', via: :get
+  #match 'tutoring/purchase', to: 'pages#tutoring_purchase', as: 'tutoring_purchase', via: :post
 
   match 'invite', to: 'invites#index', as: 'invites#index', as: 'invites', via: :get
   match 'invite', to: 'invites#create', as: 'invites#create', as: 'invite_user', via: :post

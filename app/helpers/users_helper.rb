@@ -13,7 +13,7 @@ module UsersHelper
     (auth.extra.raw_info.phoneNumbers.values[1][0].phoneNumber rescue nil).nil? ? nil : registered_user.update(phone: auth.extra.raw_info.phoneNumbers.values[1][0].phoneNumber)
     (auth.info.headline rescue nil).nil? ? nil : registered_user.update(headline: auth.info.headline)
     (auth.info.industry rescue nil).nil? ? nil : registered_user.update(industry: auth.info.industry)
-    (auth.info.urls.public_profile rescue nil).nil? ? nil : registered_user.update(public_prof_url: auth.info.urls.public_profile)
+    (auth.info.urls.public_profile rescue nil).nil? ? nil : registered_user.update(public_profile_url: auth.info.urls.public_profile)
 
     registered_user.update(date_of_birth: (Date.new((auth.extra.raw_info.dateOfBirth.year rescue nil), (auth.extra.raw_info.dateOfBirth.month rescue nil), (auth.extra.raw_info.dateOfBirth.day rescue nil)) rescue nil))
     (auth.extra.raw_info.jobBookmarks._total rescue nil).nil? ? nil : registered_user.update(job_bookmarks_count: auth.extra.raw_info.jobBookmarks._total)
@@ -53,7 +53,7 @@ module UsersHelper
       phone:                       (auth.extra.raw_info.phoneNumbers.values[1][0].phoneNumber rescue nil),
       headline:                    (auth.info.headline rescue nil),
       industry:                    (auth.info.industry rescue nil),
-      public_prof_url:             (auth.info.urls.public_profile rescue nil),
+      public_profile_url:             (auth.info.urls.public_profile rescue nil),
       date_of_birth:               self.extract_date(auth.extra.raw_info.dateOfBirth),
       interests:                   (auth.extra.raw_info.interests rescue nil),
       job_bookmarks_count:         (auth.extra.raw_info.jobBookmarks._total rescue nil),
