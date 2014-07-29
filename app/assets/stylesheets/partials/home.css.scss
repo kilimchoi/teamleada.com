@@ -97,6 +97,10 @@ section#intro {
 
 #display {
   padding: 100px 0px;
+
+  @include breakpoint($mobile) {
+    padding: 20px;
+  }
 }
 
 section {

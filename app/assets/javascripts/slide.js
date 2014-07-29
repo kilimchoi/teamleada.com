@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $.fn.visible = function(partial) {
-    var $t            = $(this),
+    var $t        = $(this),
     $w            = $(window),
     viewTop       = $w.scrollTop(),
     viewBottom    = viewTop + $w.height(),
