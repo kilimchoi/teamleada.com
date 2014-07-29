@@ -6,10 +6,10 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to user_path(current_user)
     elsif !current_user.nil? && current_user.confirmed?
       @user = User.update_with_linkedin(env["omniauth.auth"], current_user)
-      flash[:notice] = "We've linked your LinkedIn account and grabbed the relevant profile information."
+      flash[:notice] = "Your LinkedIn profile has been integrated with your Leada profile."
       redirect_to user_path(current_user)
     elsif env["omniauth.auth"].nil?
-      flash[:error] = "You must be authorized via linkedin to view this page."
+      flash[:error] = "You must be authorized via LinkedIn to view this page."
       redirect_to root_path
     else
       @user = User.connect_to_linkedin(env["omniauth.auth"], current_user)

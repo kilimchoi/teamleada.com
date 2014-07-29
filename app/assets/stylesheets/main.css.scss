@@ -55,6 +55,10 @@ body {
   right: 0;
   z-index: -1;
 
+  @include breakpoint($mobile) {
+    top: 50px;
+  }
+
   img {
     width: 100%;
   }
@@ -68,14 +72,28 @@ body {
 .title-wrapper {
   padding: 20px 80px 40px;
 
+  @include breakpoint($mobile) {
+    padding: 15px;
+  }
+
   .title-inner {
     max-width: 80%;
 
+    @include breakpoint($mobile) {
+      max-width: 100%;
+    }
+
     h1.page-title {
-      font-size: 8em;
+      font-size: 100px;
       font-weight: 700;
       color: $founders-rock-blue;
       letter-spacing: -3px;
+
+      @include breakpoint($mobile) {
+        font-size: 32px;
+        letter-spacing: 0px;
+        margin-top: 10px;
+      }
     }
   }
 }
@@ -139,6 +157,12 @@ h1, h2, h3, h4, h5 {
   font-weight: 300;
 }
 
+h1 {
+  @include breakpoint($mobile) {
+    font-size: 22px;
+  }
+}
+
 .title {
   padding-bottom: 10px;
   border-bottom: 1px solid $medium-gray;
@@ -193,3 +217,8 @@ h1, h2, h3, h4, h5 {
 .full-width {
   width: 100%;
 }
+
+.cursor-disabled {
+  cursor: not-allowed;
+}
+
