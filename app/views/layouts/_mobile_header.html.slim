@@ -1,7 +1,8 @@
 #mobile-navbar-modal-backdrop
 
 #mobile-navbar-modal-wrapper
-  = link_to "#", id: "close-mobile-navigation"
+  = link_to "#", id: "close-mobile-navigation" do
+    i.glyphicon.glyphicon-remove
   #mobile-navbar-wrapper
     ul#mobile-navigation-items.menu.list-unstyled
       = render partial: "shared/header_links"
