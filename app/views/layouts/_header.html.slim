@@ -21,7 +21,6 @@ header#header
           - if Feature.enabled?("ask_peter")
             li
               = link_to "Ask Peter", question_answer_path
-              span.label.label-danger.navbar-new-badge New!
 
           - if signed_in? && (current_user.is_student? || current_user.is_admin?)
             = active_li_link "Invite", invites_path
