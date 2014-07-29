@@ -61,4 +61,22 @@ $(document).ready(function() {
 
   // Ladda
   Ladda.bind('.ladda-button', { timeout: 1000 });
+
+  $("#navbar-toggle").click(function(event) {
+    showMobileNavbar();
+  });
+
+  $("#close-mobile-navigation").click(function(event) {
+    hideMobileNavbar();
+  });
+
+  showMobileNavbar = function() {
+    $("#mobile-navbar-modal-backdrop").show();
+    $("#mobile-navbar-modal-wrapper").show();
+  }
+
+  hideMobileNavbar = function() {
+    $("#mobile-navbar-modal-backdrop").hide();
+    $("#mobile-navbar-modal-wrapper").hide();
+  }
 });
