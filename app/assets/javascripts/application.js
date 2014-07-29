@@ -61,4 +61,12 @@ $(document).ready(function() {
 
   // Ladda
   Ladda.bind('.ladda-button', { timeout: 1000 });
+
+  $("#navbar-toggle").click(function(event) {
+    toggleMobileNavbar();
+  });
+
+  toggleMobileNavbar = function() {
+    
+  }
 });
