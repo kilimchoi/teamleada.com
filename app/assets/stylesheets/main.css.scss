@@ -83,6 +83,7 @@ body {
 
       @include breakpoint($mobile) {
         font-size: 32px;
+        letter-spacing: 0px;
       }
     }
   }

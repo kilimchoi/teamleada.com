@@ -1,0 +1,8 @@
+#mobile-navbar-modal-backdrop,
+#mobile-navbar-modal-wrapper {
+  display: none;
+
+  @include breakpoint($mobile) {
+    display: block;
+  }
+}
