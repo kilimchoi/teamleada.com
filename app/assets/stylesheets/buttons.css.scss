@@ -12,11 +12,6 @@
   color: white;
 }
 
-.home-button {
-  width: 350px;
-  text-align: center;
-}
-
 .flat-button {
   display: inline-block;
   padding: 15px 60px;
@@ -128,5 +123,15 @@
 .submit-file-button {
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+.home-button {
+  width: 350px;
+  text-align: center;
+
+  @include breakpoint($mobile) {
+    width: 240px;
+    padding: 15px;
+  }
 }
 

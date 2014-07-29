@@ -55,6 +55,10 @@ body {
   right: 0;
   z-index: -1;
 
+  @include breakpoint($mobile) {
+    top: 50px;
+  }
+
   img {
     width: 100%;
   }
@@ -75,6 +79,10 @@ body {
   .title-inner {
     max-width: 80%;
 
+    @include breakpoint($mobile) {
+      max-width: 100%;
+    }
+
     h1.page-title {
       font-size: 100px;
       font-weight: 700;
@@ -84,6 +92,7 @@ body {
       @include breakpoint($mobile) {
         font-size: 32px;
         letter-spacing: 0px;
+        margin-top: 10px;
       }
     }
   }
