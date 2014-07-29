@@ -33,10 +33,7 @@
           .user-bio.clearfix
             .user-bio-form
               .bio-container
-                - if user == current_user || is_admin
-                  = best_in_place current_user, :bio, type: :textarea, nil: "Click here to enter a brief bio about yourself!", inner_class: "form-control"
-                - else
-                  = user.bio
+                = simple_format(user.bio)
     .row
       .col-md-6
         .row
