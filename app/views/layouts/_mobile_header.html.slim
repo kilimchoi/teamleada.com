@@ -1,4 +1,7 @@
-#mobile-navbar-backdrop
+#mobile-navbar-modal-backdrop
 
-#mobile-navbar-wrapper
+#mobile-navbar-modal-wrapper
   = link_to "#", id: "close-mobile-navigation"
+  #mobile-navbar-wrapper
+    ul#mobile-navigation-items.menu.list-unstyled
+      = render partial: "shared/header_links"
