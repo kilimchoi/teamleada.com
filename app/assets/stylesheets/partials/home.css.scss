@@ -1,5 +1,9 @@
 #users {
   padding: 80px;
+
+  @include breakpoint($mobile) {
+    padding: 20px;
+  }
 }
 
 .page-divider {
@@ -85,6 +89,10 @@ section#intro {
 #about {
   padding: 100px 0px;
   background-color: #f8f8f8;
+
+  @include breakpoint($mobile) {
+    padding: 20px;
+  }
 }
 
 #display {
@@ -176,11 +184,19 @@ section#try-project {
   color: gray;
   margin-top: 15px;
   font-size: 25px;
+
+  @include breakpoint($mobile) {
+    font-size: 15px;
+  }
 }
 
 .hal-sig{
   margin-top: 5px;
   font-size: 25px;
   float: right;
+
+  @include breakpoint($mobile) {
+    font-size: 15px;
+  }
 }
 

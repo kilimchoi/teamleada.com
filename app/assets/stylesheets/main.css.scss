@@ -68,14 +68,22 @@ body {
 .title-wrapper {
   padding: 20px 80px 40px;
 
+  @include breakpoint($mobile) {
+    padding: 15px;
+  }
+
   .title-inner {
     max-width: 80%;
 
     h1.page-title {
-      font-size: 8em;
+      font-size: 100px;
       font-weight: 700;
       color: $founders-rock-blue;
       letter-spacing: -3px;
+
+      @include breakpoint($mobile) {
+        font-size: 32px;
+      }
     }
   }
 }
@@ -137,6 +145,12 @@ body {
 
 h1, h2, h3, h4, h5 {
   font-weight: 300;
+}
+
+h1 {
+  @include breakpoint($mobile) {
+    font-size: 22px;
+  }
 }
 
 .title {
