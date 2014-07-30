@@ -16,6 +16,16 @@ class ProjectStatus < ActiveRecord::Base
 
   scope :group_by_user, -> { order("user_id ASC") }
 
+  before_create :set_start_date
+
+  def set_start_date
+    self.start_date = Time.now
+  end
+
+  def end_date
+    start_date + project.deadline
+  end
+
   def completed_all_submissions?
     project.submission_contexts.count > 0 && user.code_submissions_for_project(project).count == project.submission_contexts.count
   end
