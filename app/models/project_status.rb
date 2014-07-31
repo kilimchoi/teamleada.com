@@ -25,6 +25,14 @@ class ProjectStatus < ActiveRecord::Base
     end
   end
 
+  def expired?
+    if !start_date.nil? && project.deadline != nil
+      Time.now > start_date + project.deadline
+    else
+      false  
+    end
+  end
+
   def display_start_date
     "#{start_date.strftime('%A, %B %e, %Y')}"
   end
@@ -46,7 +54,7 @@ class ProjectStatus < ActiveRecord::Base
   end
 
   def has_time_remaining?
-    if project.deadline.nil? || start_date.nil?
+    if project.deadline.nil? || start_date.nil? || completed?
       # If the project doesn't have a deadline, then you always have time remaining.
       return true
     end
