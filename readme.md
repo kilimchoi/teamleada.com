@@ -36,14 +36,21 @@ Start the server:
 
 Happy developing!
 
+## Setting up the Scripts subtree
+
+    git remote add scripts git@github.com:teamleada/scripts.git
+    git subtree add --prefix=scripts scripts master
+
 ## Image Processing
+
 You're going to have to install Imagemagick and Redis:
 
     brew install pkgconfig #in case imagemagick doesn't work on os X
     brew install imagemagickb
     brew install redis
 
-## Redis on aws
+## Redis on AWS
+
 Install redis on ubuntu via:
 
     wget http://download.redis.io/redis-stable.tar.gz
@@ -57,11 +64,13 @@ In `redis.conf`, enable "daemonize yes". Then run:
     redis-server &
 
 ## Background jobs
+
 To start Sidekiq, run the command from the project root directory (and make sure redis is running):
 
     sidekiq -d -L sidekiq.log -q uploads
 
 ## Install Nginx
+
 To install nginx on Ubuntu, run the following:
 
     sudo apt-get install nginx
@@ -128,6 +137,7 @@ Then, we have to set up our local database to include any new changes you might 
     rake db:seed
 
 ## Current Deployments at:
+
 * [Production](http://teamleada.com)
 * [Deployment Main](http://teamleada-stage.herokuapp.com)
 * [Deployment (t)](http://teamleada-stage-t.herokuapp.com)
