@@ -2,7 +2,7 @@ language: ruby
 rvm:
   - 2.1.2
 env:
-  - DB=postgresql RAILS_ENV=test
+  - DB=postgresql RAILS_ENV=test SECRET_KEY="$(bundle exec rake secret)"
 before_script:
   - cp config/database.travis.yml config/database.yml
   - psql -c 'create database leada_test' -U postgres
