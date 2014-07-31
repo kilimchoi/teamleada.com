@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project_status = ProjectStatus.where(user: current_user, project: @project).first_or_create
+    @project_status.save
   end
 
   def index
