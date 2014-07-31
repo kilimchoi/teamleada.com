@@ -2,9 +2,9 @@ language: ruby
 rvm:
   - 2.1.2
 env:
-  - DB=postgresql
+  - DB=postgresql RAILS_ENV=test
 script:
-  - RAILS_ENV=test rake --trace db:migrate
+  - rake --trace db:migrate
   - rspec .
 before_script:
   - cp config/database.travis.yml config/database.yml
