@@ -19,6 +19,7 @@ project = Project.create!(
   difficulty: 'Advanced',
   category: Project::CHALLENGE,
   is_new: true,
+  deadline: 2.weeks,
 )
 
 ################################################################################
