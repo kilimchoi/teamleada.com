@@ -56,7 +56,7 @@
 
 javascript:
   $(document).ready(function() {
-    var endDate = new Date("#{@project_status.end_date}")
+    var endDate = new Date(#{@project_status.end_date})
     $('#project-countdown').countdown({ until: endDate });
   });
 
