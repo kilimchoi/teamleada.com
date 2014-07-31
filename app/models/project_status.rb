@@ -46,7 +46,7 @@ class ProjectStatus < ActiveRecord::Base
   end
 
   def has_time_remaining?
-    if project.deadline.nil? || start_date.nil?
+    if project.deadline.nil? || start_date.nil? || completed?
       # If the project doesn't have a deadline, then you always have time remaining.
       return true
     end
