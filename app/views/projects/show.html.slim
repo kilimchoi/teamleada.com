@@ -5,7 +5,7 @@
     .col-md-12
       .project-container
         h1.title = @project.title
-        - unless @project.deadline.nil?
+        - unless @project.deadline.nil? || @project_status.completed?
           - if @project_status.has_time_remaining?
             .row
               .col-md-12
