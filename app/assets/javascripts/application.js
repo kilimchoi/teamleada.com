@@ -26,6 +26,7 @@
 //= require ace/ace
 //= require ace/theme-github
 //= require autocomplete-rails
+//= require jquery.countdown
 //= require highlight.pack
 
 $(document).ready(function() {

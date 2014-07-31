@@ -8,6 +8,7 @@
 #  completed  :boolean          default(FALSE)
 #  created_at :datetime
 #  updated_at :datetime
+#  start_date :datetime
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
