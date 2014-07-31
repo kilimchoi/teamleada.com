@@ -49,7 +49,9 @@
                   = project.title
               .col-md-2
                 h4.modal-title.label.label-success
-                  = "Time: " + ProjectsHelper.deadline_in_days(project) + " Days"
+                  | Time: 
+                  = project.deadline_in_days
+                  |  Days
           - else
             h4.modal-title
               = project.title
