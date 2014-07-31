@@ -24,7 +24,9 @@ class ProjectStatus < ActiveRecord::Base
   end
 
   def end_date
-    start_date + project.deadline
+    unless project.deadline.nil?
+      (start_date + project.deadline).to_i * 1000
+    end
   end
 
   def completed_all_submissions?
