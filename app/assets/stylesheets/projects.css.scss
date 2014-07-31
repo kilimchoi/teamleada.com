@@ -10,3 +10,15 @@
 @import "buttons";
 @import "sidebar";
 @import "reveal_overrides";
+
+.project-deadline-countdown {
+  position: absolute;
+  top: 70px;
+  right: 70px;
+  width: 250px;
+}
+
+.non-project-page-countdown {
+  padding-top: 10px;
+}
+

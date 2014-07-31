@@ -7,6 +7,9 @@ class StepsController < ApplicationController
     # TODO: Right now we're giving users points when they 'start' a step.
     # Should give them points when they complete it.
     current_user.complete_step(@step)
+
+    # For the project deadline countdown
+    @project_status = current_user.project_status_for_project(@step.project)
   end
 
 end

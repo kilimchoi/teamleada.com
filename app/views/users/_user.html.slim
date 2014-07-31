@@ -33,10 +33,7 @@
           .user-bio.clearfix
             .user-bio-form
               .bio-container
-                - if user == current_user || is_admin
-                  = best_in_place current_user, :bio, type: :textarea, nil: "Click here to enter a brief bio about yourself!", inner_class: "form-control"
-                - else
-                  = user.bio
+                = simple_format(user.bio)
     .row
       .col-md-6
         .row
@@ -78,6 +75,16 @@
 
             h3.title Connections
             h4 Looks like you don't have any connections yet.
+
+      .col-md-6
+        .row
+          .col-md-12
+            h3.title LinkedIn Integration
+            - if !current_user.has_linkedin_integration?
+              = link_to "Integrate LinkedIn", user_omniauth_authorize_path(:linkedin), class: "flat-button step-button"
+            - else 
+              p 
+                | You've already integrated your LinkedIn account!
 
 = render partial: "users/resume_modal", locals: { user: user }
 

@@ -34,3 +34,6 @@
 
 # Ignore temporary uploaded files
 public/tmp
+
+# Ignore Python cache files
+*.pyc
