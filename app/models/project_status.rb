@@ -25,6 +25,14 @@ class ProjectStatus < ActiveRecord::Base
     end
   end
 
+  def expired?
+    if !start_date.nil? && project.deadline != nil
+      Time.now > start_date + project.deadline
+    else
+      false  
+    end
+  end
+
   def display_start_date
     "#{start_date.strftime('%A, %B %e, %Y')}"
   end
