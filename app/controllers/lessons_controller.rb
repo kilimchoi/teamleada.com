@@ -6,6 +6,9 @@ class LessonsController < ApplicationController
     # TODO: Right now we're giving points to users when they 'start' a lesson
     # We should give them the points when they complete the lesson.
     current_user.complete_lesson(@lesson)
+
+    # For the project deadline countdown
+    @project_status = current_user.project_status_for_project(@lesson.project)
   end
 
 end
