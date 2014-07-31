@@ -5,9 +5,10 @@
     .col-md-12
       .project-container
         h1.title = @project.title
-        .row
-          .col-md-12
-            #project-countdown
+        - unless @project.deadline.nil?
+          .row
+            .col-md-12
+              #project-countdown
 
         .row
           .col-md-12
