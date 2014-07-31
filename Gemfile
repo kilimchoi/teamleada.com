@@ -32,6 +32,8 @@ gem 'impressionist', github: 'negativetwelve/impressionist'
 gem 'obfuscate_id', github: 'negativetwelve/obfuscate_id'
 gem 'rails4-autocomplete', '1.1.0'
 
+gem 'travis', github: 'travis-ci/travis.rb'
+
 # Uploads
 gem 'carrierwave', '~> 0.10.0'
 gem 'fog', '~> 1.22.1'
