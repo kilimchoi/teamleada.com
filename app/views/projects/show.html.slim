@@ -7,6 +7,10 @@
         h1.title = @project.title
         .row
           .col-md-12
+            #project-countdown
+
+        .row
+          .col-md-12
             .progress-bar-container
               h2.title Your Progress
               .progress
@@ -49,4 +53,9 @@
                   li.flat-button.step-button.not-completed-item
                     = lesson.title
 
+javascript:
+  $(document).ready(function() {
+    var endDate = new Date("#{@project_status.end_date}")
+    $('#project-countdown').countdown({ until: endDate });
+  });
 

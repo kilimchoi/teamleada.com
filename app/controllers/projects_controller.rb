@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   load_resource only: [:show_interest]
 
   def show
-    ProjectStatus.where(user: current_user, project: @project).first_or_create
+    @project_status = ProjectStatus.where(user: current_user, project: @project).first_or_create
   end
 
   def index
