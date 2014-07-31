@@ -41,6 +41,13 @@ Happy developing!
     git remote add scripts git@github.com:teamleada/scripts.git
     git subtree add --prefix=scripts scripts master
 
+Pushing and pulling from the subtree:
+
+    git subtree push --prefix=scripts scripts master
+    git subtree pull --prefix=scripts scripts master
+
+These two commands can be created into aliases if desired.
+
 ## Image Processing
 
 You're going to have to install Imagemagick and Redis:
