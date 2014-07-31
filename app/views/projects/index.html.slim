@@ -42,8 +42,17 @@
       .modal-content
         .modal-header
           button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
-          h4.modal-title
-            = project.title
+          - if !project.deadline.nil?
+            .row
+              .col-md-9
+                h4.modal-title
+                  = project.title
+              .col-md-2
+                h4.modal-title.label.label-success
+                  = "Time: " + ProjectsHelper.deadline_in_days(project) + " Days"
+          - else
+            h4.modal-title
+              = project.title
         .modal-body
           p
             = project.short_description
