@@ -17,16 +17,40 @@ class ProjectStatus < ActiveRecord::Base
 
   scope :group_by_user, -> { order("user_id ASC") }
 
-  before_create :set_start_date
+  before_save :set_start_date
 
   def set_start_date
-    self.start_date = Time.now
+    if start_date.nil?
+      self.start_date = Time.now
+    end
+  end
+
+  def display_start_date
+    "#{start_date.strftime('%A, %B %e, %Y')}"
+  end
+
+  def display_end_date
+    "#{end_date.strftime('%A, %B %e, %Y')}"
   end
 
   def end_date
     unless project.deadline.nil?
-      (start_date + project.deadline).to_i * 1000
+      start_date + project.deadline
     end
+  end
+
+  def end_date_in_milliseconds
+    unless project.deadline.nil?
+      end_date.to_i * 1000
+    end
+  end
+
+  def has_time_remaining?
+    if project.deadline.nil? || start_date.nil?
+      # If the project doesn't have a deadline, then you always have time remaining.
+      return true
+    end
+    Time.now < end_date
   end
 
   def completed_all_submissions?
