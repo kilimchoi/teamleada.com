@@ -3,9 +3,8 @@ rvm:
   - 2.1.2
 env:
   - DB=postgresql
-  - RAILS_ENV=test
 script:
-  - rake --trace db:migrate
+  - RAILS_ENV=test rake --trace db:migrate
   - rspec .
 before_script:
   - cp config/database.travis.yml config/database.yml
