@@ -5,7 +5,6 @@ env:
   - DB=postgresql RAILS_ENV=test
 script:
   - rake --trace db:migrate
-  - rspec .
 before_script:
   - cp config/database.travis.yml config/database.yml
   - psql -c 'create database leada_test' -U postgres

@@ -130,8 +130,14 @@
   text-align: center;
 
   @include breakpoint($mobile) {
-    width: 240px;
+    width: 100%;
     padding: 15px;
+  }
+}
+
+.left:has(.home-button) {
+  @include breakpoint($mobile) {
+    float: none;
   }
 }
 

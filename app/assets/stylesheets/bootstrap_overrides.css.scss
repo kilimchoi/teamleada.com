@@ -52,9 +52,8 @@ $navbar-padding-bottom: 15px;
 }
 
 .navbar-toggle {
-  padding: 10px;
-  margin-top: 6px;
-  margin-bottom: 6px;
+  position: relative;
+  top: -1.2rem;
 }
 
 .navbar-default .navbar-nav > li > a.flat-button-header {
