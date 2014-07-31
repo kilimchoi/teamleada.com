@@ -1,5 +1,6 @@
 // Red
 $rails-red: #B02B2C;
+$red: #d9534f;
 
 // Blue
 $founders-rock-blue: #2D637F;
@@ -30,3 +31,7 @@ $rose-garden: #EE1F60;
 
 // White
 $white: #ffffff;
+
+.red {
+  color: $red;
+}

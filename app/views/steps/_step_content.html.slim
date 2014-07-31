@@ -1,3 +1,6 @@
+.project-deadline-countdown
+  #project-countdown.non-project-page-countdown
+
 .reveal
   .slides
     - @step.slides.each do |slide|
@@ -12,4 +15,8 @@ javascript:
     $("pre.fragment.content-code").each(function(i, e) {
       hljs.highlightBlock(e);
     });
+
+    var endDate = new Date(#{@project_status.end_date_in_milliseconds})
+    $('#project-countdown').countdown({ until: endDate });
   });
+

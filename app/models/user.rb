@@ -471,6 +471,10 @@ class User < ActiveRecord::Base
     project_statuses.where(completed: false).collect{ |project_status| project_status.project }
   end
 
+  def project_status_for_project(project)
+    project_statuses.find_by(project: project)
+  end
+
   def code_submissions_for_project(project)
     code_submissions.where(project: project)
   end

@@ -1,3 +1,6 @@
+.project-deadline-countdown
+  #project-countdown.non-project-page-countdown
+
 .reveal
   .slides
     - if @lesson.first_lesson
@@ -12,3 +15,10 @@
           h3 = @lesson.title
           - slide.content.each do |content_array|
             = render partial: "shared/content", locals: {content_type: content_array[0], content: content_array[1], lesson: @lesson}
+
+javascript:
+  $(document).ready(function() {
+    var endDate = new Date(#{@project_status.end_date_in_milliseconds})
+    $('#project-countdown').countdown({ until: endDate });
+  });
+
