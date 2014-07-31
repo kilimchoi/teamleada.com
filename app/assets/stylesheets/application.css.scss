@@ -11,6 +11,7 @@
  *= require animate
  *= require toastr
  *= require jquery.ui.all
+ *= require jquery.countdown
  *= require_self
  */
 
@@ -29,6 +30,8 @@
 @import "bootstrap_overrides";
 @import "pace";
 @import "ladda.min";
+
+@import "library_overrides";
 
 @import "footer";
 @import "main";

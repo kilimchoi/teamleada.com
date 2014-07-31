@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140725183028) do
+ActiveRecord::Schema.define(version: 20140730095809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -313,6 +313,7 @@ ActiveRecord::Schema.define(version: 20140725183028) do
     t.boolean  "completed",  default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "start_date"
   end
 
   create_table "projects", id: false, force: true do |t|
@@ -333,6 +334,7 @@ ActiveRecord::Schema.define(version: 20140725183028) do
     t.text     "company_overview"
     t.string   "category"
     t.boolean  "is_new",            default: false
+    t.integer  "deadline"
   end
 
   create_table "publications", force: true do |t|
@@ -541,7 +543,7 @@ ActiveRecord::Schema.define(version: 20140725183028) do
     t.string   "phone"
     t.string   "headline"
     t.string   "industry"
-    t.string   "public_prof_url"
+    t.string   "public_profile_url"
     t.date     "date_of_birth"
     t.text     "interests"
     t.integer  "job_bookmarks_count"

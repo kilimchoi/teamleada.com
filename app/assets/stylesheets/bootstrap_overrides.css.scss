@@ -6,6 +6,7 @@ $navbar-padding-bottom: 15px;
   border-radius: 0px;
   margin-bottom: 0px;
   height: 50px;
+  padding-top: 1em;
 }
 
 .navbar-default {
@@ -20,24 +21,39 @@ $navbar-padding-bottom: 15px;
   background-color: white;
 }
 
+.navbar-nav {
+  position: relative;
+  top: -0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
 .navbar-nav > li > a {
-  padding-top: $navbar-padding-top;
-  padding-bottom: $navbar-padding-bottom;
+  padding: 0px;
+  vertical-align: middle;
+}
+
+.navbar-nav > li {
+  padding-left: 20px;
 }
 
 .navbar-brand {
-  padding-top: $navbar-padding-top;
-  padding-bottom: $navbar-padding-bottom;
+  float: none;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
   margin-left: 0;
+  padding-left: 5px;
+  vertical-align: middle;
+  position: relative;
+  top: -0.9rem;
 }
 
 .navbar-toggle {
-  padding: 10px;
-  margin-top: 6px;
-  margin-bottom: 6px;
+  position: relative;
+  top: -1.2rem;
 }
 
 .navbar-default .navbar-nav > li > a.flat-button-header {
@@ -50,18 +66,15 @@ $navbar-padding-bottom: 15px;
   }
 }
 
-
 .nav > li > a:hover, .nav > li > a:focus,
 .navbar-default .navbar-nav > li > a:hover {
-  color: $founders-rock-blue;
-  font-weight: 700;
+  color: #777777;
 }
 
 .nav > li > a:hover, .nav > li > a.flat-button-header:focus,
 .navbar-default .navbar-nav > li > a.flat-button-header:hover {
   color: white;
 }
-
 
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
@@ -83,7 +96,6 @@ $navbar-padding-bottom: 15px;
 }
 
 @media (max-width: 767px) {
-
   body {
     padding-top: 0px;
   }
@@ -95,5 +107,13 @@ $navbar-padding-bottom: 15px;
   .navbar-nav {
     margin: 0px -15px;
   }
-
 }
+
+.navbar-default .navbar-toggle {
+  border: none;
+
+  &:hover {
+    background: none;
+  }
+}
+

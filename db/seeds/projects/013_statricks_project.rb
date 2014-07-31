@@ -24,6 +24,7 @@ project = Project.create!(
   category: Project::CHALLENGE,
   company_overview: "",
   is_new: false,
+  deadline: 2.weeks,
 )
 
 puts "============ Created project: #{project.title}."

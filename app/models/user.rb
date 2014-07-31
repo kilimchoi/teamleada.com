@@ -41,7 +41,7 @@
 #  phone                        :string(255)
 #  headline                     :string(255)
 #  industry                     :string(255)
-#  public_prof_url              :string(255)
+#  public_profile_url           :string(255)
 #  date_of_birth                :date
 #  interests                    :text
 #  job_bookmarks_count          :integer
@@ -187,7 +187,12 @@ class User < ActiveRecord::Base
         registered_user.nil? ? UsersHelper.new_with_linked_in_params(auth) : UsersHelper.update_with_linked_in_params(auth, registered_user)
       end
     end
-
+    def update_with_linkedin(auth, user)
+      #This will update everything, EXCEPT email
+      user = UsersHelper.update_with_linked_in_params(auth, user)
+      user
+    end
+ 
   end
 
   #
@@ -327,6 +332,10 @@ class User < ActiveRecord::Base
     self.profile_photos.count > 0
   end
 
+  def has_linkedin_integration?
+    !self.linkedin_confirmed_at.nil?
+  end
+
   def has_linkedin_profile_photo?
     !self.linkedin_profile_image_url.nil? && !self.linkedin_profile_image_url.empty?
   end
@@ -460,6 +469,10 @@ class User < ActiveRecord::Base
 
   def in_progress_projects
     project_statuses.where(completed: false).collect{ |project_status| project_status.project }
+  end
+
+  def project_status_for_project(project)
+    project_statuses.find_by(project: project)
   end
 
   def code_submissions_for_project(project)

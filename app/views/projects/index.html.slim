@@ -16,7 +16,7 @@
         h1.title Coming Soon!
         = render partial: "projects/projects", locals: { projects: @coming_soon }
 
-  - if (signed_in? && current_user.has_project_access?)
+  - if signed_in? && current_user.has_project_access?
     h2.center
       | You've already received Early Project Access. <br>
       | Go complete projects!

@@ -18,6 +18,8 @@
 #  difficulty        :string(255)
 #  company_overview  :text
 #  category          :string(255)
+#  is_new            :boolean          default(FALSE)
+#  deadline          :integer
 #
 
 class Project < ActiveRecord::Base
