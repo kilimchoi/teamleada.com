@@ -65,8 +65,9 @@ collect_data_content_0 = [
 collect_data_content_1 = [
   ['text', "Now submit the code you used to collect the YAHOO data."],
   ['text', "If your code refers/reads an external file/csv, explain in the comment what you expect the file to contain."],
-  ['code_response', ""],
+  ['user_code', ""],
   ['text', "Make sure to include relevant coments."],
+  ['next_steps', ""],
 ]
 
 collect_data_lesson = Lesson.create!(
@@ -102,7 +103,7 @@ sraper_data_submission = SubmissionContext.create!(
 sql_overview_content = [
   ['text', "Now that you have the collected historical csv, you decide to stick the data into a SQL databse"],
   ['text', "We'll first talk about the database design."],
-  ['text', "Once we design the database, we'll go ahead an implement the code that will import the csv into the database"],
+  ['text', "Once we design the database, we'll go ahead an implement the code that will import the csv into the database."],
   ['lesson_link', ""],
 ]
 
@@ -117,6 +118,71 @@ sql_overview_slide = Slide.create!(
   slide_id: 0,
 )
 
+#################################################################################
 
+sql_design_content_one = [
+  ['text', "We want to design a sql database that will hold all of our historical data"],
+  ['text', "There are many different ways to store the data."],
+  ['text', "However, you want to keep the schema as maintainable as possible."],
+  ['text', "Forexample, you might want to add more comapny information later on"],
+  ['text', "Design a set of schemas that you're going to store the historical data points you scraped from YAHOO."],
+  ['user_response', ""],
+  ['text', "Don't forget to spend a paragraoh or 2 explain you reasonings"],
+  ['next_steps', ""],
+]
+
+sql_design_step = Step.create!(
+  title: "SQL Schema Design",
+  lesson: sql_lesson,
+  step_id: 0,
+)
+
+sql_design_slide = Slide.create!(
+  content: sql_design_content_one,
+  parent: sql_design_step,
+  slide_id: 0,
+)
+
+sql_design_submission = SubmissionContext.create!(
+  title: "Designing Financial Schema",
+  description: "User is asked to design a schema to store the financial data scraped from YAHOO.",
+  slide: sql_design_slide,
+  submission_context_id: 0,
+  submission_type: SubmissionContext::RESPONSE,
+)
+
+
+#################################################################################
+
+sql_implement_content_one = [
+  ['text', "Now that you've designed it, code up the scheame"],
+  ['text', "In addition to coding up the schema, also write a script that will load your scraped data into your schema"],
+  ['text', "Code a set of schemas that you're going to store the historical data points you scraped from YAHOO."],
+  ['user_code:', ""],
+  ['text', "Don't forget to spend a paragraoh or 2 explain you reasonings"],
+  ['next_steps', ""],
+]
+
+sql_code_step = Step.create!(
+  title: "SQL Code",
+  lesson: sql_lesson,
+  step_id: 1,
+)
+
+sql_code_slide = Slide.create!(
+  content: sql_code_content_one,
+  parent: sql_code_step,
+  slide_id: 0,
+)
+
+sql_code_submission = SubmissionContext.create!(
+  title: "Coding Financial Schema [SQL]",
+  description: "User is asked to code/load schema to store the financial data scraped from YAHOO.",
+  slide: sql_code_slide,
+  submission_context_id: 0,
+  submission_type: SubmissionContext::CODE,
+)
+
+#################################################################################
 
 
