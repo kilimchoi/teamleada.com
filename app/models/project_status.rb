@@ -26,10 +26,10 @@ class ProjectStatus < ActiveRecord::Base
   end
 
   def expired?
-    if !start_date.nil? && project.deadline != nil
-      Time.now > start_date + project.deadline
-    else
+    if start_date.nil? || project.deadline.nil?
       false  
+    else
+      Time.now > start_date + project.deadline
     end
   end
 
