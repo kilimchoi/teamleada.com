@@ -153,7 +153,7 @@ sql_design_submission = SubmissionContext.create!(
 
 #################################################################################
 
-sql_implement_content_one = [
+sql_code_content_one = [
   ['text', "Now that you've designed it, code up the scheame."],
   ['text', "In addition to coding up the schema, also write a script that will load your scraped data into your schema."],
   ['user_code:', ""],
@@ -182,5 +182,28 @@ sql_code_submission = SubmissionContext.create!(
 )
 
 #################################################################################
+##### SQL SCHEMA DESIGN/IMPLEMNT ################################################
+#################################################################################
+
+sql_conclusion_content = [
+  ['text', "You've completed the SQL finance project!"],
+  ['text', "Now you have a set of interesting data to work with."],
+  ['text', "In a future project, we'll revisit the SQL database you created in order to do some fun analysis."],
+  ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
+]
+
+sql_lesson = Lesson.create!(
+  title: "SQL/Finance Conclusion",
+  project: project,
+  lesson_id: 3,
+)
+
+sql_conclusion_slide = Slide.create!(
+  content: sql_conclusion_content,
+  parent: sql_lesson,
+  slide_id: 0,
+)
 
 
+
+#################################################################################
