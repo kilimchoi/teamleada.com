@@ -95,9 +95,27 @@ sraper_data_submission = SubmissionContext.create!(
   submission_type: SubmissionContext::CODE,
 )
 
+#################################################################################
+##### SQL SCHEMA DESIGN/IMPLEMNT ################################################
+#################################################################################
 
+sql_overview_content = [
+  ['text', "Now that you have the collected historical csv, you decide to stick the data into a SQL databse"],
+  ['text', "We'll first talk about the database design."],
+  ['text', "Once we design the database, we'll go ahead an implement the code that will import the csv into the database"],
+  ['lesson_link', ""],
+]
 
-
+sql_lesson = Lesson.create!(
+  title: "SQL Design/Implement",
+  project: project,
+  lesson_id: 2,
+)
+sql_overview_slide = Slide.create!(
+  content: sql_overview_content,
+  parent: sql_lesson,
+  slide_id: 0,
+)
 
 
 
