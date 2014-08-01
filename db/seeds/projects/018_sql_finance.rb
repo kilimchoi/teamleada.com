@@ -121,7 +121,7 @@ sql_overview_slide = Slide.create!(
 #################################################################################
 
 sql_design_content_one = [
-  ['text', "We want to design a sql database that will hold all of our historical data".],
+  ['text', "We want to design a sql database that will hold all of our historical data."],
   ['text', "There are many different ways to store the data."],
   ['text', "However, you want to keep the schema as maintainable as possible."],
   ['text', "Forexample, you might want to add more comapny information later."],
