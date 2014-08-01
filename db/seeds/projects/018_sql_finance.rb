@@ -156,7 +156,7 @@ sql_design_submission = SubmissionContext.create!(
 sql_code_content_one = [
   ['text', "Now that you've designed it, code up the scheame."],
   ['text', "In addition to coding up the schema, also write a script that will load your scraped data into your schema."],
-  ['user_code:', ""],
+  ['user_code', ""],
   ['text', "Make sure you've sufficiently commented in your code."],
   ['next_steps', ""],
 ]
