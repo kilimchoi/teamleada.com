@@ -121,13 +121,13 @@ sql_overview_slide = Slide.create!(
 #################################################################################
 
 sql_design_content_one = [
-  ['text', "We want to design a sql database that will hold all of our historical data"],
+  ['text', "We want to design a sql database that will hold all of our historical data".],
   ['text', "There are many different ways to store the data."],
   ['text', "However, you want to keep the schema as maintainable as possible."],
-  ['text', "Forexample, you might want to add more comapny information later on"],
+  ['text', "Forexample, you might want to add more comapny information later."],
   ['text', "Design a set of schemas that you're going to store the historical data points you scraped from YAHOO."],
   ['user_response', ""],
-  ['text', "Don't forget to spend a paragraoh or 2 explain you reasonings"],
+  ['text', "Don't forget to spend 1 or 2 paragraphs explaining you reasonings."],
   ['next_steps', ""],
 ]
 
@@ -151,15 +151,13 @@ sql_design_submission = SubmissionContext.create!(
   submission_type: SubmissionContext::RESPONSE,
 )
 
-
 #################################################################################
 
 sql_implement_content_one = [
-  ['text', "Now that you've designed it, code up the scheame"],
-  ['text', "In addition to coding up the schema, also write a script that will load your scraped data into your schema"],
-  ['text', "Code a set of schemas that you're going to store the historical data points you scraped from YAHOO."],
+  ['text', "Now that you've designed it, code up the scheame."],
+  ['text', "In addition to coding up the schema, also write a script that will load your scraped data into your schema."],
   ['user_code:', ""],
-  ['text', "Don't forget to spend a paragraoh or 2 explain you reasonings"],
+  ['text', "Make sure you've sufficiently commented in your code."],
   ['next_steps', ""],
 ]
 
