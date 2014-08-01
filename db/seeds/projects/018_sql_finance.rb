@@ -48,6 +48,53 @@ project_overview_slide0 = Slide.create!(
   slide_id: 0,
 )
 
+#################################################################################
+##### Scrape Data Lesson ########################################################
+#################################################################################
+
+collect_data_content_0 = [
+  ['text', "Context: You're trying to get your feet wet with automated trading systems."],
+  ['text', "The first thing you decide to do is to collect relevant financial data."],
+  ['text', "You decide to scrape YAHOO finance historical data:"],
+  ['link', "http://real-chart.finance.yahoo.com/table.csv?s=YHOO&d=7&e=1&f=2014&g=d&a=3&b=12&c=2000&ignore=.csv"],
+  ['text', "Note that the link contains a series of parameters. You may or may not want to alter them."],
+  ['text', "Now, write a script that will iterate collect all stock symbols listed on NYSE."],
+  ['text', "You're not given specific language requirement, but if you're unfamiliar with the work, we suggest Python."],
+]
+
+collect_data_content_1 = [
+  ['text', "Now submit the code you used to collect the YAHOO data."],
+  ['text', "If your code refers/reads an external file/csv, explain in the comment what you expect the file to contain."],
+  ['code_response', ""],
+  ['text', "Make sure to include relevant coments."],
+]
+
+collect_data_lesson = Lesson.create!(
+  title: "Data Collection",
+  project: project,
+  lesson_id: 1,
+)
+
+collect_data_slide_0 = Slide.create!(
+  content: collect_data_content_0,
+  parent: collect_data_lesson,
+  slide_id: 0,
+)
+
+collect_data_slide_1 = Slide.create!(
+  content: collect_data_content_1,
+  parent: collect_data_lesson,
+  slide_id: 1,
+)
+
+sraper_data_submission = SubmissionContext.create!(
+  title: "Scraping Yahoo Finance",
+  description: "User is asked to scrape Yahoo Finance.",
+  slide: collect_data_slide_1,
+  submission_context_id: 0,
+  submission_type: SubmissionContext::CODE,
+)
+
 
 
 
