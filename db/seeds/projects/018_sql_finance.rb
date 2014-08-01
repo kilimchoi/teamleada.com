@@ -104,7 +104,7 @@ sql_overview_content = [
   ['text', "Now that you have the collected historical csv, you decide to stick the data into a SQL databse"],
   ['text', "We'll first talk about the database design."],
   ['text', "Once we design the database, we'll go ahead an implement the code that will import the csv into the database."],
-  ['lesson_link', ""],
+  ['lesson_links', ""],
 ]
 
 sql_lesson = Lesson.create!(
