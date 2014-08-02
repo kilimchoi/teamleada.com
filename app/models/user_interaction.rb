@@ -17,4 +17,8 @@
 #
 
 class UserInteraction < ActiveRecord::Base
+  belongs_to :company
+  belongs_to :interactor, class_name: User
+  belongs_to :interactee, class_name: User
 end
+
