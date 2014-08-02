@@ -310,13 +310,13 @@ function_main_content = [
   ['text', 'Remember when we called class(some_stuff_here)?'],
   ['text', 'The "function_name(parameters)" does {#something} with the given parameters.'],
   ['code', 'class(1)'],
-    ['text', 'The above function is called class, and it works on the number we gave it, namely "1".'],
-    ['code', 'summary(1)'],
-    ['text', 'The above function is called summary, and it gives us a summary of the data.'],
-    ['text', '1 isn\'t interesting, so let\'s try something else.'],
-    ['code', 'summary(my_dataframe$my_numbers) #we created my_dataframe earlier!'],
-    ['text', 'Voila! We\'re applying the "summary" function to a vector we subsetted from our dataframe!'],
-    ['lesson_links', nil]
+  ['text', 'The above function is called class, and it works on the number we gave it, namely "1".'],
+  ['code', 'summary(1)'],
+  ['text', 'The above function is called summary, and it gives us a summary of the data.'],
+  ['text', '1 isn\'t interesting, so let\'s try something else.'],
+  ['code', 'summary(my_dataframe$my_numbers) #we created my_dataframe earlier!'],
+  ['text', 'Voila! We\'re applying the "summary" function to a vector we subsetted from our dataframe!'],
+  ['lesson_links', nil]
 ]
 function_lesson = Lesson.create!(
   title: "Functions ()",
