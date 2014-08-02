@@ -249,7 +249,7 @@ matrix_access_slide_two = Slide.create!(
 
 dataframe_access_content_one = [
 	['text', 'Now on to the last part: DataFrame.'],
-	['text', 'Since we saw how to get a single column from a dataframe (via "$"), we\'ll see how to access a particular subset.'],
+	['text-success', 'Since we saw how to get a single column from a dataframe (via "$"), we\'ll see how to access a particular subset.'],
 	['code', 'my_dataframe'],
 	['code', 'my_dataframe$my_numbers'],
 	['text', 'We first choose my_numbers column via "$". Appending the "[1]" returns the first entry from that column.'],
@@ -259,24 +259,24 @@ dataframe_access_content_one = [
 ]
 dataframe_access_content_two = [
 	['code', 'my_dataframe$my_numbers[1:10]'],
-	['text', 'You might have noticed that [1:10] returned a series of NAs. R tries to fill the missing values with "NA".'],
+	['text-warning', 'You might have noticed that [1:10] returned a series of NAs. R tries to fill the missing values with "NA".'],
 	['text', '"NA" basically means empty/missing'],
 	['text', 'What if we include a comma? Will it work?'],
 	['code', 'my_dataframe$my_numbers[1,]'],
-	['text', 'It didn\'t work!'],
+	['text-danger', 'It didn\'t work!'],
 	['text', 'Don\'t panic though, let\'s interpret the error.'],
 ]
 
 dataframe_access_content_three = [
-	['text', 'R tells us that there is an error, namely "incorrect number of dimensions".'],
+	['text-danger', 'R tells us that there is an error, namely "incorrect number of dimensions".'],
 	['text', 'This is because [1,] tries to access a row.'],
 	['code', '#my_dataframe$my_numbers[1,] #for reference'],
-	['text', 'But since the column is a single-dimension vector, if we try to access a row (in a 2-dimensional context), R complains.'],
-	['text', 'However this means that [1,] can be applied to any 2-dimensional data. Dataframe is one of them.'],
+	['text-warning', 'But since the column is a single-dimension vector, if we try to access a row (in a 2-dimensional context), R complains.'],
+	['text-success', 'However this means that [1,] can be applied to any 2-dimensional data. Dataframe is one of them.'],
 	['code', 'my_dataframe[1,]'],
 	['code', 'my_dataframe[,1]'],
 	['text', 'This does give us another way of accessing coumns/rows in dataframe.'],
-	['text', 'However, this is confusing (as mentioned earlier) so we\'ll forgo accessing a dataframe column via an index (for now).'],
+	['text-info', 'However, this is confusing (as mentioned earlier) so we\'ll forgo accessing a dataframe column via an index (for now).'],
 	['next_steps', nil]
 ]
 dataframe_access_step = Step.create!(
