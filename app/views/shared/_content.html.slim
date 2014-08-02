@@ -23,7 +23,7 @@
   p.fragment.label.label-info
     = content
 - elsif content_type == 'text-warning'
-  p.fragment.label.label-warning
+  p.fragment.alert.alert-warning
     = content
 - elsif content_type == 'text-danger'
   p.fragment.label.label-danger
@@ -85,7 +85,7 @@
     = link_to "Submit your code now", "#", onclick: "openSidebar('#{project.full_url}', '#{item.class}', '#{item.uid}'); return false;", class: "flat-button full-width"
 - else
   p.fragment.content-error
-    = "ERR: Unknown Content Type. Contact dev pls: tristan@teamleada.com"
+    = "ERR: Unknown Content Type. Contact dev pls: tristan@teamleada.com '#{content}' " 
 
 javascript:
   $(document).ready(function() {
