@@ -6,6 +6,7 @@ main_page_content = [
   ['text', "3. Design a SQL database to store the Data"],
   ['text', "4. Write a SQL script to load the data into the database"],
   ['text', "We'll use the SQL database in another project!"],
+  ['text-warn', "this is a warning message!"],
 ]
 
 project = Project.create!(
@@ -58,7 +59,7 @@ collect_data_content_0 = [
   ['text', "You decide to scrape YAHOO finance historical data:"],
   ['link', "http://real-chart.finance.yahoo.com/table.csv?s=YHOO&d=7&e=1&f=2014&g=d&a=3&b=12&c=2000&ignore=.csv"],
   ['text', "Note that the link contains a series of parameters. You may or may not want to alter them."],
-  ['text', "Now, write a script that will iterate collect all stock symbols listed on NYSE."],
+  ['text', "Now, write a script that will iteratively collect all stock symbols listed on NYSE."],
   ['text', "You're not given specific language requirement, but if you're unfamiliar with the work, we suggest Python."],
 ]
 
@@ -204,6 +205,10 @@ sql_conclusion_slide = Slide.create!(
   slide_id: 0,
 )
 
-
-
 #################################################################################
+
+
+
+
+
+
