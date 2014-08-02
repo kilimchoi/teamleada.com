@@ -164,19 +164,19 @@ lm_comparison_content_slide_one = Slide.create!(
 #LM  comparison #1
 fit_lm_content_one = [
   ['text', 'Here we\'ll compare 2 datasets. We\'ll do dataset 1 and dataset 2, but feel free to do other comparisons'],
-  ['text', 'We\'re going to rename the data here. Insert whatever data you want to compare, and rename as below:'],
+  ['text-success', 'We\'re going to rename the data here. Insert whatever data you want to compare, and rename as below:'],
   ['code', 'compare_one = data_one #change data_one to another data set (data_one through data_four)'],
   ['code', 'compare_two = data_two #same thing applies here. Just make sure they\'re not the same data as above!'],
-  ['text', 'Now, against our better judgements, let\'s NOT first compare/vizualize the dataset, but rather fit a model.'],
-  ['text', 'We\'re going to fit a Linear Regression Model to see how it behaves.'],
+  ['text-danger', 'Now, against our better judgements, let\'s NOT first compare/vizualize the dataset, but rather fit a model.'],
+  ['text-info', 'We\'re going to fit a Linear Regression Model to see how it behaves.'],
 ]
 
 fit_lm_content_two = [
-  ['text', 'We\'ll be using the lm() function:'],
+  ['text-success', 'We\'ll be using the lm() function:'],
 	['code', 'help(lm) #to learn more about the model'],
   ['code', 'linear.mod1 = lm(y ~ x, data=compare_one) #linear model for the first data set'],
   ['code', 'linear.mod2 = lm(y ~ x, data=compare_two) #linear model for the second data set'],
-  ['text', 'Now let\'s see what the lines look like.'],
+  ['text-success', 'Now let\'s see what the lines look like.'],
   ['code', 'plot(c(0, 10), c(0, 10) , type="n", axes=T, xlab="", ylab="") #we\'ll start with an empty plot.'],
   ['code', 'abline(linear.mod1, col = \'red\', lwd=3) #adding the fitted line for the 1st linear model.'],
   ['code', 'abline(linear.mod2, col=\'orange\', lwd=5) #adding the fitted line for the 2nd linear model.'],
@@ -204,32 +204,32 @@ fit_lm_slide_two = Slide.create!(
 ################################################################################
 #LM  comparison #1
 lm_analysis_content_one = [
-  ['text', 'Let\'s inspect the model (press ENTER in the terminal to see the next plots):'],
+  ['text-success', 'Let\'s inspect the model (press ENTER in the terminal to see the next plots):'],
   ['code', 'plot(linear.mod1, col = \'blue\', lwd=3)'],
   ['code', 'plot(linear.mod2, col = \'orange\', lwd=3)'],
   ['text', 'You don\'t have to understand what the plots mean.'],
-  ['text', 'The important question is: "Did they look different?"'],
+  ['text-info', 'The important question is: "Did they look different?"'],
   ['text', 'Now we\'re getting somewhere.'],
   ['text', 'What does your intuition say? Something is fishy... Let\'s now compare the data.'],
   ['text', 'We should have done that from the beginning!']
 ]
 
 lm_analysis_content_two = [
-  ['text', 'We\'ll now plot both data points on the same page.'],
+  ['text-success', 'We\'ll now plot both data points on the same page.'],
   ['code', 'plot(compare_one, col=\'blue\', pch=19)'],
   ['code', 'points(compare_two, col=\'green\', pch=19)'],
   ['code', 'abline(linear.mod1, col = \'red\', lwd=3)'],
   ['code', 'abline(linear.mod2, col=\'orange\', lwd=5)'],
-  ['text', 'You can click the back-arrow in the plot-area to see that the regression lines are the same!'],
+  ['text-info', 'You can click the back-arrow in the plot-area to see that the regression lines are the same!'],
 ]
 
 lm_analysis_content_three = [
-  ['text', 'Inspecting the summary of the model, we see that the lines share the SAME intercept and slope!'],
+  ['text-success', 'Inspecting the summary of the model, we see that the lines share the SAME intercept and slope!'],
   ['code', 'summary(linear.mod1)'],
   ['code', 'summary(linear.mod2)'],
   ['text', 'They both share an intercept of about 3, with a slope of 0.5.'],
   ['text', 'What did we learn?'],
-  ['text', 'Perhaps we can\'t simply rely on summary statistics and models to tell us data-stories.'],
+  ['text-danger', 'Perhaps we can\'t simply rely on summary statistics and models to tell us data-stories.'],
   ['text', 'We have to be more careful.'],
   ['text', 'With that in mind, we\'ll now do a correct analysis on each dataset.'],
   ['next_steps', nil],
