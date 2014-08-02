@@ -232,3 +232,21 @@ h1 {
   }
 }
 
+.not-link {
+  text-decoration: none;
+  color: #333333;
+
+  &:hover {
+    text-decoration: none;
+    color: #333333;
+  }
+}
+
+.inline {
+  display: inline !important;
+}
+
+.inline-block {
+  display: inline-block !important;
+}
+
