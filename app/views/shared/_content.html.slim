@@ -13,6 +13,21 @@
 - if content_type == 'text'
   p.fragment
     = content
+- elsif content_type = 'text-default'
+  p.fragment.label.label-default
+    = content
+- elsif content_type = 'text-success'
+  p.fragment.label.label-success
+    = content
+- elsif content_type = 'text-info'
+  p.fragment.label.label-info
+    = content
+- elsif content_type = 'text-warning'
+  p.fragment.label.label-warning
+    = content
+- elsif content_type = 'text-danger'
+  p.fragment.label.label-danger
+    = content
 - elsif content_type == 'code'
   pre.fragment.content-code
     = content
