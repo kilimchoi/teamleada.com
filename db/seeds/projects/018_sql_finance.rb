@@ -60,7 +60,7 @@ collect_data_content_0 = [
   ['link', "http://real-chart.finance.yahoo.com/table.csv?s=YHOO&d=7&e=1&f=2014&g=d&a=3&b=12&c=2000&ignore=.csv"],
   ['text', "Note that the link contains a series of parameters."],
   ['text', "You may or may not want to alter them."],
-  ['text', "Now, write a script that will iteratively collect all stock symbols listed on NYSE."],
+  ['text-info', "Now, write a script that will iteratively collect all stock symbols listed on NYSE."],
   ['text', "You're not given specific language requirement, but if you're unfamiliar with the work, we suggest Python."],
 ]
 
@@ -127,7 +127,7 @@ sql_design_content_one = [
   ['text', "There are many different ways to store the data."],
   ['text', "However, you want to keep the schema as maintainable as possible."],
   ['text', "Forexample, you might want to add more comapny information later."],
-  ['text', "Design a set of schemas that you're going to store the historical data points you scraped from YAHOO."],
+  ['text-info', "Design a set of schemas that you're going to store the historical data points you scraped."],
   ['user_response', ""],
   ['text-warning', "Don't forget to spend 1 or 2 paragraphs explaining you reasonings."],
   ['next_steps', ""],
@@ -156,7 +156,7 @@ sql_design_submission = SubmissionContext.create!(
 #################################################################################
 
 sql_code_content_one = [
-  ['text', "Now that you've designed it, code up the scheame."],
+  ['text-info', "Now that you've designed it, code up the scheame."],
   ['text', "In addition to coding up the schema, also write a script that will load your scraped data into your schema."],
   ['user_code', ""],
   ['text-warning', "Make sure you've sufficiently commented in your code."],
