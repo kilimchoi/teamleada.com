@@ -568,7 +568,12 @@ class User < ActiveRecord::Base
   end
 
   def favorited?(other_user)
-    !UserFavoriteUser.find_by(favoriter: self, favoritee: other_user, company: self.current_company).nil?
+    user_interaction = UserInteraction.find_by(interactor: self, interactee: other_user)
+    if user_interaction.nil?
+      false
+    else
+      user_interaction.favorited
+    end
   end
 
   #
