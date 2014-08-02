@@ -6,6 +6,7 @@ TeamLeada::Application.routes.draw do
 
     resources :users, path: "browse", only: [:index, :show] do
       member do
+        match 'favorite', to: 'users#favorite', as: :favorite, via: :post
         match 'projects/:project_id', to: 'users#show_project', as: :project, via: :get
       end
     end

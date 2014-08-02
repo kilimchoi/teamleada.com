@@ -14,6 +14,6 @@
                 .caption
                   h3 = user.name
                   p = user.bio
-                  p
-                    = link_to "View Profile", company_user_path(user), class: "btn btn-leada"
-                    = link_to "Favorite", company_user_favorite_path(user), class: "btn btn-leada"
+                  .btn-group
+                    = link_to "View Profile", company_user_path(user), class: "btn btn-default"
+                    = link_to "Favorite", favorite_company_user_path(user), class: "btn btn-default", remote: true, method: :post
