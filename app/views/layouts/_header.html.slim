@@ -11,12 +11,7 @@ header#header
           = image_tag "logo.png", class: "logo"
           | Leada
 
-        - if signed_in? && current_user.is_admin?
-          = link_to "Dashboard", admin_dashboard_path, id: "main-link"
-        - elsif signed_in? && current_user.is_company?
-          = link_to "Dashboard", company_dashboard_path, id: "main-link"
-        - else
-          = link_to "Home", root_path, id: "main-link"
+        = render partial: "shared/main_header_link"
 
       .collapse.navbar-collapse#collapsed-navbar
         ul.nav.navbar-nav.navbar-left.left-header-border
