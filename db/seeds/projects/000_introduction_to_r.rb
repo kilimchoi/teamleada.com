@@ -346,8 +346,7 @@ vectors_slide_three = Slide.create!(
 conclusion_content_one = [
   ['text', 'In this R bootcamp, we taught you how to write basic expressions in R as well as the basics of data objects in the R language.'],
   ['text', 'You can now do basic arithmetics in R, in addition to some basic data manipulation.'],
-  ['text', 'Use the skills and knowledge gained from here to start completing data projects.'],
-  #['feedback', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
+  ['text-success', 'Use the skills and knowledge gained from here to start completing data projects.'],
   ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
 conclusion_lesson = Lesson.create!(
