@@ -7,8 +7,9 @@ header#header
           span.icon-bar
           span.icon-bar
           span.icon-bar
-        = image_tag "logo.png", class: "logo"
-        = link_to "Leada", root_path, class: "navbar-brand"
+        = link_to root_path, class: "navbar-brand" do
+          = image_tag "logo.png", class: "logo"
+          | Leada
 
         - if signed_in? && current_user.is_admin?
           = link_to "Dashboard", admin_dashboard_path, id: "main-link"
