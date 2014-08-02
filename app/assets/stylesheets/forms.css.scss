@@ -36,10 +36,18 @@
 .form-horizontal .checkbox {
   margin-left: 20px;
   margin-top: 10px;
+
+  @include breakpoint($mobile) {
+    margin-left: 40px;
+  }
 }
 
 .checkbox input[type="checkbox"] {
   position: absolute;
   margin-left: -20px;
   margin-top: -7px;
+
+  @include breakpoint($mobile) {
+    margin-left: -40px;
+  }
 }
