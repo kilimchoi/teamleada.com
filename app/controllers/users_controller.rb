@@ -91,6 +91,10 @@ class UsersController < ApplicationController
   def change_role
     redirect_to root_path and return unless Rails.env.development?
     current_user.role = params[:role]
+    if current_user.is_company? && current_user.company.nil?
+      # Since we're in development mode, we can add people to the test company which is seeded.
+      current_user.company = Company.find_by(name: "Leada")
+    end
     current_user.save
     redirect_to root_path
   end
