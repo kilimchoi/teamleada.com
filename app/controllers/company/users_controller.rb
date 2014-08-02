@@ -13,4 +13,20 @@ class Company::UsersController < Company::BaseController
     render :show
   end
 
+  def favorite
+    user_favorite_user = UserFavoriteUser.where(favoriter: current_user, favoritee: @user).first_or_initialize
+    if user_favorite_user.new_record?
+      user_favorite_user.company = current_user.company
+    end
+    if user_favorite_user.save
+      respond_to do |format|
+        format.json { head :ok }
+      end
+    else
+      respond_to do |format|
+        format.json { status: :unprocessable_entity }
+      end
+    end
+  end
+
 end
