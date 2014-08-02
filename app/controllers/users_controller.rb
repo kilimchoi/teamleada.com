@@ -96,6 +96,7 @@ class UsersController < ApplicationController
       current_user.company = Company.find_by(name: "Leada")
     end
     current_user.save
+    flash[:info] = "Successfully changed your role to: #{current_user.role}."
     redirect_to root_path
   end
 
