@@ -170,19 +170,19 @@ basic_comparison_content_two = [
   ['code', 'favorite_motorcycle == "Ducati"'],
   ['text', 'These comparisons shape the backbone of modern programming.'],
   ['text', 'The only boolean data types in R are TRUE and FALSE'],
-  ['text-danger', 'If you write it in lowercase, R will not recognize the data type'.],
+  ['text-danger', 'If you write it in lowercase, R will not recognize the data type.'],
   ['text', 'Also note that the boolean data types in R can default to integer values; FALSE defaults to 0 and TRUE defaults to 1.'],
   ['text', 'The following code will return an error in R:'],
   ['code', 'true'],
 ]
 basic_comparison_content_three = [
-  ['text', 'What does the following code return?'],
+  ['text-success', 'What does the following code return?'],
   ['code', 'TRUE + 1'],
   ['quiz', 'onboard_3'],
-  ['text', 'What does the following code return?'],
+  ['text-success', 'What does the following code return?'],
   ['code', 'FALSE == 0'],
   ['quiz', 'onboard_4'],
-  ['text', 'Remember that we compare via "==" and assign via "="'],
+  ['text-danger', 'Remember that we compare via "==" and assign via "="'],
   ['next_steps', nil]
 ]
 basic_comparison_step = Step.create!(
@@ -211,23 +211,23 @@ basic_math_slide_three = Slide.create!(
 ################################################################################
 ##Combining Intro Concepts
 combined_operations_content_one = [
-  ['text', 'To introduce code in R that you don\'t want to execute, just put a # before it.'],
+  ['text-info', 'To introduce code in R that you don\'t want to execute, just put a # before it.'],
   ['text', 'This is called adding "comments" to your code.'],
   ['text', 'Let\'s now do some operations and recap what we\'ve done!'],
   ['code', 'melon_cake = melon + cake'],
   ['code', 'melon_cake'],
-  ['text', 'Verify how code comments work by typing the code below:'],
+  ['text-success', 'Verify how code comments work by typing the code below:'],
   ['code', '#melon_cake, see this code doesn\'t return a value'],
-  ['text', 'Because the above code is a comment, R ignores it.'],
+  ['text-danger', 'Because the above code is a comment, R ignores it.'],
 ]
 combined_operations_content_two = [
-  ['text', 'What about characters/strings? How do they all work?'],
+  ['text-success', 'What about characters/strings? How do they all work?'],
   ['code', 'print (personal_statement)'],
   ['code', 'print (personal_statement + " But, " + favorite_motorcycle) #Uh oh, does this work?'],
-  ['text', 'What happened? It helps to read the error (printed in red).'],
+  ['text-danger', 'What happened? It helps to read the error (printed in red).'],
   ['text', 'If we read the error, it says "non-numeric argument to binary operator".'],
   ['text', 'R is telling us that we can\'t apply the "+" operator to non-numeric (such as characters or strings) data.'],
-  ['text', 'How do we get around this? The following will work, but it is just a sneak preview! We\'ll learn more later.'],
+  ['text-success', 'How do we get around this? The following will work, but it is just a sneak preview! We\'ll learn more later.'],
   ['code', 'print (paste(personal_statement, favorite_motorcycle, sep=" But, I love "))'],
   ['next_steps', nil]
 ]
@@ -255,7 +255,9 @@ combined_operations_slide_one = Slide.create!(
 datatypes_intro_content_one = [
   ['text', 'Now that we know how to write basic expressions in R, let\'s end this tutorial by going over one last concept: data objects.'],
   ['text', 'Every time you store a variable via an assignment, you\'re storing a specific data object.'],
-  ['text', 'Some of the more common data objects in R are: scalars, vectors, matrices, data frames, and lists. We will go over scalars and vectors in this lesson.'],
+  ['text', 'Some of the more common data objects in R are:'],
+  ['text-info', 'scalars, vectors, matrices, data frames, and lists.'],
+  ['text', 'We will go over scalars and vectors in this lesson.'],
   ['lesson_links', nil]
 ]
 datatypes_lesson = Lesson.create!(
@@ -270,7 +272,7 @@ basic_operations_slide_one = Slide.create!(
 )
 ################################################################################
 scalars_content_one = [
-  ['text', 'Scalars are one of the most basic object in R; they\'re actually vectors of length 1.'],
+  ['text-info', 'Scalars are one of the most basic object in R; they\'re actually vectors of length 1.'],
   ['text', 'You can verify the classes of the objects with the class() function: integers, characters, and logicals.'],
   ['code', 'orange'],
   ['code', 'class(orange)'],
@@ -278,7 +280,7 @@ scalars_content_one = [
   ['code', 'class(favorite_motorcycle)'],
   ['code', 'class(TRUE)'],
   ['code', 'class(cake > broccoli) #remember what comparisons yielded?'],
-  ['text', 'All of the above deal with scalars. But just remember that scalars are vectors of length 1.'],
+  ['text-success', 'All of the above deal with scalars. But just remember that scalars are vectors of length 1.'],
   ['next_steps', nil]
 ]
 scalars_content_step = Step.create!(
@@ -293,26 +295,27 @@ scalars_slide_one = Slide.create!(
 )
 ################################################################################
 vectors_content_one = [
-  ['text', 'We now know how to store single values in R. But what if we want to store multiple values?'],
+  ['text', 'We now know how to store single values in R.'],
+  ['text-warning', 'But what if we want to store multiple values?'],
   ['text', 'We do this in R by creating vectors.'],
-  ['text', 'Vectors are the way in which R stores multiple 1-dimensional data points (multiple scalars).'],
-  ['text', 'Note that Vectors are NOT the same as Lists (We\'ve avoid Lists for now).'],
+  ['text-info', 'Vectors are the way in which R stores multiple 1-dimensional data points (multiple scalars).'],
+  ['text-danger', 'Note that Vectors are NOT the same as Lists (We\'ve avoid Lists for now).'],
 ]
 vectors_content_two = [
-  ['text', 'We\'ll start by creating a simple vector using the c() function in R. Think of c() as short for the "concatenate" function.'],
+  ['text-info', 'We\'ll start by creating a simple vector using the c() function in R. Think of c() as short for the "concatenate" function.'],
   ['code', 'number_list = c(1,2,3,4)'],
   ['code', 'words_list = c("I", "hate", "vegetables")'],
-  ['text', 'Make sure to have commas, or it will error out. Try and see what error you get!'],
+  ['text-success', 'Make sure to have commas, or it will error out. Try and see what error you get!'],
   ['code', 'food_opinion = c("I", "hate" "vegetables")'],
   ['text', 'Can you intepret the error message?'],
-  ['text', 'It\'s telling us that it was expecting something other than a string (word) constant in the command (i.e. it expected a comma).']
+  ['text-danger', 'It\'s telling us that it was expecting something other than a string (word) constant in the command (i.e. it expected a comma).']
 ]
 vectors_content_three = [
   ['text', 'Note that if you create a vector with mixed data types in R such as strings and numbers, they will generally get converted into Character/String type.'],
-  ['text', 'Quotes around the values indicates that they\'ve been converted into Character/String type.'],
+  ['text-info', 'Quotes around the values indicates that they\'ve been converted into Character/String type.'],
   ['code', 'c("I", "once", "ate", 1, "vegetable")'],
   ['text', 'Getting familiar with error messages will help you become better faster.'],
-  ['text', 'Lastly, check out the help function to learn more about the various functions in R.'],
+  ['text-success', 'Lastly, check out the help function to learn more about the various functions in R.'],
   ['code', 'help(c)'],
   ['next_steps', nil]
 ]
