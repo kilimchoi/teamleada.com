@@ -70,10 +70,10 @@ class Project < ActiveRecord::Base
   # Attributes
   def deadline_in_days
     if !self.deadline.nil?
-      self.deadline.divmod(60 * 60 * 24)[0].to_s
+      self.deadline.div(60 * 60 * 24)
     end
   end
-  
+
   def cost_in_dollars
     if cost.nil?
       "$0"
