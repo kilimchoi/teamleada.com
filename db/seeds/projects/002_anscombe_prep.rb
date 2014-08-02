@@ -345,11 +345,12 @@ plot_function_content_one = [
 
 plot_function_content_two = [
   ['text', 'Our first plot!'],
-  ['text-info', 'Plot is our primary means of data vizualization.'],
-  ['text-warning', 'Don\'t worry about the "main=" part, yet. (look in help() if you\'re curious).'],
+  ['text', 'Plot is our primary means of data vizualization.'],
+  ['text', 'Don\'t worry about the "main=" part, yet. (look in help() if you\'re curious).'],
   ['text-success', 'Note that R also gives you the tilda (~) option in plotting.'],
   ['code', 'plot(y_to_plot ~ x_to_plot, main="second plot yea!")'],
-  ['text', 'This plots "y_to_plot" against "x_to_plot". It produces the same plot as before! (with a changed title)'],
+  ['text', 'This plots "y_to_plot" against "x_to_plot.'],
+  ['text', 'It produces the same plot as before! (with a changed title)'],
   ['text', 'Congrats! Now you know how to plot simple graphs!'],
   ['text-info', 'Remember that help(plot) will always give you examples at the bottom.'],
   ['next_steps', nil]
