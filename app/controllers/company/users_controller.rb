@@ -21,7 +21,26 @@ class Company::UsersController < Company::BaseController
       end
     end
     user_interaction.favorited = true
-    if user_favorite_user.save
+    if user_interaction.save
+      respond_to do |format|
+        format.json { head :ok }
+      end
+    else
+      respond_to do |format|
+        format.json { render json: { status: :unprocessable_entity } }
+      end
+    end
+  end
+
+  def unfavorite
+    user_interaction = UserInteraction.where(interactor: current_user, interactee: @user).first_or_initialize
+    unless user_interaction.favorited
+      respond_to do |format|
+        format.json { render json: { message: "You have already unfavorited #{@user.name}." } }
+      end
+    end
+    user_interaction.favorited = false
+    if user_interaction.save
       respond_to do |format|
         format.json { head :ok }
       end
@@ -33,3 +52,4 @@ class Company::UsersController < Company::BaseController
   end
 
 end
+
