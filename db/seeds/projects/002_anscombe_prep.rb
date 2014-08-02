@@ -143,27 +143,28 @@ matrix_data_slide_two = Slide.create!(
 ################################################################################
 dataframe_data_content_one = [
 	['text', 'Now that we know a thing or two about matrices, we can move on to dataframes.'],
-	['text', 'Don\'t worry, DataFrames are just like matrices.'],
+	['text-success', 'Don\'t worry, DataFrames are just like matrices.'],
 	['code', 'my_numbers = c(6, 7, 8)'],
 	['code', 'my_strings = c("I", "Love", "Potatoes")'],
 	['code', 'my_logicals = c(FALSE, FALSE, TRUE)'],
 	['code', 'my_dataframe = data.frame(my_numbers, my_strings, my_logicals)'],
 	['text', 'All we did was append together a few vectors! Check out the dataframe we created.'],
 	['code', 'my_dataframe'],
-	['text', 'The main difference is that dataframes (can) contain different kinds of data (numbers, words/strings, logicals.)'],
+	['text-info', 'The main difference is that dataframes (can) contain different kinds of data (numbers, words/strings, logicals.)'],
 	['code', 'class(my_dataframe)'],
 ]
 
 dataframe_data_content_two = [
-	['text', 'With the name() function, we can access the column names of the dataframe.'],
+	['text-success', 'With the name() function, we can access the column names of the dataframe.'],
 	['code', 'names(my_dataframe)'],
-	['text', 'We can access specific columns via the "$" operator. You\'ll get used to this notation soon.'],
-	['code', 'my_dataframe$my_logicals'],
-	['code', 'class(my_dataframe$my_logicals)'],
-	['text', 'You can also access specific columns as we did before, via column index, starting at 1'],
+	['text-success', 'We can access specific columns via the "$" operator.'],
+  ['text', 'You\'ll get used to this notation soon.'],
+  ['code', 'my_dataframe$my_logicals'],
+  ['code', 'class(my_dataframe$my_logicals)'],
+  ['text-success', 'You can also access specific columns as we did before, via column index, starting at 1'],
 	['code', 'my_dataframe[1]'],
 	['code', 'my_dataframe[3] #note that this is slightly different from "my_dataframe$my_logicals". More on this later.'],
-	['text', 'For now, accessing a column via its index isn\'t recommended. We won\'t be using this until you\'re more comfortable with R.'],
+	['text-warning', 'For now, accessing a column via its index isn\'t recommended. We won\'t be using this until you\'re more comfortable with R.'],
 	['next_steps', nil]
 ]
 dataframe_data_step = Step.create!(
@@ -205,24 +206,24 @@ data_access_slide_one = Slide.create!(
 ################################################################################
 matrix_access_content_one = [
 	['text', 'Now to access the data we stored.'],
-	['text', 'You can specifiy which data point to access by specifying the row and col numbers.'],
+	['text-success', 'You can specifiy which data point to access by specifying the row and col numbers.'],
 	['code', 'test_matrix = matrix(c(1, 2, 3, 4, 5, 6), nrow=3, ncol=2) #let\'s first create the matrix'],
 	['code', 'test_matrix[1,1]'],
 	['code', 'test_matrix[1,10]'],
 	['code', 'test_matrix[1,100]'],
 	['code', 'test_matrix[1,1000]'],
-	['text', 'Do all of the above work?'],
+	['text-warning', 'Do all of the above work?'],
 ]
 
 matrix_access_content_two = [
-	['text', 'What if you give it only one of the numbers? Try it!'],
+	['text-success', 'What if you give it only one of the numbers? Try it!'],
 	['code', 'test_matrix'],
 	['code', 'test_matrix[2]'],
-	['text', 'Do you see a difference between commas and no commas?'],
+	['text-success', 'Do you see a difference between commas and no commas?'],
 	['code', 'test_matrix[2,]'],
 	['code', 'test_matrix[,2]'],
 	['text', 'Play around.'],
-	['text', 'You should notice a specific behavior.'],
+	['text-warning', 'You should notice a specific behavior.'],
 	['next_steps', nil]
 ]
 
