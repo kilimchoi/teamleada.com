@@ -17,7 +17,7 @@
                   .btn-group
                     = link_to "View Profile", company_user_path(user), class: "btn btn-default"
                     - if current_user.favorited?(user)
-                      = link_to favorite_company_user_path(user), class: "btn btn-default", remote: true, method: :post, onclick: "unfavoriteUser()" do
+                      = link_to unfavorite_company_user_path(user), class: "btn btn-default", remote: true, method: :post, onclick: "unfavoriteUser()" do
                         i.fa.fa-star
                     - else
                       = link_to favorite_company_user_path(user), class: "btn btn-default", remote: true, method: :post, onclick: "favoriteUser()" do
