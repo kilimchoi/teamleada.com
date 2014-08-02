@@ -4,7 +4,7 @@ main_page_content = [
   ['text', 'This tutorial is designed for first time R users / first time programmers. If you have programming experience, the topics in this bootcamp may be a bit basic for you.'],
   ['text', 'If you are a first time user, make sure you have also watched our "Onboarding R/RStudio Video" as you will need to have R and RStudio installed on your own computer to follow along.'],
   ['video', 'OXdcpbDSzxU'],
-  ['text', 'Happy Learning!']
+  ['text-success', 'Happy Learning!']
 ]
 
 project = Project.create!(
@@ -69,15 +69,15 @@ basic_operations_slide_one = Slide.create!(
 basic_math_content_one = [
   ['text', 'Let us first try the most basic operations.'],
   ['code', '5 + 5'],
-  ['text', 'Enter what you get below:'],
+  ['text-success', 'En-successter what you get below:'],
   ['quiz', 'onboard_1'],
-  ['text', 'You can also use functions built in R such as sqrt() or abs() to do mathematical operations.'],
+  ['text-info', 'You can also use functions built in R such as sqrt() or abs() to do mathematical operations.'],
   ['code', 'sqrt(16)'],
   ['code', 'abs(-100)'],
 ]
 basic_math_content_two = [
   ['text', 'The same mathematical rules apply when it comes to order of operations.'],
-  ['text', 'Try the following and see what you get!'],
+  ['text-success', 'Try the following and see what you get!'],
   ['code', '10 + 5 / 5'],
   ['quiz', 'onboard_2'],
   ['next_steps', nil]
@@ -100,10 +100,10 @@ basic_math_slide_two = Slide.create!(
 )
 ################################################################################
 basic_assignment_content_one = [
-  ['text', 'If we want to store values that we can use later, we do variable assignments.'],
+  ['text-info', 'If we want to store values that we can use later, we do variable assignments.'],
   ['text', 'Assignment happens with either an equal sign "=" (more traditional), or with an arrow, "<-".'],
   ['text', 'We\'ll generally be using the "=" sign.'],
-  ['text', 'Run the following lines to save some variables for us to work with.'],
+  ['text-success', 'Run the following lines to save some variables for us to work with.'],
   ['code', 'orange = 3.5'],
   ['code', 'grape = 4.0'],
   ['code', 'melon = 5.0'],
@@ -113,19 +113,19 @@ basic_assignment_content_one = [
   ['text', 'Now we can refer back to those numbers later via their assigned names (such as orange).'],
 ]
 basic_assignment_content_two = [
-  ['text', 'You can also store words, more commonly known as strings, with double quotes.'],
+  ['text-info', 'You can also store words, more commonly known as strings, with double quotes.'],
   ['code', 'greeting = "Hello World!"'],
   ['code', 'personal_statement = "I hate broccoli!"'],
   ['code', 'favorite_motorcycle = "Ducati"'],
-  ['text', 'Just as before, the variables are stored in their assigned values, and are immediately ready to use.'],
+  ['text-success', 'Just as before, the variables are stored in their assigned values, and are immediately ready to use.'],
 ]
 basic_assignment_content_three = [
-  ['text', 'At anytime, you can return the value of those variables by typing directly in your console or writing in your Rscript.'],
+  ['text-info', 'At anytime, you can return the value of those variables by typing directly in your console or writing in and executing part of your Rscript.'],
   ['code', 'broccoli'],
   ['code', 'orange'],
   ['code', 'melon'],
   ['code', 'favorite_motorcycle'],
-  ['text', 'You can also explicitly ask R to print the values of the variables by using the print() method.'],
+  ['text-success', 'You can also explicitly ask R to print the values of the variables by using the print() method.'],
   ['code', 'print (broccoli)'],
   ['code', 'print (favorite_motorcycle)'],
   ['next_steps', nil]
@@ -152,25 +152,25 @@ basic_assignment_slide_three = Slide.create!(
 )
 ################################################################################
 basic_comparison_content_one = [
-  ['text', 'Now that we have numbers and strings assigned to variables, we can compare them using logical comparators.'],
+  ['text-info', 'Now that we have numbers and strings assigned to variables, we can compare them using logical comparators.'],
   ['text', 'The available logical comparators in R (and programming in general) are:'],
-  ['text', 'A greater than B : "A > B"'],
-  ['text', 'A greater than or equal to B : "A >= B"'],
-  ['text', 'A smaller than B : "A < B"'],
-  ['text', 'A smaller than or equal to B : "A <= B"'],
-  ['text', 'A is equal to B : "A == B": Note that we have TWO equal signs here!'],
-  ['text', 'Let\'s see if we can compare some of the variables we assigned earlier. We can do the following comparisons:'],
-  ['text', 'Note that TRUE or FALSE in R is known as Boolean/Logical data types. This is a different data type from numericals (numbers) or strings (words).'],
+  ['text-warning', 'A greater than B : "A > B"'],
+  ['text-warning', 'A greater than or equal to B : "A >= B"'],
+  ['text-warning', 'A smaller than B : "A < B"'],
+  ['text-warning', 'A smaller than or equal to B : "A <= B"'],
+  ['text-warning', 'A is equal to B : "A == B": Note that we have TWO equal signs here!'],
+  ['text', 'Let\'s see if we can compare some of the variables we assigned earlier.'],
+  ['text-danger', 'Note that TRUE or FALSE in R is known as Boolean/Logical data types. This is a different data type from numericals (numbers) or strings (words).'],
 ]
 basic_comparison_content_two = [
-  ['text', 'Try out the following comparisons and see what they return:'],
+  ['text-success', 'Try out the following comparisons and see what they return:'],
   ['code', 'melon <= orange'],
   ['code', 'grape == five'],
   ['code', 'favorite_motorcycle == "Yamaha"'],
   ['code', 'favorite_motorcycle == "Ducati"'],
   ['text', 'These comparisons shape the backbone of modern programming.'],
   ['text', 'The only boolean data types in R are TRUE and FALSE'],
-  ['text', 'If you write it in lowercase R will not recognize the data type'],
+  ['text-danger', 'If you write it in lowercase, R will not recognize the data type'.],
   ['text', 'Also note that the boolean data types in R can default to integer values; FALSE defaults to 0 and TRUE defaults to 1.'],
   ['text', 'The following code will return an error in R:'],
   ['code', 'true'],
