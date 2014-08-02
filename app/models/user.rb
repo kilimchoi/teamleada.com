@@ -559,6 +559,19 @@ class User < ActiveRecord::Base
   end
 
   #
+  # Company Properties
+  #
+  def current_company
+    # TODO(mark): We want to allow company employees to be part of more than one company (so we don't lose
+    # what they did at one company when they move to another).
+    self.company
+  end
+
+  def favorited?(other_user)
+    !UserFavoriteUser.find_by(favoriter: self, favoritee: other_user, company: self.current_company).nil?
+  end
+
+  #
   # Methods
   #
   def generate_new_token
