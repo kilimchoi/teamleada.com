@@ -11,40 +11,15 @@ header#header
           = image_tag "logo.png", class: "logo"
           | Leada
 
-        - if signed_in? && current_user.is_admin?
-          = link_to "Dashboard", admin_dashboard_path, id: "main-link"
-        - elsif signed_in? && current_user.is_company?
-          = link_to "Dashboard", company_dashboard_path, id: "main-link"
-        - else
-          = link_to "Home", root_path, id: "main-link"
+        = render partial: "shared/main_header_link"
 
       .collapse.navbar-collapse#collapsed-navbar
         ul.nav.navbar-nav.navbar-left.left-header-border
           = render partial: "shared/header_links"
 
         ul.nav.navbar-nav.navbar-right
-          - if signed_in?
-            li
-              = link_to user_path(current_user) do
-                = image_tag current_user.profile_photo, class: "navbar-profile-photo"
-                span.navbar-name = current_user.username
+          = render partial: "shared/user_header_links"
 
-            - if Feature.enabled?("messaging")
-              li.dropdown
-                = link_to "#", class: "dropdown-toggle", data: { toggle: "dropdown" } do
-                  - if current_user.unread_conversations_count > 0
-                    span.label.label-danger.navbar-unread-conversations-badge = current_user.unread_conversations_count
-                  span.navbar-icon.has-tooltip.fa.fa-envelope*{"data-toggle" => "tooltip", "data-placement" => "bottom", "data-title" => "Messages"}
-                = render partial: "header/messages", locals: { user: current_user }
-            li
-              = link_to "", edit_user_path(tab: "account"), class: "navbar-icon has-tooltip fa fa-gears", data: { toggle: "tooltip", placement: "bottom", title: "Account Settings" }
-            li
-              = link_to "", destroy_user_session_path, method: :delete, class: "navbar-icon has-tooltip fa fa-sign-out", data: { toggle: "tooltip", placement: "bottom", title: "Sign Out" }
-          - else
-            li
-              = link_to "Sign In", new_user_session_path
-            li
-              = link_to "Sign Up", new_user_registration_path
   - if @large_header
     .banner-image
       = image_tag "berkeley.jpg"
