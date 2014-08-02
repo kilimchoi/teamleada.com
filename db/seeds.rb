@@ -33,6 +33,7 @@ folders = [
   'projects',
   'projects/quizzes',
   'charts',
+  'company',
 ]
 
 folders.each do |folder|
