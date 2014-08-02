@@ -264,7 +264,7 @@ analyze_lm_slide_three = Slide.create!(
 work_with_data_post_content = [
   ['text', 'Now that we see what we did wrong, we\'ll properly analyze the data here.'],
   ['text', 'In the earlier steps, we relied on summary statistics and powerful (or not) models.'],
-  ['text', 'This time, we\'ll start with the correct fundamental step: vizualization.'],
+  ['text-info', 'This time, we\'ll start with the correct fundamental step: vizualization.'],
   ['lesson_links', nil]
 ]
 
@@ -282,17 +282,21 @@ work_with_data_post_slide_one = Slide.create!(
 ################################################################################
 
 data_one_post_content_one = [
-  ['text', 'We\'ll start with plotting the data'],
+  ['text-success', 'We\'ll start with plotting the data'],
   ['code', 'data_one = data.frame(x=c(anscombe$x1),y=c(anscombe$y1))'],
   ['code', 'plot(data_one, col=\'green\', pch=15)'],
-  ['text', 'WOOT! This dataset actually seems like a good candidate for a linear model! Let\'s see what happens.'],
+  ['text-info', 'WOOT! This dataset actually seems like a good candidate for a linear model!'],
+  ['text', 'Let\'s see what happens.'],
   ['text', 'We\'ll fit a linear model via the lm() function.'],
 ]
 data_one_post_content_two = [
   ['code', 'linear_model_one = lm(y ~ x, data = data_one)'],
-  ['text', 'Let\'s now plot the fit line.'],
+  ['text-success', 'Let\'s now plot the fit line.'],
   ['code', 'abline(linear_model_one, col = \'blue\', lwd=3)'],
-  ['text', 'This looks good! But how good? We\'ll learn to do better evaluation in future projects.'],
+  ['text', 'This looks good!'],
+  ['text', 'But how good?'],
+  ['text', 'Understanding the performance/quality of your model is important.'],
+  ['text-info', 'We\'ll learn to do better evaluation in future projects.'],
   ['next_steps', nil],
 ]
 
@@ -315,49 +319,52 @@ data_one_post_slide_two = Slide.create!(
 
 ################################################################################
 data_two_post_content_one = [
-  ['text', 'We\'ll again start with plotting the data.'],
+  ['text-success', 'We\'ll again start with plotting the data.'],
   ['code', 'data_two = data.frame(x=c(anscombe$x2),y=c(anscombe$y2)) #generate the dataframe in case you haven\'t'],
   ['code', 'plot(data_two, col=\'blue\', pch=16)'],
   ['text', 'Does it look polynomial? Yes! (2nd order, but not important here). So how do you fit it in R?'],
-  ['text', 'We can tell you exactly how, or we can tell you how to figure out how.'],
+  ['text', 'We can tell you exactly how, or instead we can tell you how to figure out how.'],
   ['text', '-1: Get to google.com'],
   ['text', '-2: Search: "how to fit polynomial in R"'],
   ['text', '-3: Check out the first result that refers "stackoverflow.com/..."'],
-  ['text', 'Woah! It features the same exact question that you had!'],
+  ['text-info', 'Woah! It features the same exact question that you had!'],
 ]
 
 data_two_post_content_two = [
   ['text', 'For the lazies:'],
   ['link', 'http://stackoverflow.com/questions/3822535/fitting-polynomial-model-to-data-in-r'],
-  ['text', 'The top answer (accepted with a green check) offers the following solution:'],
+  ['text-success', 'The top answer (accepted with a green check) offers the following solution:'],
   ['code', 'large_polynomial_fit = lm(y ~ x + I(x^2) + I(x^3), data=data_two)'],
   ['code', 'large_polynomial_fit'],
-  ['text', 'This seems to be for 3rd order polynomials. How do we fix it? Simply remove the larger order!'],
+  ['text-danger', 'This seems to be for 3rd order polynomials. How do we fix it?'],
+  ['text', 'Simply remove the larger order!'],
   ['code', 'quadratic_fit = lm(y ~ x + I(x^2), data=data_two)'],
   ['code', 'quadratic_fit #call summary(polynomial_fit) for more details!']
 ]
 
 data_two_post_content_three = [
-  ['text', 'By default, the trained model only has x-values from the original data set. That\'s about 11 values.'],
+  ['text', 'By default, the trained model only has x-values from the original data set.'],
+  ['text', 'That\'s about 11 values.'],
   ['text', 'We\'ll manually ask the model to predict 1000 granular data points and connect them as a line.'],
-  ['text', 'We\'ll first generate the granular x-values. We\'ll use seq() to achieve that. But what does seq() do?'],
+  ['text', 'We\'ll first generate the granular x-values.'],
+  ['text-success', 'We\'ll use seq() to achieve that. But what does seq() do?'],
   ['code', 'help(seq) #now you know!'],
   ['code', 'xvalues = seq(4, 14, 0.01)'],
   ['text', '"xvalues" now represents a list of numbers from 4 to 14, each incrementing by 0.01'],
-  ['text', 'Now we\'ll calculate the predicted y (known as y-hat).'],
+  ['text-success', 'Now we\'ll calculate the predicted y (known as y-hat).'],
   ['code', 'help(predict) #This help() is a bit vague, so don\'t worry too much about it.'],
   ['code', 'fitted_yhat = predict(quadratic_fit, data.frame(x=xvalues))'],
-  ['text', 'Now we have the 1000 predicted points.'],
+  ['text-info', 'Now we have the 1000 predicted points.'],
 ]
 
 data_two_post_content_four = [
-  ['text', 'We\'ll add in the fitted points from the ORIGINAL data in RED.'],
+  ['text-danger', 'We\'ll add in the fitted points from the ORIGINAL data in RED.'],
   ['code', 'points(data_two$x, predict(quadratic_fit), type="p", col="red", lwd=3)'],
   ['text', 'Note that they overlap perfectly!'],
-  ['text', 'Now to add the 1000 granular predictions as a line.'],
+  ['text-success', 'Now to add the 1000 granular predictions as a line.'],
   ['code', 'lines(x=xvalues, y=fitted_yhat, lwd=2, col="darkgray")'],
   ['text', 'VOILA! Perfect fit. It\'s as if it was meant to fit that well.'],
-  ['text', 'Remember the old days when we tried to fit a linear model? Pepperidge Farm remembers...'],
+  ['text-info', 'Remember the old days when we tried to fit a linear model? Pepperidge Farm remembers...'],
   ['next_steps', nil],
 ]
 
