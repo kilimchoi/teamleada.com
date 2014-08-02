@@ -308,14 +308,14 @@ dataframe_access_slide_three = Slide.create!(
 function_main_content = [
   ['text', 'We\'ll also quickly go over the idea of functions here:'],
   ['text', 'Remember when we called class(some_stuff_here)?'],
-  ['text', 'The "function_name(parameters)" does {#something} with the given parameters.'],
+  ['text-info', 'The "function_name(parameters)" does {#something} with the given parameters.'],
   ['code', 'class(1)'],
   ['text', 'The above function is called class, and it works on the number we gave it, namely "1".'],
   ['code', 'summary(1)'],
   ['text', 'The above function is called summary, and it gives us a summary of the data.'],
   ['text', '1 isn\'t interesting, so let\'s try something else.'],
   ['code', 'summary(my_dataframe$my_numbers) #we created my_dataframe earlier!'],
-  ['text', 'Voila! We\'re applying the "summary" function to a vector we subsetted from our dataframe!'],
+  ['text-success', 'Voila! We\'re applying the "summary" function to a vector we subsetted from our dataframe!'],
   ['lesson_links', nil]
 ]
 function_lesson = Lesson.create!(
@@ -331,13 +331,13 @@ data_access_slide_one = Slide.create!(
 ################################################################################
 
 plot_function_content_one = [
-  ['text', 'One of the important function we\'ll use in Anscombe is the plot() function.'],
+  ['text-info', 'One of the important function we\'ll use in Anscombe is the plot() function.'],
   ['text', 'As you may have guessed, it plots stuff!'],
   ['text', 'So how do we use it? Well, ask for help!'],
   ['code', 'help(plot)'],
-  ['text', 'Note that we omitted the "()" following plot(). This is the convention for help.'], #TODO give it pic
+  ['text-info', 'Note that we omitted the "()" following plot(). This is the convention for help.'], #TODO give it pic
   ['text', 'Usage gives us the specificiation of the function. Don\'t worry about the "(...)" for now.'],
-  ['text', 'It says to give it X and Y. Simple enough!'],
+  ['text-success', 'It says to give it X and Y. Simple enough!'],
   ['code', 'x_to_plot = c(1,2,3)'],
   ['code', 'y_to_plot = c(1,2,3)'],
   ['code', 'plot(x_to_plot, y_to_plot, main="first plot woot!")'],
@@ -345,13 +345,13 @@ plot_function_content_one = [
 
 plot_function_content_two = [
   ['text', 'Our first plot!'],
-  ['text', 'Plot is our primary means of data vizualization.'],
-  ['text', 'Don\'t worry about the "main=" part, yet. (look in help() if you\'re curious).'],
-  ['text', 'Note that R also gives you the tilda (~) option in plotting.'],
+  ['text-info', 'Plot is our primary means of data vizualization.'],
+  ['text-warning', 'Don\'t worry about the "main=" part, yet. (look in help() if you\'re curious).'],
+  ['text-success', 'Note that R also gives you the tilda (~) option in plotting.'],
   ['code', 'plot(y_to_plot ~ x_to_plot, main="second plot yea!")'],
   ['text', 'This plots "y_to_plot" against "x_to_plot". It produces the same plot as before! (with a changed title)'],
   ['text', 'Congrats! Now you know how to plot simple graphs!'],
-  ['text', 'Remember that help(plot) will always give you examples at the bottom.'],
+  ['text-info', 'Remember that help(plot) will always give you examples at the bottom.'],
   ['next_steps', nil]
 ]
 plot_function_step = Step.create!(
