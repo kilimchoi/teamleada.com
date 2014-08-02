@@ -6,7 +6,7 @@ main_page_content = [
   ['text', 'Knowing the different data objects is important, because data objects hold data.'],
   ['text', 'Ultimately if you\'re working with data, the most important concept is accessing and storing data.'],
   ['text', 'You should now open RStudio on a different screen to follow along.'],
-  ['text', 'Happy Learning!']
+  ['text-success', 'Happy Learning!']
 ]
 
 project = Project.create!(
@@ -27,7 +27,7 @@ puts "============ Created project: #{project.title}."
 ################################################################################
 #Create
 data_object_content = [
-		['text', 'Everything in R is an object.'],
+	['text-info', 'Everything in R is an object.'],
   ['text', 'Here we\'ll be focusing on creating the following data obejcts:'],
   ['lesson_links', nil]
 ]
@@ -46,30 +46,31 @@ data_object_slide_one = Slide.create!(
 ################################################################################
 vector_data_content_one = [
   ['text', 'Previously we saw how to store values in a vector.'],
-  ['text', 'Vector is the basic object in R. Even multipliers/scalars are vectors of length 1.'],
+  ['text-info', 'Vector is the basic object in R.'], 
+  ['text', 'Even multipliers/scalars are vectors of length 1.'],
   ['code', 'vector_one = c(1,2,3,4,5,6)'],
   ['code', 'vector_one'],
-  ['text', 'To access data in the vector, the syntax in R is to use brackets [] and the index number of what you want to select.'],
-  ['text', 'Unlike most programming languages, R starts indexing at 1 instead of 0.'],
+  ['text-info', 'To access data in the vector, the syntax in R is to use brackets [] and the index number of what you want to select.'],
+  ['text-danger', 'Unlike most programming languages, R starts indexing at 1 instead of 0.'],
   ['code', 'vector_one[1]'],
   ['code', 'vector_one[1:3] #This grabs the first three values'],
-  ['text', 'What about invalid requests?'],
+  ['text-success', 'What about invalid requests?'],
   ['code', 'vector_one[0]'],
   ['code', 'vector_one[10]'],
 ]
 vector_data_content_two = [
-  ['text', 'Note that you can consider a vector as a single column of a matrix'],
-  ['text', 'This means you can apply elementary operations via scalar operations, as shown below.'],
+  ['text-warning', 'Note that you can consider a vector as a single column of a matrix'],
+  ['text-success', 'This means you can apply elementary operations via scalar operations, as shown below.'],
   ['code', 'bigger_vector = vector_one * 5'],
   ['code', 'bigger_vector'],
-  ['text', 'This means vector wise comparison works too!'],
+  ['text-info', 'This means vector wise comparison works too!'],
   ['code', 'bigger_vector == vector_one #remember that \'=\' assigns values, whereas \'==\' compares.'],
   ['code', 'bigger_vector == (vector_one * 5)'],
   ['code', 'bigger_vector - vector_one #vector to vector math!'],
   ['code', 'class(bigger_vector)'],
   ['text', 'Keep in mind that we\'re not assigning the result from the minus operation above;'],
-  ['text', 'This means the values are printed and then lost.'],
-  ['text', 'If we wanted to use the result, we\'d need to save the result via "=".'],
+  ['text-danger', 'This means the values are printed and then lost.'],
+  ['text-info', 'If we wanted to use the result, we\'d need to save the result via "=".'],
   ['next_steps', nil]
 ]
 
@@ -94,30 +95,30 @@ vector_data_slide_two = Slide.create!(
 ################################################################################
 
 matrix_data_content_one = [
-	['text' ,'A natural extension of Vectors is the Matrix.'],
+	['text-success' ,'A natural extension of Vectors is the Matrix.'],
 	['code','row_wise = matrix(data=c(3, 4, 5, 6, 7, 8), nrow=2, ncol=3, byrow = TRUE)'],
 	['code','col_wise = matrix(data=c(3, 4, 5, 6, 7, 8), nrow=2, ncol=3, byrow = FALSE)'],
 	['code','row_wise'],
 	['code','col_wise'],
 	['code','class(col_wise)'],
-	['text','Can you guess how this works?'],
+	['text-info','Can you guess how this works?'],
 	['text','We give the matrix() function the vector-data via "data=" option.'],
 	['text','We then tell it how many rows and columns via "nrow=" and "ncol=" option.'],
 	['text','"byrow" specifies the order in which we populate the matrix: row-wise or column-wise.'],
-	['text','R handles the rest.'],
+	['text-warning','R handles the rest.'],
 ]
 matrix_data_content_two = [
 	['text', 'What about mal-formed requests? Try it! We encourage you to try weird things. Who knows, it might work!'],
-	['text', 'We try to create a 10 by 10 matrx below, while only giving it 6 data points. What happens?'],
+	['text-success', 'We try to create a 10 by 10 matrx below, while only giving it 6 data points. What happens?'],
 	['code', 'weird_matrix = matrix(data=c(3, 4, 5, 6, 7, 8), nrow=10, ncol=10, byrow = TRUE)'],
-	['text', 'You get a warning message. But did it work? YES! R tries to create the matrix.'],
+	['text-danger', 'You get a warning message. But did it work? YES! R tries to create the matrix.'],
 	['text', 'It does so by repeating the data enough times (last repetition is partial) to fill the matrix.'],
 	['text', '(this isn\'t recommended until you\'re more familiar with R)'],
 	['code', 'weird_matrix'],
-	['text', 'Where else could you have gotten that information?'],
+	['text-success', 'Where else could you have gotten that information?'],
 	['code', 'help(matrix)'],
 	['text', 'WOAH! It offers the same information we just imparted. It also has useful examples at the very bottom.'],
-	['text', 'Help is always there if you need it.'],
+	['text-info', 'Help is always there if you need it.'],
 	['next_steps', nil]
 ]
 
