@@ -2,7 +2,8 @@ main_page_content = [
   ['text', 'This bootcamp will introduce and explain three topics which will be utilized in the Titanic: Machine Learning from Disaster data project created by Kaggle.'],
   ['text', '- Data manipulation in R'],
   ['text', '- Creating visualizations in R'],
-  ['text', '- Programming in R']
+  ['text', '- Programming in R'],
+  ['text-success', "Let's get started!"],
 ]
 
 project = Project.create!(
