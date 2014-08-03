@@ -7,13 +7,12 @@ main_page_content = [
   ['text', "Web Networks"],
   ['text', "Often times, the graph data mentioned above can't be properly analyzed via a single computer."],
   ['text', "This is when distributed systems such as Hadoop come in."],
-  ['text', "Here you will be doing simple graph traversal via MapReduce to understand the power and limitations of distributed computing."],
 ]
 
 project = Project.create!(
   title:"Graph Traversal via Hadoop MapReduce",
   description: main_page_content,
-  short_description: "In this challenge you are tasked to do a graph traversal via MapReduce. You will be given a set of graph data to traverse. In the process, you will choose the graph representation, the algorithm, and more. Once you design the code, you can optionally write a functional MapReduce code.",
+  short_description: "In this challenge you are tasked with designing and writing a graph traversal via MapReduce. You will be given a set of graph data to traverse. In the process, you will choose the graph representation, the algorithm, and more. Once you design the code, you can optionally write a functional MapReduce code.",
   number: 16,
   enabled: true,
   uid: 16,
