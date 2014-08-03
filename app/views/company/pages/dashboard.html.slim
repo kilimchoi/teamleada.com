@@ -8,7 +8,7 @@
         .col-md-3
           h3 Favorited Users
           .list-group
-            - current_user.favorited_users.each do |user|
+            - @company.favorited_users.each do |user|
               = link_to company_user_path(user), class: "list-group-item" do
                 h4.list-group-item-heading = user.name
                 p.list-group-item-text
