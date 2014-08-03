@@ -23,6 +23,12 @@ class UserInteraction < ActiveRecord::Base
 
   scope :sort_by_favorited_at, -> { order(:favorited_at) }
 
+  before_create :set_company
+
+  def set_company
+    self.company = interactor.company
+  end
+
   def set_favorited
     self.favorited = true
     self.favorited_at = Time.now
