@@ -14,10 +14,16 @@
                 .caption
                   h3.inline-block = user.name
                   - if current_user.favorited?(user)
-                    = link_to unfavorite_company_user_path(user), remote: true, method: :post, class: "not-link" do
+                    = link_to unfavorite_company_user_path(user), remote: true,
+                                                                  method: :post,
+                                                                  class: "not-link has-tooltip",
+                                                                  data: { toggle: "tooltip", placement: "top" }, title: "Unfavorite" do
                       i.inline-block.fa.fa-star.unfavorite-user
                   - else
-                    = link_to favorite_company_user_path(user), remote: true, method: :post, class: "not-link" do
+                    = link_to favorite_company_user_path(user), remote: true,
+                                                                method: :post,
+                                                                class: "not-link has-tooltip",
+                                                                data: { toggle: "tooltip", placement: "top" }, title: "Favorite" do
                       i.inline-block.fa.fa-star-o.favorite-user
                   p
                     = link_to "View Profile", company_user_path(user), class: "btn btn-leada"
