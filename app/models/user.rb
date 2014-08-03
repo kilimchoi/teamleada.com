@@ -170,6 +170,9 @@ class User < ActiveRecord::Base
   # Class Methods
   #
   class << self
+    def company_per_page
+      20
+    end
 
     def ordered_find_by_ids(user_ids, reverse=true)
       if reverse
