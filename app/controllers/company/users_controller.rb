@@ -20,7 +20,7 @@ class Company::UsersController < Company::BaseController
         format.json { render json: { message: "You have already favorited #{@user.name}." } }
       end
     end
-    user_interaction.favorited = true
+    user_interaction.set_favorited
     if user_interaction.save
       respond_to do |format|
         format.json { head :ok }
@@ -39,7 +39,7 @@ class Company::UsersController < Company::BaseController
         format.json { render json: { message: "You have already unfavorited #{@user.name}." } }
       end
     end
-    user_interaction.favorited = false
+    user_interaction.set_unfavorited
     if user_interaction.save
       respond_to do |format|
         format.json { head :ok }
