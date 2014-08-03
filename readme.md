@@ -110,6 +110,10 @@ If you get a bad gateway, make sure rails is running. if nothing is rendering, i
     sudo nginx -s stop
     sudo nginx
 
+## Install/Config Nginx
+  gem instlal unicorn
+  
+
 ## Live Reload
 
 We are currently using `livereload` so that when you edit views and assets, they are automatically updated on the web browser (no refreshing anymore).
