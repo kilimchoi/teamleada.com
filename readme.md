@@ -114,6 +114,9 @@ If you get a bad gateway, make sure rails is running. if nothing is rendering, i
     gem instlal unicorn
 Set up unicorn as follows
     #some unicorn setup
+
+There is a sample unicorn/nginx config at:
+https://github.com/defunkt/unicorn/tree/master/examples
     
     unicorn_rails -c /www/prod-dir/teamleada.com/config/unicorn.rb
 
