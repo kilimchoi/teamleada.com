@@ -1,6 +1,6 @@
 
 main_page_content = [
-  ['text', "In this challenge, we'll build off of the flu trends data lesson."],
+  ['text', "In this challenge, we will build off of the flu trends data lesson."],
   ['text', "You are given a new dataset to build a time series model."],
   ['text', "You are given a time frame, as well as a submission count limit."],
   ['text', "You will be evaluated on the complexity of the model and the accuracy of your predictions."],
@@ -10,7 +10,7 @@ main_page_content = [
 project = Project.create!(
   title:"Time Series Challenge",
   description: main_page_content,
-  short_description: "In this challenge you will be tasked to build a time series model on a piece of data. You are free to use any package or language. You will be evaluated on the accuracy of the model as well as it's complexity. You will also submit a short report and presentation of your analysis.",
+  short_description: "In this challenge you will be tasked with building a time series model. You are free to use any package or language. You will be evaluated on the accuracy of the model as well as it's complexity. You will also submit a short report and presentation of your analysis.",
   number: 17,
   enabled: true,
   uid: 17,
@@ -139,7 +139,7 @@ submission_slide_one = Slide.create!(
 )
 
 timeseries_src_submission = SubmissionContext.create!(
-  title: "Time Series Src",
+  title: "Source Code Submission",
   description: "User is asked to submit the code used to create/predict with a time series model.",
   slide: submission_slide_one,
   submission_context_id: 0,
@@ -183,7 +183,7 @@ submission_slide_two = Slide.create!(
 )
 
 prediciton_submission_one= SubmissionContext.create!(
-  title: "Time Series Prediciton 1",
+  title: "Prediction 1 Submission",
   description: "User is asked to submit the prediction for the first dataset chosen.",
   slide: submission_slide_one,
   submission_context_id: 0,
@@ -191,7 +191,7 @@ prediciton_submission_one= SubmissionContext.create!(
 )
 
 prediciton_submission_two = SubmissionContext.create!(
-  title: "Time Series Prediction 2",
+  title: "Prediction 2 Submission",
   description: "User is asked to submit the prediction for the second dataset chosen.",
   slide: submission_slide_two,
   submission_context_id: 0,
@@ -202,6 +202,7 @@ prediciton_submission_two = SubmissionContext.create!(
 
 submission_reporting_content_one = [
   ['text', "Written Report:"],
+  ['text', "Should probably put some details about what we want the report to look like. At least word count."]
   ['text', "Paste in a link to your report:"],
   ['user_code', ""],
   ['next_steps', nil],
@@ -220,7 +221,7 @@ submission_report_slide_one = Slide.create!(
 )
 
 submission_reporting_submission = SubmissionContext.create!(
-  title: "Time Series Report",
+  title: "Report and Presentation Submission",
   description: "User is asked to submit the reporting for the prediction/process.",
   slide: submission_report_slide_one,
   submission_context_id: 0,
@@ -235,7 +236,7 @@ conclusion_content_one = [
 ]
 
 conclusion_lesson = Lesson.create!(
-  title: "Time Series Challenge: Conclusion",
+  title: "Conclusion",
   project: project,
   lesson_id: 4,
 )
