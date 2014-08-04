@@ -228,8 +228,10 @@ density_plot_content = [
   ['text', 'It is important to understand PDFs for many types of statistical analyses.'],
   ['text-success', 'One common example is checking normality assumptions.'],
   ['code', 'plot(density(ChickWeight$weight), main = "PDF of Chick Weight Variable")'],
-  ['text', 'Looking at the visualization you can see that from the data given its most likely that a randomly selected chick weighs approximately 80 grams.'],
-  ['text', 'The plot() function is the generic function for plotting objects in R. Check help for all of the arguments in the function there are a lot! We add additional arguments for clarity below:'],
+  ['text', 'Looking at the visualization you can see that from the data given, it is likely that a randomly selected chick weighs approximately 80 grams.'],
+  ['text-info', 'The plot() function is the generic function for plotting objects in R.'],
+  ['text', 'Check help for all of the arguments in the function; there are a lot!'],
+  ['text',  'We add additional arguments for clarity below:'],
   ['code', 'plot(density(ChickWeight$weight), main="PDF of Chick Weight Variable", xlab = "Weight", ylab = "Probability")'],
   ['next_steps', nil],
 ]
