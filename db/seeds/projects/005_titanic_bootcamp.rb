@@ -299,8 +299,9 @@ if_else_content_two = [
   ['code', '} else {'],
   ['code', '  print("Something\'s Wrong.")'],
   ['code', '}'],
-  ['text-success', 'We interpret the above code snippet as follows'],
-  ['text', ' - We first check the logical condition, and since it is true we go into the first statement.'],
+  ['text-success', 'We interpret the above code snippet as follows:'],
+  ['text', ' - We first evaluate and check the logical condition.'],
+  ['text', ' - Since it is true we go into the first statement.'],
   ['text', ' - Then we exit the if/else statement.'],
   ['text', 'As a result, if/else statements create mutually exclusive events.'],
   ['text-warning', 'Therefore the above if/else statment will either print "Knew it!" or "Something\'s wrong", but never both.'],
@@ -308,7 +309,8 @@ if_else_content_two = [
 
 
 if_else_content_three = [
-  ['text', 'You can also add additional "else" cases to make more complex if/else statements! We do an example here with the ChickWeight data'],
+  ['text-info', 'You can also add additional "else" cases to make more complex if/else statements.'],
+  ['text', 'We do an example here with the ChickWeight data:'],
   ['code', 'chick_weight = ChickWeight$weight[1]'],
   ['code', 'if (chick_weight == 100) {'],
   ['code', '  print("Fatty")'],
@@ -322,9 +324,13 @@ if_else_content_three = [
 ]
 
 if_else_content_four = [
-  ['text', 'Here we set a variable "chick_weight" to be the first chick weight in the ChickWeight dataset.'],
-  ['text', 'In the if/else statement we check first if its equal to 100, if its greater than 50, and if its less than 20. If at anytime the logical condition is true it immediately goes into the statement below it and then exits the entire if/else statement.'],
-  ['text', 'Since none of the logical conditions were true we ended with the final statement!'],
+  ['text-success', 'Here we set a variable "chick_weight" to be the weight of the first chick in the ChickWeight dataset.'],
+  ['text', 'In the if/else statement, we first check in the following order:'],
+  ['text', ' - if it\'s equal to 100'],
+  ['text', ' - if it\'s greater than 50'],
+  ['text', ' - if it\'s less than 20'],
+  ['text', 'If at anytime the logical condition evaluates true, it immediately goes into the statement below, and then exit.'],
+  ['text-warning', 'Since none of the logical conditions were true, we ended with the final statement clause!'],
   ['next_steps', nil],
 ]
 
@@ -362,32 +368,33 @@ if_else_slide_four = Slide.create!(
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-
 for_loop_content = [
-  ['text', 'The next concept we will cover for programming in R is the "For Loop". The for loop repeats a statement or a series of statements a predefined number of times. Lets take a look at its form:'],
+  ['text', 'The next concept we\'ll cover is the "For Loop".'],
+  ['text-success', 'The for loop repeats a statement or a series of statements for a specified number of times (or until a condition is met.)'],
+  ['text', 'Lets take a look at one of its form in R:'],
   ['code', 'for( name of vector ) {'],
-  ['code', 'statement 1'],
-  ['code', 'statement 2'],
+  ['code', '  statement 1'],
+  ['code', '  statement 2'],
   ['code', '}'],
   ['text', 'How it works is most easily shown through examples.'],
-  ['text', 'Here we define a vector "five_times" to be the numbers 1 through 5. Then the for loop is read "for each i in the vector five_times, print i"'],
+  ['text', 'Here we define a vector "five_times" to be a vector of the numbers 1 through 5.'],
+  ['text-warning', 'Then the for loop is read: "for each i in the vector five_times, print i"'],
   ['code', 'five_times = c(1:5)'],
   ['code', 'for(i in five_times) {'],
   ['code', '  print(i)'],
   ['code', '}'],
 ]
 
-
-
 for_loop_content_two = [
-  ['text', 'Remember that within the statement block you can do any type of data manipulation. Here we loop through the number of observations in the ChickWeight weight and add five to each one.'],
+  ['text-info', 'Remember that within the statement, block you can do any type of data manipulation.'],
+  ['text-success', 'Here we loop through the number of observations in the ChickWeight weight and add five to each observation.'],
   ['code', 'numofchicks = length(ChickWeight$weight)'],
   ['text', 'Lets check the weight of the chicks before we implement this for loop'],
   ['code', 'head(ChickWeight$weight)'],
   ['code', 'for(i in c(1:numofchicks)) {'],
   ['code', '  ChickWeight$weight[i] = ChickWeight$weight[i] + 5'],
   ['code', '}'],
-  ['text', 'Lets now check the weight of the chicks after.'],
+  ['text', 'Lets now re-check the weight of the chicks.'],
   ['code', 'head(ChickWeight$weight)'],
 ]
 
