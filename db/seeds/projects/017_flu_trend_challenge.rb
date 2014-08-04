@@ -51,10 +51,10 @@ main_page_slide = Slide.create!(
 ################################################################################
 
 deliverables_content_one = [
-  ['text', "You will submit the following deliverables:"],
-  ['text', "All source code which you used to make your predictions."],
-  ['text', "Two separate predictions for the 2 datasets you selected."],
-  ['text', "Reporting for your result and a presentation of your findings."],
+  ['text-info', "You will submit the following deliverables:"],
+  ['text', " - All source code which you used to make your predictions."],
+  ['text', " - Two separate predictions for the 2 datasets you selected."],
+  ['text', " - Reporting for your result and a presentation of your findings."],
   ['next_steps', nil],
 ]
 
@@ -119,7 +119,7 @@ main_page_slide = Slide.create!(
 ################################################################################
 
 submission_src_content_one = [
-  ['text', "Paste in all your source code below:"],
+  ['text-success', "Paste in all your source code below:"],
   ['text', "Be sure to have concise and informative comments."],
   ['text', "If you used any non-standard packages, explain the sources in the comments."],
   ['user_code', ""],
@@ -149,17 +149,18 @@ timeseries_src_submission = SubmissionContext.create!(
 ################################################################################
 
 submission_prediction_content_one = [
-  ['text', "Paste in your first set of predictions below:"],
+  ['text-info', "PREDICTION 1"],
+  ['text-success', "Paste in your first set of predictions below:"],
   ['text', "The first line should specify which series you are predicting."],
-  ['text', "From the 2nd line, include a single value per line, with comma optional (the submission should be 101 lines.)"],
+  ['text-danger', "From the 2nd line, include a single value per line, with comma optional (the submission should be 101 lines.)"],
   ['user_code', ""],
-  ['next_steps', nil],
 ]
 
 submission_prediction_content_two = [
-  ['text', "Paste in your second set of predictions below:"],
+  ['text-info', "PREDICTION 2"],
+  ['text-success', "Paste in your second set of predictions below:"],
   ['text', "The first line should specify which series you are predicting."],
-  ['text', "From the 2nd line, include a single value per line, with comma optional (the submission should be 101 lines.)"],
+  ['text-danger', "From the 2nd line, include a single value per line, with comma optional (the submission should be 101 lines.)"],
   ['user_code', ""],
   ['next_steps', nil],
 ]
