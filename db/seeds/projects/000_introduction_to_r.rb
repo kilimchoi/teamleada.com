@@ -69,7 +69,7 @@ basic_operations_slide_one = Slide.create!(
 basic_math_content_one = [
   ['text', 'Let us first try the most basic operations.'],
   ['code', '5 + 5'],
-  ['text-success', 'En-successter what you get below:'],
+  ['text-success', 'Enter what you get below:'],
   ['quiz', 'onboard_1'],
   ['text-info', 'You can also use functions built in R such as sqrt() or abs() to do mathematical operations.'],
   ['code', 'sqrt(16)'],
