@@ -29,11 +29,11 @@ puts "============ Created project: #{project.title}."
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 manipulate_data_content = [
-  ['text', 'To teach data manipulation concepts we will work with a preloaded dataset "ChickWeight" in R.'],
-  ['text', 'First familiarize yourself with the data by outputting it and reading about it in the help section'],
-  ['text', 'To look at the raw data'],
+  ['text', 'To teach data manipulation concepts, we will work with a preloaded dataset "ChickWeight" in R.'],
+  ['text', 'First familiarize yourself with the data by outputting it and reading about it in the help section.'],
+  ['text-success', 'To look at the raw data:'],
   ['code', 'ChickWeight'],
-  ['text', 'To access information about the dataset'],
+  ['text-success', 'To access information about the dataset:'],
   ['code', 'help(ChickWeight)'],
   ['lesson_links', nil],
 ]
@@ -54,13 +54,13 @@ manipulate_slide = Slide.create!(
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 view_data_content = [
-  ['text', 'Lets first determine what data type the ChickWeight dataset is in R.'],
-  ['text', 'It looks to be in the standard data frame form, but to verify this you can write'],
+  ['text-info', 'Lets first determine what data type the ChickWeight dataset is in R.'],
+  ['text', 'It looks to be in the standard data frame form, but to verify try the following:'],
   ['code', 'is.data.frame(ChickWeight)'],
-  ['text', 'To see how many columns or rows the ChickWeight data frame has we can use the following functions:'],
+  ['text', 'To see how many columns or rows the ChickWeight data frame has, we can use the following functions:'],
   ['code', 'nrow(ChickWeight)'],
   ['code', 'ncol(ChickWeight)'],
-  ['text', 'If you want to look at the first six rows of the data frame you can use the head() function'],
+  ['text', 'If you want to look at the first six rows of the data frame you can use the head() function:'],
   ['code', 'head(ChickWeight)'],
   ['text', 'What is the weight of the sixth chick?'],
   ['quiz', 't_bootcamp_1'],
@@ -72,11 +72,11 @@ quiz = Quiz.create!(
 )
 
 view_data_content_two = [
-  ['text', 'You can also see the last six rows by using the tail() function'],
+  ['text', 'You can also see the last six rows by using the tail() function:'],
   ['code', 'tail(ChickWeight)'],
-  ['text', 'To list the names of the columns in the data frame enter'],
+  ['text', 'To list the names of the columns in the data frame enter:'],
   ['code', 'colnames(ChickWeight)'],
-  ['text', 'If you want to select individual columns of a data frame you use the "$" followed by the title of the column you want to select.'],
+  ['text', 'If you want to select individual columns of a data frame you use the "$" followed by the title of the column you want to select:'],
   ['code', 'ChickWeight$weight'],
   ['next_steps', nil],
 ]
@@ -103,20 +103,23 @@ view_data_slide_two = Slide.create!(
 
 
 index_data_content = [
-  ['text', 'You can also index by position in three ways. The first way is in "matrix" format. You can select by [row,column] from the ChickWeight data frame'],
+  ['text-info', 'You can index by position in three ways.'],
+  ['text-success', 'The 1st way is in "matrix" format. You can select by [row,column] from the ChickWeight data frame:'],
   ['code', 'ChickWeight[1,1]'],
-  ['text', 'You can also index individual columns by using the "$" and then index in vector format. Here we select the 5th value from the weight column in the ChickWeight dataset'],
+  ['text-success', 'Secondly, you can also index individual columns by using the "$" and then index in vector format. Here we select the 5th value from the weight column in the ChickWeight dataset'],
   ['code', 'ChickWeight$weight[5]'],
   ['text', 'If we wanted to grab a range of values in the weight column we index by a vector of values'],
   ['code', 'ChickWeight$weight[c(1:5)]'],
-  ['text', 'Finally you can index a dataset by logical comparisons. Here we select all of the weights which are greater than 70.'],
+  ['text-success', 'Lastly you can index a dataset by logical comparisons. Here we select all of the weights which are greater than 70.'],
   ['code', 'ChickWeight$weight[ChickWeight$weight > 70]'],
 ]
 
 index_data_content_two = [
-  ['text', 'If we want to index and return the entire dataset we can again use the same [row, column] format. We index the entire data frame by selecting all rows where the weight is greater than 70.'],
+  ['text-info', 'If we want to index and return the entire dataset we can again use the same [row, column] format.'],
+  ['text', 'We index the entire data frame by selecting all rows where the weight is greater than 70.'],
   ['code', 'data_with_weight_greater_than_ten = ChickWeight[ChickWeight$weight > 70, ]'],
-  ['text', 'We assign this newly indexed data frame to the variable name data_with_weight_greater_than_ten. To view it use the head() function.'],
+  ['text', 'We assign this newly indexed data frame to the variable name data_with_weight_greater_than_ten.'],
+  ['text', 'To view it use the head() function.'],
   ['code', 'head(data_with_weight_greater_than_ten)'],
   ['next_steps', nil],
 ]
@@ -147,8 +150,10 @@ index_slide_two = Slide.create!(
 
 
 visualize_bootcamp_content = [
-  ['text', 'R has tons of extra resources for making complex visualizations. In this bootcamp we will introduce a couple of the most basic ones.'],
-  ['text', 'R\'s powerful visualization tools are one of its biggest advantages though so be sure to do your own research on how to create beautiful graphics.'],
+  ['text-info', 'R has tons of extra resources for making complex visualizations.'],
+  ['text', 'In this bootcamp we will introduce a couple of the most basic ones.'],
+  ['text', 'R\'s powerful visualization tools are one of its biggest advantages.'],
+  ['text', 'Be sure to do your own research on how to create beautiful graphics.'],
   ['lesson_links', nil]
 ]
 
@@ -168,21 +173,25 @@ visualize_bootcamp_slide = Slide.create!(
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 barplot_bootcamp_content = [
-  ['text', 'To make a barplot we will first utilize the table() function in R. The table function calculates frequencies for a given variable. For example lets determine what was the frequency of the Diets in the ChickWeight dataset'],
+  ['text-info', 'To make a barplot we will first utilize the table() function in R.'],
+  ['text', 'The table() function calculates frequencies for a given variable.'],
+  ['text', 'For example, let\'s determine the frequency of the Diets in the ChickWeight dataset:'],
   ['code', 'diet_freq = table(ChickWeight$Diet)'],
   ['text', 'What is the frequency of diet type 2 and 3?'],
   ['quiz', 't_bootcamp_2'],
-  ['text', 'If we wanted to see the frequency by Diet AND weight we can add it as a parameter in the table() function'],
+  ['text', 'If we wanted to see the frequency by Diet AND weight, we can add it as a parameter in the table() function:'],
   ['code', 'table(ChickWeight$weight, ChickWeight$Diet)'],
 
 ]
 
 barplot_bootcamp_content_two = [
-  ['text', 'To create a barplot we use the barplot() function in R. Lets just plot the frequency of the ChickWeight diet types.'],
+  ['text-info', 'To create a barplot we use the barplot() function in R.'],
+  ['text', 'Lets just plot the frequency of the ChickWeight diet types.'],
   ['code', 'barplot(diet_freq)'],
-  ['text', 'There are a lot of additional arguments you can input into the barplot function. Check them out by using the help() function.'],
+  ['text', 'There are many additional arguments you can input into the barplot function.'],
+  ['text-success', 'Check them out by using the help() function.'],
   ['code', 'help(barplot)'],
-  ['text', ' We do some of the basic ones such as setting the length for the y-axis, labeling the axes, and the plot title.'],
+  ['text', ' We pass on basic parameters such as setting the length for the y-axis, labeling the axes, and the plot title.'],
   ['code', 'barplot(table(ChickWeight$Diet), ylim = c(0,250), ylab = "Observations", xlab = "Diet Type", main = "Chick Weight Diet")'],
   ['next_steps', nil],
 ]
@@ -214,7 +223,10 @@ barplot_bootcamp_slide_two = Slide.create!(
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 density_plot_content = [
-  ['text', 'Next we will show you how to estimate the probability density function of a variable. A PDF is a function which describes the probability of that variable taking a given value. It is important to understand PDFs for many types of statistical analyses. One example is checking normality assumptions.'],
+  ['text', 'Next we will show you how to estimate the probability density function (PDF) of a variable.'],
+  ['text-info', 'A PDF is a function which describes the probability of that variable taking a given value.'],
+  ['text', 'It is important to understand PDFs for many types of statistical analyses.'],
+  ['text-success', 'One common example is checking normality assumptions.'],
   ['code', 'plot(density(ChickWeight$weight), main = "PDF of Chick Weight Variable")'],
   ['text', 'Looking at the visualization you can see that from the data given its most likely that a randomly selected chick weighs approximately 80 grams.'],
   ['text', 'The plot() function is the generic function for plotting objects in R. Check help for all of the arguments in the function there are a lot! We add additional arguments for clarity below:'],
