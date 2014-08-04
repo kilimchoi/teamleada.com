@@ -7,6 +7,7 @@ main_page_content = [
   ['text', "Web Networks"],
   ['text', "Often times, the graph data mentioned above can't be properly analyzed via a single computer."],
   ['text', "This is when distributed systems such as Hadoop come in."],
+  ['text-success', "Let's get started!"],
 ]
 
 project = Project.create!(
@@ -58,7 +59,7 @@ setup_main_slide = [
   ['text', "This one focuses more on application:"],
   ['link', "http://highlyscalable.wordpress.com/2012/02/01/mapreduce-patterns/#attachment_287"],
   ['text', "Come back and refer to these resources if you are stuck!"],
-  ['text', "Now, before we dive into writing MapReduce code, we have to design a few things:"],
+  ['text-info', "Now, before we dive into writing MapReduce code, we have to design a few things:"],
   ['lesson_links', ""],
 ]
 
@@ -83,8 +84,8 @@ background_content_one = [
   ['text', "The first thing you decide to build is a simple system that determines the distance between 2 products."],
   ['text', "You ask yourself, how do you determine the 'distance' between 2 products?"],
   ['text', "After consulting with fellow engineers, you decide on using the shortest network distance between the products that were bought during the same transaction."],
-  ['text', "This means an edge exists between 2 products, only if they were purchased during the same transaction."],
-  ['text', "To save on memory footprint, you sample an anonymized graph dataset, show below:"],
+  ['text-info', "This means an edge exists between 2 products, only if they were purchased during the same transaction."],
+  ['text-success', "To save on memory footprint, you sample an anonymized graph dataset, show below:"],
   ['link', "https://s3.amazonaws.com/leada/amazon_proj_data/amazon0601.txt.gz"],
   ['text', "Link to the product entity mapping is as follows:"],
   ['link_invalid', "some link"],
@@ -92,9 +93,9 @@ background_content_one = [
 
 background_content_two = [
   ['text', "With this data, you have a list of directed edges, each representing a co-purchase."],
-  ['text', "How many Nodes are there in the data?"],
+  ['text-warning', "How many Nodes are there in the data?"],
   ['quiz', "mr_data_node_count"],
-  ['text', "How many Edges are there in the data?"],
+  ['text-warning', "How many Edges are there in the data?"],
   ['quiz', "mr_data_edge_count"],
   ['text', "The full dataset is significantly larger, but we want to make sure that the algorithm runs on a smaller subset."],
   ['next_steps', ""],
@@ -133,7 +134,7 @@ data_representation_content_one = [
   ['text', "Now lets start with the data representation."],
   ['text', "There are different ways to represent graph data. Below are some resources on graph data representation."],
   ['link', "http://www.geeksforgeeks.org/graph-and-its-representations/"],
-  ['text', "Given the context, what kind of representation do you plan to use, and why?"],
+  ['text-warning', "Given the context, what kind of representation do you plan to use, and why?"],
   ['user_response', "@TODO leave response ID here"],
   ['next_steps', ""],
 ]
@@ -163,14 +164,14 @@ data_represent_submission = SubmissionContext.create!(
 algorithm_content_one = [
   ['text', "There are many different ways to find the shortest distance."],
   ['text', "Don't quite worry about writing MapReduce code yet."],
-  ['text', "Describe the algorithm you plan to employ to finding the shortest path between the products."],
-  ['text', "Why this particular algorithm? What are the strength/weakness/shortfall? Scalability?"],
+  ['text-success', "Describe the algorithm you plan to employ to finding the shortest path between the products."],
+  ['text-warning', "Why this particular algorithm? What are the strength/weakness/shortfall? Scalability?"],
   ['user_response', "@TODO probably/prefebly a submission id"],
 ]
 
 algorithm_content_two = [
   ['text', "The algorithm (hopefully) should have a certain degree of iterative properties."],
-  ['text', "In the next Mapper section, don't worry about explaining the iterative mechanics, but rather focus on a single iteration."],
+  ['text-info', "In the next Mapper section, don't worry about explaining the iterative mechanics, but rather focus on a single iteration."],
   ['text', "Same thing goes for the Reducer section."],
   ['text', "We'll hammer out more of the iteration in the last part."],
   ['next_steps', ""],
@@ -227,7 +228,7 @@ mapper_main_slide = Slide.create(
 
 mapper_input_content_one = [
   ['text', "Your mapper should have a fixed input k-v pair."],
-  ['text', "What kind of input (in key-val) do you expect your mapper to have, given the problem context?"],
+  ['text-warning', "What kind of input (in key-val) do you expect your mapper to have, given the problem context?"],
   ['text', "Add any explanation as necessary."],
   ['user_response', "@TODO response_id if applicable"],
   ['next_steps', ""],
@@ -254,7 +255,7 @@ mapper_input_submission = SubmissionContext.create!(
 )
 ################################################################################
 mapper_function_content_one = [
-  ['text', "Now describe in more detail what your mappers are actually going to do:"],
+  ['text-warning', "Now describe in more detail what your mappers are actually going to do:"],
   ['user_response', "@TODO response_id if applicable"],
   ['next_steps', ""],
 ]
@@ -280,8 +281,8 @@ mapper_function_submission = SubmissionContext.create!(
 )
 ################################################################################
 mapper_output_content_one = [
-  ['text', "Lastly, you have to decide what your mapper is going to output."],
-  ['text', "Remember that the key-value output from your Mapper will eventually be fed into the reducer(s)."],
+  ['text-warning', "Lastly, you have to decide what your mapper is going to output."],
+  ['text-success', "Remember that the key-value output from your Mapper will eventually be fed into the reducer(s)."],
   ['text', "Add any explanation as necessary."],
   ['user_response', "@TODO response_id if applicable"],
   ['next_steps', ""],
@@ -333,7 +334,7 @@ reducer_main_slide = Slide.create(
 
 reducer_input_content_one = [
   ['text', "Reducer inputs are a list of values grouped by their output keys from the Mapper output."],
-  ['text', "What kind of input do you expect your reducer to have, given the Mapper you designed earlier?"],
+  ['text-warning', "What kind of input do you expect your reducer to have, given the Mapper you designed earlier?"],
   ['user_response', "@TODO response_id if applicable"],
   ['next_steps', ""],
 ]
@@ -362,7 +363,7 @@ reducer_input_submission = SubmissionContext.create!(
 
 reducer_function_content_one = [
   ['text', "What is the main function of your reducer?"],
-  ['text', "Describe in a paragraph what your reducer is going to accomplish."],
+  ['text-warning', "Describe in a paragraph what your reducer is going to accomplish."],
   ['user_response', "@TODO response_id if applicable"],
   ['next_steps', ""],
 ]
@@ -389,9 +390,9 @@ reducer_function_submission = SubmissionContext.create!(
 
 ################################################################################
 reducer_output_content_one = [
-  ['text', "Lastly, you have to worry about what your reducer will output."],
+  ['text-warning', "Lastly, you have to worry about what your reducer will output."],
   ['text', "Keep in mind that some form of the reducer output will eventually be re-fed into the mapper."],
-  ['text', "You don't have to explain the loop yet, but keep in mind that it'll eventually have to iterate."],
+  ['text-success', "You don't have to explain the loop yet, but keep in mind that it'll eventually have to iterate."],
   ['user_response', "@TODO response_id if applicable"],
   ['next_steps', ""],
 ]
@@ -429,7 +430,7 @@ iteration_lesson = Lesson.create!(
 iteration_main_content_one = [
   ['text', "Now that you've setup both the Mapper and the Reducer, you can worry about iterating."],
   ['text', "Hopefully you had a vague plan when you were designing your Mapper and Reducer."],
-  ['text', "Let's figure out those specific details."],
+  ['text-success', "Let's now figure out those specific details."],
   ['lesson_links', ""],
 ]
 
@@ -442,8 +443,8 @@ iteration_main_slide = Slide.create(
 ################################################################################
 
 iteration_iterate_content_one = [
-  ['text', "Since you have a set Mapper and Reducer, how do you plan on iterating the algorithm?"],
-  ['text', "Remember to discuss from a high level view of what you're trying to accomplish."],
+  ['text-warning', "Since you have a set Mapper and Reducer, how do you plan on iterating the algorithm?"],
+  ['text-success', "Remember to discuss from a high level view of what you're trying to accomplish."],
   ['user_response', "@TODO response_id if applicable"],
   ['next_steps', ""],
 ]
@@ -472,8 +473,8 @@ iteration_iterate_submission = SubmissionContext.create!(
 
 stop_criterion_content_one = [
   ['text', "The last thing we'll worry about is termination."],
-  ['text', "What is your termination criterion?"],
-  ['text', "Also explain how you know the termination criteria is optimal (or isn't, if you decide on using a non-optimal criterion.)"],
+  ['text-warning', "What is your termination criterion?"],
+  ['text-success', "Also explain how you know the termination criteria is optimal (or isn't, if you decide on using a non-optimal criterion.)"],
   ['user_response', "@TODO response_id if applicable"],
   ['next_steps', ""],
 ]
@@ -511,15 +512,15 @@ conclusion_lesson = Lesson.create!(
 conclusion_main_content_one = [
   ['text', "Now we have the whole project structured."],
   ['text', "Assume your design was approved; you're ready to write the code for MapReduce."],
-  ['text', "Once you have the complete code, paste the source code below."],
+  ['text-warning', "Once you have the complete code, paste the source code below."],
   ['user_code', ""],
-  ['text', "Make sure you've included sufficient comments in your code!"],
+  ['text-success', "Make sure you've included sufficient comments in your code!"],
 ]
 
 conclusion_main_content_two = [
-  ['text', "Now download the following submission file, and find the relevant distances."],
+  ['text-warning', "Now download the following submission file, and find the relevant distances."],
   ['link', "https://s3.amazonaws.com/leada/amazon_proj_data/mr_submission.csv"],
-  ['text', "Make sure that you're returning the actual distance (and not the number of nodes)."],
+  ['text-danger', "Make sure that you're returning the actual distance (and not the number of nodes)."],
   ['text', "This means the distance between '1' and '0' should be 1."],
   ['text', "Paste in your submission in csv format below."],
   ['user_response', "submission id"],
@@ -527,7 +528,7 @@ conclusion_main_content_two = [
 
 conclusion_main_content_three = [
   ['text', "Congrats!"],
-  ['text', "You've completed the MapReduce Graph Traversal Project!"],
+  ['text-success', "You've completed the MapReduce Graph Traversal Project!"],
   ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
 
