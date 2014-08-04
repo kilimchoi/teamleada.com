@@ -2,7 +2,7 @@
 main_page_content = [
 	['text', "In this project, we'll be walking through an analysis involving time series data. More specifically, we'll be working with Flu Data acquired from Quandl."],
 	['text', 'Keep in mind that the data can contain errors. Countries with more advanced medical care can demonstrate higher and more accurate flu count.'],
-  ['text', "Let's get started!"],
+  ['text-success', "Let's get started!"],
 ]
 
 project = Project.create!(
