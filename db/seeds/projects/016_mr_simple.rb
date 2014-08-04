@@ -1,19 +1,18 @@
 main_page_content = [
-  ['text', "In this project, you'll design and build a mapreduce algorithm to traverse graph data."],
-  ['text', "Graph is a powerful data structure that used in the following cases:"],
-  ['text', "- Social Data"],
-  ['text', "- Road Networks"],
-  ['text', "- Biological Networks"],
-  ['text', "- Web Networks"],
-  ['text', "Often times, the graph data mentioned above can't be properly analyze via a single computer (Can you think of why?)."],
-  ['text', "Come in distributed system such as Hadoop to help."],
-  ['text', "Here, we'll be doing simple graph traversal via mapreduce to understand the power/limitation of distributed computing."],
+  ['text', "In this challenge, you will design and build a MapReduce algorithm to traverse graph data."],
+  ['text', "Graphs are a powerful data structure that are used in the following cases:"],
+  ['text', "Social Data"],
+  ['text', "Road Networks"],
+  ['text', "Biological Networks"],
+  ['text', "Web Networks"],
+  ['text', "Often times, the graph data mentioned above can't be properly analyzed via a single computer."],
+  ['text', "This is when distributed systems such as Hadoop come in."],
 ]
 
 project = Project.create!(
-  title:"Graph Traversal via Hadoop MapRduce",
+  title:"Graph Traversal via Hadoop MapReduce",
   description: main_page_content,
-  short_description: "We'll do a Graph Traversal via MapRduce. You'll be given a set of graph data to traverse. In the process, you'll choose the graph representation, the algorithm, and more. Once you design the code, you can optionally write a functional MapRduce code.",
+  short_description: "In this challenge you are tasked with designing and writing a graph traversal via MapReduce. You will be given a set of graph data to traverse. In the process, you will choose the graph representation, the algorithm, and more. Once you design the code, you can optionally write a functional MapReduce code.",
   number: 16,
   enabled: true,
   uid: 16,
@@ -27,24 +26,11 @@ project = Project.create!(
 puts "============ Created project: #{project.title}."
 ################################################################################
 
-project_overview_content0 = [
-  ['text', "In this project, you'll design and build a mapreduce algorithm to traverse graph data."],
-  ['text', "Graph is a powerful data structure used in the following cases:"],
-  ['text', "- Social Data"],
-  ['text', "- Road Networks"],
-  ['text', "- Biological Networks"],
-  ['text', "- Web Networks"],
-  ['text', "Often times, the graph data mentioned above can't be properly analyze via a single computer (Can you think of why?)."],
-  ['text', "Come in distributed systems (such as Hadoop) to help."],
-  ['text', "Here, we'll be doing simple graph traversal via mapreduce to understand the power/limitation of distributed computing."],
-]
 
-project_overview_content1 = [
-  ['text', "Specifically in this project, we'll first begin with the design."],
+project_overview_content0 = [
+  ['text', "In this project, we will first begin with the design."],
   ['text', "We'll first start with the technical spec, and you'll be asked to implment it once you've finalized the design."],
   ['text', "Be concise and informative in writing out your design."],
-  ['text', "Imagine if you will, that your manager will read your intended design before giving you the approval to code it."],
-  ['text', "The odds are that there actually will be a manager reviewing your completed submission."],
   ['text', "Lets get started!"],
   ['next_steps', nil],
 ]
@@ -61,11 +47,6 @@ project_overview_slide0 = Slide.create!(
   slide_id: 0,
 )
 
-project_overview_slide1 = Slide.create!(
-  content: project_overview_content1,
-  parent: project_overview_lesson,
-  slide_id: 1,
-)
 
 ################################################################################
 ####### Overview ###############################################################
@@ -76,8 +57,8 @@ setup_main_slide = [
   ['link', "http://map-reduce.wikispaces.asu.edu/"],
   ['text', "This one focuses more on application:"],
   ['link', "http://highlyscalable.wordpress.com/2012/02/01/mapreduce-patterns/#attachment_287"],
-  ['text', "Come back and refer to these resources if you're stuck!"],
-  ['text', "Now, Before we dive into writing mapreduce code, we have design a few things:"],
+  ['text', "Come back and refer to these resources if you are stuck!"],
+  ['text', "Now, before we dive into writing MapReduce code, we have to design a few things:"],
   ['lesson_links', ""],
 ]
 
@@ -98,7 +79,7 @@ setup_slide_main_one = Slide.create!(
 ################################################################################
 
 background_content_one = [
-  ['text', "You're working for a leading E-Commerce giant in creating tools to help with product recommendation."],
+  ['text', "You are working for a leading E-commerce giant in creating tools to help with product recommendation."],
   ['text', "The first thing you decide to build is a simple system that determines the distance between 2 products."],
   ['text', "You ask yourself, how do you determine the 'distance' between 2 products?"],
   ['text', "After consulting with fellow engineers, you decide on using the shortest network distance between the products that were bought during the same transaction."],
@@ -110,7 +91,7 @@ background_content_one = [
 ]
 
 background_content_two = [
-  ['text', "With amazon0601.txt, you have a list of directed edges, each representing a co-purchase."],
+  ['text', "With this data, you have a list of directed edges, each representing a co-purchase."],
   ['text', "How many Nodes are there in the data?"],
   ['quiz', "mr_data_node_count"],
   ['text', "How many Edges are there in the data?"],
@@ -130,7 +111,7 @@ quiz = Quiz.create!(
 )
 
 background_step_one = Step.create!(
-  title: "MapReduce Data Background",
+  title: "Context & Data",
   step_id: 0,
   lesson: background_algorithm_lesson,
 )
@@ -149,8 +130,8 @@ background_slide_two = Slide.create!(
 ################################################################################
 
 data_representation_content_one = [
-  ['text', "Now let's start with data representation."],
-  ['text', "There are different ways to represent graph data. below are some resources on graph data representation."],
+  ['text', "Now lets start with the data representation."],
+  ['text', "There are different ways to represent graph data. Below are some resources on graph data representation."],
   ['link', "http://www.geeksforgeeks.org/graph-and-its-representations/"],
   ['text', "Given the context, what kind of representation do you plan to use, and why?"],
   ['user_response', "@TODO leave response ID here"],
@@ -180,19 +161,19 @@ data_represent_submission = SubmissionContext.create!(
 ################################################################################
 
 algorithm_content_one = [
-  ['text', "There are different ways to find the shortest distance."],
-  ['text', "Don't quite worry about writing mapreduce code yet."],
-  ['text', "Describe the algorithm you plan to employ in finding the shortest path between the products."],
+  ['text', "There are many different ways to find the shortest distance."],
+  ['text', "Don't quite worry about writing MapReduce code yet."],
+  ['text', "Describe the algorithm you plan to employ to finding the shortest path between the products."],
   ['text', "Why this particular algorithm? What are the strength/weakness/shortfall? Scalability?"],
   ['user_response', "@TODO probably/prefebly a submission id"],
 ]
 
 algorithm_content_two = [
-  ['text', "The algorithm (hopefully should) have a certain degree of iterative property."],
+  ['text', "The algorithm (hopefully) should have a certain degree of iterative properties."],
   ['text', "In the next Mapper section, don't worry about explaining the iterative mechanics, but rather focus on a single iteration."],
   ['text', "Same thing goes for the Reducer section."],
-  ['text', "We'll hammer out more of the iteration in the last chapter."],
-  ['next_steps'],
+  ['text', "We'll hammer out more of the iteration in the last part."],
+  ['next_steps', ""],
 ]
 
 algorithm_step = Step.create!(
@@ -273,8 +254,7 @@ mapper_input_submission = SubmissionContext.create!(
 )
 ################################################################################
 mapper_function_content_one = [
-  ['text', "Now we can think more about what your mappers are actually going to do."],
-  ['text', "Describe in more details about what your mappers are actually going to do:"],
+  ['text', "Now describe in more detail what your mappers are actually going to do:"],
   ['user_response', "@TODO response_id if applicable"],
   ['next_steps', ""],
 ]
@@ -301,7 +281,7 @@ mapper_function_submission = SubmissionContext.create!(
 ################################################################################
 mapper_output_content_one = [
   ['text', "Lastly, you have to decide what your mapper is going to output."],
-  ['text', "Remember that the k-v output from Mapper will eventually be fed into the reducer(s)."],
+  ['text', "Remember that the key-value output from your Mapper will eventually be fed into the reducer(s)."],
   ['text', "Add any explanation as necessary."],
   ['user_response', "@TODO response_id if applicable"],
   ['next_steps', ""],
@@ -410,7 +390,7 @@ reducer_function_submission = SubmissionContext.create!(
 ################################################################################
 reducer_output_content_one = [
   ['text', "Lastly, you have to worry about what your reducer will output."],
-  ['text', "Keep in mind that (some form of) reducer output will eventually be re-fed into the mapper."],
+  ['text', "Keep in mind that some form of the reducer output will eventually be re-fed into the mapper."],
   ['text', "You don't have to explain the loop yet, but keep in mind that it'll eventually have to iterate."],
   ['user_response', "@TODO response_id if applicable"],
   ['next_steps', ""],
@@ -441,7 +421,7 @@ reducer_output_submission = SubmissionContext.create!(
 ################################################################################
 
 iteration_lesson = Lesson.create!(
-  title: "Iteration / Stop Criterion",
+  title: "Iteration & Stop Criterion",
   project: project,
   lesson_id: 4,
 )
@@ -463,7 +443,7 @@ iteration_main_slide = Slide.create(
 
 iteration_iterate_content_one = [
   ['text', "Since you have a set Mapper and Reducer, how do you plan on iterating the algorithm?"],
-  ['text', "Remember to discuss from a highlevel view of what you're trying to accomplish."],
+  ['text', "Remember to discuss from a high level view of what you're trying to accomplish."],
   ['user_response', "@TODO response_id if applicable"],
   ['next_steps', ""],
 ]
@@ -531,7 +511,7 @@ conclusion_lesson = Lesson.create!(
 conclusion_main_content_one = [
   ['text', "Now we have the whole project structured."],
   ['text', "Assume your design was approved; you're ready to write the code for MapReduce."],
-  ['text', "Once you have the complete code, paste the src code below."],
+  ['text', "Once you have the complete code, paste the source code below."],
   ['user_code', ""],
   ['text', "Make sure you've included sufficient comments in your code!"],
 ]
