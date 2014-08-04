@@ -110,6 +110,16 @@ If you get a bad gateway, make sure rails is running. if nothing is rendering, i
     sudo nginx -s stop
     sudo nginx
 
+## Install/Config Nginx
+    gem instlal unicorn
+Set up unicorn as follows
+    #some unicorn setup
+
+There is a sample unicorn/nginx config at:
+https://github.com/defunkt/unicorn/tree/master/examples
+    
+    unicorn_rails -c /www/prod-dir/teamleada.com/config/unicorn.rb
+
 ## Live Reload
 
 We are currently using `livereload` so that when you edit views and assets, they are automatically updated on the web browser (no refreshing anymore).
