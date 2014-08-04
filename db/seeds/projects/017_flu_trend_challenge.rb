@@ -204,7 +204,7 @@ prediciton_submission_two = SubmissionContext.create!(
 submission_reporting_content_one = [
   ['text', "Written Report:"],
   ['text', "Should probably put some details about what we want the report to look like. At least word count."],
-  ['text', "Paste in a link to your report:"],
+  ['text-success', "Paste in a link to your report:"],
   ['user_response', ""],
   ['next_steps', nil],
 ]
