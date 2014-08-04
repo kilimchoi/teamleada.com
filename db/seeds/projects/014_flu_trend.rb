@@ -640,14 +640,14 @@ arime_prediction_content_two = [
 arime_prediction_content_three = [
   ['text', "Append to the old canvas with the new data point so it's easier to analyze."],
   ['code', 'points(newx[1:ahead], flu_fcast$pred, col = "red", type = "l", lwd=5)'],
-  ['text', 'We simply append the forecast data for the new y.'],
+  ['text-success', 'We simply append the forecast data for the new y.'],
   ['text', 'Add in the Standard Error curve:'],
   ['code', 'points(newx[1:ahead], rev(flu_fcast$pred - 2*flu_fcast$se), col = "blue", type = "l", lwd=3)'],
   ['code', 'points(newx[1:ahead], rev(flu_fcast$pred + 2*flu_fcast$se), col = "blue", type = "l", lwd=3)'],
   ['text', 'How does the prediction look?'],
   ['text', 'The blue lines represent the relatively possible outcomes (SE lines).'],
   ['text', "You might have noticed that the SE lines expand rather rapidly."],
-  ['text',' This tells us that the model loses a lot of predictive confidence relatively fast.'],
+  ['text-info',' This tells us that the model loses a lot of predictive confidence relatively fast.'],
   ['next_steps', ''],
 ]
 
@@ -683,27 +683,27 @@ arime_prediction_slide = Slide.create!(
 
 arime_evaluation_content_one = [
   ['code', "par(mfrow=c(2, 1))"],
-  ['text', "Let's look at the ACF/PACF of the RESIDUALS of the model (remember that we already looked at the ACF of the raw data)."],
+  ['text-success', "Let's look at the ACF/PACF of the RESIDUALS of the model (remember that we already looked at the ACF of the raw data)."],
   ['code', 'acf(flu_arima$resid, lag.max = 160, main ="ACF of fitted residuals")'],
   ['code', 'pacf(flu_arima$resid, lag.max = 160, main = "PACF of fitted residuals")'],
   ['text', "We'll also look at tsdiag(), which is essentially a diagnostic of the model:"],
   ['code', "help(tsdiag)"],
   ['code', 'tsdiag(flu_arima, gof.lag=400)'],
-  ['text', "How many plots did tsdiag() produce?"],
+  ['text-warning', "How many plots did tsdiag() produce?"],
   ['quiz', 'ft_evaluation_0'],
 ]
 
 arime_evaluation_content_two = [
-  ['text', 'The 1st plot is the residuals of the model.'],
+  ['text-success', 'The 1st plot is the residuals of the model.'],
   ['text', "We want to make sure that the residuals look random and evenly distributed around y=0."],
-  ['text', "The 2nd plot is the ACF of the residuals."],
+  ['text-success', "The 2nd plot is the ACF of the residuals."],
   ['text', "Similar as before, we want to make sure that the ACF remains below the blue line."],
-  ['text', "The 3rd plot is the Ljung-Box Statistic."],
+  ['text-success', "The 3rd plot is the Ljung-Box Statistic."],
   ['text', "We use Ljung-Box statistic to test whether a series of observations over time are random and independent."],
   ['text', "This time we want to confirm that the p-value remains ABOVE the blue line. For more info, check these out:"],
   ['link', "http://support.minitab.com/en-us/minitab/17/topic-library/modeling-statistics/time-series/diagnostic-checking/what-is-the-ljung-box-q-statistic/"],
   ['link', " http://www.itl.nist.gov/div898/software/dataplot/refman1/auxillar/ljungbox.htm"],
-  ['text', "Do the plots look good for our model?"],
+  ['text-info', "Do the plots look good for our model?"],
   ['next_steps', ''],
 ]
 
@@ -734,14 +734,14 @@ arime_evaluation_slide = Slide.create!(
 ################################################################################
 
 conclusion_content = [
-  ['text', "We've now successfully built a time series model after some initial data exploration."],
+  ['text-info', "We've now successfully built a time series model after some initial data exploration."],
   ['text', "1. We started with a set of data."],
   ['text', "2. We figured out the missing data points and cleaned the dataset."],
   ['text', "3. We differenced the dataset to figure out the model parameters (we also relied on AIC)."],
   ['text', "4. We built the model, plotted the predicted values, and saw that the SE grew relatively fast."],
   ['text', "5. Finally we evaluated the model by looking at its residuals / tsdiag()"],
-  ['text', "Though the model looked good, don't forget to keep in mind that our model is only as good as our original data source."],
-  ['text', "Congrats, now you know how to build time series models!"],
+  ['text-danger', "Though the model looked good, don't forget to keep in mind that our model is only as good as our original data source."],
+  ['text-success', "Congrats, now you know how to build time series models!"],
   ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
 
