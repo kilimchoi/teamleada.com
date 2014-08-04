@@ -230,9 +230,10 @@ density_plot_content = [
   ['code', 'plot(density(ChickWeight$weight), main = "PDF of Chick Weight Variable")'],
   ['text', 'Looking at the visualization you can see that from the data given, it is likely that a randomly selected chick weighs approximately 80 grams.'],
   ['text-info', 'The plot() function is the generic function for plotting objects in R.'],
-  ['text', 'Check help for all of the arguments in the function; there are a lot!'],
+  ['text', 'Check help for all of the arguments in the function; there are many!'],
   ['text',  'We add additional arguments for clarity below:'],
-  ['code', 'plot(density(ChickWeight$weight), main="PDF of Chick Weight Variable", xlab = "Weight", ylab = "Probability")'],
+  ['code', 'plot(density(ChickWeight$weight), main="PDF of Chick Weight Variable", 
+    xlab = "Weight", ylab = "Probability")'],
   ['next_steps', nil],
 ]
 
@@ -252,8 +253,11 @@ density_plot_slide = Slide.create!(
 
 
 programming_bootcamp_content = [
-  ['text', 'In this bootcamp we will cover the two most fundamental control statements in programming. The if/else statement and the for loop. If you have any previous programming experience this will all be review and what you should take note of us the syntax that is R specific.'],
-  ['text', 'By far the best way to understand them is to continuously use them so do not be concerned if these code snippets are difficult to understand!'],
+  ['text', 'In this bootcamp we will cover the two most fundamental control statements in programming:'],
+  ['text-info', 'The if/else statement and the for loop.'],
+  ['text', 'If you have any previous programming experience, you\'ll simply get a quick intro to R\'s syntax for control structures.'],
+  ['text', 'By far the best way to understand them is to continuously use them;'],
+  ['text-warning', 'Do not be concerned if these code snippets are difficult to understand!'],
   ['text', 'Eventually using these statements will become as familiar as writing 1 + 1'],
   ['lesson_links', nil]
 ]
@@ -276,25 +280,30 @@ programming_bootcamp_slide = Slide.create!(
 
 if_else_content = [
   ['text', 'The first concept we will cover in programming in R is the if/else statement.'],
-  ['text', 'The if/else statement is usually of the following form:'],
+  ['text-success', 'The if/else statement is usually of the following form:'],
   ['code', 'if (logical condition) {'],
   ['code', '  statement 1'],
   ['code', '} else {'],
   ['code', '  statement 2'],
   ['code', '}'],
-  ['text', 'Expressions such as anything we wrote in the manipulating data section or making basic visualization section can be put inside the { } brackets to be statements.'],
-  ['text', 'A logical condition results in a TRUE or FALSE statement or "boolean". If/else statements apply in almost every programming language!'],
+  ['text', 'Any expression (such as the ones from manipulating data section, or basic visualization section) can be put inside the { } brackets as statements.'],
+  ['text-info', 'A logical condition must in a TRUE or FALSE statement or "boolean".'],
+  ['text', 'If/else statements apply to virtually every programming language!'],
 ]
 
 if_else_content_two = [
-  ['text', 'Lets write an example if/else statement. The print() function prints whatever is in it to the R Console.'],
+  ['text', 'Let\'s write an example if/else statement.'],
+  ['text-success', 'The print() function prints whatever is in it to the R Console.'],
   ['code', 'if (1+1 == 2) {'],
   ['code', '  print("Knew It!")'],
   ['code', '} else {'],
   ['code', '  print("Something\'s Wrong.")'],
   ['code', '}'],
-  ['text', 'How this is read is we first check the logical condition, and since it is true we go into the first statement. Then we exit the if/else statement. If/else statements create mutually exclusive events. This if/else statment will either print "Knew it!" or print "Something\'s wrong" and then exit. Never both.'],
-
+  ['text-success', 'We interpret the above code snippet as follows'],
+  ['text', ' - We first check the logical condition, and since it is true we go into the first statement.'],
+  ['text', ' - Then we exit the if/else statement.'],
+  ['text', 'As a result, if/else statements create mutually exclusive events.'],
+  ['text-warning', 'Therefore the above if/else statment will either print "Knew it!" or "Something\'s wrong", but never both.'],
 ]
 
 
@@ -321,7 +330,7 @@ if_else_content_four = [
 
 
 if_else_step = Step.create!(
-  title: "If/else statements",
+  title: "If/Else Statements",
   lesson: programming_bootcamp_lesson,
   step_id: 0,
 )
