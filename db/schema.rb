@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140802174713) do
+ActiveRecord::Schema.define(version: 20140805074710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -439,6 +439,15 @@ ActiveRecord::Schema.define(version: 20140802174713) do
     t.integer  "step_id"
     t.string   "uid",                          null: false
     t.integer  "points",           default: 1
+  end
+
+  create_table "stories", force: true do |t|
+    t.integer  "interactor_id"
+    t.integer  "interactee_id"
+    t.integer  "company_id"
+    t.text     "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "submission_contexts", id: false, force: true do |t|
