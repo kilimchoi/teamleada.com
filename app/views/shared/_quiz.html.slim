@@ -1,10 +1,9 @@
-div class="quiz_div" quiz_id="#{quiz_id}"
-  form class="fragment quiz_box" quiz_id="#{quiz_id}"
+div class="quiz_div fragment" quiz_id="#{quiz_id}"
+  form class="quiz_box center" quiz_id="#{quiz_id}"
     span class="quiz_title" quiz_id="#{quiz_id}"
     input  placeholder="your answer here" type="text" class="quiz_input" quiz_id="#{quiz_id}"
     input value="Check Answer" type="button" class="quiz_submit_button" quiz_id="#{quiz_id}" id= "#{quiz_id}"
-    = image_tag "ajax-loader.gif", class: "loading-gif", id: "waiting", quiz_id: "#{quiz_id}"
-    span class="eval_result" quiz_id="#{quiz_id}"
+    //= image_tag "loading.gif", class: "loading-gif", id: "waiting", quiz_id: "#{quiz_id}"
 
 javascript:
   $(document).ready(function() {
@@ -17,10 +16,10 @@ javascript:
          }
     });
     $("##{quiz_id}").click(function () {
-      $(quiz_id_selector+".loading-gif").css("visibility", "visible");
-      //$(quiz_id_selector+".quiz_box").css("background", "yellow");
-      $(quiz_id_selector+".eval_result").text("");
+      $(quiz_id_selector+".quiz_div").removeClass("label-danger");
 
+      $(quiz_id_selector+".quiz_div").addClass("label-warning");
+      //$(quiz_id_selector+".loading-gif").css("visibility", "visible");
       var input = this;
       input.disabled = true;
       $(quiz_id_selector+".quiz_input").attr("disabled", "disabled");
@@ -28,7 +27,7 @@ javascript:
       var user_input = $(quiz_id_selector+".quiz_input").val();
       var quiz_id = $(quiz_id_selector+".quiz_input").attr('quiz_id');
       var correct = false;
-      $.ajax({ //check db for answer
+      $.ajax({
         url: '/quizzes/check_answer?quiz_id=' + quiz_id + '&user_input=' + user_input , type: 'get', dataType: 'html',
         processData: false,
         success: function(data) {
@@ -41,16 +40,17 @@ javascript:
         }
       });
       setTimeout(function() {
-        $(quiz_id_selector+".loading-gif").css("visibility", "hidden");
+        //$(quiz_id_selector+".loading-gif").css("visibility", "hidden");
         if (correct){
+          $(quiz_id_selector+".quiz_div").removeClass("label-warning");
           toastr.success("correct!");
           $(quiz_id_selector+".quiz_div").addClass("label-success");
-          //$(quiz_id_selector+".quiz_box").css("background", "#00B2A5");
           //$(quiz_id_selector+".eval_result").text("Correct!");
         } else {
           input.disabled = false;
           toastr.error("incorrect!");
           $(quiz_id_selector+".quiz_input").removeAttr("disabled");
+          $(quiz_id_selector+".quiz_div").removeClass("label-warning");
           $(quiz_id_selector+".quiz_div").addClass("label-danger");
           //$(quiz_id_selector+".quiz_box").css("background", "red");
           //$(quiz_id_selector+".eval_result").text("Try Again");
