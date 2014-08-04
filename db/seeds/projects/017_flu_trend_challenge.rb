@@ -153,7 +153,7 @@ submission_prediction_content_one = [
   ['text-success', "Paste in your first set of predictions below:"],
   ['text', "The first line should specify which series you are predicting."],
   ['text-danger', "From the 2nd line, include a single value per line, with comma optional (the submission should be 101 lines.)"],
-  ['user_code', ""],
+  ['user_response', ""],
 ]
 
 submission_prediction_content_two = [
@@ -161,7 +161,7 @@ submission_prediction_content_two = [
   ['text-success', "Paste in your second set of predictions below:"],
   ['text', "The first line should specify which series you are predicting."],
   ['text-danger', "From the 2nd line, include a single value per line, with comma optional (the submission should be 101 lines.)"],
-  ['user_code', ""],
+  ['user_response', ""],
   ['next_steps', nil],
 ]
 
@@ -188,7 +188,7 @@ prediciton_submission_one= SubmissionContext.create!(
   description: "User is asked to submit the prediction for the first dataset chosen.",
   slide: submission_slide_one,
   submission_context_id: 0,
-  submission_type: SubmissionContext::CODE,
+  submission_type: SubmissionContext::RESPONSE,
 )
 
 prediciton_submission_two = SubmissionContext.create!(
@@ -196,7 +196,7 @@ prediciton_submission_two = SubmissionContext.create!(
   description: "User is asked to submit the prediction for the second dataset chosen.",
   slide: submission_slide_two,
   submission_context_id: 0,
-  submission_type: SubmissionContext::CODE,
+  submission_type: SubmissionContext::RESPONSE,
 )
 
 ################################################################################
