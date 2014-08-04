@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .loading-gif {
+    background-color: white;
     position: relative;
     left: 75%;
     top: 15%;
@@ -25,35 +26,30 @@ span[class="quiz_title"] { /*title of the quiz*/
 }
 
 .quiz_button { /*the button to submit the answer */
-  display: inline-block;
-  top: 100px;
-  border: 0;
-  text-shadow: none;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-  color: #FFF;
-  background-color: $founders-rock-blue;
-  text-transform: uppercase;
-  font-size: 16px;
-  font-weight: 700;
+    display: inline-block;
+    top: 100px;
+    border: 0;
+    text-shadow: none;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    //color: #FFF;
+    color: $founders-rock-blue;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+span.eval_result { /*Span for the result of checking answer*/
+    margin: auto;
+    padding-left: 100;
+    font-size: 100px;
+    background-color: "red";
 }
 
 span[class="eval_result"] { /*Span for the result of checking answer*/
-    margin: auto;
-    padding-left: 10;
-    font-size: 25px;
+        margin: auto;
+        padding-left: 10;
+        font-size: 25px;
 }
 
-/*Not Yet Used Below*/
-.correct {
-
-}
-
-.wrong {
-
-}
-
-.evaluating {
-
-}
