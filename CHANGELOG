@@ -1,0 +1,68 @@
+v 1.0.5
+  - Mobile home page and navigation bar
+
+v 1.0.4
+  - LinkedIn Integration
+  - Debug bar
+  - Background uploading
+  - Feature Toggles
+
+v 1.0.3
+  - Messages and Conversations
+  - Redesigned navbar with messages widget
+
+v 1.0.2
+  - Invite users
+  - Invite graphs
+
+v 1.0.1
+  - Accurate tracking of page views
+
+v 1.0
+  - Code evaluations
+  - Enabled company dashboards to see anonymous profiles
+  - PageView analytics
+
+v 0.9
+  - Company Dashboards
+  - User profiles are more complete
+
+v 0.8
+  - Code Submissions
+  - Full project tracking
+
+v 0.7
+  - Prompt users to complete profile
+  - Project tracking (completion)
+
+v 0.6
+  - Resume uploading
+  - Project difficulties
+  - Access codes can be enabled/disabled
+
+v 0.5
+  - User settings and privacy
+  - Admin dashboard with charts
+
+v 0.4
+  - New home page
+  - Registration logic finished
+  - Emails sent for sign up
+  - Can purchase data projects
+  - Tutoring available through the site
+  - Companies can sign up with company accounts
+
+v 0.3.1
+  - Bootcamp projects
+
+v 0.3
+  - Anscombe Project
+  - Better projects page
+
+v 0.2
+  - Devise sign in/sign up
+  - Users can complete first project
+  - About page
+
+v 0.1
+  - Basic home page without content.

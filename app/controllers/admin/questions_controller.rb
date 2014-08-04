@@ -2,6 +2,7 @@ class Admin::QuestionsController < Admin::BaseController
   load_and_authorize_resource
 
   def index
+    @questions = Question.unscoped
   end
 
   def show

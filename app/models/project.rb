@@ -18,6 +18,8 @@
 #  difficulty        :string(255)
 #  company_overview  :text
 #  category          :string(255)
+#  is_new            :boolean          default(FALSE)
+#  deadline          :integer
 #
 
 class Project < ActiveRecord::Base
@@ -66,6 +68,12 @@ class Project < ActiveRecord::Base
   end
 
   # Attributes
+  def deadline_in_days
+    if !self.deadline.nil?
+      self.deadline.div(60 * 60 * 24)
+    end
+  end
+
   def cost_in_dollars
     if cost.nil?
       "$0"

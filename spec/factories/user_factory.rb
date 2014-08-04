@@ -32,6 +32,23 @@
 #  who_can_lookup_by_name       :string(255)
 #  who_can_see_resume           :string(255)
 #  looking_for_opportunities    :boolean          default(FALSE)
+#  location                     :string(255)
+#  bio                          :text
+#  linkedin_id                  :string(255)
+#  name                         :string(255)
+#  nickname                     :string(255)
+#  linkedin_profile_image_url   :string(255)      default("")
+#  phone                        :string(255)
+#  headline                     :string(255)
+#  industry                     :string(255)
+#  public_profile_url           :string(255)
+#  date_of_birth                :date
+#  interests                    :text
+#  job_bookmarks_count          :integer
+#  country_code                 :string(255)
+#  has_project_access           :boolean          default(FALSE)
+#  linkedin_confirmed_at        :datetime
+#  linkedin_updated_at          :datetime
 #
 
 FactoryGirl.define do

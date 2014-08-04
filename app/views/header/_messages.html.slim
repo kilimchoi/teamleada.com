@@ -1,0 +1,20 @@
+ul.dropdown-menu.conversation-cards
+  .conversations-dropdown-header
+    .clearfix
+      = link_to "Send a New Message", new_conversation_path, class: "new-message-dropdown"
+  - user.conversations.first(5).each do |conversation|
+    li.conversation-card class="#{'new-message' if conversation.is_unread?(user)}"
+      = link_to conversation_path(conversation), class: "conversation-link" do
+        .clearfix
+          .conversation-image
+            = image_tag conversation.starter.profile_photo, class: "conversation-card-photo"
+          .clearfix
+            .conversation-card-title
+              = conversation.display_title(current_user)
+            .conversation-last-message
+              .conversation-last-message-content
+                = conversation.last_message_content
+              .conversation-last-message-timestamp
+                = time_ago_in_words(conversation.last_message_sent_at)
+  .conversations-dropdown-footer
+    = link_to "See All", conversations_path, class: "see-all-conversations"

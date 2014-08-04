@@ -7,9 +7,12 @@
             .project-circle
               .front-text
                 h3 = project.title
-                - if signed_in? && current_user.has_finished_project?(project)
-                  span.project-completed.fa.fa-check
-
+                - if signed_in?
+                  - project_status = current_user.project_status_for_project(project)
+                  - if current_user.has_finished_project?(project)
+                    span.project-completed.fa.fa-check
+                  - elsif project_status && !project_status.has_time_remaining?
+                    span.project-completed.glyphicon.glyphicon-remove.red
                 span [class="label label-#{project.difficulty_tag} difficulty-tag"]
                   ' Difficulty -
                   = project.difficulty
@@ -18,6 +21,13 @@
                   span.label.label-success.price-tag
                     ' Company Sponsored
                     /= project.cost_in_dollars
+                - if !project.deadline.nil?
+                  span.label.label-success
+                    ' Time:
+                    = project.deadline_in_days
+                    |  Days
               .info
                  = project.short_description
-
+              - if project.is_new?
+                span class="label label-danger navbar-new-badge project_lable"
+                  | New!

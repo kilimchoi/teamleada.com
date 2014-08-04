@@ -9,6 +9,8 @@
 #  updated_at            :datetime
 #  uid                   :string(255)      not null, primary key
 #  title                 :string(255)
+#  submission_type       :string(255)
+#  project_id            :integer
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

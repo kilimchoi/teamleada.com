@@ -11,10 +11,12 @@ project = Project.create!(
   number: 15,
   enabled: true,
   uid: 15,
-  difficulty: 'Intermediate',
+  difficulty: 'Advanced',
   category: Project::COMING_SOON,
+  is_new: false,
 )
 
 ################################################################################
 puts "============ Created project: #{project.title}."
 ################################################################################
+

@@ -1,12 +1,41 @@
 .footer {
   background-color: $founders-rock-blue;
-  padding: 30px;
+  padding: 50px;
+  padding-bottom: 0;
   color: white;
 
   p {
     margin: 0;
   }
 }
+
+.footer-column {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      a {
+        color: white;
+        text-decoration: none;
+
+        &:hover {
+          color: white;
+          text-decoration: none;
+        }
+
+      }
+    }
+  }
+}
+
+hr.footer-divider {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border-color: rgba(255,255,255,0.2);
+}
+
 .heap-analytics {
   text-align: right;
   position: relative;
@@ -15,6 +44,7 @@
   bottom: 75px;
   float: right;
 }
+
 .facebook {
   position: relative;
   bottom: 58px;
@@ -24,3 +54,4 @@
   position: relative;
   left: 15px;
 }
+

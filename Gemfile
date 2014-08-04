@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
 
-gem 'rails', '4.1.0'
+gem 'rails', '4.1.4'
 
 gem 'byebug', '3.1.2'
 gem 'nokogiri', '1.6.1'
@@ -26,12 +26,25 @@ gem 'cancancan', '~> 1.7'
 gem 'friendly_id', '~> 5.0.3'
 gem 'stripe', git: 'https://github.com/stripe/stripe-ruby'
 gem 'will_paginate', '~> 3.0'
+gem 'bootstrap-will_paginate'
 gem 'best_in_place', github: 'negativetwelve/best_in_place'
 gem 'impressionist', github: 'negativetwelve/impressionist'
 gem 'obfuscate_id', github: 'negativetwelve/obfuscate_id'
 gem 'rails4-autocomplete', '1.1.0'
+gem 'jquery-countdown-rails', '~> 2.0.0'
 
-#LinkedIn Integration
+gem 'travis', github: 'travis-ci/travis.rb'
+
+# Uploads
+gem 'carrierwave', '~> 0.10.0'
+gem 'fog', '~> 1.22.1'
+gem 'rmagick', '~> 2.13.2', require: false
+
+# Background processing
+gem 'sidekiq', '~> 3.2.1'
+gem 'carrierwave_backgrounder', '~> 0.4.1'
+
+# LinkedIn Integration
 gem 'omniauth'
 gem 'omniauth-linkedin'
 gem 'linkedin'

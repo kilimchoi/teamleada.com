@@ -26,6 +26,8 @@
 //= require ace/ace
 //= require ace/theme-github
 //= require autocomplete-rails
+//= require jquery.countdown
+//= require highlight.pack
 
 $(document).ready(function() {
   //load heap data here.
@@ -56,6 +58,26 @@ $(document).ready(function() {
   // Best In Place
   $(".best_in_place").best_in_place();
 
+  $(".has-tooltip").tooltip();
+
   // Ladda
   Ladda.bind('.ladda-button', { timeout: 1000 });
+
+  $("#navbar-toggle").click(function(event) {
+    showMobileNavbar();
+  });
+
+  $("#close-mobile-navigation").click(function(event) {
+    hideMobileNavbar();
+  });
+
+  showMobileNavbar = function() {
+    $("#mobile-navbar-modal-backdrop").show();
+    $("#mobile-navbar-modal-wrapper").show();
+  }
+
+  hideMobileNavbar = function() {
+    $("#mobile-navbar-modal-backdrop").hide();
+    $("#mobile-navbar-modal-wrapper").hide();
+  }
 });

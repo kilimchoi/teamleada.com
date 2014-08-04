@@ -1,5 +1,7 @@
 # Website for TeamLeada.com
 
+For more comprehensive docs, go [here.](http://docs.teamleada.com)
+
 ## Setup
 
 First, make a file for your environment variables:
@@ -11,6 +13,10 @@ We're using Devise so you should set `ENV['SECRET_KEY']` in the `_environment_va
 Copy over the `database.yml` file from `config/sample/database.yml` to `config/database.yml`:
 
     cp config/sample/database.yml config/database.yml
+
+If you don't have postgres installed, install it now:
+
+    brew install postgres
 
 Create the database using:
 
@@ -29,6 +35,90 @@ Start the server:
     rails s
 
 Happy developing!
+
+## Setting up the Scripts subtree
+
+    git remote add scripts git@github.com:teamleada/scripts.git
+    git subtree add --prefix=scripts scripts master
+
+Pushing and pulling from the subtree:
+
+    git subtree push --prefix=scripts scripts master
+    git subtree pull --prefix=scripts scripts master
+
+These two commands can be created into aliases if desired.
+
+## Image Processing
+
+You're going to have to install Imagemagick and Redis:
+
+    brew install pkgconfig #in case imagemagick doesn't work on os X
+    brew install imagemagickb
+    brew install redis
+
+## Redis on AWS
+
+Install redis on ubuntu via:
+
+    wget http://download.redis.io/redis-stable.tar.gz
+    tar xvzf redis-stable.tar.gz
+    cd redis-stable
+    make
+    sudo make install
+
+In `redis.conf`, enable "daemonize yes". Then run:
+
+    redis-server &
+
+## Background jobs
+
+To start Sidekiq, run the command from the project root directory (and make sure redis is running):
+
+    sidekiq -d -L sidekiq.log -q uploads
+
+## Install Nginx
+
+To install nginx on Ubuntu, run the following:
+
+    sudo apt-get install nginx
+    sudo service nginx start
+    ifconfig eth0 | grep inet | awk '{ print $2 }'
+    update-rc.d nginx defaults
+
+The last comand might yield a stdout return message stating that it already exists.
+
+Then head to */etc/nginx/sites-available* and append the following
+
+    server {
+        listen 80;
+        server_name beta-dev.teamleada.com;
+        location / {
+                proxy_pass http://localhost:3000/;
+                proxy_redirect off;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header Host $http_host;
+        }
+    }
+
+Lastly, add `localhost` and the `domain name` to */etc/hosts*
+
+    127.0.0.1 beta-dev.teamleada.com
+
+If you get a bad gateway, make sure rails is running. if nothing is rendering, it's not rerouting, make sure to restart nginx after you reconfigure via:
+
+    sudo nginx -s stop
+    sudo nginx
+
+## Install/Config Nginx
+    gem instlal unicorn
+Set up unicorn as follows
+    #some unicorn setup
+
+There is a sample unicorn/nginx config at:
+https://github.com/defunkt/unicorn/tree/master/examples
+    
+    unicorn_rails -c /www/prod-dir/teamleada.com/config/unicorn.rb
 
 ## Live Reload
 
@@ -52,9 +142,19 @@ Since we use Git to deploy to Heroku, this file won't be included, so you'll hav
 
     heroku pgbackups:capture --app teamleada
     curl -o latest.dump `heroku pgbackups:url --app teamleada`
+
+Then, we have to set up our local database to include any new changes you might have made:
+
+    rake db:drop
+    rake db:create
+
     pg_restore --verbose --clean --no-acl --no-owner -h localhost -U mark -d teada_development latest.dump
 
+    rake db:migrate
+    rake db:seed
+
 ## Current Deployments at:
+
 * [Production](http://teamleada.com)
 * [Deployment Main](http://teamleada-stage.herokuapp.com)
 * [Deployment (t)](http://teamleada-stage-t.herokuapp.com)
@@ -80,5 +180,6 @@ The following environment variables need to be set:
     S3_BUCKET_NAME
     AWS_ACCESS_KEY_ID
     AWS_SECRET_ACCESS_KEY
-    SPIN
+    LINKEDIN_ID
+    LINKEDIN_SECRET
 

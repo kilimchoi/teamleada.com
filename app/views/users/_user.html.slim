@@ -1,0 +1,96 @@
+.container-fluid.full-container
+  .col-md-12
+    .user-container
+      .row
+        .col-md-12
+          .photo-container
+            .profile-image-container
+              .profile-photo-selector
+                = image_tag user.profile_photo, class: "profile-image"
+              - if current_user == user || is_admin
+                .popover-container
+                  .add-profile-photo-button.dropdown
+                    = link_to "#", data: { toggle: "dropdown" }, class: "add-profile-photo-link", id: "add-profile-photo-dropdown" do
+                      span.fa.fa-camera.camera-button
+                      .profile-photo-text Update Profile Picture
+                    ul.dropdown-menu[role="menu" aria-labelledby="add-profile-photo-dropdown"]
+                      li
+                        - user.profile_photos.build
+                        = simple_form_for user, remote: true, multipart: true, html: {class: 'profile-photo-form hidden-form', id: "profile-photo-form"} do |f|
+                          = f.fields_for :profile_photos do |profile_photo|
+                            - if profile_photo.object.new_record?
+                              .new-photo-container
+                                = link_to "#", id: "upload-profile-photo" do
+                                  span.fa.fa-photo Upload a Photo...
+                                  = profile_photo.file_field :photo, required: true, id: "hidden-photo-upload"
+                          = hidden_field_tag :authenticity_token, form_authenticity_token
+
+          h1.title.profile-name.clearfix
+            = user.name
+            |  (
+            = user.username
+            | )
+          .user-bio.clearfix
+            .user-bio-form
+              .bio-container
+                = simple_format(user.bio)
+    .row
+      .col-md-6
+        .row
+          .col-md-12
+            - if user == current_user || is_admin
+              h3.title Are you looking for opportunities?
+              = best_in_place current_user, :looking_for_opportunities, type: :checkbox, collection: [raw("<i class='fa fa-square-o'>No thanks, not right now</i>"), raw("<i class='fa fa-check-square-o'>Yes, of course!</i>")]
+            h3.title Resume
+            - if user.has_resume?
+              = render partial: "users/resume_preview", locals: { resume: user.resume }
+              - if user == current_user || is_admin
+                = link_to "Upload a new resume", "#", data: {toggle: "modal", target: "#resume-modal"}, class: "flat-button"
+            - elsif user == current_user || is_admin
+              h4 Looks like you haven't uploaded a resume yet.
+              = link_to "Upload one now!", "#", data: {toggle: "modal", target: "#resume-modal"}, class: "flat-button"
+
+      .col-md-6
+        .row
+          .col-md-12
+            h3.title Completed Projects
+            - if user.completed_projects.count == 0
+              h4 You have not completed any projects yet.
+            - user.completed_projects.each do |project|
+              = link_to project, class: "flat-button step-button" do
+                span.fa.fa-trophy = project.title
+            h3.title In Progress Projects
+            - if user.in_progress_projects.count == 0
+              h4 You do not currently have any in progress projects yet.
+            - user.in_progress_projects.each do |project|
+              = link_to project.title, project
+              .progress
+                - percentage = user.project_progress_percentage(project)
+                .progress-bar aria-valuenow="#{percentage}" aria-valuemin="0" aria-valuemax="100" style="width: #{percentage}%"
+                  = percentage
+                  | %
+
+            h3.title Badges
+            h4 You have not earned any badges yet.
+
+            h3.title Connections
+            h4 Looks like you don't have any connections yet.
+
+      .col-md-6
+        .row
+          .col-md-12
+            h3.title LinkedIn Integration
+            - if !current_user.has_linkedin_integration?
+              = link_to "Integrate LinkedIn", user_omniauth_authorize_path(:linkedin), class: "flat-button step-button"
+            - else 
+              p 
+                | You've already integrated your LinkedIn account!
+
+= render partial: "users/resume_modal", locals: { user: user }
+
+javascript:
+  $(document).ready(function() {
+    $("#hidden-photo-upload").change(function(event) {
+      $("#profile-photo-form").submit();
+    });
+  });

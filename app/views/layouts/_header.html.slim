@@ -2,63 +2,24 @@ header#header
   nav class="navbar navbar-default #{'no-navbar-border' if @large_header} #{'white-navbar unless @large_border'}" role="navigation"
     .container-fluid
       .navbar-header
-        button.navbar-toggle type="image" data-toggle="collapse" data-target="#collapsed-navbar"
+        button.navbar-toggle#navbar-toggle
           span.sr-only Toggle Navigation
           span.icon-bar
           span.icon-bar
           span.icon-bar
-        = link_to "Leada", root_path, class: "navbar-brand"
+        = link_to root_path, class: "navbar-brand" do
+          = image_tag "logo.png", class: "logo"
+          | Leada
+
+        = render partial: "shared/main_header_link"
 
       .collapse.navbar-collapse#collapsed-navbar
+        ul.nav.navbar-nav.navbar-left.left-header-border
+          = render partial: "shared/header_links"
+
         ul.nav.navbar-nav.navbar-right
-          - if signed_in? && current_user.is_admin?
-            = active_li_link "Dashboard", admin_dashboard_path
-          - elsif signed_in? && current_user.is_company?
-            = active_li_link "Dashboard", company_dashboard_path
-          - else
-            = active_li_link "Home", root_path
+          = render partial: "shared/user_header_links"
 
-          - if signed_in?
-            = active_li_link "Messages", conversations_path
-
-          - if signed_in? && (current_user.is_student? || current_user.is_admin?)
-            = active_li_link "Invite", invites_path
-
-          - if signed_in? && current_user.is_company?
-            = active_li_link "Browse Talent", company_users_path
-          - elsif !signed_in?
-            /= active_li_link "Ask Peter", question_answer_path
-            = active_li_link "Learners", learn_path
-            = active_li_link "Employers", new_employer_path
-
-          = active_li_link "Projects", projects_path
-          = active_li_link "Tutoring", tutoring_path
-          = active_li_link "Handbook", "http://www.analyticshandbook.com/", {class: "inactive"}, {target: '_blank'}
-          = active_li_link "About", about_path
-          - if content_for?(:header_links)
-            = render partial: yield(:header_links)
-          - if signed_in?
-            li.dropdown
-              a.dropdown-toggle href="#" data-toggle="dropdown"
-                ' Welcome,
-                = current_user.username
-                b.caret
-              ul.dropdown-menu
-                li
-                  = link_to "Profile", user_path(current_user)
-                  = link_to "Settings", edit_user_path(tab: "account")
-                li.divider
-                - if current_user.is_admin?
-                  li
-                    = link_to "Admin Dashboard", admin_dashboard_path
-                  li.divider
-                li
-                  = link_to "Sign Out", destroy_user_session_path, method: :delete
-          - else
-            li
-              = link_to "Sign In", new_user_session_path
-            li
-              = link_to "Sign Up", new_user_registration_path
   - if @large_header
     .banner-image
       = image_tag "berkeley.jpg"

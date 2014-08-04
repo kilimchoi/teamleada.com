@@ -5,6 +5,8 @@ require File.expand_path('../config/application', __FILE__)
 
 TeamLeada::Application.load_tasks
 
+from_the_beginning = Date.parse("26/3/2014")
+
 task :pull_blog do
   system("git submodule foreach git pull")
 end
@@ -36,8 +38,8 @@ end
 
 task :backfill_all => :environment do
   Metric.all.each do |metric|
-    puts "Backfilling 200 days for #{metric.title}"
-    metric.backfill_to_today(200.days.ago)
+    puts "Backfilling from the beginning for #{metric.title}"
+    metric.backfill_to_today(from_the_beginning)
   end
 end
 
@@ -52,6 +54,13 @@ task :backfill_week => :environment do
   Metric.all.each do |metric|
     puts "Backfilling week for #{metric.title}"
     metric.backfill_week
+  end
+end
+
+task :backfill_metric, [:metric] => :environment do |task, args|
+  metric = Metric.where(title: args[:metric]).first
+  if metric
+    metric.backfill_to_today(from_the_beginning)
   end
 end
 

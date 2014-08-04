@@ -18,10 +18,13 @@ project = Project.create!(
   number: 13,
   enabled: true,
   has_leaderboard: false,
-  has_submit: false,
+  has_submit: true,
   uid: 13,
   difficulty: 'Advanced',
   category: Project::CHALLENGE,
+  company_overview: "",
+  is_new: false,
+  deadline: 2.weeks,
 )
 
 puts "============ Created project: #{project.title}."

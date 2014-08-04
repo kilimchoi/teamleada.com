@@ -1,5 +1,28 @@
 .footer
-  row
+  .container
+    .row
+      .col-md-4
+        .footer-column
+          h4 Company
+          ul
+            li = link_to "About", about_path
+            li = link_to "Ask Peter", question_answer_path
+
+      .col-md-4
+        .footer-column
+          h4 Learn
+          ul
+            li = link_to "Invite Friends", invites_path
+            li = link_to "Learn Data Science", learn_path
+            li = link_to "Projects", projects_path
+
+      .col-md-4
+        .footer-column
+          h4 Recruit
+          ul
+            li = link_to "Find Top Talent", new_employer_path
+
+    hr.footer-divider
     p.text-heading-white.center
       | &copy; 2014 Leada
     p.twitter.center

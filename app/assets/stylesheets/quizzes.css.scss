@@ -123,6 +123,11 @@ top:5px;
 -ms-animation-delay:0.3s;
 -o-animation-delay:0.3s;
 animation-delay:0.3s;
+
+span[class="eval_result"] { /*Span for the result of checking answer*/
+    margin: auto;
+    padding-left: 10;
+    font-size: 25px;
 }
 
 #circularG_5{

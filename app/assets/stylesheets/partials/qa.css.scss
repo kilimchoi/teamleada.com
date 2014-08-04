@@ -1,29 +1,15 @@
-.question-container {
-  background-color: #e9eaed;
-  margin: 10px 0px;
+.up-votes-container {
+  width: 80px;
+}
 
-  .up-votes-container {
-    padding: 30px;
-    border-right: 1px solid white;
-    display: inline-block;
+.up-votes-label {
+  margin-left: 10px;
+}
 
-    .up-vote-button {
-      margin-right: 10px;
-    }
-  }
+.question-posted-at {
+  color: #adadad;
+}
 
-  .question-text-container {
-    display: inline-block;
-    margin-left: 30px;
-    margin-top: 30px
-  }
-
-  .question-posted {
-    margin-top: 10px;
-
-    p {
-      margin: 0;
-    }
-  }
-
+.title-top-margin {
+  margin-top: 50px;
 }
