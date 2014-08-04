@@ -619,18 +619,18 @@ arime_prediction_content_one = [
   ['code', 'flu_fcast = predict(flu_arima, n.ahead = ahead)'],
   ['code', 'class(flu_fcast) #Check what is returned'],
   ['code', 'flu_fcast'],
-  ['text', "What class is flu_fcast?"],
+  ['text-warning', "What class is flu_fcast?"],
   ['quiz', "ft_prediction_0"],
   ['text', "Now we'll construct new x-y series to vizualize."],
-  ['text', "Note that we will generate the x-variables via seq() function."],
+  ['text-success', "Note that we will generate the x-variables via seq() function."],
 ]
 
 arime_prediction_content_two = [
-  ['text', "length.out=ahead means to generate up to ahead variable (which we set to be 104 ahead). by='1 week', we specify that we want to increment by one week at a time."],
+  ['text-success', "length.out=ahead means to generate up to ahead variable (which we set to be 104 ahead). by='1 week', we specify that we want to increment by one week at a time."],
   ['code', 'newx = c(rev(seq(cleanedFluData$Date[1], length.out=ahead, by="1 week")), cleanedFluData$Date)'],
   ['text', 'We simply append the forecast data for the new y.'],
   ['code', 'newy = c(flu_fcast$pred, cleanedFluData$World)'],
-  ['text', 'We then generate raw plot.'],
+  ['text', 'We then generate the raw plot.'],
   ['code', 'par(mfrow=c(1, 1))'],
   ['code', 'plot.new()'],
   ['code', 'plot(newx, newy, type = "l", xlab = "weeks", ylab = "values", col=\'brown\',
