@@ -420,6 +420,7 @@ for_loop_content_four = [
   ['code', '}'],
   ['text', 'Check which chicks are fatty\'s!'],
   ['code', 'ChickWeight'],
+  ['text', 'Great! Now you\'re ready to take on Titanic!'],
   #['feedback', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
   #['project_link', 'Back to the lessons page'],
   ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
