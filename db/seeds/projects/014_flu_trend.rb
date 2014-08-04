@@ -2,6 +2,7 @@
 main_page_content = [
 	['text', "In this project, we'll be walking through an analysis involving time series data. More specifically, we'll be working with Flu Data acquired from Quandl."],
 	['text', 'Keep in mind that the data can contain errors. Countries with more advanced medical care can demonstrate higher and more accurate flu count.'],
+  ['text', "Let's get started!"],
 ]
 
 project = Project.create!(
@@ -30,7 +31,7 @@ data_acquisition_content = [
   ['code', "setwd('/Users/James/Desktop/quandl_flu/')"],
   ['text', "Then read the data into R via read.csv():"],
   ['code', "rawFluData <- read.csv(\"FLUCOUNTRY.CSV\", header = TRUE, stringsAsFactors = FALSE)"],
-  ['text', "Now we're ready to begin the analysis!"],
+  ['text-success', "Now we're ready to begin the analysis!"],
   ['next_steps', nil],
 ]
 
@@ -74,7 +75,7 @@ cleaning_content_one = [
   ['text', "We'll see what kind of columns we have."],
   ['code', 'names(rawFluData) #Headers to the data.'],
   ['code', "head(rawFluData)"],
-  ['text', "How many countries do we have data for?"],
+  ['text-warning', "How many countries do we have data for?"],
   ['quiz', "ft_clean_1"],
   ['text', "Often times, date and time are read as strings or characters. Let's check."],
   ['code', 'class(head(rawFluData$Date))'],
@@ -86,7 +87,7 @@ cleaning_content_two = [
   ['text', 'Try the following:'],
   ['code', 'help(as.Date)'],
   ['code', 'class(as.Date("2014-03-01"))'],
-  ['text', "What class did it return? Omit any quotes."],
+  ['text-warning', "What class did it return? Omit any quotes."],
   ['quiz', 'ft_clean_0'],
   ['text', "We'll save the result back into the column (overwriting it)."],
   ['code', 'rawFluData$Date = as.Date(rawFluData$Date, "%m/%d/%Y")'],
@@ -139,11 +140,11 @@ plotting_content_one = [
 
 plotting_content_two = [
   ['text', "What do we notice here?"],
-  ['text', "The green line (for South Africa) shows a certain number of missing years."],
+  ['text-success', "The green line (for South Africa) shows a certain number of missing years."],
   ['text', 'This occurs up to about year 2005 and could be problematic.'],
   ['text', 'Could there be more more missing data?'],
-  ['text', "If we ignore the missing data, it'll surely invalidate some of our other analyses."],
-  ['text', "Which of the 3 countries seems to have the highest raw number of reported flu cases?"],
+  ['text-danger', "If we ignore the missing data, it'll surely invalidate some of our other analyses."],
+  ['text-warning', "Which of the 3 countries seems to have the highest raw number of reported flu cases?"],
   ['quiz', 'ft_plot_1'],
   ['next_steps'],
 ]
@@ -196,7 +197,7 @@ missing_data_slide = Slide.create!(
 ############### Analysis (Missing Data) ##############
 
 analysis_missing_content_one = [
-  ['text', "Let's plot the number of countries with missing data for each year."],
+  ['text-info', "Let's plot the number of countries with missing data for each year."],
   ['text', "We'll use apply() to apply a function (which we will explain in a bit)."],
   ['text', "We use the 'MARGIN' variable to indicate that we want to apply across the rows of our Data Frame."],
   ['text', "Check out help(apply) for more info."],
@@ -211,7 +212,7 @@ analysis_missing_content_two = [
   ['text', "What do you call a function without a name? Try googling 'nameless functions'."],
   ['quiz', "ft_missing_0"],
   ['text', "The previous function accepts an x (in this case a row in the form of a vector), which we feed into is.na()."],
-  ['text', "is.na(x) will convert the given row into a vector of True/Fase depending on if the value is NA."],
+  ['text-success', "is.na(x) will convert the given row into a vector of True/Fase depending on if the value is NA."],
   ['text', 'We finally call sum() on the True/False vector where True/False is auto-converted to 1/0 and summed to get a number.'],
   ['text', 'This number represents the total number of NA entries across a row.'],
   ['text', 'We now have our missing entries per year (per row) across countries.'],
@@ -223,10 +224,10 @@ analysis_missing_content_three = [
   ['code', "plot(missingCount ~ rawFluData$Date, type='h',
     main='Missing Data in Flu Trends (28 Total)',
     xlab='Date', ylab='Missing Countries', col='red')"],
-  ['text', 'It looks like there was quite a bit of data missing prior to 2006.'],
+  ['text-danger', 'It looks like there was quite a bit of data missing prior to 2006.'],
   ['text', 'In fact, prior to 2004, only a few countries had flu data.'],
   ['text', 'We can either choose a proxy to fill the missing data, or choose to ignore it.'],
-  ['text', "For our analysis we'll ignore/remove data entries prior to 2006."],
+  ['text-info', "For our analysis we'll ignore/remove data entries prior to 2006."],
   ['next_steps',''],
 ]
 
@@ -263,12 +264,12 @@ analysis_missing_slide_three = Slide.create!(
 
 remove_missing_content_one = [
   ['text', "We do a vector operation to only retain entries where the Date variable is newer than '2005-12-31'."],
-  ['text', "Note that we convert '2005-12-13' via as.Date to achieve the desired conversion."],
+  ['text', "Note that we convert '2005-12-13' via as.Date() to achieve the desired conversion."],
   ['code', "cleanedFluData = rawFluData[rawFluData$Date > as.Date('0005-12-31'),]"],
   ['text', "We now have a set of workable data."],
   ['text', "Note that though the data is \"complete\", we're still not sure about it's underlying integrity;"],
   ['text', "there still might have been error in data entry and collection."],
-  ['text', "Since we have 28 differet countries, let's take an average and name it the \"World\"."],
+  ['text-success', "Since we have 28 differet countries, let's take an average and name it the \"World\"."],
   ['code', 'cleanedFluData$World = rowMeans(cleanedFluData[,
     -which(names(cleanedFluData) == "Date")], na.rm=TRUE)'],
 ]
@@ -277,10 +278,10 @@ remove_missing_content_two = [
   ['text', 'Now let\'s plot the averaged "World" data.'],
   ['code', "plot(cleanedFluData$World ~ cleanedFluData$Date, main=\"Aggregated Flu Trends\",
     xlab='Time', ylab='Cases / Week', type='l', col='blue')"],
-  ['text', 'This looks like a decent piece of data to fit a time series model (As of our current date, June 2014).'],
+  ['text-success', 'This looks like a decent piece of data to fit a time series model (As of our current date, June 2014).'],
   ['text', 'The first few things we have to do is remove seasonality and de-trend the data.'],
   ['text', "There doesn't actually seem to be any strong trend with our data (thank goodness), so we'll concentrate on removing seasonality."],
-  ['text', "How many large spikes of flu outbreaks do you see?"],
+  ['text-warning', "How many large spikes of flu outbreaks do you see?"],
   ['quiz', 'ft_2'],
   ['next_steps', ''],
 ]
@@ -312,7 +313,7 @@ remove_missing_slide_two = Slide.create!(
 ##############  Time Series Model  #############################################
 ################################################################################
 time_series_data_content = [
-  ['text', "The overall concept behind time series models involve first removing trend and seasonality (effectively reducing it to white noise.)"],
+  ['text-info', "The overall concept behind time series models involves first removing trend and seasonality (effectively reducing it to white noise.)"],
   ['text', "Once we have the differenced data, we'll run analysis on them."],
   ['text', "The analysis involves looking at the underlying white noise to determine the parameters required for the time series model."],
   ['lesson_links', nil],
