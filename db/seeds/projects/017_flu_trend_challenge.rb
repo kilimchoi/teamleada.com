@@ -4,7 +4,7 @@ main_page_content = [
   ['text', "You are given a new dataset to build a time series model."],
   ['text', "You are given a time frame, as well as a submission count limit."],
   ['text', "You will be evaluated on the complexity of the model and the accuracy of your predictions."],
-  ['text', "Good Luck!"],
+  ['text-success', "Good Luck!"],
 ]
 
 project = Project.create!(
@@ -51,10 +51,10 @@ main_page_slide = Slide.create!(
 ################################################################################
 
 deliverables_content_one = [
-  ['text', "You will submit the following deliverables:"],
-  ['text', "All source code which you used to make your predictions."],
-  ['text', "Two separate predictions for the 2 datasets you selected."],
-  ['text', "Reporting for your result and a presentation of your findings."],
+  ['text-info', "You will submit the following deliverables:"],
+  ['text', " - All source code which you used to make your predictions."],
+  ['text', " - Two separate predictions for the 2 datasets you selected."],
+  ['text', " - Reporting for your result and a presentation of your findings."],
   ['next_steps', nil],
 ]
 
@@ -119,7 +119,7 @@ main_page_slide = Slide.create!(
 ################################################################################
 
 submission_src_content_one = [
-  ['text', "Paste in all your source code below:"],
+  ['text-success', "Paste in all your source code below:"],
   ['text', "Be sure to have concise and informative comments."],
   ['text', "If you used any non-standard packages, explain the sources in the comments."],
   ['user_code', ""],
@@ -149,18 +149,19 @@ timeseries_src_submission = SubmissionContext.create!(
 ################################################################################
 
 submission_prediction_content_one = [
-  ['text', "Paste in your first set of predictions below:"],
+  ['text-info', "PREDICTION 1"],
+  ['text-success', "Paste in your first set of predictions below:"],
   ['text', "The first line should specify which series you are predicting."],
-  ['text', "From the 2nd line, include a single value per line, with comma optional (the submission should be 101 lines.)"],
-  ['user_code', ""],
-  ['next_steps', nil],
+  ['text-danger', "From the 2nd line, include a single value per line, with comma optional (the submission should be 101 lines.)"],
+  ['user_response', ""],
 ]
 
 submission_prediction_content_two = [
-  ['text', "Paste in your second set of predictions below:"],
+  ['text-info', "PREDICTION 2"],
+  ['text-success', "Paste in your second set of predictions below:"],
   ['text', "The first line should specify which series you are predicting."],
-  ['text', "From the 2nd line, include a single value per line, with comma optional (the submission should be 101 lines.)"],
-  ['user_code', ""],
+  ['text-danger', "From the 2nd line, include a single value per line, with comma optional (the submission should be 101 lines.)"],
+  ['user_response', ""],
   ['next_steps', nil],
 ]
 
@@ -187,7 +188,7 @@ prediciton_submission_one= SubmissionContext.create!(
   description: "User is asked to submit the prediction for the first dataset chosen.",
   slide: submission_slide_one,
   submission_context_id: 0,
-  submission_type: SubmissionContext::CODE,
+  submission_type: SubmissionContext::RESPONSE,
 )
 
 prediciton_submission_two = SubmissionContext.create!(
@@ -195,16 +196,16 @@ prediciton_submission_two = SubmissionContext.create!(
   description: "User is asked to submit the prediction for the second dataset chosen.",
   slide: submission_slide_two,
   submission_context_id: 0,
-  submission_type: SubmissionContext::CODE,
+  submission_type: SubmissionContext::RESPONSE,
 )
 
 ################################################################################
 
 submission_reporting_content_one = [
   ['text', "Written Report:"],
-  ['text', "Should probably put some details about what we want the report to look like. At least word count."]
-  ['text', "Paste in a link to your report:"],
-  ['user_code', ""],
+  ['text', "Should probably put some details about what we want the report to look like. At least word count."],
+  ['text-success', "Paste in a link to your report:"],
+  ['user_response', ""],
   ['next_steps', nil],
 ]
 
@@ -225,7 +226,7 @@ submission_reporting_submission = SubmissionContext.create!(
   description: "User is asked to submit the reporting for the prediction/process.",
   slide: submission_report_slide_one,
   submission_context_id: 0,
-  submission_type: SubmissionContext::CODE,
+  submission_type: SubmissionContext::RESPONSE,
 )
 
 ################################################################################
