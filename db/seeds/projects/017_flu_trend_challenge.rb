@@ -4,7 +4,7 @@ main_page_content = [
   ['text', "You are given a new dataset to build a time series model."],
   ['text', "You are given a time frame, as well as a submission count limit."],
   ['text', "You will be evaluated on the complexity of the model and the accuracy of your predictions."],
-  ['text', "Good Luck!"],
+  ['text-success', "Good Luck!"],
 ]
 
 project = Project.create!(
@@ -202,9 +202,9 @@ prediciton_submission_two = SubmissionContext.create!(
 
 submission_reporting_content_one = [
   ['text', "Written Report:"],
-  ['text', "Should probably put some details about what we want the report to look like. At least word count."]
+  ['text', "Should probably put some details about what we want the report to look like. At least word count."],
   ['text', "Paste in a link to your report:"],
-  ['user_code', ""],
+  ['user_response', ""],
   ['next_steps', nil],
 ]
 
@@ -225,7 +225,7 @@ submission_reporting_submission = SubmissionContext.create!(
   description: "User is asked to submit the reporting for the prediction/process.",
   slide: submission_report_slide_one,
   submission_context_id: 0,
-  submission_type: SubmissionContext::CODE,
+  submission_type: SubmissionContext::RESPONSE,
 )
 
 ################################################################################
