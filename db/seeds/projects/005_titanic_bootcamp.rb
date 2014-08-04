@@ -398,17 +398,19 @@ for_loop_content_two = [
   ['code', 'head(ChickWeight$weight)'],
 ]
 
-
 for_loop_content_three = [
-  ['text', 'We are now going to put all of our understanding of control structures together and do cool stuff with the ChickWeight dataset.'],
-  ['text', 'In the Titanic project you will be creating indicator variables and in this bootcamp we will explain the syntax that does it!'],
-  ['text', 'Lets say that we wanted to have an indicator variable with the ChickWeight dataset to highlight which of the chick weights are greater than 100.'],
+  ['text-success', 'We are now going to combine our understanding of control structures and do cool stuff with the ChickWeight dataset.'],
+  ['text', 'In the Titanic project, you will be creating indicator variables for your data.'],
+  ['text', 'In this section, we will explain the syntax that achieves the result.'],
+  ['text-warning', 'Let\'s say that we want an indicator variable for the ChickWeight dataset to highlight the chick weights that are greater than 100.'],
   ['text', 'First we create a new column in the ChickWeight data set.'],
   ['code', 'ChickWeight$FattyIndicator = 0'],
+  ['text', 'Note that the above code will initialize a column with all "0".'],
 ]
 
 for_loop_content_four = [
-  ['text', 'Now we want to do write a for loop to loop through each of the weights in the weight column, and if the weight is greater than 100 we want to add a 1 to the "FattyIndicator" column.'],
+  ['text', 'Now we want to do write a for loop to loop through each of the weights in the weight column.'],
+  ['text-success', 'If the weight is greater than 100, we want to save 1 to the "FattyIndicator" column.'],
   ['code', 'for (i in c(1:nrow(ChickWeight))) {'],
   ['code', '  if (ChickWeight$weight[i] > 100) {'],
   ['code', '    ChickWeight$FattyIndicator[i] = 1'],
