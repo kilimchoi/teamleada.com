@@ -479,23 +479,23 @@ time_series_differencing_slide_three = Slide.create!(
 
 time_series_differencing_content_one = [
   ['text', "Reset plotting area, in case your plotting area is cluttered."],
-  ['text-success', "You don't have to do this everytime, but it makes following along easier."],
+  ['text-info', "You don't have to do this everytime, but it makes following along easier."],
   ['code', 'par(mfrow=c(1, 1))'],
   ['code', 'plot.new()'],
   ['code', 'par(mfrow=c(2, 1)) #set to 2-by-1'],
   ['code', "acf(cleanedFluData$diff_1.1, lag.max = 160, main=\"ACF Lag=(1,1)\")"],
   ['code', "pacf(cleanedFluData$diff_1.1, lag.max = 160, main=\"PACF (Partial ACF) Lag=(1,1)\")"],
-  ['text', 'Now it looks like our ACF and PACF both consistently stay below the blue line.'], #@TODO EXPLAIN
+  ['text-success', 'Now it looks like our ACF and PACF both consistently stay below the blue line.'], #@TODO EXPLAIN
 ]
 
 time_series_differencing_content_two = [
   #['image', 'flu_trend/flu_trend_acf_pacf.png'],
   ['text', 'The ACF and PACF looks good here, except for when lag=0.'],
-  ['text', "At lag=0, the ACF is still explosively high!"],
+  ['text-danger', "At lag=0, the ACF is still explosively high!"],
   ['text', "But that's unavoidable. Think about it."],
   ['text', "We're measuring the correlation of data points with different data points at a certain lag."],
   ['text', "At lag=0, we're measuring the correlation of a data point with itself!"],
-  ['text', "This will always yield full correlation (i.e. 1), since a single data point, by definition, will always correlate with itself."],
+  ['text-success', "This will always yield full correlation (i.e. 1), since a single data point, by definition, will always correlate with itself."],
   ['text', 'Now we can move on to fitting a model.'],
   ['next_steps', ''],
 ]
@@ -522,7 +522,7 @@ time_series_differencing_slide_two = Slide.create!(
 ################################################################################
 
 arima_data_content = [
-  ['text', "Now we're ready to fit a time series model, specifically ARIMA (Autoregressive Integrated Moving Average)."],
+  ['text-success', "Now we're ready to fit a time series model, specifically ARIMA (Autoregressive Integrated Moving Average)."],
   ['text', "A simpler explanation:"],
   ['link', "http://www.investopedia.com/terms/a/autoregressive-integrated-moving-average-arima.asp"],
   ['text', "A more comprehensive explanation:"],
@@ -549,7 +549,7 @@ time_series_differencing_content_one = [
   ['code', "par(mfrow=c(1, 1))"],
   ['code', "plot.new()"],
   ['text', "We'll first build the model."],
-  ['text', "The model building will take a while, so we'll talk about the details while it builds."],
+  ['text-info', "The model building will take a while, so we'll talk about the details while it builds."],
   ['text', "Run the command first, and then we'll walk through the parameter selection."],
   ['text', "As always, use help() to get documentations on the new/unknown function."],
   ['code', "help(arima)"],
@@ -557,7 +557,7 @@ time_series_differencing_content_one = [
 ]
 
 time_series_differencing_content_two = [
-  ['text', "*Note that this might take a while.*"],
+  ['text-warning', "*Note that this might take a while.*"],
   ['code', "flu_arima = arima(cleanedFluData$World,
             seasonal = list(order = c(0, 2, 2), period = 52), 
             order = c(1,0,0), method=\"CSS-ML\")"],
@@ -566,11 +566,11 @@ time_series_differencing_content_two = [
   ['text', "This gives us MA 2."],
   ['text', "Moreover, we also see blips in ACF over the blue line at period 52 and period 104."],
   ['text', "This gives us the seasonal MA of 2 (since 52 is our period, and it blips again at 104)."],
-  ['text', "We do a similar analysis with PACF and AR."],
+  ['text-info', "We do a similar analysis on PACF with regards to AR."],
 ]
 
 time_series_differencing_content_three = [
-  ['text', "We also do additional parameter tweaking based on AIC score to arrive at our parameters."],
+  ['text-info', "We also do additional parameter tweaking based on AIC score to arrive at our parameters."],
   ['link', "http://www.brianomeara.info/tutorials/aic"],
   ['text', "What does AIC stand for?"],
   ['quiz', "ft_build_0"],
@@ -579,7 +579,7 @@ time_series_differencing_content_three = [
   ['text', "Keep in mind that our original data might look different from yours (since you grabbed the freshest dataset from Quandl)."],
   ['text', "That means our original parameter selection might no longer be optimal as well."],
   ['text', "Try tweaking the parameters. (Do more complex ARIMA models take longer to build?)"],
-  ['text', "Don't spend too much time optimizing the model; save that for the corresponding Data Challenge!"],
+  ['text-success', "Don't spend too much time optimizing the model; save that for the corresponding Data Challenge!"],
   ['next_steps', ''],
 ]
 
