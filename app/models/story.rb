@@ -7,6 +7,7 @@ class Story < ActiveRecord::Base
 
   self.inheritance_column = :type
 
+  default_scope -> { order("created_at DESC") }
   scope :user_favorite_user_stories, -> { where(type: 'UserFavoriteUserStory') }
 
   def text
