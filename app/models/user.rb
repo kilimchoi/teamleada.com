@@ -468,7 +468,7 @@ class User < ActiveRecord::Base
   end
 
   def in_progress_projects
-    project_statuses.where(completed: false).collect{ |project_status| project_status.project }
+    project_statuses.where(completed: false).collect{ |project_status| project_status.project }.compact
   end
 
   def project_status_for_project(project)
