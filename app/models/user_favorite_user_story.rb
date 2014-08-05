@@ -1,0 +1,2 @@
+class UserFavoriteUserStory < Story
+end
