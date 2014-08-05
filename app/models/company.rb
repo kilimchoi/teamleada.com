@@ -23,6 +23,7 @@ class Company < ActiveRecord::Base
   has_many :workers, through: :jobs, source: :users
 
   has_many :user_interactions
+  has_many :stories
 
   validates :name, uniqueness: true, presence: true
 
