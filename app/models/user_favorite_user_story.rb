@@ -1,7 +1,11 @@
 class UserFavoriteUserStory < Story
 
+  def favorited_or_unfavorited
+    favorite ? "favorited" : "unfavorited"
+  end
+
   def text
-    "#{interactor.name} favorited #{interactee.name}"
+    "#{interactor.name} #{favorited_or_unfavorited} #{interactee.name}"
   end
 
   def full_text
