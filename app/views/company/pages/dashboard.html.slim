@@ -5,6 +5,14 @@
     .col-md-12
       h1.title Dashboard
       .row
-        .col-md-12
-
+        .col-md-3
+          h3 Favorited Users
+          .list-group
+            - @company.favorited_users.each do |user|
+              = link_to company_user_path(user), class: "list-group-item" do
+                h4.list-group-item-heading = user.name
+                p.list-group-item-text
+                  ' Favorited
+                  = time_ago_in_words(current_user.favorited_at(user))
+                  |  ago
 
