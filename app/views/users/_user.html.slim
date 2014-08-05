@@ -63,7 +63,6 @@
             - if user.in_progress_projects.count == 0
               h4 You do not currently have any in progress projects yet.
             - user.in_progress_projects.each do |project|
-              - project.nil? ? next : nil
               = link_to project.title, project
               .progress
                 - percentage = user.project_progress_percentage(project)
