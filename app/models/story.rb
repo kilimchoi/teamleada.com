@@ -3,6 +3,8 @@ class Story < ActiveRecord::Base
   belongs_to :interactor, class_name: User
   belongs_to :interactee, class_name: User
 
+  include ActionView::Helpers::DateHelper
+
   self.inheritance_column = :type
 
   scope :user_favorite_user_stories, -> { where(type: 'UserFavoriteUserStory') }

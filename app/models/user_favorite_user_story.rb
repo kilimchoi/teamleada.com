@@ -9,7 +9,7 @@ class UserFavoriteUserStory < Story
   end
 
   def full_text
-    "#{text} #{time_ago_in_words(created_at)}"
+    "#{text} #{time_ago_in_words(created_at)} ago"
   end
 
 end
