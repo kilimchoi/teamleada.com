@@ -1,7 +1,7 @@
 class Story < ActiveRecord::Base
   belongs_to :company
-  belongs_to :interactor
-  belongs_to :interactee
+  belongs_to :interactor, class_name: User
+  belongs_to :interactee, class_name: User
 
   self.inheritance_column = :type
 
