@@ -11,5 +11,9 @@ class Story < ActiveRecord::Base
     raise "Abstract Method must override"
   end
 
+  def full_text
+    raise "Abstract Method must override"
+  end
+
 end
 
