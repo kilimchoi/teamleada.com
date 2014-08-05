@@ -32,12 +32,14 @@ class UserInteraction < ActiveRecord::Base
   def set_favorited
     self.favorited = true
     self.favorited_at = Time.now
+    self.set_company
     self.generate_favorited_story
   end
 
   def set_unfavorited
     self.favorited = false
     self.favorited_at = nil
+    self.set_company
     self.generate_unfavorited_story
   end
 
