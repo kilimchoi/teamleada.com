@@ -31,7 +31,7 @@ intro_content_one = [
   ['text', "You're not given a specific plot/chart speficiation, and you must come up with your own analysis."],
   ['text', "The crime data can be downloaded below."],
   ['link', "ttps://data.sfgov.org/Public-Safety/SFPD-Incidents-Previous-Three-Months/tmnf-yvry?"],
-  ['text', "How many months of data do you get back?"],
+  ['text', "How many months of data do you get?"],
   ['quiz', "crime_viz_0"],
 ]
 
@@ -47,7 +47,10 @@ intro_content_two = [
 ]
 
 intro_content_three = [
-  ['text', "Lastly, you're free to complete the project in any language/framework you like."],
+  ['text-success', "Lastly, you're free to complete the project in any language/framework you like."],
+  ['text', "But be sure to explain the framework and any external packges"],
+  ['text', "Remember, having maintanable/legible codebase is always a plus!"],
+  ['next_steps', ""],
 ]
 
 quiz = Quiz.create!(
@@ -82,15 +85,43 @@ intro_slide_thre = Slide.create!(
 ##### Code Submission ##########################################################
 ################################################################################
 
+code_submission_content_one = [
+  ['text', "Submit your code below."],
+  ['text', "Remember that the code will be reviewed by a manager."],
+  ['user_code', ""],
+  ['next_steps', ""],
+]
+
 code_submission_lesson = Lesson.create!(
   title: "Code Submission",
   project: project,
   lesson_id: 1,
 )
 
+code_submission_slide = Slide.create!(
+  content: code_submission_content_one,
+  parent: code_submission_lesson,
+  slide_id: 0,
+)
+
+code_submission_context = SubmissionContext.create!(
+  title: "Src Code",
+  description: "User is asked to submit the src code for the project.",
+  slide: code_submission_slide,
+  submission_context_id: 0,
+  submission_type: SubmissionContext::CODE,
+)
+
 ################################################################################
 ##### Reoport Submission #######################################################
 ################################################################################
+
+report_submission_content_one = [
+  ['text', "Submit a link to yaur report below."],
+  ['text', "Make sure it's in a PDF format."],
+  ['user_response', ""],
+  ['next_steps', ""],
+]
 
 report_submission_lesson = Lesson.create!(
   title: "Report Submission",
@@ -98,9 +129,40 @@ report_submission_lesson = Lesson.create!(
   lesson_id: 2,
 )
 
+report_submission_slide = Slide.create!(
+  content: report_submission_content_one,
+  parent: report_submission_lesson,
+  slide_id: 0,
+)
+
+report_submission_context = SubmissionContext.create!(
+  title: "Report Submission",
+  description: "User is asked to submit a link to the report.",
+  slide: report_submission_slide,
+  submission_context_id: 0,
+  submission_type: SubmissionContext::RESPONSE,
+)
 
 ################################################################################
 ##### Conclusion ###############################################################
 ################################################################################
+
+conclusion_content_one = [
+  ['text-info', "Woot, you're done!"],
+  ['finish_project_button', "http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form"],
+]
+
+final_lesson = Lesson.create!(
+  title: "Conclusion",
+  project: project,
+  lesson_id: 3,
+)
+
+final_slide_one = Slide.create!(
+  content: conclusion_content_one,
+  parent: final_lesson,
+  slide_id: 0,
+)
+
 
 
