@@ -1,3 +1,8 @@
+#header {
+  position: relative;
+  z-index: 12;
+}
+
 .leada-logo {
   height: 70px;
 }
@@ -32,7 +37,7 @@
 a#main-link {
   color: #777777;
   text-decoration: none;
-  line-height: 20px;
+  line-height: 21px;
   padding: 0px 15px;
   font-size: 14px;
   vertical-align: middle;
@@ -47,5 +52,10 @@ a#main-link {
 
 .left-header-border {
   border-left: 1px solid #dce0e0;
+}
+
+.navbar-border {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1),
+              0 1px 0 0 rgba(0, 0, 0, 0.1);
 }
 
