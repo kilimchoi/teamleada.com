@@ -117,3 +117,17 @@ $navbar-padding-bottom: 15px;
   }
 }
 
+@media (min-width: 768px) {
+  .navbar-nav.navbar-right:last-child {
+    margin-right: 0px;
+  }
+}
+
+.modal {
+  top: 50px;
+}
+
+.panel-default {
+  border-color: #d3d6db;
+}
+

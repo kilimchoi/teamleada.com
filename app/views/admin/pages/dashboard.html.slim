@@ -1,7 +1,7 @@
 = provide(:page_title, "Admin Dashboard")
 
-.container-fluid.full-container
-  .row
+.container-fluid.full-container.card-container
+  .row.card
     .col-md-12
       h1.title Admin Dashboard
 
@@ -44,13 +44,13 @@
                 span.badge = @daily_code_submissions.count
                 | New Code Submissions Today
 
-  .row
+  .row.card
     .col-md-12
       = high_chart("users_chart", @users_chart)
 
   .row
     .col-md-6
-      .row
+      .row.card
         .col-md-12
           h2 Newest Users
           table.table.table-striped
@@ -61,7 +61,7 @@
                 td = link_to user.name, admin_user_path(user)
                 td = user.email
     .col-md-6
-      .row
+      .row.card
         .col-md-12
           h2 Newest Resume Uploads
           table.table.table-striped
@@ -73,7 +73,7 @@
                 td = link_to "View", resume.url
   .row
     .col-md-6
-      .row
+      .row.card
         .col-md-12
           h2 Newest Profile Photos
           table.table.table-striped
@@ -84,7 +84,7 @@
                 td = link_to profile_photo.user.name, admin_user_path(profile_photo.user)
                 td = link_to "View", profile_photo.url
     .col-md-6
-      .row
+      .row.card
         .col-md-12
           h2 Newest Code Submissions
           table.table.table-striped
@@ -94,3 +94,4 @@
               tr
                 td = link_to code_submission.user.name, admin_user_path(code_submission.user)
                 td = link_to "View", code_submission_admin_user_path(code_submission.user, code_submission.project, code_submission)
+
