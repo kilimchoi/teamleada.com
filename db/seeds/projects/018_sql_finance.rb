@@ -15,7 +15,7 @@ project = Project.create!(
   short_description: "In this project, you'll quickly scrape a set of YAHOO finance data. Follwing the scrape, you'll store the data into SQL database. You'll use the database later for another SQL project!",
   number: 18,
   enabled: true,
-  has_submission: true,
+  has_submit: true,
   uid: 18,
   difficulty: 'Advanced',
   category: Project::CHALLENGE,
