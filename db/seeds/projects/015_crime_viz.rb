@@ -49,8 +49,8 @@ intro_content_two = [
 
 intro_content_three = [
   ['text-success', "Lastly, you're free to complete the project in any language/framework you like."],
-  ['text', "But be sure to explain the framework and any external packges"],
-  ['text', "Remember, having maintanable/legible codebase is always a plus!"],
+  ['text', "But be sure to explain the framework and any external packages."],
+  ['text', "Remember, having maintainable/legible codebase is always a plus!"],
   ['next_steps', ""],
 ]
 
@@ -88,7 +88,11 @@ intro_slide_thre = Slide.create!(
 
 code_submission_content_one = [
   ['text', "Submit your code below."],
-  ['text', "Remember that the code will be reviewed by a manager."],
+  ['text-success', "Remember that your code will be evaluated by another human being."],
+  ['text-warning', "This means the following:"],
+  ['text', "Write legible code."],
+  ['text', "Write well-commented code."],
+  ['text', "Write efficient code."],
   ['user_code', ""],
   ['next_steps', ""],
 ]
