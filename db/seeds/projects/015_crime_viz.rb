@@ -124,8 +124,8 @@ code_submission_context = SubmissionContext.create!(
 report_submission_content_one = [
   ['text', "Submit a link to yaur report (in PDF) below."],
   ['text-warning', "The report should contain the context of the problem, along with what you decided to do."],
-  ['text', "Include the vizualization you created (or screen shots if you created interactive ones."],
-  ['text-success', "If you're able to derive any conclusion from your analysi (though that is not required), be sure to highlight it."],
+  ['text', "Include the vizualization you created (or screenshots if you created interactive ones.)"],
+  ['text-success', "If you're able to derive any conclusion from your analysis (though that is not required), be sure to highlight it."],
   ['text', ""],
   ['user_response', ""],
   ['next_steps', ""],
