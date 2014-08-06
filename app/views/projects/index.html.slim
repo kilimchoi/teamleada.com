@@ -1,7 +1,7 @@
 = provide(:page_title, "Projects")
 
-.container.full-container#projects-container
-  .row
+.container.full-container.card-container#projects-container
+  .row.card
     .col-md-12
       .projects-container
         h1.title
@@ -10,22 +10,30 @@
             = link_to "How this works", project_faq_path
         = render partial: "projects/projects", locals: { projects: @data_challenges }
 
+  .row.card
+    .col-md-12
+      .projects-container
         h1.title Data Lessons
         = render partial: "projects/projects", locals: { projects: @data_lessons }
 
+  .row.card
+    .col-md-12
+      .projects-container
         h1.title Coming Soon!
         = render partial: "projects/projects", locals: { projects: @coming_soon }
 
   - if signed_in? && current_user.has_project_access?
-    h2.center
-      | You've already received Early Project Access. <br>
-      | Go complete projects!
+    .row.card
+      .col-md-12
+        h2.center
+          | You've already received Early Project Access. <br>
+          | Go complete projects!
   - else
-    #access-code-container
-      .row
+    .card-container#access-code-container
+      .row.card
         .col-md-12
           h4 Want an <strong>Early Access Code</strong>? Interested in hearing when we release new projects?
-      .row
+      .row.card
         .col-md-12
           p
             | Fill our user survey. Indicate in the last question (Q.6) that you're interested in the product!
