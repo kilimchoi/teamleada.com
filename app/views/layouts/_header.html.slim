@@ -23,7 +23,7 @@ header#header
   - if @large_header
     .banner-image
       = image_tag "berkeley.jpg"
-    div class="title-wrapper #{'hidden' if params[:controller] == 'lessons' || params[:controller] == 'steps'}"
+    div class="title-wrapper navbar-border #{'hidden' if params[:controller] == 'lessons' || params[:controller] == 'steps'}"
       .title-inner
         - if content_for? :page_title
           h1.page-title = yield :page_title

@@ -5,6 +5,7 @@ html, body {
 body {
   font-family: 'open sans';
   -webkit-font-smoothing: antialiased;
+  background-color: #e9eaed;
 
   @include breakpoint($mobile) {
     padding-top: 0px;
@@ -27,6 +28,9 @@ body {
 
 #page-container {
   height: 100%;
+}
+
+.page-container-padding {
   padding-top: 50px;
 }
 
@@ -63,11 +67,6 @@ body {
   img {
     width: 100%;
   }
-}
-
-#header {
-  position: relative;
-  z-index: 2;
 }
 
 .title-wrapper {

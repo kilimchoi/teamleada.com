@@ -1,5 +1,6 @@
 #users {
   padding: 80px;
+  background-color: white;
 
   @include breakpoint($mobile) {
     padding: 20px;
@@ -97,6 +98,7 @@ section#intro {
 
 #display {
   padding: 100px 0px;
+  background-color: white;
 
   @include breakpoint($mobile) {
     padding: 20px;
