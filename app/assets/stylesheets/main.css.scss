@@ -27,6 +27,7 @@ body {
 
 #page-container {
   height: 100%;
+  padding-top: 50px;
 }
 
 .container.full-container,
@@ -70,7 +71,7 @@ body {
 }
 
 .title-wrapper {
-  padding: 20px 80px 40px;
+  padding: 70px 80px 40px; // 20px + 50px on top for the fixed navbar
 
   @include breakpoint($mobile) {
     padding: 15px;
