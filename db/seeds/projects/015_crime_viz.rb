@@ -90,9 +90,9 @@ code_submission_content_one = [
   ['text', "Submit your code below."],
   ['text-success', "Remember that your code will be evaluated by another human being."],
   ['text-warning', "This means the following:"],
-  ['text', "Write legible code."],
-  ['text', "Write well-commented code."],
-  ['text', "Write efficient code."],
+  ['text', " - Write legible code."],
+  ['text', " - Write well-commented code."],
+  ['text', " - Write efficient code."],
   ['user_code', ""],
   ['next_steps', ""],
 ]
@@ -122,8 +122,11 @@ code_submission_context = SubmissionContext.create!(
 ################################################################################
 
 report_submission_content_one = [
-  ['text', "Submit a link to yaur report below."],
-  ['text', "Make sure it's in a PDF format."],
+  ['text', "Submit a link to yaur report (in PDF) below."],
+  ['text-warning', "The report should contain the context of the problem, along with what you decided to do."],
+  ['text', "Include the vizualization you created (or screen shots if you created interactive ones."],
+  ['text-success', "If you're able to derive any conclusion from your analysi (though that is not required), be sure to highlight it."],
+  ['text', ""],
   ['user_response', ""],
   ['next_steps', ""],
 ]
