@@ -156,7 +156,10 @@ report_submission_context = SubmissionContext.create!(
 ################################################################################
 
 conclusion_content_one = [
-  ['text-info', "Woot, you're done!"],
+  ['text', "Hopefully you enjoyed creating vizualizations for the crime data."],
+  ['text', "The project was aimed at bringing out your creativity and ability to poke at a piece of data wihtout little or no direction."],
+  ['text', "It's entirely possible to arrive at some useful conclusiong (big or small) without having to creating sophisticated predictive models"],
+  ['text', "Well done!"],
   ['finish_project_button', "http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form"],
 ]
 
