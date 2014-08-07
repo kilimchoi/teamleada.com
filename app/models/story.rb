@@ -25,6 +25,9 @@ class Story < ActiveRecord::Base
   default_scope -> { order("created_at DESC") }
   scope :user_favorite_user_stories, -> { where(type: 'UserFavoriteUserStory') }
 
+  #
+  # Abstract Methods
+  #
   def text
     raise "Abstract Method must override"
   end
@@ -35,6 +38,13 @@ class Story < ActiveRecord::Base
 
   def full_text
     raise "Abstract Method must override"
+  end
+
+  #
+  # Methods
+  #
+  def time_text
+    "#{time_ago_in_words(created_at)} ago"
   end
 
 end
