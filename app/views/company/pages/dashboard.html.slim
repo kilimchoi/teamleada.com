@@ -18,6 +18,5 @@
         .col-md-3
           h3 Feed
           - @stories.each do |story|
-            .story-container.card
-              = render partial: "stories/story_feed_item", locals: { story: story }
+            = render partial: "stories/story_feed_item", locals: { story: story }
 
