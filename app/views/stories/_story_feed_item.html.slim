@@ -1,6 +1,10 @@
 .story-container.card
-  .card-section
+  .card-section.clearfix
     = image_tag story.interactor.profile_photo, class: "story-profile-photo"
-  .card-section
-    = story.full_text
+    .card-info
+      = link_to story.interactor.name, user_path(story.interactor)
+      '
+      = story.action_text
+      '
+      = link_to story.interactee.name, user_path(story.interactee)
 
