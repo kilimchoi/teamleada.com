@@ -69,6 +69,7 @@
           table.table.table-striped
             th Name
             th Link
+            th Time
             - @new_resumes.each do |resume|
               tr
                 td = link_to resume.user.name, admin_user_path(resume.user)
@@ -82,6 +83,7 @@
           table.table.table-striped
             th Name
             th Link
+            th Time
             - @new_profile_photos.each do |profile_photo|
               tr
                 td = link_to profile_photo.user.name, admin_user_path(profile_photo.user)
@@ -94,6 +96,7 @@
           table.table.table-striped
             th Name
             th Link
+            th Time
             - @new_code_submissions.each do |code_submission|
               tr
                 td = link_to code_submission.user.name, admin_user_path(code_submission.user)
