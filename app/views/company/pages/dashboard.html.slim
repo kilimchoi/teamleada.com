@@ -15,9 +15,8 @@
                   ' Favorited
                   = time_ago_in_words(current_user.favorited_at(user))
                   |  ago
-        .col-md-9
+        .col-md-3
           h3 Feed
           - @stories.each do |story|
-            .story-container
-              = story.full_text
+            = render partial: "stories/story_feed_item", locals: { story: story }
 
