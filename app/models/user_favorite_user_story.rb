@@ -23,6 +23,10 @@ class UserFavoriteUserStory < Story
     "#{interactor.name} #{favorited_or_unfavorited} #{interactee.name}"
   end
 
+  def action_text
+    "#{favorited_or_unfavorited}"
+  end
+
   def full_text
     "#{text} #{time_ago_in_words(created_at)} ago"
   end
