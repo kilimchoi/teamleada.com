@@ -61,7 +61,7 @@
               tr
                 td = link_to user.name, admin_user_path(user)
                 td = user.email
-                td = user.confirmed_at.strftime("%m/%d %H:%M:%S")
+                td = user.confirmed_at.nil? ? "Unconfirmed" :  user.confirmed_at.strftime("%m/%d %H:%M:%S")
     .col-md-6
       .row.card
         .col-md-12
