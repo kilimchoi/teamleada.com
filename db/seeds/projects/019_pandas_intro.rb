@@ -214,7 +214,7 @@ dataframe_basics_content_four = [
 dataframe_basics_content_five = [
   ['text', "How many row entries are present in log_df?"],
   ['quiz', "pd_df_basic_5"],
-  ['text', "What is the URL at row 85 (remember that indexing starts at 0)?"],
+  ['text', "What is the URL at 85th row (remember that indexing starts at 0)?"],
   ['quiz', "pd_df_basic_6"],
   ['text-success', "Great!"],
   ['next_steps', ""],
@@ -275,22 +275,24 @@ sql_op_main_slide = Slide.create!(
 #################################################################################
 
 sql_selection_content_one = [
-  ['text', "A SQL statement typically selects a subset of rows from a table that match a given criteria."],
+  ['text-info', "A SQL statement typically selects a subset of rows from a table that match a given criteria."],
   ['text', "This is known as the Selection operator in Relational Algebra."],
-  ['text', "Similarly we can perform selections in Pandas using boolean indexing."],
-  ['text', "Boolean indexing refers to a technique where you can use a list of boolean values to filter a DataFrame."],
-  ['text', "For example lets say we only want entries from '01/May/1998'. To do this we can create a boolean list like"],
+  ['text', "Similarly, we can perform selections in Pandas using boolean indexing."],
+  ['text-success', "Boolean indexing refers to a technique where you can use a list of boolean values to filter a DataFrame."],
+  ['text', "For example, say we only want entries from '01/May/1998'. To do this we can create a boolean list:"],
   ['code', "is_may1st = log_df['Date'] == '01/May/1998'"],
   ['code', "is_may1st.head(2)"],
+  ['text', "Do you see how we're getting back TRUE and FALSE values?"],
 ]
 
 sql_selection_content_two = [
-  ['text', "Now we can filter our DataFrame by passing it the boolean list."],
-  ['text' ,"may1_df = log_df[is_may1st]"],
-  ['text', "may1_df.head()"],
-  ['text', "Or we can directly do this by passing in the boolean clause to the DataFrame"],
+  ['text-warning', "Now we can filter our DataFrame by passing the boolean list."],
+  ['code' ,"may1_df = log_df[is_may1st]"],
+  ['code', "may1_df.head()"],
+  ['text', "Alternately, we can directly do this by passing in the boolean clause to the DataFrame:"],
   ['code', "may1_df = log_df[log_df['Date'] == '01/May/1998']"],
   ['code', "may1_df.head()"],
+  ['text-success', "Next we'll look at Projections."],
   ['next_steps', ""],
 ]
 
@@ -316,13 +318,11 @@ selection_slide_two = Slide.create!(
 
 sql_projection_content_one = [
   ['text-success', "While selection is used for filtering rows, projection is the relational algebra operator used to select columns."],
-  ['text', "To do this with Pandas we just need to pass in a list of columns that we wish to select."],
-  ['text', "For example to only keep the 'URL' and 'ResponseCode' column we would run:"],
+  ['text', "To do this with Pandas, we just need to pass in a list of columns that we wish to select."],
+  ['text', "For example to only keep the 'URL' and 'ResponseCode' column, we would run:"],
   ['code', "url_codes = log_df[['URL', 'ResponseCode']]"],
   ['code', "url_codes.head(5)"],
-]
-
-sql_projection_content_two = [
+  ['text-info', "Note that we passed in a single list of headers to do the projection."],
   ['next_steps', ""],
 ]
 
@@ -335,12 +335,6 @@ projection_step = Step.create!(
 projection_slide_one = Slide.create!(
   content: sql_projection_content_one,
   slide_id: 0,
-  parent: projection_step,
-)
-
-projection_slide_two = Slide.create!(
-  content: sql_projection_content_two,
-  slide_id: 1,
   parent: projection_step,
 )
 
@@ -361,19 +355,26 @@ sql_grouping_content_one = [
 ]
 
 sql_grouping_content_two = [
-  ['text-success', "You can also group by multiple columns by just passing the a list of column names."],
-  ['text', "For example to group by both date and response code you can run:"],
+  ['text-success', "You can also group by multiple columns by simply passing a list of column names."],
+  ['text', "For example, to group by both date and response code you can run:"],
   ['code', "multi_grouped = log_df.groupby(['ResponseCode', 'Date'])"],
   ['text-warning', "Pandas also has useful commands to print various statistics about elements in each group."],
   ['text', " 1. grouped.describe() prints summary statistics for numeric columns in each group."],
   ['text', " 2. grouped.size() prints the number of elements in each group."],
   ['text', " 3. Similarly grouped.sum(), grouped.mean() and grouped.median() print the sum, mean and median values for numeric columns in each group."],
+  ['text-danger', "What is the highest ClientID with the ResponseCode of 302? (omit trailing zeroes and any period)"],
+  ['quiz', "pd_sql_grouping_1"],
   ['next_steps', ""],
 ]
 
 pd_sql_grouping_quiz = Quiz.create!(
   quiz_id: "pd_sql_grouping_0",
-  answer: "XXX",
+  answer: "7",
+)
+
+pd_sql_grouping_1 = Quiz.create!(
+  quiz_id: "pd_sql_grouping_1",
+  answer: "34618",
 )
 
 grouping_step = Step.create!(
