@@ -242,8 +242,9 @@ data_frame_basic_slide_five = Slide.create!(
   slide_id: 1,
   parent: data_frame_basic_conclusion,
 )
+
 #################################################################################
-###############  PD Basics  #####################################################
+###############  PD SQL ops  ####################################################
 #################################################################################
 
 sql_op_lesson_content = [
@@ -318,7 +319,7 @@ sql_projection_content_two = [
 ]
 
 projection_step = Step.create!(
-  title: "projection",
+  title: "Projection",
   step_id: 1,
   lesson: sql_op_lesson,
 )
@@ -368,7 +369,7 @@ pd_sql_grouping_quiz = Quiz.create!(
 )
 
 grouping_step = Step.create!(
-  title: "grouping",
+  title: "Grouping",
   step_id: 2,
   lesson: sql_op_lesson,
 )
@@ -385,3 +386,71 @@ grouping_slide_two = Slide.create!(
   parent: grouping_step,
 )
 
+#################################################################################
+###############  Apply Functions  ###############################################
+#################################################################################
+
+apply_function_main_content = [
+  ['text', "So far we have been using SQL-style operators to process our data."],
+  ['text', "However to do data cleaning or more complex analysis, we often need to apply functions on row or column of a DataFrame."],
+  ['lesson_links', ""],
+]
+
+apply_function_lesson = Lesson.create!(
+  title: "DataFrame: Apply Functions",
+  lesson_id: 3,
+  project: project,
+)
+
+apply_function_main_slide = Slide.create!(
+  content: apply_function_main_content,
+  slide_id: 0,
+  parent: apply_function_lesson,
+)
+
+#################################################################################
+
+apply_function_example_content = [
+  ['text', "For example, consider the columns 'Date' and 'Time' in our Dataframe"],
+  ['text-info', "It would be useful if we could combine these columns and create `datetimects` then it would be useful for filtering, grouping etc."],
+  ['text', "To create a DateTime column we will use Pandas helper function to_datetime."],
+  ['text', "This function takes a string and converts it to a datetime object."],
+  ['text-success', "To call this on every row of the DataFrame, we use the apply() function."],
+  ['text', "apply() takes two arguments, the first a function to apply and secondly axis which indicates if this should be applied on every row (axis=1) or column (axis=0)"],
+  ['code', "log_df['DateTime'] = pd.to_datetime(log_df.apply(lambda row: row['Date'] + ' ' + row['Time'], axis=1))"],
+  ['text', "This might take a minute to run as we are adding a new column for every request in our table."],
+  ['text', "Meanwhile take a look at the various components of DateTime objects in the API documentation"],
+  ['text', "For example if we want to group by hour we can now use the DateTime API instead of doing any string parsing."],
+]
+
+apply_function_example_content_two = [
+  ['code', "hour_grouped = log_df.groupby(lambda row: log_df['DateTime'][row].hour)"],
+  ['code', "hour_grouped.ngroups"],
+  ['text', "Finally, note that you can apply operations on each group using the apply method."],
+  ['text', "This is similar to the apply on the DataFrame we saw earlier except the apply method is now called once per group."],
+  ['next_steps', ""],
+]
+
+apply_function_step = Step.create!(
+  title: "Apply() Examples",
+  step_id: 0,
+  lesson: apply_function_lesson,
+)
+
+apply_function_slide_one = Slide.create!(
+  content: apply_function_example_content,
+  slide_id: 0,
+  parent: apply_function_step,
+)
+
+apply_function_slide_one = Slide.create!(
+  content: apply_function_example_content_two,
+  slide_id: 1,
+  parent: apply_function_step,
+)
+
+#################################################################################
+###############  Basic Plots  ###################################################
+#################################################################################
+
+  
