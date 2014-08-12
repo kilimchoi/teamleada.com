@@ -25,8 +25,8 @@ class Quiz < ActiveRecord::Base
     '''
     Returns T/F depending of answer == user_input, after we remove all quotes.
     '''
-    quote_removed_input = Quiz.lower_and_clean(user_input).gsub("'", "") 
-    quote_removed_answer = Quiz.lower_and_clean(answer).gsub('"', "") 
+    quote_removed_input = Quiz.lower_and_clean(user_input).gsub(/'|"/, "") 
+    quote_removed_answer = Quiz.lower_and_clean(answer).gsub(/'|"/, "") 
 
     quote_removed_input == quote_removed_answer
   end
