@@ -57,7 +57,7 @@ intro_content_three = [
 ]
 
 intro_content_four = [
-  ['text', "If you need clarifications about the Pandas API you can type the function name, followed by ? to get inline help."],
+  ['text-success', "If you need clarifications about the Pandas API you can type the function name, followed by ? to get inline help."],
   ['text', "For example to get help with the above call, run:"],
   ['code', "pd.DataFrame?"],
   ['text', "How many Parameters does the documentation from the above show?"],
