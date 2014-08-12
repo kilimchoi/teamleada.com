@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from git import *
+from hub import *
 
 ENGINEER_GITHUB_USERNAMES = [
     "negativetwelve",
@@ -18,13 +19,19 @@ def git_ci():
     commit_description_by_line = commit_description.split("\n")
     summary = commit_description_by_line[0]
 
-    git("checkout", "master")
-    git("merge --squash", initial_branch)
+#    git("checkout", "master")
+#    git("merge --squash", initial_branch)
 
     git_subtree_push("scripts", "scripts")
     git_subtree_push("primary", "app/assets/stylesheets/primary")
 
-    git("push origin HEAD")
+    # Git up will merge in master and any subtree changes
+    # We then want to push your branch to origin HEAD
+    # Open a pull request with your summary and close any issues.
+    # Dump you back on master with all the updated changes.
+    git("push -u origin HEAD")
+    pull_request(commit_description)
+    git("checkout master")
 
 if __name__ == '__main__':
     git_ci()
