@@ -205,22 +205,103 @@ dataframe_basics_content_four = [
   ['text', "Try using the commands from the previous section to explore the dataset."],
   ['text-warning', "What is the mean of the data?"],
   ['quiz', "pd_df_basic_4"],
+]
+
+dataframe_basics_content_five = [
+  ['text', "How many rows are present in log_df?"],
+  ['quiz', "pd_df_basic_5"],
+  ['text', "What are the URLs between rows 85 and 90?"],
+  ['quiz', "pd_df_basic_6"],
+  ['text-success', "Great!"],
   ['next_steps', ""],
 ]
+
+pd_df_basic_5 = Quiz.create!(
+  quiz_id: "pd_df_basic_5",
+  answer: "XXX",
+)
+pd_df_basic_6 = Quiz.create!(
+  quiz_id: "pd_df_basic_6",
+  answer: "XXX",
+)
+
 data_frame_basic_conclusion = Step.create!(
   title: "DataFrame Conclusion",
   step_id: 1,
   lesson: data_frame_basic_lesson,
 )
+
 data_frame_basic_slide_four = Slide.create!(
   content: dataframe_basics_content_four,
-  slide_id: 3,
+  slide_id: 0,
   parent: data_frame_basic_conclusion,
 )
 
+data_frame_basic_slide_five = Slide.create!(
+  content: dataframe_basics_content_five,
+  slide_id: 1,
+  parent: data_frame_basic_conclusion,
+)
 #################################################################################
 ###############  PD Basics  #####################################################
 #################################################################################
 
+sql_op_lesson_content = [
+  ['text-success', "Next we will look at operators in Pandas that allow us to perform SQL-like queries on the dataset."],
+  ['lesson_links', ""],
+]
+
+sql_op_lesson = Lesson.create!(
+  title: "SQL Ops",
+  lesson_id: 2,
+  project: project,
+)
+
+sql_op_main_slide = Slide.create!(
+  content: sql_op_lesson_content,
+  slide_id: 0,
+  parent: sql_op_lesson,
+)
+
+#################################################################################
+
+sql_selection_content_one = [
+  ['text', "A SQL statement typically selects a subset of rows from a table that match a given criteria."],
+  ['text', "This is known as the Selection operator in Relational Algebra."],
+  ['text', "Similarly we can perform selections in Pandas using boolean indexing."],
+  ['text', "Boolean indexing refers to a technique where you can use a list of boolean values to filter a DataFrame."],
+  ['text', "For example lets say we only want entries from '01/May/1998'. To do this we can create a boolean list like"],
+  ['code', "is_may1st = log_df['Date'] == '01/May/1998'"],
+  ['code', "is_may1st.head(2)"],
+]
+
+sql_selection_content_two = [
+  ['text', "Now we can filter our DataFrame by passing it the boolean list."],
+  ['text' ,"may1_df = log_df[is_may1st]"],
+  ['text', "may1_df.head()"],
+  ['text', "Or we can directly do this by passing in the boolean clause to the DataFrame"],
+  ['code', "may1_df = log_df[log_df['Date'] == '01/May/1998']"],
+  ['code', "may1_df.head()"],
+]
+
+selection_step = Step.create!(
+  title: "Selection",
+  step_id: 0,
+  lesson: sql_op_lesson,
+)
+
+selection_slide_one = Slide.create!(
+  content: sql_selection_content_one,
+  slide_id: 0,
+  parent: selection_step,
+)
+
+selection_slide_two = Slide.create!(
+  content: sql_selection_content_two,
+  slide_id: 1,
+  parent: selection_step,
+)
+
+#################################################################################
 
 
