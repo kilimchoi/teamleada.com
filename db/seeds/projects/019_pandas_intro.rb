@@ -1,5 +1,5 @@
 main_page_content = [
-  ['text', "In this lab exercise we will look at how to work with data stored in a tabular form and perform exploratory data analysis on it."],
+  ['text', "In this lesson exercise we will look at how to work with data stored in a tabular form and perform exploratory data analysis on it."],
   ['text', "We will be using the Python Data Analysis Library or Pandas to do this."],  
 ]
 
@@ -23,12 +23,12 @@ puts "============ Created project: #{project.title}."
 ################################################################################
 
 intro_content = [
-  ['text', "In this lab exercise we will look at how to work with data stored in a tabular form and perform exploratory data analysis on it."],
+  ['text', "In this lesson exercise we will look at how to work with data stored in a tabular form and perform exploratory data analysis on it."],
   ['text', "We will be using the Python Data Analysis Library or Pandas to do this."],
   ['text-success', "The two main data structures that Pandas supports are Series and DataFrames."],
   ['text', "Series are one-dimensional data structures that are a collection of any data type."],
   ['text', "DataFrames on the other hand are two dimensional data structures which resemble a database table or say an Excel spreadsheet."],
-  ['text-info', "In this lab we will primarily be using DataFrames and will look at operations that we can perform using them."],
+  ['text-info', "In this lesson we will primarily be using DataFrames and will look at operations that we can perform using them."],
 ]
 
 intro_content_two = [
@@ -453,4 +453,51 @@ apply_function_slide_one = Slide.create!(
 ###############  Basic Plots  ###################################################
 #################################################################################
 
+plotting_content = [
+  ['text', "In a future lesson exercise we will look at plotting in greater detail."],
+  ['text', "However we can produce simple plots using the Python matplotlib library with a DataFrame."],
+  ['text', "For example to plot a Series or a DataFrame you can just call plot() on the object and for a histogram just call hist()."],
+  ['code', "rand_df = pd.DataFrame({'a' : randn(100)})"],
+  ['code', "rand_df.plot()"],
+  ['code', "rand_df.hist()"],
+  ['text', "[Optional] Now try to create a new column that contains the ResponseSize in kilo bytes."],
+  ['next_steps', ""],
+]
+
+plotting_lesson = Lesson.create!(
+  title: "Plotting in Pandas",
+  lesson_id: 4,
+  project: project,
+)
+
+plotting_slide = Slide.create!(
+  content: plotting_content,
+  slide_id: 0,
+  parent: plotting_lesson,
+)
+
+#################################################################################
+###############  Basic Plots  ###################################################
+#################################################################################
+
+pd_conclusion_content = [
+  ['text', "Now you've experienced some of the basic functionalities of the Pandas package."],
+  ['text-warning', "To practice further, here are a few questions to consider:"],
+  ['text', " 1. What is the average file size for images (.gif or .jpg or .jpeg files) which had response code 200 ? What is the standard deviation?"],
+  ['text', " 1. We wish to see if there is any correlation between client-ids and hours of the day at which they visit the website. Get 100 random client ids from the dataset and plot a scatter plot that shows the hours of the day these clients sent requests."],
+  ['text', "Generate a histogram of traffic to the site every half-hour and plot this."],
+  ['text-success', "Good Job!"],
+  ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
+]
   
+pd_conclusion_lesson = Lesson.create!(
+  title: "pd_conclusion in Pandas",
+  lesson_id: 5,
+  project: project,
+)
+
+pd_conclusion_slide = Slide.create!(
+  content: pd_conclusion_content,
+  slide_id: 0,
+  parent: pd_conclusion_lesson,
+)
