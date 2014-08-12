@@ -55,10 +55,11 @@ intro_content_three = [
 intro_content_four = [
   ['text', "How many rows of data did the above command create?"],
   ['quiz', "pd_intro_0"],
-  ['text', "If you need clarifications about the Pandas API you can type the function name followed by ? to get inline help."],
+  ['text', "If you need clarifications about the Pandas API you can type the function name, followed by ? to get inline help."],
   ['text', "For example to get help with the above call run:"],
   ['code', "pd.DataFrame?"],
   ['text', "If you want to see the same in a browser lookup the function in the API documentation."],
+  ['text', "Now let's take a look at some DataFrame basics"],
 ]
 
 pd_intro_one = Quiz.create!(
