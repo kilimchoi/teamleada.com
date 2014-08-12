@@ -18,7 +18,17 @@ class Quiz < ActiveRecord::Base
     '''
     Given a "user_input", returns True if the user_input matches the answer.
     '''
-    answer == user_input || whitespace_and_lower_pass(user_input) || equalsign_pass(user_input)
+    answer == user_input || whitespace_and_lower_pass(user_input) || equalsign_pass(user_input) || quoteless_pass(user_input)
+  end
+
+  def quoteless_pass(user_input)
+    '''
+    Returns T/F depending of answer == user_input, after we remove all quotes.
+    '''
+    quote_removed_input = Quiz.lower_and_clean(user_input).gsub("'", "") 
+    quote_removed_answer = Quiz.lower_and_clean(answer).gsub('"', "") 
+
+    quote_removed_input == quote_removed_answer
   end
 
   def whitespace_and_lower_pass(user_input)
