@@ -104,7 +104,7 @@ intro_slide_two = Slide.create!(
 
 dataframe_basics_intro = [
   ['text-success', "We'll now get acquainted with DataFrames better."],
-  ['text', "We'll start with some more basics"],
+  ['text', "We'll start with some more basics."],
   ['lesson_links', ""],
 ]
 
@@ -141,19 +141,18 @@ dataframe_basics_content = [
   ['text', "The simplest way to see what is in a DataFrame is to just print it to the console"],
   ['text', "For example to see the DataFrame we created before you can just type df and see the following"],
   ['code', "df"],
-  ['text', "This shows that we have two columnns 'a' and 'b' and four rows in our DataFrame."],
   ['text', "How many rows of data did the above command create?"],
   ['quiz', "pd_intro_1"],
 ]
 
 dataframe_basics_content_two = [
-  ['text', "However large DataFrames cannot be printed to the console and we have higher level commands to inspect its contents."],
-  ['text', "To get information on the schema of the DataFrames, we can use the info function"],
+  ['text', "However large DataFrames cannot be printed to the console, and we have higher level commands to inspect its contents."],
+  ['text-success', "To get information on the schema of the DataFrames, we can use the info() function."],
   ['code', "df.info()"],
-  ['text', "To see the first few rows you can use head and to see the last few rows you can use tail"],
-  ['text', "This is similar to the UNIX-command line tools (and R!)"],
+  ['text', "To see the first few rows you can use head() and to see the last few rows you can use tail()."],
+  ['text-info', "This is similar to the UNIX-command line tools (and R!)"],
   ['code', "df.head(2)"],
-  ['text', "What code would return the first 4 rows of the data?"],
+  ['text', "What code would return the first 4 rows of the df?"],
   ['quiz', "pd_df_basic_2"],
 ]
 
@@ -166,7 +165,9 @@ dataframe_basics_content_three = [
   ['code', "df.describe()"],
   ['text-warning', "What is at the 75% quantile of col a? (omit trailing zeros)"],
   ['quiz', "pd_df_basic_3"],
+  ['next_steps', ""],
 ]
+
 data_frame_basic_step = Step.create!(
   title: "DataFrame Basics",
   step_id: 0,
@@ -202,7 +203,7 @@ dataframe_basics_content_four = [
     na_values=['-'])"],
   ['text', "The names argument tells Pandas what the column names are in our file, and na_values indicates which character is used for missing values in our dataset."],
   ['text', "Try using the commands from the previous section to explore the dataset."],
-  ['text', "What is the mean of the data?"],
+  ['text-warning', "What is the mean of the data?"],
   ['quiz', "pd_df_basic_4"],
   ['next_steps', ""],
 ]
