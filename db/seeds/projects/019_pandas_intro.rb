@@ -1,7 +1,7 @@
 main_page_content = [
   ['text', "In this lesson exercise we will look at how to work with data stored in a tabular form and perform exploratory data analysis on it."],
   ['text', "We will be using the Python Data Analysis Library or Pandas to do this."],
-  ['text-warning', "You will need to have installed Ipython Notebook for this lesson."],
+  ['text-warning', "You will need to have installed IPython Notebook for this lesson."],
   ['text-success', "Let's get started!"],
 ]
 
@@ -9,7 +9,7 @@ main_page_content = [
 project = Project.create!(
   title: "Intro to Pandas (Python)",
   description: main_page_content,
-  short_description: "In this lesson, we'll give a brief introduction to Pyhton's Pandas module. You'll need to have Ipython Notebook to properly do all the exercises.",
+  short_description: "In this lesson, we'll give a brief introduction to Python's Pandas module. You'll need to have Ipython Notebook to properly do all the exercises.",
   number: 19,
   enabled: true,
   has_leaderboard: false,
@@ -25,7 +25,7 @@ puts "============ Created project: #{project.title}."
 ################################################################################
 
 intro_content = [
-  ['text-danger', "Make sure you have Ipython-Notebook installed for this lesson."],
+  ['text-danger', "Make sure you have IPython-Notebook installed for this lesson."],
   ['text', "In this lesson we will look at how to work with data stored in tabular form and perform exploratory data analysis on it."],
   ['text', "We will be using the Python Data Analysis Library or Pandas to do this."],
   ['text-success', "The two main data structures that Pandas supports are Series and DataFrames."],
@@ -41,7 +41,7 @@ intro_content_two = [
   ['code', "tar -xf wc_day6_1_sample.tar.bz2"],
   ['text-warning', "After that, run ipython notebook from your command line."],
   ['code', "ipython notebook"],
-  ['text-success', "This will launch a browser window with the iPython Dashboard."],
+  ['text-success', "This will launch a browser window with the IPython Dashboard."],
   ['text', "IPython notebook provides an interactive environment for using Python."],
   ['text', "Click on New Notebook to create a new notebook."],
   ['text', "We'll first import pylab, a library that supports plotting and direct plots to be shown line."],
@@ -57,10 +57,10 @@ intro_content_three = [
 ]
 
 intro_content_four = [
-  ['text', "If you need clarifications about the Pandas API you can type the function name, followed by ? to get inline help."],
+  ['text-success', "If you need clarifications about the Pandas API you can type the function name, followed by ? to get inline help."],
   ['text', "For example to get help with the above call, run:"],
   ['code', "pd.DataFrame?"],
-  ['text', "How many Paramters does the documentation from the above show?"],
+  ['text', "How many Parameters does the documentation from the above show?"],
   ['quiz', "pd_intro_0"],
   ['text-info', "Now let's take a look at some DataFrame basics!"],
   ['next_steps', ""],
@@ -142,7 +142,7 @@ data_frame_basic_intro = Slide.create!(
 
 dataframe_basics_content = [
   ['text-success', "The simplest way to see the content of a DataFrame is to just print it to the console."],
-  ['text', "For example, to see the DataFrame we created earier, you can just type df:"],
+  ['text', "For example, to see the DataFrame we created earlier, you can just type df:"],
   ['code', "df"],
   ['text', "How many rows of data did the earlier command create?"],
   ['quiz', "pd_intro_1"],
@@ -511,7 +511,7 @@ pd_conclusion_content = [
   ['text-success', "Good Job!"],
   ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
-  
+
 pd_conclusion_lesson = Lesson.create!(
   title: "Pands Intro Conclusion",
   lesson_id: 5,
