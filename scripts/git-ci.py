@@ -3,10 +3,10 @@
 
 from git import *
 
-def git_up():
+def git_ci():
     git_fetch()
-    git_subtree_pull("scripts", "scripts")
-    git_subtree_pull("primary", "app/assets/stylesheets/primary")
+    git_subtree_push("scripts", "scripts")
+    git_subtree_push("primary", "app/assets/stylesheets/primary/")
 
     branches = ["master"]
     previous_branch = None
@@ -18,5 +18,5 @@ def git_up():
         previous_branch = branch
 
 if __name__ == '__main__':
-    git_up()
+    git_ci()
 
