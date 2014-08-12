@@ -1,13 +1,15 @@
 main_page_content = [
   ['text', "In this lesson exercise we will look at how to work with data stored in a tabular form and perform exploratory data analysis on it."],
-  ['text', "We will be using the Python Data Analysis Library or Pandas to do this."],  
+  ['text', "We will be using the Python Data Analysis Library or Pandas to do this."],
+  ['text-warning', "You will need to have installed Ipython Notebook for this lesson."],
+  ['text-success', "Let's get started!"],
 ]
 
 
 project = Project.create!(
   title: "Intro to Pandas (Python)",
   description: main_page_content,
-  short_description: "In this lesson, we'll give a brief introduction to Pyhton's Pandas module",
+  short_description: "In this lesson, we'll give a brief introduction to Pyhton's Pandas module. You'll need to have Ipython Notebook to properly do all the exercises.",
   number: 19,
   enabled: true,
   has_leaderboard: false,
@@ -23,17 +25,19 @@ puts "============ Created project: #{project.title}."
 ################################################################################
 
 intro_content = [
-  ['text', "In this lesson exercise we will look at how to work with data stored in a tabular form and perform exploratory data analysis on it."],
+  ['text-danger', "Make sure you have Ipython-Notebook installed for this lesson."],
+  ['text', "In this lesson we will look at how to work with data stored in tabular form and perform exploratory data analysis on it."],
   ['text', "We will be using the Python Data Analysis Library or Pandas to do this."],
   ['text-success', "The two main data structures that Pandas supports are Series and DataFrames."],
   ['text', "Series are one-dimensional data structures that are a collection of any data type."],
   ['text', "DataFrames on the other hand are two dimensional data structures which resemble a database table or say an Excel spreadsheet."],
-  ['text-info', "In this lesson we will primarily be using DataFrames and will look at operations that we can perform using them."],
+  ['text-info', "In this lesson we will primarily be using DataFrames. We will look at operations that we can perform using them."],
 ]
 
 intro_content_two = [
   ['text', "Before you start, download the following file to your working directory and unzip it."],
-  ['code', "wget https://raw.github.com/amplab/datascience-sp14/master/lab2/data/wc_day6_1_sample.tar.bz2"],
+  ['link', "https://s3.amazonaws.com/leada/pandas_intro_data/wc_day6_1_sample.tar.bz2"],
+  ['text', "Then untar via (or use an unarchiving utility):"],
   ['code', "tar -xf wc_day6_1_sample.tar.bz2"],
   ['text-warning', "After that, run ipython notebook from your command line."],
   ['code', "ipython notebook"],
@@ -49,14 +53,13 @@ intro_content_three = [
   ['code', "%matplotlib inline"],
   ['code', "import pandas as pd"],
   ['code', "df = pd.DataFrame( { 'a' : [1, 2, 3, 4], 'b': [ 'w', 'x', 'y', 'z'] })"],
-  ['text', "NOTE: In the iPython notebook you'll need to use Cntrl + Enter or click the play button to execute code in a cell."],
+  ['text-info', "NOTE: In the iPython notebook you'll need to use Cntrl + Enter or click the play button to execute code in a cell."],
 ]
 
 intro_content_four = [
   ['text', "If you need clarifications about the Pandas API you can type the function name, followed by ? to get inline help."],
-  ['text', "For example to get help with the above call run:"],
+  ['text', "For example to get help with the above call, run:"],
   ['code', "pd.DataFrame?"],
-  ['text', "If you want to see the same in a browser lookup the function in the API documentation."],
   ['text', "How many Paramters does the documentation from the above show?"],
   ['quiz', "pd_intro_0"],
   ['text-info', "Now let's take a look at some DataFrame basics!"],
@@ -103,7 +106,7 @@ intro_slide_two = Slide.create!(
 #################################################################################
 
 dataframe_basics_intro = [
-  ['text-success', "We'll now get acquainted with DataFrames better."],
+  ['text-success', "We will now do a bit more practice with DataFrames."],
   ['text', "We'll start with some more basics."],
   ['lesson_links', ""],
 ]
@@ -113,7 +116,7 @@ pd_df_basic_2 = Quiz.create!(
   answer: "df.head(4)",
 )
 
-pd_df_basic_2 = Quiz.create!(
+pd_df_basic_4 = Quiz.create!(
   quiz_id: "pd_df_basic_3",
   answer: "3.25",
 )
@@ -138,18 +141,20 @@ data_frame_basic_intro = Slide.create!(
 #################################################################################
 
 dataframe_basics_content = [
-  ['text', "The simplest way to see what is in a DataFrame is to just print it to the console"],
-  ['text', "For example to see the DataFrame we created before you can just type df and see the following"],
+  ['text-success', "The simplest way to see the content of a DataFrame is to just print it to the console."],
+  ['text', "For example, to see the DataFrame we created earier, you can just type df:"],
   ['code', "df"],
-  ['text', "How many rows of data did the above command create?"],
+  ['text', "How many rows of data did the earlier command create?"],
   ['quiz', "pd_intro_1"],
+  ['text', "Note that we didn't actually use the 'print()' function, which you could have used as well."],
 ]
 
 dataframe_basics_content_two = [
-  ['text', "However large DataFrames cannot be printed to the console, and we have higher level commands to inspect its contents."],
+  ['text', "However, large DataFrames cannot be printed to the console, therefore we use have higher level commands to inspect its contents."],
   ['text-success', "To get information on the schema of the DataFrames, we can use the info() function."],
   ['code', "df.info()"],
-  ['text', "To see the first few rows you can use head() and to see the last few rows you can use tail()."],
+  ['text', "To see the first few rows you can use head()."],
+  ['text', "To see the last few rows you can use tail()."],
   ['text-info', "This is similar to the UNIX-command line tools (and R!)"],
   ['code', "df.head(2)"],
   ['text', "What code would return the first 4 rows of the df?"],
@@ -158,10 +163,10 @@ dataframe_basics_content_two = [
 
 dataframe_basics_content_three = [
   ['text-success', "To print any range of rows from the DataFrame you can use array-like indexing of row ids."],
-  ['text', "As you might have noticed rows are numbered from 0 in Pandas, so to get the middle two rows we can use the range 1:3"],
+  ['text', "As you might have noticed, rows are numbered from 0 in Pandas, so to get the middle two rows we can use the range 1:3"],
   ['code', "df[1:3]"],
   ['text', "Finally, Pandas also has a useful function describe that summarizes the contents of numerical columns in a DataFrame."],
-  ['text', "For example in df we can see the mean, standard deviation etc. for the column a by running describe."],
+  ['text', "For example in df we can see the mean, standard deviation etc. by running describe()."],
   ['code', "df.describe()"],
   ['text-warning', "What is at the 75% quantile of col a? (omit trailing zeros)"],
   ['quiz', "pd_df_basic_3"],
@@ -196,33 +201,36 @@ data_frame_basic_slide_three = Slide.create!(
 
 dataframe_basics_content_four = [
   ['text', "Now that we know the basics, let's see how we can use Pandas for data analysis."],
-  ['text-info', "To do this part of the lab, we will use the World Cup soccer data, which you can get here:"],
-  ['fail-link', "link to wc data"],
-  ['code', "log_df = pd.read_csv('/path/to/wc_day6_1_sample.csv
+  ['text-info', "Now we'll work with the sampled data you downloaded earlier:"],
+  ['code', "log_df = pd.read_csv('/path/to/wc_day6_1_sample.csv',
     names=['ClientID', 'Date', 'Time', 'URL', 'ResponseCode', 'Size'],
     na_values=['-'])"],
   ['text', "The names argument tells Pandas what the column names are in our file, and na_values indicates which character is used for missing values in our dataset."],
   ['text', "Try using the commands from the previous section to explore the dataset."],
-  ['text-warning', "What is the mean of the data?"],
+  ['text-warning', "What is the max ResponseCode? (omit trailing zeros and any period)"],
   ['quiz', "pd_df_basic_4"],
 ]
 
 dataframe_basics_content_five = [
-  ['text', "How many rows are present in log_df?"],
+  ['text', "How many row entries are present in log_df?"],
   ['quiz', "pd_df_basic_5"],
-  ['text', "What are the URLs between rows 85 and 90?"],
+  ['text', "What is the URL at row 85 (remember that indexing starts at 0)?"],
   ['quiz', "pd_df_basic_6"],
   ['text-success', "Great!"],
   ['next_steps', ""],
 ]
 
+pd_df_basic_4 = Quiz.create!(
+  quiz_id: "pd_df_basic_4",
+  answer: "500",
+)
 pd_df_basic_5 = Quiz.create!(
   quiz_id: "pd_df_basic_5",
-  answer: "XXX",
+  answer: "200000",
 )
 pd_df_basic_6 = Quiz.create!(
   quiz_id: "pd_df_basic_6",
-  answer: "XXX",
+  answer: "/images/s102443.gif",
 )
 
 data_frame_basic_conclusion = Step.create!(
