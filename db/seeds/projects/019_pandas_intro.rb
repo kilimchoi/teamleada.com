@@ -14,7 +14,7 @@ project = Project.create!(
   enabled: true,
   has_leaderboard: false,
   has_submit: false,
-  category: Project::LESSON,
+  category: Project::COMING_SOON,
   uid: 19,
   difficulty: 'Intermediate',
   is_new: true,
