@@ -53,18 +53,19 @@ intro_content_three = [
 ]
 
 intro_content_four = [
-  ['text', "How many rows of data did the above command create?"],
-  ['quiz', "pd_intro_0"],
   ['text', "If you need clarifications about the Pandas API you can type the function name, followed by ? to get inline help."],
   ['text', "For example to get help with the above call run:"],
   ['code', "pd.DataFrame?"],
   ['text', "If you want to see the same in a browser lookup the function in the API documentation."],
-  ['text', "Now let's take a look at some DataFrame basics"],
+  ['text', "How many Paramters does the documentation from the above show?"],
+  ['quiz', "pd_intro_0"],
+  ['text-info', "Now let's take a look at some DataFrame basics!"],
+  ['next_steps', ""],
 ]
 
-pd_intro_one = Quiz.create!(
+quiz_intro_pd = Quiz.create!(
   quiz_id: "pd_intro_0",
-  answer: "4",
+  answer: "5",
 )
 
 intro_lesson = Lesson.create!(
@@ -96,3 +97,129 @@ intro_slide_two = Slide.create!(
   slide_id: 3,
   parent: intro_lesson,
 )
+
+#################################################################################
+###############  PD Basics  ##################################################
+#################################################################################
+
+dataframe_basics_intro = [
+  ['text-success', "We'll now get acquainted with DataFrames better."],
+  ['text', "We'll start with some more basics"],
+  ['lesson_links', ""],
+]
+
+pd_df_basic_2 = Quiz.create!(
+  quiz_id: "pd_df_basic_2",
+  answer: "df.head(4)",
+)
+
+pd_df_basic_2 = Quiz.create!(
+  quiz_id: "pd_df_basic_3",
+  answer: "3.25",
+)
+
+pd_intro_one = Quiz.create!(
+  quiz_id: "pd_intro_1",
+  answer: "4",
+)
+
+data_frame_basic_lesson = Lesson.create!(
+  title: "DataFrames",
+  lesson_id: 1,
+  project: project,
+)
+
+data_frame_basic_intro = Slide.create!(
+  content: dataframe_basics_intro,
+  slide_id: 0,
+  parent: data_frame_basic_lesson,
+)
+
+#################################################################################
+
+dataframe_basics_content = [
+  ['text', "The simplest way to see what is in a DataFrame is to just print it to the console"],
+  ['text', "For example to see the DataFrame we created before you can just type df and see the following"],
+  ['code', "df"],
+  ['text', "This shows that we have two columnns 'a' and 'b' and four rows in our DataFrame."],
+  ['text', "How many rows of data did the above command create?"],
+  ['quiz', "pd_intro_1"],
+]
+
+dataframe_basics_content_two = [
+  ['text', "However large DataFrames cannot be printed to the console and we have higher level commands to inspect its contents."],
+  ['text', "To get information on the schema of the DataFrames, we can use the info function"],
+  ['code', "df.info()"],
+  ['text', "To see the first few rows you can use head and to see the last few rows you can use tail"],
+  ['text', "This is similar to the UNIX-command line tools (and R!)"],
+  ['code', "df.head(2)"],
+  ['text', "What code would return the first 4 rows of the data?"],
+  ['quiz', "pd_df_basic_2"],
+]
+
+dataframe_basics_content_three = [
+  ['text-success', "To print any range of rows from the DataFrame you can use array-like indexing of row ids."],
+  ['text', "As you might have noticed rows are numbered from 0 in Pandas, so to get the middle two rows we can use the range 1:3"],
+  ['code', "df[1:3]"],
+  ['text', "Finally, Pandas also has a useful function describe that summarizes the contents of numerical columns in a DataFrame."],
+  ['text', "For example in df we can see the mean, standard deviation etc. for the column a by running describe."],
+  ['code', "df.describe()"],
+  ['text-warning', "What is at the 75% quantile of col a? (omit trailing zeros)"],
+  ['quiz', "pd_df_basic_3"],
+]
+data_frame_basic_step = Step.create!(
+  title: "DataFrame Basics",
+  step_id: 0,
+  lesson: data_frame_basic_lesson,
+)
+
+data_frame_basic_slide_one = Slide.create!(
+  content: dataframe_basics_content,
+  slide_id: 0,
+  parent: data_frame_basic_step,
+)
+
+data_frame_basic_slide_two = Slide.create!(
+  content: dataframe_basics_content_two,
+  slide_id: 1,
+  parent: data_frame_basic_step,
+)
+
+data_frame_basic_slide_three = Slide.create!(
+  content: dataframe_basics_content_three,
+  slide_id: 2,
+  parent: data_frame_basic_step,
+)
+
+#################################################################################
+
+dataframe_basics_content_four = [
+  ['text', "Now that we know the basics, let's see how we can use Pandas for data analysis."],
+  ['text-info', "To do this part of the lab, we will use the World Cup soccer data, which you can get here:"],
+  ['fail-link', "link to wc data"],
+  ['code', "log_df = pd.read_csv('/path/to/wc_day6_1_sample.csv
+    names=['ClientID', 'Date', 'Time', 'URL', 'ResponseCode', 'Size'],
+    na_values=['-'])"],
+  ['text', "The names argument tells Pandas what the column names are in our file, and na_values indicates which character is used for missing values in our dataset."],
+  ['text', "Try using the commands from the previous section to explore the dataset."],
+  ['text', "What is the mean of the data?"],
+  ['quiz', "pd_df_basic_4"],
+  ['next_steps', ""],
+]
+data_frame_basic_conclusion = Step.create!(
+  title: "DataFrame Conclusion",
+  step_id: 1,
+  lesson: data_frame_basic_lesson,
+)
+data_frame_basic_slide_four = Slide.create!(
+  content: dataframe_basics_content_four,
+  slide_id: 3,
+  parent: data_frame_basic_conclusion,
+)
+
+#################################################################################
+###############  PD Basics  #####################################################
+#################################################################################
+
+
+
