@@ -454,15 +454,23 @@ apply_function_slide_one = Slide.create!(
 #################################################################################
 
 plotting_content = [
-  ['text', "In a future lesson exercise we will look at plotting in greater detail."],
-  ['text', "However we can produce simple plots using the Python matplotlib library with a DataFrame."],
-  ['text', "For example to plot a Series or a DataFrame you can just call plot() on the object and for a histogram just call hist()."],
+  ['text', "In a future lesson we will look at plotting in greater detail."],
+  ['text-info', "However we can produce simple plots using the Python matplotlib library with a DataFrame."],
+  ['text-success', "To plot a Series or a DataFrame you can just call plot() on the object and for a histogram just call hist()."],
   ['code', "rand_df = pd.DataFrame({'a' : randn(100)})"],
   ['code', "rand_df.plot()"],
   ['code', "rand_df.hist()"],
-  ['text', "[Optional] Now try to create a new column that contains the ResponseSize in kilo bytes."],
+  ['code', "pd.DataFrame.plot?"],
+  ['text', "What is the 'type' of the above help query?"],
+  ['quiz', "pd_plotting_intro_0"],
+  ['text-warning', "[Optional] Now try to create a new column that contains the ResponseSize in kilo bytes."],
   ['next_steps', ""],
 ]
+
+pd_plotting_intro_0 = Quiz.create!(
+  quiz_id: "pd_plotting_intro_0",
+  answer: "instancemethod",
+)
 
 plotting_lesson = Lesson.create!(
   title: "Plotting in Pandas",
