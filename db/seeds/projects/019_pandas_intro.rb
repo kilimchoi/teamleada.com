@@ -490,16 +490,16 @@ plotting_slide = Slide.create!(
 
 pd_conclusion_content = [
   ['text', "Now you've experienced some of the basic functionalities of the Pandas package."],
-  ['text-warning', "To practice further, here are a few questions to consider:"],
-  ['text', " 1. What is the average file size for images (.gif or .jpg or .jpeg files) which had response code 200 ? What is the standard deviation?"],
-  ['text', " 1. We wish to see if there is any correlation between client-ids and hours of the day at which they visit the website. Get 100 random client ids from the dataset and plot a scatter plot that shows the hours of the day these clients sent requests."],
-  ['text', "Generate a histogram of traffic to the site every half-hour and plot this."],
+  ['text-danger', "To practice further, here are a few questions to consider:"],
+  ['text-warning', " 1.  What is the average file size for images (.gif or .jpg or .jpeg files) which had response code 200 ? What is the standard deviation?"],
+  ['text-warning', " 2.  We wish to see if there is any correlation between client-ids and hours of the day at which they visit the website. Get 100 random client ids from the dataset and plot a scatter plot that shows the hours of the day these clients sent requests."],
+  ['text-warning', " 3.  Generate a histogram of traffic to the site every half-hour and plot this."],
   ['text-success', "Good Job!"],
   ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
   
 pd_conclusion_lesson = Lesson.create!(
-  title: "pd_conclusion in Pandas",
+  title: "Pands Intro Conclusion",
   lesson_id: 5,
   project: project,
 )
