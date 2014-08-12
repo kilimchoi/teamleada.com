@@ -362,7 +362,7 @@ sql_grouping_content_two = [
   ['text', " 1. grouped.describe() prints summary statistics for numeric columns in each group."],
   ['text', " 2. grouped.size() prints the number of elements in each group."],
   ['text', " 3. Similarly grouped.sum(), grouped.mean() and grouped.median() print the sum, mean and median values for numeric columns in each group."],
-  ['text-danger', "What is the highest ClientID with the ResponseCode of 302? (omit trailing zeroes and any period)"],
+  ['text-danger', "What is the highest ClientID with the ResponseCode of 302? (omit trailing zeros and any period)"],
   ['quiz', "pd_sql_grouping_1"],
   ['next_steps', ""],
 ]
@@ -401,7 +401,7 @@ grouping_slide_two = Slide.create!(
 
 apply_function_main_content = [
   ['text', "So far we have been using SQL-style operators to process our data."],
-  ['text', "However to do data cleaning or more complex analysis, we often need to apply functions on row or column of a DataFrame."],
+  ['text', "However to do proper data cleaning or more complex analysis, we often need to apply functions on row or column of a DataFrame."],
   ['lesson_links', ""],
 ]
 
@@ -421,22 +421,27 @@ apply_function_main_slide = Slide.create!(
 
 apply_function_example_content = [
   ['text', "For example, consider the columns 'Date' and 'Time' in our Dataframe"],
-  ['text-info', "It would be useful if we could combine these columns and create `datetimects` then it would be useful for filtering, grouping etc."],
-  ['text', "To create a DateTime column we will use Pandas helper function to_datetime."],
+  ['text-info', "It would be useful if we could combine these columns and create a `DateTime` col then it would be useful for filtering, grouping etc."],
+  ['text', "To create a DateTime column, we will use Pandas helper function: to_datetime()."],
   ['text', "This function takes a string and converts it to a datetime object."],
-  ['text-success', "To call this on every row of the DataFrame, we use the apply() function."],
-  ['text', "apply() takes two arguments, the first a function to apply and secondly axis which indicates if this should be applied on every row (axis=1) or column (axis=0)"],
-  ['code', "log_df['DateTime'] = pd.to_datetime(log_df.apply(lambda row: row['Date'] + ' ' + row['Time'], axis=1))"],
-  ['text', "This might take a minute to run as we are adding a new column for every request in our table."],
-  ['text', "Meanwhile take a look at the various components of DateTime objects in the API documentation"],
-  ['text', "For example if we want to group by hour we can now use the DateTime API instead of doing any string parsing."],
+  ['text-success', "To call this on every row of the DataFrame, we employ the apply() function."],
+  ['text', "apply() takes two arguments:"],
+  ['text', " -  The first is a function to apply."],
+  ['text', " -  Second is an axis which indicates if this should be applied on every row (axis=1) or column (axis=0)."],
+  ['code', "log_df['DateTime'] = pd.to_datetime(log_df.apply(lambda row: row['Date'] +
+    ' ' + row['Time'], axis=1))"],
+  ['text', "This might take a minute to run, since we are adding a new column for every request in our table."],
 ]
 
 apply_function_example_content_two = [
+  ['text', "Meanwhile, take a look at the various components of DateTime objects in the API documentation."],
+  ['link', "http://pandas.pydata.org/pandas-docs/stable/api.html#time-date-components"],
+  ['text', "For example if we want to group by the 'hour', we can now use the DateTime API instead of doing any string parsing."],
   ['code', "hour_grouped = log_df.groupby(lambda row: log_df['DateTime'][row].hour)"],
   ['code', "hour_grouped.ngroups"],
-  ['text', "Finally, note that you can apply operations on each group using the apply method."],
-  ['text', "This is similar to the apply on the DataFrame we saw earlier except the apply method is now called once per group."],
+  ['text-success', "Finally, note that you can apply operations on each group using another apply() method."],
+  ['text-info', "This is similar what we saw earlier except the apply() method is now called once per group."],
+  ['text-warning', "[Optional] Now try to create a new column that contains the ResponseSize in kilo bytes."],
   ['next_steps', ""],
 ]
 
@@ -463,7 +468,7 @@ apply_function_slide_one = Slide.create!(
 #################################################################################
 
 plotting_content = [
-  ['text', "In a future lesson we will look at plotting in greater detail."],
+  ['text', "In a future lesson we will look at plotting in greater details."],
   ['text-info', "However we can produce simple plots using the Python matplotlib library with a DataFrame."],
   ['text-success', "To plot a Series or a DataFrame you can just call plot() on the object and for a histogram just call hist()."],
   ['code', "rand_df = pd.DataFrame({'a' : randn(100)})"],
@@ -472,7 +477,7 @@ plotting_content = [
   ['code', "pd.DataFrame.plot?"],
   ['text', "What is the 'type' of the above help query?"],
   ['quiz', "pd_plotting_intro_0"],
-  ['text-warning', "[Optional] Now try to create a new column that contains the ResponseSize in kilo bytes."],
+  ['text-warning', "[Optional] Generate a histogram of traffic to the site every half-hour and plot this."],
   ['next_steps', ""],
 ]
 
