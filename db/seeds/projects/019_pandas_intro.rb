@@ -282,6 +282,7 @@ sql_selection_content_two = [
   ['text', "Or we can directly do this by passing in the boolean clause to the DataFrame"],
   ['code', "may1_df = log_df[log_df['Date'] == '01/May/1998']"],
   ['code', "may1_df.head()"],
+  ['next_steps', ""],
 ]
 
 selection_step = Step.create!(
@@ -304,4 +305,83 @@ selection_slide_two = Slide.create!(
 
 #################################################################################
 
+sql_projection_content_one = [
+  ['text-success', "While selection is used for filtering rows, projection is the relational algebra operator used to select columns."],
+  ['text', "To do this with Pandas we just need to pass in a list of columns that we wish to select."],
+  ['text', "For example to only keep the 'URL' and 'ResponseCode' column we would run:"],
+  ['code', "url_codes = log_df[['URL', 'ResponseCode']]"],
+  ['code', "url_codes.head(5)"],
+]
+
+sql_projection_content_two = [
+  ['next_steps', ""],
+]
+
+projection_step = Step.create!(
+  title: "projection",
+  step_id: 1,
+  lesson: sql_op_lesson,
+)
+
+projection_slide_one = Slide.create!(
+  content: sql_projection_content_one,
+  slide_id: 0,
+  parent: projection_step,
+)
+
+projection_slide_two = Slide.create!(
+  content: sql_projection_content_two,
+  slide_id: 1,
+  parent: projection_step,
+)
+
+#################################################################################
+
+sql_grouping_content_one = [
+  ['text-success', "Pandas also allows you to group the DataFrame by values in any column."],
+  ['text', "For example to group requests by 'ResponseCode' you can run:"],
+  ['code', "grouped = log_df.groupby('ResponseCode')"],
+  ['code', "grouped"],
+  ['text', "As you can see from the output above, grouped is not a DataFrame but an object of type DataFrameGroupBy"],
+  ['text', "This just means that it contains a number of groups and each group is in turn a DataFrame:"],
+  ['code', "grouped.ngroups"],
+  ['code', "grouped.groups.keys()"],
+  ['code', "grouped.get_group(200).head()"],
+  ['text-warning', "How many groups were there?"],
+  ['quiz', "pd_sql_grouping_0"],
+]
+
+sql_grouping_content_two = [
+  ['text-success', "You can also group by multiple columns by just passing the a list of column names."],
+  ['text', "For example to group by both date and response code you can run:"],
+  ['code', "multi_grouped = log_df.groupby(['ResponseCode', 'Date'])"],
+  ['text-warning', "Pandas also has useful commands to print various statistics about elements in each group."],
+  ['text', " 1. grouped.describe() prints summary statistics for numeric columns in each group."],
+  ['text', " 2. grouped.size() prints the number of elements in each group."],
+  ['text', " 3. Similarly grouped.sum(), grouped.mean() and grouped.median() print the sum, mean and median values for numeric columns in each group."],
+  ['next_steps', ""],
+]
+
+pd_sql_grouping_quiz = Quiz.create!(
+  quiz_id: "pd_sql_grouping_0",
+  answer: "XXX",
+)
+
+grouping_step = Step.create!(
+  title: "grouping",
+  step_id: 2,
+  lesson: sql_op_lesson,
+)
+
+grouping_slide_one = Slide.create!(
+  content: sql_grouping_content_one,
+  slide_id: 0,
+  parent: grouping_step,
+)
+
+grouping_slide_two = Slide.create!(
+  content: sql_grouping_content_two,
+  slide_id: 1,
+  parent: grouping_step,
+)
 
