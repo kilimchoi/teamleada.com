@@ -254,7 +254,7 @@ conclusion_content_one = [
   ['text', "We don't know."],
   ['text-warning', "Are there more data than just the texts?"],
   ['text', "Certainly."],
-  ['text-info', "These are some of the things to keep in mind for next time"],
+  ['text-info', "These are some of the things to keep in mind for next time."],
   ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
 
