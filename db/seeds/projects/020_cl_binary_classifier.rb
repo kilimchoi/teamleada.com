@@ -75,6 +75,7 @@ background_context_slide_one = Slide.create!(
 )
 
 #############################################
+
 data_context_content_one = [
   ['text-info', "In order to get the necessary data, you start with a simple crawler."],
   ['text', "You use your webscraping skills to whip up a crawler, and you run it on Craigslist with the search term:"],
@@ -95,6 +96,7 @@ data_context_content_two = [
   ['text-success', "You decide against using the intern."],
   ['text', "Instead, you utilize an Amazon Mechanical Turk campaign"],
 ]
+
 data_context_content_three = [
   ['text', "The resulting data:"],
   ['fail-link', "some link"],
@@ -108,7 +110,6 @@ data_context_content_three = [
   ['next_steps', ""],
 ]
 
-
 cl_data_context_quiz = Quiz.create!(
   quiz_id: "cl_data_context_0",
   answer: "no",
@@ -118,6 +119,7 @@ cl_data_context_quiz = Quiz.create!(
   quiz_id: "cl_data_context_1",
   answer: "yes",
 )
+
 data_context_step = Step.create!(
   title: "Getting the Data",
   step_id: 1,
@@ -141,3 +143,100 @@ data_context_slide_three = Slide.create!(
   slide_id: 2,
   parent: data_context_step,
 )
+
+#############################################
+########### -- PROJECT OVERVIEW -- ##########
+#############################################
+
+submission_main_content_one = [
+  ['text-success', "Once you have a formatted submission, you can submit it in this section."],
+  ['text', "Hopefully you utilized some kind of test metric!"],
+  ['text', "Be prepared to talk about what you did, and how you did it"],
+  ['lesson_links', ""],
+]
+
+submission_lesson = Lesson.create!(
+  title: "Submission",
+  lesson_id: 1,
+  project: project,
+)
+
+submission_slide_one = Slide.create!(
+  content: submission_main_content_one,
+  slide_id: 0,
+  parent: submission_lesson,
+)
+
+#############################################
+
+submission_test_content_one = [
+  ['text', "To make a submission, submit below:"],
+  ['submit', nil],
+  ['text', "Make sure your submission is formatted the same way as train-mapping."],
+  ['text', "This means csv format with a header, and each row must contain an ad_id and the corresponding classification"],
+  ['next_steps', ""]
+]
+
+submission_test_step = Step.create!(
+  title: "Testset Submission",
+  step_id: 0,
+  lesson: submission_lesson,
+)
+
+submission_test_slide = Slide.create!(
+  content: submission_test_content_one,
+  slide_id: 0,
+  parent: submission_test_step,
+)
+
+###############################################
+
+submission_report_content_one = [
+  ['text', "Here you'll submit your code and a written explanation of how/what you did."],
+  ['text', "Submit your full code below"],
+  ['text', "Remember that the code will likely be reviewed by another person, so be sure to write readably and commented code"],
+  ['user_code', ""],
+  ['text-success', "Great!"],
+]
+
+submission_report_content_two = [
+  ['text', "Now submit a written explanation of what you did."],
+  ['text', "Be sure to explain the reasoning behind your process, model(s), evaluative method etc."],
+  ['user_response', ""],
+  ['next_steps', ""],
+]
+submission_report_step = Step.create!(
+  title: "Code Submission",
+  step_id: 1,
+  lesson: submission_lesson,
+)
+
+submission_report_slide_one = Slide.create!(
+  content: submission_report_content_one,
+  slide_id: 0,
+  parent: submission_report_step,
+)
+
+submission_report_slide_two = Slide.create!(
+  content: submission_report_content_two,
+  slide_id: 1,
+  parent: submission_report_step,
+)
+
+code_submission_bn = SubmissionContext.create!(
+  title: "Binary Classifier - Code",
+  description: "User is asked to paste in the code for the binary classifier challenge.",
+  slide: submission_report_slide_one,
+  submission_context_id: 0,
+  submission_type: SubmissionContext::CODE,
+)
+
+train_data_context = SubmissionContext.create!(
+  title: "Binary Classifier - Written",
+  description: "User is asked to write an explanation on her process, model, and evaluative method etc.",
+  slide: submission_report_slide_two,
+  submission_context_id: 0,
+  submission_type: SubmissionContext::RESPONSE,
+)
+
+
