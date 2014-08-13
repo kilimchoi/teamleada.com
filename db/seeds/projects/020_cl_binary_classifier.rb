@@ -10,7 +10,7 @@ main_page_content = [
 project = Project.create!(
   title: "Craigslist Ads: Binary Classifier",
   description: main_page_content,
-  short_description: "In this lesson, we'll give a brief introduction to Python's Pandas module. You'll need to have Ipython Notebook to properly do all the exercises.",
+  short_description: "In this challenge, you'll be building a binary classifier for the Craigslist ads.",
   number: 20,
   enabled: true,
   has_leaderboard: true,
@@ -57,7 +57,7 @@ background_context_content_one = [
   ['text', "But this means you'll need a large set of multiple price ad data."],
   ['text', "To tackle the issue, you decide to create a classifier to help you classify ads as Single or Multiple."],
   ['text', "With the classifier, you'll be able to grab a large dataset of multiple item ads."],
-  ['text', "Moreoever, you can use the classifier to decide which price extractor to use."],
+  ['text', "Moreover, you can use the classifier to decide which price extractor to use."],
   ['text', "Satisfied with the decision, you begin your process."],
   ['next_steps', ''],
 ]
@@ -84,11 +84,11 @@ data_context_content_one = [
   ['text', "There is no point in trying to bypass the limit right now."],
   ['text', "You simply scrape some other regions to scrape."],
   ['text', "The resulting data is below."],
-  ['fail-link', "some aws linl"],
+  ['fail-link', "some aws link"],
 ]
 
 data_context_content_two = [
-  ['text', "Once you've scraped the data, you think about how to lable them"],
+  ['text', "Once you've scraped the data, you think about how to label them"],
   ['text', "Could this be a task left for an intern?"],
   ['quiz', "cl_data_context_0"],
   ['text', "Could this possibly hurt the intern's view of you as a mentor?"],
@@ -145,13 +145,13 @@ data_context_slide_three = Slide.create!(
 )
 
 #############################################
-########### -- PROJECT OVERVIEW -- ##########
+############# -- SUBMISSION  -- #############
 #############################################
 
 submission_main_content_one = [
   ['text-success', "Once you have a formatted submission, you can submit it in this section."],
   ['text', "Hopefully you utilized some kind of test metric!"],
-  ['text', "Be prepared to talk about what you did, and how you did it"],
+  ['text', "Be prepared to talk about what you did, and how you did it."],
   ['lesson_links', ""],
 ]
 
@@ -173,7 +173,7 @@ submission_test_content_one = [
   ['text', "To make a submission, submit below:"],
   ['submit', nil],
   ['text-warning', "Make sure your submission is formatted the same way as train-mapping."],
-  ['text', "This means csv format with a header, and each row must contain an `ad_id` and the corresponding binary classification."],
+  ['text', "This means CSV format with a header, and each row must contain an `ad_id` and the corresponding binary classification."],
   ['next_steps', ""]
 ]
 
@@ -200,7 +200,7 @@ submission_report_content_one = [
 ]
 
 submission_report_content_two = [
-  ['text', "Now submit a written explanation of what you did:"],
+  ['text-success', "Now submit a written explanation of what you did:"],
   ['user_response', ""],
   ['text-warning', "Be sure to explain the reasoning behind your process, model(s), evaluative method etc."],
   ['next_steps', ""],
@@ -239,4 +239,32 @@ train_data_context = SubmissionContext.create!(
   submission_type: SubmissionContext::RESPONSE,
 )
 
+#############################################
+############## -- Conclusion -- #############
+#############################################
 
+conclusion_content_one = [
+  ['text-success', "Congratz!"],
+  ['text', "You've now successfully created a binary classifier"],
+  ['text', "With this classifier, your team can successfully gather Craigslist intelligence, as well as construct other useful Models."],
+  ['text', "In closing, keep in mind that the model you built is only as good as the data."],
+  ['text', "You had access to manually classified text data."],
+  ['text', "The classification process was done by a mechanical turk."],
+  ['text-warning', "How reliable?"],
+  ['text', "We don't know."],
+  ['text-warning', "Are there more data than just the texts?"],
+  ['text', "Certainly."],
+  ['text-info', "These are some of the things to keep in mind for next time"],
+  ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
+]
+
+conclusion_lesson = Lesson.create!(
+  title: "Conclusion",
+  lesson_id: 2,
+  project: project,
+)
+conclusion_slide = Slide.create!(
+  content:conclusion_content_one,
+  slide_id: 0,
+  parent: conclusion_lesson,
+)
