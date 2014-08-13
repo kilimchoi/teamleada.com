@@ -172,8 +172,8 @@ submission_slide_one = Slide.create!(
 submission_test_content_one = [
   ['text', "To make a submission, submit below:"],
   ['submit', nil],
-  ['text', "Make sure your submission is formatted the same way as train-mapping."],
-  ['text', "This means csv format with a header, and each row must contain an ad_id and the corresponding classification"],
+  ['text-warning', "Make sure your submission is formatted the same way as train-mapping."],
+  ['text', "This means csv format with a header, and each row must contain an `ad_id` and the corresponding binary classification."],
   ['next_steps', ""]
 ]
 
@@ -192,17 +192,17 @@ submission_test_slide = Slide.create!(
 ###############################################
 
 submission_report_content_one = [
-  ['text', "Here you'll submit your code and a written explanation of how/what you did."],
-  ['text', "Submit your full code below"],
-  ['text', "Remember that the code will likely be reviewed by another person, so be sure to write readably and commented code"],
+  ['text', "Here you'll submit your code along with a written explanation of how/what you did."],
+  ['text-success', "Submit your full code below:"],
   ['user_code', ""],
-  ['text-success', "Great!"],
+  ['text-warning', "Remember that the code will likely be reviewed by another person, so be sure to write readable and commented code."],
+  ['text-info', "Great!"],
 ]
 
 submission_report_content_two = [
-  ['text', "Now submit a written explanation of what you did."],
-  ['text', "Be sure to explain the reasoning behind your process, model(s), evaluative method etc."],
+  ['text', "Now submit a written explanation of what you did:"],
   ['user_response', ""],
+  ['text-warning', "Be sure to explain the reasoning behind your process, model(s), evaluative method etc."],
   ['next_steps', ""],
 ]
 submission_report_step = Step.create!(
