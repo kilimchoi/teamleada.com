@@ -1,8 +1,0 @@
-.container-fluid.full-container
-  .row
-    .col-md-12
-      h1
-        ' Charts for
-        = params[:category].humanize
-      - @charts.each do |chart|
-        = high_chart(chart.title.downcase.parameterize, chart_for_timeframe(chart, chart.default_timeframe, Date.today))

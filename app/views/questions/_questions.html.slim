@@ -1,9 +1,0 @@
-h1.title.title-top-margin Top 7 Questions
-table.table.table-striped
-  - @top_questions.each do |question|
-    = render partial: "questions/question", locals: { question: question }
-
-h1.title.title-top-margin More Questions
-table.table.table-striped
-  - @questions.each do |question|
-    = render partial: "questions/question", locals: { question: question }
