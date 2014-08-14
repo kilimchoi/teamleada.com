@@ -80,11 +80,14 @@ class Conversation < ActiveRecord::Base
   def add_users_from_search(search_query)
     # TODO(mark): This is hacky, we should instead grab the ids and send them in the query somehow.
     names = search_query.split(", ")
-    usernames = names.map{ |name| name[/\(.*?\)/][1..-2] }
-    usernames.each do |username|
-      user = User.find_by(username: username)
-      unless user.nil?
+    # usernames = names.map{ |name| name[/\(.*?\)/][1..-2] }
+    names.each do |name|
+      # This will only work because we limited the users by a lot
+      user = User.find_by(name: name)
+      if !user.nil? && [1, 2, 3].include?(user.id)
         ConversationUser.create(user: user, conversation: self, unread: true)
+      else
+        return false
       end
     end
   end
