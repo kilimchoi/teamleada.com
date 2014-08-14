@@ -148,7 +148,7 @@ Then, we have to set up our local database to include any new changes you might 
     rake db:drop
     rake db:create
 
-    pg_restore --verbose --clean --no-acl --no-owner -h localhost -U mark -d teada_development latest.dump
+    pg_restore --verbose --clean --no-acl --no-owner -h localhost -U mark -d leada_development latest.dump
 
     rake db:migrate
     rake db:seed
