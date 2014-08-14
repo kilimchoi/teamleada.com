@@ -287,6 +287,13 @@ class User < ActiveRecord::Base
     "#{name} (#{username})"
   end
 
+  # Messages
+  def allowed_contacts
+    # TODO(mark): Allow users to contact more than just Leada employees in the future
+    User.where(id: [1, 2, 3])
+  end
+
+  # Resumes
   def resume
     self.has_resume? ? self.last_resume : nil
   end
@@ -302,6 +309,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  # Profile Photos
   def profile_photo
     if has_profile_photo?
       photo = profile_photos.last
@@ -317,6 +325,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  # Roles
   def is_admin?
     role == 'admin'
   end
@@ -574,11 +583,6 @@ class User < ActiveRecord::Base
 
   def resume_uploaded_before?(day)
     resumes.count > 0 && resumes.first.created_at <= day.date.tomorrow
-  end
-
-  # Messages
-  def allowed_contacts
-    User.where(id: 1)
   end
 
   #
