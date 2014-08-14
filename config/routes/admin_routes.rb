@@ -17,7 +17,8 @@ TeamLeada::Application.routes.draw do
       end
     end
 
-    resources :conversations, path: :messages, only: [:show, :index]
+    match 'conversations', to: 'conversations#create', as: 'create_conversation', via: :post
+    resources :conversations, path: :messages, only: [:show, :index, :new]
 
     resources :resumes, only: [:index, :show]
     resources :profile_photos, path: 'profile-photos', only: [:index]

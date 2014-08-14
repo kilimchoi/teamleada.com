@@ -92,4 +92,20 @@ class Conversation < ActiveRecord::Base
     end
   end
 
+  def create_conversation_users(users)
+    users.each do |user|
+      ConversationUser.create(user: user, conversation: self, unread: true)
+    end
+  end
+
+  def self.create_separate_conversations(conversation_params, sender, users)
+    users.each do |user|
+      conversation = Conversation.new(conversation_params)
+      conversation.starter = sender
+      ConversationUser.create(user: sender, conversation: conversation, unread: false)
+      ConversationUser.create(user: user, conversation: conversation, unread: true)
+      conversation.save
+    end
+  end
+
 end
