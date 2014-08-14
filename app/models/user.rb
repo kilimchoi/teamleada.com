@@ -146,7 +146,7 @@ class User < ActiveRecord::Base
   before_save :set_name
 
   self.per_page = 50
-  SETTINGS_TABS = ['account', 'privacy']
+  SETTINGS_TABS = ['account', 'privacy', 'email']
 
   PUBLIC = 'Public'
   CONNECTIONS = 'Connections Only'
@@ -287,6 +287,13 @@ class User < ActiveRecord::Base
     "#{name} (#{username})"
   end
 
+  # Messages
+  def allowed_contacts
+    # TODO(mark): Allow users to contact more than just Leada employees in the future
+    User.where(id: [1, 2, 3])
+  end
+
+  # Resumes
   def resume
     self.has_resume? ? self.last_resume : nil
   end
@@ -302,6 +309,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  # Profile Photos
   def profile_photo
     if has_profile_photo?
       photo = profile_photos.last
@@ -317,6 +325,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  # Roles
   def is_admin?
     role == 'admin'
   end

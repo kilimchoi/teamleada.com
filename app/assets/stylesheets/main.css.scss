@@ -16,6 +16,10 @@ body {
   background-color: $main-background-color;
 }
 
+.no-margin {
+  margin: 0 !important;
+}
+
 .clearfix {
   zoom: 1;
 }

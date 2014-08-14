@@ -2,6 +2,13 @@ class ConversationsController < ApplicationController
   load_and_authorize_resource
   autocomplete :user, :name, full: true, display_value: :search_name, extra_data: [:username]
 
+  def autocomplete_user_name
+    render json: current_user.allowed_contacts.map{ |user| {
+      label: user.name,
+      id: user.id,
+    }}
+  end
+
   def index
     @conversations = current_user.conversations
   end
@@ -17,7 +24,12 @@ class ConversationsController < ApplicationController
 
   def create
     @conversation = Conversation.new(conversation_params)
-    @conversation.add_users_from_search(params[:recipients])
+    valid = @conversation.add_users_from_search(params[:recipients])
+    if !valid
+      flash[:danger] = "There was a problem creating your message."
+      redirect_to new_conversation_path
+      return
+    end
     ConversationUser.create(user: current_user, conversation: @conversation, unread: false)
     @conversation.starter = current_user
     if @conversation.save
