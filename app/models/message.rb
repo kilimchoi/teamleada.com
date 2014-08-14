@@ -32,7 +32,7 @@ class Message < ActiveRecord::Base
     other_users.each do |user|
       # Change this condition later on
       if user.wants_email_about_new_projects
-        MessageMailer.message_email(self, self.user, user)
+        MessageMailer.message_email(self, self.user, user).deliver
       end
     end
   end
