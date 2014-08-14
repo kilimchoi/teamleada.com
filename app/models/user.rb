@@ -146,7 +146,7 @@ class User < ActiveRecord::Base
   before_save :set_name
 
   self.per_page = 50
-  SETTINGS_TABS = ['account', 'privacy']
+  SETTINGS_TABS = ['account', 'privacy', 'email']
 
   PUBLIC = 'Public'
   CONNECTIONS = 'Connections Only'
