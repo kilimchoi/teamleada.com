@@ -2,6 +2,13 @@ class ConversationsController < ApplicationController
   load_and_authorize_resource
   autocomplete :user, :name, full: true, display_value: :search_name, extra_data: [:username]
 
+  def autocomplete_user_name
+    render json: current_user.allowed_contacts.map{ |user| {
+      label: user.name,
+      id: user.id,
+    }}
+  end
+
   def index
     @conversations = current_user.conversations
   end

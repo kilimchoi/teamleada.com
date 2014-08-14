@@ -576,6 +576,11 @@ class User < ActiveRecord::Base
     resumes.count > 0 && resumes.first.created_at <= day.date.tomorrow
   end
 
+  # Messages
+  def allowed_contacts
+    User.where(id: 1)
+  end
+
   #
   # Company Properties
   #
