@@ -58,11 +58,15 @@ def git_subtree_merge(subtree, prefix):
     git_subtree_push(subtree, prefix)
 
 def git_subtree_pull(subtree, prefix):
-    default_pull_message = "'[%s] Merging %s into %s'" % (subtree, subtree, current_branch())
+    default_pull_message = "[%s] Merging %s into %s" % (subtree, subtree, current_branch())
     git("subtree pull", "--prefix=%s" % prefix, "--squash", "-m", default_pull_message, subtree, "master")
 
 def git_subtree_push(subtree, prefix):
     git("subtree push", "--prefix=%s" % prefix, subtree, "master")
+
+def git_pa():
+    git_subtree_push("scripts", "scripts")
+    git_subtree_push("primary", "app/assets/stylesheets/primary")
 
 def git_up():
     git_fetch()
