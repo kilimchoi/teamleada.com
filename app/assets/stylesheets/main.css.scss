@@ -1,15 +1,19 @@
-html, body {
-  min-height: 100%;
+html {
 }
 
 body {
   font-family: 'open sans';
   -webkit-font-smoothing: antialiased;
-  background-color: #e9eaed;
+  padding: 0;
+  margin: 0;
 
   @include breakpoint($mobile) {
     padding-top: 0px;
   }
+}
+
+.gray-background {
+  background-color: #e9eaed;
 }
 
 .clearfix {
@@ -36,7 +40,7 @@ body {
 
 .container.full-container,
 .container-fluid.full-container {
-  min-height: 95%;
+  min-height: 800px;
 }
 
 .toast-top-right {
