@@ -179,9 +179,9 @@
                   </tr>
                   <tr>
                     <td style="color:#bbbbbb; font-size:12px; text-align: center;">
-                      <%= link_to "View in browser", conversation_path(@message.conversation) %>
+                      <%= link_to "View in browser", conversation_url(@message.conversation) %>
                        | 
-                      <%= link_to "Unsubscribe", edit_user_path(tab: "email") %>
+                      <%= link_to "Unsubscribe", edit_user_url(tab: "email") %>
                        | <a href="mailto:support@teamleada.com">Contact</a>
                       <br><br>
                     </td>
