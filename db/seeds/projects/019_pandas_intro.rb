@@ -1,7 +1,7 @@
 main_page_content = [
-  ['text', "In this lesson exercise we will look at how to work with data stored in a tabular form and perform exploratory data analysis on it."],
-  ['text', "We will be using the Python Data Analysis Library or Pandas to do this."],
-  ['text-warning', "You will need to have installed IPython Notebook for this lesson."],
+  ['text', "In this data lesson we will look at how to work with data stored in a tabular form and then perform exploratory data analysis on it."],
+  ['text', "We will be using the Python Data Analysis Library or 'Pandas' to do this."],
+  ['text-warning', "You will need to install IPython Notebook for this lesson."],
   ['text-success', "Let's get started!"],
 ]
 
@@ -30,8 +30,8 @@ intro_content = [
   ['text', "We will be using the Python Data Analysis Library or Pandas to do this."],
   ['text-success', "The two main data structures that Pandas supports are Series and DataFrames."],
   ['text', "Series are one-dimensional data structures that are a collection of any data type."],
-  ['text', "DataFrames on the other hand are two dimensional data structures which resemble a database table or say an Excel spreadsheet."],
-  ['text-info', "In this lesson we will primarily be using DataFrames. We will look at operations that we can perform using them."],
+  ['text', "DataFrames are two dimensional data structures which resemble a database table or an Excel spreadsheet."],
+  ['text-info', "In this lesson we will primarily be using DataFrames."],
 ]
 
 intro_content_two = [
@@ -150,7 +150,7 @@ dataframe_basics_content = [
 ]
 
 dataframe_basics_content_two = [
-  ['text', "However, large DataFrames cannot be printed to the console, therefore we use have higher level commands to inspect its contents."],
+  ['text', "However, large DataFrames cannot be printed to the console, therefore we have to use higher level commands to inspect its contents."],
   ['text-success', "To get information on the schema of the DataFrames, we can use the info() function."],
   ['code', "df.info()"],
   ['text', "To see the first few rows you can use head()."],
@@ -165,8 +165,8 @@ dataframe_basics_content_three = [
   ['text-success', "To print any range of rows from the DataFrame you can use array-like indexing of row ids."],
   ['text', "As you might have noticed, rows are numbered from 0 in Pandas, so to get the middle two rows we can use the range 1:3"],
   ['code', "df[1:3]"],
-  ['text', "Finally, Pandas also has a useful function describe that summarizes the contents of numerical columns in a DataFrame."],
-  ['text', "For example in df we can see the mean, standard deviation etc. by running describe()."],
+  ['text', "Finally, Pandas also has a useful function describe() that summarizes the contents of numerical columns in a DataFrame."],
+  ['text', "For example, in df we can see the mean, standard deviation, etc. by running describe()."],
   ['code', "df.describe()"],
   ['text-warning', "What is at the 75% quantile of col a? (omit trailing zeros)"],
   ['quiz', "pd_df_basic_3"],
@@ -205,7 +205,7 @@ dataframe_basics_content_four = [
   ['code', "log_df = pd.read_csv('/path/to/wc_day6_1_sample.csv',
     names=['ClientID', 'Date', 'Time', 'URL', 'ResponseCode', 'Size'],
     na_values=['-'])"],
-  ['text', "The names argument tells Pandas what the column names are in our file, and na_values indicates which character is used for missing values in our dataset."],
+  ['text', "The 'names' argument tells Pandas what the column titles are in our file, and 'na_values' indicates which character is used for missing values in our dataset."],
   ['text', "Try using the commands from the previous section to explore the dataset."],
   ['text-warning', "What is the max ResponseCode? (omit trailing zeros and any period)"],
   ['quiz', "pd_df_basic_4"],
@@ -341,16 +341,16 @@ projection_slide_one = Slide.create!(
 #################################################################################
 
 sql_grouping_content_one = [
-  ['text-success', "Pandas also allows you to group the DataFrame by values in any column."],
-  ['text', "For example to group requests by 'ResponseCode' you can run:"],
+  ['text-success', "Pandas also allow you to group the DataFrame by values in any column."],
+  ['text', "For example, to group requests by 'ResponseCode' you can run:"],
   ['code', "grouped = log_df.groupby('ResponseCode')"],
   ['code', "grouped"],
-  ['text', "As you can see from the output above, grouped is not a DataFrame but an object of type DataFrameGroupBy"],
+  ['text', "As you can see from the output above, 'grouped' is not a DataFrame but an object of type DataFrameGroupBy."],
   ['text', "This just means that it contains a number of groups and each group is in turn a DataFrame:"],
   ['code', "grouped.ngroups"],
   ['code', "grouped.groups.keys()"],
   ['code', "grouped.get_group(200).head()"],
-  ['text-warning', "How many groups were there?"],
+  ['text-warning', "How many groups are there?"],
   ['quiz', "pd_sql_grouping_0"],
 ]
 
@@ -361,7 +361,7 @@ sql_grouping_content_two = [
   ['text-warning', "Pandas also has useful commands to print various statistics about elements in each group."],
   ['text', " 1. grouped.describe() prints summary statistics for numeric columns in each group."],
   ['text', " 2. grouped.size() prints the number of elements in each group."],
-  ['text', " 3. Similarly grouped.sum(), grouped.mean() and grouped.median() print the sum, mean and median values for numeric columns in each group."],
+  ['text', " 3. Similarly grouped.sum(), grouped.mean() and grouped.median() print the sum, mean, and median values for numeric columns in each group."],
   ['text-danger', "What is the highest ClientID with the ResponseCode of 302? (omit trailing zeros and any period)"],
   ['quiz', "pd_sql_grouping_1"],
   ['next_steps', ""],
@@ -401,7 +401,7 @@ grouping_slide_two = Slide.create!(
 
 apply_function_main_content = [
   ['text', "So far we have been using SQL-style operators to process our data."],
-  ['text', "However to do proper data cleaning or more complex analysis, we often need to apply functions on row or column of a DataFrame."],
+  ['text', "However to do proper data cleaning or more complex analysis, we often need to apply functions on rows or columns of a DataFrame."],
   ['lesson_links', ""],
 ]
 
@@ -420,14 +420,14 @@ apply_function_main_slide = Slide.create!(
 #################################################################################
 
 apply_function_example_content = [
-  ['text', "For example, consider the columns 'Date' and 'Time' in our Dataframe"],
-  ['text-info', "It would be useful if we could combine these columns and create a `DateTime` col then it would be useful for filtering, grouping etc."],
+  ['text', "For example, consider the columns 'Date' and 'Time' in our Dataframe."],
+  ['text-info', "It would be useful if we could combine these columns and create a `DateTime` column. This would be useful for filtering, grouping, etc."],
   ['text', "To create a DateTime column, we will use Pandas helper function: to_datetime()."],
-  ['text', "This function takes a string and converts it to a datetime object."],
+  ['text', "This function takes a string and converts it to a DateTime object."],
   ['text-success', "To call this on every row of the DataFrame, we employ the apply() function."],
   ['text', "apply() takes two arguments:"],
   ['text', " -  The first is a function to apply."],
-  ['text', " -  Second is an axis which indicates if this should be applied on every row (axis=1) or column (axis=0)."],
+  ['text', " -  Second is the axes you wish to apply that function. If this should be applied on every row (axis=1) or if this should be applied on every column (axis=0)."],
   ['code', "log_df['DateTime'] = pd.to_datetime(log_df.apply(lambda row: row['Date'] +
     ' ' + row['Time'], axis=1))"],
   ['text', "This might take a minute to run, since we are adding a new column for every request in our table."],
@@ -440,7 +440,7 @@ apply_function_example_content_two = [
   ['code', "hour_grouped = log_df.groupby(lambda row: log_df['DateTime'][row].hour)"],
   ['code', "hour_grouped.ngroups"],
   ['text-success', "Finally, note that you can apply operations on each group using another apply() method."],
-  ['text-info', "This is similar what we saw earlier except the apply() method is now called once per group."],
+  ['text-info', "This is similar to what we saw earlier except the apply() method is now called once per group."],
   ['text-warning', "[Optional] Now try to create a new column that contains the ResponseSize in kilo bytes."],
   ['next_steps', ""],
 ]
@@ -468,7 +468,7 @@ apply_function_slide_one = Slide.create!(
 #################################################################################
 
 plotting_content = [
-  ['text', "In a future lesson we will look at plotting in greater details."],
+  ['text', "In a future lesson we will look at plotting in greater detail."],
   ['text-info', "However we can produce simple plots using the Python matplotlib library with a DataFrame."],
   ['text-success', "To plot a Series or a DataFrame you can just call plot() on the object and for a histogram just call hist()."],
   ['code', "rand_df = pd.DataFrame({'a' : randn(100)})"],
