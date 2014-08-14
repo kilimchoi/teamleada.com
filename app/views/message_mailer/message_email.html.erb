@@ -115,6 +115,8 @@
                     <td style="text-align: center;">
                     <br>
                       <img src="http://teamleada.com/assets/logo_vertical.png" width="240" alt="leada logo">
+                      <br>
+                      <br>
                     </td>
                   </tr>
                 </table>
@@ -134,6 +136,8 @@
                           <tr>
                             <td style="color:#933f24;">
                             <br>
+                              <%= @sender.name %> says:
+                              <br>
                               <%= simple_format(@message.content) %>
                               <br><br>
                               </td>
@@ -151,7 +155,7 @@
                           <w:anchorlock/>
                           <center>
                         <![endif]-->
-                          <%= link_to "View Message", conversation_path(@message.conversation), {style: "background-color:#ac4d2f;border-radius:4px;color:#ffffff;display:inline-block;font-family: Helvetica, Arial, sans-serif;font-size:16px;font-weight:bold;line-height:50px;text-align:center;text-decoration:none;width:200px;-webkit-text-size-adjust:none;" } %>
+                          <%= link_to "View Message", conversation_url(@message.conversation), {style: "background-color:#ac4d2f;border-radius:4px;color:#ffffff;display:inline-block;font-family: Helvetica, Arial, sans-serif;font-size:16px;font-weight:bold;line-height:50px;text-align:center;text-decoration:none;width:200px;-webkit-text-size-adjust:none;" } %>
                         <!--[if mso]>
                           </center>
                         </v:roundrect>
@@ -164,7 +168,7 @@
 
                 <table style="margin: 0 auto;" cellpadding="0" cellspacing="0" class="force-full-width" bgcolor="#414141" style="margin: 0 auto" width="100%">
                   <tr>
-                    <td style="background-color:#414141;">
+                    <td style="background-color:#414141; text-align: center;">
                     <br>
                     <br>
                       <a href="https://www.facebook.com/teamleada"><img src="https://www.filepicker.io/api/file/cvmSPOdlRaWQZnKFnBGt" alt="facebook"></a>
