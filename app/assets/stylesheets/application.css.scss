@@ -12,13 +12,15 @@
  *= require toastr
  *= require jquery.ui.all
  *= require jquery.countdown
- *= require primary/basecoat/normalize
- *= require primary/basecoat/colors
- *= require primary/basecoat/base
- *= require primary/basecoat/forms
  *= require_self
  */
 
+// Import from primary first
+@import "primary/basecoat/normalize";
+@import "primary/basecoat/colors";
+@import "primary/basecoat/config";
+@import "primary/basecoat/base";
+@import "primary/basecoat/forms";
 
 @import "mixins";
 
