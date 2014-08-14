@@ -24,7 +24,6 @@ class Conversation < ActiveRecord::Base
 
   def update_last_message_sent_at
     self.last_message_sent_at = last_message.created_at
-
     self.save
   end
 
