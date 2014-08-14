@@ -16,6 +16,9 @@ TeamLeada::Application.routes.draw do
         match 'projects/:project_id/code-submissions/:code_submission_id/evaluations', to: 'code_submission_evaluations#index', as: :evaluations, via: :get
       end
     end
+
+    resources :conversations, path: :messages, only: [:show, :index]
+
     resources :resumes, only: [:index, :show]
     resources :profile_photos, path: 'profile-photos', only: [:index]
 
@@ -26,14 +29,18 @@ TeamLeada::Application.routes.draw do
         match 'add-user', to: 'companies#add_user', as: :add_user, via: :post
       end
     end
+
     resources :universities, only: [:index]
     resources :projects, only: [:index, :show]
+
     resources :codes do
       member do
         match '/', to: 'codes#update', as: :update, via: :put
       end
     end
+
     resources :employer_applications, path: "employer-applications", only: [:index, :show]
+
     resources :questions, only: [:index, :show] do
       member do
         match 'hide', to: 'questions#hide', as: :hide, via: :post
