@@ -5,6 +5,8 @@
     .col-md-12
       h1.title = @conversation.display_title(current_user)
 
+      = render partial: "announcements/messaging"
+
       .messages-container
         - @conversation.messages.each do |message|
           = render partial: "conversations/user_message", locals: { message: message }

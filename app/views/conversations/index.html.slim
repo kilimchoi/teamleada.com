@@ -8,6 +8,8 @@
           = link_to "New Message", new_conversation_path, class: "flat-button small-btn"
         h1.title Messages
 
+        = render partial: "announcements/messaging"
+
       ul.conversations-list
         - @conversations.each do |conversation|
           = render partial: "conversations/conversation", locals: { conversation: conversation }
