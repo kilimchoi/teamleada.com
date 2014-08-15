@@ -13,3 +13,5 @@
       ul.conversations-list
         - @conversations.each do |conversation|
           = render partial: "conversations/conversation", locals: { conversation: conversation }
+
+      = will_paginate(@conversations)
