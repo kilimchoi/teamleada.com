@@ -21,6 +21,7 @@ class Conversation < ActiveRecord::Base
   accepts_nested_attributes_for :messages
 
   default_scope -> { order('last_message_sent_at DESC') }
+  self.per_page = 25
 
   def update_last_message_sent_at
     self.last_message_sent_at = last_message.created_at
