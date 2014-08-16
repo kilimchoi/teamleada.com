@@ -2,6 +2,7 @@ class Admin::ConversationsController < Admin::BaseController
   load_and_authorize_resource
 
   def index
+    @conversations = @conversations.paginate(page: params[:page])
   end
 
   def show
