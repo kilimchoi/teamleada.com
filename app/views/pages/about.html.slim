@@ -1,13 +1,12 @@
 = provide(:header_links, "header/about")
 = provide(:page_title, "About")
 
-.container.full-container
-  .row.about-row
+.container.full-container.card-container
+  .row.about-row.card
     h1.center
       | Founding Team
-  .divider
 
-  .row.about-row
+  .row.about-row.card
     .col-md-5.col-md-offset-1
       div
         p.about-founders
@@ -28,7 +27,7 @@
               | CEO
               | <br> 'You can't connect the dots forwards, you can only connect them backwards.' - Steve Jobs
 
-  .row.about-row
+  .row.about-row.card
     .col-md-4.col-md-offset-1
       div class="ih-item circle effect3 left_to_right left-allign-circle"
         a href="http://www.linkedin.com/in/tristantao/" target="_blank"
@@ -51,7 +50,7 @@
           ' plans to begin racing AFM 250 Production Class (as #692) this year.
     .col-md-1
 
-  .row.about-row
+  .row.about-row.card
     .col-md-5.col-md-offset-1
       div
         p.about-founders
@@ -70,8 +69,8 @@
             p class="founder-quote"
               | CTO
               | <br> 'You miss 100% of the shots you don't take' - Wayne Gretzky
-  .divider
-  .row.about-row
+
+  .row.about-row.card
     h1.center
       | Advisors
     .col-md-4 class="about-advisor-col"

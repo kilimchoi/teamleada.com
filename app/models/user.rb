@@ -109,18 +109,26 @@ class User < ActiveRecord::Base
   has_many :conversation_users
   has_many :conversations, through: :conversation_users
 
+  # Company specific
+  has_many :user_interactions, class_name: UserInteraction,
+                               foreign_key: :interactor_id
+  has_many :received_interactions, class_name: UserInteraction,
+                                   foreign_key: :interactee_id
+
   belongs_to :company
 
-  default_scope -> { order(:created_at) }
   scope :admins, -> { where(role: "admin") }
   scope :students, -> { where(role: "student") }
   scope :employers, -> { where(role: "employer") + where(role: "recruiter") }
   scope :has_not_started_projects, -> { where("id NOT IN (SELECT DISTINCT(user_id) FROM project_statuses)") }
   scope :with_project_access, -> { where(has_project_access: true) }
   scope :without_project_access, -> { where(has_project_access: false) }
-  scope :alphabetically, -> { order("name ASC") }
   scope :has_not_completed_sign_up, -> { where(confirmed_at: nil) }
   scope :missing_name, -> { where("name IS NULL OR first_name IS NULL or last_name IS NULL") }
+
+  # Sorting
+  default_scope -> { order(:created_at) }
+  scope :alphabetically, -> { order("name ASC") }
 
   validates_format_of :username, :with => /\A[A-Za-z0-9_]*\z/
   validates :username, uniqueness: {case_sensitive: false, allow_blank: true}
@@ -138,7 +146,7 @@ class User < ActiveRecord::Base
   before_save :set_name
 
   self.per_page = 50
-  SETTINGS_TABS = ['account', 'privacy']
+  SETTINGS_TABS = ['account', 'privacy', 'email']
 
   PUBLIC = 'Public'
   CONNECTIONS = 'Connections Only'
@@ -162,6 +170,16 @@ class User < ActiveRecord::Base
   # Class Methods
   #
   class << self
+    def company_per_page
+      20
+    end
+
+    def ordered_find_by_ids(user_ids, reverse=true)
+      if reverse
+        user_ids = user_ids.reverse
+      end
+      User.find(user_ids).index_by(&:id).slice(*user_ids).values
+    end
 
     def filter(role)
       case role
@@ -187,12 +205,12 @@ class User < ActiveRecord::Base
         registered_user.nil? ? UsersHelper.new_with_linked_in_params(auth) : UsersHelper.update_with_linked_in_params(auth, registered_user)
       end
     end
+
     def update_with_linkedin(auth, user)
-      #This will update everything, EXCEPT email
-      user = UsersHelper.update_with_linked_in_params(auth, user)
-      user
+      # This will update everything, except email
+      UsersHelper.update_with_linked_in_params(auth, user)
     end
- 
+
   end
 
   #
@@ -269,6 +287,13 @@ class User < ActiveRecord::Base
     "#{name} (#{username})"
   end
 
+  # Messages
+  def allowed_contacts
+    # TODO(mark): Allow users to contact more than just Leada employees in the future
+    User.where(id: [1, 2, 3])
+  end
+
+  # Resumes
   def resume
     self.has_resume? ? self.last_resume : nil
   end
@@ -284,6 +309,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  # Profile Photos
   def profile_photo
     if has_profile_photo?
       photo = profile_photos.last
@@ -299,6 +325,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  # Roles
   def is_admin?
     role == 'admin'
   end
@@ -468,7 +495,7 @@ class User < ActiveRecord::Base
   end
 
   def in_progress_projects
-    project_statuses.where(completed: false).collect{ |project_status| project_status.project }
+    project_statuses.where(completed: false).collect{ |project_status| project_status.project }.compact
   end
 
   def project_status_for_project(project)
@@ -556,6 +583,45 @@ class User < ActiveRecord::Base
 
   def resume_uploaded_before?(day)
     resumes.count > 0 && resumes.first.created_at <= day.date.tomorrow
+  end
+
+  #
+  # Company Properties
+  #
+  def current_company
+    # TODO(mark): We want to allow company employees to be part of more than one company (so we don't lose
+    # what they did at one company when they move to another).
+    self.company
+  end
+
+  def user_interaction_or_nil(other_user)
+    UserInteraction.find_by(interactor: self, interactee: other_user)
+  end
+
+  def favorited?(other_user)
+    user_interaction = user_interaction_or_nil(other_user)
+    if user_interaction.nil?
+      false
+    else
+      user_interaction.favorited
+    end
+  end
+
+  def favorited_at(other_user)
+    user_interaction = user_interaction_or_nil(other_user)
+    unless user_interaction.nil?
+      user_interaction.favorited_at
+    end
+  end
+
+  def favorited_users
+    user_ids = self.user_interactions.where(favorited: true).sort_by_favorited_at.pluck :interactee_id
+    User.ordered_find_by_ids(user_ids)
+  end
+
+  def favorited_by
+    user_ids = self.received_interactions.where(favorited: true).sort_by_favorited_at.pluck :interactor_id
+    User.ordered_find_by_ids(user_ids)
   end
 
   #

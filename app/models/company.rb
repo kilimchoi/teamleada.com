@@ -20,7 +20,10 @@ class Company < ActiveRecord::Base
   has_many :employees, class_name: User
 
   has_many :jobs
-  has_many :users, through: :jobs
+  has_many :workers, through: :jobs, source: :users
+
+  has_many :user_interactions
+  has_many :stories
 
   validates :name, uniqueness: true, presence: true
 
@@ -32,5 +35,11 @@ class Company < ActiveRecord::Base
   def set_url
     self.url = name.downcase.gsub(/[^a-z\s]/, '').parameterize
   end
+
+  def favorited_users
+    user_ids = user_interactions.where(favorited: true).pluck(:interactee_id).uniq
+    User.ordered_find_by_ids(user_ids)
+  end
+
 
 end

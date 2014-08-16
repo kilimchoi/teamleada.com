@@ -2,7 +2,6 @@ admins = [
   ['Mark', 'Miyashita', 'mark@teamleada.com'],
   ['Brian', 'Liou', 'brian@teamleada.com'],
   ['Tristan', 'Tao', 'tristan@teamleada.com'],
-  ['Guang', 'Yang', 'guang@teamleada.com'],
 ]
 
 students = (0..30).map{ |index| ["student#{index}", "student", "student#{index}@student.com"] }
@@ -16,6 +15,7 @@ def create_users(users_info, role)
       new_user = User.create(username: first_name.downcase, email: email.downcase, password: "password", role: role, first_name: first_name, last_name: last_name)
       new_user.has_project_access = true
       new_user.confirm!
+      new_user.save(:validate => false)
       puts "Created user: #{new_user.username}."
     end
   end

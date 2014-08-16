@@ -15,6 +15,12 @@
  *= require_self
  */
 
+// Import from primary first
+@import "primary/basecoat/normalize";
+@import "primary/basecoat/colors";
+@import "primary/basecoat/config";
+@import "primary/basecoat/base";
+@import "primary/basecoat/forms";
 
 @import "mixins";
 
@@ -22,8 +28,6 @@
 
 @import "fonts";
 
-@import "colors";
-@import "config";
 @import "highlight.min";
 @import "font-awesome";
 @import "bootstrap";
@@ -47,3 +51,8 @@
 @import "ihover.css";
 
 @import "partials/*";
+@import "partials/*/*";
+
+
+@import "primary/components/alerts";
+

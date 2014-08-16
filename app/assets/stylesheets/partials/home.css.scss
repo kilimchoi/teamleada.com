@@ -1,5 +1,6 @@
 #users {
   padding: 80px;
+  background-color: white;
 
   @include breakpoint($mobile) {
     padding: 20px;
@@ -97,6 +98,7 @@ section#intro {
 
 #display {
   padding: 100px 0px;
+  background-color: white;
 
   @include breakpoint($mobile) {
     padding: 20px;
@@ -132,7 +134,7 @@ section {
 
 section#content-one,
 section#content-three {
-  background-color: $content-bg;
+  background-color: $content-background;
 
   .content-body-three,
   .content-body-one {
@@ -146,7 +148,7 @@ section#content-three {
 section#content-zero,
 section#content-two,
 section#content-four {
-  background-color: $learning-bg;
+  background-color: $learning-background;
 
 
   .content-body-two,
@@ -169,7 +171,7 @@ section#content-four {
 }
 
 section#email {
-  background-color: $email-bg;
+  background-color: $email-background;
 
   .schedule-container {
     padding: 100px 0;
@@ -177,7 +179,7 @@ section#email {
 }
 
 section#try-project {
-  background-color: $try-project-bg;
+  background-color: $try-project-background;
 
   .try-project-container {
     padding: 100px 0;

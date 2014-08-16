@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140730095809) do
+ActiveRecord::Schema.define(version: 20140814081927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -441,6 +441,17 @@ ActiveRecord::Schema.define(version: 20140730095809) do
     t.integer  "points",           default: 1
   end
 
+  create_table "stories", force: true do |t|
+    t.integer  "interactor_id"
+    t.integer  "interactee_id"
+    t.integer  "company_id"
+    t.text     "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "type"
+    t.boolean  "favorite",      default: true
+  end
+
   create_table "submission_contexts", id: false, force: true do |t|
     t.text     "description"
     t.integer  "submission_context_id"
@@ -494,6 +505,20 @@ ActiveRecord::Schema.define(version: 20140730095809) do
     t.integer  "code_id"
   end
 
+  create_table "user_interactions", force: true do |t|
+    t.integer  "company_id"
+    t.integer  "interactor_id"
+    t.integer  "interactee_id"
+    t.boolean  "favorited",          default: false
+    t.datetime "favorited_at"
+    t.boolean  "contacted",          default: false
+    t.datetime "first_contacted_at"
+    t.boolean  "hired",              default: false
+    t.datetime "hired_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "user_skills", force: true do |t|
     t.integer  "user_id"
     t.integer  "skill_id"
@@ -505,12 +530,12 @@ ActiveRecord::Schema.define(version: 20140730095809) do
   add_index "user_skills", ["user_id"], name: "index_user_skills_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",                        default: "",    null: false
-    t.string   "encrypted_password",           default: "",    null: false
+    t.string   "email",                          default: "",    null: false
+    t.string   "encrypted_password",             default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                default: 0,     null: false
+    t.integer  "sign_in_count",                  default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -533,13 +558,13 @@ ActiveRecord::Schema.define(version: 20140730095809) do
     t.string   "who_can_lookup_using_email"
     t.string   "who_can_lookup_by_name"
     t.string   "who_can_see_resume"
-    t.boolean  "looking_for_opportunities",    default: false
+    t.boolean  "looking_for_opportunities",      default: false
     t.string   "location"
     t.text     "bio"
     t.string   "linkedin_id"
     t.string   "name"
     t.string   "nickname"
-    t.string   "linkedin_profile_image_url",   default: ""
+    t.string   "linkedin_profile_image_url",     default: ""
     t.string   "phone"
     t.string   "headline"
     t.string   "industry"
@@ -548,9 +573,11 @@ ActiveRecord::Schema.define(version: 20140730095809) do
     t.text     "interests"
     t.integer  "job_bookmarks_count"
     t.string   "country_code"
-    t.boolean  "has_project_access",           default: false
+    t.boolean  "has_project_access",             default: false
     t.datetime "linkedin_confirmed_at"
     t.datetime "linkedin_updated_at"
+    t.boolean  "wants_email_about_new_projects", default: true
+    t.boolean  "wants_email_from_recruiters",    default: true
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

@@ -1,14 +1,23 @@
-html, body {
-  height: 100%;
+html {
 }
 
 body {
   font-family: 'open sans';
   -webkit-font-smoothing: antialiased;
+  padding: 0;
+  margin: 0;
 
   @include breakpoint($mobile) {
     padding-top: 0px;
   }
+}
+
+.main-background {
+  background-color: $main-background-color;
+}
+
+.no-margin {
+  margin: 0 !important;
 }
 
 .clearfix {
@@ -29,9 +38,13 @@ body {
   height: 100%;
 }
 
+.page-container-padding {
+  padding-top: 50px;
+}
+
 .container.full-container,
 .container-fluid.full-container {
-  min-height: 95%;
+  min-height: 800px;
 }
 
 .toast-top-right {
@@ -64,13 +77,8 @@ body {
   }
 }
 
-#header {
-  position: relative;
-  z-index: 2;
-}
-
 .title-wrapper {
-  padding: 20px 80px 40px;
+  padding: 70px 80px 40px; // 20px + 50px on top for the fixed navbar
 
   @include breakpoint($mobile) {
     padding: 15px;
@@ -230,5 +238,23 @@ h1 {
   @include breakpoint($mobile) {
     float: none;
   }
+}
+
+.not-link {
+  text-decoration: none;
+  color: #333333;
+
+  &:hover {
+    text-decoration: none;
+    color: #333333;
+  }
+}
+
+.inline {
+  display: inline !important;
+}
+
+.inline-block {
+  display: inline-block !important;
 }
 
