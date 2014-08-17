@@ -23,4 +23,9 @@ class Friendship < ActiveRecord::Base
   DECLINED = 'declined'
   PENDING  = 'pending'
 
+  def update_inverse_friendship
+    inverse_friendship = Friendship.where(user: friend, friend: user).first_or_create
+    inverse_friendship.update(status: self.status)
+  end
+
 end
