@@ -32,7 +32,7 @@ class Friendship < ActiveRecord::Base
     if inverse_friendship.nil?
       # Originally tried .where().first_or_create but it wasn't working well with the
       # after_save callback so instead we're doing the first_or_create logic manually.
-      inverse_friendship = Friendship.create(user: friend, friend: user, status: self.status)
+      inverse_friendship = Friendship.create(user: friend, friend: user, status: self.status, requested: false)
     elsif inverse_friendship.status != self.status
       inverse_friendship.update_column(status: self.status)
     end
