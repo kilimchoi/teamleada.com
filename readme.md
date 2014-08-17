@@ -118,7 +118,7 @@ Set up unicorn as follows
 There is a sample unicorn/nginx config at:
 https://github.com/defunkt/unicorn/tree/master/examples
     
-    unicorn_rails -c /www/prod-dir/teamleada.com/config/unicorn.rb
+    unicorn_rails -D -c /www/prod-dir/teamleada.com/config/unicorn.rb
 
 ## Live Reload
 
