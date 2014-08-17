@@ -16,32 +16,22 @@
  */
 
 // Import from primary first
-@import "primary/basecoat/normalize";
-@import "primary/basecoat/colors";
-@import "primary/basecoat/config";
-@import "primary/basecoat/base";
-@import "primary/basecoat/forms";
+@import "primary/primary";
+@import "primary/basecoat/fonts";
 
 @import "mixins";
 
 @import "slide";
 
-@import "fonts";
-
 @import "highlight.min";
 @import "font-awesome";
-@import "bootstrap";
-@import "bootstrap_overrides";
 @import "pace";
 @import "ladda.min";
 
 @import "library_overrides";
 
-@import "footer";
-@import "main";
 @import "buttons";
 @import "forms";
-@import "images";
 
 @import "sidebar";
 @import "right_sidebar";

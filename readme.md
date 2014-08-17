@@ -101,6 +101,17 @@ Then head to */etc/nginx/sites-available* and append the following
         }
     }
 
+Also, for redirect for apex name record:
+
+    server {
+            listen 80;
+            client_max_body_size 4G;
+            keepalive_timeout 5;
+
+            server_name teamleada.com;
+            return 301 $scheme://www.teamleada.com$request_uri;
+    }
+
 Lastly, add `localhost` and the `domain name` to */etc/hosts*
 
     127.0.0.1 beta-dev.teamleada.com
@@ -111,13 +122,16 @@ If you get a bad gateway, make sure rails is running. if nothing is rendering, i
     sudo nginx
 
 ## Install/Config Nginx
-    gem instlal unicorn
-Set up unicorn as follows
+
+    gem install unicorn
+
+Set up unicorn as follows:
+
     #some unicorn setup
 
 There is a sample unicorn/nginx config at:
 https://github.com/defunkt/unicorn/tree/master/examples
-    
+
     unicorn_rails -D -c /www/prod-dir/teamleada.com/config/unicorn.rb
 
 ## Live Reload
