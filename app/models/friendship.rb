@@ -18,6 +18,7 @@ class Friendship < ActiveRecord::Base
   belongs_to :friend, class_name: User
 
   after_save :update_inverse_friendship
+  after_save :update_status_time, if: :status_changed?
 
   ACCEPTED = 'accepted'
   DECLINED = 'declined'
@@ -34,7 +35,19 @@ class Friendship < ActiveRecord::Base
       # after_save callback so instead we're doing the first_or_create logic manually.
       inverse_friendship = Friendship.create(user: friend, friend: user, status: self.status, requested: false)
     elsif inverse_friendship.status != self.status
-      inverse_friendship.update_column(status: self.status)
+      inverse_friendship.update(status: self.status)
+    end
+  end
+
+  def update_status_time
+    puts 'updating status time'
+    case status
+    when Friendship::ACCEPTED
+      self.update_column(accepted_at: Time.now)
+    when Friendship::DECLINED
+      self.update_column(declined_at: Time.now)
+    when Friendship::PENDING
+      # We can just use created_at for this
     end
   end
 
