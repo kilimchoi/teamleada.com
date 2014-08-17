@@ -13,5 +13,5 @@ convo2 = Conversation.where(starter: mark, title: "2nd Best conversation").first
 ConversationUser.where(user: mark, conversation: convo2, unread: true).first_or_create
 ConversationUser.where(user: brian, conversation: convo2, unread: true).first_or_create
 
-message_from_mark = Message.create(user: mark, content: "Messages are the funnest thing on leada i'm so glad they added this feature!", is_draft: false, conversation: convo2)
-message_from_brian = Message.create(user: brian, content: "Yo dawg I heard you are the shit", is_draft: false, conversation: convo2)
+message_from_mark = Message.where(user: mark, content: "Messages are the funnest thing on leada i'm so glad they added this feature!", is_draft: false, conversation: convo2).first_or_create
+message_from_brian = Message.where(user: brian, content: "Yo dawg I heard you are the shit", is_draft: false, conversation: convo2).first_or_create
