@@ -17,6 +17,8 @@ class Friendship < ActiveRecord::Base
   belongs_to :user
   belongs_to :friend, class_name: User
 
+  after_save :update_inverse_friendship
+
   ACCEPTED = 'accepted'
   DECLINED = 'declined'
   PENDING  = 'pending'
