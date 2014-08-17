@@ -1,0 +1,132 @@
+$navbar-padding-top: 15px;
+$navbar-padding-bottom: 15px;
+
+.navbar {
+  z-index: 1;
+  border-radius: 0px;
+  margin-bottom: 0px;
+  height: 50px;
+  padding-top: 1em;
+}
+
+.navbar-default {
+  background-color: transparent;
+}
+
+.no-navbar-border {
+  border-color: transparent;
+}
+
+.white-navbar {
+  background-color: white;
+}
+
+.navbar-nav {
+  position: relative;
+  top: -0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.navbar-nav > li > a {
+  padding: 0px;
+  vertical-align: middle;
+}
+
+.navbar-nav > li {
+  padding-left: 20px;
+}
+
+.navbar-brand {
+  float: none;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+  margin-left: 0;
+  padding-left: 5px;
+  vertical-align: middle;
+  position: relative;
+  top: -0.9rem;
+}
+
+.navbar-toggle {
+  position: relative;
+  top: -1.2rem;
+}
+
+.navbar-default .navbar-nav > li > a.flat-button-header {
+  @include breakpoint($not-mobile) {
+    margin: 10px 20px 0px 0px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: white;
+    background-color: $founders-rock-blue;
+  }
+}
+
+.nav > li > a:hover, .nav > li > a:focus,
+.navbar-default .navbar-nav > li > a:hover {
+  color: #777777;
+}
+
+.nav > li > a:hover, .nav > li > a.flat-button-header:focus,
+.navbar-default .navbar-nav > li > a.flat-button-header:hover {
+  color: white;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  background-color: transparent;
+  color: $founders-rock-blue;
+  font-weight: 700;
+}
+
+.list-group > li.disabled  {
+  color: #999999;
+
+  &:hover,
+  &:focus {
+    color: #999999;
+    text-decoration: none;
+    background-color: transparent;
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    padding-top: 0px;
+  }
+
+  .navbar-fixed-top {
+    position: relative;
+  }
+
+  .navbar-nav {
+    margin: 0px -15px;
+  }
+}
+
+.navbar-default .navbar-toggle {
+  border: none;
+
+  &:hover {
+    background: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar-nav.navbar-right:last-child {
+    margin-right: 0px;
+  }
+}
+
+.modal {
+  top: 50px;
+}
+
+.panel-default {
+  border-color: #d3d6db;
+}
