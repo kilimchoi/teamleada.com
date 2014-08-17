@@ -17,12 +17,11 @@
 
 // Import from primary first
 @import "primary/primary";
+@import "primary/basecoat/fonts";
 
 @import "mixins";
 
 @import "slide";
-
-@import "fonts";
 
 @import "highlight.min";
 @import "font-awesome";
