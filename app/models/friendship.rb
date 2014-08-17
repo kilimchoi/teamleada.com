@@ -25,7 +25,9 @@ class Friendship < ActiveRecord::Base
 
   def update_inverse_friendship
     inverse_friendship = Friendship.where(user: friend, friend: user).first_or_create
-    inverse_friendship.update(status: self.status)
+    if inverse_friendship.status != self.status
+      inverse_friendship.update_column(status: self.status)
+    end
   end
 
 end
