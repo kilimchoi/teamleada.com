@@ -24,10 +24,19 @@ class Friendship < ActiveRecord::Base
   PENDING  = 'pending'
 
   def update_inverse_friendship
-    inverse_friendship = Friendship.where(user: friend, friend: user).first_or_create
-    if inverse_friendship.status != self.status
+    # NOTE##Frienships
+    # Friendships create two objects per real life friendship. There is an after_save
+    # callback that checks to see if the inverse relationship exists, and if not, creates
+    # it. It also updates the status based on the original friendship's status.
+    inverse_friendship = Friendship.find_by(user: friend, friend: user)
+    if inverse_friendship.nil?
+      # Originally tried .where().first_or_create but it wasn't working well with the
+      # after_save callback so instead we're doing the first_or_create logic manually.
+      inverse_friendship = Friendship.create(user: friend, friend: user, status: self.status)
+    elsif inverse_friendship.status != self.status
       inverse_friendship.update_column(status: self.status)
     end
   end
 
 end
+
