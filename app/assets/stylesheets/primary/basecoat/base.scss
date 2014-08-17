@@ -1,0 +1,256 @@
+body {
+  font-family: 'open sans';
+  -webkit-font-smoothing: antialiased;
+  padding: 0;
+  margin: 0;
+
+  @include breakpoint($mobile) {
+    padding-top: 0px;
+  }
+}
+
+.main-background {
+  background-color: $main-background-color;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+.clearfix:after {
+  clear: both;
+  content: ".";
+  display: block;
+  font-size: 0;
+  height: 0;
+  line-height: 0;
+  visibility: hidden;
+}
+
+#page-container {
+  height: 100%;
+}
+
+.page-container-padding {
+  padding-top: 50px;
+}
+
+.container.full-container,
+.container-fluid.full-container {
+  min-height: 800px;
+}
+
+.toast-top-right {
+  top: 92px;
+}
+
+.alert {
+  margin-top: 20px;
+}
+
+.hiding {
+  display: none;
+}
+
+.banner-image {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+
+  @include breakpoint($mobile) {
+    top: 50px;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+.title-wrapper {
+  padding: 70px 80px 40px; // 20px + 50px on top for the fixed navbar
+
+  @include breakpoint($mobile) {
+    padding: 15px;
+  }
+
+  .title-inner {
+    max-width: 80%;
+
+    @include breakpoint($mobile) {
+      max-width: 100%;
+    }
+
+    h1.page-title {
+      font-size: 100px;
+      font-weight: 700;
+      color: $founders-rock-blue;
+      letter-spacing: -3px;
+
+      @include breakpoint($mobile) {
+        font-size: 32px;
+        letter-spacing: 0px;
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+.button-container {
+  text-align: center;
+
+  .sign-in-button-container {
+    margin-right: 50px;
+    display: inline;
+  }
+
+  .sign-up-button-container {
+    display: inline;
+  }
+}
+
+
+.img {
+  background-color: $founders-rock-blue;
+}
+
+.email-form {
+  margin-top: 100px;
+}
+
+.alert {
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+.large-font {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 300;
+}
+
+.center {
+  text-align: center;
+}
+
+.white {
+  color: white;
+}
+
+.dark-link {
+  color: rgba(0,0,0,0.85);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.light-link {
+  color: $light-gray;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: 300;
+}
+
+h1 {
+  @include breakpoint($mobile) {
+    font-size: 22px;
+  }
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.title {
+  padding-bottom: 10px;
+  border-bottom: 1px solid $medium-gray;
+}
+
+#typed-cursor {
+  opacity: 1;
+  font-weight: 100;
+  animation: blink 0.7s infinite;
+}
+
+@-keyframes blink {
+  0% { opacity:1; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.left-align {
+  text-align: left;
+}
+
+.right-align {
+  text-align: right;
+}
+
+.reveal .slides section .fragment {
+  font-size: 70%;
+}
+
+.content-error {
+  color: red;
+  background: lightgray;
+  box-shadow: 10px 10px 5px #888888;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.cursor-disabled {
+  cursor: not-allowed;
+}
+
+.no-float-mobile {
+  @include breakpoint($mobile) {
+    float: none;
+  }
+}
+
+.not-link {
+  text-decoration: none;
+  color: #333333;
+
+  &:hover {
+    text-decoration: none;
+    color: #333333;
+  }
+}
+
+.inline {
+  display: inline !important;
+}
+
+.inline-block {
+  display: inline-block !important;
+}

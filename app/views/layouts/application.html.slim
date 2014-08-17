@@ -22,7 +22,7 @@ html
     = javascript_include_tag "application", "data-turbolinks-track" => true, "modernizr" => true
     = csrf_meta_tags
     = render partial: 'shared/analytics'
-  body
+  body.main-background
     - if Rails.env.development?
       = render partial: "shared/debug_bar"
     = render partial: "layouts/header"

@@ -3,10 +3,9 @@
  */
 
 @import "reveal";
-@import "mixins";
 
-@import "colors";
-@import "main";
+@import "primary/primary";
+
 @import "buttons";
 @import "sidebar";
 @import "reveal_overrides";
