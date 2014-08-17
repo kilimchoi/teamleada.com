@@ -113,10 +113,16 @@ class User < ActiveRecord::Base
 
   # Friends
   has_many :friendships
-  has_many :inverse_friendships, class_name: Friendship, foreign_key: :friend_id
-  has_many :friends, -> { where(status: Friendship::ACCEPTED) }, through: :friendships
-  has_many :sent_friend_requests, -> { where(status: Friendship::PENDING) }, through: :friendships
-  has_many :friend_requests, -> { where(status: Friendship::PENDING) }, through: :inverse_friendships
+  has_many :inverse_friendships, class_name: Friendship,
+                                 foreign_key: :friend_id
+  has_many :friends, -> { where(friendships: { status: Friendship::ACCEPTED }) },
+                     through: :friendships
+  has_many :sent_friend_requests, -> { where(friendships: { status: Friendship::PENDING }) },
+                                  through: :friendships,
+                                  source: :user
+  has_many :friend_requests, -> { where(friendships: { status: Friendship::PENDING }) },
+                             through: :inverse_friendships,
+                             source: :friend
 
   # Company specific
   has_many :user_interactions, class_name: UserInteraction,
