@@ -100,6 +100,17 @@ Then head to */etc/nginx/sites-available* and append the following
                 proxy_set_header Host $http_host;
         }
     }
+    
+Also, for redirect for apex name record:
+
+    server {
+            listen 80;
+            client_max_body_size 4G;
+            keepalive_timeout 5;
+    
+            server_name teamleada.com;
+            return 301 $scheme://www.teamleada.com$request_uri;
+    }
 
 Lastly, add `localhost` and the `domain name` to */etc/hosts*
 
