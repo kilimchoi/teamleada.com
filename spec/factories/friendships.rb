@@ -11,6 +11,7 @@
 #  declined_at  :datetime
 #  created_at   :datetime
 #  updated_at   :datetime
+#  requested    :boolean
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
