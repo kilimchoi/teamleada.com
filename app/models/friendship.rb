@@ -40,14 +40,13 @@ class Friendship < ActiveRecord::Base
   end
 
   def update_status_time
-    puts 'updating status time'
     case status
     when Friendship::ACCEPTED
-      self.update_column(accepted_at: Time.now)
+      self.update_column(:accepted_at, Time.now)
     when Friendship::DECLINED
-      self.update_column(declined_at: Time.now)
+      self.update_column(:declined_at, Time.now)
     when Friendship::PENDING
-      # We can just use created_at for this
+      self.update_column(:requested_at, Time.now)
     end
   end
 
