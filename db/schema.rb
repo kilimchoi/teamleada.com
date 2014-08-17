@@ -145,8 +145,8 @@ ActiveRecord::Schema.define(version: 20140816235417) do
   end
 
   create_table "friendships", force: true do |t|
-    t.integer  "requester_id"
-    t.integer  "requestee_id"
+    t.integer  "user_id"
+    t.integer  "friend_id"
     t.string   "status"
     t.datetime "requested_at"
     t.datetime "accepted_at"
