@@ -111,6 +111,11 @@ class User < ActiveRecord::Base
   has_many :conversation_users
   has_many :conversations, through: :conversation_users
 
+  # Friends
+  has_many :friendships
+  has_many :friends, -> { where(status: Friendship::ACCEPTED) }, through: :friendships
+  has_many :friend_requests, -> { where(status: Friendship::PENDING) }, through: :friendships
+
   # Company specific
   has_many :user_interactions, class_name: UserInteraction,
                                foreign_key: :interactor_id
