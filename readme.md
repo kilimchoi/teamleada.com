@@ -132,6 +132,12 @@ Set up unicorn as follows:
 There is a sample unicorn/nginx config at:
 https://github.com/defunkt/unicorn/tree/master/examples
 
+Make sure you source your environment variables (necessary for the environment variables in production.rb):
+
+    source /www/prod-dir/environment_variables.profile
+
+Then start the server with the command:
+
     unicorn_rails -D -c /www/prod-dir/teamleada.com/config/unicorn.rb
 
 ## Live Reload
