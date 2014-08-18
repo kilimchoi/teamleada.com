@@ -2,7 +2,6 @@ class PagesController < ApplicationController
   include ApplicationHelper
 
   def home
-    @large_header = true
     @profile_needs_info = true
   end
 
