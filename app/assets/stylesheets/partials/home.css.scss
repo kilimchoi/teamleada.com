@@ -65,6 +65,8 @@ $carousel-height: 500px;
 }
 
 .home-column-subtitle {
+  min-height: 40px;
+
   @include breakpoint($mobile) {
     font-size: 20px;
   }
@@ -121,5 +123,36 @@ $carousel-height: 500px;
 
 .company-statricks {
   background-image: image-url("companies/statricks.png");
+}
+
+// Column icons
+.home-column-card {
+  min-height: 420px;
+}
+
+.home-column-image {
+  height: 250px;
+}
+
+.column-icon {
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon-analyze {
+  background-image: image-url("icons/analyze.png");
+}
+
+.icon-build {
+  background-image: image-url("icons/build.png");
+}
+
+.icon-share {
+  background-image: image-url("icons/leadaboard.png");
+}
+
+.icon-hired {
+  background-image: image-url("icons/resume.png");
 }
 
