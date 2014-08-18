@@ -44,9 +44,14 @@
 
   .row.home-outline
     .col-md-12
-      .row.card
+      .row.card.card-inset-medium
         .col-md-12
           h1.text-center Our Sponsors
+          .row
+            - @home.sponsors.each do |sponsor|
+              .col-md-3
+                .home-sponsor
+                  .home-sponsor-image class="#{sponsor.image_class}"
 
 
 javascript:
