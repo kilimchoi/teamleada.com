@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/negativetwelve/impressionist.git
-  revision: dbb2650b1877ad162d31683f6d8cd608408dcd44
+  revision: 56fe75529ede5d8c35e02b73f5c2c9fcf6c84106
   specs:
     impressionist (1.5.1)
       httpclient (~> 2.2)
