@@ -24,33 +24,14 @@
         .col-md-8.col-md-offset-2
           .row
             h1.center Created to inform young professionals by young professionals
-            h3.center We are three UC Berkeley students (Go Bears!) who set out to educate young professionals on the Big Data Industry.
-            .col-md-4
-              = image_tag "brian_liou.png", class: "full-width"
-              h2.handbook-author-name
-                | Brian Liou
-              h2.handbook-author-role
-                | Content
-              h5.handbook-author-description
-                | Recent graduate with degrees in Business Admin. at the Haas School and Statistics
-
-            .col-md-4
-              = image_tag "tristan_tao.png", class: "full-width"
-              h2.handbook-author-name
-                | Tristan Tao
-              h2.handbook-author-role
-                | Content
-              h5.handbook-author-description
-                | Class of 2014 with degrees in Computer Science and Statistics
-
-            .col-md-4
-              = image_tag "elizabeth_lin.png", class: "full-width"
-              h2.handbook-author-name
-                | Elizabeth Lin
-              h2.handbook-author-role
-                | Design
-              h5.handbook-author-description
-                | 4th year undergraduate studying Computer Science and President of Innovative Design at Berkeley
+            h3.center We are four UC Berkeley students (Go Bears!) who set out to educate young professionals on the Big Data Industry.
+            - @handbook.authors.each do |author|
+              .col-md-3
+                .handbook-image-wrapper
+                  .handbook-author-image class="#{author.image_class}"
+                h2.handbook-author-name = author.name
+                h2.handbook-author-role = author.role
+                h5.handbook-author-description = author.description
 
   .row.card
     .col-md-12
