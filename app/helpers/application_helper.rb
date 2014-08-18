@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def get_yaml_data_file(file)
+    HashObject.new(YAML.load_file(File.join(Rails.root, 'app', 'data', file)))
+  end
+
   def active_li_link(name=nil, options={}, html_options={}, link_html_options={}, &block)
     # html_options[:class] = "#{html_options[:class]} active" if current_page?(options)
     content_tag :li, html_options do
