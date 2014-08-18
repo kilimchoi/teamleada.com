@@ -60,8 +60,22 @@ $carousel-height: 500px;
   font-size: 50px;
 }
 
+.home-column-title {
+
+}
+
+.home-column-subtitle {
+  @include breakpoint($mobile) {
+    font-size: 20px;
+  }
+}
+
 .home-outline {
   margin: 50px;
+
+  @include breakpoint($mobile) {
+    margin: 20px 0px;
+  }
 }
 
 .home-sponsor-image {

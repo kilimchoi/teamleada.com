@@ -71,6 +71,10 @@ h3, .h3 {
 
 .page-container-padding {
   padding-top: 50px;
+
+  @include breakpoint($mobile) {
+    padding-top: 0;
+  }
 }
 
 .container.full-container,
@@ -111,6 +115,11 @@ h3, .h3 {
 .large-title {
   font-size: 64px;
   line-height: 72px;
+
+  @include breakpoint($mobile) {
+    font-size: 40px;
+    line-height: 48px;
+  }
 }
 
 .title-wrapper {
