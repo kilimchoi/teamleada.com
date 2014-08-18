@@ -53,7 +53,7 @@ These two commands can be created into aliases if desired.
 You're going to have to install Imagemagick and Redis:
 
     brew install pkgconfig #in case imagemagick doesn't work on os X
-    brew install imagemagickb
+    brew install imagemagick
     brew install redis
 
 ## Redis on AWS
