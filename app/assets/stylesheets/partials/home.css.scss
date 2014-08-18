@@ -1,1 +1,35 @@
+$carousel-height: 500px;
+
+.carousel-home {
+  height: $carousel-height;
+}
+
+.carousel-home-inner {
+  height: $carousel-height;
+}
+
+.media-cover-photo {
+  background-image: url('http://blog.airbnb.com/wp-content/files_mf/1407896439guestexpectationshero.jpg');
+  background-size: cover;
+  background-position: 0 0;
+}
+
+.media-cover,
+.media-cover-dark:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.media-cover-dark:after {
+  background: #000000;
+  opacity: 0.4;
+  content: " ";
+}
+
+.item {
+  height: $carousel-height;
+}
 
