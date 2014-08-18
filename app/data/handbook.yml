@@ -1,5 +1,23 @@
 ---
 
+authors:
+  - name: "Brian Liou"
+    role: "Content"
+    description: "Recent graduate with degrees in Business Admin. at the Haas School and Statistics"
+    image_class: "handbook-author-brian-liou"
+  - name: "Tristan Tao"
+    role: "Content"
+    description: "Class of 2014 with degrees in Computer Science and Statistics"
+    image_class: "handbook-author-tristan-tao"
+  - name: "Mark Miyashita"
+    role: "Content"
+    description: "Class of 2014 with a degree in Electrical Engineering and Computer Science"
+    image_class: "handbook-author-mark-miyashita"
+  - name: "Elizabeth Lin"
+    role: "Design"
+    description: "4th year undergraduate studying Computer Science and President of Innovative Design at Berkeley"
+    image_class: "handbook-author-elizabeth-lin"
+
 handbook_categories:
   - name: "Data Scientists & Data Analysts"
     contributors:
