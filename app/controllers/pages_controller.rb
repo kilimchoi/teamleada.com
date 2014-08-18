@@ -8,6 +8,7 @@ class PagesController < ApplicationController
 
   def about
     @large_header = true
+    @about = get_yaml_data_file("about.yml")
   end
 
   def handbook
