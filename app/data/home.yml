@@ -21,12 +21,15 @@ columns:
   - title: "Get Hired"
     subtitle: "Anonymously receive inquires from employers."
 
-sponsors:
-  - title: "Sponsor 1"
-    image_class: "filler"
-  - title: "Sponsor 2"
-    image_class: "filler"
-  - title: "Sponsor 3"
-    image_class: "filler"
-  - title: "Sponsor 4"
-    image_class: "filler"
+companies:
+  - title: "Doximity"
+    image_class: "company-doximity"
+  - title: "eBay"
+    image_class: "company-ebay"
+  - title: "MightyHive"
+    image_class: "company-mighty-hive"
+  - title: "Mixbook"
+    image_class: "company-mixbook"
+  - title: "Statricks"
+    image_class: "company-statricks"
+

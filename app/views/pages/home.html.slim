@@ -46,12 +46,13 @@
     .col-md-12
       .row.card.card-inset-medium
         .col-md-12
-          h1.text-center Our Sponsors
-          .row
-            - @home.sponsors.each do |sponsor|
-              .col-md-3
-                .home-sponsor
-                  .home-sponsor-image class="#{sponsor.image_class}"
+          h1.text-center Partner Companies
+          - @home.companies.each_slice(3) do |slice|
+            .row
+              - slice.each do |company|
+                .col-md-4
+                  .home-company
+                    .company-logo.home-company-image class="#{company.image_class}"
 
 
 javascript:
