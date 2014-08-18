@@ -64,6 +64,19 @@
   }
 }
 
+.square-wrapper {
+  height: 200px;
+}
+
+.round-border-wrapper {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  border: 5px solid #e3e3e3;
+}
+
 .round-with-border {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
