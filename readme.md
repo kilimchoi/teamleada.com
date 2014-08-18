@@ -147,7 +147,22 @@ To use this, download the chome extension [here](https://chrome.google.com/webst
 
 To use, simply have two terminal windows open. In one window, run `guard` and in the other, run the normal `rails s`
 
-## Heroku Deployment
+## Backup Database and Restore Locally
+
+    pg_dump -h <database_host> -U <username> <database> > leada.dump
+    scp prod:<path to file>/leada.dump .
+
+Then, we have to set up our local database to include any new changes you might have made:
+
+    rake db:drop
+    rake db:create
+
+    pg_restore --verbose --clean --no-acl --no-owner -h localhost -U mark -d leada_development leada.dump
+
+    rake db:migrate
+    rake db:seed
+
+## Heroku Deployment (deprecated)
 
 There's a file, `/config/initializers/_environment_variables.rb`, which contains environment variables (mostly keys) that are not safe to upload to GitHub (added to .gitignore) so if you create this file, you can set your environment variables here easily.
 For example:
@@ -157,21 +172,6 @@ For example:
 Since we use Git to deploy to Heroku, this file won't be included, so you'll have to set the environment variables manually, and this can be done just once. The equivalent of the above on Heroku is:
 
     heroku config:set SECRET_KEY=secret-password
-
-## Backup Database and Restore Locally
-
-    heroku pgbackups:capture --app teamleada
-    curl -o latest.dump `heroku pgbackups:url --app teamleada`
-
-Then, we have to set up our local database to include any new changes you might have made:
-
-    rake db:drop
-    rake db:create
-
-    pg_restore --verbose --clean --no-acl --no-owner -h localhost -U mark -d leada_development latest.dump
-
-    rake db:migrate
-    rake db:seed
 
 ## Current Deployments at:
 
