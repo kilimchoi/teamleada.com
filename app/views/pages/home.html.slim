@@ -47,11 +47,12 @@
       .row.card.card-inset-medium
         .col-md-12
           h1.text-center Partner Companies
-          .row
-            - @home.companies.each do |company|
-              .col-md-4
-                .home-company
-                  .company-logo.home-company-image class="#{company.image_class}"
+          - @home.companies.each_slice(3) do |slice|
+            .row
+              - slice.each do |company|
+                .col-md-4
+                  .home-company
+                    .company-logo.home-company-image class="#{company.image_class}"
 
 
 javascript:
