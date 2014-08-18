@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @profile_needs_info = true
+    @home = get_yaml_data_file("home.yml")
   end
 
   def about
@@ -10,7 +11,7 @@ class PagesController < ApplicationController
   end
 
   def handbook
-    @handbook = get_yaml_data_file('handbook.yml')
+    @handbook = get_yaml_data_file("handbook.yml")
   end
 
   def test
