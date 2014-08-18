@@ -22,11 +22,11 @@ columns:
     subtitle: "Anonymously receive inquires from employers."
 
 sponsors:
-  - title:
-    image_class:
-  - title:
-    image_class:
-  - title:
-    image_class:
-  - title:
-    image_class:
+  - title: "Sponsor 1"
+    image_class: "filler"
+  - title: "Sponsor 2"
+    image_class: "filler"
+  - title: "Sponsor 3"
+    image_class: "filler"
+  - title: "Sponsor 4"
+    image_class: "filler"
