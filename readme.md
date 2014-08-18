@@ -149,7 +149,7 @@ To use, simply have two terminal windows open. In one window, run `guard` and in
 
 ## Backup Database and Restore Locally
 
-    pg_dump -h <database_host> -U <username> <database> > leada.dump
+    pg_dump --format=c -h <database_host> -U <username> <database> > leada.dump
     scp prod:<path to file>/leada.dump .
 
 Then, we have to set up our local database to include any new changes you might have made:
