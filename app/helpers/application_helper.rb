@@ -1,11 +1,7 @@
 module ApplicationHelper
 
   def get_yaml_data_file(file)
-    yaml = YAML.load_file(File.join(Rails.root, 'app', 'data', file))
-    yaml.each do |key, value|
-      puts key, value
-    end
-    yaml
+    HashObject.new(YAML.load_file(File.join(Rails.root, 'app', 'data', file)))
   end
 
   def active_li_link(name=nil, options={}, html_options={}, link_html_options={}, &block)

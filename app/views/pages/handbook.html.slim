@@ -55,8 +55,8 @@
   .row.card
     .col-md-12
       h1.center Interviews from Every Perspective
-      = @handbook.handbook_categories.each do |category|
-        h3.center.underline category.name
+      - @handbook.handbook_categories.each do |category|
+        h3.center.underline = category.name
         .row
           .col-md-6.col-md-offset-3
             .handbook-contributors
