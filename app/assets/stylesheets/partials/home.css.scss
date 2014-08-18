@@ -20,6 +20,10 @@ $carousel-height: 500px;
   background-image: image-url("r_desk_medium.jpg");
 }
 
+.media-sf-background {
+  background-image: image-url("sf_city_background.jpg");
+}
+
 .media-cover-photo {
   background-size: cover;
   background-position: 0 0;
@@ -42,5 +46,17 @@ $carousel-height: 500px;
 
 .item {
   height: $carousel-height;
+}
+
+.media-subtitle {
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 35px;
+}
+
+.media-title {
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 50px;
 }
 
