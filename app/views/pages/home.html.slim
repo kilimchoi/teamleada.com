@@ -20,5 +20,10 @@
         span.glyphicon.glyphicon-chevron-right
 
 
-  .row
-    .col-md-3
+  .row.home-columns
+    - @home.columns.each do |column|
+      .col-md-3
+        .row.card.card-medium
+          .col-md-12
+            h2.text-center = column.title
+            h3.text-center = column.subtitle
