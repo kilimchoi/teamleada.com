@@ -14,12 +14,16 @@ carousel:
 columns:
   - title: "Analyze"
     subtitle: "Complete data science challenges and projects."
+    image_class: "icon-analyze"
   - title: "Build"
     subtitle: "Create a data science portfolio."
+    image_class: "icon-build"
   - title: "Share"
     subtitle: "Participate in a community of data enthusiasts."
+    image_class: "icon-share"
   - title: "Get Hired"
     subtitle: "Anonymously receive inquires from employers."
+    image_class: "icon-hired"
 
 companies:
   - title: "Doximity"
