@@ -8,13 +8,24 @@ $carousel-height: 500px;
   height: $carousel-height;
 }
 
+.media-person-studying {
+  background-image: image-url("person_studying_medium.jpg");
+}
+
+.media-r-corner {
+  background-image: image-url("r_corner_small.jpg");
+}
+
+.media-r-desk {
+  background-image: image-url("r_desk_medium.jpg");
+}
+
 .media-cover-photo {
-  background-image: url('http://blog.airbnb.com/wp-content/files_mf/1407896439guestexpectationshero.jpg');
   background-size: cover;
   background-position: 0 0;
 }
 
-.media-cover,
+.media-cover-photo,
 .media-cover-dark:after {
   position: absolute;
   top: 0;
