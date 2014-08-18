@@ -7,20 +7,20 @@
       | Founding Team
 
   - @about.founders.each_with_index do |founder, index|
-    .row.about-row.card
+    .row.about-row.card.row-table
       - if index.even?
-        .col-md-5.col-md-offset-1
+        .col-md-5.col-md-offset-1.col-middle
           div
             p.about-founders = founder.description
-        .col-md-4.col-md-offset-2
+        .col-md-4.col-md-offset-2.col-middle
           .ih-item.circle.effect3.right_to_left.right-align-circle
             = render partial: "pages/founder", locals: { founder: founder }
 
       - else
-        .col-md-4.col-md-offset-1
+        .col-md-4.col-md-offset-1.col-middle
           .ih-item.circle.effect3.left_to_right.left-align-circle
             = render partial: "pages/founder", locals: { founder: founder }
-        .col-md-5.col-md-offset-1
+        .col-md-5.col-md-offset-1.col-middle
           div
             p.about-founders = founder.description
 
