@@ -14,29 +14,12 @@
             p.about-founders = founder.description
         .col-md-4.col-md-offset-2
           .ih-item.circle.effect3.right_to_left.right-align-circle
-            = link_to founder.website, target: "_blank" do
-              .img.right_to_left_img
-                .image
-                  = image_tag founder.image, class: "headshots-with-border"
-              .info
-                h3.founder-name = founder.name
-                p.founder-quote
-                  = founder.role
-                  br
-                  = founder.quote
+            = render partial: "pages/founder", locals: { founder: founder }
+
       - else
         .col-md-4.col-md-offset-1
           .ih-item.circle.effect3.left_to_right.left-align-circle
-            = link_to founder.website, target: "_blank" do
-              .img.left_to_right_img
-                .image
-                  = image_tag founder.image, class: "headshots-with-border"
-              .info
-                h3.founder-name = founder.name
-                p.founder-quote
-                  = founder.role
-                  br
-                  = founder.quote
+            = render partial: "pages/founder", locals: { founder: founder }
         .col-md-5.col-md-offset-1
           div
             p.about-founders = founder.description
