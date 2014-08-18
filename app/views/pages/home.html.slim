@@ -1,4 +1,41 @@
 = provide(:title, "Learn Insight In Data")
 = javascript_include_tag "slide"
 
+.container-fluid.full-container
+  .row
+    #carousel.carousel.slide.carousel-home data-ride="carousel"
+      ol.carousel-indicators
+        li.active data-target="#carousel" data-slide-to="0"
+        li data-target="#carousel" data-slide-to="1"
+        li data-target="#carousel" data-slide-to="2"
 
+      .carousel-inner.carousel-home-inner
+        .item.active
+          .media-cover-photo.media-cover-dark
+            | hi
+          .row.row-table.row-full-height
+            .col-md-12.col-middle
+              h3 Text
+              h1 More Text
+
+        .item
+          .media-cover-photo.media-cover-dark
+            | hi
+          .row.row-table.row-full-height
+            .col-md-12.col-middle
+              h3 Text
+              h1 More Text
+
+        .item
+          .media-cover-photo.media-cover-dark
+            | hi
+          .row.row-table.row-full-height
+            .col-md-12.col-middle
+              h3 Text
+              h1 More Text
+
+      a.left.carousel-control href="#carousel" role="button" data-slide="prev"
+        span.glyphicon.glyphicon-chevron-left
+
+      a.right.carousel-control href="#carousel" role="button" data-slide="next"
+        span.glyphicon.glyphicon-chevron-right
