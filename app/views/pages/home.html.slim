@@ -40,7 +40,7 @@
             | Over 1 Million Jobs Unmet
 
           .button-container.center
-            = link_to "Join the Data Revolution", new_user_registration_path, class: "flat-button"
+            = link_to "Join the Data Revolution", new_user_registration_path, class: "flat-button home-button"
 
   .row.home-outline
     .col-md-12
@@ -59,7 +59,8 @@ javascript:
     $("#typer").typed({
       strings: ["Skill Gap", "Job Shortfall"],
       typeSpeed: 80,
-      backDelay: 500
+      backDelay: 500,
+      loop: true
     });
   });
 

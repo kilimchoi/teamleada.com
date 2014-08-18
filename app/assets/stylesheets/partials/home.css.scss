@@ -78,11 +78,21 @@ $carousel-height: 500px;
   }
 }
 
+.home-sponsor {
+  margin-top: 10px;
+}
+
 .home-sponsor-image {
   height: 150px;
 }
 
 .filler {
   background-image: url("http://placehold.it/400x150")
+}
+
+.home-button {
+  @include breakpoint($mobile) {
+    padding: 15px 40px;
+  }
 }
 
