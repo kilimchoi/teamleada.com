@@ -19,8 +19,6 @@ TeamLeada::Application.routes.draw do
   match 'ask-peter', to: 'pages#question_answer', as: 'question_answer', via: :get
   match 'ask-peter/guidelines', to: 'pages#question_guidelines', as: 'question_guidelines', via: :get
 
-  match 'surveys/:name', to: 'surveys#show', via: :get
-
   devise_for :users, path: '',
                      path_names: { sign_in: 'login', sign_up: 'sign-up', sign_out: 'logout'},
                      controllers: {
