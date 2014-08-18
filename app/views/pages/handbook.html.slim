@@ -1,25 +1,19 @@
-= provide(:header_links, "header/handbook")
+= provide(:title, "Analytics Handbook")
 
-.main
-  section#content
-    .container
-      .row
-        .col-md-8.col-md-offset-2
-          .about-section
-            .description
-              h2 Content
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt vehicula nunc, non vehicula orci semper non. Nulla neque diam, ornare eget venenatis blandit, tempor at augue. Praesent nec lectus turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam facilisis convallis sagittis. Integer auctor ligula dictum est pellentesque, tincidunt accumsan elit lacinia. Sed convallis pellentesque mauris a semper. Nulla facilisi. Curabitur porta, lectus a euismod gravida, elit sapien commodo purus, non pharetra nisl diam quis nibh. Praesent ornare lectus ut hendrerit tristique. Suspendisse sit amet posuere mauris.
-            .image
-              = image_tag "filler.png", class: "round-with-border"
-  section#learning
-    .container
-      .row
-        .col-md-8.col-md-offset-2
-          .about-section
-            .description
-              h2 Learn
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt vehicula nunc, non vehicula orci semper non. Nulla neque diam, ornare eget venenatis blandit, tempor at augue. Praesent nec lectus turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam facilisis convallis sagittis. Integer auctor ligula dictum est pellentesque, tincidunt accumsan elit lacinia. Sed convallis pellentesque mauris a semper. Nulla facilisi. Curabitur porta, lectus a euismod gravida, elit sapien commodo purus, non pharetra nisl diam quis nibh. Praesent ornare lectus ut hendrerit tristique. Suspendisse sit amet posuere mauris.
-            .image
-              = image_tag "filler.png", class: "round-with-border"
+.container.full-container.card-container
+  .row.card
+    .col-md-12
+      h1.center The Analytics Handbook
+      = image_tag "handbook.jpg", class: "full-width"
+
+  .row.card
+    .col-md-12
+      h1.center
+        | An in-depth look at the data science industry
+
+  .row.card
+    .col-md-12
+      h3.center
+        | Interviews with data scientists, data analysts, CEOs, managers, and researchers at the cutting edge of the data science industry.
+      .button-container.center
+        = link_to "Download Here", "#download", class: "flat-button"
