@@ -12,12 +12,14 @@ carousel:
     image_class: "media-sf-background"
 
 columns:
-  - title:
-    subtitle:
-  - title:
-    subtitle:
-  - title:
-    subtitle:
+  - title: "Analyze"
+    subtitle: "Complete data science challenges and projects."
+  - title: "Build"
+    subtitle: "Create a data science portfolio."
+  - title: "Share"
+    subtitle: "Participate in a community of data enthusiasts."
+  - title: "Get Hired"
+    subtitle: "Anonymously receive inquires from employers."
 
 sponsors:
   - title:
