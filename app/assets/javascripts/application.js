@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.all
+//= require typed
 //= require best_in_place
 //= require toastr
 //= require bootstrap
