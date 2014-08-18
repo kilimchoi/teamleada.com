@@ -11,13 +11,15 @@ TeamLeada::Application.routes.draw do
   #match 'tutoring', to: 'pages#tutoring', via: :get
   #match 'tutoring/purchase', to: 'pages#tutoring_purchase', as: 'tutoring_purchase', via: :post
 
-  match 'invite', to: 'invites#index', as: 'invites#index', as: 'invites', via: :get
-  match 'invite', to: 'invites#create', as: 'invites#create', as: 'invite_user', via: :post
+  match 'invite', to: 'invites#index', as: 'invites', via: :get
+  match 'invite', to: 'invites#create', as: 'invite_user', via: :post
 
   match 'learn', to: 'pages#student', as: :learn, via: :get
   match 'learn', to: 'users#auth_code', as: :auth_code, via: :post
   match 'ask-peter', to: 'pages#question_answer', as: 'question_answer', via: :get
   match 'ask-peter/guidelines', to: 'pages#question_guidelines', as: 'question_guidelines', via: :get
+
+  match 'handbook', to: 'pages#handbook', as: :handbook, via: :get
 
   devise_for :users, path: '',
                      path_names: { sign_in: 'login', sign_up: 'sign-up', sign_out: 'logout'},
