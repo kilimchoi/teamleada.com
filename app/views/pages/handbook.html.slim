@@ -66,3 +66,14 @@
                     .handbook-contributor.clearfix
                       .handbook-contributor-name = contributor.name
                       .handbook-contributor-role = contributor.role
+
+  .row.card
+    .col-md-12
+      .row
+        .col-md-8.col-md-offset-2
+          h1.center Just Released: Academics & Researchers Edition!
+          h3.center Please fill out this short survey and PDFs of editions 2 and 3 of The Data Analytics Handbook will be emailed to you!
+          .button-container.center
+            = link_to "Download Edition 1", "https://s3.amazonaws.com/leada/handbook/Handbook_Pt1.pdf", target: "_blank", class: "flat-button"
+          .button-container.center
+            = link_to "Get Editions 2 and 3!", "http://www.surveygizmo.com/s3/1645296/Handbook-Pt-III-Reader-Survey", target: "_blank", class: "flat-button"
