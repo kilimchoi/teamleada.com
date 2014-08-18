@@ -144,15 +144,25 @@ $navbar-padding-bottom: 15px;
   transition: opacity 3s;
 }
 
-.carousel .active.left {
-  left: 0;
-  opacity: 0;
-  z-index: 2;
-}
+.carousel-inner {
+  .item {
+    opacity: 0;
+  }
 
-.carousel .next {
-  left: 0;
-  opacity: 1;
-  z-index: 1;
+  .active {
+    opacity: 1;
+  }
+
+  .active.left,
+  .active.right {
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+  }
+
+  .next.left,
+  .prev.right {
+    opacity: 1;
+  }
 }
 
