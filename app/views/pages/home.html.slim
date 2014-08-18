@@ -20,10 +20,41 @@
         span.glyphicon.glyphicon-chevron-right
 
 
-  .row.home-columns
+  .row.home-outline
     - @home.columns.each do |column|
       .col-md-3
         .row.card.card-medium
           .col-md-12
             h2.text-center = column.title
             h3.text-center = column.subtitle
+
+  .row.home-outline
+    .col-md-12
+      .row.card
+        .col-md-12
+          h1.large-title.text-center
+            ' Fill The
+            span#typer
+
+          h3.text-center
+            | Over 1 Million Jobs Unmet
+
+          .button-container.center
+            = link_to "Join the Data Revolution", new_user_registration_path, class: "flat-button"
+
+  .row.home-outline
+    .col-md-12
+      .row.card
+        .col-md-12
+          h1.text-center Our Sponsors
+
+
+javascript:
+  $(document).ready(function() {
+    $("#typer").typed({
+      strings: ["Skill Gap", "Job Shortfall"],
+      typeSpeed: 80,
+      backDelay: 500
+    });
+  });
+
