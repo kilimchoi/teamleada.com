@@ -33,3 +33,4 @@ class Impression < ActiveRecord::Base
   end
 
 end
+
