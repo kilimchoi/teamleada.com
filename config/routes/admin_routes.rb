@@ -5,6 +5,7 @@ TeamLeada::Application.routes.draw do
     match 'dashboard', to: 'pages#dashboard', via: :get
 
     resources :features, only: [:index]
+    resources :impressions, path: 'page-views', only: [:index]
 
     resources :users, only: [:index, :show] do
       member do
