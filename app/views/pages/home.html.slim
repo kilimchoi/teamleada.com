@@ -23,10 +23,12 @@
   .row.home-outline
     - @home.columns.each do |column|
       .col-md-3
-        .row.card.card-medium
+        .row.card.home-column-card
           .col-md-12
             h2.home-column-title.text-center = column.title
             h3.home-column-subtitle.text-center = column.subtitle
+            .home-column-image-wrapper
+              .column-icon.home-column-image class="#{column.image_class}"
 
   .row.home-outline
     .col-md-12
