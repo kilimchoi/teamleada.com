@@ -98,12 +98,13 @@ $carousel-height: 500px;
 
 // Company logos
 .company-logo {
-  background-size: cover;
-  background-position: 0 0;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .company-doximity {
-  background-image: image-url("person_studying_medium.jpg");
+  background-image: image-url("companies/doximity.gif");
 }
 
 .company-ebay {
@@ -111,14 +112,14 @@ $carousel-height: 500px;
 }
 
 .company-mighty-hive {
-  background-image: image-url("person_studying_medium.jpg");
+  background-image: image-url("companies/mightyhive.png");
 }
 
 .company-mixbook {
-  background-image: image-url("person_studying_medium.jpg");
+  background-image: image-url("companies/mixbook.jpg");
 }
 
 .company-statricks {
-  background-image: image-url("person_studying_medium.jpg");
+  background-image: image-url("companies/statricks.png");
 }
 
