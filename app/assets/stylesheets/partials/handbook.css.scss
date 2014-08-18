@@ -5,6 +5,10 @@
 
 .handbook-author-name {
   text-align: center;
+
+  @include breakpoint($not-mobile) {
+    min-height: 64px;
+  }
 }
 
 .handbook-author-role {
@@ -24,5 +28,34 @@
 
 .handbook-contributor-role {
   float: right;
+}
+
+// Author images
+.handbook-image-wrapper {
+  height: 150px;
+}
+
+.handbook-author-image {
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  height: 150px;
+}
+
+.handbook-author-brian-liou {
+  background-image: image-url("people/brian_liou.png");
+}
+
+.handbook-author-tristan-tao {
+  background-image: image-url("people/tristan_tao.png");
+}
+
+.handbook-author-mark-miyashita {
+  background-image: image-url("people/mark_miyashita.jpg");
+}
+
+.handbook-author-elizabeth-lin {
+  background-image: image-url("people/elizabeth_lin.png");
 }
 
