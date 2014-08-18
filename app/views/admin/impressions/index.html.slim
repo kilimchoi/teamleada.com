@@ -1,0 +1,21 @@
+= provide(:page_title, "Page Views")
+
+.container-fluid.full-container.card-container
+  .row.card
+    .col-md-12
+      h1.title Page Views
+
+  .row.card
+    .col-md-12
+      .row
+        .col-md-4
+          .well.well-lg.text-center
+            = link_to "Daily Page Views", daily_admin_impressions_path
+
+        .col-md-4
+          .well.well-lg.text-center
+            = link_to "Weekly Page Views", weekly_admin_impressions_path
+
+        .col-md-4
+          .well.well-lg.text-center
+            = link_to "Monthly Page Views", monthly_admin_impressions_path

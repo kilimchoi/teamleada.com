@@ -1,0 +1,19 @@
+= provide(:page_title, "Page Views - Daily")
+
+.container-fluid.full-container.card-container
+  .row.card
+    .col-md-12
+      h1.title Page Views Daily
+
+  .row.card
+    .col-md-12
+      .row
+        .col-md-4
+          .well.well-lg.text-center
+            = link_to "Project Page Views Today", daily_projects_admin_impressions_path
+
+        .col-md-4
+          .well.well-lg.text-center
+
+        .col-md-4
+          .well.well-lg.text-center
