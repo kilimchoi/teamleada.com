@@ -1,208 +1,98 @@
-#users {
-  padding: 80px;
-  background-color: white;
+$carousel-height: 500px;
 
-  @include breakpoint($mobile) {
-    padding: 20px;
-  }
+.carousel-home {
+  height: $carousel-height;
 }
 
-.page-divider {
-  border:3px solid gray;
-  width: 30%;
-  margin: auto auto;
-  position: relative;
-  margin-bottom: 2%;
+.carousel-home-inner {
+  height: $carousel-height;
 }
 
-.front-page-about {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  padding: 0 5%;
-  text-align: center;
-  z-index: 1;
-
-  .grabber {
-    color: white;
-    font-weight: 400;
-  }
+.media-person-studying {
+  background-image: image-url("person_studying_medium.jpg");
 }
 
-section#intro {
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
+.media-r-corner {
+  background-image: image-url("r_corner_small.jpg");
+}
+
+.media-r-desk {
+  background-image: image-url("r_desk_medium.jpg");
+}
+
+.media-sf-background {
+  background-image: image-url("sf_city_background.jpg");
+}
+
+.media-cover-photo {
   background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  background-position: 0 0;
+}
 
-  height: 100%;
-  min-height: 600px;
+.media-cover-photo,
+.media-cover-dark:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
 
-  .about-intro {
-    margin: 0 auto;
-    height: 48px;
-    text-align: center;
+.media-cover-dark:after {
+  background: #000000;
+  opacity: 0.4;
+  content: " ";
+}
 
-    .title-container {
-      border-radius: 10px;
-      border-color: $founders-rock-blue;
-      border-style:solid;
-      border-width: 3px;
-      background-color: $medium-gray;
-      opacity: 0.95;
-      width: 250px;
-      margin: auto;
-      padding: 26px;
+.item {
+  height: $carousel-height;
+}
 
-      .try-button {
-        display: inline-block;
-        border: 0;
-        text-shadow: none;
-        -moz-background-clip: padding;
-        -webkit-background-clip: padding-box;
-        background-clip: padding-box;
-        color: $founders-rock-blue;
-        text-transform: capitalize;
-        top: 0;
-        font-size: 26px;
-      }
+.media-subtitle {
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 35px;
+}
 
-      .try-button:hover {
-        color: white;
-      }
+.media-title {
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 50px;
+}
 
-      h1 {
-        font-size: 72px;
-      }
+.home-column-title {
 
-      h3 {
-        font-size: 36px;
-      }
+}
 
-      h1, h2, h3, h4, h5 {
-        font-weight: 700;
-      }
-    }
+.home-column-subtitle {
+  @include breakpoint($mobile) {
+    font-size: 20px;
   }
 }
 
-#about {
-  padding: 100px 0px;
-  background-color: #f8f8f8;
+.home-outline {
+  margin: 50px;
 
   @include breakpoint($mobile) {
-    padding: 20px;
+    margin: 20px 0px;
   }
 }
 
-#display {
-  padding: 100px 0px;
-  background-color: white;
+.home-sponsor {
+  margin-top: 10px;
+}
 
+.home-sponsor-image {
+  height: 150px;
+}
+
+.filler {
+  background-image: url("http://placehold.it/400x150")
+}
+
+.home-button {
   @include breakpoint($mobile) {
-    padding: 20px;
-  }
-}
-
-section {
-  .about-section {
-    padding: 100px 0;
-    margin: 0 auto;
-    content: "";
-    display: table;
-    max-width: 1000px;
-    width: 100%;
-
-    .description {
-      line-height: 1.8em;
-      position: relative;
-      height: 100%;
-      float: left;
-      width: 50%;
-    }
-
-    .image { /*For the background up top*/
-      float: right;
-      width: 33.33333333333333%;
-      margin-left: 16.666666666666664%;
-      padding-top: 50px;
-      display: inline;
-    }
-  }
-}
-
-section#content-one,
-section#content-three {
-  background-color: $content-background;
-
-  .content-body-three,
-  .content-body-one {
-    margin-top: 50px;
-  }
-  .image {
-    margin-top: -50px;
-  }
-}
-
-section#content-zero,
-section#content-two,
-section#content-four {
-  background-color: $learning-background;
-
-
-  .content-body-two,
-  .content-body-four {
-    margin-top: 50px;
-  }
-
-  .about-section {
-    .description {
-      float: right;
-      margin-left: 16.666666666666666664%;
-    }
-
-    .image { /*Second Icon down*/
-      margin-top: -50px;
-      float: left;
-      margin-left: 0;
-    }
-  }
-}
-
-section#email {
-  background-color: $email-background;
-
-  .schedule-container {
-    padding: 100px 0;
-  }
-}
-
-section#try-project {
-  background-color: $try-project-background;
-
-  .try-project-container {
-    padding: 100px 0;
-  }
-}
-
-.hal-quote {
-  color: gray;
-  margin-top: 15px;
-  font-size: 25px;
-
-  @include breakpoint($mobile) {
-    font-size: 15px;
-  }
-}
-
-.hal-sig{
-  margin-top: 5px;
-  font-size: 25px;
-  float: right;
-
-  @include breakpoint($mobile) {
-    font-size: 15px;
+    padding: 15px 40px;
   }
 }
 
