@@ -55,12 +55,14 @@
   .row.card
     .col-md-12
       h1.center Interviews from Every Perspective
-      h3.center.underline Data Scientists & Data Analysts
-      .row
-        .col-md-6.col-md-offset-3
-          .handbook-contributors
-            ul.no-margin.no-padding.no-ul-style
-              li
-                .handbook-contributor.clearfix
-                  .handbook-contributor-name Josh Wills
-                  .handbook-contributor-role Senior Dir. of Data Science, Cloudera
+      = @handbook.handbook_categories.each do |category|
+        h3.center.underline category.name
+        .row
+          .col-md-6.col-md-offset-3
+            .handbook-contributors
+              ul.no-margin.no-padding.no-ul-style
+                - category.contributors.each do |contributor|
+                  li
+                    .handbook-contributor.clearfix
+                      .handbook-contributor-name = contributor.name
+                      .handbook-contributor-role = contributor.role

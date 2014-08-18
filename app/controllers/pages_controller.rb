@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  include ApplicationHelper
 
   def home
     @large_header = true
@@ -10,6 +11,7 @@ class PagesController < ApplicationController
   end
 
   def handbook
+    @handbook = get_yaml_data_file('handbook.yml')
   end
 
   def test
