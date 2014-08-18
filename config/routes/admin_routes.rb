@@ -5,16 +5,36 @@ TeamLeada::Application.routes.draw do
     match 'dashboard', to: 'pages#dashboard', via: :get
 
     resources :features, only: [:index]
-    resources :impressions, path: 'page-views', only: [:index]
+
+    resources :impressions, path: 'page-views', only: [:index] do
+      collection do
+        match "daily", to: "impressions#daily", via: :get
+        match "daily/projects", to: "impressions#daily_projects", as: :daily_projects, via: :get
+        match "weekly", to: "impressions#weekly", via: :get
+        match "monthly", to: "impressions#monthly", via: :get
+      end
+    end
 
     resources :users, only: [:index, :show] do
       member do
-        match 'projects/:project_id/publish-feedback', to: 'users#publish_feedback', as: :publish_feedback, via: :get
-        match 'projects/:project_id/code-submissions', to: 'users#show_code_submissions', as: :code_submissions, via: :get
-        match 'projects/:project_id/code-submissions/:code_submission_id', to: 'users#show_code_submission', as: :code_submission, via: :get
-        match 'projects/:project_id/code-submissions/:code_submission_id/evaluate', to: 'code_submissions#evaluate', as: :evaluate, via: :post
-        match 'projects/:project_id/code-submissions/:code_submission_id/evaluate', to: 'code_submissions#update_evaluation', as: :update_evaluation, via: :patch
-        match 'projects/:project_id/code-submissions/:code_submission_id/evaluations', to: 'code_submission_evaluations#index', as: :evaluations, via: :get
+        match 'projects/:project_id/publish-feedback', to: 'users#publish_feedback',
+                                                       as: :publish_feedback,
+                                                       via: :get
+        match 'projects/:project_id/code-submissions', to: 'users#show_code_submissions',
+                                                       as: :code_submissions,
+                                                       via: :get
+        match 'projects/:project_id/code-submissions/:code_submission_id', to: 'users#show_code_submission',
+                                                                           as: :code_submission,
+                                                                           via: :get
+        match 'projects/:project_id/code-submissions/:code_submission_id/evaluate', to: 'code_submissions#evaluate',
+                                                                                    as: :evaluate,
+                                                                                    via: :post
+        match 'projects/:project_id/code-submissions/:code_submission_id/evaluate', to: 'code_submissions#update_evaluation',
+                                                                                    as: :update_evaluation,
+                                                                                    via: :patch
+        match 'projects/:project_id/code-submissions/:code_submission_id/evaluations', to: 'code_submission_evaluations#index',
+                                                                                       as: :evaluations,
+                                                                                       via: :get
       end
     end
 
@@ -63,3 +83,4 @@ TeamLeada::Application.routes.draw do
   end
 
 end
+

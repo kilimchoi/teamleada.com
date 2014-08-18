@@ -75,3 +75,4 @@ TeamLeada::Application.routes.draw do
   # 404 page routes
   match '*path', to: 'pages#error', via: :get
 end
+
