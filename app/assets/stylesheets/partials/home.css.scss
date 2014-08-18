@@ -78,11 +78,11 @@ $carousel-height: 500px;
   }
 }
 
-.home-sponsor {
+.home-company {
   margin-top: 10px;
 }
 
-.home-sponsor-image {
+.home-company-image {
   height: 150px;
 }
 
@@ -97,24 +97,28 @@ $carousel-height: 500px;
 }
 
 // Company logos
+.company-logo {
+  background-size: cover;
+  background-position: 0 0;
+}
 
 .company-doximity {
-  
+  background-image: image-url("person_studying_medium.jpg");
 }
 
 .company-ebay {
-  
+  background-image: image-url("companies/ebay.png");
 }
 
 .company-mighty-hive {
-  
+  background-image: image-url("person_studying_medium.jpg");
 }
 
 .company-mixbook {
-  
+  background-image: image-url("person_studying_medium.jpg");
 }
 
 .company-statricks {
-  
+  background-image: image-url("person_studying_medium.jpg");
 }
 
