@@ -14,7 +14,7 @@ class Admin::PagesController < Admin::BaseController
     @weekly_impressions = Impression.where("created_at >= ?", 7.days.ago.to_date)
     @daily_impressions = @weekly_impressions.where("created_at >= ?", Date.today.to_date)
 
-    @daily_project_impressions = @daily_impressions.where(controller_name: "projects")
+    @daily_project_impressions = @daily_impressions.filter_category("projects")
     @daily_new_users = User.where("created_at >= ?", Date.today.to_date)
     @daily_code_submissions = CodeSubmission.where("created_at >= ?", Date.today.to_date)
   end
@@ -54,6 +54,7 @@ class Admin::PagesController < Admin::BaseController
     @title = "#{@timeframe.humanize} Page Views - #{@category.humanize}"
 
     @page_views = Impression.filter_timeframe(@timeframe, Date.today).filter_category(@category)
+    @page_views = @page_views.paginate(page: params[:page])
   end
 
   private
