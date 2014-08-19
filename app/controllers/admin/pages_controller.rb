@@ -39,6 +39,7 @@ class Admin::PagesController < Admin::BaseController
 
   # TODO(mark): These should be moved into a separate controller
   def page_views_dashboard
+    @timeframes = Impression::TIMEFRAMES
   end
 
   def page_views_timeframe

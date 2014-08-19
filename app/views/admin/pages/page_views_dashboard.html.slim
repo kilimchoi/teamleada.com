@@ -8,20 +8,14 @@
   .row
     .col-md-12
       .row
-        .col-md-4
-          .info-widget
-            .info-widget-body
-              .info-widget-icon.blue.left
-                i.icon.fa.fa-user
-              .info-widget-content.left
-                .info-widget-title
-                  = link_to "Daily Page Views", admin_timeframe_path(Impression::DAILY)
-              .clearfix
+        - @timeframes.each do |timeframe|
+          .col-md-4
+            .info-widget
+              .info-widget-body
+                .info-widget-icon.blue.left
+                  i.icon.fa.fa-user
+                .info-widget-content.left
+                  .info-widget-title
+                    = link_to "#{timeframe.humanize} Page Views", admin_timeframe_path(timeframe)
+                .clearfix
 
-        .col-md-4
-          .well.well-lg.text-center
-            = link_to "Weekly Page Views", admin_timeframe_path(Impression::WEEKLY)
-
-        .col-md-4
-          .well.well-lg.text-center
-            = link_to "Monthly Page Views", admin_timeframe_path(Impression::MONTHLY)
