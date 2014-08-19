@@ -6,13 +6,14 @@ TeamLeada::Application.routes.draw do
 
     resources :features, only: [:index]
 
-    resources :impressions, path: 'page-views', only: [:index] do
-      collection do
-        match "daily", to: "impressions#daily", via: :get
-        match "daily/projects", to: "impressions#daily_projects", as: :daily_projects, via: :get
-        match "weekly", to: "impressions#weekly", via: :get
-        match "monthly", to: "impressions#monthly", via: :get
-      end
+    match "page-views", to: "pages#page_views_dashboard", as: "impressions", via: :get
+    scope "page-views" do
+      match ":timeframe", to: "pages#page_views_timeframe",
+                          as: :timeframe,
+                          via: :get
+      match ":timeframe/projects", to: "pages#page_views_projects",
+                                   as: :timeframe_projects,
+                                   via: :get
     end
 
     resources :users, only: [:index, :show] do
