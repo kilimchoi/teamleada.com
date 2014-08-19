@@ -7,13 +7,13 @@
         .row.card
           .col-md-12
             h1.title Sign Up
-            p
-              | The only thing you need to provide is an email address.
             = simple_form_for @sign_up_form, url: user_registration_path do |f|
               = f.error_notification
               .form-inputs
-                = f.input :email, required: true, autofocus: true, input_html: { class: 'form-control' }
+                = f.input :first_name, required: true, autofocus: true, input_html: { class: "form-control" }
+                = f.input :last_name,  required: true, input_html: { class: "form-control" }
+                = f.input :email,      required: true, input_html: { class: "form-control" }
               .form-actions
-                = f.button :submit, "Sign up", class: 'flat-button'
+                = f.button :submit, "Sign up", class: "flat-button"
               = render "users/shared/links"
             /= link_to "Sign in with Linkedin!!!!!", user_omniauth_authorize_path(:linkedin)
