@@ -37,8 +37,8 @@ class Impression < ActiveRecord::Base
 
   after_save :impressionable_counter_cache_updatable?
 
-  default_scope { order("created_at DESC") }
   scope :non_admin, -> { where("user_id NOT IN (?) OR user_id IS NULL", User.admins.pluck(:id)) }
+  scope :most_recent, -> { order("created_at DESC") }
 
   # By timeframe
   scope :daily, -> (day) { where("created_at >= ?", day.to_date) }
@@ -61,6 +61,7 @@ class Impression < ActiveRecord::Base
                      self.all
                    end
       page_views = page_views.non_admin if non_admin
+      page_views.most_recent
     end
 
     def filter_category(category)
