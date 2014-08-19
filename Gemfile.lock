@@ -533,6 +533,7 @@ DEPENDENCIES
   ace-rails-ap
   animate-rails
   annotate (~> 2.6.1)
+  awesome_print (~> 1.2.0)
   aws-sdk (~> 1.5.7)
   best_in_place!
   better_errors (~> 1.1.0)
