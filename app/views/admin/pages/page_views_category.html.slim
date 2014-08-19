@@ -1,0 +1,24 @@
+
+.container-fluid.full-container.card-container
+  .row.card
+    .col-md-12
+      h1
+        = @title
+
+  .row.card
+    .col-md-12
+      table.table.table-striped
+        th URL
+        th User
+        th Timestamp
+        - @page_views.each do |page_view|
+          - user = page_view.user
+          tr
+            td = page_view.url
+            - if !user.nil?
+              td = link_to user.name, admin_user_path(user)
+            - else
+              td Not Logged In
+            td = page_view.created_at.pretty_time
+
+    = will_paginate(@page_views)
