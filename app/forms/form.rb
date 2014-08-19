@@ -34,7 +34,7 @@ class Form
 
   def set_attributes(params)
     # This method takes in the params hash and sets attributes
-    # ex. self.email = params[:email]
+    # ex. user.email = params[:email]
   end
 
   def save

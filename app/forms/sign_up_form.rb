@@ -3,6 +3,7 @@ class SignUpForm < Form
   delegate :email, to: :user
 
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/
+  validate :validate_unique_email
 
   def user
     @user ||= User.new
@@ -10,8 +11,6 @@ class SignUpForm < Form
 
   def set_attributes(params)
     user.email = params[:email]
-    # first_name
-    # last_name
   end
 
   def save
@@ -22,8 +21,8 @@ class SignUpForm < Form
   # Validations
   #
   def validate_unique_email
-    if User.exists? self.email
-      error.add(:email, "has already been taken")
+    if User.exists? email: user.email
+      errors.add(:email, "has already been taken")
     end
   end
 
