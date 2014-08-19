@@ -1,6 +1,6 @@
 class SignUpForm < Form
 
-  delegate :email, to: :user
+  delegate :email, :first_name, :last_name to: :user
 
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/
   validate :validate_unique_email
@@ -10,7 +10,9 @@ class SignUpForm < Form
   end
 
   def set_attributes(params)
-    user.email = params[:email]
+    user.first_name = params[:first_name]
+    user.last_name  = params[:last_name]
+    user.email      = params[:email]
   end
 
   def save
