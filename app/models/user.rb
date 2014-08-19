@@ -148,8 +148,6 @@ class User < ActiveRecord::Base
   validates_format_of :username, :with => /\A[A-Za-z0-9_]*\z/
   validates :username, uniqueness: {case_sensitive: false, allow_blank: true}
   validate :check_username
-  validates :first_name, presence: true, on: :update
-  validates :last_name, presence: true, on: :update
 
   accepts_nested_attributes_for :resumes
   accepts_nested_attributes_for :profile_photos
