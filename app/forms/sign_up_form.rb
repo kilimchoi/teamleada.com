@@ -2,9 +2,6 @@ class SignUpForm < Form
 
   delegate :email, to: :user
 
-  def initialize
-  end
-
   def user
     @user ||= User.new
   end
