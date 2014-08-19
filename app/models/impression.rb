@@ -31,6 +31,8 @@ class Impression < ActiveRecord::Base
   MONTHLY = "monthly"
   TIMEFRAMES = [DAILY, WEEKLY, MONTHLY]
 
+  CATEGORIES = ["projects"]
+
   after_save :impressionable_counter_cache_updatable?
 
   scope :non_admin, -> { where(user_id: nil) + where("user_id NOT IN (?)", User.admins.pluck(:id)) }

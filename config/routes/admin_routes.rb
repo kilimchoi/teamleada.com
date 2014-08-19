@@ -11,8 +11,8 @@ TeamLeada::Application.routes.draw do
       match ":timeframe", to: "pages#page_views_timeframe",
                           as: :timeframe,
                           via: :get
-      match ":timeframe/projects", to: "pages#page_views_projects",
-                                   as: :timeframe_projects,
+      match ":timeframe/:category", to: "pages#page_views_category",
+                                   as: :timeframe_category,
                                    via: :get
     end
 
