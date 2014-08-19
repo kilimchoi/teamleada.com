@@ -43,10 +43,15 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def page_views_timeframe
-    @timeframe = params[:timeframe].humanize if params[:timeframe].present?
+    @timeframe = params[:timeframe]if params[:timeframe].present?
+    @page_view_categories = Impression::CATEGORIES
+    @title = "#{@timeframe.humanize} Page Views"
   end
 
-  def page_views_projects
+  def page_views_category
+    @timeframe = params[:timeframe] if params[:timeframe].present?
+    @category = params[:category] if params[:category].present?
+    @title = "#{@timeframe.humanize} Page Views - #{@category.humanize}"
   end
 
   private
