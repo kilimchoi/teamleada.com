@@ -5,6 +5,8 @@ $not-mobile: "(min-width: 768px)";
 $small-screen: "(max-width: 980px)";
 $medium-screen: "(max-width: 1400px)";
 
+$ipad-screen: "(max-width: 980px) and (min-width: 400px)";
+
 @mixin breakpoint($querystring) {
   $valid: true;
   @if type-of($querystring) != "string" {

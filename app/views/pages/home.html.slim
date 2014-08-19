@@ -1,5 +1,4 @@
 = provide(:title, "Learn Insight In Data")
-= javascript_include_tag "slide"
 
 .container-fluid.full-container
   .row
@@ -8,7 +7,7 @@
         - @home.carousel.each_with_index do |item, index|
           .item class="#{'active' if index == 0}"
             .media-cover-photo.media-cover-dark class="#{item.image_class}"
-            .row.row-table.row-full-height
+            .row.row-table.row-full-height.home-title-row
               .col-md-12.col-middle.text-center
                 h1.media-title = item.title
                 h3.media-subtitle = item.subtitle
@@ -56,7 +55,6 @@
                   = link_to company.website do
                     .home-company
                       .company-logo.home-company-image class="#{company.image_class}"
-
 
 javascript:
   $(document).ready(function() {
