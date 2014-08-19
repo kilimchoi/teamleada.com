@@ -35,4 +35,14 @@ class Admin::PagesController < Admin::BaseController
     @page_views = Impression.where("created_at > ?", 1.day.ago).group(:url).count
   end
 
+  # TODO(mark): These should be moved into a separate controller
+  def page_views_dashboard
+  end
+
+  def page_views_timeframe
+  end
+
+  def page_views_projects
+  end
+
 end
