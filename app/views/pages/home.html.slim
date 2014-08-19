@@ -53,8 +53,9 @@
             .row
               - slice.each do |company|
                 .col-md-4 class="#{'col-md-offset-2' if company == @home.companies[3]}"
-                  .home-company
-                    .company-logo.home-company-image class="#{company.image_class}"
+                  = link_to company.website do
+                    .home-company
+                      .company-logo.home-company-image class="#{company.image_class}"
 
 
 javascript:
