@@ -12,7 +12,6 @@ class SessionsController < Devise::SessionsController
   def create
     session[:return_to] ||= request.referer
 
-    puts 'before'
     self.resource = warden.authenticate(auth_options)
     if resource.nil?
       flash[:danger] = "Invalid username or password."
