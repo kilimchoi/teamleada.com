@@ -37,9 +37,15 @@ class Impression < ActiveRecord::Base
 
   after_save :impressionable_counter_cache_updatable?
 
+  default_scope { order("created_at DESC") }
   scope :non_admin, -> { where(user_id: nil) + where("user_id NOT IN (?)", User.admins.pluck(:id)) }
+
+  # By timeframe
   scope :daily, -> (day) { where("created_at >= ?", day.to_date) }
   scope :weekly, -> (beginning_of_week) { where("created_at >= ?", beginning_of_week.to_date) }
+
+  # By category
+  scope :projects, -> { where(controller_name: "projects") }
 
   class << self
 
@@ -57,7 +63,12 @@ class Impression < ActiveRecord::Base
     end
 
     def filter_category(category)
-      
+      case category
+      when "projects"
+        self.projects
+      else
+        self.all
+      end
     end
 
   end

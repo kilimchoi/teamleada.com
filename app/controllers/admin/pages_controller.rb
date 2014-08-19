@@ -53,7 +53,7 @@ class Admin::PagesController < Admin::BaseController
     @category = params[:category] if params[:category].present?
     @title = "#{@timeframe.humanize} Page Views - #{@category.humanize}"
 
-    @page_views = Impression.filter_timeframe(@timeframe, Date.today)
+    @page_views = Impression.filter_timeframe(@timeframe, Date.today).filter_category(@category)
   end
 
   private
