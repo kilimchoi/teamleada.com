@@ -1,9 +1,11 @@
 class SignUpForm < Form
 
-  delegate :email, :first_name, :last_name to: :user
+  delegate :email, :first_name, :last_name, to: :user
 
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/
   validate :validate_unique_email
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 
   def user
     @user ||= User.new
@@ -17,6 +19,8 @@ class SignUpForm < Form
 
   def save
     user.save
+    # send email?
+    # log some event?
   end
 
   #
