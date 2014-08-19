@@ -12,9 +12,14 @@
             = simple_form_for @sign_up_form, url: user_registration_path do |f|
               = f.error_notification
               .form-inputs
-                = f.input :first_name, required: true, autofocus: true, input_html: { class: "form-control" }
-                = f.input :last_name,  required: true, input_html: { class: "form-control" }
-                = f.input :email,      required: true, input_html: { class: "form-control" }
+                = f.input :first_name,            required: true, autofocus: true, input_html: { class: "form-control" }
+                = f.input :last_name,             required: true, input_html: { class: "form-control" }
+                = f.input :email,                 required: true, input_html: { class: "form-control" }
+                / TODO(mark): Once we have public profiles, change 'username' to be their 'public url' so they
+                / feel empowered to choose a good username so that they have a nice url
+                = f.input :username,              required: true, input_html: { class: "form-control" }
+                = f.input :password,              requried: true, input_html: { class: "form-control" }
+                = f.input :password_confirmation, requried: true, input_html: { class: "form-control" }
               .form-actions
                 = f.button :submit, "Sign up", class: "flat-button"
               = render "users/shared/links"
