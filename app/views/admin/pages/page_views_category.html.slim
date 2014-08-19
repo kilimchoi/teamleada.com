@@ -5,7 +5,15 @@
       h1
         = @title
 
-  .row
+  .row.card
     .col-md-12
-      .row
-
+      table.table.table-striped
+        th URL
+        th User
+        th Timestamp
+        - @page_views.each do |page_view|
+          - user = page_view.user
+          tr
+            td = page_view.url
+            td = link_to user.name, admin_user_path(user)
+            td = page_view.created_at.pretty
