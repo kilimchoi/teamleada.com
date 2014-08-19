@@ -21,13 +21,24 @@ class Form
     #
     # This method must return a boolean to determine if the submission was successful.
     #
-    # If this method is not overridden, it will return false by default.
-    return false
+    # If this method is not overridden, the default implementation will execute.
+    self.set_attributes(params)
+
+    if valid?
+      self.save
+      true
+    else
+      false
+    end
   end
 
   def set_attributes(params)
     # This method takes in the params hash and sets attributes
     # ex. self.email = params[:email]
+  end
+
+  def save
+    # This method should save the associated object(s)
   end
 
   # Validation methods should be prefixed with `validate_`
