@@ -15,5 +15,5 @@
                 = f.input :email, required: true, autofocus: true, input_html: { class: 'form-control' }
               .form-actions
                 = f.button :submit, "Sign up", class: 'flat-button'
-            /  = render "users/shared/links"
+              = render "users/shared/links"
             /= link_to "Sign in with Linkedin!!!!!", user_omniauth_authorize_path(:linkedin)
