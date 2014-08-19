@@ -98,6 +98,14 @@ $carousel-height: 500px;
   }
 }
 
+.home-title-row {
+  // Not sure why this is happening. It has a weird transition when it's in the
+  // iPad-like screen size.
+  @include breakpoint($ipad-screen) {
+    width: 100%;
+  }
+}
+
 // Company logos
 .company-logo {
   background-size: 100%;
