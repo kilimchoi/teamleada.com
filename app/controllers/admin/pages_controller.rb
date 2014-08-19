@@ -1,6 +1,8 @@
 class Admin::PagesController < Admin::BaseController
   include ChartsHelper
 
+  before_filter :check_timeframe, only: [:page_views_timeframe, :page_views_projects]
+
   def dashboard
     @users_chart = users_chart(30.days.ago)
 
@@ -44,6 +46,13 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def page_views_projects
+  end
+
+  private
+
+  def check_timeframe
+    # TODO(mark): Figure out why this constraint object doesn't work on routes
+    redirect_to root_path and return unless ImpressionTimeframeConstraint.new.matches?(params[:timeframe])
   end
 
 end
