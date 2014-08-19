@@ -40,6 +40,7 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def page_views_timeframe
+    @timeframe = params[:timeframe].humanize if params[:timeframe].present?
   end
 
   def page_views_projects
