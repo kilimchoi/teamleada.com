@@ -15,5 +15,10 @@
           - user = page_view.user
           tr
             td = page_view.url
-            td = link_to user.name, admin_user_path(user)
+            - if !user.nil?
+              td = link_to user.name, admin_user_path(user)
+            - else
+              td Not Logged In
             td = page_view.created_at.pretty_time
+
+    = will_paginate(@page_views)
