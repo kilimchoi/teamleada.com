@@ -23,7 +23,14 @@
 class Impression < ActiveRecord::Base
   include Impressionist::CounterCache
   Impressionist::SetupAssociation.new(self).set
+
   self.per_page = 50
+
+  DAILY = "daily"
+  WEEKLY = "weekly"
+  MONTHLY = "monthly"
+  TIMEFRAMES = [DAILY, WEEKLY, MONTHLY]
+
   after_save :impressionable_counter_cache_updatable?
 
   scope :non_admin, -> { where(user_id: nil) + where("user_id NOT IN (?)", User.admins.pluck(:id)) }
