@@ -26,6 +26,13 @@
           .row.card
             .col-md-12
               - if user == current_user || is_admin
+                = render partial: "users/profile/about", locals: { user: user }
+                = render partial: "users/profile/questions", locals: { user: user }
+                = render partial: "users/profile/experience", locals: { user: user }
+                = render partial: "users/profile/education", locals: { user: user }
+                = render partial: "users/profile/awards", locals: { user: user }
+                = render partial: "users/profile/recommendations", locals: { user: user }
+                = render partial: "users/profile/resume", locals: { user: user }
                 h3.title Are you looking for opportunities?
                 = best_in_place current_user, :looking_for_opportunities, type: :checkbox, collection: [raw("<i class='fa fa-square-o icon-margin'>No thanks, not right now</i>"), raw("<i class='fa fa-check-square-o icon-margin'>Yes, of course!</i>")]
               h3.title Resume
