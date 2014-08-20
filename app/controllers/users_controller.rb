@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
   def edit_profile
     @user = current_user
+    @edit_profile_form = EditProfileForm.new(@user)
   end
 
   def update
