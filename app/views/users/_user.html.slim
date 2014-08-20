@@ -14,9 +14,13 @@
                 - if current_user == user
                   .profile-button-container
                     - if is_editing
-                      = link_to "Save and Finish Editing", show_user_profile_path, class: "button-small"
+                      = link_to "Finish Editing", show_user_profile_path, class: "button-small"
                     - else
                       = link_to "Edit Profile", edit_user_profile_path, class: "button-small"
+            .profile-linkedin-integration
+              - if !current_user.has_linkedin_integration?
+                = link_to "Integrate LinkedIn", user_omniauth_authorize_path(:linkedin), class: "button-small"
+
       .row
         .col-md-6
           .row.card
@@ -32,15 +36,6 @@
               - elsif user == current_user || is_admin
                 h4 Looks like you haven't uploaded a resume yet.
                 = link_to "Upload one now!", "#", data: {toggle: "modal", target: "#resume-modal"}, class: "flat-button full-width"
-
-          .row.card
-            .col-md-12
-              h3.title LinkedIn Integration
-              - if !current_user.has_linkedin_integration?
-                = link_to "Integrate LinkedIn", user_omniauth_authorize_path(:linkedin), class: "flat-button step-button"
-              - else
-                p
-                  | You've already integrated your LinkedIn account!
 
         .col-md-6
           .row.card
