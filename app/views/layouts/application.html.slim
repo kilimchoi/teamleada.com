@@ -62,8 +62,10 @@ html
           .row
             .col-md-2
               = render partial: "users/user_sidebar"
-            .col-md-10
+            .col-md-8
               = yield
+            .col-md-2
+              = render partial: "users/user_right_sidebar"
 
       - else
         = yield
