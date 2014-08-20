@@ -1,0 +1,22 @@
+.photo-container
+  .profile-image-container
+    .profile-photo-selector
+      = image_tag user.profile_photo, class: "profile-image"
+    - if current_user == user || is_admin
+      .popover-container
+        .add-profile-photo-button.dropdown
+          = link_to "#", data: { toggle: "dropdown" }, class: "add-profile-photo-link", id: "add-profile-photo-dropdown" do
+            span.fa.fa-camera.camera-button.icon-margin
+            .profile-photo-text Update Profile Picture
+          ul.dropdown-menu[role="menu" aria-labelledby="add-profile-photo-dropdown"]
+            li
+              - user.profile_photos.build
+              = simple_form_for user, remote: true, multipart: true, html: {class: 'profile-photo-form hidden-form', id: "profile-photo-form"} do |f|
+                = f.fields_for :profile_photos do |profile_photo|
+                  - if profile_photo.object.new_record?
+                    .new-photo-container
+                      = link_to "#", id: "upload-profile-photo" do
+                        span.fa.fa-photo.icon-margin Upload a Photo...
+                        = profile_photo.file_field :photo, required: true, id: "hidden-photo-upload"
+                = hidden_field_tag :authenticity_token, form_authenticity_token
+
