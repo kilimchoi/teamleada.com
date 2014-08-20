@@ -1,10 +1,10 @@
 
 main_page_content = [
-  ['text', 'In this project, you\'ll be building vizualization for a specific dataset.'],
-  ['text', 'Namely the crime data from San Francisc, CA.'],
-  ['text', 'You\'ll get the data from the official SF police website'],
-  ['text', 'The project is rather open ended, and you can build whatever vizualization you want'],
-  ['text-success', "Use your creativity!"],
+  ['text', 'In this project, you\'ll be building vizualizations for a specific dataset:'],
+  ['text-warning', 'Crime data from San Francisco, CA.'],
+  ['text', 'You\'ll get the data from the official SF police website.'],
+  ['text', 'The project is rather open ended, and you can build whatever vizualization you want.'],
+  ['text-success', "Follow your creativity calling!"],
 ]
 
 project = Project.create!(
