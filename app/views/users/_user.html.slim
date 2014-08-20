@@ -23,37 +23,23 @@
 
       .row
         .col-md-6
-          .row.card
+          .row
             .col-md-12
               - if user == current_user || is_admin
-                = render partial: "users/profile/about", locals: { user: user }
-                = render partial: "users/profile/questions", locals: { user: user }
-                = render partial: "users/profile/experience", locals: { user: user }
-                = render partial: "users/profile/education", locals: { user: user }
-                = render partial: "users/profile/awards", locals: { user: user }
+                = render partial: "users/profile/about",           locals: { user: user }
+                = render partial: "users/profile/questions",       locals: { user: user }
+                = render partial: "users/profile/experience",      locals: { user: user }
+                = render partial: "users/profile/education",       locals: { user: user }
+                = render partial: "users/profile/awards",          locals: { user: user }
                 = render partial: "users/profile/recommendations", locals: { user: user }
-                = render partial: "users/profile/resume", locals: { user: user }
-                h3.title Are you looking for opportunities?
-                = best_in_place current_user, :looking_for_opportunities, type: :checkbox, collection: [raw("<i class='fa fa-square-o icon-margin'>No thanks, not right now</i>"), raw("<i class='fa fa-check-square-o icon-margin'>Yes, of course!</i>")]
-              h3.title Resume
-              - if user.has_resume?
-                = render partial: "users/resume_preview", locals: { resume: user.resume }
-                - if user == current_user || is_admin
-                  = link_to "Upload a new resume", "#", data: {toggle: "modal", target: "#resume-modal"}, class: "flat-button full-width"
-              - elsif user == current_user || is_admin
-                h4 Looks like you haven't uploaded a resume yet.
-                = link_to "Upload one now!", "#", data: {toggle: "modal", target: "#resume-modal"}, class: "flat-button full-width"
+                = render partial: "users/profile/resume",          locals: { user: user }
 
         .col-md-6
-          .row.card
+          .row
             .col-md-12
-              = render partial: "users/profile/projects", locals: { user: user }
-
-              h3.title Badges
-              h4 You have not earned any badges yet.
-
-              h3.title Connections
-              h4 Looks like you don't have any connections yet.
+              = render partial: "users/profile/projects",    locals: { user: user }
+              = render partial: "users/profile/badges",      locals: { user: user }
+              = render partial: "users/profile/connections", locals: { user: user }
 
 = render partial: "users/resume_modal", locals: { user: user }
 

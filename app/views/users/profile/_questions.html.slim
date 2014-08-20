@@ -1,0 +1,5 @@
+.row.card
+  .col-md-12
+    h3.title Are you looking for opportunities?
+    = best_in_place current_user, :looking_for_opportunities, type: :checkbox, collection: [raw("<i class='fa fa-square-o icon-margin'>No thanks, not right now</i>"), raw("<i class='fa fa-check-square-o icon-margin'>Yes, of course!</i>")]
+
