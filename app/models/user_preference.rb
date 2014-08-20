@@ -17,5 +17,27 @@
 #
 
 class UserPreference < ActiveRecord::Base
+  # Associations
   belongs_to :user
+
+  # Default Values
+  default_value_for :who_can_see_profile, PUBLIC
+  default_value_for :who_can_send_friend_requests, PUBLIC
+  default_value_for :who_can_contact, CONNECTIONS_AND_RECRUITERS
+  default_value_for :who_can_lookup_using_email, CONNECTIONS_AND_RECRUITERS
+  default_value_for :who_can_lookup_by_name, CONNECTIONS_AND_RECRUITERS
+  default_value_for :who_can_see_resume, CONNECTIONS_AND_RECRUITERS
+
+  # Constants
+  SETTINGS_TABS = ['account', 'privacy', 'email']
+
+  PUBLIC = 'Public'
+  CONNECTIONS = 'Connections Only'
+  RECRUITERS = 'Recruiters Only'
+  CONNECTIONS_AND_RECRUITERS = 'Connections & Recruiters'
+  ONLY_ME = 'Only Me'
+
+  USER_CATEGORIES = [PUBLIC, CONNECTIONS, RECRUITERS, CONNECTIONS_AND_RECRUITERS, ONLY_ME]
+  USER_TYPES = USER_CATEGORIES.map{ |u| [u, u] }
+
 end
