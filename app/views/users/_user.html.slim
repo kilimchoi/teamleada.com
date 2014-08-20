@@ -1,3 +1,5 @@
+- current_user_can_edit = current_user == user || is_admin
+
 .container-fluid.full-container
   .row
     .col-md-12
@@ -11,21 +13,21 @@
                 = user.name
               .clearfix
               .profile-header-info.clearfix
-                - if current_user == user
+                - if current_user_can_edit
                   .profile-button-container
                     - if is_editing
                       = link_to "Finish Editing", show_user_profile_path, class: "button-small"
                     - else
                       = link_to "Edit Profile", edit_user_profile_path, class: "button-small"
             .profile-linkedin-integration
-              - if !current_user.has_linkedin_integration?
+              - unless current_user.has_linkedin_integration?
                 = link_to "Integrate LinkedIn", user_omniauth_authorize_path(:linkedin), class: "button-small"
 
       .row
         .col-md-6
           .row
             .col-md-12
-              - if user == current_user || is_admin
+              - if current_user_can_edit
                 = render partial: "users/profile/about",           locals: { user: user }
                 = render partial: "users/profile/questions",       locals: { user: user }
                 = render partial: "users/profile/experience",      locals: { user: user }
