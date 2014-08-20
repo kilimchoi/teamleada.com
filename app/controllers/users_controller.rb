@@ -11,7 +11,13 @@ class UsersController < ApplicationController
     @profile_needs_info = signed_in? && current_user.has_missing_profile_info?
   end
 
+  def profile
+    @user = current_user
+    render "show"
+  end
+
   def edit_profile
+    @user = current_user
   end
 
   def update
