@@ -60,9 +60,8 @@ class ConfirmationsController < Devise::ConfirmationsController
   def confirm
     @original_token = params[resource_name].try(:[], :confirmation_token)
     self.resource = resource_class.find_by_confirmation_token! @original_token
-    resource.assign_attributes(permitted_params)
 
-    if resource.valid? && resource.password_match?
+    if resource.valid?
       self.resource.confirm!
       if resource.invited?
         invite = resource.invite
@@ -71,17 +70,14 @@ class ConfirmationsController < Devise::ConfirmationsController
       end
       flash[:info] = "Your account has been confirmed. Check out some of our data projects!"
       sign_in resource_name, resource
-      respond_with resource, location: after_confirmation_path_for(resource)
+      redirect_to edit_user_profile_path
     else
-      render :action => 'show'
+      flash[:danger] = "There was a problem confirming your account, please try again or contact us if you are having trouble logging in."
+      redirect_to root_path
     end
   end
 
   private
-
-  def permitted_params
-    params.require(resource_name).permit(:confirmation_token, :username, :first_name, :last_name, :password, :password_confirmation)
-  end
 
   def after_confirmation_path_for(user)
     if user.is_admin?
