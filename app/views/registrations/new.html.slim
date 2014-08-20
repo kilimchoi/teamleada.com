@@ -23,8 +23,13 @@
                 / TODO(mark): Once we have public profiles, change 'username' to be their 'public url' so they
                 / feel empowered to choose a good username so that they have a nice url
                 = f.input :username,              required: true, input_html: { class: "form-control" }
-                = f.input :password,              requried: true, input_html: { class: "form-control" }
-                = f.input :password_confirmation, requried: true, input_html: { class: "form-control" }
+                = f.input :password,              requried: true,
+                                                  input_html: { class: "form-control" },
+                                                  wrapper_html: { class: "half-width float-left first-name" }
+                = f.input :password_confirmation, requried: true,
+                                                  label: "Password Confirmation",
+                                                  input_html: { class: "form-control" },
+                                                  wrapper_html: { class: "half-width float-right last-name" }
               .form-actions
                 = f.button :submit, "Sign up", class: "flat-button"
               = render "users/shared/links"
