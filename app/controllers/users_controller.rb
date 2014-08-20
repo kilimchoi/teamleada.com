@@ -21,6 +21,19 @@ class UsersController < ApplicationController
     @edit_profile_form = EditProfileForm.new(@user)
   end
 
+  def update_profile
+    # TODO(mark): Make this method work with ajax
+    @user = current_user
+    @edit_profile_form = EditProfileForm.new(@user)
+    if @edit_profile_form.submit(params[:edit_profile_form])
+      flash[:info] = "You have successfully edited your profile."
+      redirect_to edit_user_profile_path
+    else
+      flash[:danger] = "There was an error editing your profile. We're sorry for the inconvenience."
+      redirect_to edit_user_profile_path
+    end
+  end
+
   def update
     # TODO: This is hacky, should make a validation that does this.
     if params[:is_resume_form]
