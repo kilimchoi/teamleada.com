@@ -101,7 +101,13 @@ module UsersHelper
           end_date = nil
         end
 
-        created_job_experience = JobExperience.where(user: user, summary: job_summary, start_date: start_date, end_date: end_date).first_or_create
+        created_job_experience = JobExperience.where(
+          user: user,
+          summary: job_summary,
+          start_date: start_date,
+          end_date: end_date
+        ).first_or_create
+
         created_job_experience.job = job
         created_job_experience.save
       end
@@ -128,9 +134,20 @@ module UsersHelper
         education_end_date = self.extract_date(education_entry.endDate) rescue nil
         education_activities = education_entry.activities rescue nil
         education_notes = education_entry.notes rescue nil
-        enrollment = Enrollment.where(user: user, university: university, field_of_study: education_field_of_study).first_or_create
-        enrollment.update(degree: education_degree, start_date: education_start_date, end_date: education_end_date, 
-                          notes: education_notes, activities: education_activities)
+        enrollment = Enrollment.where(
+          user: user,
+          university: university,
+          field_of_study: education_field_of_study
+        ).first_or_create
+
+        enrollment.update(
+          degree: education_degree,
+          start_date: education_start_date,
+          end_date: education_end_date,
+          notes: education_notes,
+          activities: education_activities
+        )
+
         enrollment.save
       end
     end
@@ -143,14 +160,23 @@ module UsersHelper
         rec_giver_first = rec_entry.recommender.firstName.to_s rescue nil
         rec_giver_last = rec_entry.recommender.lastName.to_s rescue nil
         rec_giver_linkedin_id = rec_entry.recommender.id.to_s rescue nil
-        
+
         rec_text = rec_entry.recommender.recommendationText.to_s rescue nil
         rec_type = rec_entry.recommender.recommendationType.to_s rescue nil
         rec_id = rec_entry.id.to_s
 
-        recommendation = JobRecommendation.where(reviewer_first_name: rec_giver_first, reviewer_last_name: rec_giver_last,
-                                                 reviewer_linkedin_id: rec_giver_linkedin_id, reviewee: user).first_or_create
-        recommendation.update(recommendation_type: rec_type, body: rec_text)
+        recommendation = JobRecommendation.where(
+          reviewer_first_name: rec_giver_first,
+          reviewer_last_name: rec_giver_last,
+          reviewer_linkedin_id: rec_giver_linkedin_id,
+          reviewee: user
+        ).first_or_create
+
+        recommendation.update(
+          recommendation_type: rec_type,
+          body: rec_text
+        )
+
         recommendation.save
       end
     end
@@ -165,10 +191,19 @@ module UsersHelper
         publication_publisher = pub_entry.publisher.to_s rescue nil
         publication_description = pub_entry.summary.to_s rescue nil
         publication_id = pub_entry.id.to_s rescue nil
-        
-        publication = Publication.where(user: user, linkedin_publication_id: publication_id).first_or_create
-        publication.update(title: publication_title, description: publication_description, publication_date: publication_date, 
-                           publisher: publication_publisher)
+
+        publication = Publication.where(
+          user: user,
+          linkedin_publication_id: publication_id
+        ).first_or_create
+
+        publication.update(
+          title: publication_title,
+          description: publication_description,
+          publication_date: publication_date,
+          publisher: publication_publisher
+        )
+
         publication.save
       end
     end
@@ -181,9 +216,17 @@ module UsersHelper
         skill_id = skill_entry.id.to_s rescue nil
         skill_name = skill_entry.skill.name.to_s rescue nil
 
-        skill = Skill.where(name: skill_name, linkedin_skill_id: skill_id).first_or_create
-        user_skill = UserSkill.where(user: user, skill: skill).first_or_create
+        skill = Skill.where(
+          name: skill_name,
+          linkedin_skill_id: skill_id
+        ).first_or_create
+
+        user_skill = UserSkill.where(
+          user: user,
+          skill: skill
+        ).first_or_create
       end
     end
   end
 end
+
