@@ -158,6 +158,23 @@
 
 .outline-button {
   color: $founders-rock-blue;
+  border: 2px solid;
   border-color: $founders-rock-blue;
   background-color: $white;
+
+  &:hover {
+    color: $founders-rock-blue;
+  }
 }
+
+.sharp-edges {
+  border-radius: 0;
+}
+
+.sign-up-page-button {
+  @extend .flat-button;
+  @extend .sharp-edges;
+  @extend .full-width;
+  @extend .no-margin-bottom;
+}
+

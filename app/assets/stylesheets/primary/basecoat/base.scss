@@ -216,6 +216,10 @@ h1 {
   margin: 0;
 }
 
+.no-margin-bottom {
+  margin-bottom: 0 !important;
+}
+
 .title {
   padding-bottom: 10px;
   border-bottom: 1px solid $medium-gray;
