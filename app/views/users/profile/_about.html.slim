@@ -1,7 +1,17 @@
-.row.card
+.row.card#about-section
   .col-md-12
     .profile-section-header
       h3 About
       - if is_editing
         span.edit-section
-          = link_to "Edit", "#", id: "edit-about-section"
+          = link_to "Edit", "#", id: "edit-about-section", class: "edit-form-button", data: { target: "about-section" }
+    .profile-section-content
+      .profile-section-view#about-section-view
+        = simple_format(user_profile.bio)
+      .profile-section-edit.edit-form#about-section-edit
+        = simple_form_for @edit_profile_form, url: update_user_profile_path do |f|
+          .form-inputs
+            = f.input :bio, value: user_profile.bio
+          .form-actions
+            = f.button :submit, "Save", class: "edit-form-save-button"
+

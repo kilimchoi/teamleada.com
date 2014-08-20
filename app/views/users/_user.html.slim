@@ -28,7 +28,8 @@
           .row
             .col-md-12
               - if current_user_can_edit
-                = render partial: "users/profile/about",           locals: { user: user, is_editing: is_editing }
+                - user_profile = user.profile
+                = render partial: "users/profile/about",           locals: { user_profile: user_profile, is_editing: is_editing }
                 = render partial: "users/profile/questions",       locals: { user: user, is_editing: is_editing }
                 = render partial: "users/profile/experience",      locals: { user: user, is_editing: is_editing }
                 = render partial: "users/profile/education",       locals: { user: user, is_editing: is_editing }
@@ -49,5 +50,13 @@ javascript:
   $(document).ready(function() {
     $("#hidden-photo-upload").change(function(event) {
       $("#profile-photo-form").submit();
+    });
+
+    $(".edit-form-button").click(function(event) {
+      var target = this.dataset.target;
+      var view = $("#" + target + "-view");
+      var edit = $("#" + target + "-edit");
+      view.toggle();
+      edit.fadeToggle(200);
     });
   });
