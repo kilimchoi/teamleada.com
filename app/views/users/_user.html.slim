@@ -52,11 +52,32 @@ javascript:
       $("#profile-photo-form").submit();
     });
 
-    $(".edit-form-button").click(function(event) {
-      var target = this.dataset.target;
+    toggleViewEdit = function(target) {
+      var profile_sections = $(".profile-section");
       var view = $("#" + target + "-view");
       var edit = $("#" + target + "-edit");
       view.toggle();
       edit.fadeToggle(200);
+      profile_sections.toggleClass("active-edit");
+    }
+
+    $(".edit-form-button").click(function(event) {
+      var profile_sections = $(".profile-section");
+      if (profile_sections.hasClass("active-edit")) {
+        return;
+      }
+
+      var target = this.dataset.target;
+      toggleViewEdit(target);
+    });
+
+    $(".edit-form-cancel-button").click(function(event) {
+      var profile_sections = $(".profile-section");
+      if (!profile_sections.hasClass("active-edit")) {
+        return;
+      }
+
+      var target = this.dataset.target;
+      toggleViewEdit(target);
     });
   });

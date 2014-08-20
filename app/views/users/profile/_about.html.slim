@@ -1,4 +1,4 @@
-.row.card#about-section
+.row.card.profile-section#about-section
   .col-md-12
     .profile-section-header
       h3 About
@@ -14,4 +14,5 @@
             = f.input :bio, value: user_profile.bio
           .form-actions
             = f.button :submit, "Save", class: "edit-form-save-button"
+            = link_to "Cancel", "#", class: "edit-form-cancel-button", data: { target: "about-section" }
 
