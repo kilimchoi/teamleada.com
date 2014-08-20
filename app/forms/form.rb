@@ -44,3 +44,4 @@ class Form
   # Validation methods should be prefixed with `validate_`
 
 end
+

@@ -59,3 +59,4 @@ class SignUpForm < Form
   end
 
 end
+
