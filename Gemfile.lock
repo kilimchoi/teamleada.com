@@ -153,6 +153,8 @@ GEM
     database_cleaner (1.3.0)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
+    default_value_for (3.0.0.1)
+      activerecord (>= 3.2.0, < 5.0)
     devise (3.2.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -548,6 +550,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   commands (~> 0.2.1)
   database_cleaner
+  default_value_for (~> 3.0.0)
   devise (~> 3.2.3)
   factory_girl_rails (~> 4.4.0)
   fog (~> 1.22.1)
