@@ -27,25 +27,11 @@ class UsersController < ApplicationController
     @edit_profile_form = EditProfileForm.new(@user)
     if @edit_profile_form.submit(params[:edit_profile_form])
       respond_to do |format|
-        format.json {
-          render json: {
-            data: {
-              message: "You have successfully edited your profile."
-            },
-            status: :ok
-          }
-        }
+        format.js
       end
     else
       respond_to do |format|
-        format.json {
-          render json: {
-            data: {
-              message: "There was an error editing your profile. We're sorry for the inconvenience."
-            },
-            status: :unprocessable_entity
-          }
-        }
+        format.js
       end
     end
   end

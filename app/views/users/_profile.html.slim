@@ -1,0 +1,8 @@
+.user-profile-sections#user-profile
+  = render partial: "users/profile/about",           locals: { user_profile: user_profile, is_editing: is_editing }
+  = render partial: "users/profile/questions",       locals: { user: user, is_editing: is_editing }
+  = render partial: "users/profile/experience",      locals: { user: user, is_editing: is_editing }
+  = render partial: "users/profile/education",       locals: { user: user, is_editing: is_editing }
+  = render partial: "users/profile/awards",          locals: { user: user, is_editing: is_editing }
+  = render partial: "users/profile/recommendations", locals: { user: user, is_editing: is_editing }
+
