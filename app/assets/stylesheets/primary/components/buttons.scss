@@ -160,7 +160,7 @@
   color: $founders-rock-blue;
   border: 2px solid;
   border-color: $founders-rock-blue;
-  background-color: $white;
+  background-color: transparent;
 
   &:hover {
     color: $founders-rock-blue;
@@ -189,5 +189,17 @@
   margin: 0;
   padding: 10px 20px;
   font-size: 12px;
+}
+
+.edit-form-save-button {
+  @extend .button-small;
+}
+
+.edit-form-cancel-button {
+  @extend .button-small;
+  @extend .outline-button;
+
+  padding: 8px 18px;
+  margin-left: 5px;
 }
 
