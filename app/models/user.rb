@@ -65,6 +65,10 @@ class User < ActiveRecord::Base
 
   include UsersHelper
 
+  # Profile and Preferences
+  has_one :user_profile
+  has_one :user_preference
+
   # Submissions
   has_many :submissions
   has_many :code_submissions
@@ -245,6 +249,17 @@ class User < ActiveRecord::Base
     self.who_can_lookup_using_email = CONNECTIONS_AND_RECRUITERS
     self.who_can_lookup_by_name = CONNECTIONS_AND_RECRUITERS
     self.who_can_see_resume = CONNECTIONS_AND_RECRUITERS
+  end
+
+  #
+  # Associations
+  #
+  def profile
+    self.user_profile ||= self.create_user_profile()
+  end
+
+  def preferences
+    self.user_preference ||= self.create_user_preference()
   end
 
   #
