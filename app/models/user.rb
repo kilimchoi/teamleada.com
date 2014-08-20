@@ -145,10 +145,6 @@ class User < ActiveRecord::Base
   default_scope -> { order(:created_at) }
   scope :alphabetically, -> { order("name ASC") }
 
-  validates_format_of :username, :with => /\A[A-Za-z0-9_]*\z/
-  validates :username, uniqueness: {case_sensitive: false, allow_blank: true}
-  validate :check_username
-
   accepts_nested_attributes_for :resumes
   accepts_nested_attributes_for :profile_photos
 
@@ -224,21 +220,6 @@ class User < ActiveRecord::Base
       UsersHelper.update_with_linked_in_params(auth, user)
     end
 
-  end
-
-  #
-  # Validations
-  #
-  def check_username
-    if !self.new_record?
-      if self.username.nil? || self.username.blank?
-        errors.add(:username, "can't be blank")
-        return
-      end
-      if self.username.start_with?("_") || !/^[A-Za-z].*/.match(self.username)
-        errors.add(:username, "must start with a letter")
-      end
-    end
   end
 
   #
