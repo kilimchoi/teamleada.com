@@ -67,6 +67,9 @@ gem 'pg_search'
 gem 'paperclip', '~> 4.1'
 gem 'aws-sdk', '~> 1.5.7'
 
+# Default Active Record values
+gem "default_value_for", "~> 3.0.0"
+
 group :doc do
   gem 'sdoc', require: false
 end
