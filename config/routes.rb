@@ -37,7 +37,7 @@ TeamLeada::Application.routes.draw do
     match 'linkedin-confirm', to: "confirmations#show_linkedin_confirm", as: :show_linkedin_confirm, via: :get
   end
 
-  match "profile", to: "users#show", as: "show_user_profile", via: :get
+  match "profile", to: "users#profile", as: "show_user_profile", via: :get
   match "profile/edit", to: "users#edit_profile", as: "edit_user_profile", via: :get
   match 'settings', to: 'users#edit', as: 'edit_user', via: :get
 
