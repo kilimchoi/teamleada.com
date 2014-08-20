@@ -7,6 +7,8 @@
         .col-md-12
           h2.title
             | Forgot your password?
+          p
+            | Enter your email below and we'll send you an email with password reset instructions.
           = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
             = f.error_notification
             .form-inputs
