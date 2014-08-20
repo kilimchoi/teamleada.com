@@ -1,4 +1,4 @@
-class ExtraInfoSignUpForm < Form
+class EditProfileForm < Form
 
   delegate :bio, :date_of_birth, :location, :looking_for_opportunities, to: :user_profile
 
