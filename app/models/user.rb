@@ -66,8 +66,8 @@ class User < ActiveRecord::Base
   include UsersHelper
 
   # Profile and Preferences
-  has_one :user_profile
-  has_one :user_preference
+  has_one :user_profile    # Should use the .profile attribute defined below.
+  has_one :user_preference # Should use the .preferences attribute defined below.
 
   # Submissions
   has_many :submissions
