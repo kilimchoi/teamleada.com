@@ -6,7 +6,7 @@
       .user-container.card-container
         .row.card
           .col-md-12
-            = render partial: "users/profile/profile_photo", locals: { user: user }
+            = render partial: "users/profile/profile_photo", locals: { user: user, is_editing: is_editing }
 
             .profile-overview.clearfix
               h1.title.profile-name
@@ -28,13 +28,13 @@
           .row
             .col-md-12
               - if current_user_can_edit
-                = render partial: "users/profile/about",           locals: { user: user }
+                = render partial: "users/profile/about",           locals: { user: user, is_editing: is_editing }
                 = render partial: "users/profile/questions",       locals: { user: user }
                 = render partial: "users/profile/experience",      locals: { user: user }
                 = render partial: "users/profile/education",       locals: { user: user }
                 = render partial: "users/profile/awards",          locals: { user: user }
                 = render partial: "users/profile/recommendations", locals: { user: user }
-                = render partial: "users/profile/resume",          locals: { user: user }
+                = render partial: "users/profile/resume",          locals: { user: user, is_editing: is_editing }
 
         .col-md-6
           .row
