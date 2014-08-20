@@ -8,7 +8,7 @@ class ConfirmationsController < Devise::ConfirmationsController
     end
 
     digested_token = Devise.token_generator.digest(self, :confirmation_token, @original_token)
-    self.resource = resource_class.find_by_confirmation_token digested_token
+    self.resource = resource_class.find_by_confirmation_token(digested_token)
 
     if !resource.nil? && resource.confirmed?
       self.resource.confirm!
@@ -64,10 +64,6 @@ class ConfirmationsController < Devise::ConfirmationsController
 
     if resource.valid? && resource.password_match?
       self.resource.confirm!
-      if resource.role.nil?
-        resource.role = "student"
-        resource.save
-      end
       if resource.invited?
         invite = resource.invite
         invite.accepted_at = Time.now

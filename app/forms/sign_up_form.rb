@@ -26,6 +26,7 @@ class SignUpForm < Form
     user.username              = params[:username]
     user.password              = params[:password]
     user.password_confirmation = params[:password_confirmation]
+    user.role                  = "student"
   end
 
   def save
