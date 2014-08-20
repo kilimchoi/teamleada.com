@@ -155,25 +155,17 @@ class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :username, use: :finders
 
-  before_create :set_defaults
   before_save :set_name
 
   self.per_page = 50
-  SETTINGS_TABS = ['account', 'privacy', 'email']
-
-  PUBLIC = 'Public'
-  CONNECTIONS = 'Connections Only'
-  RECRUITERS = 'Recruiters Only'
-  CONNECTIONS_AND_RECRUITERS = 'Connections & Recruiters'
-  ONLY_ME = 'Only Me'
-
-  USER_CATEGORIES = [PUBLIC, CONNECTIONS, RECRUITERS, CONNECTIONS_AND_RECRUITERS, ONLY_ME]
-  USER_TYPES = USER_CATEGORIES.map{ |u| [u, u] }
 
   include PgSearch
   pg_search_scope :search,
                   against: [[:first_name, 'A'], [:last_name, 'A'], [:email, 'A'], [:username, 'A']],
                   using: {tsearch: {prefix: true, normalization: 2}}
+
+  # Default Values
+  default_value_for :updated_password_at, Time.now
 
   def == other_user
     self.email == other_user.email
@@ -229,26 +221,8 @@ class User < ActiveRecord::Base
   #
   # Before filter
   #
-  def set_defaults
-    self.set_dates
-    self.set_privacy_preferences
-  end
-
   def set_name
     self.name = "#{first_name} #{last_name}"
-  end
-
-  def set_dates
-    self.updated_password_at = Time.now
-  end
-
-  def set_privacy_preferences
-    self.who_can_see_profile = PUBLIC
-    self.who_can_send_friend_requests = PUBLIC
-    self.who_can_contact = CONNECTIONS_AND_RECRUITERS
-    self.who_can_lookup_using_email = CONNECTIONS_AND_RECRUITERS
-    self.who_can_lookup_by_name = CONNECTIONS_AND_RECRUITERS
-    self.who_can_see_resume = CONNECTIONS_AND_RECRUITERS
   end
 
   #
@@ -687,3 +661,4 @@ class User < ActiveRecord::Base
   end
 
 end
+
