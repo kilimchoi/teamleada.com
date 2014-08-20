@@ -90,7 +90,7 @@ cleaning_content_two = [
   ['text-warning', "What class did it return? Omit any quotes."],
   ['quiz', 'ft_clean_0'],
   ['text', "We'll save the result back into the column (overwriting it)."],
-  ['code', 'rawFluData$Date = as.Date(rawFluData$Date, "%m/%d/%Y")'],
+  ['code', 'rawFluData$Date = as.Date(rawFluData$Date, "%Y-%m-%d")'],
   ['next_steps'],
 ]
 

@@ -1,14 +1,14 @@
 = provide(:page_title, "Ask Peter Norvig")
 
-.container.full-container
-  .row
+.container.full-container.card-container
+  .row.card
     .col-md-12
       .inline-image-wrapper
         = image_tag "peter-norvig.jpg", class: "medium-image"
       h1.title.title-top-margin Ask a question to one of the world's leading Data Scientists!
       p
         | Peter Norvig is a Director of Research at Google Inc; previously he directed Google's core search algorithms group. He is co-author of <a href="http://aima.cs.berkeley.edu/" target="_blank">Artificial Intelligence: A Modern Approach</a>, the leading textbook in the field, and co-teacher of an <a href="https://www.udacity.com/wiki/frontpage" target ="_blank">Artificial Intelligence class that signed up 160,000 students</a>, helping to kick off the current round of massive open online classes. He is a <a href="http://awards.acm.org/award_winners/norvig_4663209.cfm" target="_blank">AAAI Fellow</a>, <a href="http://awards.acm.org/award_winners/norvig_4663209.cfm" target="_blank">ACM Fellow</a>, and <a href="https://www.amacad.org/default.aspx" target ="_blank">American Academy of Arts & Sciences Member</a>.
-  .row
+  .row.card
     .col-md-12
       h1.center
         | The question period has now ended. Check back in a week for his responses!
@@ -19,7 +19,7 @@
             = f.submit "Submit", class: "flat-button step-button col-md-6"
           .col-md-6
             = link_to "Guidelines / How This Works", question_guidelines_path, class: "flat-button step-button", target: "_blank"
-  .row
+  .row.card
     .col-md-12
       #questions-table
         = render partial: "questions/questions"

@@ -1,25 +1,60 @@
-= provide(:header_links, "header/handbook")
+= provide(:title, "Analytics Handbook")
 
-.main
-  section#content
-    .container
+.container.full-container.card-container
+  .row.card
+    .col-md-12
+      h1.title.handbook-title.center The Analytics Handbook
+      = image_tag "handbook.jpg", class: "full-width"
+
+  .row.card
+    .col-md-12
       .row
         .col-md-8.col-md-offset-2
-          .about-section
-            .description
-              h2 Content
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt vehicula nunc, non vehicula orci semper non. Nulla neque diam, ornare eget venenatis blandit, tempor at augue. Praesent nec lectus turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam facilisis convallis sagittis. Integer auctor ligula dictum est pellentesque, tincidunt accumsan elit lacinia. Sed convallis pellentesque mauris a semper. Nulla facilisi. Curabitur porta, lectus a euismod gravida, elit sapien commodo purus, non pharetra nisl diam quis nibh. Praesent ornare lectus ut hendrerit tristique. Suspendisse sit amet posuere mauris.
-            .image
-              = image_tag "filler.png", class: "round-with-border"
-  section#learning
-    .container
+          h1.center
+            | An in-depth look at the data science industry
+
+          h3.center
+            | Interviews with data scientists, data analysts, CEOs, managers, and researchers at the cutting edge of the data science industry.
+      .button-container.center
+        = link_to "Download Here", "#download", class: "flat-button"
+
+  .row.card
+    .col-md-12
       .row
         .col-md-8.col-md-offset-2
-          .about-section
-            .description
-              h2 Learn
-              p
-                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt vehicula nunc, non vehicula orci semper non. Nulla neque diam, ornare eget venenatis blandit, tempor at augue. Praesent nec lectus turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam facilisis convallis sagittis. Integer auctor ligula dictum est pellentesque, tincidunt accumsan elit lacinia. Sed convallis pellentesque mauris a semper. Nulla facilisi. Curabitur porta, lectus a euismod gravida, elit sapien commodo purus, non pharetra nisl diam quis nibh. Praesent ornare lectus ut hendrerit tristique. Suspendisse sit amet posuere mauris.
-            .image
-              = image_tag "filler.png", class: "round-with-border"
+          .row
+            h1.center Created to inform young professionals by young professionals
+            h3.center We are four UC Berkeley students (Go Bears!) who set out to educate young professionals on the Big Data Industry.
+            - @handbook.authors.each do |author|
+              .col-md-3
+                .handbook-image-wrapper
+                  .handbook-author-image class="#{author.image_class}"
+                h2.handbook-author-name = author.name
+                h2.handbook-author-role = author.role
+                h5.handbook-author-description = author.description
+
+  .row.card
+    .col-md-12
+      h1.center Interviews from Every Perspective
+      - @handbook.handbook_categories.each do |category|
+        h3.center.underline = category.name
+        .row
+          .col-md-6.col-md-offset-3
+            .handbook-contributors
+              ul.no-margin.no-padding.no-ul-style
+                - category.contributors.each do |contributor|
+                  li
+                    .handbook-contributor.clearfix
+                      .handbook-contributor-name = contributor.name
+                      .handbook-contributor-role = contributor.role
+
+  #download.row.card
+    .col-md-12
+      .row
+        .col-md-8.col-md-offset-2
+          h1.center Just Released: Academics & Researchers Edition!
+          h3.center Please fill out this short survey and PDFs of editions 2 and 3 of The Data Analytics Handbook will be emailed to you!
+          .button-container.center
+            = link_to "Download Edition 1", "https://s3.amazonaws.com/leada/handbook/Handbook_Pt1.pdf", target: "_blank", class: "flat-button"
+          .button-container.center
+            = link_to "Get Editions 2 and 3!", "http://www.surveygizmo.com/s3/1645296/Handbook-Pt-III-Reader-Survey", target: "_blank", class: "flat-button"

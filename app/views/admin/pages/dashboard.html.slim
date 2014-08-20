@@ -1,7 +1,7 @@
 = provide(:page_title, "Admin Dashboard")
 
-.container-fluid.full-container
-  .row
+.container-fluid.full-container.card-container
+  .row.card
     .col-md-12
       h1.title Admin Dashboard
 
@@ -44,53 +44,62 @@
                 span.badge = @daily_code_submissions.count
                 | New Code Submissions Today
 
-  .row
+  .row.card
     .col-md-12
       = high_chart("users_chart", @users_chart)
 
   .row
     .col-md-6
-      .row
+      .row.card
         .col-md-12
           h2 Newest Users
           table.table.table-striped
             th Name
             th Email
+            th Time
             - @new_users.each do |user|
               tr
                 td = link_to user.name, admin_user_path(user)
                 td = user.email
+                td = user.confirmed_at.nil? ? "Unconfirmed" :  user.confirmed_at.strftime("%m/%d %H:%M:%S")
     .col-md-6
-      .row
+      .row.card
         .col-md-12
           h2 Newest Resume Uploads
           table.table.table-striped
             th Name
             th Link
+            th Time
             - @new_resumes.each do |resume|
               tr
                 td = link_to resume.user.name, admin_user_path(resume.user)
                 td = link_to "View", resume.url
+                td = resume.created_at.strftime("%m/%d %H:%M:%S")
   .row
     .col-md-6
-      .row
+      .row.card
         .col-md-12
           h2 Newest Profile Photos
           table.table.table-striped
             th Name
             th Link
+            th Time
             - @new_profile_photos.each do |profile_photo|
               tr
                 td = link_to profile_photo.user.name, admin_user_path(profile_photo.user)
                 td = link_to "View", profile_photo.url
+                td = profile_photo.created_at.strftime("%m/%d %H:%M:%S")
     .col-md-6
-      .row
+      .row.card
         .col-md-12
           h2 Newest Code Submissions
           table.table.table-striped
             th Name
             th Link
+            th Time
             - @new_code_submissions.each do |code_submission|
               tr
                 td = link_to code_submission.user.name, admin_user_path(code_submission.user)
                 td = link_to "View", code_submission_admin_user_path(code_submission.user, code_submission.project, code_submission)
+                td = code_submission.created_at.strftime("%m/%d %H:%M:%S")
+

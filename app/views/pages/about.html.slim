@@ -1,137 +1,41 @@
 = provide(:header_links, "header/about")
 = provide(:page_title, "About")
 
-.container.full-container
-  .row.about-row
+.container.full-container.card-container
+  .row.about-row.card
     h1.center
       | Founding Team
-  .divider
 
-  .row.about-row
-    .col-md-5.col-md-offset-1
-      div
-        p.about-founders
-         ' Brian graduated with dual degrees in Business and Statistics at UC Berkeley. He realized his
-         ' interests were in computer science his senior year, and has been learning to program ever
-         ' since. His entrepreneurial aspirations first began in junior high, when he started a small business
-         ' painting house addresses on curbs.
-    .col-md-4.col-md-offset-2
-      div class="ih-item circle effect3 right_to_left right-allign-circle"
-        a href="http://www.linkedin.com/pub/brian-liou/23/662/441" target="_blank"
-          div class="img right_to_left_img"
-            .image
-              = image_tag "Brian.png", class: "headshots-with-border"
-          div class="info"
-            h3 class="founder-name"
-              | Brian Liou
-            p class="founder-quote"
-              | CEO
-              | <br> 'You can't connect the dots forwards, you can only connect them backwards.' - Steve Jobs
+  - @about.founders.each_with_index do |founder, index|
+    .row.about-row.card.row-table
+      - if index.even?
+        .col-md-5.col-md-offset-2.col-middle
+          div
+            p.about-founders = founder.description
+        .col-md-4.col-md-offset-1.col-middle
+          .ih-item.circle.effect3.right_to_left.right-align-circle
+            = render partial: "pages/founder", locals: { founder: founder }
 
-  .row.about-row
-    .col-md-4.col-md-offset-1
-      div class="ih-item circle effect3 left_to_right left-allign-circle"
-        a href="http://www.linkedin.com/in/tristantao/" target="_blank"
-          div class="img left_to_right_img"
-            .image
-              = image_tag "Tristan.png", class: "headshots-with-border"
-          div class="info"
-            h3 class="founder-name"
-              | Tristan Tao
-            p class="founder-quote"
-              | COO
-              | <br> 'If everything seems under control, you're just not going fast enough' - Mario Andretti
-    .col-md-5.col-md-offset-1
-      div
-        p.about-founders
-          ' Tristan has lived in 3 different countries for 6+ years each. Coming from a diverse
-          ' background, his focus has always been to gain a broad set of skills. With degrees in
-          ' Computer Science and Statistics from UC Berkeley, he has ventured into
-          ' Engineering, Finance/Trading, and PreMed. He is also an avid motorcyclist, and he
-          ' plans to begin racing AFM 250 Production Class (as #692) this year.
-    .col-md-1
+      - else
+        .col-md-4.col-md-offset-1.col-middle
+          .ih-item.circle.effect3.left_to_right.left-align-circle
+            = render partial: "pages/founder", locals: { founder: founder }
+        .col-md-5.col-md-offset-1.col-middle
+          div
+            p.about-founders = founder.description
 
-  .row.about-row
-    .col-md-5.col-md-offset-1
-      div
-        p.about-founders
-          ' Mark builds things. In the past year he had over 5,000 commits on various open source
-          ' projects on GitHub. He just graduated with a degree in Electrical Engineering and Computer
-          ' Science from UC Berkeley.
-    .col-md-4.col-md-offset-2
-      div class="ih-item circle effect3 right_to_left right-allign-circle"
-        a href="http://www.linkedin.com/pub/mark-miyashita/38/63/49" target="_blank"
-          div class="img right_to_left_img"
-            .image
-              = image_tag "Mark.jpg", class: "headshots-with-border"
-          div class="info"
-            h3 class="founder-name"
-              | Mark Miyashita
-            p class="founder-quote"
-              | CTO
-              | <br> 'You miss 100% of the shots you don't take' - Wayne Gretzky
-  .divider
-  .row.about-row
+  .row.about-row.card
     h1.center
       | Advisors
-    .col-md-4 class="about-advisor-col"
-      div.advisor_circle class="ih-item circle effect10 top_to_bottom"
-        a href="https://yhathq.com/about" target="_blank"
-          div class="img advisor_img"
-            .image
-              = image_tag "Greg.jpg"
-          div class="info"
-            h3
-              | Greg Lamp
-            p
-              | CTO | yhat
-    .col-md-4 class="about-advisor-col"
-      div.advisor_circle class="ih-item circle effect10 top_to_bottom"
-        a href="http://www.stat.berkeley.edu/~aditya/" target="_blank"
-          div class="img advisor_img"
-            .image
-              = image_tag "Aditya.png"
-          div class="info"
-            h3
-              | Aditya G
-            p
-              | Stats Prof. at UC Bekeley
-    .col-md-4 class="about-advisor-col"
-      div.advisor_circle class="ih-item circle effect10 top_to_bottom"
-        a href="http://pages.stern.nyu.edu/~ptambe/" target="_blank"
-          div class="img advisor_img"
-            .image
-              = image_tag "Prasanna.png"
-          div class="info"
-            h3
-              | Prasanna T
-            p
-              | Prof. At NYU Stern (IOMS)
 
-/*
-  .col-md-2.col-md-offset-1
-    .image
-      = image_tag "Greg.jpg", class: "headshots-with-border"
-    .fig-caption
-      | Advisor <br> Greg L. <br> CTO Yhat
-      .col-md-2
-    .image
-          = image_tag "Brian.png", class: "headshots-with-border"
-      .fig-caption
-          | CEO <br>Brian Liou<br> B.S. Business <br> B.A. Statistics
-      .col-md-2
-        .image
-          = image_tag "Tristan.png", class: "headshots-with-border"
-        .fig-caption
-          | COO <br>Tristan Tao<br> B.A. CompSci <br> B.A. Statistics
-      .col-md-2
-        .image
-          = image_tag "Mark.jpg", class: "headshots-with-border"
-        .fig-caption
-          | CTO <br>Mark Miyashita<br> B.S. EECS <br> M.Eng. Data Science
-      .col-md-2
-        .image
-          = image_tag "Aditya.png", class: "headshots-with-border"
-        .fig-caption
-          | Advisor <br> Aditya G. <Br> Statistics Prof
-  .divider
+    - @about.advisors.each do |advisor|
+      .col-md-4.about-advisor-col
+        .advisor_circle.ih-item.circle.effect10.top_to_bottom
+          = link_to advisor.website, taget: "_blank" do
+            .img.advisor_img
+              .image
+                = image_tag advisor.image
+            .info
+              h3 = advisor.name
+              p = advisor.position
+

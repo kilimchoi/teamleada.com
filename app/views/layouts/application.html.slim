@@ -22,13 +22,13 @@ html
     = javascript_include_tag "application", "data-turbolinks-track" => true, "modernizr" => true
     = csrf_meta_tags
     = render partial: 'shared/analytics'
-  body
+  body.main-background
     - if Rails.env.development?
       = render partial: "shared/debug_bar"
     = render partial: "layouts/header"
     - if signed_in? && @profile_needs_info && current_user.has_missing_profile_info?
       = render partial: "shared/profile_info_modal"
-    #page-container
+    #page-container class="#{'page-container-padding' unless @large_header}"
       = render partial: "shared/flash"
       - if params[:controller] == "lessons" || params[:controller] == "steps"
         / TODO: Remove this and actually make sure only one sidebar loads

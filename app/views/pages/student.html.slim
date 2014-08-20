@@ -1,40 +1,36 @@
-= provide(:page_title, "Learners")
+= provide(:page_title, "Users")
 
-.container.full-container
-  .row.employer-row
+.container.full-container.card-container
+  .row.employer-row.card
     .col-md-6.col-md-offset-1
       .image
-        = image_tag "datachart.png", class: "round-with-border"
-    .col-md-4.right-allign
-      h1 Become Data Literate
-      p.right-allign
-        | Learn the statistics and programming skills
-        |  necessary to effectively analyze data.
+        = image_tag "icons/analyze.png", class: "round-with-border"
+    .col-md-4.right-align
+      h1 Build a Portfolio
+      p.right-align
+        | Complete challenges and projects to showcase your data science skill. Be more than a resume.
 
-  .divider
-  .row.employer-row
+  .row.employer-row.card
     .col-md-4.col-md-offset-1
-      h1 Learn While Recruiting
+      h1 Apply Theory to Data
       p
-        | Upload your resume and start completing data projects.
-        |  You're automatically being considered for jobs just by learning. Get contacted by recruiters as you
-        |  complete projects.
+        | Gain experience in solving industry analytics and data science problems.
     .col-md-4.col-md-offset-3
-        .image
-          = image_tag "methods.png", class: "round-with-border"
-  .divider
+        .image.round-border-wrapper
+          = image_tag "icons/build.png", class: "full-width icon-build-learn-offset"
   - if (signed_in? && current_user.has_project_access?)
-    h2.center
-      | You've already received Early Project Access. <br>
-      | Go complete projects!
+    .row.card
+      .col-md-12
+        h2.center
+          | You've already received Early Project Access. <br>
+          | Go complete projects!
   - else
-    .row.employer-row.center
+    .row.employer-row.center.card
       .col-md-8.col-md-offset-2
         = render partial: "codes/project_access_code"
-      .row.employer-row.center
-        .col-md-8.col-md-offset-2
-          h3 Want an Early Access Code?
-        .col-md-12
-          p
-            | Fill out our user survey. Indicate in the last question (Q.6) that you're interested in the product!
-          = link_to "Take me to the survey", "http://www.surveygizmo.com/s3/1645296/Handbook-Pt-III-Reader-Survey", target: "_blank", class: "flat-button"
+    .row.employer-row.center.card
+      .col-md-8.col-md-offset-2
+        h3 Want an Early Access Code?
+        p
+          | Fill out our user survey. Indicate in the last question (Q.6) that you're interested in the product!
+        = link_to "Take me to the survey", "http://www.surveygizmo.com/s3/1645296/Handbook-Pt-III-Reader-Survey", target: "_blank", class: "flat-button"

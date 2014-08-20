@@ -1,0 +1,21 @@
+
+.container-fluid.full-container.card-container
+  .row.card
+    .col-md-12
+      h1
+        = @title
+
+  .row
+    .col-md-12
+      .row
+        - @page_view_categories.each do |category|
+          .col-md-4
+            .info-widget
+              .info-widget-body
+                .info-widget-icon.blue.left
+                  i.icon.fa.fa-user
+                .info-widget-content.left
+                  .info-widget-title
+                    = link_to "#{@title} - #{category.humanize}", admin_timeframe_category_path(@timeframe, category)
+                .clearfix
+

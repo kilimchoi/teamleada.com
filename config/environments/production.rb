@@ -80,12 +80,12 @@ TeamLeada::Application.configure do
 
   # Google Analytics
   #GA.tracker = ENV["GA_TRACKER"]
-  config.action_mailer.default_url_options = { :host => ENV['HOST'] }
 
   config.after_initialize do
     Rails.application.routes.default_url_options[:host] = ENV['HOST']
   end
 
+  config.action_mailer.default_url_options = { :host => ENV['HOST'] }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
@@ -99,4 +99,5 @@ TeamLeada::Application.configure do
 
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
+
 end

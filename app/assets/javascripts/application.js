@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.all
+//= require typed
 //= require best_in_place
 //= require toastr
 //= require bootstrap
@@ -80,4 +81,14 @@ $(document).ready(function() {
     $("#mobile-navbar-modal-backdrop").hide();
     $("#mobile-navbar-modal-wrapper").hide();
   }
+
+  $(".favorite-user").click(function(event) {
+    $(this).removeClass("fa-star-o");
+    $(this).addClass("fa-star");
+  });
+
+  $(".unfavorite-user").click(function(event) {
+    $(this).removeClass("fa-star");
+    $(this).addClass("fa-star-o");
+  });
 });

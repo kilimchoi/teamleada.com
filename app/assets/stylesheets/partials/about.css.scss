@@ -109,11 +109,11 @@ section#team {
   text-align: center;
 }
 
-.right-allign-circle {
+.right-align-circle {
   left: 30px;
 }
 
-.left-allign-circle {
+.left-align-circle {
   right: 30px;
 }
 
@@ -149,4 +149,9 @@ section#team {
       }
     }
   }
+}
+
+.about-row {
+  // TODO: get rid of important! calls
+  padding: 30px !important;
 }

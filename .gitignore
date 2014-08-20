@@ -37,3 +37,6 @@ public/tmp
 
 # Ignore Python cache files
 *.pyc
+
+# Ignore the demo seed files
+005_demo_users.rb

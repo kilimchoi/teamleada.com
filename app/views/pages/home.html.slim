@@ -1,54 +1,68 @@
-= provide(:header_links, "header/home")
-= provide(:page_title, "Practice Data Science, Get Recruited")
 = provide(:title, "Learn Insight In Data")
-= javascript_include_tag "slide"
 
-#users
-  .container
-    .row
-      .col-md-10.col-md-offset-1
-        h1.center
-           | Bridging the skills gap with talented individuals and industry projects.
-    .row
-      .col-md-6
-        .new-user.right.no-float-mobile
-          = link_to "I want to hire", new_employer_path, class: "flat-button animated tada home-button"
-      .col-md-6
-        .new-user.left.no-float-mobile
-          = link_to "I want to practice", learn_path, class: "flat-button animated tada home-button"
+.container-fluid.full-container
+  .row
+    #carousel.carousel.slide.carousel-home data-ride="carousel" data-interval="5000"
+      .carousel-inner.carousel-home-inner
+        - @home.carousel.each_with_index do |item, index|
+          .item class="#{'active' if index == 0}"
+            .media-cover-photo.media-cover-dark class="#{item.image_class}"
+            .row.row-table.row-full-height.home-title-row
+              .col-md-12.col-middle.text-center
+                h1.media-title = item.title
+                h3.media-subtitle = item.subtitle
 
-#bottom
-  #about
-    .container
-      .row
-        .col-md-12.center.fade-from-in
-          h1.left-align
-            | The Most In-Demand Skill Today
-          .row
-            .col-md-8.col-md-offset-2.center
-              p.hal-quote
-                | "If you are looking for a career where your services will be in high demand, you should find something where you provide a scarce, complementary service to something that is getting ubiquitous and cheap. So what’s getting ubiquitous and cheap? Data. And what is complementary to data? Analysis. So my recommendation is to take lots of courses about how to manipulate and analyze data..."
-              p.hal-sig
-                | - Hal Varian, Chief Economist at Google
+      a.left.carousel-control href="#carousel" role="button" data-slide="prev"
+        span.glyphicon.glyphicon-chevron-left
 
-  #display
-    .container
-      .row
-        .col-md-4.center.slide-from-right
-          h2#engage Engage
-          p
-            | Build out a profile of data projects to showcase to the world.
-          .image
-            = image_tag "leadaboard.png", class: "round-with-border"
-        .col-md-4.center.fade-from-in
-          h2#discover Discover
-          p
-            | Find new analysis methods and apply them to interesting data sets.
-          .image
-              = image_tag "methods.png", class: "round-with-border"
-        .col-md-4.center.slide-from-left
-          h2#learn Apply
-          p
-            | Apply your statistics and programming knowledge to industry data problems.
-          .image
-            = image_tag "datachart.png", class: "round-with-border"
+      a.right.carousel-control href="#carousel" role="button" data-slide="next"
+        span.glyphicon.glyphicon-chevron-right
+
+
+  .row.home-outline
+    - @home.columns.each do |column|
+      .col-md-3
+        .row.card.home-column-card
+          .col-md-12
+            h2.home-column-title.text-center = column.title
+            h3.home-column-subtitle.text-center = column.subtitle
+            .home-column-image-wrapper
+              .column-icon.home-column-image class="#{column.image_class}"
+
+  .row.home-outline
+    .col-md-12
+      .row.card
+        .col-md-12
+          h1.large-title.text-center
+            ' Fill The
+            span#typer
+
+          h3.text-center
+            | Over 1 Million Jobs Unmet
+
+          .button-container.center
+            = link_to "Join the Data Revolution", new_user_registration_path, class: "flat-button home-button"
+
+  .row.home-outline
+    .col-md-12
+      .row.card.card-inset-medium
+        .col-md-12
+          h1.text-center Partner Companies
+          - @home.companies.each_slice(3) do |slice|
+            .row
+              - slice.each do |company|
+                .col-md-4 class="#{'col-md-offset-2' if company == @home.companies[3]}"
+                  = link_to company.website do
+                    .home-company
+                      .company-logo.home-company-image class="#{company.image_class}"
+
+javascript:
+  $(document).ready(function() {
+    $("#typer").typed({
+      strings: ["Skill Gap", "Job Shortfall"],
+      typeSpeed: 80,
+      backDelay: 500,
+      loop: true
+    });
+  });
+
