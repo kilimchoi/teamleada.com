@@ -1,24 +1,24 @@
-.sidebar
+.project-sidebar
   h3.sidebar-title = link_to project.title, project_path(project)
 
   ul.sidebar-lessons
     - project.lessons.each do |lesson|
       - if current_user.completed?(lesson)
-        = active_or_completed_sidebar_link lesson.title, project_lesson_path(project, lesson), class: "sidebar-lesson fa fa-check-circle completed-item"
+        = active_or_completed_sidebar_link lesson.title, project_lesson_path(project, lesson), class: "sidebar-lesson project-icon fa fa-check-circle completed-item"
       - else
         li.sidebar-lesson.disabled
           = lesson.title
       ul.sidebar-steps
         - lesson.steps.each do |step|
           - if current_user.completed?(step)
-            = active_or_completed_sidebar_link step.title, project_lesson_step_path(project, lesson, step), class: "sidebar-step fa fa-check-circle completed-item"
+            = active_or_completed_sidebar_link step.title, project_lesson_step_path(project, lesson, step), class: "sidebar-step project-icon fa fa-check-circle completed-item"
           - else
             li.sidebar-step.disabled
               = step.title
           ul.next-steps
             - step.next_steps.each do |next_step|
               - if current_user.completed?(next_step)
-                = active_or_completed_sidebar_link next_step.title, project_lesson_step_path(project, lesson, next_step), class: "sidebar-next-step fa fa-check-circle completed-item"
+                = active_or_completed_sidebar_link next_step.title, project_lesson_step_path(project, lesson, next_step), class: "sidebar-next-step project-icon fa fa-check-circle completed-item"
               - else
                 li.sidebar-next-step.disabled
                   = next_step.title

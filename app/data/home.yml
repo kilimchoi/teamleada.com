@@ -1,0 +1,44 @@
+---
+
+carousel:
+  - title: "Leada"
+    subtitle: "Learn Insight In Data"
+    image_class: "media-person-studying"
+  - title: "Practice Data Science"
+    subtitle: "Get Recruited"
+    image_class: "media-r-corner"
+  - title: "Fill the Job Shortfall"
+    subtitle: "Bridge The Skill Gap"
+    image_class: "media-sf-background"
+
+columns:
+  - title: "Analyze"
+    subtitle: "Complete data science challenges and projects."
+    image_class: "icon-analyze"
+  - title: "Build"
+    subtitle: "Create a data science portfolio."
+    image_class: "icon-build"
+  - title: "Share"
+    subtitle: "Participate in a community of data enthusiasts."
+    image_class: "icon-share"
+  - title: "Get Hired"
+    subtitle: "Anonymously receive inquires from employers."
+    image_class: "icon-hired"
+
+companies:
+  - title: "Doximity"
+    image_class: "company-doximity"
+    website: "https://www.doximity.com/"
+  - title: "eBay"
+    image_class: "company-ebay"
+    website: "http://www.ebay.com/"
+  - title: "MightyHive"
+    image_class: "company-mighty-hive"
+    website: "http://mightyhive.com/"
+  - title: "Mixbook"
+    image_class: "company-mixbook"
+    website: "http://www.mixbook.com/"
+  - title: "Statricks"
+    image_class: "company-statricks"
+    website: "http://www.statricks.com/"
+

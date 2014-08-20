@@ -130,3 +130,39 @@ $navbar-padding-bottom: 15px;
 .panel-default {
   border-color: #d3d6db;
 }
+
+.carousel-control:hover,
+.carousel-control:focus {
+  opacity: 0.5;
+}
+
+.carousel .item {
+  -webkit-transition: opacity 3s;
+  -moz-transition: opacity 3s;
+  -ms-transition: opacity 3s;
+  -o-transition: opacity 3s;
+  transition: opacity 3s;
+}
+
+.carousel-inner {
+  .item {
+    opacity: 0;
+  }
+
+  .active {
+    opacity: 1;
+  }
+
+  .active.left,
+  .active.right {
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+  }
+
+  .next.left,
+  .prev.right {
+    opacity: 1;
+  }
+}
+

@@ -1,15 +1,17 @@
-section#error-404
-  .container
-    .row
-      .col-md-8.col-md-offset-2
-        h2.center
-          | Sorry, this page is not available.
-    .row
-      .col-md-8.col-md-offset-2
-        p.center
-          | Our team has been notified and we'll fix it up as soon as possible!
-    .row
-      .col-md-8.col-md-offset-2
-        p.logo-container.center
-          = link_to root_path do
-            = image_tag "logo_vertical.png"
+.container.full-container.card-container
+  .row.card
+    .col-md-12
+      .row
+        .col-md-8.col-md-offset-2
+          h2.center
+            | Sorry, this page is not available.
+      .row
+        .col-md-8.col-md-offset-2
+          p.center
+            | Our team has been notified and we'll fix it up as soon as possible!
+      .row
+        .col-md-8.col-md-offset-2
+          p.logo-container.center
+            = link_to root_path do
+              = image_tag "logo_vertical.png"
+

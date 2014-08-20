@@ -27,3 +27,16 @@
 .bottom-card-section {
   margin-bottom: 0px;
 }
+
+.card-medium {
+  min-height: 200px;
+}
+
+.card-inset-medium {
+  padding: 50px;
+
+  @include breakpoint($mobile) {
+    padding: 10px;
+  }
+}
+

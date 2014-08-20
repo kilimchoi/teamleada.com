@@ -9,12 +9,46 @@ body {
   }
 }
 
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .main-background {
   background-color: $main-background-color;
 }
 
+.row-full-height {
+  height: 100%;
+}
+
+.row-table {
+  display: table;
+}
+
+.col-middle {
+  vertical-align: middle;
+}
+
+.col-top,
+.col-middle,
+.col-bottom {
+  float: none;
+  display: table-cell;
+}
+
 .no-margin {
   margin: 0 !important;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.no-ul-style {
+  list-style: none;
 }
 
 .clearfix {
@@ -37,6 +71,10 @@ body {
 
 .page-container-padding {
   padding-top: 50px;
+
+  @include breakpoint($mobile) {
+    padding-top: 0;
+  }
 }
 
 .container.full-container,
@@ -71,6 +109,16 @@ body {
 
   img {
     width: 100%;
+  }
+}
+
+.large-title {
+  font-size: 64px;
+  line-height: 72px;
+
+  @include breakpoint($mobile) {
+    font-size: 40px;
+    line-height: 48px;
   }
 }
 

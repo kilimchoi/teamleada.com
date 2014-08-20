@@ -53,7 +53,7 @@ These two commands can be created into aliases if desired.
 You're going to have to install Imagemagick and Redis:
 
     brew install pkgconfig #in case imagemagick doesn't work on os X
-    brew install imagemagickb
+    brew install imagemagick
     brew install redis
 
 ## Redis on AWS
@@ -101,6 +101,17 @@ Then head to */etc/nginx/sites-available* and append the following
         }
     }
 
+Also, for redirect for apex name record:
+
+    server {
+            listen 80;
+            client_max_body_size 4G;
+            keepalive_timeout 5;
+
+            server_name teamleada.com;
+            return 301 $scheme://www.teamleada.com$request_uri;
+    }
+
 Lastly, add `localhost` and the `domain name` to */etc/hosts*
 
     127.0.0.1 beta-dev.teamleada.com
@@ -111,13 +122,22 @@ If you get a bad gateway, make sure rails is running. if nothing is rendering, i
     sudo nginx
 
 ## Install/Config Nginx
-    gem instlal unicorn
-Set up unicorn as follows
+
+    gem install unicorn
+
+Set up unicorn as follows:
+
     #some unicorn setup
 
 There is a sample unicorn/nginx config at:
 https://github.com/defunkt/unicorn/tree/master/examples
-    
+
+Make sure you source your environment variables (necessary for the environment variables in production.rb):
+
+    source /www/prod-dir/environment_variables.profile
+
+Then start the server with the command:
+
     unicorn_rails -D -c /www/prod-dir/teamleada.com/config/unicorn.rb
 
 ## Live Reload
@@ -127,7 +147,22 @@ To use this, download the chome extension [here](https://chrome.google.com/webst
 
 To use, simply have two terminal windows open. In one window, run `guard` and in the other, run the normal `rails s`
 
-## Heroku Deployment
+## Backup Database and Restore Locally
+
+    pg_dump --format=c -h <database_host> -U <username> <database> > leada.dump
+    scp prod:<path to file>/leada.dump .
+
+Then, we have to set up our local database to include any new changes you might have made:
+
+    rake db:drop
+    rake db:create
+
+    pg_restore --verbose --clean --no-acl --no-owner -h localhost -U mark -d leada_development leada.dump
+
+    rake db:migrate
+    rake db:seed
+
+## Heroku Deployment (deprecated)
 
 There's a file, `/config/initializers/_environment_variables.rb`, which contains environment variables (mostly keys) that are not safe to upload to GitHub (added to .gitignore) so if you create this file, you can set your environment variables here easily.
 For example:
@@ -137,21 +172,6 @@ For example:
 Since we use Git to deploy to Heroku, this file won't be included, so you'll have to set the environment variables manually, and this can be done just once. The equivalent of the above on Heroku is:
 
     heroku config:set SECRET_KEY=secret-password
-
-## Backup Database and Restore Locally
-
-    heroku pgbackups:capture --app teamleada
-    curl -o latest.dump `heroku pgbackups:url --app teamleada`
-
-Then, we have to set up our local database to include any new changes you might have made:
-
-    rake db:drop
-    rake db:create
-
-    pg_restore --verbose --clean --no-acl --no-owner -h localhost -U mark -d leada_development latest.dump
-
-    rake db:migrate
-    rake db:seed
 
 ## Current Deployments at:
 
