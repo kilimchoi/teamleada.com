@@ -5,6 +5,6 @@ p
 p
   | You can confirm your account email through the link below:
 p
-  = link_to 'Confirm my Account', user_confirmation_url(confirmation_token: @token), method: :post
+  = link_to 'Confirm my Account', confirm_url(confirmation_token: @token), via: :patch
 p
   | -- TeamLeada
