@@ -12,7 +12,7 @@ class SignUpForm < Form
   validate :validate_username_format
   validate :validate_username_uniqueness
 
-  # Devise takes care of password validations
+  validates :password, { confirmation: true, length: { in: 6..20 } }
 
   def user
     @user ||= User.new
