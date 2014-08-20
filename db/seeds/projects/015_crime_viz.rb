@@ -28,10 +28,10 @@ puts "============ Created project: #{project.title}."
 intro_content_one = [
   ['text-info', "You've just been hired by the SF city to better deal with its crime issues."],
   ['text', "First thing they want to do is to better understand crime pattern."],
-  ['text', "You're tasked to create vizualizations that will help the city interpret the crime."],
+  ['text', "You're tasked to create vizualizations that will help the city better interpret the crime."],
   ['text', "You're not given a specific plot/chart speficiation, and you must come up with your own analysis."],
   ['text', "The crime data can be downloaded below."],
-  ['link', "ttps://data.sfgov.org/Public-Safety/SFPD-Incidents-Previous-Three-Months/tmnf-yvry?"],
+  ['link', "https://data.sfgov.org/Public-Safety/SFPD-Incidents-Previous-Three-Months/tmnf-yvry?"],
   ['text', "How many months of data do you get?"],
   ['quiz', "crime_viz_0"],
 ]
