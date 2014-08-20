@@ -39,6 +39,7 @@ TeamLeada::Application.routes.draw do
 
   match "profile", to: "users#profile", as: "show_user_profile", via: :get
   match "profile/edit", to: "users#edit_profile", as: "edit_user_profile", via: :get
+  match "profile/edit", to: "users#update_profile", as: "update_user_profile", via: :post
   match 'settings', to: 'users#edit', as: 'edit_user', via: :get
 
   # Debug Bar
