@@ -181,3 +181,12 @@
   padding-bottom: 10px;
 }
 
+// New class of buttons
+.button-small {
+  @extend .flat-button;
+  @extend .sharp-edges;
+
+  margin: 0;
+  padding: 10px 20px;
+}
+
