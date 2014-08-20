@@ -14,31 +14,38 @@
               .form-inputs
                 = f.input :first_name,            required: true,
                                                   placeholder: "First Name",
+                                                  label: false,
                                                   autofocus: true,
                                                   input_html: { class: "form-control" },
-                                                  wrapper_html: { class: "half-width float-left first-name" }
+                                                  wrapper_html: { class: "half-width float-left first-name input-wrapper" }
                 = f.input :last_name,             required: true,
                                                   placeholder: "Last Name",
+                                                  label: false,
                                                   input_html: { class: "form-control" },
-                                                  wrapper_html: { class: "half-width float-right last-name" }
+                                                  wrapper_html: { class: "half-width float-right last-name input-wrapper" }
                 = f.input :email,                 required: true,
                                                   placeholder: "Email",
-                                                  input_html: { class: "form-control" }
+                                                  label: false,
+                                                  input_html: { class: "form-control" },
+                                                  wrapper_html: { class: "input-wrapper" }
                 / TODO(mark): Once we have public profiles, change 'username' to be their 'public url' so they
                 / feel empowered to choose a good username so that they have a nice url
                 = f.input :username,              required: true,
                                                   placeholder: "Username",
-                                                  input_html: { class: "form-control" }
+                                                  label: false,
+                                                  input_html: { class: "form-control" },
+                                                  wrapper_html: { class: "input-wrapper" }
                 = f.input :password,              requried: true,
                                                   placeholder: "Password",
+                                                  label: false,
                                                   input_html: { class: "form-control" },
-                                                  wrapper_html: { class: "half-width float-left first-name" }
+                                                  wrapper_html: { class: "half-width float-left first-name input-wrapper" }
                 = f.input :password_confirmation, requried: true,
                                                   placeholder: "Password Confirmation",
-                                                  label: "Password Confirmation",
+                                                  label: false,
                                                   input_html: { class: "form-control" },
-                                                  wrapper_html: { class: "half-width float-right last-name" }
+                                                  wrapper_html: { class: "half-width float-right last-name input-wrapper" }
               .form-actions
                 = f.button :submit, "Sign up", class: "flat-button"
               = render "users/shared/links"
-            /= link_to "Sign in with Linkedin!!!!!", user_omniauth_authorize_path(:linkedin)
+
