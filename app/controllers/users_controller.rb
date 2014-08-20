@@ -26,11 +26,27 @@ class UsersController < ApplicationController
     @user = current_user
     @edit_profile_form = EditProfileForm.new(@user)
     if @edit_profile_form.submit(params[:edit_profile_form])
-      flash[:info] = "You have successfully edited your profile."
-      redirect_to edit_user_profile_path
+      respond_to do |format|
+        format.json {
+          render json: {
+            data: {
+              message: "You have successfully edited your profile."
+            },
+            status: :ok
+          }
+        }
+      end
     else
-      flash[:danger] = "There was an error editing your profile. We're sorry for the inconvenience."
-      redirect_to edit_user_profile_path
+      respond_to do |format|
+        format.json {
+          render json: {
+            data: {
+              message: "There was an error editing your profile. We're sorry for the inconvenience."
+            },
+            status: :unprocessable_entity
+          }
+        }
+      end
     end
   end
 
