@@ -33,11 +33,11 @@ class UserPreference < ActiveRecord::Base
   USER_TYPES = USER_CATEGORIES.map{ |u| [u, u] }
 
   # Default Values
-  default_value_for :who_can_see_profile, PUBLIC
+  default_value_for :who_can_see_profile,          PUBLIC
   default_value_for :who_can_send_friend_requests, PUBLIC
-  default_value_for :who_can_contact, CONNECTIONS_AND_RECRUITERS
-  default_value_for :who_can_lookup_using_email, CONNECTIONS_AND_RECRUITERS
-  default_value_for :who_can_lookup_by_name, CONNECTIONS_AND_RECRUITERS
-  default_value_for :who_can_see_resume, CONNECTIONS_AND_RECRUITERS
+  default_value_for :who_can_contact,              CONNECTIONS_AND_RECRUITERS
+  default_value_for :who_can_lookup_using_email,   CONNECTIONS_AND_RECRUITERS
+  default_value_for :who_can_lookup_by_name,       CONNECTIONS_AND_RECRUITERS
+  default_value_for :who_can_see_resume,           CONNECTIONS_AND_RECRUITERS
 
 end
