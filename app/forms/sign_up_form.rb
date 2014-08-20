@@ -13,6 +13,7 @@ class SignUpForm < Form
   validate :validate_username_uniqueness
 
   validates :password, { confirmation: true, length: { in: 6..20 } }
+  validates :password_confirmation, { length: { in: 6..20 } }
 
   def user
     @user ||= User.new
