@@ -59,6 +59,7 @@ class EditProfileForm < Form
     if @edited_about
       user_profile.save
     elsif @edited_job_experience
+      # Must save the company first, otherwise the relationship won't exist for the job_experience
       company.save
       job_experience.save
     end
