@@ -22,9 +22,8 @@ class UsersController < ApplicationController
   end
 
   def update_profile
-    # TODO(mark): Make this method work with ajax
     @user = current_user
-    @edit_profile_form = EditProfileForm.new(@user)
+    @edit_profile_form = EditProfileForm.new(@user, params[:edit_profile_form])
     if @edit_profile_form.submit(params[:edit_profile_form])
       respond_to do |format|
         format.js
