@@ -18,6 +18,8 @@ class JobExperience < ActiveRecord::Base
 
   has_one :company, through: :job
 
+  default_scope { order("start_date DESC") }
+
   def company_name
     company.try(:name) || "<Company>"
   end
