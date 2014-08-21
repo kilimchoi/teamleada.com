@@ -18,10 +18,9 @@ class JobExperience < ActiveRecord::Base
 
   has_one :company, through: :job
 
-  default_scope { order("start_date DESC") }
+  delegate :name, to: :company, prefix: true, allow_nil: true
+  delegate :position_title, to: :job
 
-  def company_name
-    company.try(:name) || "<Company>"
-  end
+  default_scope { order("start_date DESC") }
 
 end
