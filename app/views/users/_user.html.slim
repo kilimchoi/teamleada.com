@@ -59,24 +59,23 @@ javascript:
     $(document).on("click", ".edit-form-button", function(event) {
       var profile_sections = $(".profile-section");
       if (profile_sections.hasClass("active-edit")) {
-        return;
+        return false;
       }
 
       var target = this.dataset.target;
       toggleViewEdit(target);
-      return;
+      return false;
     });
 
     $(document).on("click", ".edit-form-cancel-button", function(event) {
       var profile_sections = $(".profile-section");
-      var profile_sections = $(".profile-section");
       if (!profile_sections.hasClass("active-edit")) {
-        return;
+        return false;
       }
 
       var target = this.dataset.target;
       toggleViewEdit(target);
-      return;
+      return false;
     });
 
     $(document).on("click", ".edit-form-save-button", function(event) {
