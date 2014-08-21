@@ -2,6 +2,8 @@
 
 .row.card
   .col-md-12
+    = render partial: "users/profile/add_job_experience", locals: { user: user, is_editing: is_editing }
+
     - user.job_experiences.each do |job_experience|
       - section = base_section + "-" + job_experience.id.to_s
       .profile-section id="#{section}-section"
