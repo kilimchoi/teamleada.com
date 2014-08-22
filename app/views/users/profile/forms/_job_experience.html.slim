@@ -7,21 +7,31 @@
                         html: { class: "inline-profile-form" },
                         remote: true do |f|
   .form-inputs
-    = f.input :company_name,           autofocus: true,
-                                       label: "Company Name",
-                                       placeholder: "Company Name",
-                                       input_html: { value: job_experience.company_name }
-    = f.input :job_position_title,     label: "Position",
-                                       placeholder: "Position",
-                                       input_html: { value: job_experience.position_title }
-    = f.input :job_location,           label: "Location",
-                                       placeholder: "Location",
-                                       input_html: { value: job_experience.location }
+    = f.input :company_name,              autofocus: true,
+                                          label: "Company Name",
+                                          placeholder: "Company Name",
+                                          input_html: { value: job_experience.company_name }
+    = f.input :job_position_title,        label: "Position",
+                                          placeholder: "Position",
+                                          input_html: { value: job_experience.position_title }
+    = f.input :job_experience_start_date, as: :date,
+                                          discard_day: true,
+                                          order: [:month, :year],
+                                          label: "Start Date",
+                                          default: job_experience.start_date
+    = f.input :job_experience_end_date,   as: :date,
+                                          discard_day: true,
+                                          order: [:month, :year],
+                                          label: "End Date",
+                                          default: job_experience.end_date
+    = f.input :job_location,              label: "Location",
+                                          placeholder: "Location",
+                                          input_html: { value: job_experience.location }
     - job_experience_summary_placeholder = is_adding ? "Tell us about your experience." : "Tell us about your experience at #{job_experience.company_name}."
-    = f.input :job_experience_summary, as: :text,
-                                       label: "Summary",
-                                       placeholder: job_experience_summary_placeholder,
-                                       input_html: { rows: 8, value: job_experience.summary }
+    = f.input :job_experience_summary,    as: :text,
+                                          label: "Summary",
+                                          placeholder: job_experience_summary_placeholder,
+                                          input_html: { rows: 8, value: job_experience.summary }
     = f.hidden_field :job_experience_id, value: job_experience.id
     = f.hidden_field :edited_job_experience, value: true
   .form-actions

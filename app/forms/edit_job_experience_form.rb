@@ -1,7 +1,7 @@
 class EditJobExperienceForm < Form
 
   delegate :name, to: :company, prefix: true
-  delegate :summary, to: :job_experience, prefix: true
+  delegate :summary, :start_date, :end_date, to: :job_experience, prefix: true
   delegate :location, to: :job, prefix: true
   delegate :position_title, to: :job, prefix: true
 
