@@ -1,8 +1,8 @@
 / Required Variables:
-/ form, user, is_editing, job_experience, base_section
+/ form, user, is_editing
 
 = render partial: "users/profile/collection_section", locals: { \
-  form: @edit_job_experience_form,
+  form: form,
   user: user,
   is_editing: is_editing,
   base_section: "job-experience",
