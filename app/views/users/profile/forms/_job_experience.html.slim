@@ -1,9 +1,11 @@
 / Required variables:
-/ form, job_experience, section
+/ form, item, section
 
-= simple_form_for form, url: update_user_profile_path,
-                                      html: { class: "inline-profile-form" },
-                                      remote: true do |f|
+- job_experience = item
+
+= simple_form_for form, url: update_job_experience_user_profile_path,
+                        html: { class: "inline-profile-form" },
+                        remote: true do |f|
   .form-inputs
     = f.input :company_name,           autofocus: true,
                                        label: "Company Name",

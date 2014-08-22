@@ -1,21 +1,13 @@
-- base_section = "experience"
+/ Required Variables:
+/ form, user, is_editing, job_experience, base_section
 
-.row.card
-  .col-md-12
-    = render partial: "users/profile/add_job_experience", locals: { user: user, is_editing: is_editing, job_experience: JobExperience.new }
-
-    - user.job_experiences.each do |job_experience|
-      - section = base_section + "-" + job_experience.id.to_s
-      .profile-section id="#{section}-section"
-        .profile-section-header
-          h3 = job_experience.company_name
-          - if is_editing
-            span.edit-section
-              = link_to "Edit", "#", id: "edit-#{section}-section", class: "edit-form-button", data: { target: "#{section}-section" }
-        .profile-section-content
-          .profile-section-view id="#{section}-section-view"
-            = simple_format(job_experience.summary)
-          - if is_editing
-            .profile-section-edit.edit-form id="#{section}-section-edit"
-              = render partial: "users/profile/forms/job_experience", locals: { form: @edit_profile_form, job_experience: job_experience, section: section }
+= render partial: "users/profile/collection_section", locals: { \
+  form: @edit_job_experience_form,
+  user: user,
+  is_editing: is_editing,
+  base_section: "job-experience",
+  collection: user.job_experiences,
+  collection_name: "job_experience",
+  section_title_method: "company_name",
+}
 
