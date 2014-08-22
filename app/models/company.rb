@@ -41,5 +41,9 @@ class Company < ActiveRecord::Base
     User.ordered_find_by_ids(user_ids)
   end
 
+  def self.find_by_company_params(company_params)
+    Company.find_by(name: company_params[:company_name])
+  end
+
 end
 

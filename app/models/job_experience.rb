@@ -21,7 +21,7 @@ class JobExperience < ActiveRecord::Base
   delegate :name, to: :company, prefix: true, allow_nil: true
 
   delegate :position_title, to: :job, allow_nil: true
-  delegate :location        to: :job, allow_nil: true
+  delegate :location,       to: :job, allow_nil: true
 
   default_scope { order("start_date DESC") }
 end
