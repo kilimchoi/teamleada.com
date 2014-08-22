@@ -1,5 +1,5 @@
 / Required Variables:
-/ form, user, is_editing, base_section, collection, collection_name, section_title_method
+/ form, user, is_editing, base_section, collection, collection_name
 
 .row.card
   .col-md-12
@@ -16,6 +16,9 @@
     - collection.each do |item|
       - section = base_section + "-" + item.id.to_s
 
+      - content_for :title, flush: true do
+        = render partial: "users/profile/section_titles/" + collection_name, locals: { item: item }
+
       - content_for :view, flush: true do
         = render partial: "users/profile/section_views/" + collection_name, locals: { item: item }
 
@@ -24,7 +27,6 @@
 
       = render partial: "users/profile/section", locals: { \
         section: section,
-        title: item.send(section_title_method),
         is_editing: is_editing,
       }
 
