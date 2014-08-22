@@ -14,6 +14,9 @@
     = f.input :job_position_title,     label: "Position",
                                        placeholder: "Position",
                                        input_html: { value: job_experience.position_title }
+    = f.input :job_location,           label: "Location",
+                                       placeholder: "Location",
+                                       input_html: { value: job_experience.location }
     = f.input :job_experience_summary, as: :text,
                                        label: "Summary",
                                        placeholder: "Tell us about your experience at #{job_experience.company_name}.",
