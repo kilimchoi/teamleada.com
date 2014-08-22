@@ -10,6 +10,10 @@
     display: inline;
   }
 
+  h4 {
+    margin: 5px 0;
+  }
+
   span.edit-section {
     float: right;
   }
@@ -18,5 +22,13 @@
 .profile-section-view {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.profile-section-content {
+  margin-bottom: 25px;
+}
+
+.job-position-title {
+  font-weight: 700;
 }
 

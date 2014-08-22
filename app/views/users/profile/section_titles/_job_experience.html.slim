@@ -1,3 +1,9 @@
 - job_experience = item
 
-h3 = job_experience.company_name
+h3.job-position-title = job_experience.position_title
+h4 = job_experience.company_name
+span.job-dates = job_experience.work_dates
+
+- if job_experience.location
+  '  |
+  span.job-location = job_experience.location

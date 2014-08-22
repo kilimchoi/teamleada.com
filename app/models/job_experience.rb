@@ -13,6 +13,8 @@
 #
 
 class JobExperience < ActiveRecord::Base
+  include ActionView::Helpers::DateHelper
+
   belongs_to :user
   belongs_to :job
 
@@ -24,4 +26,25 @@ class JobExperience < ActiveRecord::Base
   delegate :location,       to: :job, allow_nil: true
 
   default_scope { order("start_date DESC") }
+
+  def work_dates
+    "#{start_date_formatted} - #{end_date_or_present_formatted} (#{duration})"
+  end
+
+  def duration
+    distance_of_time_in_words(start_date, end_date_or_present)
+  end
+
+  def end_date_or_present
+    end_date || Date.today
+  end
+
+  def end_date_or_present_formatted
+    end_date ? end_date.month_and_year : "Present"
+  end
+
+  def start_date_formatted
+    start_date.month_and_year
+  end
+
 end
