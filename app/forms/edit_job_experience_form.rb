@@ -1,4 +1,4 @@
-class EditProfileForm < Form
+class EditJobExperienceForm < Form
 
   delegate :summary, to: :job_experience, prefix: true
   delegate :name, to: :company, prefix: true
