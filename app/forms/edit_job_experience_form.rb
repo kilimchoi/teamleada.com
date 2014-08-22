@@ -36,9 +36,11 @@ class EditJobExperienceForm < Form
   end
 
   def set_job_experience(params)
-    job_experience.summary = params[:job_experience_summary] if params[:job_experience_summary].present?
-    job_experience.user    = @user
-    job_experience.job     = job
+    job_experience.summary    = params[:job_experience_summary] if params[:job_experience_summary].present?
+    job_experience.start_date = Date.from_date_select_params("job_experience_start_date", params) if params["job_experience_start_date(1i)"].present?
+    job_experience.end_date   = Date.from_date_select_params("job_experience_end_date", params) if params["job_experience_end_date(1i)"].present?
+    job_experience.user       = @user
+    job_experience.job        = job
   end
 
   def set_job(params)
