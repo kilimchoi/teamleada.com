@@ -5,8 +5,13 @@ class EditJobExperienceForm < Form
   delegate :location, to: :job, prefix: true
   delegate :position_title, to: :job, prefix: true
 
+  attr_accessor :job_experience_end_date_present, :job_experience_start_date_month, :job_experience_start_date_year,
+                :job_experience_end_date_month, :job_experience_end_date_year
+
   validates :company_name, presence: true
   validates :job_position_title, presence: true
+  validates :job_experience_start_date, presence: true
+  validate :end_date_or_present
 
   def initialize(user, params={})
     params ||= {}
@@ -37,8 +42,15 @@ class EditJobExperienceForm < Form
 
   def set_job_experience(params)
     job_experience.summary    = params[:job_experience_summary] if params[:job_experience_summary].present?
-    job_experience.start_date = Date.from_date_select_params("job_experience_start_date", params) if params["job_experience_start_date(1i)"].present?
-    job_experience.end_date   = Date.from_date_select_params("job_experience_end_date", params) if params["job_experience_end_date(1i)"].present?
+    job_experience.start_date = Date.parse(params[:job_experience_start_date_month] + " " + params[:job_experience_start_date_year])
+
+
+    if params[:job_experience_end_date_present]
+      job_experience.end_date = nil
+    elsif params[:job_experience_end_date_month].present? && params[:job_experience_end_date_year].present?
+      job_experience.end_date   = Date.parse(params[:job_experience_end_date_month]   + " " + params[:job_experience_end_date_year])
+    end
+
     job_experience.user       = @user
     job_experience.job        = job
   end
@@ -63,6 +75,12 @@ class EditJobExperienceForm < Form
     company.save
     job.save
     job_experience.save
+  end
+
+  #
+  # Validations
+  #
+  def end_date_or_present
   end
 
 end

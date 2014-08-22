@@ -14,16 +14,23 @@
     = f.input :job_position_title,        label: "Position",
                                           placeholder: "Position",
                                           input_html: { value: job_experience.position_title }
-    = f.input :job_experience_start_date, as: :date,
-                                          discard_day: true,
-                                          order: [:month, :year],
-                                          label: "Start Date",
-                                          default: job_experience.start_date
-    = f.input :job_experience_end_date,   as: :date,
-                                          discard_day: true,
-                                          order: [:month, :year],
-                                          label: "End Date",
-                                          default: job_experience.end_date
+    = f.input :job_experience_start_date_month, collection: Date::MONTHNAMES,
+                                                prompt: "Month",
+                                                default: job_experience.start_date.try(:month),
+                                                label: "Start Date",
+                                                default: job_experience.start_date.try(:month)
+    = f.input :job_experience_start_date_year, label: false,
+                                               placeholder: "Year",
+                                               input_html: { value: job_experience.start_date.try(:year) }
+    = f.input :job_experience_end_date_month, collection: Date::MONTHNAMES,
+                                                prompt: "Month",
+                                                label: "Start Date",
+                                                default: job_experience.end_date.try(:month)
+    = f.input :job_experience_end_date_year, label: false,
+                                               placeholder: "Year",
+                                               input_html: { value: job_experience.end_date.try(:year) }
+    = f.input :job_experience_end_date_present, as: :boolean,
+                                          label: false
     = f.input :job_location,              label: "Location",
                                           placeholder: "Location",
                                           input_html: { value: job_experience.location }
