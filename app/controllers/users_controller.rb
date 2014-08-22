@@ -18,21 +18,9 @@ class UsersController < ApplicationController
 
   def edit_profile
     @user = current_user
-    @edit_profile_form = EditProfileForm.new(@user)
-  end
 
-  def update_profile
-    @user = current_user
-    @edit_profile_form = EditProfileForm.new(@user, params[:edit_profile_form])
-    if @edit_profile_form.submit(params[:edit_profile_form])
-      respond_to do |format|
-        format.js
-      end
-    else
-      respond_to do |format|
-        format.js
-      end
-    end
+    @edit_about_form = EditAboutForm.new(@user)
+    @edit_job_experience_form = EditJobExperienceForm.new(@user)
   end
 
   def update
