@@ -21,6 +21,7 @@ class UsersController < ApplicationController
 
     @edit_about_form = EditAboutForm.new(@user)
     @edit_job_experience_form = EditJobExperienceForm.new(@user)
+    @edit_enrollment_form = EditEnrollmentForm.new(@user)
   end
 
   def update
