@@ -2,6 +2,8 @@ class EditEnrollmentForm < Form
 
   delegate :name, to: :university, prefix: true
 
+  validates :university_name, presence: true
+
   def initialize(user, params={})
     params ||= {}
     @user = user
@@ -26,6 +28,8 @@ class EditEnrollmentForm < Form
     enrollment.degree = params[:degree] if params[:degree].present?
     enrollment.field_of_study = params[:field_of_study] if params[:field_of_study].present?
     enrollment.notes = params[:notes] if params[:notes].present?
+    enrollment.university = university
+    enrollment.user = @user
   end
 
   def set_university(params)

@@ -5,7 +5,7 @@ class EditJobExperienceForm < Form
   delegate :location, to: :job, prefix: true
   delegate :position_title, to: :job, prefix: true
 
-  validates :company_name, presence: true, if: @edited_job_experience
+  validates :company_name, presence: true
 
   def initialize(user, params={})
     params ||= {}
