@@ -90,6 +90,8 @@ module UsersHelper
           company_type: company_type, ticker: company_ticker).first_or_create
 
         job_title = job_entry.title
+        # TODO(tristan): Get the location of the job and pass it below
+        # job_location = job_entry...
         job = Job.where(company: company, position_title: job_title).first_or_create
 
         job_summary = job_entry.summary.to_s
