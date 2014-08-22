@@ -1,0 +1,12 @@
+/ Required Variables:
+/ form, user, is_editing
+
+= render partial: "users/profile/collection_section", locals: { \
+  form: form,
+  user: user,
+  is_editing: is_editing,
+  base_section: "education",
+  collection: user.enrollments,
+  collection_name: "enrollment",
+}
+
