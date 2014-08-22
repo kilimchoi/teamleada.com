@@ -18,6 +18,14 @@ class UserProfilesController < ApplicationController
     end
   end
 
+  def update_enrollment
+    if @edit_enrollment_form.submit(params[:edit_enrollment_form])
+      respond_to { |format| format.js { render partial: "users/update_profile" } }
+    else
+      respond_to { |format| format.js { render partial: "users/update_profile" } }
+    end
+  end
+
   private
 
   def set_user
@@ -27,6 +35,7 @@ class UserProfilesController < ApplicationController
   def set_forms
     @edit_about_form = EditAboutForm.new(@user)
     @edit_job_experience_form = EditJobExperienceForm.new(@user, params[:edit_job_experience_form])
+    @edit_enrollment_form = EditEnrollmentForm.new(@user, params[:edit_enrollment_form])
   end
 
 end

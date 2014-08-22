@@ -27,6 +27,7 @@ class JobExperience < ActiveRecord::Base
 
   default_scope { order("start_date DESC") }
 
+  # Fromatting for the user profile page
   def work_dates
     "#{start_date_formatted} - #{end_date_or_present_formatted} (#{duration})"
   end
