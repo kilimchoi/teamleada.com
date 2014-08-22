@@ -1,5 +1,5 @@
 / Required variables:
-/ form, item, section
+/ form, item, section, is_adding
 
 - job_experience = item
 
@@ -26,5 +26,6 @@
   .form-actions
     = f.submit "Save", class: "edit-form-save-button"
     = link_to "Cancel", "#", class: "edit-form-cancel-button", data: { target: "#{section}-section" }
-    = link_to "Remove this position", remove_job_experience_user_profile_path(id: job_experience.id), method: :delete, remote: true, class: "edit-form-remove-position"
+    - unless is_adding
+      = link_to "Remove this position", remove_job_experience_user_profile_path(id: job_experience.id), method: :delete, remote: true, class: "edit-form-remove-position"
 

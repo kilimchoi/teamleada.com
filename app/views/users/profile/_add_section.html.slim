@@ -14,5 +14,5 @@
       / Empty for adding a new item
     - if is_editing
       .profile-section-edit.edit-form id="#{section}-section-edit"
-        = render partial: "users/profile/forms/" + collection_name, locals: { form: form, item: item, section: section }
+        = render partial: "users/profile/forms/" + collection_name, locals: { form: form, item: item, section: section, is_adding: true }
 

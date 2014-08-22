@@ -24,7 +24,7 @@
 
       - content_for :edit, flush: true do
         - if is_editing
-          = render partial: "users/profile/forms/" + collection_name, locals: { form: form, item: item, section: section }
+          = render partial: "users/profile/forms/" + collection_name, locals: { form: form, item: item, section: section, is_adding: false }
 
       = render partial: "users/profile/section", locals: { \
         section: section,

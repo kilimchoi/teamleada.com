@@ -29,7 +29,9 @@ class JobExperience < ActiveRecord::Base
 
   # Fromatting for the user profile page
   def work_dates
-    "#{start_date_formatted} - #{end_date_or_present_formatted} (#{duration})"
+    if start_date
+      "#{start_date_formatted} - #{end_date_or_present_formatted} (#{duration})"
+    end
   end
 
   def duration

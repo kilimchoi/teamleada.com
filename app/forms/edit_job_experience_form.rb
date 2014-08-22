@@ -6,6 +6,7 @@ class EditJobExperienceForm < Form
   delegate :position_title, to: :job, prefix: true
 
   validates :company_name, presence: true
+  validates :job_position_title, presence: true
 
   def initialize(user, params={})
     params ||= {}
@@ -37,17 +38,18 @@ class EditJobExperienceForm < Form
   def set_job_experience(params)
     job_experience.summary = params[:job_experience_summary] if params[:job_experience_summary].present?
     job_experience.user    = @user
-
-    if params[:company_name].present?
-      @company = Company.find_by(name: params[:company_name]) || Company.new
-    end
-
-    job_experience.company = @company
+    job_experience.job     = job
   end
 
   def set_job(params)
     job.position_title = params[:job_position_title] if params[:job_position_title].present?
     job.location       = params[:job_location] if params[:job_location].present?
+
+    if params[:company_name].present?
+      @company = Company.find_by(name: params[:company_name]) || Company.new
+    end
+
+    job.company = @company
   end
 
   def set_company(params)
