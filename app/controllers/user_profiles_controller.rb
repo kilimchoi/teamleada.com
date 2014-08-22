@@ -18,6 +18,15 @@ class UserProfilesController < ApplicationController
     end
   end
 
+  def remove_job_experience
+    @job_experience = JobExperience.find(params[:id])
+    if @job_experience.delete
+      respond_to { |format| format.js { render partial: "users/update_profile" } }
+    else
+      respond_to { |format| format.js { render partial: "users/update_profile" } }
+    end
+  end
+
   def update_enrollment
     if @edit_enrollment_form.submit(params[:edit_enrollment_form])
       respond_to { |format| format.js { render partial: "users/update_profile" } }
