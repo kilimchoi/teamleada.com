@@ -17,9 +17,10 @@
     = f.input :field_of_study,         label: "Field of Study",
                                        placeholder: "Field of Study",
                                        input_html: { value: enrollment.field_of_study }
+    - notes_placeholder = is_adding ? "Tell us about your experience." : "Tell us about your experience at #{enrollment.university_name}."
     = f.input :notes,                  as: :text,
                                        label: "Description",
-                                       placeholder: "Tell us about your time at #{enrollment.university_name}.",
+                                       placeholder: notes_placeholder,
                                        input_html: { rows: 8, value: enrollment.notes }
     = f.hidden_field :enrollment_id, value: enrollment.id
   .form-actions

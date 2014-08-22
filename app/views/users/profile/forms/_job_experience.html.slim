@@ -17,9 +17,10 @@
     = f.input :job_location,           label: "Location",
                                        placeholder: "Location",
                                        input_html: { value: job_experience.location }
+    - job_experience_summary_placeholder = is_adding ? "Tell us about your experience." : "Tell us about your experience at #{job_experience.company_name}."
     = f.input :job_experience_summary, as: :text,
                                        label: "Summary",
-                                       placeholder: "Tell us about your experience at #{job_experience.company_name}.",
+                                       placeholder: job_experience_summary_placeholder,
                                        input_html: { rows: 8, value: job_experience.summary }
     = f.hidden_field :job_experience_id, value: job_experience.id
     = f.hidden_field :edited_job_experience, value: true
