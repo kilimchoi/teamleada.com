@@ -23,7 +23,8 @@
         = render partial: "users/profile/section_views/" + collection_name, locals: { item: item }
 
       - content_for :edit, flush: true do
-        = render partial: "users/profile/forms/" + collection_name, locals: { form: form, item: item, section: section }
+        - if is_editing
+          = render partial: "users/profile/forms/" + collection_name, locals: { form: form, item: item, section: section }
 
       = render partial: "users/profile/section", locals: { \
         section: section,

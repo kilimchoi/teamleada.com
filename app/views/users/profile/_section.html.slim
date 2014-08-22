@@ -13,7 +13,6 @@
   .profile-section-content
     .profile-section-view id="#{section}-section-view"
       = yield :view
-    - if is_editing
-      .profile-section-edit.edit-form id="#{section}-section-edit"
-        = yield :edit
+    .profile-section-edit.edit-form id="#{section}-section-edit"
+      = yield :edit
 
