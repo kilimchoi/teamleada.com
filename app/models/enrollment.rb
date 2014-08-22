@@ -21,6 +21,8 @@ class Enrollment < ActiveRecord::Base
 
   delegate :name, to: :university, prefix: true, allow_nil: true
 
+  default_scope -> { order("start_date DESC") }
+
   # Formatting for the user profile page
   def enrollment_dates
     if start_date
