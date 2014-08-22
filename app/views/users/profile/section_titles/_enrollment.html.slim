@@ -1,0 +1,15 @@
+- enrollment = item
+
+h3.university-name = enrollment.university_name
+
+- if enrollment.degree
+  .clearfix
+  h4.inline.education-degree-info = enrollment.degree
+
+- if enrollment.field_of_study
+  ' ,
+  h4.inline.education-degree-info = enrollment.field_of_study
+
+- if enrollment.enrollment_dates
+  span.university-dates = enrollment.enrollment_dates
+
