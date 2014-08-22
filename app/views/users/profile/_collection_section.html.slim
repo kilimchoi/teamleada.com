@@ -3,10 +3,14 @@
 
 .row.card
   .col-md-12
-    = render partial: "users/profile/add_" + collection_name, locals: { \
-      user: user,
+    = render partial: "users/profile/add_section", locals: { \
+      form: form,
       is_editing: is_editing,
       item: collection_name.camelcase.constantize.new,
+      section: base_section,
+      collection_name: collection_name,
+      title: "Experience",
+      add_name: "Add a position",
     }
 
     - collection.each do |item|

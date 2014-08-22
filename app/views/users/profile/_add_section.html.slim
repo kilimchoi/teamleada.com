@@ -1,0 +1,18 @@
+/ Required Variables:
+/ form, item, section, is_editing, title, add_name, collection_name
+
+- section = "add-#{section}"
+
+.profile-section id="#{section}-section"
+  .profile-section-header
+    h3 = title
+    - if is_editing
+      span.edit-section
+        = link_to add_name, "#", id: "edit-#{section}-section", class: "edit-form-button", data: { target: "#{section}-section" }
+  .profile-section-content
+    .profile-section-view id="#{section}-section-view"
+      / Empty for adding a new item
+    - if is_editing
+      .profile-section-edit.edit-form id="#{section}-section-edit"
+        = render partial: "users/profile/forms/" + collection_name, locals: { form: form, item: item, section: section }
+
