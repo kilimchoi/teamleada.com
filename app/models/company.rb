@@ -41,5 +41,5 @@ class Company < ActiveRecord::Base
     User.ordered_find_by_ids(user_ids)
   end
 
-
 end
+
