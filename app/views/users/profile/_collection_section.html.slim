@@ -16,7 +16,7 @@
     - collection.each do |item|
       - section = base_section + "-" + item.id.to_s
 
-      - content_for :title, flush: true do
+      - content_for :section_title, flush: true do
         = render partial: "users/profile/section_titles/" + collection_name, locals: { item: item }
 
       - content_for :view, flush: true do

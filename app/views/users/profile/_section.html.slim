@@ -2,11 +2,11 @@
 / section, is_editing
 /
 / Required Yield blocks
-/ view, edit, title
+/ view, edit, section_title
 
 .profile-section id="#{section}-section"
   .profile-section-header
-    = yield :title
+    = yield :section_title
     - if is_editing
       span.edit-section
         = link_to "Edit", "#", id: "edit-#{section}-section", class: "edit-form-button", data: { target: "#{section}-section" }
