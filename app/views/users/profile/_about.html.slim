@@ -1,3 +1,6 @@
+- form = @edit_about_form
+- path = update_about_user_profile_path
+
 .row.card.profile-section#about-section
   .col-md-12
     .profile-section-header
@@ -10,9 +13,9 @@
         = simple_format(user_profile.bio)
       - if is_editing
         .profile-section-edit.edit-form#about-section-edit
-          = simple_form_for @edit_profile_form, url: update_user_profile_path,
-                                                html: { class: "inline-profile-form" },
-                                                remote: true do |f|
+          = simple_form_for form, url: path,
+                                  html: { class: "inline-profile-form" },
+                                  remote: true do |f|
             .form-inputs
               = f.input :bio, as: :text,
                               value: user_profile.bio,
