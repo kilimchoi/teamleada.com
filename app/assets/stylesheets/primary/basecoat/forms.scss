@@ -45,13 +45,12 @@
   }
 }
 
-.control-group.date {
-  .controls {
-    .form-control.date {
-      display: inline;
-      width: 25%;
-    }
-  }
+.inline-form-field {
+  display: inline;
+  width: 25%;
 }
 
+.year-input {
+  margin-top: 5px;
+}
 

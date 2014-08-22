@@ -15,22 +15,26 @@
                                           placeholder: "Position",
                                           input_html: { value: job_experience.position_title }
     = f.input :job_experience_start_date_month, collection: Date::MONTHNAMES,
-                                                prompt: "Month",
-                                                default: job_experience.start_date.try(:month),
+                                                placeholder: "Month",
                                                 label: "Start Date",
-                                                default: job_experience.start_date.try(:month)
+                                                selected: job_experience.start_date.try(:month_string),
+                                                input_html: { class: "inline-form-field" }
     = f.input :job_experience_start_date_year, label: false,
                                                placeholder: "Year",
-                                               input_html: { value: job_experience.start_date.try(:year) }
+                                               input_html: { value: job_experience.start_date.try(:year), class: "inline-form-field year-input" }
     = f.input :job_experience_end_date_month, collection: Date::MONTHNAMES,
-                                                prompt: "Month",
-                                                label: "Start Date",
-                                                default: job_experience.end_date.try(:month)
+                                                placeholder: "Month",
+                                                label: job_experience.end_date_present ? false : "End Date",
+                                                label_html: { class: "#{section}-end-date-month" },
+                                                selected: job_experience.end_date.try(:month_string),
+                                                input_html: { class: "inline-form-field #{'hidden' if job_experience.end_date_present} #{section}-end-date-month" }
     = f.input :job_experience_end_date_year, label: false,
                                                placeholder: "Year",
-                                               input_html: { value: job_experience.end_date.try(:year) }
+                                               input_html: { value: job_experience.end_date.try(:year), class: "inline-form-field year-input #{'hidden' if job_experience.end_date_present} #{section}-end-date-year" }
     = f.input :job_experience_end_date_present, as: :boolean,
-                                          label: false
+                                                label: "Present?",
+                                                boolean_style: :inline,
+                                                input_html: { data: { target: "#{section}" }, checked: job_experience.end_date_present, class: "inline-from-field edit-form-end-date-present" }
     = f.input :job_location,              label: "Location",
                                           placeholder: "Location",
                                           input_html: { value: job_experience.location }

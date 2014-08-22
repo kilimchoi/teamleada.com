@@ -1,11 +1,11 @@
 class EditJobExperienceForm < Form
 
   delegate :name, to: :company, prefix: true
-  delegate :summary, :start_date, :end_date, to: :job_experience, prefix: true
+  delegate :summary, :start_date, :end_date, :end_date_present, to: :job_experience, prefix: true
   delegate :location, to: :job, prefix: true
   delegate :position_title, to: :job, prefix: true
 
-  attr_accessor :job_experience_end_date_present, :job_experience_start_date_month, :job_experience_start_date_year,
+  attr_accessor :job_experience_start_date_month, :job_experience_start_date_year,
                 :job_experience_end_date_month, :job_experience_end_date_year
 
   validates :company_name, presence: true
@@ -42,13 +42,16 @@ class EditJobExperienceForm < Form
 
   def set_job_experience(params)
     job_experience.summary    = params[:job_experience_summary] if params[:job_experience_summary].present?
-    job_experience.start_date = Date.parse(params[:job_experience_start_date_month] + " " + params[:job_experience_start_date_year])
+    job_experience.end_date_present = params[:job_experience_end_date_present] if params[:job_experience_end_date_present].present?
 
+    if params[:job_experience_start_date_month].present? && params[:job_experience_start_date_year].present?
+      job_experience.start_date = Date.parse(params[:job_experience_start_date_month] + " " + params[:job_experience_start_date_year])
+    end
 
-    if params[:job_experience_end_date_present]
+    if job_experience.end_date_present
       job_experience.end_date = nil
     elsif params[:job_experience_end_date_month].present? && params[:job_experience_end_date_year].present?
-      job_experience.end_date   = Date.parse(params[:job_experience_end_date_month]   + " " + params[:job_experience_end_date_year])
+      job_experience.end_date = Date.parse(params[:job_experience_end_date_month]   + " " + params[:job_experience_end_date_year])
     end
 
     job_experience.user       = @user
@@ -81,6 +84,9 @@ class EditJobExperienceForm < Form
   # Validations
   #
   def end_date_or_present
+    if !job_experience.end_date_present && job_experience.end_date.nil?
+      errors.add(:end_date, "You must provide an end date or mark present.")
+    end
   end
 
 end
