@@ -65,6 +65,18 @@ class User < ActiveRecord::Base
 
   include UsersHelper
 
+  # Delegate attributes to the user_profile and user_preference
+  delegate :bio, :location, :phone, :headline, :industry, :date_of_birth,
+           :looking_for_opportunities, :interests, :job_bookmarks_count,
+           :country_code,
+           to: :profile, allow_nil: true
+
+  delegate :who_can_see_profile, :who_can_send_friend_requests,
+           :who_can_contact, :who_can_lookup_using_email, :who_can_lookup_by_name,
+           :who_can_see_resume, :wants_email_about_new_projects,
+           :wants_email_from_recruiters,
+           to: :preferences, allow_nil: true
+
   # Profile and Preferences
   has_one :user_profile    # Should use the .profile attribute defined below.
   has_one :user_preference # Should use the .preferences attribute defined below.

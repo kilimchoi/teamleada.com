@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140822221711) do
+ActiveRecord::Schema.define(version: 20140823191156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -574,12 +574,12 @@ ActiveRecord::Schema.define(version: 20140822221711) do
   add_index "user_skills", ["user_id"], name: "index_user_skills_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",                          default: "",    null: false
-    t.string   "encrypted_password",             default: "",    null: false
+    t.string   "email",                      default: "",    null: false
+    t.string   "encrypted_password",         default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                  default: 0,     null: false
+    t.integer  "sign_in_count",              default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -596,32 +596,14 @@ ActiveRecord::Schema.define(version: 20140822221711) do
     t.string   "last_name"
     t.string   "unconfirmed_email"
     t.datetime "updated_password_at"
-    t.string   "who_can_see_profile"
-    t.string   "who_can_send_friend_requests"
-    t.string   "who_can_contact"
-    t.string   "who_can_lookup_using_email"
-    t.string   "who_can_lookup_by_name"
-    t.string   "who_can_see_resume"
-    t.boolean  "looking_for_opportunities",      default: false
-    t.string   "location"
-    t.text     "bio"
     t.string   "linkedin_id"
     t.string   "name"
     t.string   "nickname"
-    t.string   "linkedin_profile_image_url",     default: ""
-    t.string   "phone"
-    t.string   "headline"
-    t.string   "industry"
+    t.string   "linkedin_profile_image_url", default: ""
     t.string   "public_profile_url"
-    t.date     "date_of_birth"
-    t.text     "interests"
-    t.integer  "job_bookmarks_count"
-    t.string   "country_code"
-    t.boolean  "has_project_access",             default: false
+    t.boolean  "has_project_access",         default: false
     t.datetime "linkedin_confirmed_at"
     t.datetime "linkedin_updated_at"
-    t.boolean  "wants_email_about_new_projects", default: true
-    t.boolean  "wants_email_from_recruiters",    default: true
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
