@@ -107,7 +107,8 @@ module UsersHelper
           user: user,
           summary: job_summary,
           start_date: start_date,
-          end_date: end_date
+          end_date: end_date,
+          end_date_present: end_date.nil?,
         ).first_or_create
 
         created_job_experience.job = job
