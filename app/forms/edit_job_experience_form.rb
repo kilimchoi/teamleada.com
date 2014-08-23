@@ -13,12 +13,16 @@ class EditJobExperienceForm < Form
   validates :job_experience_start_date, presence: true
   validate :end_date_or_present
 
-  def initialize(user, params={})
-    params ||= {}
+  def initialize(user)
     @user = user
-    @job_experience = user.job_experiences.find(params[:job_experience_id]) if params[:job_experience_id].present?
-    @job = job_experience.job || Job.find_by_job_params(params)
-    @company = job_experience.company || Company.find_by_company_params(params)
+  end
+
+  def configure_with_params(params)
+    # This is used only for submitting the form with params
+    params ||= {}
+    @job_experience = @user.job_experiences.find(params[:job_experience_id]) if params[:job_experience_id].present?
+    @job = Job.find_by_job_params(params)
+    @company = Company.find_by_company_params(params)
   end
 
   def job_experience
@@ -35,9 +39,9 @@ class EditJobExperienceForm < Form
   end
 
   def set_attributes(params)
-    set_job_experience(params)
-    set_job(params)
     set_company(params)
+    set_job(params)
+    set_job_experience(params)
   end
 
   def set_job_experience(params)
@@ -61,12 +65,7 @@ class EditJobExperienceForm < Form
   def set_job(params)
     job.position_title = params[:job_position_title] if params[:job_position_title].present?
     job.location       = params[:job_location] if params[:job_location].present?
-
-    if params[:company_name].present?
-      @company = Company.find_by(name: params[:company_name]) || Company.new
-    end
-
-    job.company = @company
+    job.company = company
   end
 
   def set_company(params)

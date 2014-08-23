@@ -4,11 +4,15 @@ class EditEnrollmentForm < Form
 
   validates :university_name, presence: true
 
-  def initialize(user, params={})
-    params ||= {}
+  def initialize(user)
     @user = user
+  end
+
+  def configure_with_params(params)
+    # This is used only for submitting the form with params
+    params ||= {}
     @enrollment = user.enrollments.find(params[:enrollment_id]) if params[:enrollment_id].present?
-    @university = enrollment.university || University.find_by_university_params(params)
+    @university = University.find_by_university_params(params)
   end
 
   def enrollment

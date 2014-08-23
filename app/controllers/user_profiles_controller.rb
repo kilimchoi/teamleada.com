@@ -1,6 +1,11 @@
 class UserProfilesController < ApplicationController
   before_filter :set_user
   before_filter :set_forms
+  before_filter :configure_forms
+
+  def cancel_update
+    respond_to { |format| format.js { render partial: "users/update_profile" } }
+  end
 
   def update_about
     if @edit_about_form.submit(params[:edit_about_form])
@@ -43,8 +48,13 @@ class UserProfilesController < ApplicationController
 
   def set_forms
     @edit_about_form = EditAboutForm.new(@user)
-    @edit_job_experience_form = EditJobExperienceForm.new(@user, params[:edit_job_experience_form])
-    @edit_enrollment_form = EditEnrollmentForm.new(@user, params[:edit_enrollment_form])
+    @edit_job_experience_form = EditJobExperienceForm.new(@user)
+    @edit_enrollment_form = EditEnrollmentForm.new(@user)
+  end
+
+  def configure_forms
+    @edit_job_experience_form.configure_with_params(params[:edit_job_experience_form])
+    @edit_enrollment_form.configure_with_params(params[:edit_enrollment_form])
   end
 
 end
