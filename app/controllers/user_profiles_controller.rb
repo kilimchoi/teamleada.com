@@ -37,6 +37,7 @@ class UserProfilesController < ApplicationController
     if @edit_enrollment_form.submit(params[:edit_enrollment_form])
       respond_to { |format| format.js { render partial: "users/update_profile" } }
     else
+      @editable = @edit_enrollment_form.enrollment
       respond_to { |format| format.js { render partial: "users/update_profile" } }
     end
   end

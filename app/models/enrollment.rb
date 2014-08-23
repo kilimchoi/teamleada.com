@@ -26,7 +26,7 @@ class Enrollment < ActiveRecord::Base
   # Form Interface
   def form_id
     if new_record?
-      "add-education-section"
+      "add-enrollment"
     else
       "#{self.class.to_s.underscore.gsub('_', '-')}-#{self.id}"
     end
