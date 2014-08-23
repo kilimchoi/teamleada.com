@@ -64,4 +64,12 @@ task :backfill_metric, [:metric] => :environment do |task, args|
   end
 end
 
+# One off jobs
+task :fill_end_date_present => :environment do
+  JobExperience.all.each do |job_experience|
+    job_experience.end_date_present = job_experience.end_date.nil?
+    job_experience.save
+  end
+end
+
 task default: [:blog]
