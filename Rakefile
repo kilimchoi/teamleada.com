@@ -104,4 +104,3 @@ task :migrate_to_user_preferences => :environment do
   end
 end
 
-task default: [:blog]
