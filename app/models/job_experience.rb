@@ -27,6 +27,14 @@ class JobExperience < ActiveRecord::Base
 
   default_scope { order("start_date DESC") }
 
+  def form_id
+    if new_record?
+      "add-job-experience"
+    else
+      "#{self.class.to_s.underscore.gsub('_', '-')}-#{self.id}"
+    end
+  end
+
   # Fromatting for the user profile page
   def work_dates
     if start_date

@@ -19,6 +19,7 @@ class UserProfilesController < ApplicationController
     if @edit_job_experience_form.submit(params[:edit_job_experience_form])
       respond_to { |format| format.js { render partial: "users/update_profile" } }
     else
+      @editable = @edit_job_experience_form.job_experience
       respond_to { |format| format.js { render partial: "users/update_profile" } }
     end
   end
