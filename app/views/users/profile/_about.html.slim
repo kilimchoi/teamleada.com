@@ -1,28 +1,13 @@
-- form = @edit_about_form
-- path = update_about_user_profile_path
+// Required Variables:
+// user, is_editing, form
 
-.row.card.profile-section#about-section
+.row.card
   .col-md-12
-    .profile-section-header
-      h3 About
-      - if is_editing
-        span.edit-section
-          = link_to "Edit", "#", id: "edit-about-section", class: "edit-form-button", data: { target: "about-section" }
-    .profile-section-content
-      .profile-section-view#about-section-view
-        = simple_format(user_profile.bio)
-      - if is_editing
-        .profile-section-edit.edit-form#about-section-edit
-          = simple_form_for form, url: path,
-                                  html: { class: "inline-profile-form" },
-                                  remote: true do |f|
-            .form-inputs
-              = f.input :bio, as: :text,
-                              value: user_profile.bio,
-                              placeholder: "Tell us a little about yourself.",
-                              input_html: { rows: 8 }
-              = f.hidden_field :edited_about, value: true
-            .form-actions
-              = f.submit "Save", class: "edit-form-save-button"
-              = link_to "Cancel", "#", class: "edit-form-cancel-button", data: { target: "about-section" }
+    = render partial: "users/profile/item_section", locals: { \
+      collection_name: "about",
+      item: user.user_profile,
+      is_editing: is_editing,
+      form: form,
+      section: "user-profile",
+    }
 

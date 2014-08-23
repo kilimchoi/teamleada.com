@@ -15,19 +15,11 @@
 
     - collection.each do |item|
       - section = base_section + "-" + item.id.to_s
-
-      - content_for :section_title, flush: true do
-        = render partial: "users/profile/section_titles/" + collection_name, locals: { item: item }
-
-      - content_for :view, flush: true do
-        = render partial: "users/profile/section_views/" + collection_name, locals: { item: item }
-
-      - content_for :edit, flush: true do
-        - if is_editing
-          = render partial: "users/profile/forms/" + collection_name, locals: { form: form, item: item, section: section, is_adding: false }
-
-      = render partial: "users/profile/section", locals: { \
-        section: section,
+      = render partial: "users/profile/item_section", locals: { \
+        collection_name: collection_name,
+        item: item,
         is_editing: is_editing,
+        form: form,
+        section: section,
       }
 
