@@ -25,5 +25,5 @@
     = f.hidden_field :enrollment_id, value: enrollment.id
   .form-actions
     = f.submit "Save", class: "edit-form-save-button"
-    = link_to "Cancel", "#", class: "edit-form-cancel-button", data: { target: "#{section}-section" }
+    = link_to "Cancel", cancel_update_user_profile_path, method: :post, remote: true, class: "edit-form-cancel-button"
 

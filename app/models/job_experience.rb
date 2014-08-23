@@ -27,6 +27,7 @@ class JobExperience < ActiveRecord::Base
 
   default_scope { order("start_date DESC") }
 
+  # Form Interface
   def form_id
     if new_record?
       "add-job-experience"

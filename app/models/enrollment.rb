@@ -23,6 +23,15 @@ class Enrollment < ActiveRecord::Base
 
   default_scope -> { order("start_date DESC") }
 
+  # Form Interface
+  def form_id
+    if new_record?
+      "add-education-section"
+    else
+      "#{self.class.to_s.underscore.gsub('_', '-')}-#{self.id}"
+    end
+  end
+
   # Formatting for the user profile page
   def enrollment_dates
     if start_date
