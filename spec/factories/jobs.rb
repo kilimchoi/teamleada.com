@@ -7,6 +7,7 @@
 #  created_at     :datetime
 #  updated_at     :datetime
 #  position_title :string(255)
+#  location       :string(255)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

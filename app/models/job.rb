@@ -7,6 +7,7 @@
 #  created_at     :datetime
 #  updated_at     :datetime
 #  position_title :string(255)
+#  location       :string(255)
 #
 
 class Job < ActiveRecord::Base
