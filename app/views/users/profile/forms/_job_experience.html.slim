@@ -19,8 +19,8 @@
         abbr title="required" *
         |  Time Period
       .controls
-        = f.input_field :job_experience_start_date_month, collection: Date::MONTHNAMES,
-                                                          placeholder: "Month",
+        = f.input_field :job_experience_start_date_month, collection: Date::MONTHNAMES.compact,
+                                                          include_blank: "Month",
                                                           selected: job_experience.start_date.try(:month_string),
                                                           class: "inline-form-field"
         = f.input_field :job_experience_start_date_year, label: false,
@@ -31,8 +31,8 @@
           ' -
         label.control-label class="#{section}-hide" style="#{'display:none;' unless job_experience.end_date_present}"
           | Present
-        = f.input_field :job_experience_end_date_month, collection: Date::MONTHNAMES,
-                                                        placeholder: "Month",
+        = f.input_field :job_experience_end_date_month, collection: Date::MONTHNAMES.compact,
+                                                        include_blank: "Month",
                                                         selected: job_experience.end_date.try(:month_string),
                                                         class: "inline-form-field #{section}-hide",
                                                         style: "#{'display:none;' if job_experience.end_date_present}"

@@ -52,9 +52,9 @@ class EditJobExperienceForm < Form
       job_experience.start_date = Date.parse(params[:job_experience_start_date_month] + " " + params[:job_experience_start_date_year])
     end
 
-    if job_experience.end_date_present
-      job_experience.end_date = nil
-    elsif params[:job_experience_end_date_month].present? && params[:job_experience_end_date_year].present?
+    # Always reset the end date and if it's still present, it'll be set correctly again
+    job_experience.end_date = nil
+    if params[:job_experience_end_date_month].present? && params[:job_experience_end_date_year].present?
       job_experience.end_date = Date.parse(params[:job_experience_end_date_month]   + " " + params[:job_experience_end_date_year])
     end
 
@@ -83,8 +83,11 @@ class EditJobExperienceForm < Form
   # Validations
   #
   def end_date_or_present
+    puts 'validation time'
+    puts job_experience.end_date_present
+    puts job_experience.end_date
     if !job_experience.end_date_present && job_experience.end_date.nil?
-      errors.add(:end_date, "You must provide an end date or mark present.")
+      errors.add(:job_experience_start_date_month, "You must provide an end date or mark present.")
     end
   end
 
