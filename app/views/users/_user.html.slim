@@ -79,9 +79,7 @@ javascript:
 
     $(document).on("click", ".edit-form-end-date-present", function(event) {
       var target = this.dataset.target;
-      var month = $("." + target + "-end-date-month");
-      var year = $("." + target + "-end-date-year");
-      month.toggle();
-      year.toggle();
+      var things_to_hide = $("." + target + "-hide");
+      things_to_hide.toggle();
     });
   });
