@@ -55,3 +55,18 @@
   margin-top: 5px;
 }
 
+.checkbox-form-control {
+  height: auto;
+  border: none;
+  box-shadow: none;
+
+  &:active {
+    outline: none;
+  }
+
+  &:focus {
+    border: none;
+    box-shadow: none;
+  }
+}
+
