@@ -19,6 +19,7 @@ project = Project.create!(
   category: Project::CHALLENGE,
   is_new: true,
   deadline: 10.days,
+  featured: true,
 )
 
 ################################################################################
