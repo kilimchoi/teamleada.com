@@ -11,7 +11,6 @@ class Company::UsersController < Company::BaseController
 
   def show_project
     @project = Project.find(params[:project_id])
-    render :show
   end
 
   def favorite
