@@ -40,7 +40,7 @@ class Ability
           user.has_project_access? && (!project.paid || !user.has_not_paid_for_project?(project))
         end
 
-        can [:index, :create], Invite
+#        can [:index, :create], Invite
       end
     end
   end
