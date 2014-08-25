@@ -1,6 +1,23 @@
 = provide(:page_title, "Projects")
 
-.container.full-container.card-container#projects-container
+.container-fluid.full-container
+  .row
+    #carousel.carousel.slide.carousel-home data-ride="carousel" data-interval="5000"
+      .carousel-inner.carousel-home-inner
+        - @highlighted_projects.each_with_index do |project, index|
+          .item class="#{'active' if index == 0}"
+            .media-cover-photo.media-cover-dark class="#{}"
+            .row.row-table.row-full-height.project-title-row
+              = link_to project, class: "col-middle text-center col-md-12 project-color-#{Project.random_color}" do
+                h1.media-title = project.title
+                h3.media-subtitle = project.difficulty
+
+      a.left.carousel-control href="#carousel" role="button" data-slide="prev"
+        span.glyphicon.glyphicon-chevron-left
+
+      a.right.carousel-control href="#carousel" role="button" data-slide="next"
+        span.glyphicon.glyphicon-chevron-right
+
   .row.card
     .col-md-12
       .projects-container

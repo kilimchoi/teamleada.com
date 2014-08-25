@@ -66,6 +66,20 @@ class Project < ActiveRecord::Base
   CHALLENGE = "challenge"
   COMING_SOON = "coming_soon"
 
+  COLORS = ["red", "blue", "green", "purple"]
+
+  class << self
+
+    def random_set_of_colors(amount)
+      COLORS.sample(amount)
+    end
+
+    def random_color
+      COLORS.sample
+    end
+
+  end
+
   # Before Filters
   def set_url
     self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize

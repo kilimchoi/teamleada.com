@@ -15,14 +15,15 @@ class ProjectsController < ApplicationController
       @projects = current_user.try(:company).try(:projects) || Project.none
     end
 
+    @highlighted_projects = @projects.first(3)
     @featured_projects = @projects.featured
 
     # Don't show featured projects twice
-    @projects = @projects.not_featured
+    projects = @projects.enabled.not_featured
 
-    @data_lessons = @projects.where(category: Project::LESSON, enabled: true).reverse
-    @data_challenges = @projects.where(category: Project::CHALLENGE, enabled: true).reverse
-    @coming_soon = @projects.where(category: Project::COMING_SOON, enabled: true).reverse
+    @data_lessons    = projects.where(category: Project::LESSON).reverse
+    @data_challenges = projects.where(category: Project::CHALLENGE).reverse
+    @coming_soon     = projects.where(category: Project::COMING_SOON).reverse
 
     @interested_user = InterestedUser.new
   end
