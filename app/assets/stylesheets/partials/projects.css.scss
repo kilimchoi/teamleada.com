@@ -1,0 +1,33 @@
+// Project Colors
+.project-color-red {
+  background-color: #A63535;
+}
+
+.project-color-green {
+  background-color: #5D9149;
+}
+
+.project-color-blue {
+  background-color: #495D91;
+}
+
+.project-color-purple {
+  background-color: #613C78;
+}
+
+.project-title-row {
+  // Not sure why this is happening. It has a weird transition when it's in the
+  // iPad-like screen size.
+  @include breakpoint($ipad-screen) {
+    width: 100%;
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
