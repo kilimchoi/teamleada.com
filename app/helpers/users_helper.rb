@@ -18,7 +18,7 @@ module UsersHelper
     registered_user.update(date_of_birth: (Date.new((auth.extra.raw_info.dateOfBirth.year rescue nil), (auth.extra.raw_info.dateOfBirth.month rescue nil), (auth.extra.raw_info.dateOfBirth.day rescue nil)) rescue nil))
     (auth.extra.raw_info.jobBookmarks._total rescue nil).nil? ? nil : registered_user.update(job_bookmarks_count: auth.extra.raw_info.jobBookmarks._total)
     (auth.extra.raw_info.interests rescue nil).nil? ? nil : registered_user.update(interests: auth.extra.raw_info.interests)
-    
+
     registered_user.update(linkedin_updated_at: Time.now)
     if registered_user.linkedin_confirmed_at.nil?
       registered_user.update(linkedin_confirmed_at: Time.now)
@@ -32,6 +32,8 @@ module UsersHelper
 
     registered_user.skip_confirmation!
     registered_user.save(validate: false)
+    registered_user.profile.save
+    registered_user.preferences.save
     registered_user
   end
 
