@@ -16,13 +16,15 @@ class ProjectsController < ApplicationController
     end
 
     @featured_projects = @projects.featured
+
+    # Don't show featured projects twice
+    @projects = @projects.not_featured
+
     @data_lessons = @projects.where(category: Project::LESSON, enabled: true).reverse
     @data_challenges = @projects.where(category: Project::CHALLENGE, enabled: true).reverse
     @coming_soon = @projects.where(category: Project::COMING_SOON, enabled: true).reverse
 
     @interested_user = InterestedUser.new
-    @large_header = true
-    @profile_needs_info = true
   end
 
   def check_submission

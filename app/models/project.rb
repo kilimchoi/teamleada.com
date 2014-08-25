@@ -46,9 +46,10 @@ class Project < ActiveRecord::Base
   validates :title, uniqueness: true
   validates :uid, uniqueness: true
 
-  scope :costs_money, -> { where(paid: true) }
   scope :enabled, -> { where(enabled: true) }
-  scope :featured, -> { where(featured: true) }
+  scope :costs_money, -> { enabled.where(paid: true) }
+  scope :featured, -> { enabled.where(featured: true) }
+  scope :not_featured, -> { enabled.where(featured: false) }
 
   default_scope -> { order(:uid) }
 
