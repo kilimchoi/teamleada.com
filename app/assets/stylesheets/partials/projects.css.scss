@@ -20,7 +20,35 @@
 }
 
 .project-card {
-  min-height: 300px;
+  &.extra-large {
+    min-height: 300px;
+  }
+
+  &.large {
+    min-height: 250px;
+  }
+
+  &.medium {
+    min-height: 200px;
+  }
+
+  &.small {
+    min-height: 150px;
+  }
+
+  &:hover:after {
+    position: absolute;
+    top: 0;
+    left: 15px;
+    right: 15px;
+    bottom: 10px;
+
+    background: #000000;
+    opacity: 0.2;
+    content: " ";
+
+    @include border(2px);
+  }
 }
 
 .featured-project-title {
