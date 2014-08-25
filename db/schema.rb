@@ -372,6 +372,7 @@ ActiveRecord::Schema.define(version: 20140827013607) do
     t.string   "category"
     t.boolean  "is_new",            default: false
     t.integer  "deadline"
+    t.boolean  "featured",          default: false
   end
 
   create_table "publications", force: true do |t|

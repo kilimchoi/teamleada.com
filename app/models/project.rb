@@ -48,6 +48,7 @@ class Project < ActiveRecord::Base
 
   scope :costs_money, -> { where(paid: true) }
   scope :enabled, -> { where(enabled: true) }
+  scope :featured, -> { where(featured: true) }
 
   default_scope -> { order(:uid) }
 

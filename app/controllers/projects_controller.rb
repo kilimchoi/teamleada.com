@@ -15,6 +15,7 @@ class ProjectsController < ApplicationController
       @projects = current_user.try(:company).try(:projects) || Project.none
     end
 
+    @featured_projects = @projects.featured
     @data_lessons = @projects.where(category: Project::LESSON, enabled: true).reverse
     @data_challenges = @projects.where(category: Project::CHALLENGE, enabled: true).reverse
     @coming_soon = @projects.where(category: Project::COMING_SOON, enabled: true).reverse
