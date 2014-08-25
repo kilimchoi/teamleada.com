@@ -1,0 +1,11 @@
+.row.card
+  .col-md-12
+    h3.title Resume
+    - if user.has_resume?
+      = render partial: "users/resume_preview", locals: { resume: user.resume }
+      - if is_editing
+        = link_to "Upload a new resume", "#", data: {toggle: "modal", target: "#resume-modal"}, class: "flat-button full-width"
+    - elsif is_editing
+      h4 Looks like you haven't uploaded a resume yet.
+      = link_to "Upload one now!", "#", data: {toggle: "modal", target: "#resume-modal"}, class: "flat-button full-width"
+

@@ -64,4 +64,43 @@ task :backfill_metric, [:metric] => :environment do |task, args|
   end
 end
 
-task default: [:blog]
+# One off jobs
+task :fill_end_date_present => :environment do
+  JobExperience.all.each do |job_experience|
+    job_experience.end_date_present = job_experience.end_date.nil?
+    job_experience.save
+  end
+end
+
+task :migrate_to_user_profile => :environment do
+  User.all.each do |user|
+    profile = user.profile
+    profile.looking_for_opportunities = user.looking_for_opportunities
+    profile.location = user.location
+    profile.bio = user.bio
+    profile.phone = user.phone
+    profile.headline = user.headline
+    profile.industry = user.industry
+    profile.date_of_birth = user.date_of_birth
+    profile.interests = user.interests
+    profile.job_bookmarks_count = user.job_bookmarks_count
+    profile.country_code = user.country_code
+    profile.save
+  end
+end
+
+task :migrate_to_user_preferences => :environment do
+  User.all.each do |user|
+    preferences = user.preferences
+    preferences.who_can_see_profile = user.who_can_see_profile
+    preferences.who_can_send_friend_requests = user.who_can_send_friend_requests
+    preferences.who_can_contact = user.who_can_contact
+    preferences.who_can_lookup_using_email = user.who_can_lookup_using_email
+    preferences.who_can_lookup_by_name = user.who_can_lookup_by_name
+    preferences.who_can_see_resume = user.who_can_see_resume
+    preferences.wants_email_about_new_projects = user.wants_email_about_new_projects
+    preferences.wants_email_from_recruiters = user.wants_email_from_recruiters
+    preferences.save
+  end
+end
+

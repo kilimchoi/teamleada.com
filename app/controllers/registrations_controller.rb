@@ -1,39 +1,28 @@
 class RegistrationsController < Devise::RegistrationsController
-  before_filter :configure_permitted_parameters, only: [:create]
+
+  def new
+    @sign_up_form = SignUpForm.new
+  end
 
   def create
-    build_resource(sign_up_params)
-    session[:return_to] ||= request.referer
+    @sign_up_form = SignUpForm.new
+    if @sign_up_form.submit(params[:sign_up_form])
 
-    if resource.save
-      yield resource if block_given?
-      if resource.active_for_authentication?
-        set_flash_message :success, :signed_up if is_flashing_format?
-        sign_up(resource_name, resource)
-        respond_with resource, location: after_sign_up_path_for(resource)
-      else
-        message = "A message with a confirmation link has been sent to your email address. Please click on the link to activate your account."
-        if Rails.env.development?
-          secret = resource.generate_new_token
-          message += " DEVELOPMENT MODE: <a href='" + user_confirmation_url(confirmation_token: secret) + "'>Activate</a>"
-        end
-        flash[:info] = message.html_safe
-        expire_data_after_sign_in!
-        respond_with resource, location: after_inactive_sign_up_path_for(resource)
+      # TODO(mark): Move this message creation to some other sort of object...
+      message = "A message with a confirmation link has been sent to your email address. Please click on the link to activate your account."
+      if Rails.env.development?
+        secret = @sign_up_form.user.generate_new_token
+        message += " DEVELOPMENT MODE: <a data-method='patch' href='" + confirm_url(confirmation_token: secret) + "'>Activate</a>"
       end
+      flash[:info] = message.html_safe
+
+      redirect_to after_sign_up_path_for(@sign_up_form.user)
     else
-      clean_up_passwords resource
-      respond_with resource
+      render "new"
     end
   end
 
   private
-
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) do |user|
-      user.permit(:username, :email, :password, :password_confirmation)
-    end
-  end
 
   def after_sign_up_path_for(user)
     if user.is_admin?

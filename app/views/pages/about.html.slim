@@ -3,6 +3,14 @@
 
 .container.full-container.card-container
   .row.about-row.card
+    .col-md-10.col-md-offset-1
+      h1.center Our Mission
+      p.about-founders
+        = @about.tagline
+      p.about-founders
+        = @about.description
+
+  .row.about-row.card
     h1.center
       | Founding Team
 

@@ -11,6 +11,19 @@ class UsersController < ApplicationController
     @profile_needs_info = signed_in? && current_user.has_missing_profile_info?
   end
 
+  def profile
+    @user = current_user
+    render "show"
+  end
+
+  def edit_profile
+    @user = current_user
+
+    @edit_about_form = EditAboutForm.new(@user)
+    @edit_job_experience_form = EditJobExperienceForm.new(@user)
+    @edit_enrollment_form = EditEnrollmentForm.new(@user)
+  end
+
   def update
     # TODO: This is hacky, should make a validation that does this.
     if params[:is_resume_form]

@@ -18,4 +18,34 @@
 class Enrollment < ActiveRecord::Base
   belongs_to :user
   belongs_to :university
+
+  delegate :name, to: :university, prefix: true, allow_nil: true
+
+  default_scope -> { order("start_date DESC") }
+
+  # Form Interface
+  def form_id
+    if new_record?
+      "add-enrollment"
+    else
+      "#{self.class.to_s.underscore.gsub('_', '-')}-#{self.id}"
+    end
+  end
+
+  # Formatting for the user profile page
+  def enrollment_dates
+    if start_date
+      "#{start_date_formatted} - #{end_date_formatted}"
+    end
+  end
+
+  def start_date_formatted
+    start_date.month_and_year
+  end
+
+  def end_date_formatted
+    end_date ? end_date.month_and_year : "Present"
+  end
+
 end
+

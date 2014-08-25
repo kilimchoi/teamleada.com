@@ -2,14 +2,15 @@
 #
 # Table name: job_experiences
 #
-#  id         :integer          not null, primary key
-#  user_id    :integer
-#  summary    :text
-#  start_date :date
-#  end_date   :date
-#  created_at :datetime
-#  updated_at :datetime
-#  job_id     :integer
+#  id               :integer          not null, primary key
+#  user_id          :integer
+#  summary          :text
+#  start_date       :date
+#  end_date         :date
+#  created_at       :datetime
+#  updated_at       :datetime
+#  job_id           :integer
+#  end_date_present :boolean
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

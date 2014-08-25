@@ -1,0 +1,3 @@
+= provide(:page_title, "#{@user.name} - Edit")
+
+= render partial: "users/user", locals: { user: @user, is_admin: false, is_editing: true }

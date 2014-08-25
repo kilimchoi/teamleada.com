@@ -2,55 +2,37 @@
 #
 # Table name: users
 #
-#  id                             :integer          not null, primary key
-#  email                          :string(255)      default(""), not null
-#  encrypted_password             :string(255)      default(""), not null
-#  reset_password_token           :string(255)
-#  reset_password_sent_at         :datetime
-#  remember_created_at            :datetime
-#  sign_in_count                  :integer          default(0), not null
-#  current_sign_in_at             :datetime
-#  last_sign_in_at                :datetime
-#  current_sign_in_ip             :string(255)
-#  last_sign_in_ip                :string(255)
-#  created_at                     :datetime
-#  updated_at                     :datetime
-#  username                       :string(255)
-#  role                           :string(255)
-#  confirmation_token             :string(255)
-#  confirmed_at                   :datetime
-#  confirmation_sent_at           :datetime
-#  company_id                     :integer
-#  first_name                     :string(255)
-#  last_name                      :string(255)
-#  unconfirmed_email              :string(255)
-#  updated_password_at            :datetime
-#  who_can_see_profile            :string(255)
-#  who_can_send_friend_requests   :string(255)
-#  who_can_contact                :string(255)
-#  who_can_lookup_using_email     :string(255)
-#  who_can_lookup_by_name         :string(255)
-#  who_can_see_resume             :string(255)
-#  looking_for_opportunities      :boolean          default(FALSE)
-#  location                       :string(255)
-#  bio                            :text
-#  linkedin_id                    :string(255)
-#  name                           :string(255)
-#  nickname                       :string(255)
-#  linkedin_profile_image_url     :string(255)      default("")
-#  phone                          :string(255)
-#  headline                       :string(255)
-#  industry                       :string(255)
-#  public_profile_url             :string(255)
-#  date_of_birth                  :date
-#  interests                      :text
-#  job_bookmarks_count            :integer
-#  country_code                   :string(255)
-#  has_project_access             :boolean          default(FALSE)
-#  linkedin_confirmed_at          :datetime
-#  linkedin_updated_at            :datetime
-#  wants_email_about_new_projects :boolean          default(TRUE)
-#  wants_email_from_recruiters    :boolean          default(TRUE)
+#  id                         :integer          not null, primary key
+#  email                      :string(255)      default(""), not null
+#  encrypted_password         :string(255)      default(""), not null
+#  reset_password_token       :string(255)
+#  reset_password_sent_at     :datetime
+#  remember_created_at        :datetime
+#  sign_in_count              :integer          default(0), not null
+#  current_sign_in_at         :datetime
+#  last_sign_in_at            :datetime
+#  current_sign_in_ip         :string(255)
+#  last_sign_in_ip            :string(255)
+#  created_at                 :datetime
+#  updated_at                 :datetime
+#  username                   :string(255)
+#  role                       :string(255)
+#  confirmation_token         :string(255)
+#  confirmed_at               :datetime
+#  confirmation_sent_at       :datetime
+#  company_id                 :integer
+#  first_name                 :string(255)
+#  last_name                  :string(255)
+#  unconfirmed_email          :string(255)
+#  updated_password_at        :datetime
+#  linkedin_id                :string(255)
+#  name                       :string(255)
+#  nickname                   :string(255)
+#  linkedin_profile_image_url :string(255)      default("")
+#  public_profile_url         :string(255)
+#  has_project_access         :boolean          default(FALSE)
+#  linkedin_confirmed_at      :datetime
+#  linkedin_updated_at        :datetime
 #
 
 class User < ActiveRecord::Base
@@ -64,6 +46,33 @@ class User < ActiveRecord::Base
   include Rails.application.routes.url_helpers
 
   include UsersHelper
+
+  # Delegate attributes to the user_profile and user_preference
+  delegate :bio, :location, :phone, :headline, :industry, :date_of_birth,
+           :looking_for_opportunities, :interests, :job_bookmarks_count,
+           :country_code,
+           to: :profile, allow_nil: true
+
+  delegate :bio=, :location=, :phone=, :headline=, :industry=, :date_of_birth=,
+           :looking_for_opportunities=, :interests=, :job_bookmarks_count=,
+           :country_code=,
+           to: :profile, allow_nil: true
+
+  delegate :who_can_see_profile, :who_can_send_friend_requests,
+           :who_can_contact, :who_can_lookup_using_email, :who_can_lookup_by_name,
+           :who_can_see_resume, :wants_email_about_new_projects,
+           :wants_email_from_recruiters,
+           to: :preferences, allow_nil: true
+
+  delegate :who_can_see_profile=, :who_can_send_friend_requests=,
+           :who_can_contact=, :who_can_lookup_using_email=, :who_can_lookup_by_name=,
+           :who_can_see_resume=, :wants_email_about_new_projects=,
+           :wants_email_from_recruiters=,
+           to: :preferences, allow_nil: true
+
+  # Profile and Preferences
+  has_one :user_profile    # Should use the .profile attribute defined below.
+  has_one :user_preference # Should use the .preferences attribute defined below.
 
   # Submissions
   has_many :submissions
@@ -145,37 +154,23 @@ class User < ActiveRecord::Base
   default_scope -> { order(:created_at) }
   scope :alphabetically, -> { order("name ASC") }
 
-  validates_format_of :username, :with => /\A[A-Za-z0-9_]*\z/
-  validates :username, uniqueness: {case_sensitive: false, allow_blank: true}
-  validate :check_username
-  validates :first_name, presence: true, on: :update
-  validates :last_name, presence: true, on: :update
-
   accepts_nested_attributes_for :resumes
   accepts_nested_attributes_for :profile_photos
 
   extend FriendlyId
   friendly_id :username, use: :finders
 
-  before_create :set_defaults
   before_save :set_name
 
   self.per_page = 50
-  SETTINGS_TABS = ['account', 'privacy', 'email']
-
-  PUBLIC = 'Public'
-  CONNECTIONS = 'Connections Only'
-  RECRUITERS = 'Recruiters Only'
-  CONNECTIONS_AND_RECRUITERS = 'Connections & Recruiters'
-  ONLY_ME = 'Only Me'
-
-  USER_CATEGORIES = [PUBLIC, CONNECTIONS, RECRUITERS, CONNECTIONS_AND_RECRUITERS, ONLY_ME]
-  USER_TYPES = USER_CATEGORIES.map{ |u| [u, u] }
 
   include PgSearch
   pg_search_scope :search,
                   against: [[:first_name, 'A'], [:last_name, 'A'], [:email, 'A'], [:username, 'A']],
                   using: {tsearch: {prefix: true, normalization: 2}}
+
+  # Default Values
+  default_value_for :updated_password_at, Time.now
 
   def == other_user
     self.email == other_user.email
@@ -229,43 +224,21 @@ class User < ActiveRecord::Base
   end
 
   #
-  # Validations
-  #
-  def check_username
-    if !self.new_record?
-      if self.username.nil? || self.username.blank?
-        errors.add(:username, "can't be blank")
-        return
-      end
-      if self.username.start_with?("_") || !/^[A-Za-z].*/.match(self.username)
-        errors.add(:username, "must start with a letter")
-      end
-    end
-  end
-
-  #
   # Before filter
   #
-  def set_defaults
-    self.set_dates
-    self.set_privacy_preferences
-  end
-
   def set_name
     self.name = "#{first_name} #{last_name}"
   end
 
-  def set_dates
-    self.updated_password_at = Time.now
+  #
+  # Associations
+  #
+  def profile
+    self.user_profile ||= self.create_user_profile()
   end
 
-  def set_privacy_preferences
-    self.who_can_see_profile = PUBLIC
-    self.who_can_send_friend_requests = PUBLIC
-    self.who_can_contact = CONNECTIONS_AND_RECRUITERS
-    self.who_can_lookup_using_email = CONNECTIONS_AND_RECRUITERS
-    self.who_can_lookup_by_name = CONNECTIONS_AND_RECRUITERS
-    self.who_can_see_resume = CONNECTIONS_AND_RECRUITERS
+  def preferences
+    self.user_preference ||= self.create_user_preference()
   end
 
   #
@@ -693,3 +666,4 @@ class User < ActiveRecord::Base
   end
 
 end
+

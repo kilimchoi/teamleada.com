@@ -1,0 +1,72 @@
+.input-wrapper {
+  margin-bottom: 10px;
+}
+
+.edit-form {
+  display: none;
+}
+
+.active-edit .edit-section a {
+  color: #cccccc;
+  text-decoration: none;
+  cursor: default;
+}
+
+.inline-form {
+  margin-top: 15px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  line-height: 17px;
+  color: #333;
+  font-weight: normal;
+  padding: 20px 20px;
+  background: #f4f4f4;
+  border: 1px solid #e9e9e9;
+  border-width: 1px 0;
+}
+
+.inline-form-fill-row {
+  margin-left: -27px;
+  margin-right: -27px;
+}
+
+.inline-profile-form {
+  @extend .inline-form;
+  @extend .inline-form-fill-row;
+
+  .form-inputs,
+  .form-actions {
+    margin-left: 7px;
+    margin-right: 7px;
+  }
+
+  .form-actions {
+    margin-top: 10px;
+  }
+}
+
+.inline-form-field {
+  display: inline;
+  width: 20%;
+  margin-right: 5px;
+}
+
+.year-input {
+  margin-top: 5px;
+}
+
+.checkbox-form-control {
+  height: auto;
+  border: none;
+  box-shadow: none;
+
+  &:active {
+    outline: none;
+  }
+
+  &:focus {
+    border: none;
+    box-shadow: none;
+  }
+}
+
