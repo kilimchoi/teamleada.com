@@ -4,11 +4,12 @@
   .row
     #carousel.carousel.slide.carousel-home data-ride="carousel" data-interval="5000"
       .carousel-inner.carousel-home-inner
-        - @highlighted_projects.each_with_index do |project, index|
+        - @project_data.highlighted.each_with_index do |highlighted_project_data, index|
+          - project = Project.find(highlighted_project_data.uid)
           .item class="#{'active' if index == 0}"
             .media-cover-photo.media-cover-dark class="#{}"
             .row.row-table.row-full-height.project-title-row
-              = link_to project, class: "col-middle text-center col-md-12 project-color-#{Project.random_color}" do
+              = link_to project, class: "col-middle text-center col-md-12 project-color-#{highlighted_project_data.color}" do
                 h1.media-title = project.title
                 h3.media-subtitle = project.difficulty
 
@@ -18,14 +19,24 @@
       a.right.carousel-control href="#carousel" role="button" data-slide="next"
         span.glyphicon.glyphicon-chevron-right
 
-  .row.card
+  .row.project-card-container
     .col-md-12
       .projects-container
-        h1.title
-          ' Data Challenges
-          small
-            = link_to "How this works", project_faq_path
-        = render partial: "projects/projects", locals: { projects: @data_challenges }
+        .row
+          - @featured_projects.each_with_index do |project, index|
+            .col-md-6
+              .card.project-card class="project-color-#{Project.featured_color(index)}"
+                h1 = project.title
+
+  .row.project-card-container
+    .col-md-12
+      .row.card
+        .col-md-12
+          h1.center Data Challenges
+
+  .row.project-card-container
+    .col-md-12
+      = render partial: "projects/projects", locals: { projects: @data_challenges }
 
   .row.card
     .col-md-12
@@ -59,46 +70,3 @@
         .col-md-8.col-md-offset-2
           = render partial: "codes/project_access_code"
 
-
-// TODO: Don't make a new modal for each project
-- @projects.each do |project|
-  div class="modal fade" id="#{project.url}"
-    .modal-dialog
-      .modal-content
-        .modal-header
-          button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
-          - if !project.deadline.nil?
-            .row
-              .col-md-9
-                h4.modal-title
-                  = project.title
-              .col-md-2
-                h4.modal-title.label.label-success
-                  | Time: 
-                  = project.deadline_in_days
-                  |  Days
-          - else
-            h4.modal-title
-              = project.title
-        .modal-body
-          p
-            = project.short_description
-        .modal-footer
-          - if signed_in? && current_user.has_project_access? && project.category != Project::COMING_SOON
-            - project_status = ProjectStatus.find_by(user: current_user, project: project)
-            - if project.paid? && current_user.has_not_paid_for_project?(project) && !current_user.is_admin?
-              = form_tag purchase_project_path(project), class: "form-inline" do
-                script src="https://checkout.stripe.com/checkout.js" class="stripe-button" *{'data-key' => Rails.configuration.stripe[:publishable_key], 'data-description' => project.title, 'data-amount' => project.cost, 'data-email' => current_user.email}
-            - elsif current_user.has_finished_project?(project)
-              = link_to "View completed project", project_path(project), class: "btn btn-leada"
-            - elsif !project_status.nil? && project_status.expired?
-              = link_to "View expired project", project_path(project), class: "btn btn-leada"
-            - elsif current_user.has_started_project?(project)
-              = link_to "Continue this project", project_path(project), class: "btn btn-leada"
-            - else
-              = link_to "Start this project!", project_path(project), class: "btn btn-leada"
-          - elsif signed_in? && current_user.is_company? && current_user.owns_project?(project)
-            = link_to "View this project", project_path(project), class: "btn btn-leada"
-          - else
-            = link_to "I'm Interested", interest_project_path(project), method: :post, class: "btn btn-leada"
-          button.btn.btn-default type="button" data-dismiss="modal" Close
