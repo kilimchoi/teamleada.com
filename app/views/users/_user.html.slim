@@ -6,7 +6,7 @@
       .user-container.card-container
         .row.card
           .col-md-12
-            = render partial: "users/profile/profile_photo", locals: { user: user, is_editing: is_editing }
+            = render partial: "users/profile/profile_photo", locals: { user: user, is_editing: is_editing, is_admin: is_admin }
 
             .profile-overview.clearfix
               h1.title.profile-name

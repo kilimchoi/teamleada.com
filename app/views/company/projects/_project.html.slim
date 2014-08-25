@@ -4,7 +4,7 @@
       .user-container.card-container
         .row.card
           .col-md-12
-            = render partial: "users/profile/profile_photo", locals: { user: user, is_editing: false }
+            = render partial: "users/profile/profile_photo", locals: { user: user, is_editing: false, is_admin: false }
             .profile-overview.clearfix
               h1.title.profile-name
                 | Anonymous User
