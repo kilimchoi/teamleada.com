@@ -25,6 +25,7 @@ project = Project.create!(
   company_overview: "",
   is_new: false,
   deadline: 2.weeks,
+  featured: true,
 )
 
 puts "============ Created project: #{project.title}."
