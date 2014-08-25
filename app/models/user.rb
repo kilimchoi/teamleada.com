@@ -492,6 +492,34 @@ class User < ActiveRecord::Base
     false
   end
 
+  def all_projects(completed, category)
+    project_statuses.where(completed: completed).collect{ |project_status| project_status.project }.select{ |project| project.category == category }
+  end
+
+  def challenges(completed)
+    all_projects(completed, Project::CHALLENGE)
+  end
+
+  def completed_challenges
+    challenges(true)
+  end
+
+  def in_progress_challenges
+    challenges(false)
+  end
+
+  def lessons(completed)
+    all_projects(completed, Project::LESSON)
+  end
+
+  def completed_lessons
+    lessons(true)
+  end
+
+  def in_progress_lessons
+    lessons(false)
+  end
+
   def completed_projects
     project_statuses.where(completed: true).collect{ |project_status| project_status.project }
   end
@@ -507,6 +535,23 @@ class User < ActiveRecord::Base
 
   def project_status_for_project(project)
     project_statuses.find_by(project: project)
+  end
+
+  def code_submission_of_type_for_project(type, project)
+    project.submission_contexts.where(submission_type: type).collect{ |submission_context| submission_context.code_submissions_for_user(self).first }.first
+  end
+
+  def video_for_project(project)
+    code_submission_of_type_for_project("presentation_vid_linK", project)
+  end
+
+  def get_youtube_link_for_project(project)
+    video = video_for_project(project)
+    video.content.split("?v=").last.split("&").first
+  end
+
+  def presentation_for_project(project)
+    code_submission_of_type_for_project("presentation_slides_link", project)
   end
 
   def code_submissions_for_project(project)

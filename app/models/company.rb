@@ -15,6 +15,9 @@
 #
 
 class Company < ActiveRecord::Base
+  has_many :browsable_users
+  has_many :viewable_users, through: :browsable_users, source: :user
+
   has_many :company_projects
   has_many :projects, through: :company_projects
   has_many :employees, class_name: User

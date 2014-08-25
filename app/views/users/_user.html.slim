@@ -10,7 +10,10 @@
 
             .profile-overview.clearfix
               h1.title.profile-name
-                = user.name
+                - if is_company
+                  | Anonymous User
+                - else
+                  = user.name
               .clearfix
               .profile-header-info.clearfix
                 - if current_user_can_edit
@@ -27,15 +30,15 @@
         .col-md-6
           .row
             .col-md-12
-              - if current_user_can_edit
-                .user-profile-sections#user-profile
-                  = render partial: "users/profile", locals: { user: user, user_profile: user.profile, is_editing: is_editing }
-                = render partial: "users/profile/resume", locals: { user: user, is_editing: is_editing }
+              .user-profile-sections#user-profile
+                = render partial: "users/profile", locals: { user: user, user_profile: user.profile, is_editing: is_editing }
+                - unless is_company
+                  = render partial: "users/profile/resume", locals: { user: user, is_editing: is_editing, is_company: is_company }
 
         .col-md-6
           .row
             .col-md-12
-              = render partial: "users/profile/projects",          locals: { user: user }
+              = render partial: "users/profile/projects",          locals: { user: user, is_company: is_company }
               = render partial: "users/profile/badges",            locals: { user: user }
               = render partial: "users/profile/connections",       locals: { user: user }
 
