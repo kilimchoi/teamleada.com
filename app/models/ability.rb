@@ -22,7 +22,7 @@ class Ability
       can :manage, :all
     elsif !user.new_record?
       # Anyone with an account (employee and student)
-      can [:show, :edit, :update, :project, :projects, :project_feedback], User, id: user.id
+      can [:show, :edit, :update, :project, :projects, :project_feedback, :profile, :edit_profile], User, id: user.id
       can [:show, :index, :create, :new, :autocomplete_user_name], Conversation if Feature.enabled?("messaging")
       can [:show, :index, :create, :new], Message if Feature.enabled?("messaging")
 

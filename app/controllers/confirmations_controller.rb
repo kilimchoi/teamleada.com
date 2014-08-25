@@ -47,7 +47,7 @@ class ConfirmationsController < Devise::ConfirmationsController
         invite.accepted_at = Time.now
         invite.save
       end
-      flash[:info] = "Your account has been confirmed. Check out some of our data projects!"
+      flash[:info] = "Your account has been confirmed. Fill out your profile and check out our data challenges!"
       sign_in resource_name, resource
       redirect_to edit_user_profile_path
     else
