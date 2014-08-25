@@ -302,3 +302,10 @@ h1 {
 .inline-block {
   display: inline-block !important;
 }
+
+.no-underline {
+  &:hover {
+    text-decoration: none;
+  }
+}
+

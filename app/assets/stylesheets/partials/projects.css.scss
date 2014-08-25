@@ -47,7 +47,7 @@
     opacity: 0.2;
     content: " ";
 
-    @include border(2px);
+    @include border-radius(3px);
   }
 }
 
