@@ -1,4 +1,4 @@
-- current_user_can_edit = current_user == user || is_admin
+- current_user_can_edit = current_user == user
 
 .container-fluid.full-container
   .row
@@ -23,7 +23,7 @@
                     - else
                       = link_to "Edit Profile", edit_user_profile_path, class: "button-small"
             .profile-linkedin-integration
-              - unless current_user.has_linkedin_integration?
+              - if !current_user.has_linkedin_integration? && current_user_can_edit
                 = link_to "Integrate LinkedIn", user_omniauth_authorize_path(:linkedin), class: "button-small"
 
       .row
