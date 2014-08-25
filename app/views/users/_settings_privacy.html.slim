@@ -11,12 +11,12 @@ ul.privacy-settings
           li.settings-row.clearfix
             = link_to("#", id: "edit-see-profile", class: "row-link clearfix") do
               span.priv-col Who can see your profile?
-              span = best_in_place current_user, :who_can_see_profile, type: :select, collection: User::USER_TYPES, data: { field: 'who can see your profile' }, activator: "#edit-see-profile"
+              span = best_in_place current_user, :who_can_see_profile, type: :select, collection: UserPreference::USER_TYPES, data: { field: 'who can see your profile' }, activator: "#edit-see-profile"
               span.edit-row Edit
           li.settings-row.clearfix
             = link_to("#", id: "edit-see-resume", class: "row-link clearfix") do
               span.priv-col Who can see your resume?
-              span = best_in_place current_user, :who_can_see_resume, type: :select, collection: User::USER_TYPES, data: { field: 'who can see your resume' }, activator: "#edit-see-resume"
+              span = best_in_place current_user, :who_can_see_resume, type: :select, collection: UserPreference::USER_TYPES, data: { field: 'who can see your resume' }, activator: "#edit-see-resume"
               span.edit-row Edit
   li.settings-row
     .clearfix
@@ -26,12 +26,12 @@ ul.privacy-settings
           li.settings-row.clearfix
             = link_to("#", id: "edit-friend-requests", class: "row-link clearfix") do
               span.priv-col Who can send you friend requests?
-              span = best_in_place current_user, :who_can_send_friend_requests, type: :select, collection: User::USER_TYPES, data: { field: 'who can send you friend requests' }, activator: "#edit-friend-requests"
+              span = best_in_place current_user, :who_can_send_friend_requests, type: :select, collection: UserPreference::USER_TYPES, data: { field: 'who can send you friend requests' }, activator: "#edit-friend-requests"
               span.edit-row Edit
           li.settings-row.clearfix
             = link_to("#", id: "edit-contact", class: "row-link clearfix") do
               span.priv-col Who can contact you via Leada?
-              span = best_in_place current_user, :who_can_contact, type: :select, collection: User::USER_TYPES, data: { field: 'who can contact you' }, activator: "#edit-contact"
+              span = best_in_place current_user, :who_can_contact, type: :select, collection: UserPreference::USER_TYPES, data: { field: 'who can contact you' }, activator: "#edit-contact"
               span.edit-row Edit
   li.settings-row
     .clearfix
@@ -41,12 +41,12 @@ ul.privacy-settings
           li.settings-row.clearfix
             = link_to("#", id: "edit-lookup-by-email", class: "row-link clearfix") do
               span.priv-col Who can look you up using the email address you provided?
-              span = best_in_place current_user, :who_can_lookup_using_email, type: :select, collection: User::USER_TYPES, data: { field: 'who can look you up using email' }, activator: "#edit-lookup-by-email"
+              span = best_in_place current_user, :who_can_lookup_using_email, type: :select, collection: UserPreference::USER_TYPES, data: { field: 'who can look you up using email' }, activator: "#edit-lookup-by-email"
               span.edit-row Edit
           li.settings-row.clearfix
             = link_to("#", id: "edit-lookup-by-name", class: "row-link clearfix") do
               span.priv-col Who can look you up via your full name or username?
-              span = best_in_place current_user, :who_can_lookup_by_name, type: :select, collection: User::USER_TYPES, data: { field: 'who can look you up by name' }, activator: "#edit-lookup-by-name"
+              span = best_in_place current_user, :who_can_lookup_by_name, type: :select, collection: UserPreference::USER_TYPES, data: { field: 'who can look you up by name' }, activator: "#edit-lookup-by-name"
               span.edit-row Edit
 
 javascript:

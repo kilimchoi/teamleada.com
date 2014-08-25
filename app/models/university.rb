@@ -13,4 +13,10 @@
 
 class University < ActiveRecord::Base
   has_many :enrollments
+
+  def self.find_by_university_params(params)
+    University.find_by(name: params[:university_name])
+  end
+
 end
+

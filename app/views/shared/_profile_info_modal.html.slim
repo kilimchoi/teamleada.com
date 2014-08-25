@@ -18,7 +18,7 @@
                 = f.fields_for :resumes do |resume|
                   - if resume.object.new_record?
                     = resume.file_field :resume_file
-                = f.input :who_can_see_resume, collection: User::USER_TYPES, label: "Select who can see my resume:", selected: User::CONNECTIONS_AND_RECRUITERS
+                = f.input :who_can_see_resume, collection: UserPreference::USER_TYPES, label: "Select who can see my resume:", selected: UserPreference::CONNECTIONS_AND_RECRUITERS
               .modal-footer
                 = f.submit "Submit", class: "btn btn-leada"
                 button.btn.btn-danger type="button" data-dismiss="modal" Cancel
