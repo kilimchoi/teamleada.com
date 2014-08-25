@@ -37,10 +37,11 @@ class ConfirmationsController < Devise::ConfirmationsController
   end
 
   def confirm
-    @original_token = params[resource_name].try(:[], :confirmation_token)
-    self.resource = resource_class.find_by_confirmation_token! @original_token
+    @original_token = params[:confirmation_token]
+    digested_token = Devise.token_generator.digest(self, :confirmation_token, @original_token)
+    self.resource = resource_class.find_by_confirmation_token(digested_token)
 
-    if resource.valid?
+    if !self.resource.nil? && !@original_token.nil? && resource.valid?
       self.resource.confirm!
       if resource.invited?
         invite = resource.invite
