@@ -15,6 +15,8 @@ class ProjectStatus < ActiveRecord::Base
   belongs_to :user
   belongs_to :project
 
+  delegate :category, to: :project, allow_nil: true
+
   scope :group_by_user, -> { order("user_id ASC") }
 
   before_save :set_start_date
