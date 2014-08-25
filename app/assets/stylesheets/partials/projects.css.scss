@@ -15,6 +15,14 @@
   background-color: #613C78;
 }
 
+.project-card-container {
+  margin-top: 15px;
+}
+
+.project-card {
+  min-height: 300px;
+}
+
 .project-title-row {
   // Not sure why this is happening. It has a weird transition when it's in the
   // iPad-like screen size.

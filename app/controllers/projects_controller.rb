@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  include ApplicationHelper
   load_and_authorize_resource except: [:show_interest]
   load_resource only: [:show_interest]
 
@@ -14,6 +15,8 @@ class ProjectsController < ApplicationController
     if signed_in? && current_user.is_company?
       @projects = current_user.try(:company).try(:projects) || Project.none
     end
+
+    @project_data = get_yaml_data_file("projects.yml")
 
     @highlighted_projects = @projects.first(3)
     @featured_projects = @projects.featured

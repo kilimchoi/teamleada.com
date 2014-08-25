@@ -48,8 +48,10 @@ class Project < ActiveRecord::Base
 
   scope :enabled, -> { where(enabled: true) }
   scope :costs_money, -> { enabled.where(paid: true) }
-  scope :featured, -> { enabled.where(featured: true) }
+  scope :featured, -> { unscoped.enabled.where(featured: true).newest_first }
   scope :not_featured, -> { enabled.where(featured: false) }
+
+  scope :newest_first, -> { order("uid DESC") }
 
   default_scope -> { order(:uid) }
 
@@ -67,9 +69,9 @@ class Project < ActiveRecord::Base
   COMING_SOON = "coming_soon"
 
   COLORS = ["red", "blue", "green", "purple"]
+  FEATURED_COLORS = ["purple", "blue"]
 
   class << self
-
     def random_set_of_colors(amount)
       COLORS.sample(amount)
     end
@@ -78,6 +80,9 @@ class Project < ActiveRecord::Base
       COLORS.sample
     end
 
+    def featured_color(index)
+      FEATURED_COLORS[index]
+    end
   end
 
   # Before Filters
