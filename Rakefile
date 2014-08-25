@@ -75,16 +75,16 @@ end
 task :migrate_to_user_profile => :environment do
   User.all.each do |user|
     profile = user.profile
-    profile.looking_for_opportunities = user.looking_for_opportunities
-    profile.location = user.location
-    profile.bio = user.bio
-    profile.phone = user.phone
-    profile.headline = user.headline
-    profile.industry = user.industry
-    profile.date_of_birth = user.date_of_birth
-    profile.interests = user.interests
-    profile.job_bookmarks_count = user.job_bookmarks_count
-    profile.country_code = user.country_code
+    profile.looking_for_opportunities = user.read_attribute(:looking_for_opportunities)
+    profile.location = user.read_attribute(:location)
+    profile.bio = user.read_attribute(:bio)
+    profile.phone = user.read_attribute(:phone)
+    profile.headline = user.read_attribute(:headline)
+    profile.industry = user.read_attribute(:industry)
+    profile.date_of_birth = user.read_attribute(:date_of_birth)
+    profile.interests = user.read_attribute(:interests)
+    profile.job_bookmarks_count = user.read_attribute(:job_bookmarks_count)
+    profile.country_code = user.read_attribute(:country_code)
     profile.save
   end
 end
@@ -92,14 +92,14 @@ end
 task :migrate_to_user_preferences => :environment do
   User.all.each do |user|
     preferences = user.preferences
-    preferences.who_can_see_profile = user.who_can_see_profile
-    preferences.who_can_send_friend_requests = user.who_can_send_friend_requests
-    preferences.who_can_contact = user.who_can_contact
-    preferences.who_can_lookup_using_email = user.who_can_lookup_using_email
-    preferences.who_can_lookup_by_name = user.who_can_lookup_by_name
-    preferences.who_can_see_resume = user.who_can_see_resume
-    preferences.wants_email_about_new_projects = user.wants_email_about_new_projects
-    preferences.wants_email_from_recruiters = user.wants_email_from_recruiters
+    preferences.who_can_see_profile = user.read_attribute(:who_can_see_profile)
+    preferences.who_can_send_friend_requests = user.read_attribute(:who_can_send_friend_requests)
+    preferences.who_can_contact = user.read_attribute(:who_can_contact)
+    preferences.who_can_lookup_using_email = user.read_attribute(:who_can_lookup_using_email)
+    preferences.who_can_lookup_by_name = user.read_attribute(:who_can_lookup_by_name)
+    preferences.who_can_see_resume = user.read_attribute(:who_can_see_resume)
+    preferences.wants_email_about_new_projects = user.read_attribute(:wants_email_about_new_projects)
+    preferences.wants_email_from_recruiters = user.read_attribute(:wants_email_from_recruiters)
     preferences.save
   end
 end
