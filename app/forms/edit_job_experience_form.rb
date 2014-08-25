@@ -83,9 +83,6 @@ class EditJobExperienceForm < Form
   # Validations
   #
   def end_date_or_present
-    puts 'validation time'
-    puts job_experience.end_date_present
-    puts job_experience.end_date
     if !job_experience.end_date_present && job_experience.end_date.nil?
       errors.add(:job_experience_start_date_month, "You must provide an end date or mark present.")
     end
