@@ -32,7 +32,8 @@
             .col-md-12
               .user-profile-sections#user-profile
                 = render partial: "users/profile", locals: { user: user, user_profile: user.profile, is_editing: is_editing }
-                = render partial: "users/profile/resume", locals: { user: user, is_editing: is_editing, is_company: is_company }
+                - unless is_company
+                  = render partial: "users/profile/resume", locals: { user: user, is_editing: is_editing, is_company: is_company }
 
         .col-md-6
           .row

@@ -32,15 +32,14 @@
     - user.completed_lessons.each do |project|
       - project_link = is_company ? project_company_user_path(user, project) : project_path(project)
 
-      = link_to project_link, class: "flat-button step-button" do
+      .flat-button.step-button
         span.fa.fa-trophy.icon-margin = project.title
 
     h3.title In Progress Lessons
     - if user.in_progress_lessons.count == 0
       h4 You do not currently have any in progress lessons yet.
     - user.in_progress_lessons.each do |project|
-      - project_link = is_company ? project_company_user_path(user, project) : project_path(project)
-      = link_to project.title, project_link
+      = project.title
       .progress
         - percentage = user.project_progress_percentage(project)
         .progress-bar aria-valuenow="#{percentage}" aria-valuemin="0" aria-valuemax="100" style="width: #{percentage}%"
