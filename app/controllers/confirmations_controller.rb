@@ -1,5 +1,26 @@
 class ConfirmationsController < Devise::ConfirmationsController
 
+  def show
+    if params[:confirmation_token].present?
+      @original_token = params[:confirmation_token]
+    elsif params[resource_name].try(:[], :confirmation_token).present?
+      @original_token = params[resource_name][:confirmation_token]
+    end
+
+    digested_token = Devise.token_generator.digest(self, :confirmation_token, @original_token)
+    self.resource = resource_class.find_by_confirmation_token digested_token
+
+    if !resource.nil? && resource.confirmed?
+      self.resource.confirm!
+      flash[:info] = "You have successfully changed your email address."
+      sign_in_and_redirect resource_name, resource
+      return
+    elsif resource.nil?
+      flash[:danger] = "The confirmation token you have entered has expired."
+      redirect_to root_path
+    end
+  end
+
   def show_linkedin_confirm
     if signed_in?
       flash[:warning] = "You're already logged in!"
