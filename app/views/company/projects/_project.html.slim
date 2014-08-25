@@ -18,14 +18,18 @@
             h3.title Project Overview
             p.project-overview
               = project.company_overview
-        .row.card
-          .col-md-6
-            h3.title User Presentation
-            iframe width="500" height="315" src="//www.youtube.com/embed/vFNKjci6i68" frameborder="0" allowfullscreen
-
-          .col-md-6
-            h3.title User Presentation Deck
-            iframe src="https://docs.google.com/presentation/d/1YUpbzAZ--nufbzCZlP5ozQa1KWNq3EGx27iN7t0K0O4/embed?start=false&loop=false&delayms=3000" frameborder="0" width="500" height="420" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"
+        - video = user.video_for_project(project).try(:content)
+        - presentation = user.presentation_for_project(project).try(:content)
+        - if video || presentation
+          .row.card
+            - if video
+              .col-md-6
+                h3.title User Presentation
+                iframe width="500" height="315" src="//www.youtube.com/embed/#{user.get_youtube_link_for_project(project)}" frameborder="0" allowfullscreen
+            - if presentation
+              .col-md-6
+                h3.title User Presentation Deck
+                iframe src="#{presentation}" frameborder="0" width="500" height="420" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"
 
     .row.card
       .col-md-12
