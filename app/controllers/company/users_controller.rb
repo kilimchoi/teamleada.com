@@ -2,6 +2,7 @@ class Company::UsersController < Company::BaseController
   load_and_authorize_resource
 
   def index
+    @users = current_user.company.viewable_users
     @users = @users.paginate(page: params[:page], per_page: User.company_per_page)
   end
 
