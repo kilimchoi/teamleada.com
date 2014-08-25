@@ -14,41 +14,12 @@
     = f.input :job_position_title,        label: "Position",
                                           placeholder: "Position",
                                           input_html: { value: job_experience.position_title }
-    .control-group.required
-      label.required.control-label
-        abbr title="required" *
-        |  Time Period
-      .controls
-        = f.input_field :job_experience_start_date_month, collection: Date::MONTHNAMES.compact,
-                                                          include_blank: "Month",
-                                                          selected: job_experience.start_date.try(:month_string),
-                                                          class: "inline-form-field"
-        = f.input_field :job_experience_start_date_year, label: false,
-                                                         placeholder: "Year",
-                                                         value: job_experience.start_date.try(:year),
-                                                         class: "inline-form-field year-input"
-        span
-          ' -
-        label.control-label class="#{section}-hide" style="#{'display:none;' unless job_experience.end_date_present}"
-          | Present
-        = f.input_field :job_experience_end_date_month, collection: Date::MONTHNAMES.compact,
-                                                        include_blank: "Month",
-                                                        selected: job_experience.end_date.try(:month_string),
-                                                        class: "inline-form-field #{section}-hide",
-                                                        style: "#{'display:none;' if job_experience.end_date_present}"
-        = f.input_field :job_experience_end_date_year, label: false,
-                                                       placeholder: "Year",
-                                                       value: job_experience.end_date.try(:year),
-                                                       class: "inline-form-field year-input #{section}-hide",
-                                                       style: "#{'display:none;' if job_experience.end_date_present}"
-        .checkbox_container
-          = f.input_field :job_experience_end_date_present, as: :boolean,
-                                                            boolean_style: :inline,
-                                                            data: { target: "#{section}" },
-                                                            checked: job_experience.end_date_present,
-                                                            class: "inline-form-field edit-form-end-date-present checkbox-form-control current-date-checkbox"
-          label.control-label.current-date-label
-            | I currently work here.
+    = render partial: "shared/forms/time_period_form", locals: { \
+      form_object: f,
+      item: job_experience,
+      section: section,
+      checkbox_label: "I currently work here.",
+    }
     = f.input :job_location,              label: "Location",
                                           placeholder: "Location",
                                           input_html: { value: job_experience.location }

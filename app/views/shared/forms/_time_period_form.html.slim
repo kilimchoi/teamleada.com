@@ -1,0 +1,42 @@
+// Required Variables:
+// item, checkbox_label, form_object, section
+
+// TODO(mark): Swap out all symbols and classes from job_experience to be named after the item's class
+
+- f = form_object
+
+.control-group.string.required.edit_job_experience_form_job_experience_start_date_month
+  label.string.required.control-label for="edit_job_experience_form_job_experience_start_date_month"
+    abbr title="required" *
+    |  Time Period
+  .controls
+    = f.input_field :job_experience_start_date_month, collection: Date::MONTHNAMES.compact,
+                                                      include_blank: "Month",
+                                                      selected: item.start_date.try(:month_string),
+                                                      class: "inline-form-field"
+    = f.input_field :job_experience_start_date_year, label: false,
+                                                     placeholder: "Year",
+                                                     value: item.start_date.try(:year),
+                                                     class: "inline-form-field year-input"
+    span
+      ' -
+    label.control-label class="#{section}-hide" style="#{'display:none;' unless item.end_date_present}"
+      | Present
+    = f.input_field :job_experience_end_date_month, collection: Date::MONTHNAMES.compact,
+                                                    include_blank: "Month",
+                                                    selected: item.end_date.try(:month_string),
+                                                    class: "inline-form-field #{section}-hide",
+                                                    style: "#{'display:none;' if item.end_date_present}"
+    = f.input_field :job_experience_end_date_year, label: false,
+                                                   placeholder: "Year",
+                                                   value: item.end_date.try(:year),
+                                                   class: "inline-form-field year-input #{section}-hide",
+                                                   style: "#{'display:none;' if item.end_date_present}"
+    .checkbox_container
+      = f.input_field :job_experience_end_date_present, as: :boolean,
+                                                        boolean_style: :inline,
+                                                        data: { target: "#{section}" },
+                                                        checked: item.end_date_present,
+                                                        class: "inline-form-field edit-form-end-date-present checkbox-form-control current-date-checkbox"
+      label.control-label.current-date-label = checkbox_label
+
