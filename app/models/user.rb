@@ -157,6 +157,10 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :resumes
   accepts_nested_attributes_for :profile_photos
 
+  validates_format_of :username, :with => /\A[A-Za-z0-9_]*\z/
+  validates :username, uniqueness: {case_sensitive: false}
+  validate :check_username
+
   extend FriendlyId
   friendly_id :username, use: :finders
 
@@ -174,6 +178,21 @@ class User < ActiveRecord::Base
 
   def == other_user
     self.email == other_user.email
+  end
+
+  #
+  # Validations (move these to form objects)
+  #
+  def check_username
+    if !self.new_record?
+      if self.username.nil? || self.username.blank?
+        errors.add(:username, "can't be blank")
+        return
+      end
+      if self.username.start_with?("_") || !/^[A-Za-z].*/.match(self.username)
+        errors.add(:username, "must start with a letter")
+      end
+    end
   end
 
   #

@@ -48,6 +48,12 @@ module UsersHelper
       linkedin_id:                 (auth.uid rescue nil),
       email:                       (auth.info.email rescue nil),
       nickname:                    (auth.info.nickname rescue nil),
+      linkedin_confirmed_at:       Time.now,
+      linkedin_updated_at:         Time.now,
+      password:                    Devise.friendly_token[0,20],
+    )
+
+    user.update(
       location:                    (auth.extra.raw_info.location.name rescue nil),
       country_code:                (auth.extra.raw_info.location.country.code rescue nil),
       bio:                         (auth.extra.raw_info.summary rescue nil),
@@ -55,13 +61,10 @@ module UsersHelper
       phone:                       (auth.extra.raw_info.phoneNumbers.values[1][0].phoneNumber rescue nil),
       headline:                    (auth.info.headline rescue nil),
       industry:                    (auth.info.industry rescue nil),
-      public_profile_url:             (auth.info.urls.public_profile rescue nil),
+      public_profile_url:          (auth.info.urls.public_profile rescue nil),
       date_of_birth:               self.extract_date(auth.extra.raw_info.dateOfBirth),
       interests:                   (auth.extra.raw_info.interests rescue nil),
       job_bookmarks_count:         (auth.extra.raw_info.jobBookmarks._total rescue nil),
-      linkedin_confirmed_at:       Time.now,
-      linkedin_updated_at:         Time.now,
-      password:                    Devise.friendly_token[0,20],
     )
 
     user.skip_confirmation!
