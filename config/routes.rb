@@ -32,7 +32,7 @@ TeamLeada::Application.routes.draw do
                      }
 
   devise_scope :user do
-    match 'confirm', to: "confirmations#confirm", as: :confirm, via: :patch
+    match 'confirm', to: "confirmations#confirm", as: :confirm, via: :get
     match 'linkedin-confirm', to: "confirmations#linkedin_confirm", as: :linkedin_confirm, via: :patch
     match 'linkedin-confirm', to: "confirmations#show_linkedin_confirm", as: :show_linkedin_confirm, via: :get
   end
