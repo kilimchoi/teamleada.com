@@ -21,12 +21,13 @@
 
   .row.project-card-container
     .col-md-12
-      .projects-container
-        .row
-          - @featured_projects.each_with_index do |project, index|
-            .col-md-6
-              .card.project-card class="project-color-#{Project.featured_color(index)}"
-                h1.center.featured-project-title = project.title
+      .row.card
+        .col-md-12
+          h1.center Featured
+
+  .row.project-card-container
+    .col-md-12
+      = render partial: "projects/extra_large_projects", locals: { projects: @featured_projects }
 
   .row.project-card-container
     .col-md-12
@@ -48,7 +49,7 @@
     .col-md-12
       = render partial: "projects/medium_projects", locals: { projects: @data_lessons }
 
-.row.project-card-container
+  .row.project-card-container
     .col-md-12
       .row.card
         .col-md-12

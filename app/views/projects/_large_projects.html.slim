@@ -1,9 +1,9 @@
-- projects.each_slice(3) do |slice|
+.projects-container
   .row
-    - slice.each do |project|
+    - projects.each do |project|
       .col-sm-4
-        .project-container.card
-          h3 = project.title
+        .project-container.card.project-card.large
+          h3.center = project.title
 
 /        .proj-modal class="no-hover" aria-hidden="true"
 /          = link_to "", data: { toggle: "modal", target: "##{project.url}" }, onclick: "modalPageView('#{project.full_url}')", class: "no-hover" do

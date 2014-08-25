@@ -1,0 +1,7 @@
+.projects-container
+  .row
+    - projects.each_with_index do |project, index|
+      .col-md-6
+        .card.project-card.extra-large class="project-color-#{Project.featured_color(index)}"
+          h1.center.featured-project-title = project.title
+
