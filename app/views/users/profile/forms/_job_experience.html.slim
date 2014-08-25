@@ -1,0 +1,37 @@
+/ Required variables:
+/ form, item, section, is_adding
+
+- job_experience = item
+
+= simple_form_for form, url: update_job_experience_user_profile_path,
+                        html: { class: "inline-profile-form" },
+                        remote: true do |f|
+  .form-inputs
+    = f.input :company_name,              autofocus: true,
+                                          label: "Company Name",
+                                          placeholder: "Company Name",
+                                          input_html: { value: job_experience.company_name }
+    = f.input :job_position_title,        label: "Position",
+                                          placeholder: "Position",
+                                          input_html: { value: job_experience.position_title }
+    = render partial: "shared/forms/time_period_form", locals: { \
+      form_object: f,
+      item: job_experience,
+      section: section,
+      checkbox_label: "I currently work here.",
+    }
+    = f.input :job_location,              label: "Location",
+                                          placeholder: "Location",
+                                          input_html: { value: job_experience.location }
+    - job_experience_summary_placeholder = is_adding ? "Tell us about your experience." : "Tell us about your experience at #{job_experience.company_name}."
+    = f.input :job_experience_summary,    as: :text,
+                                          label: "Summary",
+                                          placeholder: job_experience_summary_placeholder,
+                                          input_html: { rows: 8, value: job_experience.summary }
+    = f.hidden_field :job_experience_id, value: job_experience.id
+  .form-actions
+    = f.submit "Save", class: "edit-form-save-button"
+    = link_to "Cancel", cancel_update_user_profile_path, method: :post, remote: true, class: "edit-form-cancel-button"
+    - unless is_adding
+      = link_to "Remove this position", remove_job_experience_user_profile_path(id: job_experience.id), method: :delete, remote: true, class: "edit-form-remove-position"
+

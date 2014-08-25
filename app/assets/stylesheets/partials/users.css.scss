@@ -158,3 +158,23 @@
   margin-left: 190px;
   max-width: 800px;
 }
+
+// New Profile Page
+.profile-overview {
+  position: relative;
+  float: left;
+  min-width: 400px;
+  height: 100%;
+}
+
+.profile-linkedin-integration {
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+
+  @include breakpoint($mobile) {
+    // TODO(mark): This doesn't look right on iPad styled screens
+    position: relative;
+  }
+}
+

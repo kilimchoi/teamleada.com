@@ -37,6 +37,15 @@ TeamLeada::Application.routes.draw do
     match 'linkedin-confirm', to: "confirmations#show_linkedin_confirm", as: :show_linkedin_confirm, via: :get
   end
 
+  match "profile", to: "users#profile", as: "show_user_profile", via: :get
+  match "profile/edit", to: "users#edit_profile", as: "edit_user_profile", via: :get
+
+  match "profile/edit/cancel", to: "user_profiles#cancel_update", as: "cancel_update_user_profile", via: :post
+  match "profile/edit/about", to: "user_profiles#update_about", as: "update_about_user_profile", via: :post
+  match "profile/edit/job_experience", to: "user_profiles#update_job_experience", as: "update_job_experience_user_profile", via: :post
+  match "profile/edit/job_experience", to: "user_profiles#remove_job_experience", as: "remove_job_experience_user_profile", via: :delete
+  match "profile/edit/enrollment", to: "user_profiles#update_enrollment", as: "update_enrollment_user_profile", via: :post
+
   match 'settings', to: 'users#edit', as: 'edit_user', via: :get
 
   # Debug Bar

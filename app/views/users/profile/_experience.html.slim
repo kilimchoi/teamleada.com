@@ -1,0 +1,14 @@
+/ Required Variables:
+/ form, user, is_editing
+
+= render partial: "users/profile/collection_section", locals: { \
+  form: form,
+  user: user,
+  is_editing: is_editing,
+  base_section: "job-experience",
+  collection: user.job_experiences,
+  collection_name: "job_experience",
+  section_title: "Experience",
+  add_name: "Add a Position",
+}
+

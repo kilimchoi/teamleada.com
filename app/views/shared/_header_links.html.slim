@@ -3,7 +3,6 @@
     - if Feature.enabled?("ask_peter")
       li
         = link_to "Ask Peter", question_answer_path
-    = active_li_link "Invite", invites_path
     = active_li_link "Projects", projects_path
     = active_li_link "Handbook", handbook_path
     = active_li_link "About", about_path
@@ -19,7 +18,6 @@
     - if Feature.enabled?("ask_peter")
       li
         = link_to "Ask Peter", question_answer_path
-    = active_li_link "Invite", invites_path
     = active_li_link "Projects", projects_path
     = active_li_link "Handbook", handbook_path
     = active_li_link "About", about_path

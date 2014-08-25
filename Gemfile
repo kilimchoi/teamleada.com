@@ -19,7 +19,7 @@ gem 'sprockets', '2.11.0'
 gem 'pg', '0.17.1'
 gem 'jbuilder', '~> 1.2'
 gem 'devise', '~> 3.2.3'
-gem 'simple_form', '~> 3.0.1'
+gem 'simple_form', '~> 3.1.0.rc2'
 gem 'rails-reveal-js', '~> 2.6.1.2'
 gem 'rails-rename', '~> 1.0.0'
 gem 'cancancan', '~> 1.7'
@@ -67,12 +67,16 @@ gem 'pg_search'
 gem 'paperclip', '~> 4.1'
 gem 'aws-sdk', '~> 1.5.7'
 
+# Default Active Record values
+gem "default_value_for", "~> 3.0.0"
+
 group :doc do
   gem 'sdoc', require: false
 end
 
 group :development, :test do
   gem 'annotate', '~> 2.6.1'
+  gem 'awesome_print', '~> 1.2.0'
   gem 'better_errors', '~> 1.1.0'
   gem 'binding_of_caller', '~> 0.7.2'
   gem 'bullet', '~> 4.8.0'
