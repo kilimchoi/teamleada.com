@@ -157,6 +157,10 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :resumes
   accepts_nested_attributes_for :profile_photos
 
+  validates_format_of :username, :with => /\A[A-Za-z0-9_]*\z/
+  validates :username, uniqueness: {case_sensitive: false}
+  validate :check_username
+
   extend FriendlyId
   friendly_id :username, use: :finders
 
@@ -174,6 +178,21 @@ class User < ActiveRecord::Base
 
   def == other_user
     self.email == other_user.email
+  end
+
+  #
+  # Validations (move these to form objects)
+  #
+  def check_username
+    if !self.new_record?
+      if self.username.nil? || self.username.blank?
+        errors.add(:username, "can't be blank")
+        return
+      end
+      if self.username.start_with?("_") || !/^[A-Za-z].*/.match(self.username)
+        errors.add(:username, "must start with a letter")
+      end
+    end
   end
 
   #
@@ -473,6 +492,34 @@ class User < ActiveRecord::Base
     false
   end
 
+  def all_projects(completed, category)
+    project_statuses.where(completed: completed).collect{ |project_status| project_status.project }.select{ |project| project.category == category }
+  end
+
+  def challenges(completed)
+    all_projects(completed, Project::CHALLENGE)
+  end
+
+  def completed_challenges
+    challenges(true)
+  end
+
+  def in_progress_challenges
+    challenges(false)
+  end
+
+  def lessons(completed)
+    all_projects(completed, Project::LESSON)
+  end
+
+  def completed_lessons
+    lessons(true)
+  end
+
+  def in_progress_lessons
+    lessons(false)
+  end
+
   def completed_projects
     project_statuses.where(completed: true).collect{ |project_status| project_status.project }
   end
@@ -488,6 +535,23 @@ class User < ActiveRecord::Base
 
   def project_status_for_project(project)
     project_statuses.find_by(project: project)
+  end
+
+  def code_submission_of_type_for_project(type, project)
+    project.submission_contexts.where(submission_type: type).collect{ |submission_context| submission_context.code_submissions_for_user(self).first }.first
+  end
+
+  def video_for_project(project)
+    code_submission_of_type_for_project("presentation_vid_linK", project)
+  end
+
+  def get_youtube_link_for_project(project)
+    video = video_for_project(project)
+    video.content.split("?v=").last.split("&").first
+  end
+
+  def presentation_for_project(project)
+    code_submission_of_type_for_project("presentation_slides_link", project)
   end
 
   def code_submissions_for_project(project)

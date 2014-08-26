@@ -2,7 +2,7 @@
   .profile-image-container
     .profile-photo-selector
       = image_tag user.profile_photo, class: "profile-image"
-    - if is_editing
+    - if is_editing || is_admin
       .popover-container
         .add-profile-photo-button.dropdown
           = link_to "#", data: { toggle: "dropdown" }, class: "add-profile-photo-link", id: "add-profile-photo-dropdown" do

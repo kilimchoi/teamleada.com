@@ -31,7 +31,7 @@ class Impression < ActiveRecord::Base
   MONTHLY = "monthly"
   TIMEFRAMES = [DAILY, WEEKLY, MONTHLY]
 
-  CATEGORIES = ["projects"]
+  CATEGORIES = ["all", "projects"]
 
   belongs_to :user
 
