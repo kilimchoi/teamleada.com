@@ -1,9 +1,0 @@
-.projects-container
-  - projects.each_slice(4) do |slice|
-    .row.row-table.row-full-height
-      - slice.each do |project|
-        .col-sm-3.col-table-cell
-          = link_to project, class: "no-underline" do
-            .project-container.card.project-card.medium.project-card-colored class="project-color-#{project.color}"
-              = render partial: "projects/project_card", locals: { project: project }
-
