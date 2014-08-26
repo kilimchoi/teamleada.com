@@ -15,6 +15,9 @@
   background-color: #613C78;
 }
 
+.projects-container {
+}
+
 .project-card-container {
   margin-top: 15px;
 }
@@ -26,6 +29,10 @@
 
   &.large {
     min-height: 250px;
+
+    h1 {
+      font-size: 24px;
+    }
   }
 
   &.medium {
@@ -79,8 +86,17 @@
   }
 }
 
+.project-card-white {
+  color: #333333;
+
+  a {
+    color: #333333;
+  }
+}
+
 .project-info {
   text-align: center;
+  margin-bottom: 50px;
 }
 
 .project-footer {
