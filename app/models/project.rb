@@ -80,6 +80,13 @@ class Project < ActiveRecord::Base
     COMING_SOON => "red",
   }
 
+  PROJECT_SECTION = {
+    FEATURED => "featured",
+    CHALLENGE => "data-challenges",
+    LESSON => "data-lessons",
+    COMING_SOON => "coming-soon",
+  }
+
   class << self
     def random_set_of_colors(amount)
       COLORS.sample(amount)
@@ -101,10 +108,11 @@ class Project < ActiveRecord::Base
 
   # Attributes
   def color
-    if self.featured
-      return PROJECT_COLORS[FEATURED]
-    end
-    PROJECT_COLORS[self.category]
+    PROJECT_COLORS[ self.featured ? FEATURED : self.category ]
+  end
+
+  def section
+    PROJECT_SECTION[ self.featured ? FEATURED : self.category ]
   end
 
   def deadline_in_days
