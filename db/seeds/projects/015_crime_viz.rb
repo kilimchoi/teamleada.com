@@ -12,6 +12,7 @@ project = Project.create!(
   description: main_page_content,
   short_description: "Given a set of recent San Francisco crime data, you are tasked with finding some meaningful insights and creating visualization(s) which presents your findings.",
   enabled: true,
+  number: 15,
   has_submit: true,
   uid: 15,
   difficulty: 'Advanced',
