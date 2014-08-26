@@ -77,6 +77,7 @@ class Project < ActiveRecord::Base
     FEATURED => "purple",
     CHALLENGE => "blue",
     LESSON => "green",
+    COMING_SOON => "red",
   }
 
   class << self
