@@ -33,7 +33,7 @@ h3, .h3 {
 }
 
 .row-full-width {
-  width: 100%;
+  width: calc(100% + 30px);
 }
 
 .row-table {

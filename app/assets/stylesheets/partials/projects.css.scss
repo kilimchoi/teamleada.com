@@ -26,11 +26,11 @@
   @include transition-ease-in-out(200ms);
 
   &.extra-large {
-    min-height: 300px;
+    min-height: 350px;
   }
 
   &.large {
-    min-height: 250px;
+    min-height: 450px;
 
     h1 {
       font-size: 24px;
@@ -38,7 +38,7 @@
   }
 
   &.medium {
-    min-height: 200px;
+    min-height: 500px;
 
     h1 {
       font-size: 22px;
@@ -46,7 +46,7 @@
   }
 
   &.small {
-    min-height: 150px;
+    min-height: 400px;
 
     h1 {
       font-size: 18px;
