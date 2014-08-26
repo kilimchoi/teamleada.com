@@ -1,0 +1,22 @@
+// Required Variables:
+// project, colored (default false)
+
+- colored ||= false
+
+h1.center class="#{'featured-project-title' if colored}" = project.title
+.row
+  .col-md-8.col-md-offset-2
+    .project-info
+      = project.short_description
+    .project-action
+.project-footer
+  .row
+    .col-md-6
+      ' Difficulty:
+      = project.difficulty
+    .col-md-6.right-align
+      - unless project.deadline.nil?
+        ' Deadline:
+        = project.deadline_in_days
+        |  days
+
