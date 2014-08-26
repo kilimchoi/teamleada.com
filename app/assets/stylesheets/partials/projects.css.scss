@@ -68,6 +68,23 @@
   }
 }
 
+.highlighted-project {
+  &:hover:after,
+  &:after {
+    position: absolute;
+    top: 0;
+    left: 15px;
+    right: 15px;
+    bottom: 10px;
+
+    background: #000000;
+    opacity: 0.4;
+    content: " ";
+
+    @include border-radius(3px);
+  }
+}
+
 .featured-project-title {
   color: white;
 }

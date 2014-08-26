@@ -28,6 +28,24 @@ h3, .h3 {
   }
 }
 
+#backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+
+  background-color: #000000;
+  opacity: 0.5;
+  display: none;
+}
+
+.highlighted-element {
+  position: relative;
+  z-index: 1001;
+}
+
 .row-full-height {
   height: 100%;
 }
