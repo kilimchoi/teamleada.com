@@ -11,7 +11,6 @@ class ProjectsController < ApplicationController
   def project_info
     respond_to do |format|
       format.js {
-        @section = params[:section]
         render partial: "projects/project_info"
       }
     end
