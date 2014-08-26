@@ -7,7 +7,7 @@ class Ability
     alias_action :index, :show, to: :view
 
     # Everyone
-    can :index, Project
+    can [:index, :project_info], Project
 
     can :show, Lesson do |lesson|
       !lesson.project.deadline || (lesson.project.deadline && user.project_status_for_project(lesson.project).has_time_remaining?)
