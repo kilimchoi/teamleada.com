@@ -1,0 +1,15 @@
+- if signed_in? && current_user.has_project_access? && project.category != Project::COMING_SOON
+  - project_status = ProjectStatus.find_by(user: current_user, project: project)
+  - if current_user.has_finished_project?(project)
+    | View Completed Project
+  - elsif !project_status.nil? && project_status.expired?
+    | View Expired Project
+  - elsif current_user.has_started_project?(project)
+    | Continue this Project
+  - else
+    | Start this Project!
+- elsif signed_in? && current_user.is_company? && current_user.owns_project?(project)
+  | View this Project
+- else
+  | I'm Interested
+  = link_to "I'm Interested", interest_project_path(project), method: :post, class: "btn btn-leada"

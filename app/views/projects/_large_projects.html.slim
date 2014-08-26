@@ -1,10 +1,10 @@
 .projects-container
-  .row
+  .row.row-table.row-full-height
     - projects.each do |project|
       .col-sm-4
         = link_to project, class: "no-underline" do
-          .project-container.card.project-card.large
-            h3.center = project.title
+          .project-container.card.project-card.large.project-card-white
+            = render partial: "projects/project_card", locals: { project: project, colored: false }
 
 /        .proj-modal class="no-hover" aria-hidden="true"
 /          = link_to "", data: { toggle: "modal", target: "##{project.url}" }, onclick: "modalPageView('#{project.full_url}')", class: "no-hover" do

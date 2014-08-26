@@ -1,24 +1,8 @@
 .projects-container
-  .row
+  .row.row-table.row-full-height
     - projects.each_with_index do |project, index|
       .col-md-6
         = link_to project, class: "no-underline" do
-          .card.project-card.extra-large.project-card-colored class="project-color-#{Project.featured_color(index)}"
-            h1.center.featured-project-title = project.title
-            .row
-              .col-md-6.col-md-offset-3
-                .project-info
-                  = project.short_description
-                .project-action
-                  = render partial: "projects/project_action", locals: { project: project }
-            .project-footer
-              .row
-                .col-md-6
-                  ' Difficulty:
-                  = project.difficulty
-                .col-md-6.right-align
-                  - unless project.deadline.nil?
-                    ' Deadline:
-                    = project.deadline_in_days
-                    |  days
+          .card.project-card.extra-large.project-card-colored.project-color-purple
+            = render partial: "projects/project_card", locals: { project: project, colored: true }
 
