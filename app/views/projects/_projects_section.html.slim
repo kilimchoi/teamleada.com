@@ -1,0 +1,12 @@
+// Required Variables:
+// projects, per_row, size
+
+.projects-container
+  - projects.each_slice(per_row) do |slice|
+    .row.row-table.row-full-height.row-full-width
+      - slice.each do |project|
+        .col-table-cell class="col-md-#{12 / per_row}"
+          = link_to project, class: "no-underline" do
+            .project-container.card.project-card.project-card-colored class="project-color-#{project.color} #{size}"
+              = render partial: "projects/project_card", locals: { project: project, size: size }
+
