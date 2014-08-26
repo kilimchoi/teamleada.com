@@ -9,7 +9,7 @@
           .item class="#{'active' if index == 0}"
             .media-cover-photo.media-cover-dark class="#{}"
             .row.row-table.row-full-height.project-title-row
-              = link_to project, class: "col-middle text-center col-md-12 project-color-#{project.color}" do
+              = link_to info_project_path(project), remote: true, class: "col-middle text-center col-md-12 project-color-#{project.color}" do
                 h1.media-title = project.title
                 h3.media-subtitle = project.difficulty
 
@@ -21,19 +21,19 @@
 
   .row.project-card-container
     .col-md-12
-      = render partial: "projects/projects_section", locals: { projects: @featured_projects, size: "extra-large", per_row: 2, section: "featured" }
+      = render partial: "projects/projects_section", locals: { projects: @featured_projects, size: "extra-large", per_row: 2 }
 
   .row.project-card-container
     .col-md-12
-      = render partial: "projects/projects_section", locals: { projects: @data_challenges, size: "large", per_row: 3, section: "data-challenges" }
+      = render partial: "projects/projects_section", locals: { projects: @data_challenges, size: "large", per_row: 3 }
 
   .row.project-card-container
     .col-md-12
-      = render partial: "projects/projects_section", locals: { projects: @data_lessons, size: "medium", per_row: 4, section: "data-lessons" }
+      = render partial: "projects/projects_section", locals: { projects: @data_lessons, size: "medium", per_row: 4 }
 
   .row.project-card-container
     .col-md-12
-      = render partial: "projects/projects_section", locals: { projects: @coming_soon, size: "small", per_row: 6, section: "coming-soon" }
+      = render partial: "projects/projects_section", locals: { projects: @coming_soon, size: "small", per_row: 6 }
 
   - if signed_in? && current_user.has_project_access?
     .row.card

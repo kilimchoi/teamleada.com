@@ -1,10 +1,10 @@
-$("#project-info-<%= @section %>").html("<%= raw escape_javascript(render(partial: "projects/project_info.html.slim", locals: { project: @project })) %>")
+$("#project-info-<%= @project.section %>").html("<%= raw escape_javascript(render(partial: "projects/project_info.html.slim", locals: { project: @project })) %>")
 
 // highlight the project on the side
 
 
 // scroll to section
 $("html, body").animate({
-  scrollTop: $("#project-section-title-<%= @section %>").offset().top - 60
+  scrollTop: $("#project-section-title-<%= @project.section %>").offset().top - 60
 }, 500);
 

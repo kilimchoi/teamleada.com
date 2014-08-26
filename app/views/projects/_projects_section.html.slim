@@ -1,5 +1,7 @@
 // Required Variables:
-// projects, per_row, size
+// projects, size, section
+
+- section = projects.first.section
 
 .projects-container
   .row.card id="project-section-title-#{section}"
@@ -9,7 +11,7 @@
   .row
     .col-md-6
       - projects.each do |project|
-        = link_to info_project_path(project, {section: section}), remote: true, class: "no-underline" do
+        = link_to info_project_path(project), remote: true, class: "no-underline" do
           .row.row-table.row-full-height.row-full-width
             .col-md-12.col-middle
               .project-container.card.project-card.project-card-colored class="project-color-#{project.color} #{size}"
