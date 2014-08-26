@@ -20,8 +20,20 @@ h3, .h3 {
   background-color: $main-background-color;
 }
 
+.text-contrast {
+  color: #ffffff;
+
+  &:hover {
+    color: #ffffff;
+  }
+}
+
 .row-full-height {
   height: 100%;
+}
+
+.row-full-width {
+  width: 100%;
 }
 
 .row-table {
@@ -32,7 +44,10 @@ h3, .h3 {
   vertical-align: middle;
 }
 
-.col-table-cell,
+.col-table-cell {
+  display: table-cell;
+}
+
 .col-top,
 .col-middle,
 .col-bottom {

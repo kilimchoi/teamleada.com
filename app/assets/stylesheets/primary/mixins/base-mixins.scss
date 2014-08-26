@@ -13,3 +13,9 @@
   bottom: 0;
 }
 
+@mixin transition-ease-in-out($duration) {
+  -webkit-transition: opacity ease-in-out $duration;
+  -moz-transition: opacity ease-in-out $duration;
+  -o-transition: opacity ease-in-out $duration;
+  transition: opacity ease-in-out $duration;
+}

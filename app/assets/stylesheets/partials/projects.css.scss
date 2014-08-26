@@ -23,6 +23,8 @@
 }
 
 .project-card {
+  @include transition-ease-in-out(200ms);
+
   &.extra-large {
     min-height: 300px;
   }
@@ -51,11 +53,23 @@
     bottom: 10px;
 
     background: #000000;
-    opacity: 0.2;
+    opacity: 0.1;
     content: " ";
 
     @include border-radius(3px);
   }
+}
+
+.project-title-extra-large {
+  
+}
+
+.project-title-large {
+  
+}
+
+.project-title-small {
+  font-size: 18px;
 }
 
 .featured-project-title {
