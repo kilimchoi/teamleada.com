@@ -1,11 +1,20 @@
 class ProjectsController < ApplicationController
   include ApplicationHelper
-  load_and_authorize_resource except: [:show_interest]
-  load_resource only: [:show_interest]
+  load_and_authorize_resource except: [:show_interest, :project_info]
+  load_resource only: [:show_interest, :project_info]
 
   def show
     @project_status = ProjectStatus.where(user: current_user, project: @project).first_or_create
     @project_status.save
+  end
+
+  def project_info
+    respond_to do |format|
+      format.js {
+        @section = params[:section]
+        render partial: "projects/project_info"
+      }
+    end
   end
 
   def index

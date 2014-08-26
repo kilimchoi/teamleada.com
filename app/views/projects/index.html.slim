@@ -21,43 +21,19 @@
 
   .row.project-card-container
     .col-md-12
-      .row.card
-        .col-md-12
-          h1.center Featured
+      = render partial: "projects/projects_section", locals: { projects: @featured_projects, size: "extra-large", per_row: 2, section: "featured" }
 
   .row.project-card-container
     .col-md-12
-      = render partial: "projects/projects_section", locals: { projects: @featured_projects, size: "extra-large", per_row: 2 }
+      = render partial: "projects/projects_section", locals: { projects: @data_challenges, size: "large", per_row: 3, section: "data-challenges" }
 
   .row.project-card-container
     .col-md-12
-      .row.card
-        .col-md-12
-          h1.center Data Challenges
+      = render partial: "projects/projects_section", locals: { projects: @data_lessons, size: "medium", per_row: 4, section: "data-lessons" }
 
   .row.project-card-container
     .col-md-12
-      = render partial: "projects/projects_section", locals: { projects: @data_challenges, size: "large", per_row: 3 }
-
-  .row.project-card-container
-    .col-md-12
-      .row.card
-        .col-md-12
-          h1.center Data Lessons
-
-  .row.project-card-container
-    .col-md-12
-      = render partial: "projects/projects_section", locals: { projects: @data_lessons, size: "medium", per_row: 4 }
-
-  .row.project-card-container
-    .col-md-12
-      .row.card
-        .col-md-12
-          h1.center Coming Soon!
-
-  .row.project-card-container
-    .col-md-12
-      = render partial: "projects/projects_section", locals: { projects: @coming_soon, size: "small", per_row: 6 }
+      = render partial: "projects/projects_section", locals: { projects: @coming_soon, size: "small", per_row: 6, section: "coming-soon" }
 
   - if signed_in? && current_user.has_project_access?
     .row.card
