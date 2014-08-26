@@ -3,8 +3,8 @@
     - projects.each do |project|
       .col-sm-4.col-table-cell
         = link_to project, class: "no-underline" do
-          .project-container.card.project-card.large.project-card-white
-            = render partial: "projects/project_card", locals: { project: project, colored: false }
+          .project-container.card.project-card.large.project-card-colored class="project-color-#{project.color}"
+            = render partial: "projects/project_card", locals: { project: project }
 
 /        .proj-modal class="no-hover" aria-hidden="true"
 /          = link_to "", data: { toggle: "modal", target: "##{project.url}" }, onclick: "modalPageView('#{project.full_url}')", class: "no-hover" do

@@ -27,7 +27,7 @@
 
   .row.project-card-container
     .col-md-12
-      = render partial: "projects/extra_large_projects", locals: { projects: @featured_projects }
+      = render partial: "projects/projects_section", locals: { projects: @featured_projects, size: "extra-large", per_row: 2 }
 
   .row.project-card-container
     .col-md-12
@@ -37,7 +37,7 @@
 
   .row.project-card-container
     .col-md-12
-      = render partial: "projects/large_projects", locals: { projects: @data_challenges }
+      = render partial: "projects/projects_section", locals: { projects: @data_challenges, size: "large", per_row: 3 }
 
   .row.project-card-container
     .col-md-12
@@ -47,7 +47,7 @@
 
   .row.project-card-container
     .col-md-12
-      = render partial: "projects/medium_projects", locals: { projects: @data_lessons }
+      = render partial: "projects/projects_section", locals: { projects: @data_lessons, size: "medium", per_row: 4 }
 
   .row.project-card-container
     .col-md-12
@@ -57,7 +57,7 @@
 
   .row.project-card-container
     .col-md-12
-      = render partial: "projects/small_projects", locals: { projects: @coming_soon }
+      = render partial: "projects/projects_section", locals: { projects: @coming_soon, size: "small", per_row: 6 }
 
   - if signed_in? && current_user.has_project_access?
     .row.card

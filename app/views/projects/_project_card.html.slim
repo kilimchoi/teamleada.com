@@ -1,14 +1,13 @@
 // Required Variables:
-// project, colored (default false)
+// project, size
 
-- colored ||= false
-
-h1.center class="#{'featured-project-title' if colored}" = project.title
+h1.center.text-contrast class="project-title-#{size}" = project.title
 .row
   .col-md-8.col-md-offset-2
     .project-info
       = project.short_description
     .project-action
+
 .project-footer
   .row
     .col-md-6
