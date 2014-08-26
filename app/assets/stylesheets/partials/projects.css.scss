@@ -71,3 +71,24 @@
   }
 }
 
+.project-card-colored {
+  color: white;
+
+  a {
+    color: white;
+  }
+}
+
+.project-info {
+  text-align: center;
+}
+
+.project-footer {
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  bottom: 10px;
+
+  padding: 10px;
+}
+

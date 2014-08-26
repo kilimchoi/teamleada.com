@@ -2,8 +2,9 @@
   .row
     - projects.each do |project|
       .col-sm-4
-        .project-container.card.project-card.large
-          h3.center = project.title
+        = link_to project, class: "no-underline" do
+          .project-container.card.project-card.large
+            h3.center = project.title
 
 /        .proj-modal class="no-hover" aria-hidden="true"
 /          = link_to "", data: { toggle: "modal", target: "##{project.url}" }, onclick: "modalPageView('#{project.full_url}')", class: "no-hover" do
