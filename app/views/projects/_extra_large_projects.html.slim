@@ -1,7 +1,7 @@
 .projects-container
   .row.row-table.row-full-height
     - projects.each_with_index do |project, index|
-      .col-md-6
+      .col-md-6.col-table-cell
         = link_to project, class: "no-underline" do
           .card.project-card.extra-large.project-card-colored.project-color-purple
             = render partial: "projects/project_card", locals: { project: project, colored: true }
