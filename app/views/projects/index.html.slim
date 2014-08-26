@@ -9,7 +9,7 @@
           .item class="#{'active' if index == 0}"
             .media-cover-photo.media-cover-dark class="#{}"
             .row.row-table.row-full-height.project-title-row
-              = link_to project, class: "col-middle text-center col-md-12 project-color-#{highlighted_project_data.color}" do
+              = link_to project, class: "col-middle text-center col-md-12 project-color-#{project.color}" do
                 h1.media-title = project.title
                 h3.media-subtitle = project.difficulty
 

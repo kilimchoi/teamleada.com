@@ -3,6 +3,6 @@
     - projects.each_with_index do |project, index|
       .col-md-6.col-table-cell
         = link_to project, class: "no-underline" do
-          .card.project-card.extra-large.project-card-colored.project-color-purple
+          .card.project-card.extra-large.project-card-colored class="project-color-#{project.color}"
             = render partial: "projects/project_card", locals: { project: project, colored: true }
 
