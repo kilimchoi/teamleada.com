@@ -2,7 +2,7 @@
 
 .container-fluid.full-container
   .row
-    #carousel.carousel.slide.carousel-home data-ride="carousel" data-interval="5000"
+    #home-carousel.carousel.slide.carousel-home data-ride="carousel" data-interval="5000"
       .carousel-inner.carousel-home-inner
         - @home.carousel.each_with_index do |item, index|
           .item class="#{'active' if index == 0}"
