@@ -739,6 +739,7 @@ class User < ActiveRecord::Base
   def deny_project_access(project)
     @project_status = ProjectStatus.find_by(project: project, user: self)
     @project_status.completed = false
+    @project_status.save
     send_deny_project_access_email(project)
   end
 

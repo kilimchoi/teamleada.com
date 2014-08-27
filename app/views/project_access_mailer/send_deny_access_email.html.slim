@@ -5,7 +5,7 @@ p
 p
   ' We've reviewed your submission for
   = @project.title
-  '  , but at this time, we cannot grant you access to more data projects.
+  ' , but at this time, we cannot grant you access to more data projects.
   ' Did you make sure that your code runs correctly?
   ' Did you make sure that the visualization your code creates matches the screenshot that you uploaded?
 p
@@ -13,7 +13,7 @@ p
 
 p
   ' Here's a link to the project for convenience:
-  = link_to @project.title, project_path(@project)
+  = link_to @project.title, project_url(@project)
 p
   | -- TeamLeada
 
