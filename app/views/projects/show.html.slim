@@ -30,7 +30,7 @@
                   = percentage
                   | %
 
-        - if current_user.is_waiting_on_evaluations_for_project?(@project) && @project.uid == 15
+        - if current_user.is_waiting_on_evaluations_for_project?(@project) && @project.grants_project_access
           .row.card
             .col-md-12
               h2 Thanks for submitting!

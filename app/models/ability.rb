@@ -37,7 +37,7 @@ class Ability
       else
         # Only students
         can [:show, :check_submission, :complete, :submit_resource, :purchase, :resource], Project do |project|
-          project.uid == 15 || (user.has_project_access? && (!project.paid || !user.has_not_paid_for_project?(project)))
+          project.grants_project_access || (user.has_project_access? && (!project.paid || !user.has_not_paid_for_project?(project)))
         end
 
 #        can [:index, :create], Invite
