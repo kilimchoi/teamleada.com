@@ -11,7 +11,13 @@
     = link_to "Continue this project", project_path(project), class: "project-action-button project-color-#{project.color}"
   - else
     = link_to "View this project!", project_path(project), class: "project-action-button project-color-#{project.color}"
+
 - elsif signed_in? && current_user.is_company? && current_user.owns_project?(project)
   = link_to "View this project", project_path(project), class: "project-action-button project-color-#{project.color}"
+
+- elsif signed_in? && project.uid == 15
+  // Special project that gives access
+  = link_to "View this project and get project access!", project_path(project), class: "project-action-button project-color-#{project.color}"
+
 - else
   = link_to "I'm Interested", interest_project_path(project), method: :post, class: "project-action-button project-color-#{project.color}"

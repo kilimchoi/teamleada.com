@@ -30,6 +30,13 @@
                   = percentage
                   | %
 
+        - if current_user.is_waiting_on_evaluations_for_project?(@project) && @project.uid == 15
+          .row.card
+            .col-md-12
+              h2 Thanks for submitting!
+              p.large-font
+                | Please double check that the visualization your code creates and the image you attach are the same! We will reach back out shortly with an access key.
+
         .row.card
           .col-md-12
             h1.title Project Details
