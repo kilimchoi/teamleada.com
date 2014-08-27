@@ -25,15 +25,15 @@
 
   .row.project-card-container
     .col-md-12
-      = render partial: "projects/projects_section", locals: { projects: @data_challenges, size: "large", per_row: 3 }
+      = render partial: "projects/projects_section", locals: { projects: @data_challenges, size: "large", per_row: 2 }
 
   .row.project-card-container
     .col-md-12
-      = render partial: "projects/projects_section", locals: { projects: @data_lessons, size: "medium", per_row: 4 }
+      = render partial: "projects/projects_section", locals: { projects: @data_lessons, size: "medium", per_row: 3 }
 
   .row.project-card-container
     .col-md-12
-      = render partial: "projects/projects_section", locals: { projects: @coming_soon, size: "small", per_row: 6 }
+      = render partial: "projects/projects_section", locals: { projects: @coming_soon, size: "small", per_row: 3 }
 
   - if signed_in? && current_user.has_project_access?
     .row.card

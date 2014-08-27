@@ -1,11 +1,13 @@
-$("#project-info-<%= @project.section %>").html("<%= raw escape_javascript(render(partial: "projects/project_info.html.slim", locals: { project: @project })) %>")
+$("#project-inner-<%= @project.uid %>").html("<%= raw escape_javascript(render(partial: "projects/project_info.html.slim", locals: { project: @project })) %>")
 
-// highlight the project on the side
-$(".highlighted-project").removeClass("highlighted-project");
-$(".project-<%= @project.section %>").addClass("highlighted-project");
-$("#project-<%= @project.uid %>").removeClass("highlighted-project");
+// Hide all open cards
+$(".project-card-inner").hide();
 
-// scroll to section
+// Show the card you clicked on
+$("#project-inner-<%= @project.uid %>").fadeIn(300);
+
+// Scroll to section
 $("html, body").animate({
   scrollTop: $("#project-section-title-<%= @project.section %>").offset().top - 60
 }, 500);
+
