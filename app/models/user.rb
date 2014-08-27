@@ -754,11 +754,11 @@ class User < ActiveRecord::Base
   end
 
   def send_grant_project_access_email(project)
-
+    ProjectAccessMailer.send_grant_email(self, project)
   end
 
   def send_deny_project_access_email(project)
-
+    ProjectAccessMailer.send_deny_email(self, project)
   end
 
 end
