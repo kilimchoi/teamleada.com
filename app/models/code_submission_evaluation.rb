@@ -25,6 +25,8 @@ class CodeSubmissionEvaluation < ActiveRecord::Base
 
   validates :description, presence: true
 
+  scope :published, -> { where(visible: true) }
+
   def pretty_created_at
     created_at.strftime("%B %d, %Y")
   end

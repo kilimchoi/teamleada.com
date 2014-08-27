@@ -24,6 +24,7 @@
 
 class Project < ActiveRecord::Base
   require 'csv'
+  require 'securerandom'
   include Rails.application.routes.url_helpers
   self.primary_key = "uid"
 
@@ -98,6 +99,17 @@ class Project < ActiveRecord::Base
 
     def featured_color(index)
       FEATURED_COLORS[index]
+    end
+
+    def project_completion_access_code
+      code = Code.where(user_type: "project-completion-access-code").first_or_initialize
+      if code.new_record?
+        code.value = SecureRandom.hex(4)
+        # TODO(mark): stop hard coding project-access
+        code.access_type = "project-access"
+        code.save
+      end
+      code
     end
   end
 

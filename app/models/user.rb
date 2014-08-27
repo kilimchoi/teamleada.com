@@ -590,6 +590,14 @@ class User < ActiveRecord::Base
     self.code_submission_evaluations.where(project: project)
   end
 
+  def published_evaluations_for_project(project)
+    evaluations_for_project(project).published
+  end
+
+  def is_waiting_on_evaluations_for_project?(project)
+    has_finished_project?(project) && published_evaluations_for_project(project).count < project.submission_contexts.count
+  end
+
   def unread_conversations
     self.conversation_users.where(unread: true)
   end
@@ -716,6 +724,11 @@ class User < ActiveRecord::Base
 
   def complete_lesson(lesson)
     LessonStatus.where(user: self, lesson_id: lesson.uid, completed: true, project: lesson.project).first_or_create
+  end
+
+  def get_project_access_from_project_completion
+    project_access_code = Project.project_completion_access_code
+    add_code(project_access_code)
   end
 
   #
