@@ -17,7 +17,10 @@
 
 - elsif signed_in? && project.grants_project_access
   // Special project that gives access
-  = link_to "View this project and get project access!", project_path(project), class: "project-action-button project-color-#{project.color}"
+  = link_to "Complete this project and get project access!", project_path(project), class: "project-action-button project-color-#{project.color}"
 
 - else
-  = link_to "I'm Interested", interest_project_path(project), method: :post, class: "project-action-button project-color-#{project.color}"
+  - if project.grants_project_access
+    = link_to "Start this project!", new_user_registration_path, class: "project-action-button project-color-#{project.color}"
+  - else
+    = link_to "I'm Interested", interest_project_path(project), method: :post, class: "project-action-button project-color-#{project.color}"
