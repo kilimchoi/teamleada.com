@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140825011500) do
+ActiveRecord::Schema.define(version: 20140827011031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -356,6 +356,7 @@ ActiveRecord::Schema.define(version: 20140825011500) do
     t.string   "category"
     t.boolean  "is_new",            default: false
     t.integer  "deadline"
+    t.boolean  "featured",          default: false
   end
 
   create_table "publications", force: true do |t|
@@ -384,7 +385,7 @@ ActiveRecord::Schema.define(version: 20140825011500) do
 
   create_table "quiz_submissions", force: true do |t|
     t.integer  "user_id"
-    t.integer  "quiz_id"
+    t.string   "quiz_id"
     t.string   "submitted_answer"
     t.datetime "created_at"
     t.datetime "updated_at"
