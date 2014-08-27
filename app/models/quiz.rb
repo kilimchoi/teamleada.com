@@ -11,6 +11,8 @@
 
 class Quiz < ActiveRecord::Base
   has_many :quiz_submission
+  belongs_to :project
+  validates :project, :presence => true
 
   validates :quiz_id, uniqueness: true, presence: true
 
