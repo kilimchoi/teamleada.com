@@ -26,11 +26,11 @@
   @include transition-ease-in-out(200ms);
 
   &.extra-large {
-    height: 200px;
+    min-height: 200px;
   }
 
   &.large {
-    height: 150px;
+    min-height: 150px;
 
     h1 {
       font-size: 24px;
@@ -38,7 +38,7 @@
   }
 
   &.medium {
-    height: 100px;
+    min-height: 100px;
 
     h1 {
       font-size: 22px;
@@ -46,42 +46,19 @@
   }
 
   &.small {
-    height: 75px;
+    min-height: 75px;
 
     h1 {
       font-size: 18px;
     }
   }
 
-  &:hover:after {
-    position: absolute;
-    top: -10px;
-    left: 0px;
-    right: 0px;
-    bottom: -10px;
-
-    background: #000000;
-    opacity: 0.1;
-    content: " ";
-
-    @include border-radius(3px);
+  &:hover {
+    opacity: 0.9;
   }
 }
 
 .highlighted-project {
-  &:after {
-    position: absolute;
-    top: -10px;
-    left: 0px;
-    right: 0px;
-    bottom: -10px;
-
-    background: #000000;
-    opacity: 0.4;
-    content: " ";
-
-    @include border-radius(3px);
-  }
 }
 
 .featured-project-title {
@@ -112,12 +89,20 @@
   }
 }
 
+.project-card-inner {
+  color: #333333;
+}
+
 .project-card-white {
   color: #333333;
 
   a {
     color: #333333;
   }
+}
+
+.project-info-container {
+  margin-top: -10px;
 }
 
 .project-info {
