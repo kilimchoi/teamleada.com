@@ -10,6 +10,9 @@
 #
 
 class Quiz < ActiveRecord::Base
+  belongs_to :project
+  validates :project, :presence => true
+
   self.primary_key = "quiz_id"
   has_many :quiz_submissions
 
