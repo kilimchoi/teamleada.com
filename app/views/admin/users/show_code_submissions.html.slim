@@ -11,4 +11,7 @@
 
   .row
     .col-md-12
-      = link_to "Publish Feedback", publish_feedback_admin_user_path(@user, @project), class: "flat-button full-width"
+      - if @project.grants_project_access
+
+      - else
+        = link_to "Publish Feedback", publish_feedback_admin_user_path(@user, @project), class: "flat-button full-width"
