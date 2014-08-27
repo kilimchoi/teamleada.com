@@ -21,6 +21,13 @@ TeamLeada::Application.routes.draw do
         match 'projects/:project_id/publish-feedback', to: 'users#publish_feedback',
                                                        as: :publish_feedback,
                                                        via: :get
+        match 'projects/:project_id/grant-access',     to: 'users#grant_access',
+                                                       as: :grant_access,
+                                                       via: :get
+        match 'projects/:project_id/deny-access',      to: 'users#deny_access',
+                                                       as: :deny_access,
+                                                       via: :get
+
         match 'projects/:project_id/code-submissions', to: 'users#show_code_submissions',
                                                        as: :code_submissions,
                                                        via: :get
