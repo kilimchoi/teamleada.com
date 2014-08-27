@@ -1,16 +1,16 @@
 
 main_page_content = [
-  ['text', 'In this project, you\'ll be building visualizations for a specific dataset:'],
+  ['text', 'In this challenge, you are tasked with providing insights and analysis for a specific dataset:'],
   ['text-warning', 'Crime data from San Francisco, CA.'],
   ['text', 'You\'ll get the data from the official SF police website.'],
-  ['text', 'The project is purposefully open ended, build whatever visualization you want.'],
-  ['text-success', "Let the creative juices flow"],
+  ['text', 'The project is purposefully open ended, build whatever visualization(s) you want.'],
+  ['text-success', "Let your creativity flow"],
 ]
 
 project = Project.create!(
   title:"Visualizing Crime Data",
   description: main_page_content,
-  short_description: "Given a set of recent San Francisco crime data, you are tasked with finding some meaningful insights and creating a visualization which presents your findings.",
+  short_description: "Given a set of recent San Francisco crime data, you are tasked with finding some meaningful insights and creating visualization(s) which presents your findings.",
   enabled: true,
   has_submit: true,
   uid: 15,
@@ -40,7 +40,7 @@ intro_content_two = [
   ['text', " - Where shouldn't you park your car?"],
   ['text', " - What are the safest locations in SF? What days/times are especially dangerous?"],
   ['text', " - Are certain thefts more common in certain areas?"],
-  ['text-success', "Make sure to explain in the summary of your findings how your visualization supports your insights."],
+  ['text-success', "Make sure to explain in the summary of your findings how your visualization(s) supports your insights."],
 ]
 
 intro_content_three = [
@@ -120,16 +120,19 @@ code_submission_context = SubmissionContext.create!(
 report_submission_content_one = [
   ['text', "Submit a summary of your analysis (less than 500 words)"],
   ['text-warning', "The report should contain the question you were answering, along with how you used the data to answer it."],
-  ['text', "Include the visualization(s) you created by submitting here: "],
-  ['submit', nil],
-  ['submit', nil],
-  ['submit', nil],
   ['user_response', ""],
   ['next_steps', ""],
 ]
 
+report_submission_content_two = [
+  ['text', "Include the visualization(s) you created by submitting here: "],
+  ['text', 'Use the same submit button to submit multiple visualization(s)'],
+  ['submit', nil],
+  ['next_steps', ""],
+]
+
 report_submission_lesson = Lesson.create!(
-  title: "Report Submission",
+  title: "Summary Submission",
   project: project,
   lesson_id: 2,
 )
@@ -138,6 +141,12 @@ report_submission_slide = Slide.create!(
   content: report_submission_content_one,
   parent: report_submission_lesson,
   slide_id: 0,
+)
+
+report_submission_slide_two = Slide.create!(
+  content: report_submission_content_two,
+  parent: report_submission_lesson,
+  slide_id: 1,
 )
 
 report_submission_context = SubmissionContext.create!(
@@ -170,6 +179,14 @@ video_slide = Slide.create!(
   content: video_submission_content_one,
   parent: video_lesson,
   slide_id: 0,
+)
+
+video_submission_context = SubmissionContext.create!(
+  title: "Video Submission",
+  description: "User is asked to submit a 1 minute video presenting their analysis and findings.",
+  slide: video_slide,
+  submission_context_id: 0,
+  submission_type: SubmissionContext::RESPONSE,
 )
 
 
