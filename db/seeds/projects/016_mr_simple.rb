@@ -105,11 +105,13 @@ background_content_two = [
 quiz = Quiz.create!(
   quiz_id: "mr_data_edge_count",
   answer: "3387388",
+  project: project,
 )
 
 quiz = Quiz.create!(
   quiz_id: "mr_data_node_count",
   answer: "403394",
+  project: project,
 )
 
 background_step_one = Step.create!(

@@ -69,6 +69,7 @@ intro_content_four = [
 quiz_intro_pd = Quiz.create!(
   quiz_id: "pd_intro_0",
   answer: "5",
+  project: project,
 )
 
 intro_lesson = Lesson.create!(
@@ -114,16 +115,19 @@ dataframe_basics_intro = [
 pd_df_basic_2 = Quiz.create!(
   quiz_id: "pd_df_basic_2",
   answer: "df.head(4)",
+  project: project,
 )
 
 pd_df_basic_4 = Quiz.create!(
   quiz_id: "pd_df_basic_3",
   answer: "3.25",
+  project: project,
 )
 
 pd_intro_one = Quiz.create!(
   quiz_id: "pd_intro_1",
   answer: "4",
+  project: project,
 )
 
 data_frame_basic_lesson = Lesson.create!(
@@ -223,14 +227,17 @@ dataframe_basics_content_five = [
 pd_df_basic_4 = Quiz.create!(
   quiz_id: "pd_df_basic_4",
   answer: "500",
+  project: project,
 )
 pd_df_basic_5 = Quiz.create!(
   quiz_id: "pd_df_basic_5",
   answer: "200000",
+  project: project,
 )
 pd_df_basic_6 = Quiz.create!(
   quiz_id: "pd_df_basic_6",
   answer: "/images/s102443.gif",
+  project: project,
 )
 
 data_frame_basic_conclusion = Step.create!(
@@ -370,11 +377,13 @@ sql_grouping_content_two = [
 pd_sql_grouping_quiz = Quiz.create!(
   quiz_id: "pd_sql_grouping_0",
   answer: "7",
+  project: project,
 )
 
 pd_sql_grouping_1 = Quiz.create!(
   quiz_id: "pd_sql_grouping_1",
   answer: "34618",
+  project: project,
 )
 
 grouping_step = Step.create!(
@@ -484,6 +493,7 @@ plotting_content = [
 pd_plotting_intro_0 = Quiz.create!(
   quiz_id: "pd_plotting_intro_0",
   answer: "instancemethod",
+  project: project,
 )
 
 plotting_lesson = Lesson.create!(
