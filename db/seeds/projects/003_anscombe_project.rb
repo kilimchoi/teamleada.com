@@ -167,7 +167,7 @@ fit_lm_content_one = [
   ['text-success', 'We\'re going to rename the data here. Insert whatever data you want to compare, and rename as below:'],
   ['code', 'compare_one = data_one #change data_one to another data set (data_one through data_four)'],
   ['code', 'compare_two = data_two #same thing applies here. Just make sure they\'re not the same data as above!'],
-  ['text-danger', 'Now, against our better judgements, let\'s NOT first compare/vizualize the dataset, but rather fit a model.'],
+  ['text-danger', 'Now, against our better judgements, let\'s NOT first compare/visualize the dataset, but rather fit a model.'],
   ['text-info', 'We\'re going to fit a Linear Regression Model to see how it behaves.'],
 ]
 
@@ -264,7 +264,7 @@ analyze_lm_slide_three = Slide.create!(
 work_with_data_post_content = [
   ['text', 'Now that we see what we did wrong, we\'ll properly analyze the data here.'],
   ['text', 'In the earlier steps, we relied on summary statistics and powerful (or not) models.'],
-  ['text-info', 'This time, we\'ll start with the correct fundamental step: vizualization.'],
+  ['text-info', 'This time, we\'ll start with the correct fundamental step: visualization.'],
   ['lesson_links', nil]
 ]
 
