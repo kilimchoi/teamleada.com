@@ -20,6 +20,7 @@ project = Project.create!(
   is_new: true,
   deadline: 10.days,
   featured: true,
+  grants_project_access: true,
 )
 
 ################################################################################

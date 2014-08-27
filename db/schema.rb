@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140827013607) do
+ActiveRecord::Schema.define(version: 20140827210750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -361,18 +361,19 @@ ActiveRecord::Schema.define(version: 20140827013607) do
     t.string   "url"
     t.boolean  "enabled"
     t.integer  "number"
-    t.boolean  "has_leaderboard",   default: false
+    t.boolean  "has_leaderboard",       default: false
     t.text     "short_description"
-    t.boolean  "has_submit",        default: false
+    t.boolean  "has_submit",            default: false
     t.integer  "cost"
-    t.boolean  "paid",              default: false
-    t.integer  "uid",                               null: false
+    t.boolean  "paid",                  default: false
+    t.integer  "uid",                                   null: false
     t.string   "difficulty"
     t.text     "company_overview"
     t.string   "category"
-    t.boolean  "is_new",            default: false
+    t.boolean  "is_new",                default: false
     t.integer  "deadline"
-    t.boolean  "featured",          default: false
+    t.boolean  "featured",              default: false
+    t.boolean  "grants_project_access", default: false
   end
 
   create_table "publications", force: true do |t|
