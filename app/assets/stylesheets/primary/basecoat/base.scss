@@ -28,6 +28,13 @@ h3, .h3 {
   }
 }
 
+hr {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: 0;
+  border-top: 1px solid #dce0e0;
+}
+
 #backdrop {
   position: fixed;
   top: 0;
