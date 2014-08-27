@@ -67,6 +67,10 @@ hr {
 
 .col-middle {
   vertical-align: middle;
+
+  @include breakpoint($small-screen) {
+    width: 100%;
+  }
 }
 
 .col-table-cell {

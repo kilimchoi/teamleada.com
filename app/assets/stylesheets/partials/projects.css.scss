@@ -101,6 +101,14 @@
   }
 }
 
+.project-col {
+  @include breakpoint($small-screen) {
+    float: left;
+    width: 100%;
+    display: block;
+  }
+}
+
 .project-info-container {
   margin-top: -10px;
 }
