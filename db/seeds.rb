@@ -14,7 +14,7 @@ Step.delete_all
 Slide.delete_all
 SubmissionContext.delete_all
 
-Quiz.destroy_all
+Quiz.delete_all
 
 # Loads seed files from db/seeds
 def load_from_folder(folder)

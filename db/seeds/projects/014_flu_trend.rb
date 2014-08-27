@@ -97,11 +97,13 @@ cleaning_content_two = [
 quiz = Quiz.create!(
   quiz_id: "ft_clean_0",
   answer:"Date",
+  project: project,
 )
 
 quiz = Quiz.create!(
   quiz_id: "ft_clean_1",
   answer:"28",
+  project: project,
 )
 cleaning_step = Step.create!(
   title: "Cleaning",
@@ -152,6 +154,7 @@ plotting_content_two = [
 quiz = Quiz.create!(
   quiz_id: "ft_plot_1",
   answer:"Canada",
+  project: project,
 )
 
 
@@ -234,6 +237,7 @@ analysis_missing_content_three = [
 quiz = Quiz.create!(
   quiz_id: "ft_missing_0",
   answer:"Anonymous Function",
+  project: project,
 )
 
 analysis_missing_step = Step.create!(
@@ -289,6 +293,7 @@ remove_missing_content_two = [
 quiz = Quiz.create!(
   quiz_id: "ft_2",
   answer:"2",
+  project: project,
 )
 
 remove_missing_step = Step.create!(
@@ -374,16 +379,19 @@ time_series_setup_content_three = [
 quiz = Quiz.create!(
   quiz_id: "ft_3",
   answer: "3",
+  project: project,
 )
 
 quiz = Quiz.create!(
   quiz_id: "ft_setup_0",
   answer: "3",
+  project: project,
 )
 
 quiz = Quiz.create!(
   quiz_id: "ft_setup_1",
   answer: "correlation",
+  project: project,
 )
 
 time_series_setup_step = Step.create!(
@@ -586,6 +594,7 @@ time_series_differencing_content_three = [
 quiz = Quiz.create!(
   quiz_id: "ft_build_0",
   answer:"Akaike information criterion",
+  project: project,
 )
 
 time_series_differencing_step = Step.create!(
@@ -621,7 +630,7 @@ arime_prediction_content_one = [
   ['code', 'flu_fcast'],
   ['text-warning', "What class is flu_fcast?"],
   ['quiz', "ft_prediction_0"],
-  ['text', "Now we'll construct new x-y series to vizualize."],
+  ['text', "Now we'll construct new x-y series to visualize."],
   ['text-success', "Note that we will generate the x-variables via seq() function."],
 ]
 
@@ -654,6 +663,7 @@ arime_prediction_content_three = [
 quiz = Quiz.create!(
   quiz_id: "ft_prediction_0",
   answer:"list",
+  project: project,
 )
 arime_prediction_step = Step.create!(
   title: "Prediction",
@@ -710,6 +720,7 @@ arime_evaluation_content_two = [
 quiz = Quiz.create!(
   quiz_id: "ft_evaluation_0",
   answer:"3",
+  project: project,
 )
 arime_evaluation_step = Step.create!(
   title: "Evaluation",
