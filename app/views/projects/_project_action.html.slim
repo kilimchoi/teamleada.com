@@ -10,7 +10,7 @@
   - elsif current_user.has_started_project?(project)
     = link_to "Continue this project", project_path(project), class: "project-action-button"
   - else
-    = link_to "Start this project!", project_path(project), class: "project-action-button"
+    = link_to "View this project!", project_path(project), class: "project-action-button"
 - elsif signed_in? && current_user.is_company? && current_user.owns_project?(project)
   = link_to "View this project", project_path(project), class: "project-action-button"
 - else
