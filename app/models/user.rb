@@ -731,6 +731,17 @@ class User < ActiveRecord::Base
     add_code(project_access_code)
   end
 
+  def grant_project_access(project)
+    get_project_access_from_project_completion
+    send_grant_project_access_email(project)
+  end
+
+  def deny_project_access(project)
+    @project_status = ProjectStatus.find_by(project: project, user: self)
+    @project_status.completed = false
+    send_deny_project_access_email(project)
+  end
+
   #
   # Mailer
   #
@@ -740,6 +751,14 @@ class User < ActiveRecord::Base
       evaluation.save
     end
     EvaluationMailer.send_feedback(self, project, evaluations).deliver
+  end
+
+  def send_grant_project_access_email(project)
+
+  end
+
+  def send_deny_project_access_email(project)
+
   end
 
 end
