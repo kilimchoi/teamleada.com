@@ -1,4 +1,4 @@
-/ TODO: Remove this crap at the top that checks for defined variables. That's dubm and very hacky.
+/ TODO: Remove this crap at the top that checks for defined variables. That's dumb and very hacky.
 / TODO: Remove all the 'return false;' crap from the javascript. That's bad practice.
 - if defined? step
   - project = step.main_lesson.project
@@ -73,7 +73,7 @@
     = "Please give us feedback!"
 - elsif content_type == "finish_project_button"
   p.fragment
-    = link_to "Complete Project!", complete_project_path(project), method: :post, class: 'flat-button full-width', onclick: "#{current_user.has_all_project_points?(project) ? 'openUrl("' + content + '")' : ''}"
+    = link_to "Complete Project!", complete_project_path(project), method: :post, class: 'flat-button full-width', onclick: "#{current_user.has_all_project_points?(project) && project.uid != 15 ? 'openUrl("' + content + '")' : ''}"
 - elsif content_type == 'user_response'
   p.fragment
     = link_to "Enter a response", "#", onclick: "openSidebar('#{project.full_url}', '#{item.class}', '#{item.uid}'); return false;", class: "flat-button full-width"
