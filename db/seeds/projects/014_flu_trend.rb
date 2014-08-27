@@ -621,7 +621,7 @@ arime_prediction_content_one = [
   ['code', 'flu_fcast'],
   ['text-warning', "What class is flu_fcast?"],
   ['quiz', "ft_prediction_0"],
-  ['text', "Now we'll construct new x-y series to vizualize."],
+  ['text', "Now we'll construct new x-y series to visualize."],
   ['text-success', "Note that we will generate the x-variables via seq() function."],
 ]
 
