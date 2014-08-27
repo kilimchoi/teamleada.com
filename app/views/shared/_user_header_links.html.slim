@@ -1,6 +1,6 @@
 - if signed_in?
   li
-    = link_to user_path(current_user) do
+    = link_to show_user_profile_path do
       = image_tag current_user.profile_photo, class: "navbar-profile-photo"
       span.navbar-name = current_user.username
 

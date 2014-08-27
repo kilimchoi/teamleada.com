@@ -2,7 +2,7 @@ development:
   adapter: postgresql
   encoding: unicode
   host: localhost
-  database: teada_development
+  database: leada_development
   username: username
   password:
 
@@ -28,6 +28,6 @@ test:
   adapter: postgresql
   encoding: unicode
   host: localhost
-  database: teada_test<%= ENV['TEST_ENV_NUMBER'] %>
+  database: leada_test<%= ENV['TEST_ENV_NUMBER'] %>
   username: username
   password:

@@ -62,10 +62,12 @@ module ChartsHelper
     categories = data.keys.map{ |date| date.strftime("%B %d")}
 
     sum = model.where("created_at < ?", timeframe).count
-    
+
     case method
     when "count"
       values = data.values.map{ |array| array.count }
+    when "percent"
+      values = data.values.map{ |array| array.count.to_f / (sum += array.count) * 100 }
     else
       values = data.values.map{ |array| sum += array.count }
     end
@@ -85,6 +87,10 @@ module ChartsHelper
 
   def chart_from_model(timeframe, model, title, y_axis)
     time_chart_from_model(timeframe, 24 * 3600, model, title, y_axis, "sum")
+  end
+
+  def growth_chart_from_model(timeframe, model, title, y_axis)
+    time_chart_from_model(timeframe, 24 * 3600, model, title, y_axis, "percent")
   end
 
   def chart_for_timeframe(chart, start_date, end_date)
@@ -161,6 +167,10 @@ module ChartsHelper
   # Single line graphs
   def users_chart(timeframe)
     chart_from_model(timeframe, User, "Sign ups on Leada over Time (past 30 days)", "Total number of sign ups")
+  end
+
+  def growth_chart(timeframe)
+    growth_chart_from_model(timeframe, User, "User Growth on Leada over Time (past 30 days)", "% of Growth")
   end
 
   def interest_chart(timeframe)

@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140805080827) do
+ActiveRecord::Schema.define(version: 20140827013607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "browsable_users", force: true do |t|
+    t.integer  "company_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "chart_metrics", force: true do |t|
     t.integer  "chart_id"
@@ -110,22 +117,6 @@ ActiveRecord::Schema.define(version: 20140805080827) do
     t.date     "date"
   end
 
-  create_table "delayed_jobs", force: true do |t|
-    t.integer  "priority",   default: 0, null: false
-    t.integer  "attempts",   default: 0, null: false
-    t.text     "handler",                null: false
-    t.text     "last_error"
-    t.datetime "run_at"
-    t.datetime "locked_at"
-    t.datetime "failed_at"
-    t.string   "locked_by"
-    t.string   "queue"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
-
   create_table "employer_applications", force: true do |t|
     t.string   "name"
     t.string   "email"
@@ -158,6 +149,18 @@ ActiveRecord::Schema.define(version: 20140805080827) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+  end
+
+  create_table "friendships", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.string   "status"
+    t.datetime "requested_at"
+    t.datetime "accepted_at"
+    t.datetime "declined_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "requested"
   end
 
   create_table "impressions", force: true do |t|
@@ -210,6 +213,7 @@ ActiveRecord::Schema.define(version: 20140805080827) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "job_id"
+    t.boolean  "end_date_present"
   end
 
   add_index "job_experiences", ["job_id"], name: "index_job_experiences_on_job_id", using: :btree
@@ -231,6 +235,7 @@ ActiveRecord::Schema.define(version: 20140805080827) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "position_title"
+    t.string   "location"
   end
 
   add_index "jobs", ["company_id"], name: "index_jobs_on_company_id", using: :btree
@@ -379,7 +384,7 @@ ActiveRecord::Schema.define(version: 20140805080827) do
 
   create_table "quiz_submissions", force: true do |t|
     t.integer  "user_id"
-    t.integer  "quiz_id"
+    t.string   "quiz_id"
     t.string   "submitted_answer"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -393,6 +398,7 @@ ActiveRecord::Schema.define(version: 20140805080827) do
     t.string   "answer"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "project_id"
   end
 
   create_table "resumes", force: true do |t|
@@ -535,6 +541,36 @@ ActiveRecord::Schema.define(version: 20140805080827) do
     t.datetime "updated_at"
   end
 
+  create_table "user_preferences", force: true do |t|
+    t.integer  "user_id"
+    t.string   "who_can_see_profile"
+    t.string   "who_can_send_friend_requests"
+    t.string   "who_can_contact"
+    t.string   "who_can_lookup_using_email"
+    t.string   "who_can_lookup_by_name"
+    t.string   "who_can_see_resume"
+    t.boolean  "wants_email_about_new_projects", default: true
+    t.boolean  "wants_email_from_recruiters",    default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_profiles", force: true do |t|
+    t.integer  "user_id"
+    t.boolean  "looking_for_opportunities", default: true
+    t.string   "location"
+    t.text     "bio"
+    t.string   "phone"
+    t.string   "headline"
+    t.string   "industry"
+    t.date     "date_of_birth"
+    t.text     "interests"
+    t.integer  "job_bookmarks_count"
+    t.string   "country_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "user_skills", force: true do |t|
     t.integer  "user_id"
     t.integer  "skill_id"
@@ -546,12 +582,12 @@ ActiveRecord::Schema.define(version: 20140805080827) do
   add_index "user_skills", ["user_id"], name: "index_user_skills_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",                        default: "",    null: false
-    t.string   "encrypted_password",           default: "",    null: false
+    t.string   "email",                      default: "",    null: false
+    t.string   "encrypted_password",         default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                default: 0,     null: false
+    t.integer  "sign_in_count",              default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -568,28 +604,12 @@ ActiveRecord::Schema.define(version: 20140805080827) do
     t.string   "last_name"
     t.string   "unconfirmed_email"
     t.datetime "updated_password_at"
-    t.string   "who_can_see_profile"
-    t.string   "who_can_send_friend_requests"
-    t.string   "who_can_contact"
-    t.string   "who_can_lookup_using_email"
-    t.string   "who_can_lookup_by_name"
-    t.string   "who_can_see_resume"
-    t.boolean  "looking_for_opportunities",    default: false
-    t.string   "location"
-    t.text     "bio"
     t.string   "linkedin_id"
     t.string   "name"
     t.string   "nickname"
-    t.string   "linkedin_profile_image_url",   default: ""
-    t.string   "phone"
-    t.string   "headline"
-    t.string   "industry"
+    t.string   "linkedin_profile_image_url", default: ""
     t.string   "public_profile_url"
-    t.date     "date_of_birth"
-    t.text     "interests"
-    t.integer  "job_bookmarks_count"
-    t.string   "country_code"
-    t.boolean  "has_project_access",           default: false
+    t.boolean  "has_project_access",         default: false
     t.datetime "linkedin_confirmed_at"
     t.datetime "linkedin_updated_at"
   end

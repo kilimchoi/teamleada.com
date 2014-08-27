@@ -1,0 +1,38 @@
+---
+
+tagline: "We started Leada because we believe in data literacy and learning by doing."
+description: "We are a purposeful team of software engineers, data engineers, and data analysts having worked at companies such as Splunk, Asana, and Bank of America Merill Lynch. Data driven decisions is what we learned first. Working on our own projects was how we learned. We are on a mission to change the way people learn and recruit."
+
+founders:
+  - name: "Brian Liou"
+    role: "CEO"
+    quote: "'You can't connect the dots forwards, you can only connect them backwards.' - Steve Jobs"
+    description: "Brian graduated with dual degrees in Business and Statistics at UC Berkeley. He realized his interests were in computer science his senior year, and has been learning to program ever since. His entrepreneurial aspirations first began in junior high, when he started a small business painting house addresses on curbs."
+    website: "http://www.linkedin.com/pub/brian-liou/23/662/441"
+    image: "people/brian_liou.png"
+  - name: "Tristan Tao"
+    role: "COO"
+    quote: "'If everything seems under control, you're just not going fast enough' - Mario Andretti"
+    description: "Tristan has lived in 3 different countries for 6+ years each. Coming from a diverse background, his focus has always been to gain a broad set of skills. With degrees in Computer Science and Statistics from UC Berkeley, he has ventured into Engineering, Finance/Trading, and PreMed. He is also an avid motorcyclist, and he plans to begin racing AFM 250 Production Class (as #692) this year."
+    website: "http://www.linkedin.com/in/tristantao/"
+    image: "people/tristan_tao.png"
+  - name: "Mark Miyashita"
+    role: "CTO"
+    quote: "'You miss 100% of the shots you don't take' - Wayne Gretzky"
+    description: "Mark builds things. In the past year he had over 5,000 commits on various open source projects on GitHub. He just graduated with a degree in Electrical Engineering and Computer Science from UC Berkeley."
+    website: "http://www.linkedin.com/pub/mark-miyashita/38/63/49"
+    image: "people/mark_miyashita.jpg"
+
+advisors:
+  - name: "Greg Lamp"
+    position: "CTO / yhat"
+    image: "people/advisors/greg_lamp.jpg"
+    website: "https://yhathq.com/about"
+  - name: "Aditya G"
+    position: "Stats Prof. at UC Berkeley"
+    image: "people/advisors/aditya_g.png"
+    website: "http://www.stat.berkeley.edu/~aditya/"
+  - name: "Prasanna T"
+    position: "Prof. At NYU Stern (IOMS)"
+    image: "people/advisors/prasanna_t.png"
+    website: "http://pages.stern.nyu.edu/~ptambe/"

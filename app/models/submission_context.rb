@@ -54,4 +54,12 @@ class SubmissionContext < ActiveRecord::Base
     end
   end
 
+  def code_submissions
+    project.code_submissions.select{ |code_submission| code_submission.slide == slide }
+  end
+
+  def code_submissions_for_user(user)
+    code_submissions.select{ |code_submission| code_submission.user == user }
+  end
+
 end

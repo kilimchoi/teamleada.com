@@ -2,53 +2,37 @@
 #
 # Table name: users
 #
-#  id                           :integer          not null, primary key
-#  email                        :string(255)      default(""), not null
-#  encrypted_password           :string(255)      default(""), not null
-#  reset_password_token         :string(255)
-#  reset_password_sent_at       :datetime
-#  remember_created_at          :datetime
-#  sign_in_count                :integer          default(0), not null
-#  current_sign_in_at           :datetime
-#  last_sign_in_at              :datetime
-#  current_sign_in_ip           :string(255)
-#  last_sign_in_ip              :string(255)
-#  created_at                   :datetime
-#  updated_at                   :datetime
-#  username                     :string(255)
-#  role                         :string(255)
-#  confirmation_token           :string(255)
-#  confirmed_at                 :datetime
-#  confirmation_sent_at         :datetime
-#  company_id                   :integer
-#  first_name                   :string(255)
-#  last_name                    :string(255)
-#  unconfirmed_email            :string(255)
-#  updated_password_at          :datetime
-#  who_can_see_profile          :string(255)
-#  who_can_send_friend_requests :string(255)
-#  who_can_contact              :string(255)
-#  who_can_lookup_using_email   :string(255)
-#  who_can_lookup_by_name       :string(255)
-#  who_can_see_resume           :string(255)
-#  looking_for_opportunities    :boolean          default(FALSE)
-#  location                     :string(255)
-#  bio                          :text
-#  linkedin_id                  :string(255)
-#  name                         :string(255)
-#  nickname                     :string(255)
-#  linkedin_profile_image_url   :string(255)      default("")
-#  phone                        :string(255)
-#  headline                     :string(255)
-#  industry                     :string(255)
-#  public_profile_url           :string(255)
-#  date_of_birth                :date
-#  interests                    :text
-#  job_bookmarks_count          :integer
-#  country_code                 :string(255)
-#  has_project_access           :boolean          default(FALSE)
-#  linkedin_confirmed_at        :datetime
-#  linkedin_updated_at          :datetime
+#  id                         :integer          not null, primary key
+#  email                      :string(255)      default(""), not null
+#  encrypted_password         :string(255)      default(""), not null
+#  reset_password_token       :string(255)
+#  reset_password_sent_at     :datetime
+#  remember_created_at        :datetime
+#  sign_in_count              :integer          default(0), not null
+#  current_sign_in_at         :datetime
+#  last_sign_in_at            :datetime
+#  current_sign_in_ip         :string(255)
+#  last_sign_in_ip            :string(255)
+#  created_at                 :datetime
+#  updated_at                 :datetime
+#  username                   :string(255)
+#  role                       :string(255)
+#  confirmation_token         :string(255)
+#  confirmed_at               :datetime
+#  confirmation_sent_at       :datetime
+#  company_id                 :integer
+#  first_name                 :string(255)
+#  last_name                  :string(255)
+#  unconfirmed_email          :string(255)
+#  updated_password_at        :datetime
+#  linkedin_id                :string(255)
+#  name                       :string(255)
+#  nickname                   :string(255)
+#  linkedin_profile_image_url :string(255)      default("")
+#  public_profile_url         :string(255)
+#  has_project_access         :boolean          default(FALSE)
+#  linkedin_confirmed_at      :datetime
+#  linkedin_updated_at        :datetime
 #
 
 class User < ActiveRecord::Base
@@ -62,6 +46,33 @@ class User < ActiveRecord::Base
   include Rails.application.routes.url_helpers
 
   include UsersHelper
+
+  # Delegate attributes to the user_profile and user_preference
+  delegate :bio, :location, :phone, :headline, :industry, :date_of_birth,
+           :looking_for_opportunities, :interests, :job_bookmarks_count,
+           :country_code,
+           to: :profile, allow_nil: true
+
+  delegate :bio=, :location=, :phone=, :headline=, :industry=, :date_of_birth=,
+           :looking_for_opportunities=, :interests=, :job_bookmarks_count=,
+           :country_code=,
+           to: :profile, allow_nil: true
+
+  delegate :who_can_see_profile, :who_can_send_friend_requests,
+           :who_can_contact, :who_can_lookup_using_email, :who_can_lookup_by_name,
+           :who_can_see_resume, :wants_email_about_new_projects,
+           :wants_email_from_recruiters,
+           to: :preferences, allow_nil: true
+
+  delegate :who_can_see_profile=, :who_can_send_friend_requests=,
+           :who_can_contact=, :who_can_lookup_using_email=, :who_can_lookup_by_name=,
+           :who_can_see_resume=, :wants_email_about_new_projects=,
+           :wants_email_from_recruiters=,
+           to: :preferences, allow_nil: true
+
+  # Profile and Preferences
+  has_one :user_profile    # Should use the .profile attribute defined below.
+  has_one :user_preference # Should use the .preferences attribute defined below.
 
   # Submissions
   has_many :submissions
@@ -109,6 +120,19 @@ class User < ActiveRecord::Base
   has_many :conversation_users
   has_many :conversations, through: :conversation_users
 
+  # Friends
+  has_many :friendships
+  has_many :inverse_friendships, class_name: Friendship,
+                                 foreign_key: :friend_id
+  has_many :friends, -> { where(friendships: { status: Friendship::ACCEPTED }) },
+                     through: :friendships
+  has_many :sent_friend_requests, -> { where(friendships: { status: Friendship::PENDING }) },
+                                  through: :friendships,
+                                  source: :user
+  has_many :friend_requests, -> { where(friendships: { status: Friendship::PENDING }) },
+                             through: :inverse_friendships,
+                             source: :friend
+
   # Company specific
   has_many :user_interactions, class_name: UserInteraction,
                                foreign_key: :interactor_id
@@ -130,40 +154,45 @@ class User < ActiveRecord::Base
   default_scope -> { order(:created_at) }
   scope :alphabetically, -> { order("name ASC") }
 
-  validates_format_of :username, :with => /\A[A-Za-z0-9_]*\z/
-  validates :username, uniqueness: {case_sensitive: false, allow_blank: true}
-  validate :check_username
-  validates :first_name, presence: true, on: :update
-  validates :last_name, presence: true, on: :update
-
   accepts_nested_attributes_for :resumes
   accepts_nested_attributes_for :profile_photos
+
+  validates_format_of :username, :with => /\A[A-Za-z0-9_]*\z/
+  validates :username, uniqueness: {case_sensitive: false}
+  validate :check_username
 
   extend FriendlyId
   friendly_id :username, use: :finders
 
-  before_create :set_defaults
   before_save :set_name
 
   self.per_page = 50
-  SETTINGS_TABS = ['account', 'privacy']
-
-  PUBLIC = 'Public'
-  CONNECTIONS = 'Connections Only'
-  RECRUITERS = 'Recruiters Only'
-  CONNECTIONS_AND_RECRUITERS = 'Connections & Recruiters'
-  ONLY_ME = 'Only Me'
-
-  USER_CATEGORIES = [PUBLIC, CONNECTIONS, RECRUITERS, CONNECTIONS_AND_RECRUITERS, ONLY_ME]
-  USER_TYPES = USER_CATEGORIES.map{ |u| [u, u] }
 
   include PgSearch
   pg_search_scope :search,
                   against: [[:first_name, 'A'], [:last_name, 'A'], [:email, 'A'], [:username, 'A']],
                   using: {tsearch: {prefix: true, normalization: 2}}
 
+  # Default Values
+  default_value_for :updated_password_at, Time.now
+
   def == other_user
     self.email == other_user.email
+  end
+
+  #
+  # Validations (move these to form objects)
+  #
+  def check_username
+    if !self.new_record?
+      if self.username.nil? || self.username.blank?
+        errors.add(:username, "can't be blank")
+        return
+      end
+      if self.username.start_with?("_") || !/^[A-Za-z].*/.match(self.username)
+        errors.add(:username, "must start with a letter")
+      end
+    end
   end
 
   #
@@ -214,43 +243,21 @@ class User < ActiveRecord::Base
   end
 
   #
-  # Validations
-  #
-  def check_username
-    if !self.new_record?
-      if self.username.nil? || self.username.blank?
-        errors.add(:username, "can't be blank")
-        return
-      end
-      if self.username.start_with?("_") || !/^[A-Za-z].*/.match(self.username)
-        errors.add(:username, "must start with a letter")
-      end
-    end
-  end
-
-  #
   # Before filter
   #
-  def set_defaults
-    self.set_dates
-    self.set_privacy_preferences
-  end
-
   def set_name
     self.name = "#{first_name} #{last_name}"
   end
 
-  def set_dates
-    self.updated_password_at = Time.now
+  #
+  # Associations
+  #
+  def profile
+    self.user_profile ||= self.create_user_profile()
   end
 
-  def set_privacy_preferences
-    self.who_can_see_profile = PUBLIC
-    self.who_can_send_friend_requests = PUBLIC
-    self.who_can_contact = CONNECTIONS_AND_RECRUITERS
-    self.who_can_lookup_using_email = CONNECTIONS_AND_RECRUITERS
-    self.who_can_lookup_by_name = CONNECTIONS_AND_RECRUITERS
-    self.who_can_see_resume = CONNECTIONS_AND_RECRUITERS
+  def preferences
+    self.user_preference ||= self.create_user_preference()
   end
 
   #
@@ -287,6 +294,13 @@ class User < ActiveRecord::Base
     "#{name} (#{username})"
   end
 
+  # Messages
+  def allowed_contacts
+    # TODO(mark): Allow users to contact more than just Leada employees in the future
+    User.where(id: [1, 2, 3])
+  end
+
+  # Resumes
   def resume
     self.has_resume? ? self.last_resume : nil
   end
@@ -302,6 +316,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  # Profile Photos
   def profile_photo
     if has_profile_photo?
       photo = profile_photos.last
@@ -317,6 +332,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  # Roles
   def is_admin?
     role == 'admin'
   end
@@ -476,6 +492,34 @@ class User < ActiveRecord::Base
     false
   end
 
+  def all_projects(completed, category)
+    project_statuses.where(completed: completed).collect{ |project_status| project_status.project }.select{ |project| project.category == category }
+  end
+
+  def challenges(completed)
+    all_projects(completed, Project::CHALLENGE)
+  end
+
+  def completed_challenges
+    challenges(true)
+  end
+
+  def in_progress_challenges
+    challenges(false)
+  end
+
+  def lessons(completed)
+    all_projects(completed, Project::LESSON)
+  end
+
+  def completed_lessons
+    lessons(true)
+  end
+
+  def in_progress_lessons
+    lessons(false)
+  end
+
   def completed_projects
     project_statuses.where(completed: true).collect{ |project_status| project_status.project }
   end
@@ -491,6 +535,23 @@ class User < ActiveRecord::Base
 
   def project_status_for_project(project)
     project_statuses.find_by(project: project)
+  end
+
+  def code_submission_of_type_for_project(type, project)
+    project.submission_contexts.where(submission_type: type).collect{ |submission_context| submission_context.code_submissions_for_user(self).first }.first
+  end
+
+  def video_for_project(project)
+    code_submission_of_type_for_project("presentation_vid_linK", project)
+  end
+
+  def get_youtube_link_for_project(project)
+    video = video_for_project(project)
+    video.content.split("?v=").last.split("&").first
+  end
+
+  def presentation_for_project(project)
+    code_submission_of_type_for_project("presentation_slides_link", project)
   end
 
   def code_submissions_for_project(project)
@@ -669,3 +730,4 @@ class User < ActiveRecord::Base
   end
 
 end
+

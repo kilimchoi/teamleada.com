@@ -1,3 +1,11 @@
+v 1.1.0
+  - User profile now has inline editing.
+  - Registration logic is clean and simplified.
+  - Introduced concept of form objects.
+
+v 1.0.7
+  - Redesigned home page, handbook page, about page
+
 v 1.0.6
   - New Data Projects and Beginning of User Feed
 

@@ -1,0 +1,13 @@
+// Required Variables:
+// user, is_editing, form
+
+.row.card
+  .col-md-12
+    = render partial: "users/profile/item_section", locals: { \
+      collection_name: "about",
+      item: user.profile,
+      is_editing: is_editing,
+      form: form,
+      section: "user-profile",
+    }
+

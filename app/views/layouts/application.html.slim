@@ -22,7 +22,8 @@ html
     = javascript_include_tag "application", "data-turbolinks-track" => true, "modernizr" => true
     = csrf_meta_tags
     = render partial: 'shared/analytics'
-  body
+  body.main-background
+    = render partial: 'shared/olark'
     - if Rails.env.development?
       = render partial: "shared/debug_bar"
     = render partial: "layouts/header"
@@ -54,16 +55,20 @@ html
           .row
             .col-md-2
               = render partial: "company/shared/company_sidebar"
-            .col-md-10
+            .col-md-8
               = yield
+            .col-md-2
+              = render partial: "company/shared/company_right_sidebar"
 
       - elsif is_user_controller?
         .container-fluid.full-container
           .row
             .col-md-2
               = render partial: "users/user_sidebar"
-            .col-md-10
+            .col-md-8
               = yield
+            .col-md-2
+              = render partial: "users/user_right_sidebar"
 
       - else
         = yield

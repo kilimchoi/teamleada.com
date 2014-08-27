@@ -21,10 +21,10 @@ class Conversation < ActiveRecord::Base
   accepts_nested_attributes_for :messages
 
   default_scope -> { order('last_message_sent_at DESC') }
+  self.per_page = 25
 
   def update_last_message_sent_at
     self.last_message_sent_at = last_message.created_at
-
     self.save
   end
 
@@ -81,12 +81,31 @@ class Conversation < ActiveRecord::Base
   def add_users_from_search(search_query)
     # TODO(mark): This is hacky, we should instead grab the ids and send them in the query somehow.
     names = search_query.split(", ")
-    usernames = names.map{ |name| name[/\(.*?\)/][1..-2] }
-    usernames.each do |username|
-      user = User.find_by(username: username)
-      unless user.nil?
+    # usernames = names.map{ |name| name[/\(.*?\)/][1..-2] }
+    names.each do |name|
+      # This will only work because we limited the users by a lot
+      user = User.find_by(name: name)
+      if !user.nil? && [1, 2, 3].include?(user.id)
         ConversationUser.create(user: user, conversation: self, unread: true)
+      else
+        return false
       end
+    end
+  end
+
+  def create_conversation_users(users)
+    users.each do |user|
+      ConversationUser.create(user: user, conversation: self, unread: true)
+    end
+  end
+
+  def self.create_separate_conversations(conversation_params, sender, users)
+    users.each do |user|
+      conversation = Conversation.new(conversation_params)
+      conversation.starter = sender
+      ConversationUser.create(user: sender, conversation: conversation, unread: false)
+      ConversationUser.create(user: user, conversation: conversation, unread: true)
+      conversation.save
     end
   end
 

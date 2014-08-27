@@ -15,6 +15,8 @@ class ProjectStatus < ActiveRecord::Base
   belongs_to :user
   belongs_to :project
 
+  delegate :category, to: :project, allow_nil: true
+
   scope :group_by_user, -> { order("user_id ASC") }
 
   before_save :set_start_date
@@ -27,7 +29,7 @@ class ProjectStatus < ActiveRecord::Base
 
   def expired?
     if start_date.nil? || project.deadline.nil?
-      false  
+      false
     else
       Time.now > start_date + project.deadline
     end

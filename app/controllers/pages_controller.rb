@@ -1,15 +1,18 @@
 class PagesController < ApplicationController
+  include ApplicationHelper
 
   def home
-    @large_header = true
     @profile_needs_info = true
+    @home = get_yaml_data_file("home.yml")
   end
 
   def about
     @large_header = true
+    @about = get_yaml_data_file("about.yml")
   end
 
   def handbook
+    @handbook = get_yaml_data_file("handbook.yml")
   end
 
   def test

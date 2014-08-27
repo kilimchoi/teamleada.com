@@ -1,44 +1,64 @@
-- unless project.nil?
+.container-fluid.full-container
   .row
     .col-md-12
-      h3.title Project Overview
-      p.project-overview
-        = project.company_overview
+      .user-container.card-container
+        .row.card
+          .col-md-12
+            = render partial: "users/profile/profile_photo", locals: { user: user, is_editing: false, is_admin: false }
+            .profile-overview.clearfix
+              h1.title.profile-name
+                | Anonymous User
+              .clearfix
 
-      h3.title User Presentation
-      iframe width="500" height="315" src="//www.youtube.com/embed/vFNKjci6i68" frameborder="0" allowfullscreen
+  - unless project.nil?
+    .row
+      .col-md-12
+        .row.card
+          .col-md-12
+            h3.title Project Overview
+            p.project-overview
+              = project.company_overview
+        - video = user.video_for_project(project).try(:content)
+        - presentation = user.presentation_for_project(project).try(:content)
+        - if video || presentation
+          .row.card
+            - if video
+              .col-md-6
+                h3.title User Presentation
+                iframe width="500" height="315" src="//www.youtube.com/embed/#{user.get_youtube_link_for_project(project)}" frameborder="0" allowfullscreen
+            - if presentation
+              .col-md-6
+                h3.title User Presentation Deck
+                iframe src="#{presentation}" frameborder="0" width="500" height="420" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"
 
-      h3.title User Presentation Deck
-      iframe src="https://docs.google.com/presentation/d/1YUpbzAZ--nufbzCZlP5ozQa1KWNq3EGx27iN7t0K0O4/embed?start=false&loop=false&delayms=3000" frameborder="0" width="500" height="420" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"
-
-  .row
-    .col-md-12
-      h3.title User Responses
-      .panel-group#code-submissions
-        - user.code_submissions_for_project(project).each_with_index do |code_submission, index|
-          .panel.panel-default
-            .panel-heading
-              h4.panel-title
-                a href="#code-#{code_submission.parent_id}" data={ toggle: "collapse", parent: "#code-submissions" }
-                  = code_submission.submission_context.title
-            .panel-collapse.collapse[id="code-#{code_submission.parent_id}" class="#{'in' if index == 0}"]
-              .panel-body
-                .submission-context-container
-                  .submission-context-description
-                    = code_submission.submission_context.description
-                  .submission-code
-                    h3.title Submission Content
-                    .code-viewer-container[id="code-viewer-#{code_submission.parent_id}"]
-                      javascript:
-                        var editor;
-                        $(document).ready(function() {
-                          editor = ace.edit("code-viewer-#{code_submission.parent_id}");
-                          editor.setOptions({
-                            readOnly: true,
-                            highlightActiveLine: false
+    .row.card
+      .col-md-12
+        h3.title User Responses
+        .panel-group#code-submissions
+          - user.code_submissions_for_project(project).each_with_index do |code_submission, index|
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a href="#code-#{code_submission.uid}" data={ toggle: "collapse", parent: "#code-submissions" }
+                    = code_submission.submission_context.title
+              .panel-collapse.collapse[id="code-#{code_submission.uid}" class="#{'in' if index == 0}"]
+                .panel-body
+                  .submission-context-container
+                    .submission-context-description
+                      = code_submission.submission_context.description
+                    .submission-code
+                      h3.title Submission Content
+                      .code-viewer-container[id="code-viewer-#{code_submission.uid}"]
+                        javascript:
+                          var editor;
+                          $(document).ready(function() {
+                            editor = ace.edit("code-viewer-#{code_submission.uid}");
+                            editor.setOptions({
+                              readOnly: true,
+                              highlightActiveLine: false
+                            });
+                            editor.renderer.$cursorLayer.element.style.opacity = 0;
+                            editor.setTheme("ace/theme/github");
+                            var content = "#{code_submission.safe_content}";
+                            editor.setValue(content, -1);
                           });
-                          editor.renderer.$cursorLayer.element.style.opacity = 0;
-                          editor.setTheme("ace/theme/github");
-                          var content = "#{code_submission.safe_content}";
-                          editor.setValue(content, -1);
-                        });
