@@ -12,9 +12,9 @@
     .col-md-6
       - projects.each do |project|
         = link_to info_project_path(project), remote: true, class: "no-underline" do
-          .project-container.card.project-card-colored class="project-color-#{project.color} #{size}"
+          .project-container.card.project-card-colored class="project-color-#{project.color}"
             .row.row-table.row-full-height.row-full-width
-              .col-md-12.col-middle.project-card class="project-#{project.section}" id="project-#{project.uid}"
+              .col-md-12.col-middle.project-card class="project-#{project.section} #{size}" id="project-#{project.uid}"
                 = render partial: "projects/project_card", locals: { project: project }
     .col-md-6
       .project-info-section id="project-info-#{section}"

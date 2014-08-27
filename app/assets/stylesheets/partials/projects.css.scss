@@ -55,10 +55,10 @@
 
   &:hover:after {
     position: absolute;
-    top: 0;
-    left: 15px;
-    right: 15px;
-    bottom: 10px;
+    top: -10px;
+    left: 0px;
+    right: 0px;
+    bottom: -10px;
 
     background: #000000;
     opacity: 0.1;
@@ -72,10 +72,10 @@
   &:hover:after,
   &:after {
     position: absolute;
-    top: 0;
-    left: 15px;
-    right: 15px;
-    bottom: 10px;
+    top: -10px;
+    left: 0px;
+    right: 0px;
+    bottom: -10px;
 
     background: #000000;
     opacity: 0.4;
