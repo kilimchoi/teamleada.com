@@ -57,6 +57,7 @@ intro_content_three = [
 quiz = Quiz.create!(
   quiz_id: "crime_viz_0",
   answer:"3",
+  project: project,
 )
 
 intro_lesson = Lesson.create!(
