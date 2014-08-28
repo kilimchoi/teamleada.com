@@ -60,7 +60,7 @@ html
             .col-md-2
               = render partial: "company/shared/company_right_sidebar"
 
-      - elsif is_user_controller?
+      - elsif is_user_controller? || is_user_namespace?
         .container-fluid.full-container
           .row
             .col-md-2
