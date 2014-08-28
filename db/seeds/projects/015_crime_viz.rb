@@ -18,7 +18,6 @@ project = Project.create!(
   difficulty: 'Advanced',
   category: Project::CHALLENGE,
   is_new: true,
-  deadline: 10.days,
   featured: true,
   grants_project_access: true,
   cover_photo: "crime",
@@ -167,7 +166,7 @@ report_submission_context = SubmissionContext.create!(
 
 
 video_submission_content_one = [
-  ['text', 'You can also optionally submit a 1 minute video presenting your insights and analysis. Pretend its to your superior.'],
+  ['text', 'You can optionally submit a 1 minute video presenting your insights and analysis. Pretend its to your superior.'],
   ['text', 'Submit the YouTube link and be sure to make it unlisted!'],
   ['user_response', ""],
   ['next_steps', ""],
