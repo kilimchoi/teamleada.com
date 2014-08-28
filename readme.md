@@ -140,6 +140,10 @@ Then start the server with the command:
 
     unicorn_rails -D -c /www/prod-dir/teamleada.com/config/unicorn.rb
 
+To restartt a unicorn_rails app seamlessly, give it the reexec signal (after modifying unicorn config to kill old master via old pid)
+
+    kill -s USR2 current_master_pid
+
 ## Live Reload
 
 We are currently using `livereload` so that when you edit views and assets, they are automatically updated on the web browser (no refreshing anymore).
