@@ -119,6 +119,10 @@ class Project < ActiveRecord::Base
   end
 
   # Attributes
+  def has_cover_photo?
+    !cover_photo.nil?
+  end
+
   def color
     PROJECT_COLORS[ self.featured ? FEATURED : self.category ]
   end
