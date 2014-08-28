@@ -39,8 +39,8 @@ class ProjectsController < ApplicationController
     @interested_user = InterestedUser.new
   end
 
-  def upload_image
-
+  def submit_project_submission
+    puts params
   end
 
   def check_submission

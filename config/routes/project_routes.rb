@@ -5,7 +5,7 @@ TeamLeada::Application.routes.draw do
     member do
       match 'info', to: "projects#project_info", as: "info", via: :get
       match 'submit', to: 'projects#check_submission', as: 'submission', via: :post
-      match 'image-submit', to: "projects#upload_image", as: "image_submission", via: :post
+      match "project-submission", to: "projects#submit_project_submission", as: "submit_project_submission", via: :post
       match 'interest', to: 'projects#show_interest', as: 'interest', via: :post
       match 'purchase', to: 'charges#create', as: 'purchase', via: [:post]
       match 'complete', to: 'projects#complete', as: 'complete', via: :post

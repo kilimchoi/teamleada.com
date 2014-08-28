@@ -157,6 +157,7 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :resumes
   accepts_nested_attributes_for :profile_photos
+  accepts_nested_attributes_for :project_submissions
 
   validates_format_of :username, :with => /\A[A-Za-z0-9_]*\z/
   validates :username, uniqueness: {case_sensitive: false}
