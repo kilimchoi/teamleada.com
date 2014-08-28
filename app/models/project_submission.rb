@@ -2,12 +2,16 @@
 #
 # Table name: project_submissions
 #
-#  id          :integer          not null, primary key
-#  project_id  :integer
-#  user_id     :integer
-#  created_at  :datetime
-#  updated_at  :datetime
-#  upload_file :string(255)
+#  id                     :integer          not null, primary key
+#  project_id             :integer
+#  user_id                :integer
+#  created_at             :datetime
+#  updated_at             :datetime
+#  upload_file            :string(255)
+#  required               :boolean          default(TRUE)
+#  original_filename      :string(255)
+#  upload_file_tmp        :string(255)
+#  upload_file_processing :boolean          default(FALSE)
 #
 
 class ProjectSubmission < ActiveRecord::Base
@@ -29,7 +33,7 @@ class ProjectSubmission < ActiveRecord::Base
     upload_file_tmp_url || upload_file.url
   end
 
-  def resume_file_tmp_url
+  def upload_file_tmp_url
     "/tmp/uploads/#{upload_file_tmp}" unless upload_file_tmp.nil?
   end
 

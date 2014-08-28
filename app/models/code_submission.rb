@@ -11,6 +11,7 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #  slide_index :integer
+#  required    :boolean          default(TRUE)
 #
 
 class CodeSubmission < ActiveRecord::Base
