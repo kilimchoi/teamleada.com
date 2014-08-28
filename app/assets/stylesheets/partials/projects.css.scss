@@ -203,6 +203,14 @@
 }
 
 // Project Show
+.project-cover-photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 40%;
+}
+
 .project-show-cover-image {
   background-size: cover;
   background-position: center;
@@ -213,7 +221,7 @@
   top: 0;
   left: 0;
   right: 0;
-  bottom: 40%;
+  bottom: 0;
 }
 
 .project-show-cover-image-dark:after {
@@ -228,6 +236,11 @@
 }
 
 .show-project-container {
-  margin-top: 25%;
+  margin-top: 23%;
+}
+
+.project-cover-photo-title {
+  font-size: 50px;
+  line-height: 1.5;
 }
 
