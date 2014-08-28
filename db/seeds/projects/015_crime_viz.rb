@@ -131,7 +131,7 @@ report_submission_content_one = [
 report_submission_content_two = [
   ['text', "Include the visualization(s) you created by submitting here: "],
   ['text', 'Use the same submit button to submit multiple visualization(s)'],
-  ['submit', nil],
+  ['image_submit', nil],
   ['next_steps', ""],
 ]
 
