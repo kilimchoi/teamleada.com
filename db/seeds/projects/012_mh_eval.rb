@@ -19,6 +19,7 @@ project = Project.create!(
   company_overview: "",
   is_new: false,
   deadline: 2.weeks,
+  cover_photo: "mightyhive",
 )
 
 ################################################################################
