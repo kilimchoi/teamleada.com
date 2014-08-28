@@ -154,7 +154,7 @@ class UsersController < ApplicationController
                                    ],
                                    project_submissions_attributes: [
                                     :id,
-                                    :upload,
+                                    :upload_file,
                                    ],
                                  })
   end
