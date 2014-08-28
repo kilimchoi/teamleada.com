@@ -15,6 +15,50 @@
   background-color: #613C78;
 }
 
+.no-project-color {
+  background-color: transparent;
+}
+
+// Project Images
+.project-image-crime {
+  background-image: image-url("projects/crime.jpg");
+}
+
+.project-image-statricks {
+
+}
+
+.project-image-mightyhive {
+
+}
+
+.project-cover-darken-container {
+  background: #000000;
+  padding: 0;
+}
+
+.project-cover-image {
+  background-size: cover;
+  background-position: 0 0;
+}
+
+.project-cover-image,
+.project-cover-image-dark:after {
+  position: absolute;
+  top: 0;
+  left: 15px;
+  right: 15px;
+  bottom: 10px;
+}
+
+.project-cover-image-dark:after {
+  background: #000000;
+  opacity: 0.4;
+  content: " ";
+}
+
+
+// Project styles
 .projects-container {
 }
 

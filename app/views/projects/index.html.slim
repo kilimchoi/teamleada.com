@@ -7,9 +7,9 @@
         - @project_data.highlighted.each_with_index do |highlighted_project_data, index|
           - project = Project.find(highlighted_project_data.uid)
           .item class="#{'active' if index == 0}"
-            .media-cover-photo.media-cover-dark class="#{}"
+            .media-cover-photo.media-cover-dark class="project-image-#{highlighted_project_data.image_class}"
             .row.row-table.row-full-height.project-title-row
-              = link_to info_project_path(project), remote: true, class: "col-middle text-center col-md-12 project-color-#{project.color}" do
+              = link_to info_project_path(project), remote: true, class: "col-middle text-center col-md-12 project-color-#{project.color} #{'no-project-color' if highlighted_project_data.image_class}" do
                 h1.media-title = project.title
                 h3.media-subtitle = project.difficulty
 
