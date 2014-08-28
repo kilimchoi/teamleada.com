@@ -17,6 +17,7 @@
 
 .no-project-color {
   background-color: transparent;
+  border: none;
 }
 
 // Project Images
@@ -33,17 +34,16 @@
 }
 
 .project-cover-darken-container {
-  background: #000000;
-  padding: 0;
+  @include border-radius(3px);
 }
 
 .project-cover-image {
   background-size: cover;
   background-position: 0 0;
+  @include border-radius(3px);
 }
 
-.project-cover-image,
-.project-cover-image-dark:after {
+.project-cover-image {
   position: absolute;
   top: 0;
   left: 15px;
@@ -52,6 +52,11 @@
 }
 
 .project-cover-image-dark:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: #000000;
   opacity: 0.4;
   content: " ";
