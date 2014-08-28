@@ -32,6 +32,10 @@
                 strong
                   = link_to project.title, info_project_path(project), remote: true, class: "text-contrast"
                 |  project to receive access to more projects!
+              h3.center
+                ' If you already have an access code, enter it
+                strong
+                  = link_to "below!", "#access-code-container", class: "text-contrast"
 
   .row.project-card-container
     .col-md-12
