@@ -2,24 +2,27 @@
 #
 # Table name: projects
 #
-#  title             :string(255)
-#  description       :text
-#  created_at        :datetime
-#  updated_at        :datetime
-#  url               :string(255)
-#  enabled           :boolean
-#  number            :integer
-#  has_leaderboard   :boolean          default(FALSE)
-#  short_description :text
-#  has_submit        :boolean          default(FALSE)
-#  cost              :integer
-#  paid              :boolean          default(FALSE)
-#  uid               :integer          not null, primary key
-#  difficulty        :string(255)
-#  company_overview  :text
-#  category          :string(255)
-#  is_new            :boolean          default(FALSE)
-#  deadline          :integer
+#  title                 :string(255)
+#  description           :text
+#  created_at            :datetime
+#  updated_at            :datetime
+#  url                   :string(255)
+#  enabled               :boolean
+#  number                :integer
+#  has_leaderboard       :boolean          default(FALSE)
+#  short_description     :text
+#  has_submit            :boolean          default(FALSE)
+#  cost                  :integer
+#  paid                  :boolean          default(FALSE)
+#  uid                   :integer          not null, primary key
+#  difficulty            :string(255)
+#  company_overview      :text
+#  category              :string(255)
+#  is_new                :boolean          default(FALSE)
+#  deadline              :integer
+#  featured              :boolean          default(FALSE)
+#  grants_project_access :boolean          default(FALSE)
+#  cover_photo           :string(255)
 #
 
 class Project < ActiveRecord::Base
