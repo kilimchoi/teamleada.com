@@ -7,6 +7,7 @@ class Users::ProjectsController < Users::BaseController
   end
 
   def show
+    @project_status = @user.project_status_for_project(@project)
   end
 
   def feedback
