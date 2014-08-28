@@ -25,6 +25,10 @@
   background-image: image-url("projects/crime.jpg");
 }
 
+.project-image-titanic {
+  background-image: image-url("projects/titanic.jpg");
+}
+
 .project-image-statricks {
 
 }
@@ -74,11 +78,11 @@
   @include transition-ease-in-out(200ms);
 
   &.extra-large {
-    min-height: 200px;
+    height: 400px;
   }
 
   &.large {
-    min-height: 150px;
+    height: 350px;
 
     h1 {
       font-size: 24px;
@@ -86,7 +90,7 @@
   }
 
   &.medium {
-    min-height: 100px;
+    height: 250px;
 
     h1 {
       font-size: 22px;
@@ -94,7 +98,7 @@
   }
 
   &.small {
-    min-height: 75px;
+    height: 200px;
 
     h1 {
       font-size: 18px;
