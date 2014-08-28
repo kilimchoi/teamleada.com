@@ -13,5 +13,5 @@ table.table.table-striped
           span.label.label-success Completed
         - else
           span.label.label-warning In Progress
-      td = link_to "Feedback", project_feedback_user_path(user, project)
+      td = link_to "Feedback", feedback_user_project_path(user, project)
 

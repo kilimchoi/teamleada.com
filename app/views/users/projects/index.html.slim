@@ -10,4 +10,4 @@
       .row
         .col-md-12
           h3.title Data Challenge Submission Status
-          = render partial: "users/projects", locals: { user: @user, projects: @user.completed_projects_with_submissions }
+          = render partial: "users/projects/projects", locals: { user: @user, projects: @user.completed_projects_with_submissions }
