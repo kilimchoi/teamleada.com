@@ -1,12 +1,12 @@
 # Set the working application directory
 # working_directory "/path/to/your/app"
-APP_PATH = "/www/prod-dir/teamleada.com"
+APP_PATH = ENV["DEPLOY_DIR"]
 working_directory APP_PATH
 
 # Unicorn PID file location
 # pid "/path/to/pids/unicorn.pid"
 #pid APP_PATH + "/tmp/pids/unicorn.pid"
-pid "/www/prod-dir/teamleada.com/tmp/pids/unicorn.pid"
+pid APP_PATH + "/tmp/pids/unicorn.pid"
 
 # Path to logs
 # stderr_path "/path/to/log/unicorn.log"
