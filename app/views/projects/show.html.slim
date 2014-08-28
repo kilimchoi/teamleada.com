@@ -1,24 +1,11 @@
 = provide(:page_title, @project.title)
 
-.container.full-container
+= render partial: "projects/project_cover_photo", locals: { project: @project }
+.container.full-container.show-project-container
   .row
     .col-md-12
       .project-container.card-container
-        .row.card
-          .col-md-12
-            h1 = @project.title
-
-        - unless @project.deadline.nil? || @project_status.completed?
-          - if @project_status.has_time_remaining?
-            .row.card
-              .col-md-12
-                h2.title Time Remaining
-                #project-countdown
-          - else
-            .row.card
-              .col-md-12
-                .alert.alert-danger
-                  h2.center.no-margin.project-timeout Your time for this project has expired.
+        = render partial: "projects/project_countdown", locals: { project: @project, project_status: @project_status }
 
         .row.card
           .col-md-12
@@ -92,10 +79,4 @@
                   p.large-font
                     ' Your due date was
                     = @project_status.display_end_date
-
-javascript:
-  $(document).ready(function() {
-    var endDate = new Date(#{@project_status.end_date_in_milliseconds})
-    $('#project-countdown').countdown({ until: endDate });
-  });
 
