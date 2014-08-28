@@ -50,14 +50,14 @@
       = render partial: "projects/projects_section", locals: { projects: @coming_soon, size: "small", per_row: 2 }
 
   - if signed_in? && current_user.has_project_access?
-    .row.card
+    .row.card.card-tight-margin
       .col-md-12
         h2.center
           | You've already received Early Project Access. <br>
           | Go complete projects!
   - else
     .card-container#access-code-container
-      .row.card
+      .row.card.card-tight-margin
         .col-md-12
           h4 Want an <strong>Early Access Code</strong>? Interested in hearing when we release new projects?
       .row.card

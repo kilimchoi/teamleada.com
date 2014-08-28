@@ -52,7 +52,7 @@
   top: 0;
   left: 15px;
   right: 15px;
-  bottom: 10px;
+  bottom: 0;
 }
 
 .project-cover-image-dark:after {
@@ -162,7 +162,6 @@
 }
 
 .project-info-container {
-  margin-top: -10px;
 }
 
 .project-info {
@@ -177,5 +176,16 @@
   bottom: 10px;
 
   padding: 10px;
+}
+
+.project-group {
+
+  .row-tight-margin {
+    &:first-child,
+    &:last-child {
+      margin: 0 -15px;
+    }
+  }
+
 }
 
