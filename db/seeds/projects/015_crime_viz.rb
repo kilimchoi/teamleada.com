@@ -13,7 +13,7 @@ project = Project.create!(
   short_description: "Given a set of recent San Francisco crime data, you are tasked with finding some meaningful insights and creating visualization(s) which presents your findings.",
   enabled: true,
   number: 15,
-  has_submit: true,
+  has_submit: false,
   uid: 15,
   difficulty: 'Advanced',
   category: Project::CHALLENGE,
