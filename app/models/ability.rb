@@ -22,7 +22,7 @@ class Ability
       can :manage, :all
     elsif !user.new_record?
       # Anyone with an account (employee and student)
-      can [:show, :edit, :update, :project, :projects, :project_feedback, :profile, :edit_profile], User, id: user.id
+      can [:show, :edit, :update, :profile, :edit_profile], User, id: user.id
       can [:show, :index, :create, :new, :autocomplete_user_name], Conversation if Feature.enabled?("messaging")
       can [:show, :index, :create, :new], Message if Feature.enabled?("messaging")
 
@@ -36,7 +36,7 @@ class Ability
         end
       else
         # Only students
-        can [:show, :check_submission, :complete, :submit_resource, :purchase, :resource], Project do |project|
+        can [:show, :check_submission, :complete, :submit_resource, :purchase, :resource, :feedback], Project do |project|
           project.grants_project_access || (user.has_project_access? && (!project.paid || !user.has_not_paid_for_project?(project)))
         end
 
