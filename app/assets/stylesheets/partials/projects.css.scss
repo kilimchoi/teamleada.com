@@ -29,6 +29,19 @@
   background-image: image-url("projects/titanic.jpg");
 }
 
+.project-image-basketball {
+  background-image: image-url("projects/basketball.jpg");
+}
+
+.project-image-flu-trends {
+  background-image: image-url("projects/flu_trends.jpg");
+}
+
+.project-image-pandas {
+  background-image: image-url("projects/pandas.jpg");
+}
+
+
 .project-image-statricks {
 
 }
@@ -43,7 +56,7 @@
 
 .project-cover-image {
   background-size: cover;
-  background-position: 0 0;
+  background-position: center;
   @include border-radius(3px);
 }
 
