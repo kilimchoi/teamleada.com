@@ -6,16 +6,7 @@
     .col-md-12
       .project-container.card-container
         = render partial: "projects/project_countdown", locals: { project: @project, project_status: @project_status }
-
-        .row.card
-          .col-md-12
-            .progress-bar-container
-              h2.title Your Progress
-              .progress
-                - percentage = current_user.project_progress_percentage(@project)
-                .progress-bar aria-valuenow="#{percentage}" aria-valuemin="0" aria-valuemax="100" style="width: #{percentage}%"
-                  = percentage
-                  | %
+        = render partial: "projects/project_progress", locals: { project: @project }
 
         - if current_user.is_waiting_on_evaluations_for_project?(@project) && @project.grants_project_access
           .row.card

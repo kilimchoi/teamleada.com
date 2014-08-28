@@ -8,6 +8,6 @@ $("#project-inner-<%= @project.uid %>").fadeIn(300);
 
 // Scroll to section
 $("html, body").animate({
-  scrollTop: $("#project-section-title-<%= @project.section %>").offset().top - 60
+  scrollTop: $("#project-link-<%= @project.uid %>").offset().top - 60
 }, 500);
 
