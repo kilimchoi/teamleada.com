@@ -18,8 +18,6 @@ class ProjectSubmission < ActiveRecord::Base
   belongs_to :project
   belongs_to :user
 
-  belongs_to :user
-
   default_scope { order(:created_at) }
 
   def pretty_upload_date
@@ -27,23 +25,15 @@ class ProjectSubmission < ActiveRecord::Base
   end
 
   def url
-    resume_file_tmp_url || resume_file.url
+    upload_file_tmp_url || upload_file.url
   end
 
   def resume_file_tmp_url
-    "/tmp/uploads/#{resume_file_tmp}" unless resume_file_tmp.nil?
-  end
-
-  def first_name
-    user.first_name
-  end
-
-  def last_name
-    user.last_name
+    "/tmp/uploads/#{upload_file_tmp}" unless upload_file_tmp.nil?
   end
 
   def version
-    user.resumes.index(self) + 1
+    user.project_submissions.index(self) + 1
   end
 
   def filename
