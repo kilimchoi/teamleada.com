@@ -1,3 +1,3 @@
 class Users::BaseController < ApplicationController
-  authorize_resource class: true
+  load_and_authorize_resource :user
 end

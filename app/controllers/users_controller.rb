@@ -88,19 +88,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def projects
-    @completed_projects = @user.completed_projects
-    @in_progress_projects = @user.in_progress_projects
-  end
-
-  def project
-    @project = Project.find(params[:project_id])
-  end
-
-  def project_feedback
-    @project = Project.find(params[:project_id])
-  end
-
   def change_role
     redirect_to root_path and return unless Rails.env.development? && signed_in?
     current_user.role = params[:role]
