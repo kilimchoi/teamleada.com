@@ -113,6 +113,25 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def submit_project_submission
+    if params[:is_project_submission_form]
+      if params[:user]["project_submissions_attributes"].nil?
+        respond_to do |format|
+          format.json { render json: {data: {error: "You must attach your file in order to upload it."}}, status: :unprocessable_entity }
+        end
+        return
+      end
+    end
+
+    if current_user.update_attributes(user_params)
+      flash[:info] = "Your file has been submitted!"
+    else
+      flash[:error] = "There was a problem uploading your submission. Please try again!"
+    end
+
+    redirect_to :back
+  end
+
   private
 
   def user_params
@@ -128,7 +147,11 @@ class UsersController < ApplicationController
                                    profile_photos_attributes: [
                                      :id,
                                      :photo,
-                                   ]
+                                   ],
+                                   project_submissions_attributes: [
+                                    :id,
+                                    :upload,
+                                   ],
                                  })
   end
 
