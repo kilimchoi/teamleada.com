@@ -1,14 +1,10 @@
 = provide(:page_title, @project.title)
 
-.project-show-cover-image.project-show-cover-image-dark class="project-image-#{@project.cover_photo}"
+= render partial: "projects/project_cover_photo", locals: { project: @project }
 .container.full-container.show-project-container
   .row
     .col-md-12
       .project-container.card-container
-        .row.card
-          .col-md-12
-            h1 = @project.title
-
         - unless @project.deadline.nil? || @project_status.completed?
           - if @project_status.has_time_remaining?
             .row.card
