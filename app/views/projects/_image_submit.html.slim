@@ -1,0 +1,3 @@
+= form_tag image_submission_project_path(@project), multipart: true, remote: true do
+  = file_field_tag "file", class: "fragment submit-file-button"
+  = submit_tag "Submit", class: 'flat-button step-button fragment', id: "submit_buton"

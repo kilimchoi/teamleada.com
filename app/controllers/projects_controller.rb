@@ -39,6 +39,10 @@ class ProjectsController < ApplicationController
     @interested_user = InterestedUser.new
   end
 
+  def upload_image
+
+  end
+
   def check_submission
     if params[:file].nil?
       flash[:danger] = "You must provide a submission file."
