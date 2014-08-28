@@ -66,9 +66,15 @@ Install redis on ubuntu via:
     make
     sudo make install
 
-In `redis.conf`, enable "daemonize yes". Then run:
+If you don't want to do the the full installation, in `redis.conf`, enable "daemonize yes". Then run:
 
     redis-server &
+
+If you follow the direction here to complete proper installation: http://redis.io/topics/quickstart
+Then start it via this:
+
+     /etc/init.d/redis_6379 start
+
 
 ## Background jobs
 
