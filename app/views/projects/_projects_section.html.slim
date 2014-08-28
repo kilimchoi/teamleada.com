@@ -21,7 +21,7 @@
                   .row.row-table.row-full-height.row-no-margin
                     .col-md-12.col-middle.project-container.card.project-card.project-card-colored class="project-color-#{project.color} project-#{project.section} #{size} #{'no-project-color' if project.has_cover_photo?}" id="project-#{project.uid}"
                       = render partial: "projects/project_card", locals: { project: project }
-                  .row
-                    .col-md-12
-                      .project-card-inner id="project-inner-#{project.uid}"
+              .row
+                .col-md-12
+                  .project-card-inner id="project-inner-#{project.uid}"
 
