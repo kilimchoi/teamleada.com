@@ -2,11 +2,12 @@
 #
 # Table name: project_submissions
 #
-#  id         :integer          not null, primary key
-#  project_id :integer
-#  user_id    :integer
-#  created_at :datetime
-#  updated_at :datetime
+#  id          :integer          not null, primary key
+#  project_id  :integer
+#  user_id     :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#  upload_file :string(255)
 #
 
 require 'spec_helper'
