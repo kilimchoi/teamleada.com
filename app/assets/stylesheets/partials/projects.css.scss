@@ -202,3 +202,32 @@
 
 }
 
+// Project Show
+.project-show-cover-image {
+  background-size: cover;
+  background-position: center;
+}
+
+.project-show-cover-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 40%;
+}
+
+.project-show-cover-image-dark:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000000;
+  opacity: 0.4;
+  content: " ";
+}
+
+.show-project-container {
+  margin-top: 25%;
+}
+
