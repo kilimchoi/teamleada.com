@@ -123,7 +123,11 @@ class UsersController < ApplicationController
       end
     end
 
+    @project = Project.find(params[:project_id])
     if current_user.update_attributes(user_params)
+      project_submission = current_user.project_submissions.last
+      project_submission.project = @project
+      project_submission.save
       flash[:info] = "Your file has been submitted!"
     else
       flash[:error] = "There was a problem uploading your submission. Please try again!"

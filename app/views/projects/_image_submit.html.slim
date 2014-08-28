@@ -1,7 +1,7 @@
 - current_user.project_submissions.build
 
 = simple_form_for current_user,
-                  url: submit_project_submission_project_path(@project),
+                  url: submit_project_submission_project_path(current_user, {project_id: @project}),
                   remote: true,
                   multipart: true,
                   method: :post do |f|
