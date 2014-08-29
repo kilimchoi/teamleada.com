@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140828201652) do
+ActiveRecord::Schema.define(version: 20140829003015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(version: 20140828201652) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "slide_index"
-    t.boolean  "required",    default: true
   end
 
   create_table "codes", force: true do |t|
@@ -117,22 +116,6 @@ ActiveRecord::Schema.define(version: 20140828201652) do
     t.integer  "uid",        null: false
     t.date     "date"
   end
-
-  create_table "delayed_jobs", force: true do |t|
-    t.integer  "priority",   default: 0, null: false
-    t.integer  "attempts",   default: 0, null: false
-    t.text     "handler",                null: false
-    t.text     "last_error"
-    t.datetime "run_at"
-    t.datetime "locked_at"
-    t.datetime "failed_at"
-    t.string   "locked_by"
-    t.string   "queue"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "employer_applications", force: true do |t|
     t.string   "name"
@@ -512,10 +495,11 @@ ActiveRecord::Schema.define(version: 20140828201652) do
     t.string   "slide_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "uid",                   null: false
+    t.string   "uid",                                  null: false
     t.string   "title"
     t.string   "submission_type"
     t.integer  "project_id"
+    t.boolean  "required",              default: true
   end
 
   create_table "submissions", force: true do |t|
