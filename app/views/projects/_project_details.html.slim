@@ -24,11 +24,12 @@ hr
       | Details:
     .col-md-10
       .row
-        .col-md-6
-          ' Time Allowed:
-          strong
-            = project.deadline_in_days
-            |  days
+        - if project.has_deadline?
+          .col-md-6
+            ' Time Allowed:
+            strong
+              = project.deadline_in_days
+              |  days
         .col-md-6
           ' Number of Submissions:
           strong
