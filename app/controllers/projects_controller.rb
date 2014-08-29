@@ -1,10 +1,19 @@
 class ProjectsController < ApplicationController
-  load_and_authorize_resource except: [:show_interest]
-  load_resource only: [:show_interest]
+  include ApplicationHelper
+  load_and_authorize_resource except: [:show_interest, :project_info]
+  load_resource only: [:show_interest, :project_info]
 
   def show
     @project_status = ProjectStatus.where(user: current_user, project: @project).first_or_create
     @project_status.save
+  end
+
+  def project_info
+    respond_to do |format|
+      format.js {
+        render partial: "projects/project_info"
+      }
+    end
   end
 
   def index
@@ -15,13 +24,19 @@ class ProjectsController < ApplicationController
       @projects = current_user.try(:company).try(:projects) || Project.none
     end
 
-    @data_lessons = @projects.where(category: Project::LESSON, enabled: true).reverse
-    @data_challenges = @projects.where(category: Project::CHALLENGE, enabled: true).reverse
-    @coming_soon = @projects.where(category: Project::COMING_SOON, enabled: true).reverse
+    @project_data = get_yaml_data_file("projects.yml")
+
+    @highlighted_projects = @projects.first(3)
+    @featured_projects = @projects.featured
+
+    # Don't show featured projects twice
+    projects = @projects.enabled.not_featured
+
+    @data_lessons    = projects.where(category: Project::LESSON).reverse
+    @data_challenges = projects.where(category: Project::CHALLENGE).reverse
+    @coming_soon     = projects.where(category: Project::COMING_SOON).reverse
 
     @interested_user = InterestedUser.new
-    @large_header = true
-    @profile_needs_info = true
   end
 
   def check_submission

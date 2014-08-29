@@ -23,6 +23,7 @@ project = Project.create!(
   company_overview: 'In this project, users are asked to construct a model to predict the survival of a passenger on the Titanic using giventraining and testing datasets.',
   is_new: false,
   deadline: 2.weeks,
+  cover_photo: "titanic",
 )
 ################################################################################
 

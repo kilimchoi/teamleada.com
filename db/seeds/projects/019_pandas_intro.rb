@@ -18,6 +18,7 @@ project = Project.create!(
   uid: 19,
   difficulty: 'Intermediate',
   is_new: true,
+  cover_photo: "pandas",
 )
 
 ################################################################################

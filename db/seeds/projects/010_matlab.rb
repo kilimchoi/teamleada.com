@@ -13,6 +13,7 @@ project = Project.create!(
   difficulty: 'Beginner',
   category: Project::COMING_SOON,
   is_new: false,
+  cover_photo: "intro-matlab",
 )
 
 ################################################################################

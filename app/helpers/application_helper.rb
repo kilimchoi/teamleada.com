@@ -62,6 +62,10 @@ module ApplicationHelper
     params[:controller] == "users" && params[:action] != "edit"
   end
 
+  def is_user_namespace?
+    params[:controller].split("/").first == "users"
+  end
+
   def sortable(column, title = nil)
     title ||= column.titleize
     css_class = (column == sort_column) ? "current #{sort_direction}" : nil

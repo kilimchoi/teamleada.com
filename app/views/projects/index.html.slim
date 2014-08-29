@@ -1,87 +1,67 @@
 = provide(:page_title, "Projects")
 
-.container.full-container.card-container#projects-container
-  .row.card
-    .col-md-12
-      .projects-container
-        h1.title
-          ' Data Challenges
-          small
-            = link_to "How this works", project_faq_path
-        = render partial: "projects/projects", locals: { projects: @data_challenges }
+.container-fluid.full-container
+  .row
+    #carousel.carousel.slide.carousel-home data-ride="carousel" data-interval="5000"
+      .carousel-inner.carousel-home-inner
+        - @project_data.highlighted.each_with_index do |highlighted_project_data, index|
+          - project = Project.find(highlighted_project_data.uid)
+          .item class="#{'active' if index == 0}"
+            .media-cover-photo.media-cover-dark class="project-image-#{highlighted_project_data.image_class}"
+            .row.row-table.row-full-height.project-title-row
+              = link_to info_project_path(project), remote: true, class: "col-middle text-center col-md-12 project-color-#{project.color} #{'no-project-color' if highlighted_project_data.image_class}" do
+                h1.media-title = project.title
+                h3.media-subtitle = project.difficulty
 
-  .row.card
-    .col-md-12
-      .projects-container
-        h1.title Data Lessons
-        = render partial: "projects/projects", locals: { projects: @data_lessons }
+      a.left.carousel-control href="#carousel" role="button" data-slide="prev"
+        span.glyphicon.glyphicon-chevron-left
 
-  .row.card
+      a.right.carousel-control href="#carousel" role="button" data-slide="next"
+        span.glyphicon.glyphicon-chevron-right
+
+  - unless signed_in? && current_user.has_project_access?
+    .row.project-card-container
+      .col-md-12
+        .projects-container
+          .row.card.project-color-green.text-contrast
+            .col-md-12
+              h1.center Want Project Access?
+              h3.center
+                ' Complete the
+                - project = Project.find(15)
+                strong
+                  = link_to project.title, info_project_path(project), remote: true, class: "text-contrast"
+                |  project to receive access to more projects!
+              h3.center
+                ' If you already have an access code, enter it
+                strong
+                  = link_to "below!", "#access-code-container", class: "text-contrast"
+
+  .row.project-card-container
     .col-md-12
-      .projects-container
-        h1.title Coming Soon!
-        = render partial: "projects/projects", locals: { projects: @coming_soon }
+      = render partial: "projects/projects_section", locals: { projects: @featured_projects, size: "extra-large", per_row: 2 }
+
+  .row.project-card-container
+    .col-md-12
+      = render partial: "projects/projects_section", locals: { projects: @data_challenges, size: "large", per_row: 2 }
+
+  .row.project-card-container
+    .col-md-12
+      = render partial: "projects/projects_section", locals: { projects: @data_lessons, size: "medium", per_row: 2 }
+
+  .row.project-card-container
+    .col-md-12
+      = render partial: "projects/projects_section", locals: { projects: @coming_soon, size: "small", per_row: 2 }
 
   - if signed_in? && current_user.has_project_access?
-    .row.card
+    .row.card.card-tight-margin
       .col-md-12
         h2.center
           | You've already received Early Project Access. <br>
           | Go complete projects!
   - else
     .card-container#access-code-container
-      .row.card
-        .col-md-12
-          h4 Want an <strong>Early Access Code</strong>? Interested in hearing when we release new projects?
-      .row.card
-        .col-md-12
-          p
-            | Fill our user survey. Indicate in the last question (Q.6) that you're interested in the product!
-          = link_to "Take me to the survey", "http://www.surveygizmo.com/s3/1645296/Handbook-Pt-III-Reader-Survey", target: "_blank", class: "flat-button"
-      .row.card
+      .row.card.card-tight-margin
         .col-md-8.col-md-offset-2
           = render partial: "codes/project_access_code"
 
-
-// TODO: Don't make a new modal for each project
-- @projects.each do |project|
-  div class="modal fade" id="#{project.url}"
-    .modal-dialog
-      .modal-content
-        .modal-header
-          button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
-          - if !project.deadline.nil?
-            .row
-              .col-md-9
-                h4.modal-title
-                  = project.title
-              .col-md-2
-                h4.modal-title.label.label-success
-                  | Time: 
-                  = project.deadline_in_days
-                  |  Days
-          - else
-            h4.modal-title
-              = project.title
-        .modal-body
-          p
-            = project.short_description
-        .modal-footer
-          - if signed_in? && current_user.has_project_access? && project.category != Project::COMING_SOON
-            - project_status = ProjectStatus.find_by(user: current_user, project: project)
-            - if project.paid? && current_user.has_not_paid_for_project?(project) && !current_user.is_admin?
-              = form_tag purchase_project_path(project), class: "form-inline" do
-                script src="https://checkout.stripe.com/checkout.js" class="stripe-button" *{'data-key' => Rails.configuration.stripe[:publishable_key], 'data-description' => project.title, 'data-amount' => project.cost, 'data-email' => current_user.email}
-            - elsif current_user.has_finished_project?(project)
-              = link_to "View completed project", project_path(project), class: "btn btn-leada"
-            - elsif !project_status.nil? && project_status.expired?
-              = link_to "View expired project", project_path(project), class: "btn btn-leada"
-            - elsif current_user.has_started_project?(project)
-              = link_to "Continue this project", project_path(project), class: "btn btn-leada"
-            - else
-              = link_to "Start this project!", project_path(project), class: "btn btn-leada"
-          - elsif signed_in? && current_user.is_company? && current_user.owns_project?(project)
-            = link_to "View this project", project_path(project), class: "btn btn-leada"
-          - else
-            = link_to "I'm Interested", interest_project_path(project), method: :post, class: "btn btn-leada"
-          button.btn.btn-default type="button" data-dismiss="modal" Close

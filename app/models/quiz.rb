@@ -2,11 +2,12 @@
 #
 # Table name: quizzes
 #
-#  id         :integer          not null, primary key
-#  quiz_id    :string(255)
+#  id         :integer          not null
+#  quiz_id    :string(255)      primary key
 #  answer     :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  project_id :integer
 #
 
 class Quiz < ActiveRecord::Base

@@ -24,7 +24,7 @@
                       = link_to "Edit Profile", edit_user_profile_path, class: "button-small"
             .profile-linkedin-integration
               - if !current_user.has_linkedin_integration? && current_user_can_edit
-                = link_to "Integrate LinkedIn", user_omniauth_authorize_path(:linkedin), class: "button-small"
+                = link_to "Import From LinkedIn", user_omniauth_authorize_path(:linkedin), class: "button-small"
 
       .row
         .col-md-6

@@ -1,0 +1,13 @@
+// Required Variables:
+// project
+
+.row.card
+  .col-md-12
+    .progress-bar-container
+      h2.title Your Progress
+      .progress
+        - percentage = current_user.project_progress_percentage(project)
+        .progress-bar aria-valuenow="#{percentage}" aria-valuemin="0" aria-valuemax="100" style="width: #{percentage}%"
+          = percentage
+          | %
+

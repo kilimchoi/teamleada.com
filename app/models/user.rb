@@ -79,6 +79,7 @@ class User < ActiveRecord::Base
   has_many :code_submissions
   has_many :code_submission_evaluations, foreign_key: :reviewee_id
   has_many :quiz_submissions
+  has_many :project_submissions
 
   # Project completion
   has_many :step_statuses
@@ -156,6 +157,7 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :resumes
   accepts_nested_attributes_for :profile_photos
+  accepts_nested_attributes_for :project_submissions
 
   validates_format_of :username, :with => /\A[A-Za-z0-9_]*\z/
   validates :username, uniqueness: {case_sensitive: false}
@@ -442,7 +444,7 @@ class User < ActiveRecord::Base
   end
 
   def has_completed_submission?(submission_context)
-    self.code_submissions_for_project(submission_context.project).select{ |code_submission| code_submission.submission_context == submission_context }.count > 0
+    self.code_submissions_for_project(submission_context.project).select{ |code_submission| submission_context.required && code_submission.submission_context == submission_context }.count > 0
   end
 
   def next_lesson_or_step_for_project_path(project)
@@ -590,6 +592,14 @@ class User < ActiveRecord::Base
     self.code_submission_evaluations.where(project: project)
   end
 
+  def published_evaluations_for_project(project)
+    evaluations_for_project(project).published
+  end
+
+  def is_waiting_on_evaluations_for_project?(project)
+    has_finished_project?(project) && published_evaluations_for_project(project).count < project.submission_contexts.count
+  end
+
   def unread_conversations
     self.conversation_users.where(unread: true)
   end
@@ -718,6 +728,23 @@ class User < ActiveRecord::Base
     LessonStatus.where(user: self, lesson_id: lesson.uid, completed: true, project: lesson.project).first_or_create
   end
 
+  def get_project_access_from_project_completion
+    project_access_code = Project.project_completion_access_code
+    add_code(project_access_code)
+  end
+
+  def grant_project_access(project)
+    get_project_access_from_project_completion
+    send_grant_project_access_email(project)
+  end
+
+  def deny_project_access(project)
+    @project_status = ProjectStatus.find_by(project: project, user: self)
+    @project_status.completed = false
+    @project_status.save
+    send_deny_project_access_email(project)
+  end
+
   #
   # Mailer
   #
@@ -727,6 +754,14 @@ class User < ActiveRecord::Base
       evaluation.save
     end
     EvaluationMailer.send_feedback(self, project, evaluations).deliver
+  end
+
+  def send_grant_project_access_email(project)
+    ProjectAccessMailer.send_grant_access_email(self, project).deliver
+  end
+
+  def send_deny_project_access_email(project)
+    ProjectAccessMailer.send_deny_access_email(self, project).deliver
   end
 
 end
