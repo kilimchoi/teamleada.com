@@ -134,6 +134,10 @@ class Project < ActiveRecord::Base
     PROJECT_SECTION[ self.featured ? FEATURED : self.category ]
   end
 
+  def has_deadline?
+    !self.deadline.nil?
+  end
+
   def deadline_in_days
     if !self.deadline.nil?
       self.deadline.div(60 * 60 * 24)
