@@ -109,8 +109,8 @@ code_submission_slide = Slide.create!(
 )
 
 code_submission_context = SubmissionContext.create!(
-  title: "Src Code",
-  description: "User is asked to submit the src code for the project.",
+  title: "Source Code",
+  description: "User is asked to submit the source code for the project.",
   slide: code_submission_slide,
   submission_context_id: 0,
   submission_type: SubmissionContext::CODE,

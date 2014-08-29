@@ -12,7 +12,7 @@ Project.delete_all
 Lesson.delete_all
 Step.delete_all
 Slide.delete_all
-SubmissionContext.delete_all
+SubmissionContext.unscoped.delete_all
 
 Quiz.delete_all
 
