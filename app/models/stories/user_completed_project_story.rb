@@ -1,0 +1,2 @@
+class UserCompletedProjectStory < Story
+end
