@@ -444,7 +444,7 @@ class User < ActiveRecord::Base
   end
 
   def has_completed_submission?(submission_context)
-    self.code_submissions_for_project(submission_context.project).select{ |code_submission| code_submission.submission_context == submission_context }.count > 0
+    self.code_submissions_for_project(submission_context.project).select{ |code_submission| submission_context.required && code_submission.submission_context == submission_context }.count > 0
   end
 
   def next_lesson_or_step_for_project_path(project)
