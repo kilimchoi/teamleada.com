@@ -21,6 +21,7 @@ class Story < ActiveRecord::Base
   include ActionView::Helpers::DateHelper
 
   self.inheritance_column = :type
+  self.per_page = 50
 
   default_scope -> { order("created_at DESC") }
   scope :user_favorite_user_stories, -> { where(type: 'UserFavoriteUserStory') }
