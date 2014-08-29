@@ -91,6 +91,11 @@
   @include border-radius(3px);
 }
 
+.project-carousel-cover-photo {
+  background-size: cover;
+  background-position: center;
+}
+
 .project-cover-image {
   position: absolute;
   top: 0;
