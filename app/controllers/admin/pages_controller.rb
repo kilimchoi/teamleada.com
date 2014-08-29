@@ -20,6 +20,10 @@ class Admin::PagesController < Admin::BaseController
     @daily_code_submissions = CodeSubmission.where("created_at >= ?", Date.today.to_date)
   end
 
+  def activity
+    @stories = Story.all.paginate(page: params[:page])
+  end
+
   def realtime_charts
     @users_chart = users_chart(30.days.ago)
     @detailed_users_chart = detailed_users_chart(30.days.ago)
