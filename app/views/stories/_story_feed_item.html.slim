@@ -1,3 +1,6 @@
+// Required Variables:
+// story, is_company
+
 .story-container.card
   .card-section.clearfix
     = image_tag story.interactor.profile_photo, class: "story-profile-photo"
@@ -8,10 +11,10 @@
         = story.action_text
         '
         / = link_to story.interactee.name, user_path(story.interactee)
-        = link_to "Anonymous User", company_user_path(story.interactee)
+        - name = is_company ? "Anonymous User" : story.interactee.name
+        = link_to name, company_user_path(story.interactee)
       .card-timestamp
         = story.time_text
 
   .card-section.bottom-card-section.clearfix
-    | Notes
-
+    = render partial: "stories/story_feed_item_content", locals: { story: story, is_company: is_company }
