@@ -63,7 +63,8 @@ module ApplicationHelper
   end
 
   def is_user_namespace?
-    params[:controller].split("/").first == "users"
+    split_controller = params[:controller].split("/")
+    split_controller.size > 1 && split_controller.first == "users"
   end
 
   def sortable(column, title = nil)

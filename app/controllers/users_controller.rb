@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = current_user
     @profile_needs_info = signed_in? && current_user.has_missing_profile_info?
   end
 
