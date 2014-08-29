@@ -6,4 +6,6 @@ highlighted:
     image_class: "mightyhive"
   - uid: 13
     image_class: "statricks"
+  - uid: 11
+    image_class: "titanic"
 
