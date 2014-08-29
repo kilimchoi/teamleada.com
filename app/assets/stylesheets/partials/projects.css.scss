@@ -110,12 +110,15 @@
   content: " ";
 }
 
+.carousel-projects {
+  margin-bottom: 10px;
+}
+
 // Project styles
 .projects-container {
 }
 
 .project-card-container {
-  margin-top: 15px;
 }
 
 .project-card {
@@ -223,14 +226,6 @@
 }
 
 .project-group {
-
-  .row-tight-margin {
-    &:first-child,
-    &:last-child {
-      margin: 0 -15px;
-    }
-  }
-
 }
 
 // Project Show

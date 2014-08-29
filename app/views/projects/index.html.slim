@@ -2,7 +2,7 @@
 
 .container-fluid.full-container
   .row
-    #carousel.carousel.slide.carousel-home data-ride="carousel" data-interval="5000"
+    #carousel.carousel.slide.carousel-projects data-ride="carousel" data-interval="5000"
       .carousel-inner.carousel-home-inner
         - @project_data.highlighted.each_with_index do |highlighted_project_data, index|
           - project = Project.find(highlighted_project_data.uid)
@@ -54,14 +54,14 @@
       = render partial: "projects/projects_section", locals: { projects: @coming_soon, size: "small", per_row: 2 }
 
   - if signed_in? && current_user.has_project_access?
-    .row.card.card-tight-margin
+    .row.card
       .col-md-12
         h2.center
           | You've already received Early Project Access. <br>
           | Go complete projects!
   - else
-    .card-container#access-code-container
-      .row.card.card-tight-margin
+    #access-code-container
+      .row.card
         .col-md-8.col-md-offset-2
           = render partial: "codes/project_access_code"
 
