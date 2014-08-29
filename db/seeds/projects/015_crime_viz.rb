@@ -190,6 +190,7 @@ video_submission_context = SubmissionContext.create!(
   slide: video_slide,
   submission_context_id: 0,
   submission_type: SubmissionContext::RESPONSE,
+  required: false,
 )
 
 
