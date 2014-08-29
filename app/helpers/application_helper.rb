@@ -43,7 +43,7 @@ module ApplicationHelper
   end
 
   def valid_settings_tab?(tab)
-    User::SETTINGS_TABS.include? tab
+    UserPreference::SETTINGS_TABS.include? tab
   end
 
   def valid_code_submissions_tab?(tab)
