@@ -98,7 +98,7 @@ class ProjectsController < ApplicationController
 
   def complete
     @project_status = ProjectStatus.find_by(user: current_user, project: @project)
-    if current_user.completed_points(@project) == @project.total_points
+    if current_user.completed_points(@project) >= @project.total_points
       @project_status.completed = true
       @project_status.save
       flash[:info] = "Congratulations! You have completed the #{@project.title} project!"
