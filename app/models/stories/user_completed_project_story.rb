@@ -12,9 +12,6 @@
 #  updated_at   :datetime
 #
 
-# Read about factories at https://github.com/thoughtbot/factory_girl
+class UserCompletedProjectStory < Story
 
-FactoryGirl.define do
-  factory :story do
-  end
 end
