@@ -14,4 +14,5 @@
 #
 
 class UserCompletedProjectStory < Story
+  belongs_to :project
 end

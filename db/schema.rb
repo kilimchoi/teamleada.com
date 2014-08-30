@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140829231047) do
+ActiveRecord::Schema.define(version: 20140830010956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -478,17 +478,6 @@ ActiveRecord::Schema.define(version: 20140829231047) do
     t.integer  "points",           default: 1
   end
 
-  create_table "stories", force: true do |t|
-    t.integer  "interactor_id"
-    t.integer  "interactee_id"
-    t.integer  "company_id"
-    t.text     "text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "type"
-    t.boolean  "favorite",      default: true
-  end
-
   create_table "submission_contexts", id: false, force: true do |t|
     t.text     "description"
     t.integer  "submission_context_id"
@@ -541,13 +530,6 @@ ActiveRecord::Schema.define(version: 20140829231047) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "code_id"
-  end
-
-  create_table "user_completed_project_stories", force: true do |t|
-    t.datetime "completed_at"
-    t.integer  "project_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "user_interactions", force: true do |t|
