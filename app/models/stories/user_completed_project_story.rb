@@ -14,4 +14,7 @@
 
 class UserCompletedProjectStory < Story
 
+  def action
+  end
+
 end

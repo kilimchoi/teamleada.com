@@ -13,4 +13,16 @@
 #
 
 class Story < ActiveRecord::Base
+  belongs_to :subject, polymorphic: true
+  belongs_to :object, polymorphic: true
+
+  self.inheritance_column = :type
+
+  default_scope -> { order("created_at DESC") }
+  scope :user_completed_project_stories, -> { where(type: 'UserCompletedUserStory') }
+
+  def action
+    raise "Not implemented error"
+  end
+
 end

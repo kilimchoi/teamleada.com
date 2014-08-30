@@ -11,4 +11,6 @@
 #
 
 class StoryNotification < ActiveRecord::Base
+  belongs_to :story
+  belongs_to :notified, polymorphic: true
 end
