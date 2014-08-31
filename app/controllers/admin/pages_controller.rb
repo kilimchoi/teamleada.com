@@ -21,7 +21,8 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def activity
-    @stories = Story.all.paginate(page: params[:page])
+    @admin_subscriber = Subscriber.find_by(name: "admin")
+    @story_notifications = @admin_subscriber.story_notifications
   end
 
   def realtime_charts

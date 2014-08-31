@@ -9,4 +9,5 @@
 #
 
 class Subscriber < ActiveRecord::Base
+  has_many :story_notifications, as: :notified
 end
