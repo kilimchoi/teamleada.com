@@ -28,7 +28,7 @@ class UserCompletedProjectStory < Story
     #   project_completion
     # as well as all the users who follow this user.
     project_completion_user_action = UserAction.find_by(name: "project_completion")
-
+    project_completion_user_action.subscribers
   end
 
 end
