@@ -11,6 +11,7 @@
 class UserAction < ActiveRecord::Base
   has_many :subscriptions, as: :subscribable
 
+  has_many :singleton_subscribers, through: :subscriptions, source: :subscriber, source_type: "Subscriber"
   has_many :user_subscribers, through: :subscriptions, source: :subscriber, source_type: "User"
   has_many :company_subscribers, through: :subscriptions, source: :subscriber, source_type: "Company"
 
@@ -19,12 +20,7 @@ class UserAction < ActiveRecord::Base
   end
 
   def admin_subscribers
-    subscription = subscriptions.find_by(subscriber_id: nil, subscriber_type: "admin")
-    if subscription
-      [subscription.subscriber]
-    else
-      []
-    end
+    singleton_subscribers.where(name: "admin")
   end
 
 end
