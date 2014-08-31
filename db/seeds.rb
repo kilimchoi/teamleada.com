@@ -34,6 +34,7 @@ folders = [
   'projects/quizzes',
   'charts',
   'company',
+  'user_actions',
 ]
 
 folders.each do |folder|
