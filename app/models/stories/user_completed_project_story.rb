@@ -14,7 +14,7 @@
 
 class UserCompletedProjectStory < Story
 
-  class < self
+  class << self
     def create_with_user_and_project(user, project)
       UserCompletedProjectStory.create(subject: user, object: project)
     end

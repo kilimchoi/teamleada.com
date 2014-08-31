@@ -15,11 +15,16 @@ class UserAction < ActiveRecord::Base
   has_many :company_subscribers, through: :subscriptions, source: :subscriber, source_type: "Company"
 
   def subscribers
-    [admin_subscriber] + user_subscribers + company_subscribers
+    admin_subscribers + user_subscribers + company_subscribers
   end
 
-  def admin_subscriber
-    subscriptions.find_by(subscriber_id: nil, subscriber_type: "admin")
+  def admin_subscribers
+    subscription = subscriptions.find_by(subscriber_id: nil, subscriber_type: "admin")
+    if subscription
+      [subscription.subscriber]
+    else
+      []
+    end
   end
 
 end
