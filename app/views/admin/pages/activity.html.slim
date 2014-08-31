@@ -6,6 +6,6 @@
   .row
     .col-md-12
       .stories-container
-        - @story_notifications.each do |notification|
-          = notification.story.type
+        - @story_notifications.each do |story_notification|
+          = render partial: "story_notifications/story_notification", locals: { story_notification: story_notification }
 
