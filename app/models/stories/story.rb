@@ -19,7 +19,7 @@ class Story < ActiveRecord::Base
   self.inheritance_column = :type
 
   default_scope -> { order("created_at DESC") }
-  scope :user_completed_project_stories, -> { where(type: 'UserCompletedUserStory') }
+  scope :user_completed_project_stories, -> { where(type: 'UserCompletedProjectStory') }
 
   def action
     raise "Not implemented error"
