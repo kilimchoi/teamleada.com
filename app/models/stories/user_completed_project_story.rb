@@ -31,5 +31,14 @@ class UserCompletedProjectStory < Story
     project_completion_user_action.subscribers
   end
 
+  # Specific UserCompletedProjectStory methods
+  def user
+    subject
+  end
+
+  def project
+    object
+  end
+
 end
 
