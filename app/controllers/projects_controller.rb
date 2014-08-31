@@ -100,6 +100,7 @@ class ProjectsController < ApplicationController
     @project_status = ProjectStatus.find_by(user: current_user, project: @project)
     if current_user.completed_points(@project) >= @project.total_points
       @project_status.completed = true
+      UserCompletedProjectStory.create_with_user_and_project(current_user, @project)
       @project_status.save
       flash[:info] = "Congratulations! You have completed the #{@project.title} project!"
       redirect_to @project

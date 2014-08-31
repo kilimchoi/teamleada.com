@@ -21,7 +21,13 @@ class Story < ActiveRecord::Base
   default_scope -> { order("created_at DESC") }
   scope :user_completed_project_stories, -> { where(type: 'UserCompletedProjectStory') }
 
+  after_create :create_story_notifications
+
   def action
+    raise "Not implemented error"
+  end
+
+  def create_story_notifications
     raise "Not implemented error"
   end
 

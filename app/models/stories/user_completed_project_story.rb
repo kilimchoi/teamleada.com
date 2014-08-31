@@ -14,7 +14,21 @@
 
 class UserCompletedProjectStory < Story
 
+  class < self
+    def create_with_user_and_project(user, project)
+      UserCompletedProjectStory.create(subject: user, object: project)
+    end
+  end
+
   def action
+  end
+
+  def create_story_notifications
+    # For UserCompletedProjectStories, we want to notify the user_action for:
+    #   project_completion
+    # as well as all the users who follow this user.
+    project_completion_user_action = UserAction.find_by(name: "project_completion")
+
   end
 
 end
