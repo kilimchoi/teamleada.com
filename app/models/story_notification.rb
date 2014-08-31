@@ -13,4 +13,11 @@
 class StoryNotification < ActiveRecord::Base
   belongs_to :story
   belongs_to :notified, polymorphic: true
+
+  class < self
+    def create_with_subscriber_and_story(subscriber, story)
+      StoryNotification.create(notified: subscriber, story: story)
+    end
+  end
+
 end

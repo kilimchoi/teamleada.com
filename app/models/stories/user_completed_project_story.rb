@@ -23,7 +23,7 @@ class UserCompletedProjectStory < Story
   def action
   end
 
-  def create_story_notifications
+  def subscribers
     # For UserCompletedProjectStories, we want to notify the user_action for:
     #   project_completion
     # as well as all the users who follow this user.
@@ -32,3 +32,4 @@ class UserCompletedProjectStory < Story
   end
 
 end
+

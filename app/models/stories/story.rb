@@ -27,8 +27,12 @@ class Story < ActiveRecord::Base
     raise "Not implemented error"
   end
 
+  def subscribers
+    []
+  end
+
   def create_story_notifications
-    raise "Not implemented error"
+    subscribers.each { |subscriber| StoryNotification.create_with_subscriber_and_story(subscriber, self) }
   end
 
 end
