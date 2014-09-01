@@ -31,6 +31,9 @@ class UserCompletedProjectStory < Story
     project_completion_user_action.subscribers
   end
 
+  def permalink_path
+  end
+
   # Specific UserCompletedProjectStory methods
   def user
     subject

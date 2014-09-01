@@ -13,6 +13,8 @@
 #
 
 class Story < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
+
   belongs_to :subject, polymorphic: true
   belongs_to :object, polymorphic: true
 
@@ -33,6 +35,10 @@ class Story < ActiveRecord::Base
 
   def create_story_notifications
     subscribers.each { |subscriber| StoryNotification.create_with_subscriber_and_story(subscriber, self) }
+  end
+
+  def permalink_path
+    rails "Not implemented error"
   end
 
 end
