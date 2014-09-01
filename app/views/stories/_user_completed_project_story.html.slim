@@ -4,6 +4,6 @@
 .story-container
   .story.card
     h1
-      = story.user.name
+      = link_to story.user.name, user_path(story.user)
       '  completed
-      = story.project.title
+      = link_to story.project.title, project_path(story.project)
