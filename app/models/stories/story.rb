@@ -14,6 +14,7 @@
 
 class Story < ActiveRecord::Base
   include Rails.application.routes.url_helpers
+  obfuscate_id spin: 12211221
 
   belongs_to :subject, polymorphic: true
   belongs_to :object, polymorphic: true

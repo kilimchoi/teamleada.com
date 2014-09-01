@@ -11,8 +11,6 @@
 #
 
 class StoryNotification < ActiveRecord::Base
-  obfuscate_id spin: 12211221
-
   belongs_to :story
   belongs_to :notified, polymorphic: true
 

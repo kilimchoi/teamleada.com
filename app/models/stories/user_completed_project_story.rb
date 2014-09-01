@@ -32,6 +32,7 @@ class UserCompletedProjectStory < Story
   end
 
   def permalink_path
+    user_story_path(user, self)
   end
 
   # Specific UserCompletedProjectStory methods
