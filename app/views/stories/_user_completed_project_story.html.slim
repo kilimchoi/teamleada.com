@@ -1,5 +1,5 @@
 // Required Variables:
-// story
+// story, story_notification
 
 .story-container
   .story.card
@@ -7,3 +7,5 @@
       = link_to story.user.name, user_path(story.user)
       '  completed
       = link_to story.project.title, project_path(story.project)
+    p
+      = link_to story_notification.created_at.pretty_time, story.permalink_path
