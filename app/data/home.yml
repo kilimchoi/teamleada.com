@@ -28,7 +28,7 @@ columns:
 user_testimonials:
   - name: "Olivia Thet, UC Berkeley 14', Math"
     quote: "I was able to impress employers during a technical interview, Leada provided me the resources to exercise the knowledge I already had from a strong math background as well as build skills in new areas."
-    image_class: ""
+    image_class: "olivia.jpg"
   - name: "Matt Sedaghatfar, Data Analyst, AdMarketplace"
     quote: "Leada has been instrumental for me to obtain the practical skills to obtain a Data Analyst position. Many websites today provide tutorials and ways to learn syntax, Leada goes one step further with realistic projects."
-    image_class: ""
+    image_class: "matt.jpg"
