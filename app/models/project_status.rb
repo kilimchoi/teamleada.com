@@ -20,14 +20,23 @@ class ProjectStatus < ActiveRecord::Base
   scope :group_by_user, -> { order("user_id ASC") }
 
   def set_start_date
-    if start_date.nil?
-      self.start_date = Time.now
-      self.save
-    end
+    self.start_date = Time.now
+    self.save
   end
 
   def create_user_completed_project_story
     UserCompletedProjectStory.create_with_user_and_project(user, project)
+  end
+
+  def create_user_started_project_story
+    UserStartedProjectStory.create_with_user_and_project(user, project)
+  end
+
+  def begin_project
+    if start_date.nil?
+      self.set_start_date
+      self.create_user_started_project_story
+    end
   end
 
   def mark_complete
