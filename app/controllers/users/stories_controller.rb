@@ -5,6 +5,7 @@ class Users::StoriesController < Users::BaseController
   end
 
   def index
+    @stories = @user.stories
   end
 
 end

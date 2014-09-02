@@ -74,6 +74,9 @@ class User < ActiveRecord::Base
   has_one :user_profile    # Should use the .profile attribute defined below.
   has_one :user_preference # Should use the .preferences attribute defined below.
 
+  # Stories
+  has_many :stories, as: :subject
+
   # Submissions
   has_many :submissions
   has_many :code_submissions
