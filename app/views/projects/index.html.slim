@@ -12,6 +12,8 @@
               = link_to info_project_path(project), remote: true, class: "col-middle text-center col-md-12 project-color-#{project.color} #{'no-project-color' if highlighted_project_data.image_class}" do
                 h1.media-title = project.title
                 h3.media-subtitle = project.difficulty
+                - if project.is_new
+                  span.label.label-danger.project-new-label New!
 
       a.left.carousel-control href="#carousel" role="button" data-slide="prev"
         span.glyphicon.glyphicon-chevron-left

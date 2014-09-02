@@ -19,7 +19,7 @@
                   .project-cover-image class="#{'project-cover-image-dark project-image-' + project.cover_photo if project.has_cover_photo?}"
 
                   .row.row-table.row-full-height.row-no-margin
-                    .col-md-12.col-middle.project-container.card.project-card.project-card-colored class="project-color-#{project.color} project-#{project.section} #{size} #{'no-project-color' if project.has_cover_photo?}" id="project-#{project.uid}"
+                    .col-md-12.col-middle.project-container.card.project-card.project-card-colored.center class="project-color-#{project.color} project-#{project.section} #{size} #{'no-project-color' if project.has_cover_photo?}" id="project-#{project.uid}"
                       = render partial: "projects/project_card", locals: { project: project }
               .row
                 .col-md-12
