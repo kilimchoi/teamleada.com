@@ -106,10 +106,12 @@ end
 
 task :create_user_signed_up_stories => :environment do
   User.all.each do |user|
-    signed_up_story = user.create_signed_up_story
-    signed_up_story.created_at = user.created_at
-    signed_up_story.updated_at = user.created_at
-    signed_up_story.save
+    unless UserSignedUpStory.exists?(subject: user, action_object: user)
+      signed_up_story = user.create_signed_up_story
+      signed_up_story.created_at = user.created_at
+      signed_up_story.updated_at = user.created_at
+      signed_up_story.save
+    end
   end
 end
 
