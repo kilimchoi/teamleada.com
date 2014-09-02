@@ -20,6 +20,7 @@ project = Project.create!(
   category: Project::CHALLENGE,
   is_new: true,
   deadline: 2.weeks,
+  cover_photo: "scrape-finance",
 )
 
 ################################################################################
