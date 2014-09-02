@@ -3,6 +3,7 @@ class EmployerApplicationsController < ApplicationController
   def new
     @employer_application = EmployerApplication.new
     @large_header = true
+    @company_logos = get_yaml_data_file("company_logos.yml")
   end
 
   def create
