@@ -27,6 +27,14 @@
                 = link_to "Import From LinkedIn", user_omniauth_authorize_path(:linkedin), class: "button-small"
 
       .row
+        .col-md-12
+          .row.card.no-padding
+            .card-navigation-item
+              = link_to "Profile", user_path(user)
+            .card-navigation-item
+              = link_to "Updates", user_stories_path(user)
+
+      .row
         .col-md-6
           .row
             .col-md-12

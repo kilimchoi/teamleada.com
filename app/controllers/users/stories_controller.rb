@@ -4,4 +4,7 @@ class Users::StoriesController < Users::BaseController
   def show
   end
 
+  def index
+  end
+
 end
