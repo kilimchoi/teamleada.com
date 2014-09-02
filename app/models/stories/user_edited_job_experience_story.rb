@@ -31,6 +31,7 @@ class UserEditedJobExperienceStory < UserEditedProfileStory
   end
 
   def summary_of_changes
+    # TODO(mark): Make this method not super sketchy
     result = ""
     data.each do |key, value|
       result += "<strong>#{key.titleize}:</strong> #{value.last}\n"
