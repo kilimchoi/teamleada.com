@@ -1,4 +1,5 @@
 class EmployerApplicationsController < ApplicationController
+  include ApplicationHelper
 
   def new
     @employer_application = EmployerApplication.new
