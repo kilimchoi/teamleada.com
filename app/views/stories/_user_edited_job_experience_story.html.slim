@@ -1,0 +1,25 @@
+// Required Variables:
+// story
+
+.story-container
+  .story.card
+    .card-section.clearfix
+      .card-info
+        .card-photo.clearfix
+          = link_to user_path(story.user) do
+            = image_tag story.user.profile_photo, class: "story-profile-photo"
+
+        .card-interactions
+          .card-links
+            = link_to story.user.name, user_path(story.user)
+            '  edited
+            = story.user.gender
+            '
+            = link_to "job experience.", user_story_path(story.user, story)
+
+          .card-timestamp
+            = link_to story.created_at.pretty_time, story.permalink_path
+
+    .card-section.clearfix
+      .card-body
+        = simple_format(story.summary_of_changes, class: "card-body-summary")
