@@ -81,6 +81,10 @@
   background-image: image-url("projects/ab_testing.jpg");
 }
 
+.project-image-scrape-finance {
+  background-image: image-url("projects/scrape_finance.jpg");
+}
+
 .project-cover-darken-container {
   @include border-radius(3px);
 }
