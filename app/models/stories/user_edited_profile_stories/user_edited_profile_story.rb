@@ -1,15 +1,11 @@
 class UserEditedProfileStory < Story
 
-  class << self
-    def create_with_user(user)
-      UserEditedProfileStory.create(subject: user, object: user.profile)
-    end
-  end
-
   def action
   end
 
   def subscribers
+    # All users who are subscribed to this user
+    user.subscribers
   end
 
   def permalink_path
@@ -21,7 +17,7 @@ class UserEditedProfileStory < Story
     subject
   end
 
-  def profile
+  def edited_object
     object
   end
 
