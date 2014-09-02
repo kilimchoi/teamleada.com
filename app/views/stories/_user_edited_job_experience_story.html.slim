@@ -15,7 +15,10 @@
             '  edited
             = story.user.gender
             '
+            // TODO(mark): Link to the user profile page and scroll down + hightlight the appropriate job_experience
             = link_to "job experience", user_story_path(story.user, story)
+            '  at
+            = story.job_experience.company_name
 
           .card-timestamp
             = link_to story.created_at.pretty_time, story.permalink_path
