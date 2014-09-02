@@ -15,7 +15,7 @@
             '  edited
             = story.user.gender
             '
-            = link_to "job experience.", user_story_path(story.user, story)
+            = link_to "job experience", user_story_path(story.user, story)
 
           .card-timestamp
             = link_to story.created_at.pretty_time, story.permalink_path
