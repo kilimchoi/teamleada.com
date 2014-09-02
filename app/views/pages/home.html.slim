@@ -48,6 +48,7 @@
       .row.card.card-inset-medium
         .col-md-12
           h1.text-center User Testimonials
+          = render partial: "pages/user_testimonials", locals: { user_testimonials: @home.user_testimonials }
 
   .row.home-outline
     .col-md-12

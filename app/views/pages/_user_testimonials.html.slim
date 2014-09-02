@@ -1,0 +1,8 @@
+// Required Variables:
+// user_testimonials
+
+- user_testimonials.each do |user_testimonial|
+  .user-testimonial
+    = user_testimonial.name
+    = user_testimonial.quote
+    = image_tag user_testimonial.image_class
