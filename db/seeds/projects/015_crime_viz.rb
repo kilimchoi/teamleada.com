@@ -124,7 +124,6 @@ report_submission_content_one = [
   ['text', "Submit a summary of your analysis (less than 500 words)"],
   ['text-warning', "The report should contain the question you were answering, along with how you used the data to answer it."],
   ['user_response', ""],
-  ['next_steps', ""],
 ]
 
 report_submission_content_two = [
