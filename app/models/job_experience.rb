@@ -28,8 +28,8 @@ class JobExperience < ActiveRecord::Base
 
   default_scope { order("start_date DESC") }
 
-  before_update :track_updates_as_story
-  before_create :track_creation_as_story
+  after_update :track_updates_as_story
+  after_create :track_creation_as_story
 
   # Generate feed stories
   def track_updates_as_story

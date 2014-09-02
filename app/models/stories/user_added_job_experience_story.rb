@@ -15,15 +15,9 @@ class UserAddedJobExperienceStory < UserEditedProfileStory
     added_job_experience_user_action.subscribers
   end
 
-  def summary_of_changes
-    # TODO(mark): Make this method not super sketchy
-    result = ""
-    data.each do |key, value|
-      result += "<strong>#{key.titleize}:</strong> #{value.last}\n"
-    end
-    result.chomp
+  def job_experience
+    action_object
   end
 
 end
 
-end
