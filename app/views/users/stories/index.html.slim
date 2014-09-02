@@ -1,9 +1,8 @@
-- story = @story
-- user = @user
+- current_user_can_edit = false
 - is_editing = false
 - is_admin = false
 - is_company = false
-- current_user_can_edit = false
+- user = @user
 
 .container-fluid.full-container
   .row
@@ -19,6 +18,13 @@
 
         = render partial: "users/profile/navigation", locals: { user: user }
 
-  .row
-    .col-md-6
-      = render partial: "stories/#{story.type.underscore}", locals: { story: story }
+
+      - if current_user.is_admin?
+        .row
+          .col-md-6
+            - @stories.each do |story|
+              = render partial: "stories/#{story.type.underscore}", locals: { story: story }
+      - else
+        = render partial: "stories/coming_soon", locals: { stories: @stories.first(4) }
+
+

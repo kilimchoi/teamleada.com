@@ -1,6 +1,3 @@
-// Required Variables:
-// story
-
 .story-container
   .story.card
     .card-section.clearfix
@@ -12,11 +9,15 @@
         .card-interactions
           .card-links
             = link_to story.user.name, user_path(story.user)
-            '  completed
-            = link_to story.project.title, project_path(story.project)
+            '  joined Leada
 
           .card-timestamp
             = link_to story.created_at.pretty_time, story.permalink_path
 
-      .story-card-body.story-project-cover-photo-container
-        = render partial: "stories/project_cover_photo", locals: { project: story.project }
+    .card-section.clearfix
+      .card-body
+        .story-announcement-container
+          .story-announcement-title
+            ' Joined Leada
+          .story-announcement-subtitle
+            = story.created_at.year

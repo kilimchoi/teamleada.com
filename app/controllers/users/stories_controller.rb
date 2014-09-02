@@ -4,4 +4,8 @@ class Users::StoriesController < Users::BaseController
   def show
   end
 
+  def index
+    @stories = @user.stories
+  end
+
 end
