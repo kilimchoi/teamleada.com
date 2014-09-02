@@ -274,6 +274,11 @@ class User < ActiveRecord::Base
     user_subscribers + company_subscribers
   end
 
+  # Stories
+  def create_signed_up_story
+    UserSignedUpStory.create_with_user(self)
+  end
+
   #
   # Instance Methods
   #

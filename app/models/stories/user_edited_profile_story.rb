@@ -37,7 +37,7 @@ class UserEditedProfileStory < Story
   end
 
   def edited_object
-    object
+    action_object
   end
 
 end
