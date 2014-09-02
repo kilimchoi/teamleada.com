@@ -16,6 +16,7 @@ class Job < ActiveRecord::Base
   has_many :users, through: :job_experiences
 
   def self.find_by_job_params(job_params)
+    job_params[:job_position_title] = nil if job_params[:job_position_title].blank?
     job_params[:job_location] = nil if job_params[:job_location].blank?
     Job.find_by(position_title: job_params[:job_position_title], location: job_params[:job_location])
   end
