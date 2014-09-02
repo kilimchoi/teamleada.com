@@ -118,9 +118,13 @@ task :create_project_stories => :environment do
     started_story = project_status.create_user_started_project_story
     started_story.created_at = project_status.created_at
     started_story.updated_at = project_status.created_at
+    started_story.save
 
     if project_status.completed
       ended_story = project_status.create_user_completed_project_story
+      ended_story.created_at = project_status.updated_at
+      ended_story.updated_at = project_status.updated_at
+      ended_story.save
     end
   end
 end
