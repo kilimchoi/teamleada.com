@@ -25,6 +25,6 @@
             - @stories.each do |story|
               = render partial: "stories/#{story.type.underscore}", locals: { story: story }
       - else
-        = render partial: "stories/coming_soon", locals: { stories: @stories.limit(4) }
+        = render partial: "stories/coming_soon", locals: { stories: @stories.first(4) }
 
 
