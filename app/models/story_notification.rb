@@ -14,6 +14,9 @@ class StoryNotification < ActiveRecord::Base
   belongs_to :story
   belongs_to :notified, polymorphic: true
 
+  default_scope -> { order("created_at DESC") }
+  self.per_page = 50
+
   class << self
     def create_with_subscriber_and_story(subscriber, story)
       StoryNotification.create(notified: subscriber, story: story)

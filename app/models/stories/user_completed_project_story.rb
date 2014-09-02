@@ -2,21 +2,22 @@
 #
 # Table name: stories
 #
-#  id           :integer          not null, primary key
-#  subject_id   :integer
-#  subject_type :string(255)
-#  object_id    :integer
-#  object_type  :string(255)
-#  type         :string(255)
-#  created_at   :datetime
-#  updated_at   :datetime
+#  id                 :integer          not null, primary key
+#  subject_id         :integer
+#  subject_type       :string(255)
+#  type               :string(255)
+#  created_at         :datetime
+#  updated_at         :datetime
+#  data               :text
+#  action_object_id   :integer
+#  action_object_type :string(255)
 #
 
 class UserCompletedProjectStory < Story
 
   class << self
     def create_with_user_and_project(user, project)
-      UserCompletedProjectStory.create(subject: user, object: project)
+      UserCompletedProjectStory.create(subject: user, action_object: project)
     end
   end
 
@@ -41,7 +42,7 @@ class UserCompletedProjectStory < Story
   end
 
   def project
-    object
+    action_object
   end
 
 end

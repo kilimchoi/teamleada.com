@@ -1,0 +1,37 @@
+// TODO(mark): Move most of this into its own partial
+// Required Variables:
+// story
+
+.story-container
+  .story.card
+    .card-section.clearfix
+      .card-info
+        .card-photo.clearfix
+          = link_to user_path(story.user) do
+            = image_tag story.user.profile_photo, class: "story-profile-photo"
+
+        .card-interactions
+          .card-links
+            = link_to story.user.name, user_path(story.user)
+            '  added
+            // TODO(mark): Link to the company page?
+            = link_to "a job", user_story_path(story.user, story)
+
+          .card-timestamp
+            = link_to story.created_at.pretty_time, story.permalink_path
+
+    .card-section.clearfix
+      .card-body
+        .started-job-container
+          .started-job-title
+            - job_experience = story.job_experience
+
+            - if job_experience.end_date_present
+              ' Started working at
+              = job_experience.company_name
+            - else
+              ' Worked at
+              = job_experience.company_name
+
+          .started-job-dates
+            = job_experience.work_dates

@@ -73,6 +73,7 @@ class EditJobExperienceForm < Form
   end
 
   def save
+    job_experience.track_as_story
     # Must save the company first, otherwise the relationship won't exist for the job_experience
     company.save
     job.save

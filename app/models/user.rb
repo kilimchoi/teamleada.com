@@ -134,6 +134,11 @@ class User < ActiveRecord::Base
                              through: :inverse_friendships,
                              source: :friend
 
+  # Subscriptions
+  has_many :subscriptions, as: :subscribable
+  has_many :user_subscribers, through: :subscriptions, source: :subscriber, source_type: "User"
+  has_many :company_subscribers, through: :subscriptions, source: :subscriber, source_type: "Company"
+
   # Company specific
   has_many :user_interactions, class_name: UserInteraction,
                                foreign_key: :interactor_id
@@ -262,6 +267,10 @@ class User < ActiveRecord::Base
     self.user_preference ||= self.create_user_preference()
   end
 
+  def subscribers
+    user_subscribers + company_subscribers
+  end
+
   #
   # Instance Methods
   #
@@ -294,6 +303,10 @@ class User < ActiveRecord::Base
 
   def search_name
     "#{name} (#{username})"
+  end
+
+  def gender
+    "their"
   end
 
   # Messages
