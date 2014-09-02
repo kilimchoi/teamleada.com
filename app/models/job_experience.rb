@@ -28,16 +28,25 @@ class JobExperience < ActiveRecord::Base
 
   default_scope { order("start_date DESC") }
 
-  after_update :track_updates_as_story
-  after_create :track_creation_as_story
-
   # Generate feed stories
+  def track_as_story
+    if self.new_record? || self.job.changed? || self.company.changed?
+      self.track_creation_as_story
+    else
+      self.track_updates_as_story
+    end
+  end
+
   def track_updates_as_story
     UserEditedJobExperienceStory.create_with_user_and_job_experience(user, self)
   end
 
   def track_creation_as_story
     UserAddedJobExperienceStory.create_with_user_and_job_experience(user, self)
+  end
+
+  def all_changes
+    self.changes.merge(job.changes).merge(company.changes)
   end
 
   # Form Interface

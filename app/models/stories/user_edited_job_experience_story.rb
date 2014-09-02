@@ -30,11 +30,18 @@ class UserEditedJobExperienceStory < UserEditedProfileStory
     edited_job_experience_user_action.subscribers
   end
 
+  def job_experience
+    action_object
+  end
+
   def summary_of_changes
     # TODO(mark): Make this method not super sketchy
+    allowed_keys = ["summary"]
     result = ""
     data.each do |key, value|
-      result += "<strong>#{key.titleize}:</strong> #{value.last}\n"
+      if allowed_keys.include? key
+        result += "<strong>#{key.titleize}:</strong> #{value.last}\n"
+      end
     end
     result.chomp
   end
