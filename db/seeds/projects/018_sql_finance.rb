@@ -57,21 +57,37 @@ project_overview_slide0 = Slide.create!(
 collect_data_content_0 = [
   ['text-success', "Context: You're trying to get your feet wet with automated trading systems."],
   ['text', "The first thing you decide to do is to collect relevant financial data."],
-  ['text', "You decide to scrape YAHOO finance historical data:"],
+  ['text', "You decide to scrape YAHOO finance historical data, which can be viewed here:"],
   ['link', "http://real-chart.finance.yahoo.com/table.csv?s=YHOO&d=7&e=1&f=2014&g=d&a=3&b=12&c=2000&ignore=.csv"],
-  ['text', "Note that the link contains a series of parameters."],
-  ['text', "You may or may not want to alter them."],
-  ['text-info', "Now, write a script that will iteratively collect all stock symbols listed on NYSE."],
+  ['text-info', "Note that the link contains a series of parameters; you may or may not want to alter them when scraping."],
   ['text', "You're not given specific language requirement, but if you're unfamiliar with the work, we suggest Python."],
 ]
 
 collect_data_content_1 = [
-  ['text', "Now submit the code you used to collect the YAHOO data."],
+  ['text-info', "In order to scrape the relevant stock data, you must first get a list of stocks to scrape!"],
+  ['text-success', "Get a list of NYSE symbols by searching on Google."],
+  ['text', "You should be able to find a csv/excel table of all NYSE companies (and their stock symbols)."],
+  ['text', "Some website will ask you to register; you should be able to find the above list without having to register anywhere."],
+  ['text', "Now, how long is the list you found of NYSE stocks? Round to the nearest thousands:"],
+  ['quiz', "finance_data_0"],
+  ['text', "Good! Now you can use the list to iteratively scrape Yahoo Finance data."],
+  ['text-info', "Write a script that will iteratively grab Yahoo Finance Data for each of the NYSE symbol you acquired earlier."],
+  ['text', "You're going to want to access the data via the sample link we posted (while altering some parameters)."],
+]
+
+collect_data_content_2 = [
+  ['text', "Submit the code you used to collect the YAHOO data."],
   ['text', "If your code refers/reads an external file/csv, explain in the comment what you expect the file to contain."],
   ['user_code', ""],
   ['text-warning', "Make sure to include relevant comments."],
   ['next_steps', ""],
 ]
+
+quiz_intro_pd = Quiz.create!(
+  quiz_id: "finance_data_0",
+  answer: "3000",
+  project: project
+)
 
 collect_data_lesson = Lesson.create!(
   title: "Data Collection",
@@ -91,6 +107,11 @@ collect_data_slide_1 = Slide.create!(
   slide_id: 1,
 )
 
+collect_data_slide_2 = Slide.create!(
+  content: collect_data_content_2,
+  parent: collect_data_lesson,
+  slide_id: 2,
+)
 sraper_data_submission = SubmissionContext.create!(
   title: "Scraping Yahoo Finance",
   description: "User is asked to scrape Yahoo Finance.",
