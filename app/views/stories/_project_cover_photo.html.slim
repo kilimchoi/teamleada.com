@@ -1,0 +1,12 @@
+// Required Variables:
+// project
+
+.story-project-cover-photo
+  - if project.has_cover_photo?
+    .project-show-cover-image.project-show-cover-image-dark class="project-image-#{project.cover_photo}"
+    .row.row-table.row-full-height.row-no-margin
+      .col-md-12.col-middle
+        h1.project-cover-photo-title.center.text-contrast = project.title
+  - else
+    .project-show-cover-image class="project-color-#{project.color}"
+
