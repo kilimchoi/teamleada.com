@@ -18,7 +18,7 @@ class Story < ActiveRecord::Base
   obfuscate_id spin: 12211221
 
   belongs_to :subject, polymorphic: true
-  belongs_to :object, polymorphic: true
+  belongs_to :action_object, polymorphic: true
 
   self.inheritance_column = :type
 
