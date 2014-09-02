@@ -10,6 +10,7 @@
 #  type         :string(255)
 #  created_at   :datetime
 #  updated_at   :datetime
+#  data         :text
 #
 
 class UserCompletedProjectStory < Story
