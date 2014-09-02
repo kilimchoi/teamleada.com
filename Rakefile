@@ -104,3 +104,30 @@ task :migrate_to_user_preferences => :environment do
   end
 end
 
+task :create_user_signed_up_stories => :environment do
+  User.all.each do |user|
+    unless UserSignedUpStory.exists?(subject: user, action_object: user)
+      signed_up_story = user.create_signed_up_story
+      signed_up_story.created_at = user.created_at
+      signed_up_story.updated_at = user.created_at
+      signed_up_story.save
+    end
+  end
+end
+
+task :create_project_stories => :environment do
+  ProjectStatus.all.each do |project_status|
+    started_story = project_status.create_user_started_project_story
+    started_story.created_at = project_status.created_at
+    started_story.updated_at = project_status.created_at
+    started_story.save
+
+    if project_status.completed
+      ended_story = project_status.create_user_completed_project_story
+      ended_story.created_at = project_status.updated_at
+      ended_story.updated_at = project_status.updated_at
+      ended_story.save
+    end
+  end
+end
+

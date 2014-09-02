@@ -13,9 +13,12 @@
 #  action_object_type :string(255)
 #
 
-class UserEditedProfileStory < Story
+class UserSignedUpStory < Story
 
-  def action
+  class << self
+    def create_with_user(user)
+      UserSignedUpStory.create(subject: user, action_object: user)
+    end
   end
 
   def subscribers
@@ -24,21 +27,17 @@ class UserEditedProfileStory < Story
   end
 
   def additional_subscribers
-    []
+    sign_up_user_action = UserAction.find_by(name: "sign_up")
+    sign_up_user_action.subscribers
   end
 
   def permalink_path
     user_story_path(user, self)
   end
 
-  # Specific UserEditedProfileStory methods
+  # Specific UserSignedUpStory methods
   def user
     subject
   end
 
-  def edited_object
-    action_object
-  end
-
 end
-

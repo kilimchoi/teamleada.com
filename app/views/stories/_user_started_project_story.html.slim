@@ -1,3 +1,4 @@
+// TODO(mark): This should be combined with the user completed project story
 // Required Variables:
 // story
 
@@ -12,7 +13,7 @@
         .card-interactions
           .card-links
             = link_to story.user.name, user_path(story.user)
-            '  completed
+            '  started
             = link_to story.project.title, project_path(story.project)
 
           .card-timestamp

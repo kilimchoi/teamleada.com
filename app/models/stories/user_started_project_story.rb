@@ -13,32 +13,36 @@
 #  action_object_type :string(255)
 #
 
-class UserEditedProfileStory < Story
+class UserStartedProjectStory < Story
+
+  class << self
+    def create_with_user_and_project(user, project)
+      UserStartedProjectStory.create(subject: user, action_object: project)
+    end
+  end
 
   def action
   end
 
   def subscribers
-    # All users who are subscribed to this user
-    user.subscribers + additional_subscribers
-  end
-
-  def additional_subscribers
-    []
+    # For UserStartedProjectStories, we want to notify the user_action for:
+    #   project_start
+    # as well as all the users who follow this user.
+    project_start_user_action = UserAction.find_by(name: "project_start")
+    project_start_user_action.subscribers
   end
 
   def permalink_path
     user_story_path(user, self)
   end
 
-  # Specific UserEditedProfileStory methods
+  # Specific UserStartedProjectStory methods
   def user
     subject
   end
 
-  def edited_object
+  def project
     action_object
   end
 
 end
-

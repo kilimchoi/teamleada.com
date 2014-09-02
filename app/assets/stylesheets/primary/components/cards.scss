@@ -81,3 +81,18 @@
   margin: 10px 0 0 0;
 }
 
+.card-navigation-item {
+  padding: 10px 40px;
+  text-align: center;
+  border-right: 1px solid #e9eaed;
+  float: left;
+
+  &:first-child {
+    border-left: 1px solid #e9eaed;
+  }
+
+  &:hover {
+    background-color: #f6f7f8;
+  }
+}
+
