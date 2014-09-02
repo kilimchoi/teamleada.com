@@ -74,7 +74,7 @@ collect_data_content_1 = [
 
 collect_data_content_2 = [
   ['text', "Submit the code you used to collect the Yahoo data."],
-  ['text', "If your code refers to an external file/csv, explain in the comment what you expect the file to contain."],
+  ['text', "If your code refers to an external file/csv, explain your comments what you expect the file to contain."],
   ['user_code', ""],
   ['text-warning', "Make sure to include relevant comments."],
   ['next_steps', ""],
@@ -129,7 +129,7 @@ sql_overview_content = [
 ]
 
 sql_lesson = Lesson.create!(
-  title: "SQL Design/Implement",
+  title: "SQL Design/Implementation",
   project: project,
   lesson_id: 2,
 )
@@ -146,7 +146,7 @@ sql_design_content_one = [
   ['text', "There are many different ways to store the data."],
   ['text', "However, you want to keep the schema as maintainable as possible."],
   ['text', "For example, you might want to add more comapny information later."],
-  ['text-info', "Design a set of schemas that you're going to store the historical data points + symbols you scraped."],
+  ['text-info', "Design a set of schemas that you're going to store which include the historical data points and symbols you scraped."],
   ['text', "For each table, include the column data type and a brief comment on what the column holds."],
   ['user_response', ""],
   ['next_steps', ""],
