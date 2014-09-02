@@ -18,9 +18,11 @@
 
         = render partial: "users/profile/navigation", locals: { user: user }
 
-      .row
-        .col-md-6
-          - @stories.each do |story|
-            = render partial: "stories/#{story.type.underscore}", locals: { story: story }
+
+      - if current_user.is_admin?
+        .row
+          .col-md-6
+            - @stories.each do |story|
+              = render partial: "stories/#{story.type.underscore}", locals: { story: story }
 
 
