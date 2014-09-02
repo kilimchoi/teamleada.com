@@ -16,6 +16,7 @@
 class Story < ActiveRecord::Base
   include Rails.application.routes.url_helpers
   obfuscate_id spin: 12211221
+  serialize :data, Hash
 
   belongs_to :subject, polymorphic: true
   belongs_to :action_object, polymorphic: true

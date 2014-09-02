@@ -17,7 +17,11 @@ class UserEditedJobExperienceStory < UserEditedProfileStory
 
   class << self
     def create_with_user_and_job_experience(user, job_experience)
-      UserEditedJobExperienceStory.create(subject: user, action_object: job_experience, data: {  })
+      UserEditedJobExperienceStory.create(
+        subject: user,
+        action_object: job_experience,
+        data: job_experience.changes,
+      )
     end
   end
 
