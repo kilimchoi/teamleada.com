@@ -17,7 +17,7 @@ class UserCompletedProjectStory < Story
 
   class << self
     def create_with_user_and_project(user, project)
-      UserCompletedProjectStory.create(subject: user, object: project)
+      UserCompletedProjectStory.create(subject: user, action_object: project)
     end
   end
 
@@ -42,7 +42,7 @@ class UserCompletedProjectStory < Story
   end
 
   def project
-    object
+    action_object
   end
 
 end
