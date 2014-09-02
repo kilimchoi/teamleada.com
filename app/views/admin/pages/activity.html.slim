@@ -9,3 +9,4 @@
         - @story_notifications.each do |story_notification|
           = render partial: "story_notifications/story_notification", locals: { story_notification: story_notification }
 
+        = will_paginate(@story_notifications)

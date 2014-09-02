@@ -22,6 +22,7 @@ class Story < ActiveRecord::Base
   belongs_to :action_object, polymorphic: true
 
   self.inheritance_column = :type
+  self.per_page = 50
 
   default_scope -> { order("created_at DESC") }
   scope :user_completed_project_stories, -> { where(type: 'UserCompletedProjectStory') }
