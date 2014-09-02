@@ -137,7 +137,7 @@ class User < ActiveRecord::Base
   # Subscriptions
   has_many :subscriptions, as: :subscribable
   has_many :user_subscribers, through: :subscriptions, source: :subscriber, source_type: "User"
-  has_many :company_subscribers, through: :subsriptions, source: :subscriber, source_type: "Company"
+  has_many :company_subscribers, through: :subscriptions, source: :subscriber, source_type: "Company"
 
   # Company specific
   has_many :user_interactions, class_name: UserInteraction,
@@ -303,6 +303,10 @@ class User < ActiveRecord::Base
 
   def search_name
     "#{name} (#{username})"
+  end
+
+  def gender
+    "their"
   end
 
   # Messages
