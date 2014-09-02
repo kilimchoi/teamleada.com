@@ -6,3 +6,7 @@ h1.center.text-contrast = project.title
 - if project.grants_project_access
   h3.center.text-contrast
     | Complete this project to get access to more projects!
+
+- if project.is_new
+  span.label.label-danger.project-new-label New!
+
