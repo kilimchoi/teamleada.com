@@ -23,6 +23,7 @@ class Ability
     elsif !user.new_record?
       # Anyone with an account (employee and student)
       can [:show, :edit, :update, :profile, :edit_profile], User, id: user.id
+      can [:index], Story
       can [:show, :index, :create, :new, :autocomplete_user_name], Conversation if Feature.enabled?("messaging")
       can [:show, :index, :create, :new], Message if Feature.enabled?("messaging")
 
