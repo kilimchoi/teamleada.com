@@ -48,13 +48,7 @@
       .row.card.card-inset-medium
         .col-md-12
           h1.text-center Partner Companies
-          - @home.companies.each_slice(3) do |slice|
-            .row
-              - slice.each do |company|
-                .col-md-4 class="#{'col-md-offset-2' if company == @home.companies[3]}"
-                  = link_to company.website do
-                    .home-company
-                      .company-logo.home-company-image class="#{company.image_class}"
+          = render partial: "pages/company_logos", locals: { company_logos: @company_logos }
 
 javascript:
   $(document).ready(function() {
