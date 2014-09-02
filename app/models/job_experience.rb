@@ -28,6 +28,13 @@ class JobExperience < ActiveRecord::Base
 
   default_scope { order("start_date DESC") }
 
+  before_save :track_changes_as_story
+
+  # Track changes as story
+  def track_changes_as_story
+    UserEditedJobExperienceStory.create_with_user_and_job_experience(user, self)
+  end
+
   # Form Interface
   def form_id
     if new_record?

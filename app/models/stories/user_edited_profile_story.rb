@@ -20,7 +20,11 @@ class UserEditedProfileStory < Story
 
   def subscribers
     # All users who are subscribed to this user
-    user.subscribers
+    user.subscribers + additional_subscribers
+  end
+
+  def additional_subscribers
+    []
   end
 
   def permalink_path

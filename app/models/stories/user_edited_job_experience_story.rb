@@ -25,4 +25,17 @@ class UserEditedJobExperienceStory < UserEditedProfileStory
     end
   end
 
+  def additional_subscribers
+    edited_job_experience_user_action = UserAction.find_by(name: "user_edited_job_experience")
+    edited_job_experience_user_action.subscribers
+  end
+
+  def summary_of_changes
+    result = ""
+    data.each do |key, value|
+      result += "<strong>#{key.titleize}:</strong> #{value.last}\n"
+    end
+    result.chomp
+  end
+
 end
