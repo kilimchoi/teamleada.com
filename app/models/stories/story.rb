@@ -20,6 +20,7 @@ class Story < ActiveRecord::Base
 
   belongs_to :subject, polymorphic: true
   belongs_to :action_object, polymorphic: true
+  has_many :story_notifications
 
   self.inheritance_column = :type
   self.per_page = 50
