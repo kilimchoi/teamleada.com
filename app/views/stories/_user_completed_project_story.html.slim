@@ -1,0 +1,19 @@
+// Required Variables:
+// story
+
+.story-container
+  .story.card
+    .card-section.clearfix
+      .card-info
+        .card-photo.clearfix
+          = link_to user_path(story.user) do
+            = image_tag story.user.profile_photo, class: "story-profile-photo"
+
+        .card-interactions
+          .card-links
+            = link_to story.user.name, user_path(story.user)
+            '  completed
+            = link_to story.project.title, project_path(story.project)
+
+          .card-timestamp
+            = link_to story.created_at.pretty_time, story.permalink_path

@@ -3,6 +3,7 @@ TeamLeada::Application.routes.draw do
   namespace :admin, path: "a" do
     match '/', to: redirect('/a/dashboard'), via: :get
     match 'dashboard', to: 'pages#dashboard', via: :get
+    match "activity", to: "pages#activity", via: :get
 
     resources :features, only: [:index]
 

@@ -26,6 +26,16 @@ class ProjectStatus < ActiveRecord::Base
     end
   end
 
+  def create_user_completed_project_story
+    UserCompletedProjectStory.create_with_user_and_project(user, project)
+  end
+
+  def mark_complete
+    self.completed = true
+    self.create_user_completed_project_story
+    self.save
+  end
+
   def expired?
     if start_date.nil? || project.deadline.nil?
       false

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140829003015) do
+ActiveRecord::Schema.define(version: 20140831214108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -479,14 +479,21 @@ ActiveRecord::Schema.define(version: 20140829003015) do
   end
 
   create_table "stories", force: true do |t|
-    t.integer  "interactor_id"
-    t.integer  "interactee_id"
-    t.integer  "company_id"
-    t.text     "text"
+    t.integer  "subject_id"
+    t.string   "subject_type"
+    t.integer  "object_id"
+    t.string   "object_type"
+    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "type"
-    t.boolean  "favorite",      default: true
+  end
+
+  create_table "story_notifications", force: true do |t|
+    t.integer  "story_id"
+    t.integer  "notified_id"
+    t.string   "notified_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "submission_contexts", id: false, force: true do |t|
@@ -506,6 +513,21 @@ ActiveRecord::Schema.define(version: 20140829003015) do
     t.integer  "user_id"
     t.integer  "project_id"
     t.decimal  "score",      precision: 20, scale: 5
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "subscribers", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "subscriptions", force: true do |t|
+    t.integer  "subscriber_id"
+    t.string   "subscriber_type"
+    t.integer  "subscribable_id"
+    t.string   "subscribable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -534,6 +556,13 @@ ActiveRecord::Schema.define(version: 20140829003015) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "linkedin_school_id"
+  end
+
+  create_table "user_actions", id: false, force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "uid",        null: false
   end
 
   create_table "user_codes", force: true do |t|
