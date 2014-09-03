@@ -7,7 +7,7 @@ carousel:
   - title: "Practice Data Science"
     subtitle: "Get Recruited"
     image_class: "media-r-corner"
-  - title: "Fill the Job Shortfall"
+  - title: "Fill The Job Shortfall"
     subtitle: "Bridge The Skill Gap"
     image_class: "media-sf-background"
 
@@ -25,20 +25,10 @@ columns:
     subtitle: "Anonymously receive inquires from employers."
     image_class: "icon-hired"
 
-companies:
-  - title: "Doximity"
-    image_class: "company-doximity"
-    website: "https://www.doximity.com/"
-  - title: "eBay"
-    image_class: "company-ebay"
-    website: "http://www.ebay.com/"
-  - title: "MightyHive"
-    image_class: "company-mighty-hive"
-    website: "http://mightyhive.com/"
-  - title: "Mixbook"
-    image_class: "company-mixbook"
-    website: "http://www.mixbook.com/"
-  - title: "Statricks"
-    image_class: "company-statricks"
-    website: "http://www.statricks.com/"
-
+user_testimonials:
+  - name: "Olivia Thet, UC Berkeley 14', Math"
+    quote: "I was able to impress employers during a technical interview, Leada provided me the resources to exercise the knowledge I already had from a strong math background as well as build skills in new areas."
+    image_class: "olivia.jpg"
+  - name: "Matt Sedaghatfar, Data Analyst, AdMarketplace"
+    quote: "Leada has been instrumental for me to obtain the practical skills to obtain a Data Analyst position. Many websites today provide tutorials and ways to learn syntax, Leada goes one step further with realistic projects."
+    image_class: "matt.jpg"

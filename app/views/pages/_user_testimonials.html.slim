@@ -1,0 +1,13 @@
+// Required Variables:
+// user_testimonials
+
+.row
+  - user_testimonials.each do |user_testimonial|
+    .col-md-6
+      .user-testimonial
+        .user-testimonial-image
+          = image_tag "users/#{user_testimonial.image_class}", class: "user-testimonial-circle"
+        .user-testimonial-quote
+          = "\"#{user_testimonial.quote}\""
+        .user-testimonial-name
+          = user_testimonial.name
