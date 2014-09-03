@@ -6,11 +6,13 @@
   .row.card
     .col-md-12
       table.table.table-striped
-        th Metric
-        th Value
+        th Date
+        - Metric.all.each do |metric|
+          th = metric.title
         - @days.each do |day|
           tr
             td = day.date
-            td = day
+            - day.metric_entries.each do |metric_entry|
+              td = metric_entry.value.to_i
 
       = will_paginate(@days)
