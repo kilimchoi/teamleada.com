@@ -7,6 +7,7 @@ user_actions = [
   "project_completion",
   "user_edited_job_experience",
   "user_added_job_experience",
+  "project_interest",
 ]
 
 user_actions.each_with_index do |name, index|
