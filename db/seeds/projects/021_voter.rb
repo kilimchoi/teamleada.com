@@ -74,7 +74,7 @@ data_cotext_slide = Slide.create!(
 
 data_details_content_zero = [
   ['text-success', "The meta data for the columns can be found here"],
-  ['link,' "http://www.fec.gov/finance/disclosure/metadata/CandidateDisbursements.shtml"],
+  ['link', "http://www.fec.gov/finance/disclosure/metadata/CandidateDisbursements.shtml"],
   ['text', "How many rows are there in the data? (Be sure to exclude the header.)"],
   ['quiz', "voter_intro_0"],
   ['text-info', "That's a lot of records!"],
