@@ -187,6 +187,7 @@ $carousel-height: 500px;
 .user-testimonial-quote {
   font-size: 20px;
   text-align: justify;
+  font-style: italic;
 
   @include breakpoint($mobile) {
     font-size: 14px;
