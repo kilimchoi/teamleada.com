@@ -131,3 +131,12 @@ task :create_project_stories => :environment do
   end
 end
 
+task :create_project_interest_stories => :environment do
+  ProjectInterest.all.each do |project_interest|
+    interest_story = project_interest.create_user_project_interest_story
+    interest_story.created_at = project_interest.created_at
+    interest_story.updated_at = project_interest.created_at
+    interest_story.save
+  end
+end
+
