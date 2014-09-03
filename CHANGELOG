@@ -1,3 +1,8 @@
+v 1.1.2
+  - User Feed
+  - Admin Feed
+  - Users can now see a sneak preview of a feed full of their activity.
+
 v 1.1.1
   - New Project index + show pages
   - New User Profile
