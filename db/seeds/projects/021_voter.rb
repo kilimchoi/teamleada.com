@@ -53,8 +53,8 @@ data_context_content_zero = [
   ['text', "- All specific disbursements that are contributions to other federal candidates or parties or other committees as well as all loan repayments."],
   ['text', "- Other spending of over $200/election-cycle to be reported"],
   ['text', "Now that we know how the data is collected/reported, let's learn about its meta data."],
- # ['text', "More info here:"],
- # ['link', "http://www.fec.gov/finance/disclosure/metadata/CandidateDisbursements.shtml"],
+  # ['text', "More info here:"],
+  # ['link', "http://www.fec.gov/finance/disclosure/metadata/CandidateDisbursements.shtml"],
   ['next_steps', ""],
 ]
 
@@ -99,3 +99,82 @@ voter_intro_quiz = Quiz.create!(
   project: project,
 )
 
+################################################################################
+puts "============ Created project: #{project.title}."
+################################################################################
+
+data_correlation_content = [
+  ['text-success', "First, we want to undersatnd the correlations between 'categories' / 'types' of donations. (travel vs advertising, for example)"],
+  ['text', "This is grouped via category code?"],
+  ['text', "What is the column name for 'category code'?"],
+  ['quiz', "voter_correlation_tag"],
+  ['text', "The code mapping can be found here."],
+  ['link', "http://www.fec.gov/finance/disclosure/metadata/DisbursementCategoryCodes.shtml"],
+  ['text', "Group the entries by category type and do a correlation matrix."],
+]
+
+data_correlation_content_one = [
+  ['text', "You're encouraged to do other analysis on the dataset for a better anslysis, but you're free not to."],
+  ['text-success', "Submit the code you used to do the analysis:"],
+  ['user_code', "nil"],
+  ['text', "Do the results make sense?"],
+  ['text', "We'll talk about it next"],
+]
+
+data_correlation_content_two = [
+  ['text-success', "Write a few sentences about your analysis on the result."],
+  ['user_response', ""],
+  ['text', "Also submit an image of your analysis plot."],
+  ['image_submit', ""],
+  ['text-warning', "Note that the image will eventually be part of your profile for other users to view."],
+  ['next_steps', ""],
+]
+
+
+voter_cor_quiz = Quiz.create!(
+  quiz_id: "voter_correlation_tag",
+  answer: "cat_cod",
+  project: project,
+)
+
+data_correlation_lesson = Lesson.create!(
+  title: "Correlation Analysis",
+  lesson_id: 1,
+  project: project,
+)
+
+data_correlation_slide = Slide.create!(
+  slide_id: 0,
+  content: data_correlation_content,
+  parent: data_correlation_lesson,
+)
+
+data_correlation_slide_one = Slide.create!(
+  slide_id: 1,
+  content: data_correlation_content_one,
+  parent: data_correlation_lesson,
+)
+
+data_correlation_slide_two = Slide.create!(
+  slide_id: 2,
+  content: data_correlation_content_two,
+  parent: data_correlation_lesson,
+)
+
+corr_code_submission_context = SubmissionContext.create!(
+  title: "Correlation Code",
+  description: "User is asked to submit the code used to do the correlation analysis.",
+  slide: data_correlation_slide_one,
+  submission_context_id: 0,
+  submission_type: SubmissionContext::CODE,
+  required: true,
+)
+
+corr_response_context = SubmissionContext.create!(
+  title: "Correlation Analysis",
+  description: "User is asked to explain and talk about the analysis result of the categorical correlation analysis",
+  slide: data_correlation_slide_two,
+  submission_context_id: 0,
+  submission_type: SubmissionContext::RESPONSE,
+  required: true,
+)
