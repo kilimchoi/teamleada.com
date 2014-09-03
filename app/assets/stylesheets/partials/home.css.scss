@@ -129,6 +129,11 @@ $carousel-height: 500px;
   background-image: image-url("companies/mixbook.jpg");
 }
 
+.company-rnc {
+  background-size: contain;
+  background-image: image-url("companies/republican_national_committee.png");
+}
+
 .company-statricks {
   background-image: image-url("companies/statricks.png");
 }
