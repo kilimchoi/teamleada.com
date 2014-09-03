@@ -30,7 +30,7 @@ class UserProjectInterestStory < Story
     user_story_path(user, self)
   end
 
-  # Specific UserShowedInterestInProjectStory methods
+  # Specific UserProjectInterestStory methods
   def user
     subject
   end
