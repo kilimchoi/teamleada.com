@@ -1,0 +1,16 @@
+.container-fluid.full-container.card-container
+  .row.card
+    .col-md-12
+      h1 Important Metrics
+
+  .row.card
+    .col-md-12
+      table.table.table-striped
+        th Metric
+        th Value
+        - @days.each do |day|
+          tr
+            td = day.date
+            td = day
+
+      = will_paginate(@days)
