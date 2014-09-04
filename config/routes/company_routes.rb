@@ -1,4 +1,15 @@
 TeamLeada::Application.routes.draw do
+  resources :companies, only: [:index] do
+    scope module: :companies do
+      resources :users, path: "employees", only: [:index, :show] do
+        member do
+        end
+      end
+
+      resources :stories, path: "posts", only: [:show, :index]
+    end
+  end
+
   # Company / Recruitment
   namespace :company, path: "r" do
     match '/', to: redirect('/r/dashboard'), via: :get
