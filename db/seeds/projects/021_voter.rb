@@ -260,14 +260,15 @@ normalization_content_one = [
 normalization_content_two = [
   ['text', "Write the code that accomplishes the following:"],
   ['text', " - Campaign dollar spent per State"],
-  ['text', " - Campaign "],
+  ['text', " - Campaign dollar"],
+  ['text', " - Any other anomaly that you want to investigate"],
   ['user_code', ""],
-  ['text', ""],
+  ['text', "Good, let's now discuss your findings."],
 ]
 
 normalization_content_three = [
- ['text', "Now"],
- ['text', ""],
+ ['text-success', "Explain what you did to complete your analysis."],
+ ['text', "Be sure to include the reasonings behind your approach and any conclusions drew."],
  ['user_response', ""],
  ['next_steps', ""],
 ]
