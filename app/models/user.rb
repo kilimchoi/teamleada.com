@@ -44,7 +44,6 @@ class User < ActiveRecord::Base
 
   # TODO: Remove this and put in a helper class
   include Rails.application.routes.url_helpers
-
   include UsersHelper
 
   # Delegate attributes to the user_profile and user_preference
@@ -149,6 +148,7 @@ class User < ActiveRecord::Base
   has_many :received_interactions, class_name: UserInteraction,
                                    foreign_key: :interactee_id
 
+  # Scopes
   scope :admins, -> { where(role: "admin") }
   scope :students, -> { where(role: "student") }
   scope :employers, -> { where(role: "employer") + where(role: "recruiter") }
