@@ -1,5 +1,5 @@
 TeamLeada::Application.routes.draw do
-  resources :companies, only: [:index] do
+  resources :companies, only: [:index, :show] do
     scope module: :companies do
       resources :users, path: "employees", only: [:index, :show] do
         member do
