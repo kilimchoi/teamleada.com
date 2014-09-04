@@ -1,0 +1,19 @@
+p
+  ' Hi
+  = @user.name
+  | ,
+p
+  ' We've reviewed your submission for
+  = @project.title
+  ' , but at this time, we cannot grant you access to more data projects.
+  ' Did you make sure that your code runs correctly?
+  ' Did you make sure that the visualization your code creates matches the screenshot that you uploaded?
+p
+  ' You're more than welcome to retry the project by going back and editing your submission. You can submit as many times as you want.
+
+p
+  ' Here's a link to the project for convenience:
+  = link_to @project.title, project_url(@project)
+p
+  | -- TeamLeada
+

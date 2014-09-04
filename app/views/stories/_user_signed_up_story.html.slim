@@ -1,0 +1,23 @@
+.story-container
+  .story.card
+    .card-section.clearfix
+      .card-info
+        .card-photo.clearfix
+          = link_to user_path(story.user) do
+            = image_tag story.user.profile_photo, class: "story-profile-photo"
+
+        .card-interactions
+          .card-links
+            = link_to story.user.name, user_path(story.user)
+            '  joined Leada
+
+          .card-timestamp
+            = link_to story.created_at.pretty_time, story.permalink_path
+
+    .card-section.clearfix
+      .card-body
+        .story-announcement-container
+          .story-announcement-title
+            ' Joined Leada
+          .story-announcement-subtitle
+            = story.created_at.year

@@ -1,0 +1,285 @@
+// Project Colors
+.project-color-red {
+  background-color: #A63535;
+}
+
+.project-color-green {
+  background-color: #5D9149;
+}
+
+.project-color-blue {
+  background-color: #495D91;
+}
+
+.project-color-purple {
+  background-color: #613C78;
+}
+
+.no-project-color {
+  background-color: transparent;
+  border: none;
+}
+
+// Project Images
+.project-image-crime {
+  background-image: image-url("projects/crime.jpg");
+}
+
+.project-image-titanic {
+  background-image: image-url("projects/titanic.jpg");
+}
+
+.project-image-basketball {
+  background-image: image-url("projects/basketball.jpg");
+}
+
+.project-image-flu-trends {
+  background-image: image-url("projects/flu_trends.jpg");
+}
+
+.project-image-pandas {
+  background-image: image-url("projects/pandas.jpg");
+}
+
+.project-image-statricks {
+  background-image: image-url("projects/data_collection.jpg");
+}
+
+.project-image-mightyhive {
+  background-image: image-url("projects/mightyhive.jpg");
+}
+
+.project-image-titanic-bootcamp {
+  background-image: image-url("projects/titanic_boot.jpg");
+}
+
+.project-image-anscombe {
+  background-image: image-url("projects/anscombe.jpg");
+}
+
+.project-image-anscombe-bootcamp {
+  background-image: image-url("projects/anscombe_two.png");
+}
+
+.project-image-intro-r {
+  background-image: image-url("projects/intro_r.png");
+}
+
+.project-image-intro-matlab {
+  background-image: image-url("projects/matlab.png");
+}
+
+.project-image-deploy-cloud {
+  background-image: image-url("projects/deploy_cloud.png");
+}
+
+.project-image-location-rec {
+  background-image: image-url("projects/location.jpg");
+}
+
+.project-image-ab-test {
+  background-image: image-url("projects/ab_testing.jpg");
+}
+
+.project-image-scrape-finance {
+  background-image: image-url("projects/scrape_finance.jpg");
+}
+
+.project-cover-darken-container {
+  @include border-radius(3px);
+}
+
+.project-cover-image {
+  background-size: cover;
+  background-position: center;
+  @include border-radius(3px);
+}
+
+.project-carousel-cover-photo {
+  background-size: cover;
+  background-position: center;
+}
+
+.project-cover-image {
+  position: absolute;
+  top: 0;
+  left: 15px;
+  right: 15px;
+  bottom: 0;
+}
+
+.project-cover-image-dark:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000000;
+  opacity: 0.4;
+  content: " ";
+}
+
+.carousel-projects {
+  margin-bottom: 10px;
+}
+
+// Project styles
+.projects-container {
+}
+
+.project-card-container {
+}
+
+.project-card {
+  @include transition-ease-in-out(200ms);
+
+  &.extra-large {
+    height: 400px;
+  }
+
+  &.large {
+    height: 350px;
+
+    h1 {
+      font-size: 24px;
+    }
+  }
+
+  &.medium {
+    height: 250px;
+
+    h1 {
+      font-size: 22px;
+    }
+  }
+
+  &.small {
+    height: 200px;
+
+    h1 {
+      font-size: 18px;
+    }
+  }
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.highlighted-project {
+}
+
+.featured-project-title {
+  color: white;
+}
+
+.project-title-row {
+  // Not sure why this is happening. It has a weird transition when it's in the
+  // iPad-like screen size.
+  @include breakpoint($ipad-screen) {
+    width: 100%;
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.project-card-colored {
+  color: white;
+
+  a {
+    color: white;
+  }
+}
+
+.project-card-inner {
+  color: #333333;
+}
+
+.project-card-white {
+  color: #333333;
+
+  a {
+    color: #333333;
+  }
+}
+
+.project-col {
+  @include breakpoint($small-screen) {
+    float: left;
+    width: 100%;
+    display: block;
+  }
+}
+
+.project-info-container {
+}
+
+.project-info {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.project-footer {
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  bottom: 10px;
+
+  padding: 10px;
+}
+
+.project-group {
+}
+
+// Project Show
+.project-cover-photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 600px;
+}
+
+.project-show-cover-image {
+  background-size: cover;
+  background-position: center;
+}
+
+.project-show-cover-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.project-show-cover-image-dark:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000000;
+  opacity: 0.4;
+  content: " ";
+}
+
+.show-project-container {
+  margin-top: 450px;
+}
+
+.project-cover-photo-title {
+  font-size: 50px;
+  line-height: 1.5;
+}
+
+.project-new-label {
+  font-size: 32px;
+}
+

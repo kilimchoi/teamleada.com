@@ -276,6 +276,7 @@ matching_step_content_two = [
 quiz = Quiz.create!(
   quiz_id: "mh_1",
   answer:"(402)-153-4684",
+  project: project,
 )
 
 matching_step_content_three = [
@@ -620,11 +621,13 @@ hypothesis_content_three = [
 quiz = Quiz.create!(
   quiz_id: "mh_2",
   answer:"245",
+  project: project,
 )
 
 quiz = Quiz.create!(
   quiz_id: "mh_3",
   answer:"4266",
+  project: project,
 )
 
 hypothesis_step = Step.create!(
@@ -682,6 +685,7 @@ z_test_content_three = [
 quiz = Quiz.create!(
   quiz_id: "mh_4",
   answer:"10.2",
+  project: project,
 )
 
 z_test_content_four = [

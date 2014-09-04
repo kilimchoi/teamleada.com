@@ -11,6 +11,7 @@
 #  title                 :string(255)
 #  submission_type       :string(255)
 #  project_id            :integer
+#  required              :boolean          default(TRUE)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

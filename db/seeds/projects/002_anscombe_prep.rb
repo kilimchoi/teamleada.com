@@ -19,6 +19,7 @@ project = Project.create!(
   difficulty: 'Beginner',
   category: Project::LESSON,
   is_new: false,
+  cover_photo: "anscombe-bootcamp",
 )
 
 ################################################################################
@@ -345,7 +346,7 @@ plot_function_content_one = [
 
 plot_function_content_two = [
   ['text', 'Our first plot!'],
-  ['text', 'Plot is our primary means of data vizualization.'],
+  ['text', 'Plot is our primary means of data visualization.'],
   ['text', 'Don\'t worry about the "main=" part, yet. (look in help() if you\'re curious).'],
   ['text-success', 'Note that R also gives you the tilda (~) option in plotting.'],
   ['code', 'plot(y_to_plot ~ x_to_plot, main="second plot yea!")'],

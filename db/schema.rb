@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140805080827) do
+ActiveRecord::Schema.define(version: 20140902060757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "browsable_users", force: true do |t|
+    t.integer  "company_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "chart_metrics", force: true do |t|
     t.integer  "chart_id"
@@ -144,6 +151,18 @@ ActiveRecord::Schema.define(version: 20140805080827) do
     t.string   "name"
   end
 
+  create_table "friendships", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.string   "status"
+    t.datetime "requested_at"
+    t.datetime "accepted_at"
+    t.datetime "declined_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "requested"
+  end
+
   create_table "impressions", force: true do |t|
     t.string   "impressionable_type"
     t.integer  "user_id"
@@ -194,6 +213,7 @@ ActiveRecord::Schema.define(version: 20140805080827) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "job_id"
+    t.boolean  "end_date_present"
   end
 
   add_index "job_experiences", ["job_id"], name: "index_job_experiences_on_job_id", using: :btree
@@ -215,6 +235,7 @@ ActiveRecord::Schema.define(version: 20140805080827) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "position_title"
+    t.string   "location"
   end
 
   add_index "jobs", ["company_id"], name: "index_jobs_on_company_id", using: :btree
@@ -316,6 +337,18 @@ ActiveRecord::Schema.define(version: 20140805080827) do
     t.datetime "start_date"
   end
 
+  create_table "project_submissions", force: true do |t|
+    t.integer  "project_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "upload_file"
+    t.boolean  "required",               default: true
+    t.string   "original_filename"
+    t.string   "upload_file_tmp"
+    t.boolean  "upload_file_processing", default: false
+  end
+
   create_table "projects", id: false, force: true do |t|
     t.string   "title"
     t.text     "description"
@@ -324,17 +357,20 @@ ActiveRecord::Schema.define(version: 20140805080827) do
     t.string   "url"
     t.boolean  "enabled"
     t.integer  "number"
-    t.boolean  "has_leaderboard",   default: false
+    t.boolean  "has_leaderboard",       default: false
     t.text     "short_description"
-    t.boolean  "has_submit",        default: false
+    t.boolean  "has_submit",            default: false
     t.integer  "cost"
-    t.boolean  "paid",              default: false
-    t.integer  "uid",                               null: false
+    t.boolean  "paid",                  default: false
+    t.integer  "uid",                                   null: false
     t.string   "difficulty"
     t.text     "company_overview"
     t.string   "category"
-    t.boolean  "is_new",            default: false
+    t.boolean  "is_new",                default: false
     t.integer  "deadline"
+    t.boolean  "featured",              default: false
+    t.boolean  "grants_project_access", default: false
+    t.string   "cover_photo"
   end
 
   create_table "publications", force: true do |t|
@@ -363,7 +399,7 @@ ActiveRecord::Schema.define(version: 20140805080827) do
 
   create_table "quiz_submissions", force: true do |t|
     t.integer  "user_id"
-    t.integer  "quiz_id"
+    t.string   "quiz_id"
     t.string   "submitted_answer"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -377,6 +413,7 @@ ActiveRecord::Schema.define(version: 20140805080827) do
     t.string   "answer"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "project_id"
   end
 
   create_table "resumes", force: true do |t|
@@ -442,14 +479,22 @@ ActiveRecord::Schema.define(version: 20140805080827) do
   end
 
   create_table "stories", force: true do |t|
-    t.integer  "interactor_id"
-    t.integer  "interactee_id"
-    t.integer  "company_id"
-    t.text     "text"
+    t.integer  "subject_id"
+    t.string   "subject_type"
+    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "type"
-    t.boolean  "favorite",      default: true
+    t.text     "data"
+    t.integer  "action_object_id"
+    t.string   "action_object_type"
+  end
+
+  create_table "story_notifications", force: true do |t|
+    t.integer  "story_id"
+    t.integer  "notified_id"
+    t.string   "notified_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "submission_contexts", id: false, force: true do |t|
@@ -458,16 +503,32 @@ ActiveRecord::Schema.define(version: 20140805080827) do
     t.string   "slide_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "uid",                   null: false
+    t.string   "uid",                                  null: false
     t.string   "title"
     t.string   "submission_type"
     t.integer  "project_id"
+    t.boolean  "required",              default: true
   end
 
   create_table "submissions", force: true do |t|
     t.integer  "user_id"
     t.integer  "project_id"
     t.decimal  "score",      precision: 20, scale: 5
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "subscribers", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "subscriptions", force: true do |t|
+    t.integer  "subscriber_id"
+    t.string   "subscriber_type"
+    t.integer  "subscribable_id"
+    t.string   "subscribable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -498,6 +559,13 @@ ActiveRecord::Schema.define(version: 20140805080827) do
     t.string   "linkedin_school_id"
   end
 
+  create_table "user_actions", id: false, force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "uid",        null: false
+  end
+
   create_table "user_codes", force: true do |t|
     t.integer  "user_id"
     t.datetime "created_at"
@@ -519,6 +587,36 @@ ActiveRecord::Schema.define(version: 20140805080827) do
     t.datetime "updated_at"
   end
 
+  create_table "user_preferences", force: true do |t|
+    t.integer  "user_id"
+    t.string   "who_can_see_profile"
+    t.string   "who_can_send_friend_requests"
+    t.string   "who_can_contact"
+    t.string   "who_can_lookup_using_email"
+    t.string   "who_can_lookup_by_name"
+    t.string   "who_can_see_resume"
+    t.boolean  "wants_email_about_new_projects", default: true
+    t.boolean  "wants_email_from_recruiters",    default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_profiles", force: true do |t|
+    t.integer  "user_id"
+    t.boolean  "looking_for_opportunities", default: true
+    t.string   "location"
+    t.text     "bio"
+    t.string   "phone"
+    t.string   "headline"
+    t.string   "industry"
+    t.date     "date_of_birth"
+    t.text     "interests"
+    t.integer  "job_bookmarks_count"
+    t.string   "country_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "user_skills", force: true do |t|
     t.integer  "user_id"
     t.integer  "skill_id"
@@ -530,12 +628,12 @@ ActiveRecord::Schema.define(version: 20140805080827) do
   add_index "user_skills", ["user_id"], name: "index_user_skills_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",                        default: "",    null: false
-    t.string   "encrypted_password",           default: "",    null: false
+    t.string   "email",                      default: "",    null: false
+    t.string   "encrypted_password",         default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                default: 0,     null: false
+    t.integer  "sign_in_count",              default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -552,28 +650,12 @@ ActiveRecord::Schema.define(version: 20140805080827) do
     t.string   "last_name"
     t.string   "unconfirmed_email"
     t.datetime "updated_password_at"
-    t.string   "who_can_see_profile"
-    t.string   "who_can_send_friend_requests"
-    t.string   "who_can_contact"
-    t.string   "who_can_lookup_using_email"
-    t.string   "who_can_lookup_by_name"
-    t.string   "who_can_see_resume"
-    t.boolean  "looking_for_opportunities",    default: false
-    t.string   "location"
-    t.text     "bio"
     t.string   "linkedin_id"
     t.string   "name"
     t.string   "nickname"
-    t.string   "linkedin_profile_image_url",   default: ""
-    t.string   "phone"
-    t.string   "headline"
-    t.string   "industry"
+    t.string   "linkedin_profile_image_url", default: ""
     t.string   "public_profile_url"
-    t.date     "date_of_birth"
-    t.text     "interests"
-    t.integer  "job_bookmarks_count"
-    t.string   "country_code"
-    t.boolean  "has_project_access",           default: false
+    t.boolean  "has_project_access",         default: false
     t.datetime "linkedin_confirmed_at"
     t.datetime "linkedin_updated_at"
   end

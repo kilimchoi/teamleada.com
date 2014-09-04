@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def get_yaml_data_file(file)
+    HashObject.new(YAML.load_file(File.join(Rails.root, 'app', 'data', file)))
+  end
+
   def active_li_link(name=nil, options={}, html_options={}, link_html_options={}, &block)
     # html_options[:class] = "#{html_options[:class]} active" if current_page?(options)
     content_tag :li, html_options do
@@ -39,7 +43,7 @@ module ApplicationHelper
   end
 
   def valid_settings_tab?(tab)
-    User::SETTINGS_TABS.include? tab
+    UserPreference::SETTINGS_TABS.include? tab
   end
 
   def valid_code_submissions_tab?(tab)
@@ -56,6 +60,11 @@ module ApplicationHelper
 
   def is_user_controller?
     params[:controller] == "users" && params[:action] != "edit"
+  end
+
+  def is_user_namespace?
+    split_controller = params[:controller].split("/")
+    split_controller.size > 1 && split_controller.first == "users"
   end
 
   def sortable(column, title = nil)

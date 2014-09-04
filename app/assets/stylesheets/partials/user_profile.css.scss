@@ -1,0 +1,57 @@
+.profile-section {
+}
+
+.profile-section-header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dadada;
+
+  h3 {
+    display: inline;
+  }
+
+  h4 {
+    margin: 5px 0;
+  }
+
+  span.edit-section {
+    float: right;
+  }
+}
+
+.profile-section-view {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.profile-section-content {
+  margin-bottom: 25px;
+}
+
+.job-position-title {
+  font-weight: 700;
+}
+
+.education-degree-info {
+  font-size: 14px;
+}
+
+.university-name {
+  font-weight: 700;
+}
+
+.edit-form-remove-position {
+  margin-left: 5px;
+}
+
+.current-date-label {
+  position: relative;
+  left: 42%;
+}
+
+.current-date-checkbox {
+  width: 15px;
+  position: relative;
+  left: 41%;
+}
+

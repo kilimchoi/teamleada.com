@@ -1,0 +1,27 @@
+// Declares the order of imports for the primary stylesheets
+
+@import "basecoat/normalize";
+@import "bootstrap/bootstrap";
+
+// These files are required for bootstrap overrides
+@import "mixins/mobile-mixins";
+@import "mixins/base-mixins";
+
+@import "basecoat/colors";
+@import "basecoat/config";
+
+@import "bootstrap/bootstrap-overrides";
+
+@import "basecoat/base";
+@import "basecoat/images";
+@import "basecoat/icons";
+@import "basecoat/forms";
+
+@import "components/buttons";
+@import "components/navigation";
+@import "components/mobile_navigation";
+@import "components/footer";
+
+@import "components/cards";
+@import "components/dashboard_widgets";
+

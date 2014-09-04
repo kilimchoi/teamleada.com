@@ -18,6 +18,7 @@ project = Project.create!(
   difficulty: 'Beginner',
   category: Project::LESSON,
   is_new: false,
+  cover_photo: "titanic-bootcamp",
 )
 
 
@@ -69,6 +70,7 @@ view_data_content = [
 quiz = Quiz.create!(
   quiz_id: "t_bootcamp_1",
   answer:"93",
+  project: project,
 )
 
 view_data_content_two = [
@@ -199,6 +201,7 @@ barplot_bootcamp_content_two = [
 quiz = Quiz.create!(
   quiz_id: "t_bootcamp_2",
   answer:"120",
+  project: project,
 )
 
 

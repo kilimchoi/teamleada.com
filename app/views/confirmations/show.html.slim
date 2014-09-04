@@ -1,5 +1,7 @@
-.container.full-container
-  .row
+// TODO(mark): Refactor this after invites require a first and last name
+
+.container.full-container.card-container
+  .row.card
     .col-md-6.col-md-offset-3
       h2 You're almost done! Now create a password to securely access your account.
       = simple_form_for(resource, :as => resource_name, :url => confirm_path) do |form|

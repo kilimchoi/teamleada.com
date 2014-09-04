@@ -62,10 +62,12 @@ module ChartsHelper
     categories = data.keys.map{ |date| date.strftime("%B %d")}
 
     sum = model.where("created_at < ?", timeframe).count
-    
+
     case method
     when "count"
       values = data.values.map{ |array| array.count }
+    when "percent"
+      values = data.values.map{ |array| array.count.to_f / (sum += array.count) * 100 }
     else
       values = data.values.map{ |array| sum += array.count }
     end
@@ -85,6 +87,10 @@ module ChartsHelper
 
   def chart_from_model(timeframe, model, title, y_axis)
     time_chart_from_model(timeframe, 24 * 3600, model, title, y_axis, "sum")
+  end
+
+  def growth_chart_from_model(timeframe, model, title, y_axis)
+    time_chart_from_model(timeframe, 24 * 3600, model, title, y_axis, "percent")
   end
 
   def chart_for_timeframe(chart, start_date, end_date)
@@ -163,6 +169,10 @@ module ChartsHelper
     chart_from_model(timeframe, User, "Sign ups on Leada over Time (past 30 days)", "Total number of sign ups")
   end
 
+  def growth_chart(timeframe)
+    growth_chart_from_model(timeframe, User, "User Growth on Leada over Time (past 30 days)", "% of Growth")
+  end
+
   def interest_chart(timeframe)
     chart_from_model(timeframe, ProjectInterest, "Interest in Projects on Leada (past 30 days)", "Total number of interest in projects")
   end
@@ -189,11 +199,11 @@ module ChartsHelper
   end
 
   def page_views_chart(timeframe)
-    chart_from_model_method(timeframe, Impression, "PageViews in the last 7 days", "Total number of PageViews", "count")
+    chart_from_model_method(timeframe, Impression.non_admin, "PageViews in the last 7 days", "Total number of PageViews", "count")
   end
 
   def one_day_chart
-    hourly_chart_for_model(1.day.ago, Impression, "PageViews in the past 24 hours", "Total number of PageViews")
+    hourly_chart_for_model(1.day.ago, Impression.non_admin, "PageViews in the past 24 hours", "Total number of PageViews")
   end
 
 end

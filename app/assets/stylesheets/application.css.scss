@@ -15,29 +15,20 @@
  *= require_self
  */
 
-
-@import "mixins";
+// Import from primary first
+@import "primary/primary";
+@import "primary/basecoat/fonts";
 
 @import "slide";
 
-@import "fonts";
-
-@import "colors";
-@import "config";
 @import "highlight.min";
 @import "font-awesome";
-@import "bootstrap";
-@import "bootstrap_overrides";
 @import "pace";
 @import "ladda.min";
 
 @import "library_overrides";
 
-@import "footer";
-@import "main";
-@import "buttons";
 @import "forms";
-@import "images";
 
 @import "sidebar";
 @import "right_sidebar";
@@ -48,3 +39,7 @@
 
 @import "partials/*";
 @import "partials/*/*";
+
+
+@import "primary/components/alerts";
+

@@ -1,0 +1,18 @@
+// Required Variables
+// project
+
+.project-info-container
+  .row.card.plain-card
+    .col-md-12
+      = render partial: "projects/project_details", locals: { project: project }
+
+      .row
+        .col-md-2
+          | Description:
+        .col-md-10
+          = project.short_description
+
+      hr
+      .row
+        .col-md-12
+          = render partial: "projects/project_action", locals: { project: project }

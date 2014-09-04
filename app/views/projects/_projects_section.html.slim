@@ -1,0 +1,27 @@
+// Required Variables:
+// projects, size, section
+
+- section = projects.first.section
+
+.projects-container
+  .row.card.card-no-margin-bottom id="project-section-title-#{section}"
+    .col-md-12
+      h1.center = section.gsub("-", " ").titleize
+
+  .row
+    .col-md-12.project-group
+      - projects.each_slice(per_row) do |slice|
+        .row.row-table.row-full-height.row-full-width.row-tight-margin
+          - slice.each do |project|
+            .col-middle.project-col class="col-md-#{12 / per_row}"
+              = link_to info_project_path(project), remote: true, class: "no-underline project-link", id: "project-link-#{project.uid}" do
+                .project-cover-darken-container
+                  .project-cover-image class="#{'project-cover-image-dark project-image-' + project.cover_photo if project.has_cover_photo?}"
+
+                  .row.row-table.row-full-height.row-no-margin
+                    .col-md-12.col-middle.project-container.card.project-card.project-card-colored.center class="project-color-#{project.color} project-#{project.section} #{size} #{'no-project-color' if project.has_cover_photo?}" id="project-#{project.uid}"
+                      = render partial: "projects/project_card", locals: { project: project }
+              .row
+                .col-md-12
+                  .project-card-inner id="project-inner-#{project.uid}"
+

@@ -10,4 +10,5 @@
         = time_ago_in_words(message.updated_at)
         |  ago
     .content-body
-      = message.content
+      = simple_format(message.content)
+
