@@ -85,6 +85,10 @@ ActiveRecord::Schema.define(version: 20140906013044) do
     t.string   "company_type"
     t.string   "industry"
     t.string   "ticker"
+    t.string   "headline"
+    t.string   "location"
+    t.date     "founded_date"
+    t.string   "number_of_employees"
   end
 
   create_table "company_employees", force: true do |t|
