@@ -326,6 +326,7 @@ conclusion_content = [
   ['text', "Hopefully you now have a better sense of how the 2014 candidate disbursement happened."],
   ['text', "Write any conclusion you drew from the excercises. You're free to leave it blank, if you were unable to draw any conclusive result"],
   ['user_response',""],
+  ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
 
 conclusion_lesson = Lesson.create!(
@@ -339,3 +340,13 @@ conclusion_slide = Slide.create!(
   slide_id: 0,
   parent: conclusion_lesson,
 )
+
+normalization_response_submission_context = SubmissionContext.create!(
+  title: "Conclusion on Candidate Discbursement data",
+  description: "User is asked to write down any concusion after the analyis of the candidate disebursement data.",
+  slide: conclusion_slide,
+  submission_context_id: 0,
+  submission_type: SubmissionContext::RESPONSE,
+  required: true,
+)
+
