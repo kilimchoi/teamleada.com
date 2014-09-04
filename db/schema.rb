@@ -89,6 +89,8 @@ ActiveRecord::Schema.define(version: 20140906013044) do
     t.string   "location"
     t.date     "founded_date"
     t.string   "number_of_employees"
+    t.text     "about"
+    t.string   "website"
   end
 
   create_table "company_employees", force: true do |t|
