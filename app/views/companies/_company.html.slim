@@ -1,0 +1,9 @@
+// Required Variables:
+// company, is_editing
+
+.full-width-container
+  .container.full-container
+    .row
+      .col-md-12
+        .company-container.card-container
+          = render partial: "companies/company/top_header_info", locals: { company: company, is_editing: is_editing }
