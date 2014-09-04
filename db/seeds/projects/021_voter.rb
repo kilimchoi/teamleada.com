@@ -183,9 +183,25 @@ corr_response_context = SubmissionContext.create!(
 ################################################################################
 
 distribution_lesson_content = [
-  ['text', ""],
+  ['text-success', "We want to find out how much the distribution of 'sizes' of disbursements appears to differ from campaign to campaign."],
+  ['text', " - Are the size just a function of total campaign spend?"],
+  ['text', " - Are they related to the vendors?"],
+  ['text-info', "You're free to do any analysis you want."],
 ]
 
+distribution_lesson_content_one = [
+  ['text-success', "Write the code that will provide the analysis above"],
+  ['text', "Remember to comment clearly on what you're doing"],
+  ['text', "You'll also explain your procedure and any results on the next section"],
+  ['user_code', ""],
+]
+
+distribution_lesson_content_two = [
+  ['text-success', "How did you analyze the difference in spending?"],
+  ['text', "What did you conclude?"],
+  ['user_response', "nil"],
+  ['next_steps', ""],
+]
 distribution_lesson = Lesson.create!(
   title: "ANOVA on Candidate spending",
   lesson_id: 2,
@@ -197,3 +213,109 @@ distribution_lesson_slide = Slide.create!(
   slide_id: 0,
   parent: distribution_lesson,
 )
+
+distribution_lesson_slide_one = Slide.create!(
+  content: distribution_lesson_content_one,
+  slide_id: 1,
+  parent: distribution_lesson,
+)
+
+distribution_lesson_slide_two = Slide.create!(
+  content: distribution_lesson_content_two,
+  slide_id: 2,
+  parent: distribution_lesson,
+)
+
+anova_code_submission_context = SubmissionContext.create!(
+  title: "Spending Analysis Code",
+  description: "User is asked to submit the code used to analyze the difference in spending between campaigns.",
+  slide: distribution_lesson_slide_one,
+  submission_context_id: 0,
+  submission_type: SubmissionContext::CODE,
+  required: true,
+)
+
+anova_response_context = SubmissionContext.create!(
+  title: "Spending Analysis Written",
+  description: "User is asked to explain and talk about the analysis result of the spending between campaigns.",
+  slide: distribution_lesson_slide_two,
+  submission_context_id: 0,
+  submission_type: SubmissionContext::RESPONSE,
+  required: true,
+)
+
+################################################################################
+######### Data Normalization ###################################################
+################################################################################
+
+normalization_content_one = [
+  ['text-success', "After some analysis, you notice large discrepancies in candidate spending depending on the region / campaign."],
+  ['text', "You assume that the variance can be explained by the differences in populations between regions."],
+  ['text', "To test your intuition, you decide to normalize the campaign data by population size."],
+  ['text', "After some googling, you end up with you the following US Census population data (2010)"],
+  ['link-fail', "link to the data."],
+  ['text', "Equipped with this additional data, you begin your analysis"],
+]
+
+normalization_content_two = [
+  ['text', "Write the code that accomplishes the following:"],
+  ['text', " - Campaign dollar spent per State"],
+  ['text', " - Campaign "],
+  ['user_code', ""],
+  ['text', ""],
+]
+
+normalization_content_three = [
+ ['text', "Now"],
+ ['text', ""],
+ ['user_response', ""],
+ ['next_steps', ""],
+]
+
+normalization_lesson = Lesson.create(
+  title: "Normalization",
+  lesson_id: 3,
+  project: project,
+)
+
+normalization_slide_one = Slide.create!(
+  content: normalization_content_one,
+  slide_id: 0,
+  parent: normalization_lesson,
+)
+
+normalization_slide_two = Slide.create!(
+  content: normalization_content_two,
+  slide_id: 1,
+  parent: normalization_lesson,
+)
+
+normalization_slide_three = Slide.create!(
+  content: normalization_content_three,
+  slide_id: 2,
+  parent: normalization_lesson,
+)
+
+normalization_code_submission_context = SubmissionContext.create!(
+  title: "Normalization Analysis Code",
+  description: "User is asked to submit the code used to normalize campaign data per region.",
+  slide: normalization_slide_two,
+  submission_context_id: 0,
+  submission_type: SubmissionContext::CODE,
+  required: true,
+)
+
+normalization_response_submission_context = SubmissionContext.create!(
+  title: "Spending Analysis Written",
+  description: "User is asked to explain the normalized analysis of campaign spending.",
+  slide: normalization_slide_three,
+  submission_context_id: 0,
+  submission_type: SubmissionContext::RESPONSE,
+  required: true,
+)
+
+
+################################################################################
+######### Data Normalization ###################################################
+################################################################################
+
