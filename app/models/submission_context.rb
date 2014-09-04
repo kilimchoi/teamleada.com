@@ -11,6 +11,7 @@
 #  title                 :string(255)
 #  submission_type       :string(255)
 #  project_id            :integer
+#  required              :boolean          default(TRUE)
 #
 
 class SubmissionContext < ActiveRecord::Base
@@ -25,6 +26,8 @@ class SubmissionContext < ActiveRecord::Base
 
   belongs_to :slide
   belongs_to :project
+
+  default_scope -> { where(required: true) }
 
   CODE = "code" #code snippets
   COMPLETE_CODE = "complete_code" #complete src code for a project 

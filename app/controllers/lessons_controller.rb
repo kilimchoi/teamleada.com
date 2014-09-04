@@ -9,6 +9,7 @@ class LessonsController < ApplicationController
 
     # For the project deadline countdown
     @project_status = current_user.project_status_for_project(@lesson.project)
+    @project_status.begin_project
   end
 
 end

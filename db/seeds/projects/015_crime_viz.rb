@@ -1,24 +1,26 @@
 
 main_page_content = [
-  ['text', 'In this project, you\'ll be building visualizations for a specific dataset:'],
+  ['text', 'In this challenge, you are tasked with providing insights and analysis for a specific dataset:'],
   ['text-warning', 'Crime data from San Francisco, CA.'],
   ['text', 'You\'ll get the data from the official SF police website.'],
-  ['text', 'The project is rather open ended, and you can build whatever visualization you want.'],
-  ['text-success', "Follow your creativity calling!"],
+  ['text', 'The project is purposefully open ended, build whatever visualization(s) you want.'],
+  ['text-success', "Let your creativity flow"],
 ]
 
 project = Project.create!(
-  title:"visualizing Crime Data",
+  title:"Visualizing Crime Data",
   description: main_page_content,
-  short_description: "A data project focused on visualization and reporting. You'll be given a set of recent San Francisco crime data. You'll be reponsible for creating meaninful visualizations and reporting your analysis.",
+  short_description: "Given a set of recent San Francisco crime data, you are tasked with finding some meaningful insights and creating visualization(s) which presents your findings.",
+  enabled: true,
   number: 15,
-  enabled: false,
-  has_submit: true,
+  has_submit: false,
   uid: 15,
-  difficulty: 'Advanced',
+  difficulty: 'Intermediate',
   category: Project::CHALLENGE,
   is_new: true,
-  deadline: 10.days,
+  featured: true,
+  grants_project_access: true,
+  cover_photo: "crime",
 )
 
 ################################################################################
@@ -26,31 +28,28 @@ puts "============ Created project: #{project.title}."
 ################################################################################
 
 intro_content_one = [
-  ['text-info', "You've just been hired by the SF city to better deal with its crime issues."],
-  ['text', "First thing they want to do is to better understand crime pattern."],
-  ['text', "You're tasked to create visualizations that will help the city better interpret the crime."],
-  ['text', "You're not given a specific plot/chart speficiation, and you must come up with your own analysis."],
-  ['text', "The crime data can be downloaded below."],
+  ['text-info', "You've just been hired by the city of San Francisco to use analytics to combat its crime issues."],
+  ['text', "The first task they want to do is to better understand the crime patterns throughout the city."],
+  ['text', "You're tasked with creating visualization(s) that will help the city better interpret the crime data that gets updated daily."],
+  ['text', "You're aren't given restrictions on plot type and you must come up with your own analysis."],
+  ['text', "The crime data can be downloaded below:"],
   ['link', "https://data.sfgov.org/Public-Safety/SFPD-Incidents-Previous-Three-Months/tmnf-yvry?"],
-  ['text', "How many months of data do you get?"],
-  ['quiz', "crime_viz_0"],
 ]
 
 intro_content_two = [
-  ['text-info', "The data contains geographic area, as well as crime types."],
+  ['text-info', "The data contains many features including district, category, and crime types."],
   ['text', "As mentioned before, the type of visualization is entirely up to you."],
-  ['text-warning', "You might want to consider creatings plots that encompasses the following:"],
-  ['text', " - Time the crime occured"],
-  ['text', " - Geo-Location of the crime"],
-  ['text', " - Type of the crime occured"],
-  ['text', " - And more!"],
-  ['text-success', "Make sure to explain in your report why you chose to create the visualization you created."],
+  ['text-warning', "You might want to consider creating plots that encompass the following:"],
+  ['text', " - Where shouldn't you park your car?"],
+  ['text', " - What are the safest locations in SF? What days/times are especially dangerous?"],
+  ['text', " - Are certain thefts more common in certain areas?"],
+  ['text-success', "Make sure to explain in the summary of your findings how your visualization(s) supports your insights."],
 ]
 
 intro_content_three = [
-  ['text-success', "Lastly, you're free to complete the project in any language/framework you like."],
-  ['text', "But be sure to explain the framework and any external packages."],
-  ['text', "Remember, having maintainable/legible codebase is always a plus!"],
+  ['text-success', "You are free to complete the project in any language/framework you like."],
+  ['text', "Be sure to explain the framework and any external packages with proper documentation."],
+  ['text', "Remember, having a maintainable & legible codebase leads to good karma :)"],
   ['next_steps', ""],
 ]
 
@@ -61,7 +60,7 @@ quiz = Quiz.create!(
 )
 
 intro_lesson = Lesson.create!(
-  title: "Intro / Context",
+  title: "Introduction",
   project: project,
   lesson_id: 0,
 )
@@ -88,12 +87,11 @@ intro_slide_thre = Slide.create!(
 ################################################################################
 
 code_submission_content_one = [
-  ['text', "Submit your code below."],
+  ['text-info', "Submit your code below."],
   ['text-success', "Remember that your code will be evaluated by another human being."],
-  ['text-warning', "This means the following:"],
-  ['text', " - Write legible code."],
-  ['text', " - Write well-commented code."],
-  ['text', " - Write efficient code."],
+  ['text', " - Write legible code"],
+  ['text', " - Write well-commented code"],
+  ['text', " - Write efficient code"],
   ['user_code', ""],
   ['next_steps', ""],
 ]
@@ -111,8 +109,8 @@ code_submission_slide = Slide.create!(
 )
 
 code_submission_context = SubmissionContext.create!(
-  title: "Src Code",
-  description: "User is asked to submit the src code for the project.",
+  title: "Source Code",
+  description: "User is asked to submit the source code for the project.",
   slide: code_submission_slide,
   submission_context_id: 0,
   submission_type: SubmissionContext::CODE,
@@ -123,17 +121,20 @@ code_submission_context = SubmissionContext.create!(
 ################################################################################
 
 report_submission_content_one = [
-  ['text', "Submit a link to yaur report (in PDF) below."],
-  ['text-warning', "The report should contain the context of the problem, along with what you decided to do."],
-  ['text', "Include the visualization you created (or screenshots if you created interactive ones.)"],
-  ['text-success', "If you're able to derive any conclusion from your analysis (though that is not required), be sure to highlight it."],
-  ['text', ""],
+  ['text', "Submit a summary of your analysis (less than 500 words)"],
+  ['text-warning', "The report should contain the question you were answering, along with how you used the data to answer it."],
   ['user_response', ""],
+]
+
+report_submission_content_two = [
+  ['text', "Include the visualization(s) you created by submitting here: "],
+  ['text', 'Use the same submit button to submit multiple visualization(s)'],
+  ['image_submit', nil],
   ['next_steps', ""],
 ]
 
 report_submission_lesson = Lesson.create!(
-  title: "Report Submission",
+  title: "Summary Submission",
   project: project,
   lesson_id: 2,
 )
@@ -142,6 +143,12 @@ report_submission_slide = Slide.create!(
   content: report_submission_content_one,
   parent: report_submission_lesson,
   slide_id: 0,
+)
+
+report_submission_slide_two = Slide.create!(
+  content: report_submission_content_two,
+  parent: report_submission_lesson,
+  slide_id: 1,
 )
 
 report_submission_context = SubmissionContext.create!(
@@ -153,21 +160,53 @@ report_submission_context = SubmissionContext.create!(
 )
 
 ################################################################################
+##### Video Submission #########################################################
+################################################################################
+
+
+video_submission_content_one = [
+  ['text', 'You can optionally submit a 1 minute video presenting your insights and analysis. Pretend its to your superior.'],
+  ['text', 'Submit the YouTube link and be sure to make it unlisted!'],
+  ['user_response', ""],
+  ['next_steps', ""],
+]
+
+video_lesson = Lesson.create!(
+  title: "Video Submission (Optional)",
+  project: project,
+  lesson_id: 3,
+)
+
+video_slide = Slide.create!(
+  content: video_submission_content_one,
+  parent: video_lesson,
+  slide_id: 0,
+)
+
+video_submission_context = SubmissionContext.create!(
+  title: "Video Submission",
+  description: "User is asked to submit a 1 minute video presenting their analysis and findings.",
+  slide: video_slide,
+  submission_context_id: 0,
+  submission_type: SubmissionContext::RESPONSE,
+  required: false,
+)
+
+
+################################################################################
 ##### Conclusion ###############################################################
 ################################################################################
 
 conclusion_content_one = [
-  ['text', "Hopefully you enjoyed creating visualizations for the crime data."],
-  ['text-info', "The project was aimed at bringing out your creativity and ability to poke at a piece of data without little or no direction."],
+  ['text-info', "The challenge was aimed at bringing out your creativity and intuition with data without specific directions."],
   ['text-success', "It's entirely possible to arrive at some useful conclusion (big or small) without having to create sophisticated predictive models."],
-  ['text-warning', "Well done!"],
   ['finish_project_button', "http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form"],
 ]
 
 final_lesson = Lesson.create!(
   title: "Conclusion",
   project: project,
-  lesson_id: 3,
+  lesson_id: 4,
 )
 
 final_slide_one = Slide.create!(

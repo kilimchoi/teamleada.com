@@ -43,7 +43,7 @@ module ApplicationHelper
   end
 
   def valid_settings_tab?(tab)
-    User::SETTINGS_TABS.include? tab
+    UserPreference::SETTINGS_TABS.include? tab
   end
 
   def valid_code_submissions_tab?(tab)
@@ -60,6 +60,11 @@ module ApplicationHelper
 
   def is_user_controller?
     params[:controller] == "users" && params[:action] != "edit"
+  end
+
+  def is_user_namespace?
+    split_controller = params[:controller].split("/")
+    split_controller.size > 1 && split_controller.first == "users"
   end
 
   def sortable(column, title = nil)

@@ -20,8 +20,53 @@ h3, .h3 {
   background-color: $main-background-color;
 }
 
+.text-contrast {
+  color: #ffffff;
+
+  &:hover {
+    color: #ffffff;
+  }
+}
+
+hr {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: 0;
+  border-top: 1px solid #dce0e0;
+}
+
+#backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+
+  background-color: #000000;
+  opacity: 0.5;
+  display: none;
+}
+
+.highlighted-element {
+  position: relative;
+  z-index: 1001;
+}
+
 .row-full-height {
   height: 100%;
+}
+
+.row-full-width {
+  width: calc(100% + 30px);
+}
+
+.row-no-margin {
+  margin: 0;
+}
+
+.row-tight-margin {
+  margin: 10px -15px;
 }
 
 .row-table {
@@ -30,6 +75,14 @@ h3, .h3 {
 
 .col-middle {
   vertical-align: middle;
+
+  @include breakpoint($small-screen) {
+    width: 100%;
+  }
+}
+
+.col-table-cell {
+  display: table-cell;
 }
 
 .col-top,
@@ -302,3 +355,10 @@ h1 {
 .inline-block {
   display: inline-block !important;
 }
+
+.no-underline {
+  &:hover {
+    text-decoration: none;
+  }
+}
+

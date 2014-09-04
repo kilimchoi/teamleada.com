@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   def home
     @profile_needs_info = true
     @home = get_yaml_data_file("home.yml")
+    @company_logos = get_yaml_data_file("company_logos.yml")
   end
 
   def about

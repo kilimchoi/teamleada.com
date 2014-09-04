@@ -29,6 +29,9 @@ module TeamLeada
     # We have to manually iterate over all the extended classes to include them in the project.
     Dir[Rails.root.join("app", "extended_classes", "*.rb")].each { |extended_class| require extended_class }
 
+    # Load all sub-folders in the models directly
+    config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]
+
     # Include fonts
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
   end

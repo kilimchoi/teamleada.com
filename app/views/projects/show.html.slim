@@ -1,33 +1,25 @@
 = provide(:page_title, @project.title)
 
-.container.full-container
+= render partial: "projects/project_cover_photo", locals: { project: @project }
+.container.full-container.show-project-container
   .row
     .col-md-12
       .project-container.card-container
-        .row.card
-          .col-md-12
-            h1.title = @project.title
-        - unless @project.deadline.nil? || @project_status.completed?
-          - if @project_status.has_time_remaining?
-            .row.card
-              .col-md-12
-                h2.title Time Remaining
-                #project-countdown
-          - else
-            .row.card
-              .col-md-12
-                .alert.alert-danger
-                  h2.center.no-margin.project-timeout Your time for this project has expired.
+        = render partial: "projects/project_countdown", locals: { project: @project, project_status: @project_status }
+        = render partial: "projects/project_progress", locals: { project: @project }
+
+        - if current_user.is_waiting_on_evaluations_for_project?(@project) && @project.grants_project_access
+          .row.card
+            .col-md-12
+              h2 Thanks for submitting!
+              p.large-font
+                | Please double check that the visualization your code creates and the image you attach are the same! We will reach back out shortly with an access key.
 
         .row.card
           .col-md-12
-            .progress-bar-container
-              h2.title Your Progress
-              .progress
-                - percentage = current_user.project_progress_percentage(@project)
-                .progress-bar aria-valuenow="#{percentage}" aria-valuemin="0" aria-valuemax="100" style="width: #{percentage}%"
-                  = percentage
-                  | %
+            h1.title Project Details
+            = render partial: "projects/project_details", locals: { project: @project }
+
         .row
           .col-md-6
             .row.card
@@ -57,6 +49,11 @@
                     = link_to "Continue where you left off", current_user.next_lesson_or_step_for_project_path(@project), class: 'flat-button step-button'
                   - else
                     h2 Looks like you haven't started this project!
+                    - if @project.has_deadline?
+                      p
+                        ' Note, once you start this project, the countdown will start and you will have
+                        = @project.deadline_in_days
+                        '  days to finish.
                     = link_to "Get started now!", project_lesson_path(@project, @project.lessons.first), class: 'flat-button step-button'
 
                   h2 Choose an option from below:
@@ -78,10 +75,4 @@
                   p.large-font
                     ' Your due date was
                     = @project_status.display_end_date
-
-javascript:
-  $(document).ready(function() {
-    var endDate = new Date(#{@project_status.end_date_in_milliseconds})
-    $('#project-countdown').countdown({ until: endDate });
-  });
 

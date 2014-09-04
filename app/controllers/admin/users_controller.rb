@@ -30,6 +30,20 @@ class Admin::UsersController < Admin::BaseController
     redirect_to code_submissions_admin_user_path(@user, @project)
   end
 
+  def grant_access
+    @project = Project.find(params[:project_id])
+    @user.grant_project_access(@project)
+    flash[:info] = "Email sent to #{@user.name}"
+    redirect_to code_submissions_admin_user_path(@user, @project)
+  end
+
+  def deny_access
+    @project = Project.find(params[:project_id])
+    @user.deny_project_access(@project)
+    flash[:info] = "Email sent to #{@user.name}"
+    redirect_to code_submissions_admin_user_path(@user, @project)
+  end
+
   private
 
   def sort_column

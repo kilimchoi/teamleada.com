@@ -1,0 +1,21 @@
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin fill-table-cell {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@mixin transition-ease-in-out($duration) {
+  -webkit-transition: opacity ease-in-out $duration;
+  -moz-transition: opacity ease-in-out $duration;
+  -o-transition: opacity ease-in-out $duration;
+  transition: opacity ease-in-out $duration;
+}

@@ -129,6 +129,11 @@ $carousel-height: 500px;
   background-image: image-url("companies/mixbook.jpg");
 }
 
+.company-rnc {
+  background-size: contain;
+  background-image: image-url("companies/republican_national_committee.png");
+}
+
 .company-statricks {
   background-image: image-url("companies/statricks.png");
 }
@@ -162,5 +167,36 @@ $carousel-height: 500px;
 
 .icon-hired {
   background-image: image-url("icons/resume.png");
+}
+
+// User Testimonials
+.user-testimonial {
+  margin: 40px;
+}
+
+.user-testimonial-circle {
+  border-radius: 500px;
+  height: 150px;
+}
+
+.user-testimonial-image {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.user-testimonial-quote {
+  font-size: 20px;
+  text-align: justify;
+  font-style: italic;
+
+  @include breakpoint($mobile) {
+    font-size: 14px;
+  }
+}
+
+.user-testimonial-name {
+  margin-top: 20px;
+  text-align: right;
+  font-size: 18px;
 }
 

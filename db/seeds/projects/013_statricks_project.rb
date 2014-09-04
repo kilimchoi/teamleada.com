@@ -14,17 +14,19 @@ main_page_content = [
 project = Project.create!(
   title: "Statricks: Data Collection with Python",
   description: main_page_content,
-  short_description: "A project sponsored by Statricks, an analytics technology company. In this data challenge you will build a web scraper to extract listing information. This data challenge is for users with experience in Python and some HTML.",
+  short_description: "A project sponsored by Statricks, an e-Commerce analytics company. In this data challenge you will build a web scraper using the Beautiful Soup library to extract listing information. This data challenge is for users with experience in Python and some HTML.",
   number: 13,
   enabled: true,
   has_leaderboard: false,
   has_submit: true,
   uid: 13,
-  difficulty: 'Advanced',
+  difficulty: 'Intermediate',
   category: Project::CHALLENGE,
   company_overview: "",
   is_new: false,
   deadline: 2.weeks,
+  featured: false,
+  cover_photo: "statricks",
 )
 
 puts "============ Created project: #{project.title}."

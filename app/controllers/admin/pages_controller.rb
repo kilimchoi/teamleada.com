@@ -20,6 +20,15 @@ class Admin::PagesController < Admin::BaseController
     @daily_code_submissions = CodeSubmission.where("created_at >= ?", Date.today.to_date)
   end
 
+  def activity
+    @admin_subscriber = Subscriber.find_by(name: "admin")
+    @story_notifications = @admin_subscriber.story_notifications.paginate(page: params[:page])
+  end
+
+  def metrics
+    @days = Day.all.paginate(page: params[:page])
+  end
+
   def realtime_charts
     @users_chart = users_chart(30.days.ago)
     @detailed_users_chart = detailed_users_chart(30.days.ago)
@@ -35,7 +44,7 @@ class Admin::PagesController < Admin::BaseController
   def page_view_charts
     @seven_day_engagement = page_views_chart(7.days.ago)
     @one_day_engagement = one_day_chart
-    @page_views = Impression.where("created_at > ?", 1.day.ago).group(:url).count
+    @page_views = Impression.non_admin.where("created_at > ?", 1.day.ago).group(:url).count
   end
 
   # TODO(mark): These should be moved into a separate controller

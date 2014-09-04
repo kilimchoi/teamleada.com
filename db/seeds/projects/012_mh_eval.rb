@@ -7,18 +7,19 @@ main_page_content = [
 
 
 project = Project.create!(
-  title:"MightyHive: AdTech Analytics",
+  title:"MightyHive: AdTech Split Testing",
   description: main_page_content,
-  short_description: "A project sponsored by Mightyhive, an advertising technology company. This data is based on a real problem that the analytics team at MightyHive encountered. You will perform data cleaning, de-duplication, and statistical analysis to determine the results of their marketing technology.",
+  short_description: "A project sponsored by Mightyhive, an advertising technology company. You will perform data cleaning, de-duplication, and statistical analysis to determine the effectiveness of their marketing technology.",
   number: 12,
   enabled: true,
   has_submit: true,
   uid: 12,
-  difficulty: 'Advanced',
+  difficulty: 'Intermediate',
   category: Project::CHALLENGE,
   company_overview: "",
   is_new: false,
   deadline: 2.weeks,
+  cover_photo: "mightyhive",
 )
 
 ################################################################################

@@ -50,13 +50,6 @@ TeamLeada::Application.routes.draw do
 
   # Debug Bar
   match 'change-role', to: "users#change_role", as: :user_change_role, via: :get
-  resources :users, only: [:show, :update] do
-    member do
-      match 'projects', to: 'users#projects', as: :projects, via: :get
-      match 'projects/:project_id', to: 'users#project', as: :project, via: :get
-      match 'projects/:project_id/feedback', to: 'users#project_feedback', as: :project_feedback, via: :get
-    end
-  end
 
   # Messages
   match 'messages', to: 'messages#create', as: 'messages', via: :post
@@ -77,6 +70,7 @@ TeamLeada::Application.routes.draw do
   resources :employer_applications, path: 'employer', as: 'employer', only: [:create]
   resources :companies, only: [:show]
 
+  draw :users_routes
   draw :project_routes
   draw :company_routes
   draw :admin_routes

@@ -23,7 +23,8 @@ html
     = csrf_meta_tags
     = render partial: 'shared/analytics'
   body.main-background
-    = render partial: 'shared/olark'
+    - if Rails.env.production?
+      = render partial: 'shared/olark'
     - if Rails.env.development?
       = render partial: "shared/debug_bar"
     = render partial: "layouts/header"
@@ -60,7 +61,8 @@ html
             .col-md-2
               = render partial: "company/shared/company_right_sidebar"
 
-      - elsif is_user_controller?
+      - elsif is_user_controller? || is_user_namespace?
+        = yield :before_container
         .container-fluid.full-container
           .row
             .col-md-2

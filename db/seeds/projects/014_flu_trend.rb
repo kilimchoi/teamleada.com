@@ -15,6 +15,7 @@ project = Project.create!(
   difficulty: 'Advanced',
   category: Project::LESSON,
   is_new: true,
+  cover_photo: "flu-trends",
 )
 
 ################################################################################

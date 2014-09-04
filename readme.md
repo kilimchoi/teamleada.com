@@ -66,9 +66,15 @@ Install redis on ubuntu via:
     make
     sudo make install
 
-In `redis.conf`, enable "daemonize yes". Then run:
+If you don't want to do the the full installation, in `redis.conf`, enable "daemonize yes". Then run:
 
     redis-server &
+
+If you follow the direction here to complete proper installation: http://redis.io/topics/quickstart
+Then start it via this:
+
+     /etc/init.d/redis_6379 start
+
 
 ## Background jobs
 
@@ -139,6 +145,10 @@ Make sure you source your environment variables (necessary for the environment v
 Then start the server with the command:
 
     unicorn_rails -D -c /www/prod-dir/teamleada.com/config/unicorn.rb
+
+To restartt a unicorn_rails app seamlessly, give it the reexec signal (after modifying unicorn config to kill old master via old pid)
+
+    kill -s USR2 current_master_pid
 
 ## Live Reload
 

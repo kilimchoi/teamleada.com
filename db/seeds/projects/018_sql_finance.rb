@@ -1,40 +1,39 @@
 main_page_content = [
-  ['text', "In this project we'll quickly scrape a set of YAHOO data, and store the scraped data into a SQL databse."],
+  ['text', "In this challenge you are tasked with quickly scraping a set of Yahoo data, and then storing the scraped data into a SQL database."],
   ['text', "The following are the steps you'll take to accomplish the task."],
-  ['text', "1. Scrape YAHOO Finance Data."],
+  ['text', "1. Scrape Yahoo Finance data."],
   ['text', "2. Store the scraped data locally."],
-  ['text', "3. Design a SQL database to store the Data."],
+  ['text', "3. Design a SQL database to store the data."],
   ['text', "4. Write a SQL script to load the data into the database."],
-  ['text', "We'll use the SQL database in another project!"],
   ['text-success', "Let's get started!"],
 ]
 
 project = Project.create!(
-  title:"Scraping and storing Financial Data [SQL]",
+  title:"Storing Financial Data in a SQL Database",
   description: main_page_content,
-  short_description: "In this project, you'll quickly scrape a set of YAHOO finance data. Follwing the scrape, you'll store the data into SQL database. You'll use the database later for another SQL project!",
+  short_description: "In this challenge, you will scrape a set of Yahoo finance data. After collecting the data, you will design a database schema and then store it into a SQL database.",
   number: 18,
   enabled: true,
   has_submit: true,
   uid: 18,
-  difficulty: 'Advanced',
+  difficulty: 'Intermediate',
   category: Project::CHALLENGE,
   is_new: true,
   deadline: 2.weeks,
+  cover_photo: "scrape-finance",
 )
 
 ################################################################################
 #puts "============ Created project: #{project.title}."
 #################################################################################
 
-project_overview_content0 = [
-  ['text', "In this project we'll quickly scrape a set of YAHOO data, and store the scraped data into a SQL databse."],
+project_overview_content_0 = [
+  ['text', "In this challenge you will quickly scrape a set of Yahoo data, and then store the scraped data into a SQL database."],
   ['text', "The following are the steps you'll take to accomplish the task."],
-  ['text', "1. Scrape YAHOO Finance Data."],
+  ['text', "1. Scrape Yahoo Finance data."],
   ['text', "2. Store the scraped data locally."],
   ['text', "3. Design a SQL database to store the Data."],
   ['text', "4. Write a SQL script to load the data into the database."],
-  ['text', "We'll use the SQL database in another project!"],
   ['next_steps', nil],
 ]
 
@@ -45,7 +44,7 @@ project_overview = Lesson.create!(
 )
 
 project_overview_slide0 = Slide.create!(
-  content: project_overview_content0,
+  content: project_overview_content_0,
   parent: project_overview,
   slide_id: 0,
 )
@@ -55,23 +54,38 @@ project_overview_slide0 = Slide.create!(
 #################################################################################
 
 collect_data_content_0 = [
-  ['text-success', "Context: You're trying to get your feet wet with automated trading systems."],
-  ['text', "The first thing you decide to do is to collect relevant financial data."],
-  ['text', "You decide to scrape YAHOO finance historical data:"],
+  ['text', "The first thing you must do is to collect the necessary financial data from Yahoo."],
+  ['text', "You will scrape Yahoo finance historical data, which can be viewed here:"],
   ['link', "http://real-chart.finance.yahoo.com/table.csv?s=YHOO&d=7&e=1&f=2014&g=d&a=3&b=12&c=2000&ignore=.csv"],
-  ['text', "Note that the link contains a series of parameters."],
-  ['text', "You may or may not want to alter them."],
-  ['text-info', "Now, write a script that will iteratively collect all stock symbols listed on NYSE."],
+  ['text-info', "Note that the text of the URL contains a series of parameters; scrape data from the years beginning in 1990."],
   ['text', "You're not given specific language requirement, but if you're unfamiliar with the work, we suggest Python."],
 ]
 
 collect_data_content_1 = [
-  ['text', "Now submit the code you used to collect the YAHOO data."],
-  ['text', "If your code refers/reads an external file/csv, explain in the comment what you expect the file to contain."],
+  ['text-info', "In order to scrape the relevant stock data, you must first get a list of stocks to scrape!"],
+  ['text-success', "Get a list of NYSE symbols by searching on Google."],
+  ['text', "You should be able to find a csv/excel table of all NYSE companies (and their stock symbols)."],
+  ['text', "You should be able to find the list without having to register anywhere."],
+  ['text', "How long is the list you found of NYSE stocks? Round to the nearest thousands:"],
+  ['quiz', "finance_data_0"],
+  ['text', "Good! Now you can use the list to iteratively scrape Yahoo Finance data."],
+  ['text-info', "Write a script that will iteratively grab Yahoo Finance Data for each of the NYSE symbols you acquired."],
+  ['text', "You're going to want to access the data by editing the sample link we gave (while altering some parameters)."],
+]
+
+collect_data_content_2 = [
+  ['text', "Submit the code you used to collect the Yahoo data."],
+  ['text', "If your code refers to an external file/csv, explain your comments what you expect the file to contain."],
   ['user_code', ""],
   ['text-warning', "Make sure to include relevant comments."],
   ['next_steps', ""],
 ]
+
+quiz_intro_pd = Quiz.create!(
+  quiz_id: "finance_data_0",
+  answer: "3000",
+  project: project
+)
 
 collect_data_lesson = Lesson.create!(
   title: "Data Collection",
@@ -91,6 +105,11 @@ collect_data_slide_1 = Slide.create!(
   slide_id: 1,
 )
 
+collect_data_slide_2 = Slide.create!(
+  content: collect_data_content_2,
+  parent: collect_data_lesson,
+  slide_id: 2,
+)
 sraper_data_submission = SubmissionContext.create!(
   title: "Scraping Yahoo Finance",
   description: "User is asked to scrape Yahoo Finance.",
@@ -104,14 +123,14 @@ sraper_data_submission = SubmissionContext.create!(
 #################################################################################
 
 sql_overview_content = [
-  ['text', "Now that you have the collected historical csv, you decide to stick the data into a SQL databse"],
-  ['text', "We'll first talk about the database design."],
-  ['text', "Once we design the database, we'll go ahead an implement the code that will import the csv into the database."],
+  ['text', "Now that you have the collected historical data, you must store the data into a SQL database."],
+  ['text', "You first must explain your database design."],
+  ['text', "Once you design the database, you will write implementation code that will import the csv into the database."],
   ['lesson_links', ""],
 ]
 
 sql_lesson = Lesson.create!(
-  title: "SQL Design/Implement",
+  title: "SQL Design/Implementation",
   project: project,
   lesson_id: 2,
 )
@@ -124,13 +143,13 @@ sql_overview_slide = Slide.create!(
 #################################################################################
 
 sql_design_content_one = [
-  ['text', "We want to design a sql database that will hold all of our historical data."],
+  ['text', "We want to design a SQL database that will hold all of our historical data."],
   ['text', "There are many different ways to store the data."],
   ['text', "However, you want to keep the schema as maintainable as possible."],
-  ['text', "Forexample, you might want to add more comapny information later."],
-  ['text-info', "Design a set of schemas that you're going to store the historical data points you scraped."],
+  ['text', "For example, you might want to add more comapny information later."],
+  ['text-info', "Design a set of schemas that you're going to store which include the historical data points and symbols you scraped."],
+  ['text', "For each table, include the column data type and a brief comment on what the column holds."],
   ['user_response', ""],
-  ['text-warning', "Don't forget to spend 1 or 2 paragraphs explaining you reasonings."],
   ['next_steps', ""],
 ]
 
@@ -157,7 +176,7 @@ sql_design_submission = SubmissionContext.create!(
 #################################################################################
 
 sql_code_content_one = [
-  ['text-info', "Now that you've designed it, code up the scheame."],
+  ['text-info', "Now that you've designed your database, code up the schema."],
   ['text', "In addition to coding up the schema, also write a script that will load your scraped data into your schema."],
   ['user_code', ""],
   ['text-warning', "Make sure you've sufficiently commented in your code."],
@@ -189,9 +208,9 @@ sql_code_submission = SubmissionContext.create!(
 #################################################################################
 
 sql_conclusion_content = [
-  ['text-success', "You've completed the SQL finance project!"],
-  ['text', "Now you have a set of interesting data to work with."],
-  ['text', "In a future project, we'll revisit the SQL database you created in order to do some fun analysis."],
+  ['text-success', "You've completed the SQL finance challenge!"],
+  ['text', "Now you have a set of financial data to which you can query and perform analysis on."],
+  ['text', "In a future challenge, we'll re-visit the SQL database you created in order to do some in-depth analysis."],
   ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
 

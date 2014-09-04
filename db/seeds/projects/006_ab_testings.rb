@@ -15,6 +15,7 @@ project = Project.create!(
   difficulty: 'Intermediate',
   category: Project::COMING_SOON,
   is_new: false,
+  cover_photo: "ab-test",
 )
 
 ################################################################################

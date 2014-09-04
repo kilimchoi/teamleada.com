@@ -1,0 +1,49 @@
+.story-container {
+  position: relative;
+}
+
+.story-card-body {
+  position: relative;
+}
+
+.story-project-cover-photo-container {
+  margin: 10px 0 0 0;
+  height: 100px;
+}
+
+.story-project-cover-photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.story-link-mask {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #e9eaed);
+}
+
+.story-announcement-container {
+  padding: 20px;
+}
+
+.story-announcement-title {
+  text-align: center;
+  font-size: 20px;
+}
+
+.story-announcement-subtitle {
+  text-align: center;
+  font-size: 14px;
+}
+
+.story-project-title {
+  font-size: 20px;
+}
+

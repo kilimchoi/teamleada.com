@@ -1,12 +1,12 @@
 # Set the working application directory
 # working_directory "/path/to/your/app"
-APP_PATH = "/www/prod-dir/teamleada.com"
+APP_PATH = ENV["DEPLOY_DIR"]
 working_directory APP_PATH
 
 # Unicorn PID file location
 # pid "/path/to/pids/unicorn.pid"
 #pid APP_PATH + "/tmp/pids/unicorn.pid"
-pid "/www/prod-dir/teamleada.com/tmp/pids/unicorn.pid"
+pid APP_PATH + "/tmp/pids/unicorn.pid"
 
 # Path to logs
 # stderr_path "/path/to/log/unicorn.log"
@@ -23,7 +23,7 @@ stdout_path APP_PATH + "/log/unicorn.stdout.log"
 worker_processes Integer(ENV["WEB_CONCURRENCY"] || 4)
 
 # Time-out
-timeout 30
+timeout 15
 
 # listen on both a Unix domain socket and a TCP port,
 # we use a shorter backlog for quicker failover when busy

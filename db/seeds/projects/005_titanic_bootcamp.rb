@@ -18,6 +18,7 @@ project = Project.create!(
   difficulty: 'Beginner',
   category: Project::LESSON,
   is_new: false,
+  cover_photo: "titanic-bootcamp",
 )
 
 
