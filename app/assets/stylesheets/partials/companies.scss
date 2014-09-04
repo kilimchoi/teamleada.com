@@ -1,2 +1,29 @@
 .company-overview {
 }
+
+.company-cover-photo-container {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  height: 400px;
+}
+
+.company-cover-photo {
+  @include fill-absolute;
+
+  background-size: cover;
+  background-position: center;
+}
+
+.show-company-container {
+  margin-top: 300px;
+}
+
+.company-logo-container {
+  float: left;
+}
+
+.company-page-logo {
+  width: 100%;
+}
