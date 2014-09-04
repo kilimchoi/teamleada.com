@@ -100,7 +100,7 @@ voter_intro_quiz = Quiz.create!(
 )
 
 ################################################################################
-puts "============ Created project: #{project.title}."
+######### Data Correlation #####################################################
 ################################################################################
 
 data_correlation_content = [
@@ -123,13 +123,12 @@ data_correlation_content_one = [
 
 data_correlation_content_two = [
   ['text-success', "Write a few sentences about your analysis on the result."],
-  ['user_response', ""],
+  ['user_response', "nil"],
   ['text', "Also submit an image of your analysis plot."],
   ['image_submit', ""],
   ['text-warning', "Note that the image will eventually be part of your profile for other users to view."],
   ['next_steps', ""],
 ]
-
 
 voter_cor_quiz = Quiz.create!(
   quiz_id: "voter_correlation_tag",
@@ -177,4 +176,24 @@ corr_response_context = SubmissionContext.create!(
   submission_context_id: 0,
   submission_type: SubmissionContext::RESPONSE,
   required: true,
+)
+
+################################################################################
+######### Data Correlation #####################################################
+################################################################################
+
+distribution_lesson_content = [
+  ['text', ""],
+]
+
+distribution_lesson = Lesson.create!(
+  title: "ANOVA on Candidate spending",
+  lesson_id: 2,
+  project: project,
+)
+
+distribution_lesson_slide = Slide.create!(
+  content: distribution_lesson_content,
+  slide_id: 0,
+  parent: distribution_lesson,
 )
