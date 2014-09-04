@@ -87,6 +87,13 @@ ActiveRecord::Schema.define(version: 20140906013044) do
     t.string   "ticker"
   end
 
+  create_table "company_employees", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "company_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "company_projects", force: true do |t|
     t.integer  "project_id"
     t.integer  "company_id"

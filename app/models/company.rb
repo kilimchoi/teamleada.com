@@ -32,6 +32,9 @@ class Company < ActiveRecord::Base
 
   before_create :set_url
 
+  scope :verified, -> { where(verified: true) }
+  scope :unverified, -> { where(verified: false) }
+
   extend FriendlyId
   friendly_id :url, use: :finders
 
