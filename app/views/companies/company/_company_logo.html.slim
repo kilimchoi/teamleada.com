@@ -4,4 +4,6 @@
 // TODO(mark): Add editing features later
 
 .company-logo-container
-  = image_tag "companies/ebay.png", class: "company-page-logo"
+  .company-logo-outside-border
+    .company-logo-inner-border
+      = image_tag "companies/ebay.png", class: "company-page-logo"
