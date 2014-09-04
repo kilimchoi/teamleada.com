@@ -320,3 +320,22 @@ normalization_response_submission_context = SubmissionContext.create!(
 ######### Data Normalization ###################################################
 ################################################################################
 
+conclusion_content = [
+  ['text', "Great!"],
+  ['text', "You've finished analyzing the candidate discbursement Data"],
+  ['text', "Hopefully you now have a better sense of how the 2014 candidate disbursement happened."],
+  ['text', "Write any conclusion you drew from the excercises. You're free to leave it blank, if you were unable to draw any conclusive result"],
+  ['user_response',""],
+]
+
+conclusion_lesson = Lesson.create!(
+  title: "Conclusion",
+  lesson_id: 4,
+  project: project,
+)
+
+conclusion_slide = Slide.create!(
+  content: conclusion_content,
+  slide_id: 0,
+  parent: conclusion_lesson,
+)
