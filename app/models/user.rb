@@ -143,12 +143,11 @@ class User < ActiveRecord::Base
   has_many :company_subscribers, through: :subscriptions, source: :subscriber, source_type: "Company"
 
   # Company specific
+  has_many :companies
   has_many :user_interactions, class_name: UserInteraction,
                                foreign_key: :interactor_id
   has_many :received_interactions, class_name: UserInteraction,
                                    foreign_key: :interactee_id
-
-  belongs_to :company
 
   scope :admins, -> { where(role: "admin") }
   scope :students, -> { where(role: "student") }
@@ -430,8 +429,8 @@ class User < ActiveRecord::Base
   end
 
   def owns_project?(project)
-    return false if !self.is_company? || self.company.nil?
-    self.company.projects.include? project
+    return false if !self.is_company?
+    self.current_company.projects.include? project
   end
 
   def completed?(item)
@@ -672,9 +671,8 @@ class User < ActiveRecord::Base
   # Company Properties
   #
   def current_company
-    # TODO(mark): We want to allow company employees to be part of more than one company (so we don't lose
-    # what they did at one company when they move to another).
-    self.company
+    # TODO(mark): We want to allow an employee to select their current company (as opposed to just choosing the last)
+    self.companies.last
   end
 
   def user_interaction_or_nil(other_user)
