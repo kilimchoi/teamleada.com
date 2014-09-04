@@ -23,7 +23,8 @@ html
     = csrf_meta_tags
     = render partial: 'shared/analytics'
   body.main-background
-    = render partial: 'shared/olark'
+    - if Rails.env.production?
+      = render partial: 'shared/olark'
     - if Rails.env.development?
       = render partial: "shared/debug_bar"
     = render partial: "layouts/header"
