@@ -1,0 +1,12 @@
+// Required Variables:
+// company, is_editing
+
+.row.card
+  .col-md-12
+    = render partial: "companies/company/company_logo", locals: { company: company, is_editing: is_editing }
+
+    .company-overview.clearfix
+      h1.title.company-name
+        = company.name
+      .clearfix
+      .company-header-info.clearfix
