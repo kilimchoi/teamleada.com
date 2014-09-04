@@ -162,10 +162,12 @@ class User < ActiveRecord::Base
   default_scope -> { order(:created_at) }
   scope :alphabetically, -> { order("name ASC") }
 
+  # TODO(mark): These should not ve necessary with form objects.
   accepts_nested_attributes_for :resumes
   accepts_nested_attributes_for :profile_photos
   accepts_nested_attributes_for :project_submissions
 
+  # Validations
   validates_format_of :username, :with => /\A[A-Za-z0-9_]*\z/
   validates :username, uniqueness: {case_sensitive: false}
   validate :check_username
@@ -175,8 +177,10 @@ class User < ActiveRecord::Base
 
   before_save :set_name
 
+  # Pagination
   self.per_page = 50
 
+  # Search
   include PgSearch
   pg_search_scope :search,
                   against: [[:first_name, 'A'], [:last_name, 'A'], [:email, 'A'], [:username, 'A']],
