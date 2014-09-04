@@ -25,6 +25,10 @@ class Admin::PagesController < Admin::BaseController
     @story_notifications = @admin_subscriber.story_notifications.paginate(page: params[:page])
   end
 
+  def metrics
+    @days = Day.all.paginate(page: params[:page])
+  end
+
   def realtime_charts
     @users_chart = users_chart(30.days.ago)
     @detailed_users_chart = detailed_users_chart(30.days.ago)

@@ -14,7 +14,7 @@ class Day < ActiveRecord::Base
 
   before_create :set_uid
 
-  default_scope { order(:uid) }
+  default_scope { order("uid DESC") }
 
   def set_uid
     self.uid = self.date.to_date.to_time.to_i
