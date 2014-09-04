@@ -170,7 +170,7 @@ corr_code_submission_context = SubmissionContext.create!(
 )
 
 corr_response_context = SubmissionContext.create!(
-  title: "Correlation Analysis",
+  title: "Correlation Analysis Written",
   description: "User is asked to explain and talk about the analysis result of the categorical correlation analysis",
   slide: data_correlation_slide_two,
   submission_context_id: 0,
