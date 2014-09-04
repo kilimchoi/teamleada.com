@@ -653,7 +653,6 @@ ActiveRecord::Schema.define(version: 20140906013044) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.integer  "company_id"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "unconfirmed_email"
