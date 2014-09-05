@@ -3,6 +3,7 @@ TeamLeada::Application.routes.draw do
     member do
       match "perks", to: "companies#perks", via: :get
       match "benefits", to: "companies#benefits", via: :get
+      match "follow", to: "companies#follow", via: :post
       match "data-challenges-interest", to: "companies#data_challenges_interest", via: :post
     end
 

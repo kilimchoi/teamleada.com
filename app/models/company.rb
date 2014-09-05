@@ -34,6 +34,9 @@ class Company < ActiveRecord::Base
   has_many :user_interactions
   has_many :stories, as: :subject
 
+  has_many :subscriptions, as: :subscribable
+  has_many :followers, through: :subscriptions, source: :subscriber, source_type: "User"
+
   # Validations
   validates :name, uniqueness: true, presence: true
 
@@ -54,6 +57,10 @@ class Company < ActiveRecord::Base
   # Attributes
   def has_data_challenges?
     data_challenges.count > 0
+  end
+
+  def has_followers
+    followers.count > 0
   end
 
   def favorited_users
