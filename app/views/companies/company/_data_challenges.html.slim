@@ -5,7 +5,7 @@
   .col-md-12
     .row
       .col-md-12
-        h3
+        h3.title
           ' Data Challenges
           small
             ' Hosted by
@@ -13,6 +13,11 @@
 
     .row
       .col-md-12
-        - company.data_challenges.each do |data_challenge|
-          = render partial: "companies/company/data_challenge_summary", locals: { data_challenge: data_challenge }
-
+        - if company.has_data_challenges?
+          - company.data_challenges.each do |data_challenge|
+            = render partial: "companies/company/data_challenge_summary", locals: { data_challenge: data_challenge }
+        - else
+          p.center
+            = company.name
+            |  does not currently have any hosted data challenges with Leada.
+          = link_to "I'm Interested in a Data Challenge hosted by #{company.name}", data_challenges_interest_company_path(company), method: :post, class: "flat-button full-width"

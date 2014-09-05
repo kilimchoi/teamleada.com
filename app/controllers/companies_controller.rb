@@ -12,4 +12,8 @@ class CompaniesController < ApplicationController
   def perks
   end
 
+  def data_challenges_interest
+
+  end
+
 end

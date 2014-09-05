@@ -46,6 +46,10 @@ class Company < ActiveRecord::Base
   end
 
   # Attributes
+  def has_data_challenges?
+    data_challenges.count > 0
+  end
+
   def favorited_users
     user_ids = user_interactions.where(favorited: true).pluck(:interactee_id).uniq
     User.ordered_find_by_ids(user_ids)
