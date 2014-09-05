@@ -1,5 +1,9 @@
 TeamLeada::Application.routes.draw do
   resources :companies, only: [:index, :show] do
+    member do
+      match "perks", to: "companies#perks", via: :get
+    end
+
     scope module: :companies do
       resources :users, path: "employees", only: [:index, :show] do
         member do

@@ -8,4 +8,7 @@ class CompaniesController < ApplicationController
   def show
   end
 
+  def perks
+  end
+
 end
