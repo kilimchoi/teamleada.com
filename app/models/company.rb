@@ -28,10 +28,12 @@ class Company < ActiveRecord::Base
   has_many :user_interactions
   has_many :stories, as: :subject
 
+  # Validations
   validates :name, uniqueness: true, presence: true
 
   before_create :set_url
 
+  # Scopes
   scope :verified, -> { where(verified: true) }
   scope :unverified, -> { where(verified: false) }
 
