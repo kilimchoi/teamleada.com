@@ -3,7 +3,12 @@
 
 .row.card
   .col-md-12
-    h3.title
-      ' What is
-      = company.name
-      '  looking for?
+    .row
+      .col-md-12
+        h3.title
+          ' What is
+          = company.name
+          '  looking for?
+    .row
+      .col-md-12
+        = simple_format(company.looking_for)
