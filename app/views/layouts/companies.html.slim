@@ -1,0 +1,18 @@
+- company = @company
+- is_editing = false
+
+.full-width-container
+  = render partial: "companies/company/company_cover_photo", locals: { company: company, is_editing: is_editing }
+
+  .container.full-container
+    .row
+      .col-md-12
+        .show-company-container.card-container
+          = render partial: "companies/company/top_header_info", locals: { company: company, is_editing: is_editing }
+
+    .row
+      .col-md-12.company-main
+        = render partial: "companies/company/company_show_sidebar", locals: { company: company }
+
+
+= parent_layout "application"
