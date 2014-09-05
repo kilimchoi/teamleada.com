@@ -2,6 +2,7 @@ TeamLeada::Application.routes.draw do
   resources :companies, only: [:index, :show] do
     member do
       match "perks", to: "companies#perks", via: :get
+      match "benefits", to: "companies#benefits", via: :get
       match "data-challenges-interest", to: "companies#data_challenges_interest", via: :post
     end
 
