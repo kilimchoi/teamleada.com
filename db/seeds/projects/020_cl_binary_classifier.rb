@@ -113,11 +113,13 @@ data_context_content_three = [
 cl_data_context_quiz = Quiz.create!(
   quiz_id: "cl_data_context_0",
   answer: "no",
+  project: project,
 )
 
 cl_data_context_quiz = Quiz.create!(
   quiz_id: "cl_data_context_1",
   answer: "yes",
+  project: project,
 )
 
 data_context_step = Step.create!(
