@@ -433,7 +433,7 @@ class User < ActiveRecord::Base
 
   def owns_project?(project)
     return false if !self.is_company?
-    self.current_company.projects.include? project
+    self.company.projects.include? project
   end
 
   def completed?(item)
@@ -673,9 +673,15 @@ class User < ActiveRecord::Base
   #
   # Company Properties
   #
-  def current_company
+  def company
     # TODO(mark): We want to allow an employee to select their current company (as opposed to just choosing the last)
-    self.companies.last
+    companies.last
+  end
+
+  def company=(company)
+    unless CompanyEmployee.exists?(user: self, company: company)
+      CompanyEmployee.create(user: self, company: company)
+    end
   end
 
   def user_interaction_or_nil(other_user)
