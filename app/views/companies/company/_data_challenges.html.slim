@@ -1,0 +1,18 @@
+// Required Variables:
+// company
+
+.row.card
+  .col-md-12
+    .row
+      .col-md-12
+        h3
+          ' Data Challenges
+          small
+            ' Hosted by
+            = company.name
+
+    .row
+      .col-md-12
+        - company.data_challenges.each do |data_challenge|
+          = render partial: "companies/company/data_challenge_summary", locals: { data_challenge: data_challenge }
+

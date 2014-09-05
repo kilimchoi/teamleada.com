@@ -1,0 +1,17 @@
+// Required Variables:
+// company
+
+.row.card
+  .col-md-12
+    .row
+      .col-md-2
+        strong
+          | About
+      .col-md-10
+        = simple_format(company.about)
+    .row
+      .col-md-2
+        strong
+          | Website
+      .col-md-10
+        = auto_link(company.website)
