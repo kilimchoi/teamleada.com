@@ -12,6 +12,12 @@
 #  company_type        :string(255)
 #  industry            :string(255)
 #  ticker              :string(255)
+#  headline            :string(255)
+#  location            :string(255)
+#  founded_date        :date
+#  number_of_employees :string(255)
+#  about               :text
+#  website             :string(255)
 #
 
 class Company < ActiveRecord::Base
