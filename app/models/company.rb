@@ -40,15 +40,24 @@ class Company < ActiveRecord::Base
   extend FriendlyId
   friendly_id :url, use: :finders
 
+  # Active Record Callbacks
   def set_url
     self.url = name.downcase.gsub(/[^a-z\s]/, '').parameterize
   end
 
+  # Attributes
   def favorited_users
     user_ids = user_interactions.where(favorited: true).pluck(:interactee_id).uniq
     User.ordered_find_by_ids(user_ids)
   end
 
+  def data_challenges
+    projects.data_challenges
+  end
+
+  # Methods
+
+  # TODO(mark): Move this into a finder class
   def self.find_by_company_params(company_params)
     Company.find_by(name: company_params[:company_name])
   end
