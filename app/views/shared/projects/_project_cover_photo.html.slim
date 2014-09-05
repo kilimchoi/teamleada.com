@@ -1,0 +1,16 @@
+// Required Variables:
+// project, clickable
+
+.shared-project-cover-photo-container
+  .shared-project-cover-photo
+    - if project.has_cover_photo?
+      .shared-project-show-cover-image.shared-project-show-cover-image-dark class="project-image-#{project.cover_photo}"
+      .row.row-table.row-full-height.row-no-margin
+        .col-md-12.col-middle
+          h1.shared-project-title.center.text-contrast = project.title
+    - else
+      .shared-project-show-cover-image class="project-color-#{project.color}"
+      .row.row-table.row-full-height.row-no-margin
+        .col-md-12.col-middle
+          h1.shared-project-title.center.text-contrast = project.title
+
