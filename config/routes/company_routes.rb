@@ -11,6 +11,7 @@ TeamLeada::Application.routes.draw do
 
       # General user actions
       match "data-challenges-interest", to: "companies#data_challenges_interest", via: :post
+      match "interest", to: "companies#company_interest", via: :post
     end
 
     scope module: :companies do
