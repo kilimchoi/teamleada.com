@@ -34,6 +34,7 @@ gem 'rails4-autocomplete', '1.1.0'
 gem 'jquery-countdown-rails', '~> 2.0.0'
 gem 'unicorn', '4.8.3'
 gem 'travis', github: 'travis-ci/travis.rb'
+gem 'rails_autolink', '~> 1.1.6'
 
 # Uploads
 gem 'carrierwave', '~> 0.10.0'
