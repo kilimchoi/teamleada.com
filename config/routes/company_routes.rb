@@ -15,7 +15,7 @@ TeamLeada::Application.routes.draw do
     match '/', to: redirect('/r/dashboard'), via: :get
     match 'dashboard', to: 'pages#dashboard', via: :get
 
-    resources :users, path: "browse", only: [:index, :show] do
+    resources :users, path: "browse", as: :browse_users, only: [:index, :show] do
       member do
         match 'favorite', to: 'users#favorite', as: :favorite, via: :post
         match 'unfavorite', to: 'users#unfavorite', as: :unfavorite, via: :post
