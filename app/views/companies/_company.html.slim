@@ -22,11 +22,13 @@
             .col-md-12
               .row
                 .col-md-2
-                  | About
+                  strong
+                    | About
                 .col-md-10
                   = simple_format(company.about)
               .row
                 .col-md-2
-                  | Website
+                  strong
+                    | Website
                 .col-md-10
                   = auto_link(company.website)
