@@ -65,12 +65,11 @@ $company-sidebar-width: 300px;
   display: table-cell;
   vertical-align: top;
   min-width: $company-sidebar-width;
-  padding-right: 20px;
+  width: $company-sidebar-width;
 
   @include breakpoint($mobile) {
     display: block;
     width: 100%;
-    padding-right: 0;
   }
 
   ul {
@@ -83,10 +82,12 @@ $company-sidebar-width: 300px;
 .company-main-body {
   display: table-cell;
   width: 100%;
+  padding-left: 20px;
 
   @include breakpoint($mobile) {
     display: block;
     width: 100%;
+    padding-left: 0;
   }
 }
 

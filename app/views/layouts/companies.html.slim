@@ -1,5 +1,5 @@
 - company = @company
-- is_editing = false
+- is_editing = @is_editing
 
 .full-width-container
   = render partial: "companies/company/company_cover_photo", locals: { company: company, is_editing: is_editing }
@@ -13,6 +13,7 @@
     .row
       .col-md-12.company-main
         = render partial: "companies/company/company_show_sidebar", locals: { company: company }
+        = yield
 
 
 = parent_layout "application"
