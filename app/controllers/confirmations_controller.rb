@@ -58,26 +58,23 @@ class ConfirmationsController < Devise::ConfirmationsController
   end
 
   def confirm
-    @original_token = params[resource_name].try(:[], :confirmation_token)
-    self.resource = resource_class.find_by_confirmation_token! @original_token
-    resource.assign_attributes(permitted_params)
+    @original_token = params[:confirmation_token]
+    digested_token = Devise.token_generator.digest(self, :confirmation_token, @original_token)
+    self.resource = resource_class.find_by_confirmation_token(digested_token)
 
-    if resource.valid? && resource.password_match?
+    if !self.resource.nil? && !@original_token.nil? && resource.valid?
       self.resource.confirm!
-      if resource.role.nil?
-        resource.role = "student"
-        resource.save
-      end
       if resource.invited?
         invite = resource.invite
         invite.accepted_at = Time.now
         invite.save
       end
-      flash[:info] = "Your account has been confirmed. Check out some of our data projects!"
+      flash[:info] = "Your account has been confirmed. Fill out your profile and check out our data challenges!"
       sign_in resource_name, resource
-      respond_with resource, location: after_confirmation_path_for(resource)
+      redirect_to edit_user_profile_path
     else
-      render :action => 'show'
+      flash[:danger] = "This confirmation token has expired, please try again or contact us if you are having trouble creating an account."
+      redirect_to root_path
     end
   end
 

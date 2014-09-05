@@ -2,28 +2,32 @@
 #
 # Table name: projects
 #
-#  title             :string(255)
-#  description       :text
-#  created_at        :datetime
-#  updated_at        :datetime
-#  url               :string(255)
-#  enabled           :boolean
-#  number            :integer
-#  has_leaderboard   :boolean          default(FALSE)
-#  short_description :text
-#  has_submit        :boolean          default(FALSE)
-#  cost              :integer
-#  paid              :boolean          default(FALSE)
-#  uid               :integer          not null, primary key
-#  difficulty        :string(255)
-#  company_overview  :text
-#  category          :string(255)
-#  is_new            :boolean          default(FALSE)
-#  deadline          :integer
+#  title                 :string(255)
+#  description           :text
+#  created_at            :datetime
+#  updated_at            :datetime
+#  url                   :string(255)
+#  enabled               :boolean
+#  number                :integer
+#  has_leaderboard       :boolean          default(FALSE)
+#  short_description     :text
+#  has_submit            :boolean          default(FALSE)
+#  cost                  :integer
+#  paid                  :boolean          default(FALSE)
+#  uid                   :integer          not null, primary key
+#  difficulty            :string(255)
+#  company_overview      :text
+#  category              :string(255)
+#  is_new                :boolean          default(FALSE)
+#  deadline              :integer
+#  featured              :boolean          default(FALSE)
+#  grants_project_access :boolean          default(FALSE)
+#  cover_photo           :string(255)
 #
 
 class Project < ActiveRecord::Base
   require 'csv'
+  require 'securerandom'
   include Rails.application.routes.url_helpers
   self.primary_key = "uid"
 
@@ -31,6 +35,8 @@ class Project < ActiveRecord::Base
 
   has_many :lessons, dependent: :destroy
   has_many :submissions, dependent: :destroy
+
+  has_many :quizes
 
   has_many :transactions, as: :item
   has_many :interested_users, class_name: ProjectInterest
@@ -44,8 +50,12 @@ class Project < ActiveRecord::Base
   validates :title, uniqueness: true
   validates :uid, uniqueness: true
 
-  scope :costs_money, -> { where(paid: true) }
   scope :enabled, -> { where(enabled: true) }
+  scope :costs_money, -> { enabled.where(paid: true) }
+  scope :featured, -> { unscoped.enabled.where(featured: true).newest_first }
+  scope :not_featured, -> { enabled.where(featured: false) }
+
+  scope :newest_first, -> { order("uid DESC") }
 
   default_scope -> { order(:uid) }
 
@@ -62,12 +72,72 @@ class Project < ActiveRecord::Base
   CHALLENGE = "challenge"
   COMING_SOON = "coming_soon"
 
+  FEATURED = "featured"
+
+  COLORS = ["red", "blue", "green", "purple"]
+  FEATURED_COLORS = ["purple", "blue"]
+
+  PROJECT_COLORS = {
+    FEATURED => "purple",
+    CHALLENGE => "blue",
+    LESSON => "green",
+    COMING_SOON => "red",
+  }
+
+  PROJECT_SECTION = {
+    FEATURED => "featured",
+    CHALLENGE => "data-challenges",
+    LESSON => "data-lessons",
+    COMING_SOON => "coming-soon",
+  }
+
+  class << self
+    def random_set_of_colors(amount)
+      COLORS.sample(amount)
+    end
+
+    def random_color
+      COLORS.sample
+    end
+
+    def featured_color(index)
+      FEATURED_COLORS[index]
+    end
+
+    def project_completion_access_code
+      code = Code.where(user_type: "project-completion-access-code").first_or_initialize
+      if code.new_record?
+        code.value = SecureRandom.hex(4)
+        # TODO(mark): stop hard coding project-access
+        code.access_type = "project-access"
+        code.save
+      end
+      code
+    end
+  end
+
   # Before Filters
   def set_url
     self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize
   end
 
   # Attributes
+  def has_cover_photo?
+    !cover_photo.nil?
+  end
+
+  def color
+    PROJECT_COLORS[ self.featured ? FEATURED : self.category ]
+  end
+
+  def section
+    PROJECT_SECTION[ self.featured ? FEATURED : self.category ]
+  end
+
+  def has_deadline?
+    !self.deadline.nil?
+  end
+
   def deadline_in_days
     if !self.deadline.nil?
       self.deadline.div(60 * 60 * 24)

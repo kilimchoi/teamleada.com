@@ -13,4 +13,7 @@
 class MetricEntry < ActiveRecord::Base
   belongs_to :metric
   belongs_to :day
+
+  default_scope -> { order(:metric_id) }
+
 end

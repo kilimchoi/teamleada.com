@@ -1,0 +1,13 @@
+$("#project-inner-<%= @project.uid %>").html("<%= raw escape_javascript(render(partial: "projects/project_info.html.slim", locals: { project: @project })) %>")
+
+// Hide all open cards
+$(".project-card-inner").hide();
+
+// Show the card you clicked on
+$("#project-inner-<%= @project.uid %>").fadeIn(300);
+
+// Scroll to section
+$("html, body").animate({
+  scrollTop: $("#project-link-<%= @project.uid %>").offset().top - 60
+}, 500);
+

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
-  skip_authorize_resource only: [:auth_code, :change_role]
+  skip_authorize_resource only: [:auth_code, :change_role, :submit_project_submission]
 
   respond_to :html, :json
 
@@ -8,7 +8,21 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = current_user
     @profile_needs_info = signed_in? && current_user.has_missing_profile_info?
+  end
+
+  def profile
+    @user = current_user
+    render "show"
+  end
+
+  def edit_profile
+    @user = current_user
+
+    @edit_about_form = EditAboutForm.new(@user)
+    @edit_job_experience_form = EditJobExperienceForm.new(@user)
+    @edit_enrollment_form = EditEnrollmentForm.new(@user)
   end
 
   def update
@@ -75,19 +89,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def projects
-    @completed_projects = @user.completed_projects
-    @in_progress_projects = @user.in_progress_projects
-  end
-
-  def project
-    @project = Project.find(params[:project_id])
-  end
-
-  def project_feedback
-    @project = Project.find(params[:project_id])
-  end
-
   def change_role
     redirect_to root_path and return unless Rails.env.development? && signed_in?
     current_user.role = params[:role]
@@ -98,6 +99,29 @@ class UsersController < ApplicationController
     current_user.save
     flash[:info] = "Successfully changed your role to: #{current_user.role}."
     redirect_to root_path
+  end
+
+  def submit_project_submission
+    if params[:is_project_submission_form]
+      if params[:user]["project_submissions_attributes"].nil?
+        respond_to do |format|
+          format.json { render json: {data: {error: "You must attach your file in order to upload it."}}, status: :unprocessable_entity }
+        end
+        return
+      end
+    end
+
+    @project = Project.find(params[:project_id])
+    if current_user.update_attributes(user_params)
+      project_submission = current_user.project_submissions.last
+      project_submission.project = @project
+      project_submission.save
+      flash[:info] = "Your file has been submitted!"
+    else
+      flash[:error] = "There was a problem uploading your submission. Please try again!"
+    end
+
+    redirect_to :back
   end
 
   private
@@ -115,7 +139,11 @@ class UsersController < ApplicationController
                                    profile_photos_attributes: [
                                      :id,
                                      :photo,
-                                   ]
+                                   ],
+                                   project_submissions_attributes: [
+                                    :id,
+                                    :upload_file,
+                                   ],
                                  })
   end
 

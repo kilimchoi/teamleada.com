@@ -1,0 +1,15 @@
+- current_user.project_submissions.build
+
+= simple_form_for current_user,
+                  url: submit_project_submission_project_path(current_user, {project_id: @project}),
+                  remote: true,
+                  multipart: true,
+                  method: :post do |f|
+
+  = f.fields_for :project_submissions do |project_submission|
+    - if project_submission.object.new_record?
+      = project_submission.file_field :upload_file, required: true, class: "fragment submit-file-button"
+  = hidden_field_tag "is_project_submission_form", true
+  = hidden_field_tag :authenticity_token, form_authenticity_token
+  = f.submit "Submit", class: "flat-button step-button fragment"
+

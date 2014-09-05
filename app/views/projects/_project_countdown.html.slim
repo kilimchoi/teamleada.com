@@ -1,0 +1,30 @@
+// Required Variables:
+// project, project_status
+
+- unless project.deadline.nil?
+  - if project_status.start_date.nil?
+    .row.card
+      .col-md-12
+        p.large-font.center
+          ' Note, once you start this project, the countdown will start and you will have
+          = @project.deadline_in_days
+          '  days to finish.
+        = link_to "Start this project!", project_lesson_path(@project, @project.lessons.first), class: "flat-button step-button full-width"
+  - elsif !project_status.completed?
+    - if project_status.has_time_remaining?
+      .row.card
+        .col-md-12
+          h2.title Time Remaining
+          #project-countdown
+    - else
+      .row.card
+        .col-md-12
+          .alert.alert-danger
+            h2.center.no-margin.project-timeout Your time for this project has expired.
+
+javascript:
+  $(document).ready(function() {
+    var endDate = new Date(#{@project_status.end_date_in_milliseconds})
+    $('#project-countdown').countdown({ until: endDate });
+  });
+

@@ -1,0 +1,22 @@
+---
+
+companies:
+  - title: "Doximity"
+    image_class: "company-doximity"
+    website: "https://www.doximity.com/"
+  - title: "eBay"
+    image_class: "company-ebay"
+    website: "http://www.ebay.com/"
+  - title: "MightyHive"
+    image_class: "company-mighty-hive"
+    website: "http://mightyhive.com/"
+  - title: "Mixbook"
+    image_class: "company-mixbook"
+    website: "http://www.mixbook.com/"
+  - title: "Republican National Committee"
+    image_class: "company-rnc"
+    website: "http://www.gop.com/"
+  - title: "Statricks"
+    image_class: "company-statricks"
+    website: "http://www.statricks.com/"
+

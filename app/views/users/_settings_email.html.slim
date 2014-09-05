@@ -1,0 +1,32 @@
+= provide(:page_title, "Email Settings")
+
+h4 Email Settings
+
+ul.privacy-settings
+  li.settings-row
+    .clearfix
+      span.privacy-topic What would you like to receive email notifications for?
+      .recruiter-questions
+        ul.privacy-settings
+          li.settings-row.clearfix
+            = link_to("#", id: "edit-email-from-recruiters", class: "row-link clearfix") do
+              span.priv-col Would you like to receive email updates from recruiters?
+              span = best_in_place current_user, :wants_email_from_recruiters, type: :checkbox, data: { field: 'recruiters' }, activator: "#edit-email-from-recruiters"
+              span.edit-row Edit
+          li.settings-row.clearfix
+            = link_to("#", id: "edit-email-new-projects", class: "row-link clearfix") do
+              span.priv-col Would you like to receive email updates about new projects?
+              span = best_in_place current_user, :wants_email_about_new_projects, type: :checkbox, data: { field: 'new projects' }, activator: "#edit-email-new-projects"
+              span.edit-row Edit
+
+javascript:
+  $(document).ready(function() {
+    $('.best_in_place').bind("ajax:success", function() {
+      toastr.success('Successfully changed your email update settings for ' + $(this).data('field') + ' to ' + $(this).context.innerText + '.');
+    });
+
+    $('.best_in_place').bind("ajax:error", function() {
+      toastr.error('There was an error updating your ' + $(this).data('field') + '.');
+    });
+  });
+

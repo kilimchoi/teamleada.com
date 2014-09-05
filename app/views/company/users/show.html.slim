@@ -1,9 +1,6 @@
 = provide(:page_title, "User Profile")
 
-.container-fluid.full-container
+.container-fluid.full-container.card-container
   .row
-    .col-md-5
+    .col-md-12
       = render partial: "company/users/profile", locals: { user: @user }
-
-    .col-md-5.col-md-offset-2
-      = render partial: "company/projects/project", locals: { project: @project, user: @user }

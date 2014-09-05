@@ -22,6 +22,17 @@ module TeamLeada
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.autoload_paths += %W(#{config.root}/lib)
+
+    # Include extended and custom classes
+    config.autoload_paths += %W(#{config.root}/app/custom_classes)
+
+    # We have to manually iterate over all the extended classes to include them in the project.
+    Dir[Rails.root.join("app", "extended_classes", "*.rb")].each { |extended_class| require extended_class }
+
+    # Load all sub-folders in the models directly
+    config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]
+
+    # Include fonts
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
   end
 end

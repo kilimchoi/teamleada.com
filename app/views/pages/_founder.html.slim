@@ -1,0 +1,11 @@
+= link_to founder.website, target: "_blank" do
+  .img.left_to_right_img
+    .image
+      = image_tag founder.image, class: "headshots-with-border"
+  .info
+    h3.founder-name = founder.name
+    p.founder-quote
+      = founder.role
+      br
+      = founder.quote
+

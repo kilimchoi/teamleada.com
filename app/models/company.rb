@@ -15,6 +15,9 @@
 #
 
 class Company < ActiveRecord::Base
+  has_many :browsable_users
+  has_many :viewable_users, through: :browsable_users, source: :user
+
   has_many :company_projects
   has_many :projects, through: :company_projects
   has_many :employees, class_name: User
@@ -41,5 +44,9 @@ class Company < ActiveRecord::Base
     User.ordered_find_by_ids(user_ids)
   end
 
+  def self.find_by_company_params(company_params)
+    Company.find_by(name: company_params[:company_name])
+  end
 
 end
+

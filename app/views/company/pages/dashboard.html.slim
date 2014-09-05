@@ -14,15 +14,16 @@
               .list-group
                 - @company.favorited_users.each do |user|
                   = link_to company_user_path(user), class: "list-group-item" do
-                    h4.list-group-item-heading = user.name
+                    h4.list-group-item-heading Anonymous User
                     p.list-group-item-text
-                      ' Favorited
-                      = time_ago_in_words(current_user.favorited_at(user))
-                      |  ago
+                      - if current_user.favorited_at(user)
+                        ' Favorited
+                        = time_ago_in_words(current_user.favorited_at(user))
+                        |  ago
         .col-md-3
           .row
             .col-md-12
               h3 Feed
               - @stories.each do |story|
-                = render partial: "stories/story_feed_item", locals: { story: story }
+                = render partial: "stories/story_feed_item", locals: { story: story, is_company: true }
 

@@ -1,0 +1,34 @@
+---
+
+carousel:
+  - title: "Leada"
+    subtitle: "Learn Insight In Data"
+    image_class: "media-person-studying"
+  - title: "Practice Data Science"
+    subtitle: "Get Recruited"
+    image_class: "media-r-corner"
+  - title: "Fill The Job Shortfall"
+    subtitle: "Bridge The Skill Gap"
+    image_class: "media-sf-background"
+
+columns:
+  - title: "Analyze"
+    subtitle: "Complete data science challenges and projects."
+    image_class: "icon-analyze"
+  - title: "Build"
+    subtitle: "Create a data science portfolio."
+    image_class: "icon-build"
+  - title: "Share"
+    subtitle: "Participate in a community of data enthusiasts."
+    image_class: "icon-share"
+  - title: "Get Hired"
+    subtitle: "Anonymously receive inquires from employers."
+    image_class: "icon-hired"
+
+user_testimonials:
+  - name: "Olivia Thet, UC Berkeley 14', Math"
+    quote: "I was able to impress employers during a technical interview, Leada provided me the resources to exercise the knowledge I already had from a strong math background as well as build skills in new areas."
+    image_class: "olivia.jpg"
+  - name: "Matt Sedaghatfar, Data Analyst, AdMarketplace"
+    quote: "Leada has been instrumental for me to obtain the practical skills to obtain a Data Analyst position. Many websites today provide tutorials and ways to learn syntax, Leada goes one step further with realistic projects."
+    image_class: "matt.jpg"

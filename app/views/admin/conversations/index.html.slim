@@ -1,0 +1,18 @@
+= provide(:page_title, "Messages")
+
+.container-fluid.full-container.card-container
+  .row.card.card-full
+    .col-md-12
+      .messages-title
+        .message-controls
+          = link_to "New Admin Message", new_admin_conversation_path, class: "flat-button small-btn"
+        h1.title Messages
+
+        = render partial: "announcements/messaging"
+
+      ul.conversations-list
+        - @conversations.each do |conversation|
+          = render partial: "conversations/conversation", locals: { conversation: conversation }
+
+      = will_paginate(@conversations)
+

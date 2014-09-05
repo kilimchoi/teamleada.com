@@ -11,7 +11,8 @@
   .row.card
     .col-md-12
       h1.center
-        | The question period has now ended. Check back in a week for his responses!
+        ' Go read Peter's responses
+        = link_to "here!", "http://blog.teamleada.com/2014/08/ask-peter-norvig/"
       / = simple_form_for @question do |f|
         = f.input :title, label: "Question", placeholder: "ex: What do you see happening in the Data Science field in the next 3 years?", input_html: { rows: 8 }
         .row

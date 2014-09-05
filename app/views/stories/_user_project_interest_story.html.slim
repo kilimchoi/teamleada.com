@@ -1,0 +1,23 @@
+// TODO(mark): This should be combined with the user completed project story
+// Required Variables:
+// story
+
+.story-container
+  .story.card
+    .card-section.clearfix
+      .card-info
+        .card-photo.clearfix
+          = link_to user_path(story.user) do
+            = image_tag story.user.profile_photo, class: "story-profile-photo"
+
+        .card-interactions
+          .card-links
+            = link_to story.user.name, user_path(story.user)
+            '  showed interest in
+            = link_to story.project.title, project_path(story.project)
+
+          .card-timestamp
+            = link_to story.created_at.pretty_time, story.permalink_path
+
+      .story-card-body.story-project-cover-photo-container
+        = render partial: "stories/project_cover_photo", locals: { project: story.project }

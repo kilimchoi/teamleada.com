@@ -64,4 +64,79 @@ task :backfill_metric, [:metric] => :environment do |task, args|
   end
 end
 
-task default: [:blog]
+# One off jobs
+task :fill_end_date_present => :environment do
+  JobExperience.all.each do |job_experience|
+    job_experience.end_date_present = job_experience.end_date.nil?
+    job_experience.save
+  end
+end
+
+task :migrate_to_user_profile => :environment do
+  User.all.each do |user|
+    profile = user.profile
+    profile.looking_for_opportunities = user.read_attribute(:looking_for_opportunities)
+    profile.location = user.read_attribute(:location)
+    profile.bio = user.read_attribute(:bio)
+    profile.phone = user.read_attribute(:phone)
+    profile.headline = user.read_attribute(:headline)
+    profile.industry = user.read_attribute(:industry)
+    profile.date_of_birth = user.read_attribute(:date_of_birth)
+    profile.interests = user.read_attribute(:interests)
+    profile.job_bookmarks_count = user.read_attribute(:job_bookmarks_count)
+    profile.country_code = user.read_attribute(:country_code)
+    profile.save
+  end
+end
+
+task :migrate_to_user_preferences => :environment do
+  User.all.each do |user|
+    preferences = user.preferences
+    preferences.who_can_see_profile = user.read_attribute(:who_can_see_profile)
+    preferences.who_can_send_friend_requests = user.read_attribute(:who_can_send_friend_requests)
+    preferences.who_can_contact = user.read_attribute(:who_can_contact)
+    preferences.who_can_lookup_using_email = user.read_attribute(:who_can_lookup_using_email)
+    preferences.who_can_lookup_by_name = user.read_attribute(:who_can_lookup_by_name)
+    preferences.who_can_see_resume = user.read_attribute(:who_can_see_resume)
+    preferences.wants_email_about_new_projects = user.read_attribute(:wants_email_about_new_projects)
+    preferences.wants_email_from_recruiters = user.read_attribute(:wants_email_from_recruiters)
+    preferences.save
+  end
+end
+
+task :create_user_signed_up_stories => :environment do
+  User.all.each do |user|
+    unless UserSignedUpStory.exists?(subject: user, action_object: user)
+      signed_up_story = user.create_signed_up_story
+      signed_up_story.created_at = user.created_at
+      signed_up_story.updated_at = user.created_at
+      signed_up_story.save
+    end
+  end
+end
+
+task :create_project_stories => :environment do
+  ProjectStatus.all.each do |project_status|
+    started_story = project_status.create_user_started_project_story
+    started_story.created_at = project_status.created_at
+    started_story.updated_at = project_status.created_at
+    started_story.save
+
+    if project_status.completed
+      ended_story = project_status.create_user_completed_project_story
+      ended_story.created_at = project_status.updated_at
+      ended_story.updated_at = project_status.updated_at
+      ended_story.save
+    end
+  end
+end
+
+task :create_project_interest_stories => :environment do
+  ProjectInterest.all.each do |project_interest|
+    interest_story = project_interest.create_user_project_interest_story
+    interest_story.created_at = project_interest.created_at
+    interest_story.updated_at = project_interest.created_at
+    interest_story.save
+  end
+end
+

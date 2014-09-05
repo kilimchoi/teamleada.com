@@ -3,7 +3,9 @@ TeamLeada::Application.routes.draw do
   match 'projects/how-this-works', to: 'pages#how_this_works', as: :project_faq, via: :get
   resources :projects, only: [:show, :index] do
     member do
+      match 'info', to: "projects#project_info", as: "info", via: :get
       match 'submit', to: 'projects#check_submission', as: 'submission', via: :post
+      match "project-submission", to: "users#submit_project_submission", as: "submit_project_submission", via: :post
       match 'interest', to: 'projects#show_interest', as: 'interest', via: :post
       match 'purchase', to: 'charges#create', as: 'purchase', via: [:post]
       match 'complete', to: 'projects#complete', as: 'complete', via: :post

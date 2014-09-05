@@ -1,0 +1,25 @@
+/ Required Variables:
+/ form, user, is_editing, base_section, collection, collection_name, section_title, add_name
+
+.row.card
+  .col-md-12
+    = render partial: "users/profile/add_section", locals: { \
+      form: form,
+      is_editing: is_editing,
+      item: collection_name.camelcase.constantize.new,
+      section: base_section,
+      collection_name: collection_name,
+      title: section_title,
+      add_name: add_name,
+    }
+
+    - collection.each do |item|
+      - section = base_section + "-" + item.id.to_s
+      = render partial: "users/profile/item_section", locals: { \
+        collection_name: collection_name,
+        item: item,
+        is_editing: is_editing,
+        form: form,
+        section: section,
+      }
+

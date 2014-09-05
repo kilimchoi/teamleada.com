@@ -1,13 +1,18 @@
-div class="quiz_div fragment" quiz_id="#{quiz_id}"
-  form class="quiz_box center" quiz_id="#{quiz_id}"
-    span class="quiz_title" quiz_id="#{quiz_id}"
-    input  placeholder="your answer here" type="text" class="quiz_input" quiz_id="#{quiz_id}"
-    input value="Check Answer" type="button" class="quiz_submit_button btn-leada" quiz_id="#{quiz_id}" id= "#{quiz_id}"
-    //= image_tag "loading.gif", class: "loading-gif", id: "waiting", quiz_id: "#{quiz_id}"
+- if "#{quiz_id}" != ""
+  div class="quiz_div fragment" quiz_id="#{quiz_id}"
+    form class="quiz_box center" quiz_id="#{quiz_id}"
+      span class="quiz_title" quiz_id="#{quiz_id}"
+      input  placeholder="your answer here" type="text" class="quiz_input" quiz_id="#{quiz_id}"
+      input value="Check Answer" type="button" class="quiz_submit_button btn-leada" quiz_id="#{quiz_id}" id= "#{quiz_id}"
+      //= image_tag "loading.gif", class: "loading-gif", id: "waiting", quiz_id: "#{quiz_id}"
+- else
+  p.fragment.content-error
+    | QUIZ: missing quiz_id 
 
 javascript:
   $(document).ready(function() {
   //answer_box
+
   var quiz_id_selector = "[quiz_id=" +"#{quiz_id}" + "]"
    $(quiz_id_selector).keydown(function(event) { //allows 'ENTER' to submit.
         if (event.keyCode == 13) {
@@ -59,3 +64,4 @@ javascript:
       }, 1000);
     });
   });
+

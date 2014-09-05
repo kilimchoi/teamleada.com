@@ -2,15 +2,20 @@
 #
 # Table name: quizzes
 #
-#  id         :integer          not null, primary key
-#  quiz_id    :string(255)
+#  id         :integer          not null
+#  quiz_id    :string(255)      primary key
 #  answer     :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  project_id :integer
 #
 
 class Quiz < ActiveRecord::Base
-  has_many :quiz_submission
+  belongs_to :project
+  validates :project, :presence => true
+
+  self.primary_key = "quiz_id"
+  has_many :quiz_submissions
 
   validates :quiz_id, uniqueness: true, presence: true
 

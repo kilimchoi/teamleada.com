@@ -2,7 +2,7 @@ main_page_load = [
   ['text', 'You are tasked with predicting whether a passenger survived the Titanic crash. You are given two datasets (Train & Test) each of which include passengers on the Titanic with their Age, Passenger Class, Sex, etc.'],
   ['text', 'You will compelte the following:'],
   ['text', '1. Clean the raw Titanic Data'],
-  ['text', '2. Build some Vizualization for the raw data'],
+  ['text', '2. Build some visualization for the raw data'],
   ['text', '3. Create a model which will predict whether a passenger survived using only the Train data set'],
   ['text', '4. Submit the prediction to the leaderboard'],
   ['text', 'Opetionally you can bolster the basic model with stronger parameters and any other method you can come up with.'],
@@ -14,7 +14,7 @@ project = Project.create!(
   description: main_page_load,
   short_description: "In this data challenge you will complete the entire process of data analysis from cleaning to building a predictive model. This data challenge is for users with experience in R and a familiarty to machine learning concepts",
   number: 11,
-  enabled: true,
+  enabled: false,
   has_leaderboard: true,
   has_submit: true,
   category: Project::CHALLENGE,
@@ -23,6 +23,7 @@ project = Project.create!(
   company_overview: 'In this project, users are asked to construct a model to predict the survival of a passenger on the Titanic using giventraining and testing datasets.',
   is_new: false,
   deadline: 2.weeks,
+  cover_photo: "titanic",
 )
 ################################################################################
 
@@ -135,14 +136,14 @@ train_data_context_two = SubmissionContext.create!(
 ################################################################################
 
 train_visualize_content = [
-  ['text', 'Now that we have the data, let\'s build some vizualizations.'],
+  ['text', 'Now that we have the data, let\'s build some visualizations.'],
   ['text', 'Our intuition might be that the women had a higher chance of survival, because the boat might have adhered to the "Women and Children First" standard.'],
-  ['text', 'What vizualization would help us check this assumption? Write the code and paste it below:'],
+  ['text', 'What visualization would help us check this assumption? Write the code and paste it below:'],
   ['user_code', '#@TODO probabl a UID here'],
 ]
 
 train_visualize_content_two = [
-  ['text', 'What vizualization(s) did you build? Why? What do you see?'],
+  ['text', 'What visualization(s) did you build? Why? What do you see?'],
   ['user_response', '#@TODO probabl a UID here'],
   ['next_steps', nil],
 ]
@@ -282,12 +283,12 @@ test_visualize_content = [
   ['text', 'Visualizing the "Test" dataset is important because you want to make sure that the two datasets are consistent with each other.'],
   ['text', 'Otherwise when building a model on the "Train" dataset, you\'re creating a model on the old data which has no resemblance with new data.'],
   ['text', 'Such scenario occurs in production and can lead to poor real-time performance.'],
-  ['text', 'Now create some vizualizations to see if the Test data looks similar to the Train Data.'],
+  ['text', 'Now create some visualizations to see if the Test data looks similar to the Train Data.'],
   ['user_code', '#@TODO probabl a UID here'],
 ]
 
 test_visualize_content_two = [
-  ['text', 'What vizualization(s) did you build? Why did you build it?'],
+  ['text', 'What visualization(s) did you build? Why did you build it?'],
   ['user_response', '#@TODO probabl a UID here'],
   ['next_steps', nil],
 ]

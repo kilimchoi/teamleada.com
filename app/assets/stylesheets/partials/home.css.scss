@@ -1,208 +1,202 @@
-#users {
-  padding: 80px;
-  background-color: white;
+$carousel-height: 500px;
+
+.carousel-home {
+  height: $carousel-height;
+}
+
+.carousel-home-inner {
+  height: $carousel-height;
+}
+
+.media-person-studying {
+  background-image: image-url("person_studying_medium.jpg");
+}
+
+.media-r-corner {
+  background-image: image-url("r_corner_small.jpg");
+}
+
+.media-r-desk {
+  background-image: image-url("r_desk_medium.jpg");
+}
+
+.media-sf-background {
+  background-image: image-url("sf_city_background.jpg");
+}
+
+.media-cover-photo {
+  background-size: cover;
+  background-position: 0 0;
+}
+
+.media-cover-photo,
+.media-cover-dark:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.media-cover-dark:after {
+  background: #000000;
+  opacity: 0.4;
+  content: " ";
+}
+
+.item {
+  height: $carousel-height;
+}
+
+.media-subtitle {
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 35px;
+}
+
+.media-title {
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 50px;
+}
+
+.home-column-title {
+
+}
+
+.home-column-subtitle {
+  min-height: 40px;
 
   @include breakpoint($mobile) {
-    padding: 20px;
+    font-size: 20px;
   }
 }
 
-.page-divider {
-  border:3px solid gray;
-  width: 30%;
-  margin: auto auto;
-  position: relative;
-  margin-bottom: 2%;
-}
+.home-outline {
+  margin: 50px;
 
-.front-page-about {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  padding: 0 5%;
-  text-align: center;
-  z-index: 1;
-
-  .grabber {
-    color: white;
-    font-weight: 400;
+  @include breakpoint($mobile) {
+    margin: 20px 0px;
   }
 }
 
-section#intro {
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
+.home-company {
+  margin-top: 10px;
+}
+
+.home-company-image {
+  height: 150px;
+}
+
+.filler {
+  background-image: url("http://placehold.it/400x150")
+}
+
+.home-button {
+  @include breakpoint($mobile) {
+    padding: 15px 40px;
+  }
+}
+
+.home-title-row {
+  // Not sure why this is happening. It has a weird transition when it's in the
+  // iPad-like screen size.
+  @include breakpoint($ipad-screen) {
+    width: 100%;
+  }
+}
+
+// Company logos
+.company-logo {
+  background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
-
-  height: 100%;
-  min-height: 600px;
-
-  .about-intro {
-    margin: 0 auto;
-    height: 48px;
-    text-align: center;
-
-    .title-container {
-      border-radius: 10px;
-      border-color: $founders-rock-blue;
-      border-style:solid;
-      border-width: 3px;
-      background-color: $medium-gray;
-      opacity: 0.95;
-      width: 250px;
-      margin: auto;
-      padding: 26px;
-
-      .try-button {
-        display: inline-block;
-        border: 0;
-        text-shadow: none;
-        -moz-background-clip: padding;
-        -webkit-background-clip: padding-box;
-        background-clip: padding-box;
-        color: $founders-rock-blue;
-        text-transform: capitalize;
-        top: 0;
-        font-size: 26px;
-      }
-
-      .try-button:hover {
-        color: white;
-      }
-
-      h1 {
-        font-size: 72px;
-      }
-
-      h3 {
-        font-size: 36px;
-      }
-
-      h1, h2, h3, h4, h5 {
-        font-weight: 700;
-      }
-    }
-  }
 }
 
-#about {
-  padding: 100px 0px;
-  background-color: #f8f8f8;
+.company-doximity {
+  background-image: image-url("companies/doximity.gif");
+}
+
+.company-ebay {
+  background-image: image-url("companies/ebay.png");
+}
+
+.company-mighty-hive {
+  background-image: image-url("companies/mightyhive.png");
+}
+
+.company-mixbook {
+  background-image: image-url("companies/mixbook.jpg");
+}
+
+.company-rnc {
+  background-size: contain;
+  background-image: image-url("companies/republican_national_committee.png");
+}
+
+.company-statricks {
+  background-image: image-url("companies/statricks.png");
+}
+
+// Column icons
+.home-column-card {
+  min-height: 480px;
+}
+
+.home-column-image {
+  height: 250px;
+}
+
+.column-icon {
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon-analyze {
+  background-image: image-url("icons/analyze.png");
+}
+
+.icon-build {
+  background-image: image-url("icons/build.png");
+}
+
+.icon-share {
+  background-image: image-url("icons/leadaboard.png");
+}
+
+.icon-hired {
+  background-image: image-url("icons/resume.png");
+}
+
+// User Testimonials
+.user-testimonial {
+  margin: 40px;
+}
+
+.user-testimonial-circle {
+  border-radius: 500px;
+  height: 150px;
+}
+
+.user-testimonial-image {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.user-testimonial-quote {
+  font-size: 20px;
+  text-align: justify;
+  font-style: italic;
 
   @include breakpoint($mobile) {
-    padding: 20px;
+    font-size: 14px;
   }
 }
 
-#display {
-  padding: 100px 0px;
-  background-color: white;
-
-  @include breakpoint($mobile) {
-    padding: 20px;
-  }
-}
-
-section {
-  .about-section {
-    padding: 100px 0;
-    margin: 0 auto;
-    content: "";
-    display: table;
-    max-width: 1000px;
-    width: 100%;
-
-    .description {
-      line-height: 1.8em;
-      position: relative;
-      height: 100%;
-      float: left;
-      width: 50%;
-    }
-
-    .image { /*For the background up top*/
-      float: right;
-      width: 33.33333333333333%;
-      margin-left: 16.666666666666664%;
-      padding-top: 50px;
-      display: inline;
-    }
-  }
-}
-
-section#content-one,
-section#content-three {
-  background-color: $content-bg;
-
-  .content-body-three,
-  .content-body-one {
-    margin-top: 50px;
-  }
-  .image {
-    margin-top: -50px;
-  }
-}
-
-section#content-zero,
-section#content-two,
-section#content-four {
-  background-color: $learning-bg;
-
-
-  .content-body-two,
-  .content-body-four {
-    margin-top: 50px;
-  }
-
-  .about-section {
-    .description {
-      float: right;
-      margin-left: 16.666666666666666664%;
-    }
-
-    .image { /*Second Icon down*/
-      margin-top: -50px;
-      float: left;
-      margin-left: 0;
-    }
-  }
-}
-
-section#email {
-  background-color: $email-bg;
-
-  .schedule-container {
-    padding: 100px 0;
-  }
-}
-
-section#try-project {
-  background-color: $try-project-bg;
-
-  .try-project-container {
-    padding: 100px 0;
-  }
-}
-
-.hal-quote {
-  color: gray;
-  margin-top: 15px;
-  font-size: 25px;
-
-  @include breakpoint($mobile) {
-    font-size: 15px;
-  }
-}
-
-.hal-sig{
-  margin-top: 5px;
-  font-size: 25px;
-  float: right;
-
-  @include breakpoint($mobile) {
-    font-size: 15px;
-  }
+.user-testimonial-name {
+  margin-top: 20px;
+  text-align: right;
+  font-size: 18px;
 }
 

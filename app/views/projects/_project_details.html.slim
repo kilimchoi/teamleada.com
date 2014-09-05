@@ -1,0 +1,38 @@
+// Required Variables:
+// project
+
+.row
+  .col-md-2
+    | Difficulty:
+  .col-md-10
+    span.label.difficulty-tag class="label-#{project.difficulty_tag}"
+      = project.difficulty
+
+hr
+.row
+  .col-md-2
+    | Cost:
+  .col-md-10
+    span.label.label-info
+      | Free
+
+
+- unless project.category == Project::COMING_SOON || project.category == Project::LESSON
+  hr
+  .row
+    .col-md-2
+      | Details:
+    .col-md-10
+      .row
+        - if project.has_deadline?
+          .col-md-6
+            ' Time Allowed:
+            strong
+              = project.deadline_in_days
+              |  days
+        .col-md-6
+          ' Number of Submissions:
+          strong
+            = project.submission_contexts.count
+hr
+

@@ -1,9 +1,11 @@
 = provide(:page_title, "New Message")
 
-.container.full-container
-  .row
+.container.full-container.card-container
+  .row.card
     .col-md-12
       h1.title New Message
+
+      = render partial: "announcements/messaging"
 
       .new-conversation-container
         .message-container
@@ -21,4 +23,4 @@
                     = m.input :user_id, as: :hidden, input_html: { value: current_user.id }
                     = m.input :is_draft, as: :hidden, input_html: { value: false }
                 .content-form-actions.clearfix
-                  = f.submit "Send Message", class: "flat-button float-right"
+                  = f.submit "Send Message", class: "flat-button float-right no-margin"

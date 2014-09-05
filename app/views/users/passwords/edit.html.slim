@@ -1,17 +1,26 @@
 = provide(:page_title, "Change your password")
 
-.container.full-container
+.container.full-container.card-container
   .row
     .col-md-6.col-md-offset-3
-      h2
-        | Change your password
-      = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
-        = f.error_notification
-        = f.input :reset_password_token, :as => :hidden
-        = f.full_error :reset_password_token
-        .form-inputs
-          = f.input :password, :label => "New password", :required => true, :autofocus => true
-          = f.input :password_confirmation, :label => "Confirm your new password", :required => true
-        .form-actions
-          = f.button :submit, "Change my password", class: "flat-button"
-      = render "users/shared/links"
+      .row.card.card-padding-bottom
+        .col-md-12
+          h2.title
+            | Change your password
+          = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+            = f.error_notification
+            = f.input :reset_password_token, as: :hidden
+            = f.full_error :reset_password_token
+            .form-inputs
+              = f.input :password, required: true,
+                                   label: false,
+                                   autofocus: true,
+                                   placeholder: "New Password",
+                                   wrapper_html: { class: "input-wrapper" }
+              = f.input :password_confirmation, required: true,
+                                                label: false,
+                                                placeholder: "Confirm your new password",
+                                                wrapper_html: { class: "input-wrapper" }
+            .form-actions
+              = f.button :submit, "Change my password", class: "sign-up-page-button"
+          = render "users/shared/links"
