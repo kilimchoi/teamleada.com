@@ -107,6 +107,13 @@ ActiveRecord::Schema.define(version: 20140906013044) do
     t.datetime "updated_at"
   end
 
+  create_table "company_interests", force: true do |t|
+    t.integer  "company_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "company_projects", force: true do |t|
     t.integer  "project_id"
     t.integer  "company_id"
