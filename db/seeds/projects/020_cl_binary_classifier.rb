@@ -101,12 +101,12 @@ data_context_content_three = [
   ['text', "The resulting data:"],
   ['fail-link', "some link to zipped folder"],
   ['text', "When you unzip the file, you'll get the following files inside the leada_CL folder:"],
-  ['text-warning', "    ~leada_CL/train_CL"],
-  ['text', "  * Each of these files represent a single scraped ad, used for training. Comes with training labels."],
-  ['text-warning', "~leada_CL/train_CL_labels"],
-  ['text', "  * This is the keys to the labels"],
-  ['text-warning', "    ~leada_CL/test_CL"],
-  ['text', "  * This is a list of You'll use this to make a submission."],
+  ['code', "~/leada_CL/train_CL.csv"],
+  ['text-warning', "  * Each row represents a single scraped and labeled ad."],
+  ['code', "~/leada_CL/train_CL_labels.csv"],
+  ['text-warning', "  * This is the keys to the labels"],
+  ['code', "~/leada_CL/test_C.csv"],
+  ['text-warning', "  * This is a list of You'll use this to make a submission."],
   ['next_steps', ""],
 ]
 
