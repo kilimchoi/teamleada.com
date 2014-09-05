@@ -141,7 +141,8 @@ class User < ActiveRecord::Base
   has_many :company_subscribers, through: :subscriptions, source: :subscriber, source_type: "Company"
 
   # Company specific
-  has_many :companies
+  has_many :company_employees
+  has_many :employer_companies, through: :company_employees, source: :company
   has_many :user_interactions, class_name: UserInteraction,
                                foreign_key: :interactor_id
   has_many :received_interactions, class_name: UserInteraction,
@@ -675,7 +676,7 @@ class User < ActiveRecord::Base
   #
   def company
     # TODO(mark): We want to allow an employee to select their current company (as opposed to just choosing the last)
-    companies.last
+    employer_companies.last
   end
 
   def company=(company)
