@@ -15,6 +15,16 @@ class CompaniesController < ApplicationController
   def benefits
   end
 
+  def company_interest
+    @company_interest = CompanyInterest.where(company: @company, user: current_user).first_or_initialize
+    if @company_interest.new_record? && @company_interest.save
+      flash[:info] = "Thanks for expressing interest in #{@company.name}!"
+    else
+      flash[:danger] = "You have already expressed interest in #{@company.name}."
+    end
+    redirect_to company_path(@company)
+  end
+
   def follow
     @subscription = Subscription.where(subscriber: current_user, subscribable: @company).first_or_initialize
     if @subscription.new_record? && @subscription.save
