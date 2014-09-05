@@ -1,3 +1,15 @@
+.cover-photo-small {
+  height: 100px;
+}
+
+.cover-photo-medium {
+  height: 200px;
+}
+
+.cover-photo-large {
+  height: 400px;
+}
+
 .shared-project-cover-photo-container {
   position: relative;
 }
@@ -7,7 +19,6 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 200px;
 }
 
 .shared-project-show-cover-image {

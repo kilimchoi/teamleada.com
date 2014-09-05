@@ -4,5 +4,10 @@
 .company-data-challenge-container
   .row
     .col-md-12
-      = render partial: "shared/projects/project_cover_photo", locals: { project: data_challenge }
+      = render partial: "shared/projects/project_cover_photo", locals: { \
+        project: data_challenge,
+        size: "medium",
+        clickable: true,
+        path: project_path(data_challenge),
+      }
 
