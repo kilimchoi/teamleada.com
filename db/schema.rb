@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20140906013044) do
     t.string   "number_of_employees"
     t.text     "about"
     t.string   "website"
+    t.text     "looking_for"
   end
 
   create_table "company_data_challenge_interests", force: true do |t|
