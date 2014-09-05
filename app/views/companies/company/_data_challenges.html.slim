@@ -20,4 +20,6 @@
           p.center
             = company.name
             |  does not currently have any hosted data challenges with Leada.
-          = link_to "I'm Interested in a Data Challenge hosted by #{company.name}", data_challenges_interest_company_path(company), method: :post, class: "flat-button full-width"
+
+          - unless current_user.has_expressed_interest_in_data_challenge_from_company?(company)
+            = link_to "I'm Interested in a Data Challenge hosted by #{company.name}", data_challenges_interest_company_path(company), method: :post, class: "flat-button full-width"
