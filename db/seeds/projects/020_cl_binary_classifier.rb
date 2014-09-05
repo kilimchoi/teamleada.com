@@ -3,7 +3,7 @@ main_page_content = [
   ['text', "If you're not familiar with craigslist, check out their website:"],
   ['link', "http://www.craigslist.org/about/sites"],
   ['text', "When you post an ad on Craigslist, you have the option to list a single item or multiple items"],
-  ['text', "Your job is to create a model that predicts (classifies) whether an ad contains a single item or multiple items"],
+  ['text', "Your job is to create a model that predicts (classifies) whether an ad contains a single item or multiple items."],
   ['text-success', "Let's get started!"],
 ]
 
@@ -30,8 +30,8 @@ puts "============ Created project: #{project.title}."
 #############################################
 
 project_overview_content_0 = [
-  ['text-success', "You work as a Data Scientist at a small team online eCommerce company."],
-  ['text', "In order to gather more product intelligence, you're tasked with grabbing average product prices from other eCommerce hubs."],
+  ['text-success', "You work as a Data Scientist at a small online eCommerce company."],
+  ['text', "In order to gather more product intelligence, you're tasked with scraping the average product prices from other eCommerce hubs."],
   ['lesson_links', ""],
 ]
 
@@ -51,13 +51,13 @@ overview_slide_one = Slide.create!(
 background_context_content_one = [
   ['text', "You decide look through Craigslist to see what the ads look like."],
   ['text', "You then notice a problem:"],
-  ['text-danger', "Some ads have a single item (just as you expected), but you also notice ads with multiple listings."],
+  ['text-danger', "Some ads contain a single item (just as you expected), but you also notice ads with multiple listings."],
   ['text', "This is problematic, because your existing price extractor will yield incorrect prices."],
   ['text', "Moreover, this means you might have to design a new price extractor that will work on multiple prices."],
-  ['text', "But this means you'll need a large set of multiple price ad data."],
+  ['text-info', "This also means you'll need a large set of multi-item ad data."],
   ['text', "To tackle the issue, you decide to create a classifier to help you classify ads as Single or Multiple."],
   ['text', "With the classifier, you'll be able to grab a large dataset of multiple item ads."],
-  ['text', "Moreover, you can use the classifier to decide which price extractor to use."],
+  ['text', "The classifier can be used in determining which price extractor to use."],
   ['text', "Satisfied with the decision, you begin your process."],
   ['next_steps', ''],
 ]
@@ -83,30 +83,30 @@ data_context_content_one = [
   ['text', "You realize that you hit a limit at 2500 for each specific region for a specific keyword."],
   ['text', "There is no point in trying to bypass the limit right now."],
   ['text', "You simply scrape some other regions to scrape."],
-  ['text', "The resulting data is below."],
-  ['fail-link', "some aws link"],
+  ['text', "The resulting raw data is below."],
+  ['fail-link', "some aws link for raw data"],
 ]
 
 data_context_content_two = [
-  ['text', "Once you've scraped the data, you think about how to label them"],
+  ['text', "Once you've scraped the data, you think about how to go about labelling them."],
   ['text', "Could this be a task left for an intern?"],
   ['quiz', "cl_data_context_0"],
   ['text', "Could this possibly hurt the intern's view of you as a mentor?"],
   ['quiz', "cl_data_context_1"],
   ['text-success', "You decide against using the intern."],
-  ['text', "Instead, you utilize an Amazon Mechanical Turk campaign"],
+  ['text', "Instead, you initialize an Amazon Mechanical Turk campaign."],
 ]
 
 data_context_content_three = [
   ['text', "The resulting data:"],
-  ['fail-link', "some link"],
-  ['text', "When you unzip the file, you'll get the following folders and files:"],
-  ['text-warning', "    ~/train/*"],
+  ['fail-link', "some link to zipped folder"],
+  ['text', "When you unzip the file, you'll get the following files inside the leada_CL folder:"],
+  ['text-warning', "    ~leada_CL/train_CL"],
   ['text', "  * Each of these files represent a single scraped ad, used for training. Comes with training labels."],
-  ['text-warning', "    ~/train-mapping"],
-  ['text', "  * This is a mapping of ad_filename_id to whether the ad was single or multiple"],
-  ['text-warning', "    ~/test/*"],
-  ['text', "  * Each of these files represent a single scraped ad. You'll use this to make a submission."],
+  ['text-warning', "~leada_CL/train_CL_labels"],
+  ['text', "  * This is the keys to the labels"],
+  ['text-warning', "    ~leada_CL/test_CL"],
+  ['text', "  * This is a list of You'll use this to make a submission."],
   ['next_steps', ""],
 ]
 
