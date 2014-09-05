@@ -9,3 +9,10 @@
         li.company-sidebar-link = link_to "Perks", perks_company_path(company)
         li.company-sidebar-link = link_to "Benefits", benefits_company_path(company)
 
+  .row.card
+    .col-md-12
+      h3.no-margin.title Actions
+      ul.company-actions-list
+        li.company-sidebar-link = link_to "Follow #{company.name}", follow_company_path(company), method: :post
+        li.company-sidebar-link = link_to "I want #{company.name} to host a challenge", data_challenges_interest_company_path(company), method: :post
+

@@ -12,6 +12,19 @@ class CompaniesController < ApplicationController
   def perks
   end
 
+  def benefits
+  end
+
+  def follow
+    @subscription = Subscription.where(subscriber: current_user, subscribable: @company).first_or_initialize
+    if @subscription.new_record? && @subscription.save
+      flash[:info] = "You have successfully followed #{@company.name}!"
+    else
+      flash[:danger] = "There was a problem following #{@company.name}, please try again."
+    end
+    redirect_to company_path(@company)
+  end
+
   def data_challenges_interest
     @company_data_challenge_interest = CompanyDataChallengeInterest.where(user: current_user, company: @company).first_or_initialize
     if @company_data_challenge_interest.new_record? && @company_data_challenge_interest.save
