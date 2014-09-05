@@ -3,17 +3,5 @@
 
 
 .company-main-body
-  .row.card
-    .col-md-12
-      .row
-        .col-md-2
-          strong
-            | About
-        .col-md-10
-          = simple_format(company.about)
-      .row
-        .col-md-2
-          strong
-            | Website
-        .col-md-10
-          = auto_link(company.website)
+  = render partial: "companies/company/about", locals: { company: company }
+  = render partial: "companies/company/data_challenges", locals: { company: company }
