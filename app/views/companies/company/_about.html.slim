@@ -6,20 +6,20 @@
     .row
       .col-md-2
         strong
-          | About
+          | About:
       .col-md-10
         = simple_format(company.about)
     .row
       .col-md-2
         strong
-          | Website
+          | Website:
       .col-md-10
         = auto_link(company.website)
 
     .row
       .col-md-2
         strong
-          | Founded in
+          | Founded in:
       .col-md-10
         = company.founded_date.month_and_year
 
