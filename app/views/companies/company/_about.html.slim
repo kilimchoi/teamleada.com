@@ -15,3 +15,11 @@
           | Website
       .col-md-10
         = auto_link(company.website)
+
+    .row
+      .col-md-2
+        strong
+          | Founded in
+      .col-md-10
+        = company.founded_date.month_and_year
+
