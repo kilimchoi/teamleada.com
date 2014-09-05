@@ -64,7 +64,7 @@ class Project < ActiveRecord::Base
   scope :data_lessons,    -> { where(category: LESSON) }
   scope :coming_soon,     -> { where(category: COMING_SOON) }
 
-  default_scope -> { order(:uid) }
+  default_scope -> { enabled.order(:uid) }
 
   extend FriendlyId
   friendly_id :url, use: :finders
