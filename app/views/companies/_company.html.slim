@@ -15,7 +15,8 @@
         .company-show-sidebar
           .row.card
             .col-md-12
-              | About
+              ul
+                li = link_to "About", company_path(company)
 
         .company-main-body
           .row.card
