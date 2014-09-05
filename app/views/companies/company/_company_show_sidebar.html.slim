@@ -1,0 +1,10 @@
+// Required Variables:
+// company
+
+.company-show-sidebar
+  .row.card
+    .col-md-12
+      ul
+        li = link_to "About", company_path(company)
+        li = link_to "Perks", perks_company_path(company)
+

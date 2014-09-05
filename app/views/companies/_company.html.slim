@@ -1,22 +1,6 @@
 // Required Variables:
 // company, is_editing
 
-.full-width-container
-  = render partial: "companies/company/company_cover_photo", locals: { company: company, is_editing: is_editing }
-
-  .container.full-container
-    .row
-      .col-md-12
-        .show-company-container.card-container
-          = render partial: "companies/company/top_header_info", locals: { company: company, is_editing: is_editing }
-
-    .row
-      .col-md-12.company-main
-        .company-show-sidebar
-          .row.card
-            .col-md-12
-              ul
-                li = link_to "About", company_path(company)
 
         .company-main-body
           .row.card
