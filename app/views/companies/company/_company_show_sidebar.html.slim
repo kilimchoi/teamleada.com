@@ -13,6 +13,10 @@
     .col-md-12
       h3.no-margin.title Actions
       ul.company-actions-list
-        li.company-sidebar-link = link_to "Follow #{company.name}", follow_company_path(company), method: :post
+        - if current_user.follows_company?(company)
+          li.company-sidebar-link = link_to "Unfollow #{company.name}", unfollow_company_path(company), method: :post
+        - else
+          li.company-sidebar-link = link_to "Follow #{company.name}", follow_company_path(company), method: :post
+
         li.company-sidebar-link = link_to "I want #{company.name} to host a challenge", data_challenges_interest_company_path(company), method: :post
 

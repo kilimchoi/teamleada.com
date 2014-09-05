@@ -136,9 +136,15 @@ class User < ActiveRecord::Base
                              source: :friend
 
   # Subscriptions
+  # Things that are subscribed to me
   has_many :subscriptions, as: :subscribable
   has_many :user_subscribers, through: :subscriptions, source: :subscriber, source_type: "User"
   has_many :company_subscribers, through: :subscriptions, source: :subscriber, source_type: "Company"
+
+  # Things I'm subscribed to
+  has_many :subscribed_to, as: :subscriber, class_name: Subscription
+  has_many :users_subscribed_to, through: :subscribed_to, source: :subscribable, source_type: "User"
+  has_many :companies_subscribed_to, through: :subscribed_to, source: :subscribable, source_type: "Company"
 
   # Company specific
   has_many :company_employees
@@ -683,6 +689,10 @@ class User < ActiveRecord::Base
     unless CompanyEmployee.exists?(user: self, company: company)
       CompanyEmployee.create(user: self, company: company)
     end
+  end
+
+  def follows_company?(company)
+    companies_subscribed_to.find(company)
   end
 
   def user_interaction_or_nil(other_user)
