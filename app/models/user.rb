@@ -154,6 +154,9 @@ class User < ActiveRecord::Base
   has_many :received_interactions, class_name: UserInteraction,
                                    foreign_key: :interactee_id
 
+  has_many :company_interests
+  has_many :company_data_challenge_interests
+
   # Scopes
   scope :admins, -> { where(role: "admin") }
   scope :students, -> { where(role: "student") }
@@ -693,6 +696,14 @@ class User < ActiveRecord::Base
 
   def follows_company?(company)
     companies_subscribed_to.find_by(id: company.id)
+  end
+
+  def has_expressed_interest_in_company?(company)
+    company_interests.find_by(company: company)
+  end
+
+  def has_expressed_interest_in_data_challenge_from_company?(company)
+    company_data_challenge_interests.find_by(company: company)
   end
 
   def user_interaction_or_nil(other_user)
