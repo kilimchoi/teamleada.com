@@ -26,7 +26,7 @@ columns:
     image_class: "icon-hired"
 
 user_testimonials:
-  - name: "Olivia Thet, UC Berkeley 14', Math"
+  - name: "Olivia Thet, Analyst, Kaiser Permanente"
     quote: "I was able to impress employers during a technical interview, Leada provided me the resources to exercise the knowledge I already had from a strong math background as well as build skills in new areas."
     image_class: "olivia.jpg"
   - name: "Matt Sedaghatfar, Data Analyst, AdMarketplace"
