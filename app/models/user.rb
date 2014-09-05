@@ -692,7 +692,7 @@ class User < ActiveRecord::Base
   end
 
   def follows_company?(company)
-    companies_subscribed_to.find(company)
+    companies_subscribed_to.find_by(id: company.id)
   end
 
   def user_interaction_or_nil(other_user)

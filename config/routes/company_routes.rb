@@ -1,9 +1,15 @@
 TeamLeada::Application.routes.draw do
   resources :companies, only: [:index, :show] do
     member do
+      # Mostly static pages
       match "perks", to: "companies#perks", via: :get
       match "benefits", to: "companies#benefits", via: :get
+
+      # Follow/unfollow
       match "follow", to: "companies#follow", via: :post
+      match "unfollow", to: "companies#unfollow", via: :post
+
+      # General user actions
       match "data-challenges-interest", to: "companies#data_challenges_interest", via: :post
     end
 

@@ -25,6 +25,16 @@ class CompaniesController < ApplicationController
     redirect_to company_path(@company)
   end
 
+  def unfollow
+    @subscription = Subscription.find_by(subscriber: current_user, subscribable: @company)
+    if @subscription && @subscription.destroy
+      flash[:info] = "You have successfully unfollowed #{@company.name}."
+    else
+      flash[:danger] = "There was a problem unfollowing #{@company.name}, please try again."
+    end
+    redirect_to company_path(@company)
+  end
+
   def data_challenges_interest
     @company_data_challenge_interest = CompanyDataChallengeInterest.where(user: current_user, company: @company).first_or_initialize
     if @company_data_challenge_interest.new_record? && @company_data_challenge_interest.save
