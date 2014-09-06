@@ -11,7 +11,8 @@
 #  number                :integer
 #  has_leaderboard       :boolean          default(FALSE)
 #  short_description     :text
-#  has_submit            :boolean          default(FALSE)
+#  has_written_submit    :boolean          default(FALSE)
+#  has_content_submit    :boolean          default(FALSE)
 #  cost                  :integer
 #  paid                  :boolean          default(FALSE)
 #  uid                   :integer          not null, primary key
