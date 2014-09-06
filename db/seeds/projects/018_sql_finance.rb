@@ -14,7 +14,7 @@ project = Project.create!(
   short_description: "In this challenge, you will scrape a set of Yahoo finance data. After collecting the data, you will design a database schema and then store it into a SQL database.",
   number: 18,
   enabled: true,
-  has_submit: true,
+  has_written_submit: true,
   uid: 18,
   difficulty: 'Intermediate',
   category: Project::CHALLENGE,

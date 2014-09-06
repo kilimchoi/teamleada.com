@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
-  skip_authorize_resource only: [:auth_code, :change_role]
+  skip_authorize_resource only: [:auth_code, :change_role, :submit_project_submission]
 
   respond_to :html, :json
 
