@@ -1,7 +1,12 @@
 
 main_page_content = [
-  ['text', 'In this challenge, you are tasked with providing insights and analysis for a specific dataset:'],
-  ['text-success', "Let your creativity flow"],
+  ['text-info', "In this challenge, you're given the opportunity to create a movie recommender."],
+  ['text', "You're given the MovieLens data, which contains the following"],
+  ['text', "  - 6,000+     Users"],
+  ['text', "  - 3,900      Movies"],
+  ['text', "  - 1,000,000+ movie ratings"],
+  ['text-warning', "The data was collected by the GroupLens Research Project at University of Minnesot"],
+  ['text', "Let's get started!"],
 ]
 
 project = Project.create!(
@@ -49,12 +54,6 @@ intro_content_three = [
   ['text', "Remember, having a maintainable & legible codebase leads to good karma :)"],
   ['next_steps', ""],
 ]
-
-quiz = Quiz.create!(
-  quiz_id: "crime_viz_0",
-  answer:"3",
-  project: project,
-)
 
 intro_lesson = Lesson.create!(
   title: "Introduction",
