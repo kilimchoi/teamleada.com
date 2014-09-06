@@ -152,7 +152,7 @@ data_context_slide_three = Slide.create!(
 
 submission_main_content_one = [
   ['text-success', "Once you have a formatted submission, you can submit it in this section."],
-  ['text', "Hopefully you utilized some kind of test metric!"],
+  ['text', "Hopefully you utilized some kind of validation!"],
   ['text', "Be prepared to talk about what you did, and how you did it."],
   ['lesson_links', ""],
 ]
@@ -174,13 +174,13 @@ submission_slide_one = Slide.create!(
 submission_test_content_one = [
   ['text', "To make a submission, submit below:"],
   ['submit', nil],
-  ['text-warning', "Make sure your submission is formatted the same way as train-mapping."],
-  ['text', "This means CSV format with a header, and each row must contain an `ad_id` and the corresponding binary classification."],
+  ['text-warning', "Make sure your submission is formatted the same way as the training data."],
+  ['text', "This means CSV format with a header, and each row must contain an `ad_id` and the corresponding binary classification label."],
   ['next_steps', ""]
 ]
 
 submission_test_step = Step.create!(
-  title: "Testset Submission",
+  title: "Test Result Submission",
   step_id: 0,
   lesson: submission_lesson,
 )
@@ -246,13 +246,13 @@ train_data_context = SubmissionContext.create!(
 #############################################
 
 conclusion_content_one = [
-  ['text-success', "Congratz!"],
+  ['text-success', "Congratualation!"],
   ['text', "You've now successfully created a binary classifier"],
   ['text', "With this classifier, your team can successfully gather Craigslist intelligence, as well as construct other useful Models."],
   ['text', "In closing, keep in mind that the model you built is only as good as the data."],
   ['text', "You had access to manually classified text data."],
   ['text', "The classification process was done by a mechanical turk."],
-  ['text-warning', "How reliable?"],
+  ['text-warning', "How reliable are the labels?"],
   ['text', "We don't know."],
   ['text-warning', "Are there more data than just the texts?"],
   ['text', "Certainly."],
