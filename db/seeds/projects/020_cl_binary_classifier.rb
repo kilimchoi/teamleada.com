@@ -88,7 +88,7 @@ data_context_content_one = [
 ]
 
 data_context_content_two = [
-  ['text', "Once you've scraped the data, you think about how to go about labelling them."],
+  ['text', "Once you've scraped the data, you think about how to go about labeling them."],
   ['text', "Could this be a task left for an intern?"],
   ['quiz', "cl_data_context_0"],
   ['text', "Could this possibly hurt the intern's view of you as a mentor?"],
@@ -246,7 +246,7 @@ train_data_context = SubmissionContext.create!(
 #############################################
 
 conclusion_content_one = [
-  ['text-success', "Congratualation!"],
+  ['text-success', "Congratulation!"],
   ['text', "You've now successfully created a binary classifier"],
   ['text', "With this classifier, your team can successfully gather Craigslist intelligence, as well as construct other useful Models."],
   ['text', "In closing, keep in mind that the model you built is only as good as the data."],
