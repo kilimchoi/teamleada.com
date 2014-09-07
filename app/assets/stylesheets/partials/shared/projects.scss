@@ -1,0 +1,47 @@
+.cover-photo-small {
+  height: 100px;
+}
+
+.cover-photo-medium {
+  height: 200px;
+}
+
+.cover-photo-large {
+  height: 400px;
+}
+
+.shared-project-cover-photo-container {
+  position: relative;
+}
+
+.shared-project-cover-photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.shared-project-show-cover-image {
+  background-size: cover;
+  background-position: center;
+}
+
+.shared-project-show-cover-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.shared-project-show-cover-image-dark:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000000;
+  opacity: 0.4;
+  content: " ";
+}
+
