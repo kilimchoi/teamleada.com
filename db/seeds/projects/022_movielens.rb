@@ -48,7 +48,7 @@ intro_content_two = [
   ['text', "Of course, some entries will be empty, since not everyone has reviewed every movie"],
   ['text-warning', "(in fact, has anyone reviewed every movie?)"],
   ['text', "In this projectm you will implement a collaborative filtering algorithm to predict what movie a particular user might enjoy."],
-  ['next_steps', ""],
+  ['lesson_links', ""],
 ]
 
 intro_lesson = Lesson.create!(
@@ -66,6 +66,30 @@ intro_slide_two = Slide.create!(
   parent: intro_lesson,
   content: intro_content_two,
   slide_id: 1,
+)
+
+################################################################################
+
+data_intro_one = [
+  ['text', "The data we're going to use is from the University of Minnesota's GroupLens project"],
+  ['text', "Download the data here:"],
+  ['link', "http://files.grouplens.org/datasets/movielens/ml-1m.zip"],
+  ['text', "It is taken from the MovieLens user data:"],
+  ['link', "http://movielens.umn.edu/login"],
+  ['text', "The dataset contains the following files"],
+  ['text', ""],
+]
+
+data_intro_step = Step.create!(
+  title: "Data Context",
+  step_id: 0,
+  lesson: intro_lesson,
+)
+
+data_intr_slide_one = Slide.create!(
+  content: data_intro_one,
+  slide_id: 0,
+  parent: data_intro_step,
 )
 
 ################################################################################
