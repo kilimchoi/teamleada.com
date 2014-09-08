@@ -72,12 +72,12 @@ intro_slide_two = Slide.create!(
 
 data_intro_one = [
   ['text-info', "The data we're going to use is from the GroupLens project at University of Minnesota."],
-  ['text-success', "Download the data here:"],
+  ['text', "Download the data here:"],
   ['link', "http://files.grouplens.org/datasets/movielens/ml-1m.zip"],
   ['text-success', "It is taken from the MovieLens user data:"],
   ['link', "http://movielens.umn.edu/"],
   ['text-warning', "The dataset contains the following files."],
-  ['text', "ratings.dat"],
+  ['code', "ratings.dat"],
   ['next_steps', ""],
 ]
 
