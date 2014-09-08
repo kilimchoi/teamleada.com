@@ -8,7 +8,7 @@ table.table.table-striped
   th Has Access?
   - @project_statuses.each do |project_status|
     tr
-      td = link_to "View", code_submissions_admin_user_path(project_status.user, project_status.project)
+      td = link_to "View", admin_user_project_code_submissions_path(project_status.user, project_status.project)
       td = link_to project_status.user.name, admin_user_path(project_status.user)
       td = project_status.project.title
       td = project_status.completed_on

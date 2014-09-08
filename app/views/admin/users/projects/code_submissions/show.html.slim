@@ -15,7 +15,7 @@
       - unless @evaluation.new_record?
         .alert.alert-success You have already evaluated this code submission.
       h1.title Your Evaluation
-      = simple_form_for @evaluation, url: evaluate_admin_user_path do |f|
+      = simple_form_for @evaluation, url: evaluate_admin_user_project_code_submission_path do |f|
         = f.input :computer_science, collection: 1..10
         = f.input :statistics, collection: 1..10
         = f.input :curiosity, collection: 1..10
