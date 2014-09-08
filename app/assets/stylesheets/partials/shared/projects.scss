@@ -1,8 +1,17 @@
+.project-new-label {
+  font-size: 32px;
+}
+
+// Configuration for different sizes
 .cover-photo-small {
   height: 100px;
 
   .shared-project-title {
     font-size: 18px;
+  }
+
+  .project-new-label {
+    font-size: 14px;
   }
 }
 
@@ -30,6 +39,15 @@
   }
 }
 
+// Custom wrapper classes
+.story-project-cover-photo-container {
+  .shared-project-title {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+}
+
+// Project cover photo containers
 .shared-project-cover-photo-container {
   position: relative;
 }
@@ -63,9 +81,5 @@
   background: #000000;
   opacity: 0.4;
   content: " ";
-}
-
-.project-new-label {
-  font-size: 32px;
 }
 
