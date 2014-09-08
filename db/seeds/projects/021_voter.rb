@@ -1,7 +1,7 @@
 main_page_content = [
   ['text', "In this data challenge we will analyze candidate disbursement data."],
   ['text', "We'll be analyzing various spending record from election candidates."],
-  ['text-danger', "Will we uncover some dark politcal secret?"],
+  ['text-danger', "Will we uncover some dark political secret?"],
   ['text', "Or will we simply face the same expected government spending?"],
   ['text-success', "Only one way to find out!"],
 ]
@@ -10,11 +10,12 @@ main_page_content = [
 project = Project.create!(
   title: "US Election Candidate Disbursement Data Analytics",
   description: main_page_content,
-  short_description: "This project will involve working with actual candidate disbursements data released in 2014. You're asked to conduct analysis on spending type, ca",
+  short_description: "This project will involve working with actual candidate disbursements data released in 2014. You're asked to conduct analysis on spending category, amount, and relative size.",
   number: 21,
   enabled: true,
   has_leaderboard: false,
   has_content_submit: true,
+  has_written_submit: true,
   category: Project::CHALLENGE,
   uid: 21,
   difficulty: 'Intermediate',
@@ -28,7 +29,7 @@ puts "============ Created project: #{project.title}."
 
 intro_content_zero = [
   ['text-success', "You've been hired by an organization to analyze government data."],
-  ['text', "Your first task is to analyze the election candidate discbursement data."],
+  ['text', "Your first task is to analyze the election candidate disbursement data."],
   ['text', "We'll get a little more details about the data here."],
   ['lesson_links', ""],
 ]
@@ -49,7 +50,7 @@ intro_slide = Slide.create!(
 data_context_content_zero = [
   ['text-success', "The data is here:"],
   ['link', "ftp://ftp.fec.gov/FEC/data.fec.gov/candidate_disbursement2014/all_house_senate.csv"],
-  ['text-warning', "The data results from a federal law that requires political candidates to record the following spendings:"],
+  ['text-warning', "The data results from a federal law that requires political candidates to record the following spending:"],
   ['text', "-   All specific disbursements that are contributions to other federal candidates or parties or other committees as well as all loan repayments."],
   ['text', "-   Other spending of over $200/election-cycle to be reported"],
   ['text', "Now that we know how the data is collected/reported, let's learn about its meta data."],
@@ -104,21 +105,22 @@ voter_intro_quiz = Quiz.create!(
 ################################################################################
 
 data_correlation_content = [
-  ['text-success', "First, we want to undersatnd the correlations between 'categories' / 'types' of donations. (travel vs advertising, for example)"],
-  ['text', "This is grouped via category code?"],
-  ['text', "What is the column name for 'category code'?"],
+  ['text-success', "First, we want to understand the correlations between 'categories' / 'types' of donations. (travel V.S. advertising, for example)"],
+  ['text', "This is grouped via category code."],
+  ['text-warning', "What is the actual column name for 'category code'?"],
+  ['text', "Check the link for the metadata from the previous step."],
   ['quiz', "voter_correlation_tag"],
-  ['text', "The code mapping can be found here."],
+  ['text', "The actual code-to-category mapping can be found here."],
   ['link', "http://www.fec.gov/finance/disclosure/metadata/DisbursementCategoryCodes.shtml"],
   ['text', "Group the entries by category type and do a correlation matrix."],
 ]
 
 data_correlation_content_one = [
-  ['text', "You're encouraged to do other analysis on the dataset for a better anslysis, but you're free not to."],
+  ['text', "You're encouraged to do other analysis on the dataset for a better analysis, but you're free not to."],
   ['text-success', "Submit the code you used to do the analysis:"],
   ['user_code', "nil"],
   ['text', "Do the results make sense?"],
-  ['text', "We'll talk about it next"],
+  ['text', "We'll talk about it next."],
 ]
 
 data_correlation_content_two = [
@@ -252,7 +254,7 @@ normalization_content_one = [
   ['text-success', "After some analysis, you notice large discrepancies in candidate spending depending on the region / campaign."],
   ['text', "You assume that the variance can be explained by the differences in populations between regions."],
   ['text', "To test your intuition, you decide to normalize the campaign data by population size."],
-  ['text', "After some googling, you end up with you the following US Census population data (2010)"],
+  ['text', "After some Googling, you end up with you the following US Census population data (2010)"],
   ['link-fail', "link to the data."],
   ['text', "Equipped with this additional data, you begin your analysis"],
 ]
@@ -268,7 +270,7 @@ normalization_content_two = [
 
 normalization_content_three = [
  ['text-success', "Explain what you did to complete your analysis."],
- ['text', "Be sure to include the reasonings behind your approach and any conclusions drew."],
+ ['text', "Be sure to include the reasoning behind your approach and any conclusions drew."],
  ['user_response', ""],
  ['next_steps', ""],
 ]
@@ -322,9 +324,9 @@ normalization_response_submission_context = SubmissionContext.create!(
 
 conclusion_content = [
   ['text', "Great!"],
-  ['text', "You've finished analyzing the candidate discbursement Data"],
+  ['text', "You've finished analyzing the candidate disbursement Data"],
   ['text', "Hopefully you now have a better sense of how the 2014 candidate disbursement happened."],
-  ['text', "Write any conclusion you drew from the excercises. You're free to leave it blank, if you were unable to draw any conclusive result"],
+  ['text', "Write any conclusion you drew from the previous steps. You're free to leave it blank, if you were unable to draw any conclusive result."],
   ['user_response',""],
   ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
@@ -342,8 +344,8 @@ conclusion_slide = Slide.create!(
 )
 
 normalization_response_submission_context = SubmissionContext.create!(
-  title: "Conclusion on Candidate Discbursement data",
-  description: "User is asked to write down any concusion after the analyis of the candidate disebursement data.",
+  title: "Conclusion on Candidate Disbursement Data",
+  description: "User is asked to write down any conclusion after the analysis  of the candidate disebursement data.",
   slide: conclusion_slide,
   submission_context_id: 0,
   submission_type: SubmissionContext::RESPONSE,
