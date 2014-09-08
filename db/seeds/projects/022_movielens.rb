@@ -76,8 +76,9 @@ data_intro_one = [
   ['link', "http://files.grouplens.org/datasets/movielens/ml-1m.zip"],
   ['text', "It is taken from the MovieLens user data:"],
   ['link', "http://movielens.umn.edu/login"],
-  ['text', "The dataset contains the following files"],
-  ['text', ""],
+  ['text', "The dataset contains the following files."],
+  ['text', "ratings.dat"],
+  ['next_steps', ""],
 ]
 
 data_intro_step = Step.create!(
