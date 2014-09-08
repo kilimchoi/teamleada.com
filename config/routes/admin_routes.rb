@@ -19,32 +19,27 @@ TeamLeada::Application.routes.draw do
     end
 
     resources :users, only: [:index, :show] do
-      member do
-        match 'projects/:project_id/publish-feedback', to: 'users#publish_feedback',
-                                                       as: :publish_feedback,
-                                                       via: :get
-        match 'projects/:project_id/grant-access',     to: 'users#grant_access',
-                                                       as: :grant_access,
-                                                       via: :get
-        match 'projects/:project_id/deny-access',      to: 'users#deny_access',
-                                                       as: :deny_access,
-                                                       via: :get
+      scope module: :users do
+        resources :projects, only: [:show, :index] do
+          member do
+            match "publish-feedback", to: "projects/publish_feedback", as: :publish_feedback, via: :get
+            match "grant-access", to: "projects/grant_access", as: :grant_access, via: :get
+            match "deny-access", to: "projects/deny_access", as: :deny_access, via: :get
+          end
 
-        match 'projects/:project_id/code-submissions', to: 'users#show_code_submissions',
-                                                       as: :code_submissions,
-                                                       via: :get
-        match 'projects/:project_id/code-submissions/:code_submission_id', to: 'users#show_code_submission',
-                                                                           as: :code_submission,
-                                                                           via: :get
-        match 'projects/:project_id/code-submissions/:code_submission_id/evaluate', to: 'code_submissions#evaluate',
-                                                                                    as: :evaluate,
-                                                                                    via: :post
-        match 'projects/:project_id/code-submissions/:code_submission_id/evaluate', to: 'code_submissions#update_evaluation',
-                                                                                    as: :update_evaluation,
-                                                                                    via: :patch
-        match 'projects/:project_id/code-submissions/:code_submission_id/evaluations', to: 'code_submission_evaluations#index',
-                                                                                       as: :evaluations,
-                                                                                       via: :get
+          scope module: :projects do
+            resources :code_submissions, only: [:show, :index] do
+              member do
+                match "evaluate", to: "code_submissions#evaluate", as: :evaluate, via: :post
+                match "evaluate", to: "code_submissions#update_evaluation", as: :update_evaluations, via: :patch
+              end
+
+              scope module: :code_submissions do
+                resources :evaluations, only: [:index]
+              end
+            end
+          end
+        end
       end
     end
 
