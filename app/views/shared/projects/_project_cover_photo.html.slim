@@ -4,7 +4,7 @@
 - unless defined? wrapper_class
   - wrapper_class = ""
 
-- content_for :project_cover_photo do
+- content_for :project_cover_photo, flush: true do
   .shared-project-cover-photo class="cover-photo-#{size}"
     - if project.has_cover_photo?
       .shared-project-show-cover-image.shared-project-show-cover-image-dark class="project-image-#{project.cover_photo}"
