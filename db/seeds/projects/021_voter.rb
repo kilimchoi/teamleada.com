@@ -14,7 +14,7 @@ project = Project.create!(
   number: 21,
   enabled: true,
   has_leaderboard: false,
-  has_submit: true,
+  has_content_submit: true,
   category: Project::CHALLENGE,
   uid: 21,
   difficulty: 'Intermediate',

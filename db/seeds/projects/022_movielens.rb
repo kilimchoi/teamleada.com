@@ -1,27 +1,30 @@
 
 main_page_content = [
-  ['text', 'In this challenge, you are tasked with providing insights and analysis for a specific dataset:'],
-  ['text-warning', 'Crime data from San Francisco, CA.'],
-  ['text', 'You\'ll get the data from the official SF police website.'],
-  ['text', 'The project is purposefully open ended, build whatever visualization(s) you want.'],
-  ['text-success', "Let your creativity flow"],
+  ['text-info', "In this challenge, you're given the opportunity to create a movie recommender."],
+  ['text', "You're given the MovieLens data, which contains the following"],
+  ['text', "  - 6,000+     Users"],
+  ['text', "  - 3,900      Movies"],
+  ['text', "  - 1,000,000+ movie ratings"],
+  ['text-warning', "The data was collected by the GroupLens Research Project at University of Minnesota."],
+  ['text-success', "Special thanks to Dr. Konstan who gave us the permission to link the data for your use!"], 
+  ['link-success', "http://www.grouplens.org/"],
+  ['text', "Let's get started!"],
 ]
 
 project = Project.create!(
-  title:"Visualizing Crime Data",
+  title:"Movie Recommendation Engine",
   description: main_page_content,
-  short_description: "Given a set of recent San Francisco crime data, you are tasked with finding some meaningful insights and creating visualization(s) which presents your findings.",
+  short_description: "With a large set of user movie reviews, you're going to build a movie recommendation engine!",
   enabled: true,
-  number: 15,
-  has_content_submit: true,
+  number: 22,
   has_written_submit: true,
-  uid: 15,
-  difficulty: 'Intermediate',
+  has_content_submit: false,
+  uid: 22,
+  difficulty: 'Expert',
   category: Project::CHALLENGE,
   is_new: true,
   featured: true,
-  grants_project_access: true,
-  cover_photo: "crime",
+  cover_photo: "movielens",
 )
 
 ################################################################################
@@ -29,58 +32,65 @@ puts "============ Created project: #{project.title}."
 ################################################################################
 
 intro_content_one = [
-  ['text-info', "You've just been hired by the city of San Francisco to use analytics to combat its crime issues."],
-  ['text', "The first task they want to do is to better understand the crime patterns throughout the city."],
-  ['text', "You're tasked with creating visualization(s) that will help the city better interpret the crime data that gets updated daily."],
-  ['text', "You're aren't given restrictions on plot type and you must come up with your own analysis."],
-  ['text', "The crime data can be downloaded below:"],
-  ['link', "https://data.sfgov.org/Public-Safety/SFPD-Incidents-Previous-Three-Months/tmnf-yvry?"],
+  ['text', "How does Netflix always know what you want to watch next?"],
+  ['text', "Wired.com reports:"],
+  ['text-info', "\"(Netflix estimates that) 75 percent of viewer activity is driven by recommendation.\""],
+  ['text', "How do they do it?"],
+  ['text', "To start, they have 100s of millions to billions of rows of viewer data."],
+  ['text', "In those viewer data, there are people who share similar taste as you."],
+  ['text', "By looking at people with similar viewing/rating history as you, they're able to recommend movies that people similar to you enjoyed."],
 ]
 
 intro_content_two = [
-  ['text-info', "The data contains many features including district, category, and crime types."],
-  ['text', "As mentioned before, the type of visualization is entirely up to you."],
-  ['text-warning', "You might want to consider creating plots that encompass the following:"],
-  ['text', " - Where shouldn't you park your car?"],
-  ['text', " - What are the safest locations in SF? What days/times are especially dangerous?"],
-  ['text', " - Are certain thefts more common in certain areas?"],
-  ['text-success', "Make sure to explain in the summary of your findings how your visualization(s) supports your insights."],
+  ['text', "But how do you systematically predict what we talked about?"],
+  ['text-success', "We're going to use collborate filtering"],
+  ['text', "The idea is to start with a giant matrix of user reviews, where every user has reviewed every movie."],
+  ['text', "Of course, some entries will be empty, since not everyone has reviewed every movie"],
+  ['text-warning', "(in fact, has anyone reviewed every movie?)"],
+  ['text', "In this projectm you will implement a collaborative filtering algorithm to predict what movie a particular user might enjoy."],
+  ['lesson_links', ""],
 ]
 
-intro_content_three = [
-  ['text-success', "You are free to complete the project in any language/framework you like."],
-  ['text', "Be sure to explain the framework and any external packages with proper documentation."],
-  ['text', "Remember, having a maintainable & legible codebase leads to good karma :)"],
-  ['next_steps', ""],
-]
-
-quiz = Quiz.create!(
-  quiz_id: "crime_viz_0",
-  answer:"3",
-  project: project,
-)
-
-intro_lesson = Lesson.create!(
-  title: "Introduction",
+introduction_lesson = Lesson.create!(
+  title: "Data Introduction",
   project: project,
   lesson_id: 0,
 )
 
 intro_slide_one = Slide.create!(
-  parent: intro_lesson,
+  parent: introduction_lesson,
   content: intro_content_one,
   slide_id: 0,
 )
 intro_slide_two = Slide.create!(
-  parent: intro_lesson,
+  parent: introduction_lesson,
   content: intro_content_two,
   slide_id: 1,
 )
 
-intro_slide_thre = Slide.create!(
-  parent: intro_lesson,
-  content: intro_content_three,
-  slide_id: 2,
+################################################################################
+
+data_intro_one = [
+  ['text', "The data we're going to use is from the University of Minnesota's GroupLens project"],
+  ['text', "Download the data here:"],
+  ['link', "http://files.grouplens.org/datasets/movielens/ml-1m.zip"],
+  ['text', "It is taken from the MovieLens user data:"],
+  ['link', "http://movielens.umn.edu/login"],
+  ['text', "The dataset contains the following files."],
+  ['text', "ratings.dat"],
+  ['next_steps', ""],
+]
+
+data_intro_step = Step.create!(
+  title: "Data",
+  step_id: 0,
+  lesson: introduction_lesson,
+)
+
+data_intro_slide_one = Slide.create!(
+  content: data_intro_one,
+  slide_id: 0,
+  parent: data_intro_step,
 )
 
 ################################################################################

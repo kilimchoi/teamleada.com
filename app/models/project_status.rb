@@ -82,7 +82,7 @@ class ProjectStatus < ActiveRecord::Base
   end
 
   def completed_all_submissions?
-    project.submission_contexts.count > 0 && user.code_submissions_for_project(project).count == project.submission_contexts.count
+    project.submission_contexts.count > 0 && user.code_submissions_for_project(project).count >= project.submission_contexts.count
   end
 
   def can_be_graded?
