@@ -51,19 +51,19 @@ intro_content_two = [
   ['lesson_links', ""],
 ]
 
-intro_lesson = Lesson.create!(
-  title: "Introduction",
+introduction_lesson = Lesson.create!(
+  title: "Data Introduction",
   project: project,
   lesson_id: 0,
 )
 
 intro_slide_one = Slide.create!(
-  parent: intro_lesson,
+  parent: introduction_lesson,
   content: intro_content_one,
   slide_id: 0,
 )
 intro_slide_two = Slide.create!(
-  parent: intro_lesson,
+  parent: introduction_lesson,
   content: intro_content_two,
   slide_id: 1,
 )
@@ -81,12 +81,12 @@ data_intro_one = [
 ]
 
 data_intro_step = Step.create!(
-  title: "Data Context",
+  title: "Data",
   step_id: 0,
-  lesson: intro_lesson,
+  lesson: introduction_lesson,
 )
 
-data_intr_slide_one = Slide.create!(
+data_intro_slide_one = Slide.create!(
   content: data_intro_one,
   slide_id: 0,
   parent: data_intro_step,
