@@ -1,0 +1,54 @@
+// Required Variables:
+// project, size, clickable, path,
+
+// Optional Variables:
+// wrapper_class, link_id, remote, has_custom_body, body_partial, relative
+
+- unless defined? wrapper_class
+  - wrapper_class = ""
+
+- unless defined? link_id
+  - link_id = ""
+
+- unless defined? remote
+  - remote = false
+
+- unless defined? has_custom_body
+  - has_custom_body = false
+
+- unless defined? body_partial
+  - body_partial = ""
+
+- unless defined? relative
+  - relative = true
+
+- content_for :project_cover_photo_image, flush: true do
+  .row.row-table.row-full-height.row-no-margin
+    .col-md-12.col-middle.center.project-cover-photo-content
+      - if has_custom_body
+        = render partial: body_partial, locals: { project: project }
+      - else
+        h1.shared-project-title.text-contrast = project.title
+        - if project.is_new
+          span.label.label-danger.project-new-label New!
+
+- content_for :project_cover_photo, flush: true do
+  .shared-project-cover-photo class="cover-photo-#{size}"
+    - if project.has_cover_photo?
+      .shared-project-show-cover-image.shared-project-show-cover-image-dark class="project-image-#{project.cover_photo}"
+    - else
+      .shared-project-show-cover-image class="project-color-#{project.color}"
+  = content_for :project_cover_photo_image
+
+- container_class = relative ? "shared-project-cover-photo-container" : "shared-project-cover-photo-container-absolute"
+
+- if clickable
+  = link_to path, remote: remote, id: link_id do
+    div class="cover-photo-#{size} #{wrapper_class} #{container_class}"
+      = content_for :project_cover_photo
+- else
+  div class="cover-photo-#{size} #{wrapper_class} #{container_class}"
+    = content_for :project_cover_photo
+
+
+

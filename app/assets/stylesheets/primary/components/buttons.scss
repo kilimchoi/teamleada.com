@@ -209,3 +209,12 @@
   @extend .full-width;
 }
 
+.company-sidebar-button {
+  @extend .flat-button;
+  @extend .sharp-edges;
+  @extend .full-width;
+
+  padding: 5px;
+  font-size: 12px;
+}
+

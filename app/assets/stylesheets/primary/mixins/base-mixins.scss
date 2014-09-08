@@ -5,7 +5,7 @@
           border-radius: $radius;
 }
 
-@mixin fill-table-cell {
+@mixin fill-absolute {
   position: absolute;
   top: 0;
   left: 0;

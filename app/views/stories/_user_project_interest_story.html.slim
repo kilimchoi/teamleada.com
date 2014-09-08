@@ -19,5 +19,11 @@
           .card-timestamp
             = link_to story.created_at.pretty_time, story.permalink_path
 
-      .story-card-body.story-project-cover-photo-container
-        = render partial: "stories/project_cover_photo", locals: { project: story.project }
+      .story-card-body
+        = render partial: "shared/projects/project_cover_photo", locals: { \
+          project: story.project,
+          size: "extra-small",
+          clickable: false,
+          wrapper_class: "story-project-cover-photo-container",
+        }
+

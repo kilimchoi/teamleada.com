@@ -13,17 +13,16 @@ class ProjectsController < ApplicationController
       format.js {
         render partial: "projects/project_info"
       }
+      format.html {
+        redirect_to project_path(@project)
+      }
     end
   end
 
   def index
-    if signed_in? && current_user.has_project_access? && !current_user.is_admin?
-      @projects = @projects.enabled
-    end
-
     @project_data = get_yaml_data_file("projects.yml")
 
-    @highlighted_projects = @projects.first(3)
+    @projects = @projects.enabled
     @featured_projects = @projects.featured
 
     # Don't show featured projects twice

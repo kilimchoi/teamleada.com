@@ -51,12 +51,18 @@ class Project < ActiveRecord::Base
   validates :title, uniqueness: true
   validates :uid, uniqueness: true
 
+  # Scopes
   scope :enabled, -> { where(enabled: true) }
   scope :costs_money, -> { enabled.where(paid: true) }
   scope :featured, -> { unscoped.enabled.where(featured: true).newest_first }
   scope :not_featured, -> { enabled.where(featured: false) }
 
   scope :newest_first, -> { order("uid DESC") }
+
+  # Scope by type
+  scope :data_challenges, -> { where(category: CHALLENGE) }
+  scope :data_lessons,    -> { where(category: LESSON) }
+  scope :coming_soon,     -> { where(category: COMING_SOON) }
 
   default_scope -> { order(:uid) }
 
