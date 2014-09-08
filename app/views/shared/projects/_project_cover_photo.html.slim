@@ -1,5 +1,8 @@
 // Required Variables:
-// project, size, clickable, path
+// project, size, clickable, path, wrapper_class
+
+- unless defined? wrapper_class
+  - wrapper_class = ""
 
 - content_for :project_cover_photo do
   .shared-project-cover-photo class="cover-photo-#{size}"
@@ -19,7 +22,7 @@
           - if project.is_new
             span.label.label-danger.project-new-label New!
 
-.shared-project-cover-photo-container class="cover-photo-#{size}"
+.shared-project-cover-photo-container class="cover-photo-#{size} #{wrapper_class}"
   - if clickable
     = link_to path do
       = content_for :project_cover_photo
