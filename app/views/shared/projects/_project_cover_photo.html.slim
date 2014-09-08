@@ -2,7 +2,7 @@
 // project, size, clickable, path,
 
 // Optional Variables:
-// wrapper_class, link_id, remote, has_custom_body, body_partial
+// wrapper_class, link_id, remote, has_custom_body, body_partial, relative
 
 - unless defined? wrapper_class
   - wrapper_class = ""
@@ -18,6 +18,9 @@
 
 - unless defined? body_partial
   - body_partial = ""
+
+- unless defined? relative
+  - relative = true
 
 - content_for :project_cover_photo_image, flush: true do
   .row.row-table.row-full-height.row-no-margin
@@ -38,11 +41,14 @@
       .shared-project-show-cover-image class="project-color-#{project.color}"
         = content_for :project_cover_photo_image
 
-.shared-project-cover-photo-container class="cover-photo-#{size} #{wrapper_class}"
-  - if clickable
-    = link_to path, remote: remote, id: link_id do
+- container_class = relative ? "shared-project-cover-photo-container" : "shared-project-cover-photo-container-absolute"
+
+- if clickable
+  = link_to path, remote: remote, id: link_id do
+    div class="cover-photo-#{size} #{wrapper_class} #{container_class}"
       = content_for :project_cover_photo
-  - else
+- else
+  div class="cover-photo-#{size} #{wrapper_class} #{container_class}"
     = content_for :project_cover_photo
 
 
