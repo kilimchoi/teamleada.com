@@ -22,9 +22,9 @@ TeamLeada::Application.routes.draw do
       scope module: :users do
         resources :projects, only: [:show, :index] do
           member do
-            match "publish-feedback", to: "projects/publish_feedback", as: :publish_feedback, via: :get
-            match "grant-access", to: "projects/grant_access", as: :grant_access, via: :get
-            match "deny-access", to: "projects/deny_access", as: :deny_access, via: :get
+            match "publish-feedback", to: "projects#publish_feedback", as: :publish_feedback, via: :get
+            match "grant-access", to: "projects#grant_access", as: :grant_access, via: :get
+            match "deny-access", to: "projects#deny_access", as: :deny_access, via: :get
           end
 
           scope module: :projects do
