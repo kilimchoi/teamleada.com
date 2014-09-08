@@ -1,17 +1,27 @@
 .cover-photo-small {
   height: 100px;
+
+  .shared-project-title {
+    font-size: 18px;
+  }
 }
 
 .cover-photo-medium {
   height: 200px;
+  font-size: 24px;
 }
 
 .cover-photo-large {
   height: 400px;
+  font-size: 32px;
 }
 
 .cover-photo-extra-large {
   height: 600px;
+
+  .shared-project-title {
+    font-size: 56px;
+  }
 }
 
 .shared-project-cover-photo-container {
