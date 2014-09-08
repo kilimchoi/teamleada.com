@@ -13,7 +13,7 @@
               h3 Favorited Users
               .list-group
                 - @company.favorited_users.each do |user|
-                  = link_to company_user_path(user), class: "list-group-item" do
+                  = link_to company_browse_user_path(user), class: "list-group-item" do
                     h4.list-group-item-heading Anonymous User
                     p.list-group-item-text
                       - if current_user.favorited_at(user)

@@ -45,11 +45,12 @@ class UserInteraction < ActiveRecord::Base
 
   # Stories
   def generate_favorited_story
-    UserFavoriteUserStory.create(interactor: interactor, interactee: interactee, company: company, favorite: true)
+    # TODO(mark): Re-enable user favorite user stories
+#    UserFavoriteUserStory.create(interactor: interactor, interactee: interactee, company: company, favorite: true)
   end
 
   def generate_unfavorited_story
-    UserFavoriteUserStory.create(interactor: interactor, interactee: interactee, company: company, favorite: false)
+#    UserFavoriteUserStory.create(interactor: interactor, interactee: interactee, company: company, favorite: false)
   end
 
 end

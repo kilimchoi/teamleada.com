@@ -68,7 +68,6 @@ TeamLeada::Application.routes.draw do
 
   match 'employer', to: 'employer_applications#new', as: 'new_employer', via: :get
   resources :employer_applications, path: 'employer', as: 'employer', only: [:create]
-  resources :companies, only: [:show]
 
   draw :users_routes
   draw :project_routes
