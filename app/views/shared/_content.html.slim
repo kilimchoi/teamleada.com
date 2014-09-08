@@ -39,8 +39,9 @@
 - elsif content_type == 'image'
   = image_tag content, class: "fragment content content-image"
 - elsif content_type == 'link'
-  a.fragment href=content target="_blank"
-    = content
+  div align="center"
+    a.fragment.center href=content target="_blank"
+      = content
 - elsif content_type == 'lesson_links'
   p.fragment
     - lesson.steps.each do |step|
