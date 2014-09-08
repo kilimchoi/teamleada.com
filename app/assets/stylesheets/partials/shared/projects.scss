@@ -10,6 +10,10 @@
   height: 400px;
 }
 
+.cover-photo-extra-large {
+  height: 600px;
+}
+
 .shared-project-cover-photo-container {
   position: relative;
 }
@@ -43,5 +47,9 @@
   background: #000000;
   opacity: 0.4;
   content: " ";
+}
+
+.project-new-label {
+  font-size: 32px;
 }
 
