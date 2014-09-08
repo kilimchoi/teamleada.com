@@ -13,6 +13,9 @@ class ProjectsController < ApplicationController
       format.js {
         render partial: "projects/project_info"
       }
+      format.html {
+        redirect_to project_path(@project)
+      }
     end
   end
 
