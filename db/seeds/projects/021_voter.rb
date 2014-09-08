@@ -106,16 +106,17 @@ voter_intro_quiz = Quiz.create!(
 
 data_correlation_content = [
   ['text-success', "First, we want to understand the correlations between 'categories' / 'types' of donations. (travel V.S. advertising, for example)"],
-  ['text', "This is grouped via category code."],
+  ['text', "This is grouped via the category code."],
   ['text-warning', "What is the actual column name for 'category code'?"],
   ['text', "Check the link for the metadata from the previous step."],
   ['quiz', "voter_correlation_tag"],
   ['text', "The actual code-to-category mapping can be found here."],
   ['link', "http://www.fec.gov/finance/disclosure/metadata/DisbursementCategoryCodes.shtml"],
-  ['text', "Group the entries by category type and do a correlation matrix."],
+  ['text', "Now let's do some analysis."],
 ]
 
 data_correlation_content_one = [
+  ['text-danger', "Group the entries by category type and do a correlation matrix."],
   ['text', "You're encouraged to do other analysis on the dataset for a better analysis, but you're free not to."],
   ['text-success', "Submit the code you used to do the analysis:"],
   ['user_code', "nil"],
@@ -186,15 +187,16 @@ corr_response_context = SubmissionContext.create!(
 
 distribution_lesson_content = [
   ['text-success', "We want to find out how much the distribution of 'sizes' of disbursements appears to differ from campaign to campaign."],
-  ['text', " - Are the size just a function of total campaign spend?"],
+  ['text', " - Are the sizes just a function of total campaign spent?"],
   ['text', " - Are they related to the vendors?"],
   ['text-info', "You're free to do any analysis you want."],
+  ['text-warning', "(Though ANOVA would be a good start!)"],
 ]
 
 distribution_lesson_content_one = [
-  ['text-success', "Write the code that will provide the analysis above"],
-  ['text', "Remember to comment clearly on what you're doing"],
-  ['text', "You'll also explain your procedure and any results on the next section"],
+  ['text-success', "Write the code that will provide the analysis."],
+  ['text', "Remember to comment clearly on what you're doing."],
+  ['text', "You'll also explain your procedure and any results on the next section."],
   ['user_code', ""],
 ]
 
@@ -254,13 +256,13 @@ normalization_content_one = [
   ['text-success', "After some analysis, you notice large discrepancies in candidate spending depending on the region / campaign."],
   ['text', "You assume that the variance can be explained by the differences in populations between regions."],
   ['text', "To test your intuition, you decide to normalize the campaign data by population size."],
-  ['text', "After some Googling, you end up with you the following US Census population data (2010)"],
+  ['text', "After some Googling, you end up with you the following US Census population data (2010)."],
   ['link-fail', "link to the data."],
-  ['text', "Equipped with this additional data, you begin your analysis"],
+  ['text', "Equipped with this additional data, you begin your analysis."],
 ]
 
 normalization_content_two = [
-  ['text', "Write the code that accomplishes the following:"],
+  ['text-success', "Write the code that analyzes the following:"],
   ['text', " - Campaign dollar spent per State"],
   ['text', " - Campaign dollar"],
   ['text', " - Any other anomaly that you want to investigate"],
@@ -270,7 +272,7 @@ normalization_content_two = [
 
 normalization_content_three = [
  ['text-success', "Explain what you did to complete your analysis."],
- ['text', "Be sure to include the reasoning behind your approach and any conclusions drew."],
+ ['text', "Be sure to include the reasoning behind your approach and any conclusion you drew."],
  ['user_response', ""],
  ['next_steps', ""],
 ]
@@ -323,11 +325,12 @@ normalization_response_submission_context = SubmissionContext.create!(
 ################################################################################
 
 conclusion_content = [
-  ['text', "Great!"],
-  ['text', "You've finished analyzing the candidate disbursement Data"],
+  ['text-success', "Great!"],
+  ['text', "You've finished analyzing the Candidate Disbursement Data."],
   ['text', "Hopefully you now have a better sense of how the 2014 candidate disbursement happened."],
-  ['text', "Write any conclusion you drew from the previous steps. You're free to leave it blank, if you were unable to draw any conclusive result."],
+  ['text-info', "Write any conclusion you drew from the project."],
   ['user_response',""],
+  ['text-warning', "You're free to leave it blank (by writing NA), if you were unable to draw any conclusive result."],
   ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
 
