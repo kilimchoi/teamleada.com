@@ -1,7 +1,7 @@
 main_page_content = [
-  ['text', "In this data lesson we will analyze candidate discbursement data."],
+  ['text', "In this data challenge we will analyze candidate disbursement data."],
   ['text', "We'll be analyzing various spending record from election candidates."],
-  ['text', "Will we uncover some dark politcal secrets?"],
+  ['text-danger', "Will we uncover some dark politcal secret?"],
   ['text', "Or will we simply face the same expected government spending?"],
   ['text-success', "Only one way to find out!"],
 ]
@@ -29,7 +29,7 @@ puts "============ Created project: #{project.title}."
 intro_content_zero = [
   ['text-success', "You've been hired by an organization to analyze government data."],
   ['text', "Your first task is to analyze the election candidate discbursement data."],
-  ['text', "We'll get a little bit more details about the data here."],
+  ['text', "We'll get a little more details about the data here."],
   ['lesson_links', ""],
 ]
 
@@ -49,9 +49,9 @@ intro_slide = Slide.create!(
 data_context_content_zero = [
   ['text-success', "The data is here:"],
   ['link', "ftp://ftp.fec.gov/FEC/data.fec.gov/candidate_disbursement2014/all_house_senate.csv"],
-  ['text', "The data results from a federal law that requires candidate to record the following spendings:"],
-  ['text', "- All specific disbursements that are contributions to other federal candidates or parties or other committees as well as all loan repayments."],
-  ['text', "- Other spending of over $200/election-cycle to be reported"],
+  ['text-warning', "The data results from a federal law that requires political candidates to record the following spendings:"],
+  ['text', "-   All specific disbursements that are contributions to other federal candidates or parties or other committees as well as all loan repayments."],
+  ['text', "-   Other spending of over $200/election-cycle to be reported"],
   ['text', "Now that we know how the data is collected/reported, let's learn about its meta data."],
   # ['text', "More info here:"],
   # ['link', "http://www.fec.gov/finance/disclosure/metadata/CandidateDisbursements.shtml"],
