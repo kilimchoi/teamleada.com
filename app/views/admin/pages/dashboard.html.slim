@@ -105,6 +105,6 @@
             - @new_code_submissions.each do |code_submission|
               tr
                 td = link_to code_submission.user.name, admin_user_path(code_submission.user)
-                td = link_to "View", code_submission_admin_user_path(code_submission.user, code_submission.project, code_submission)
+                td = link_to "View", admin_user_project_code_submission_path(code_submission.user, code_submission.project, code_submission)
                 td = code_submission.created_at.strftime("%m/%d %H:%M:%S")
 
