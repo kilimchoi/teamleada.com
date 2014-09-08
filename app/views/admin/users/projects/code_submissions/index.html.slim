@@ -20,8 +20,8 @@
                 |  has project access.
           - else
             .col-md-6
-              = link_to "Accept and Give Access", grant_access_admin_user_path(@user, @project), class: "flat-button full-width"
+              = link_to "Accept and Give Access", grant_access_admin_user_project_path(@user, @project), class: "flat-button full-width"
             .col-md-6
-              = link_to "Deny and Restrict Access", deny_access_admin_user_path(@user, @project), class: "flat-button full-width"
+              = link_to "Deny and Restrict Access", deny_access_admin_user_project_path(@user, @project), class: "flat-button full-width"
       - else
-        = link_to "Publish Feedback", publish_feedback_admin_user_path(@user, @project), class: "flat-button full-width"
+        = link_to "Publish Feedback", publish_feedback_admin_user_project_path(@user, @project), class: "flat-button full-width"

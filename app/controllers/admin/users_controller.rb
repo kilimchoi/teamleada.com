@@ -12,28 +12,6 @@ class Admin::UsersController < Admin::BaseController
   def show
   end
 
-  def publish_feedback
-    @project = Project.find(params[:project_id])
-    @evaluations = CodeSubmissionEvaluation.where(reviewee: @user, project: @project)
-    @user.publish_evaluations(@project, @evaluations)
-    flash[:info] = "You have published feedback for #{@user.name}."
-    redirect_to code_submissions_admin_user_path(@user, @project)
-  end
-
-  def grant_access
-    @project = Project.find(params[:project_id])
-    @user.grant_project_access(@project)
-    flash[:info] = "Email sent to #{@user.name}"
-    redirect_to code_submissions_admin_user_path(@user, @project)
-  end
-
-  def deny_access
-    @project = Project.find(params[:project_id])
-    @user.deny_project_access(@project)
-    flash[:info] = "Email sent to #{@user.name}"
-    redirect_to code_submissions_admin_user_path(@user, @project)
-  end
-
   private
 
   def sort_column
