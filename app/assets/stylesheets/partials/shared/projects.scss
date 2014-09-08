@@ -17,6 +17,10 @@
   .shared-project-title {
     font-size: 18px;
   }
+
+  .project-new-label {
+    font-size: 12px;
+  }
 }
 
 .cover-photo-small {
@@ -49,6 +53,10 @@
   .shared-project-title {
     font-size: 32px;
   }
+
+  .project-new-label {
+    font-size: 20px;
+  }
 }
 
 .cover-photo-extra-large {
@@ -70,6 +78,17 @@
 // Project cover photo containers
 .shared-project-cover-photo-container {
   position: relative;
+}
+
+.shared-project-cover-photo-container-absolute {
+  .shared-project-cover-photo {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 15px;
+    right: 15px;
+    height: auto;
+  }
 }
 
 .shared-project-cover-photo {
