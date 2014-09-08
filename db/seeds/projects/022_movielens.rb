@@ -78,6 +78,10 @@ data_intro_one = [
   ['link', "http://movielens.umn.edu/"],
   ['text-warning', "The dataset contains the following files."],
   ['code', "ratings.dat"],
+  ['code', "users.dat"],
+  ['code', "movies.dat"],
+  ['code', "README"],
+  ['text-danger', "Special thanks to Dr. Joseph A. Konstan!"],
   ['next_steps', ""],
 ]
 
@@ -91,6 +95,33 @@ data_intro_slide_one = Slide.create!(
   content: data_intro_one,
   slide_id: 0,
   parent: data_intro_step,
+)
+
+################################################################################
+
+goal_intro_one = [
+  ['text', "Your goal is to construct a model that can output movie recommendations for a specific user."],
+  ['text-warning', "You'll be given the following input:"],
+  ['text', "  - User's relevant info"],
+  ['text', "  - Rating history"],
+  ['text-warning', "And expect to get back the following:"],
+  ['text', "  - A list of movies that the user might enjoy"],
+  ['text', "  - Expected user rating for each of the predicted movies"],
+  ['text-success', "Be prepared to explain how you benchmarked/evaluated your model."],
+  ['text', "Let's get started!"],
+  ['next_steps', ""],
+]
+
+goal_intro_step = Step.create!(
+  title: "Project Goal",
+  step_id: 1,
+  lesson: introduction_lesson,
+)
+
+goal_intro_slide_one = Slide.create!(
+  content: goal_intro_one,
+  slide_id: 0,
+  parent: goal_intro_step,
 )
 
 ################################################################################
