@@ -2,12 +2,28 @@
   font-size: 32px;
 }
 
+.shared-project-title {
+  font-weight: 400;
+}
+
+.project-cover-photo-content {
+  z-index: 1;
+}
+
 // Configuration for different sizes
-.cover-photo-small {
+.cover-photo-extra-small {
   height: 100px;
 
   .shared-project-title {
     font-size: 18px;
+  }
+}
+
+.cover-photo-small {
+  height: 150px;
+
+  .shared-project-title {
+    font-size: 20px;
   }
 
   .project-new-label {
