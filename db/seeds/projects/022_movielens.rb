@@ -71,18 +71,18 @@ intro_slide_two = Slide.create!(
 ################################################################################
 
 data_intro_one = [
-  ['text', "The data we're going to use is from the University of Minnesota's GroupLens project"],
+  ['text-info', "The data we're going to use is from the GroupLens project at University of Minnesota."],
   ['text', "Download the data here:"],
   ['link', "http://files.grouplens.org/datasets/movielens/ml-1m.zip"],
-  ['text', "It is taken from the MovieLens user data:"],
-  ['link', "http://movielens.umn.edu/login"],
-  ['text', "The dataset contains the following files."],
-  ['text', "ratings.dat"],
+  ['text-success', "It is taken from the MovieLens user data:"],
+  ['link', "http://movielens.umn.edu/"],
+  ['text-warning', "The dataset contains the following files."],
+  ['code', "ratings.dat"],
   ['next_steps', ""],
 ]
 
 data_intro_step = Step.create!(
-  title: "Data",
+  title: "MovieLens Data",
   step_id: 0,
   lesson: introduction_lesson,
 )
