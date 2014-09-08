@@ -1,0 +1,124 @@
+.project-new-label {
+  font-size: 32px;
+}
+
+.shared-project-title {
+  font-weight: 400;
+}
+
+.project-cover-photo-content {
+  z-index: 1;
+}
+
+// Configuration for different sizes
+.cover-photo-extra-small {
+  height: 100px;
+
+  .shared-project-title {
+    font-size: 18px;
+  }
+
+  .project-new-label {
+    font-size: 12px;
+  }
+}
+
+.cover-photo-small {
+  height: 150px;
+
+  .shared-project-title {
+    font-size: 20px;
+  }
+
+  .project-new-label {
+    font-size: 14px;
+  }
+}
+
+.cover-photo-medium {
+  height: 200px;
+
+  .shared-project-title {
+    font-size: 24px;
+  }
+
+  .project-new-label {
+    font-size: 18px;
+  }
+}
+
+.cover-photo-large {
+  height: 400px;
+
+  .shared-project-title {
+    font-size: 32px;
+  }
+
+  .project-new-label {
+    font-size: 20px;
+  }
+}
+
+.cover-photo-extra-large {
+  height: 600px;
+
+  .shared-project-title {
+    font-size: 56px;
+  }
+}
+
+// Custom wrapper classes
+.story-project-cover-photo-container {
+  .shared-project-title {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+}
+
+// Project cover photo containers
+.shared-project-cover-photo-container {
+  position: relative;
+}
+
+.shared-project-cover-photo-container-absolute {
+  .shared-project-cover-photo {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 15px;
+    right: 15px;
+    height: auto;
+  }
+}
+
+.shared-project-cover-photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.shared-project-show-cover-image {
+  background-size: cover;
+  background-position: center;
+}
+
+.shared-project-show-cover-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.shared-project-show-cover-image-dark:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000000;
+  opacity: 0.4;
+  content: " ";
+}
+

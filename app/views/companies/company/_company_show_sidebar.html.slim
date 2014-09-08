@@ -1,0 +1,37 @@
+// Required Variables:
+// company
+
+.company-show-sidebar
+  .row.card
+    .col-md-12
+      ul
+        li.company-sidebar-link = link_to "About", company_path(company)
+        li.company-sidebar-link = link_to "Perks", perks_company_path(company)
+        li.company-sidebar-link = link_to "Benefits", benefits_company_path(company)
+
+  - if signed_in?
+    .row.card
+      .col-md-12
+        h3.no-margin.title Actions
+        ul.company-actions-list
+          - if current_user.follows_company?(company)
+            li.company-sidebar-link = link_to "Unfollow #{company.name}", unfollow_company_path(company), method: :post
+          - else
+            li.company-sidebar-link = link_to "Follow #{company.name}", follow_company_path(company), method: :post
+
+          - if current_user.has_expressed_interest_in_company?(company)
+            li.company-sidebar-link
+              ' You have expressed interest in
+              = company.name
+              | .
+          - else
+            li.company-sidebar-link = link_to "I'm Interested in #{company.name}!", interest_company_path(company), method: :post
+
+          - if current_user.has_expressed_interest_in_data_challenge_from_company?(company)
+            li.company-sidebar-link
+              ' You have expressed interest in a data challenge hosted by
+              = company.name
+              | .
+          - else
+            li.company-sidebar-link = link_to "I want #{company.name} to host a challenge", data_challenges_interest_company_path(company), method: :post
+

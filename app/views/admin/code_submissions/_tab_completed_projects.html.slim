@@ -5,6 +5,7 @@ table.table.table-striped
   th Project
   th Completed On
   th Submission Graded?
+  th Has Access?
   - @project_statuses.each do |project_status|
     tr
       td = link_to "View", code_submissions_admin_user_path(project_status.user, project_status.project)
@@ -16,4 +17,8 @@ table.table.table-striped
           span.label.label-success Graded!
         - else
           span.label.label-danger = project_status.feedback_progress
-
+      td
+        - if project_status.user.has_project_access?
+          span.label.label-success Yes
+        - else
+          span.label.label-danger No
