@@ -1,6 +1,11 @@
 = provide(:page_title, @project.title)
 
-= render partial: "projects/project_cover_photo", locals: { project: @project }
+= render partial: "shared/projects/project_cover_photo", locals: { \
+  project: @project,
+  size: "extra-large",
+  clickable: false,
+}
+
 .container.full-container.show-project-container
   .row
     .col-md-12
