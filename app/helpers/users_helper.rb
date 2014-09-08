@@ -1,5 +1,6 @@
 module UsersHelper
 
+  # TODO: Turn the linked in authentication into a service object
   def self.update_with_linked_in_params(auth, registered_user)
     (auth.info.first_name rescue nil).nil? ? nil : registered_user.update(first_name: auth.info.first_name)
     (auth.info.last_name rescue nil).nil? ? nil : registered_user.update(last_name: auth.info.last_name)

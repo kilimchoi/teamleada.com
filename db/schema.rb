@@ -85,6 +85,34 @@ ActiveRecord::Schema.define(version: 20140906013044) do
     t.string   "company_type"
     t.string   "industry"
     t.string   "ticker"
+    t.string   "headline"
+    t.string   "location"
+    t.date     "founded_date"
+    t.string   "number_of_employees"
+    t.text     "about"
+    t.string   "website"
+    t.text     "looking_for"
+  end
+
+  create_table "company_data_challenge_interests", force: true do |t|
+    t.integer  "company_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "company_employees", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "company_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "company_interests", force: true do |t|
+    t.integer  "company_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "company_projects", force: true do |t|
@@ -646,7 +674,6 @@ ActiveRecord::Schema.define(version: 20140906013044) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.integer  "company_id"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "unconfirmed_email"

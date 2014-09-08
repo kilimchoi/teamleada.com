@@ -91,4 +91,8 @@ $(document).ready(function() {
     $(this).removeClass("fa-star");
     $(this).addClass("fa-star-o");
   });
+
+  $(".js-background-image").css('background-image', function() {
+    return "url(" + $(this).data("image-url") + ")";
+  });
 });

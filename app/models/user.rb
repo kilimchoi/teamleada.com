@@ -20,7 +20,6 @@
 #  confirmation_token         :string(255)
 #  confirmed_at               :datetime
 #  confirmation_sent_at       :datetime
-#  company_id                 :integer
 #  first_name                 :string(255)
 #  last_name                  :string(255)
 #  unconfirmed_email          :string(255)
@@ -44,7 +43,6 @@ class User < ActiveRecord::Base
 
   # TODO: Remove this and put in a helper class
   include Rails.application.routes.url_helpers
-
   include UsersHelper
 
   # Delegate attributes to the user_profile and user_preference
@@ -138,18 +136,28 @@ class User < ActiveRecord::Base
                              source: :friend
 
   # Subscriptions
+  # Things that are subscribed to me
   has_many :subscriptions, as: :subscribable
   has_many :user_subscribers, through: :subscriptions, source: :subscriber, source_type: "User"
   has_many :company_subscribers, through: :subscriptions, source: :subscriber, source_type: "Company"
 
+  # Things I'm subscribed to
+  has_many :subscribed_to, as: :subscriber, class_name: Subscription
+  has_many :users_subscribed_to, through: :subscribed_to, source: :subscribable, source_type: "User"
+  has_many :companies_subscribed_to, through: :subscribed_to, source: :subscribable, source_type: "Company"
+
   # Company specific
+  has_many :company_employees
+  has_many :employer_companies, through: :company_employees, source: :company
   has_many :user_interactions, class_name: UserInteraction,
                                foreign_key: :interactor_id
   has_many :received_interactions, class_name: UserInteraction,
                                    foreign_key: :interactee_id
 
-  belongs_to :company
+  has_many :company_interests
+  has_many :company_data_challenge_interests
 
+  # Scopes
   scope :admins, -> { where(role: "admin") }
   scope :students, -> { where(role: "student") }
   scope :employers, -> { where(role: "employer") + where(role: "recruiter") }
@@ -163,10 +171,12 @@ class User < ActiveRecord::Base
   default_scope -> { order(:created_at) }
   scope :alphabetically, -> { order("name ASC") }
 
+  # TODO(mark): These should not ve necessary with form objects.
   accepts_nested_attributes_for :resumes
   accepts_nested_attributes_for :profile_photos
   accepts_nested_attributes_for :project_submissions
 
+  # Validations
   validates_format_of :username, :with => /\A[A-Za-z0-9_]*\z/
   validates :username, uniqueness: {case_sensitive: false}
   validate :check_username
@@ -176,8 +186,10 @@ class User < ActiveRecord::Base
 
   before_save :set_name
 
+  # Pagination
   self.per_page = 50
 
+  # Search
   include PgSearch
   pg_search_scope :search,
                   against: [[:first_name, 'A'], [:last_name, 'A'], [:email, 'A'], [:username, 'A']],
@@ -430,7 +442,7 @@ class User < ActiveRecord::Base
   end
 
   def owns_project?(project)
-    return false if !self.is_company? || self.company.nil?
+    return false if !self.is_company?
     self.company.projects.include? project
   end
 
@@ -671,10 +683,27 @@ class User < ActiveRecord::Base
   #
   # Company Properties
   #
-  def current_company
-    # TODO(mark): We want to allow company employees to be part of more than one company (so we don't lose
-    # what they did at one company when they move to another).
-    self.company
+  def company
+    # TODO(mark): We want to allow an employee to select their current company (as opposed to just choosing the last)
+    employer_companies.last
+  end
+
+  def company=(company)
+    unless CompanyEmployee.exists?(user: self, company: company)
+      CompanyEmployee.create(user: self, company: company)
+    end
+  end
+
+  def follows_company?(company)
+    companies_subscribed_to.find_by(id: company.id)
+  end
+
+  def has_expressed_interest_in_company?(company)
+    company_interests.find_by(company: company)
+  end
+
+  def has_expressed_interest_in_data_challenge_from_company?(company)
+    company_data_challenge_interests.find_by(company: company)
   end
 
   def user_interaction_or_nil(other_user)

@@ -1,0 +1,10 @@
+.container-fluid.full-container
+  .row
+    .col-md-12
+      h1
+        ' All Companies
+      table.table.table-striped
+        th Name
+        - @companies.each do |company|
+          tr
+            td = link_to company.name, company_path(company)
