@@ -17,22 +17,20 @@ class Admin::Users::Projects::CodeSubmissionsController < Admin::Users::Projects
     @code_submission_evaluation.project = @code_submission.project
     if @code_submission_evaluation.save
       flash[:info] = "Your evalaution was saved."
-      redirect_to admin_user_project_code_submissions_path(@code_submission.user, @code_submission.project)
     else
       flash[:error] = "There was an error creating your evaluation."
-      redirect_to admin_user_project_code_submissions_path(@code_submission.user, @code_submission.project)
     end
+    redirect_to admin_user_project_code_submissions_path(@code_submission.user, @code_submission.project)
   end
 
   def update_evaluation
     @code_submission_evaluation = CodeSubmissionEvaluation.find_by(reviewer: current_user, code_submission: @code_submission)
     if @code_submission_evaluation.update_attributes(evaluation_params)
       flash[:info] = "Your evaluation was updated."
-      redirect_to admin_user_project_code_submissions_path(@code_submission.user, @code_submission.project)
     else
       flash[:error] = "There was an error updating your evaluation."
-      redirect_to admin_user_project_code_submissions_path(@code_submission.user, @code_submission.project)
     end
+    redirect_to admin_user_project_code_submissions_path(@code_submission.user, @code_submission.project)
   end
 
   private
