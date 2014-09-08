@@ -8,12 +8,18 @@
 
 .cover-photo-medium {
   height: 200px;
-  font-size: 24px;
+
+  .shared-project-title {
+    font-size: 24px;
+  }
 }
 
 .cover-photo-large {
   height: 400px;
-  font-size: 32px;
+
+  .shared-project-title {
+    font-size: 32px;
+  }
 }
 
 .cover-photo-extra-large {
