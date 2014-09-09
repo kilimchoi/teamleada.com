@@ -16,6 +16,5 @@ class ProjectSubmission < ActiveRecord::Base
   belongs_to :user
   belongs_to :project
   belongs_to :slide
-
-  has_one :content, polymorphic: true
+  belongs_to :content, polymorphic: true
 end
