@@ -10,3 +10,9 @@
 #  updated_at            :datetime
 #
 
+class FreeResponseSubmissionContent < ActiveRecord::Base
+  belongs_to :user
+  belongs_to :project_submission
+
+  delegate :project, to: :project_submission, allow_nil: true
+end
