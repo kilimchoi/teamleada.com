@@ -17,4 +17,6 @@ class ProjectSubmission < ActiveRecord::Base
   belongs_to :project
   belongs_to :slide
   belongs_to :content, polymorphic: true
+
+  # submission context?
 end
