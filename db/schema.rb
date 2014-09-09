@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140906013044) do
+ActiveRecord::Schema.define(version: 20140909184551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -177,6 +177,19 @@ ActiveRecord::Schema.define(version: 20140906013044) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+  end
+
+  create_table "file_submission_contents", force: true do |t|
+    t.integer  "project_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "upload_file"
+    t.boolean  "required",               default: true
+    t.string   "original_filename"
+    t.string   "upload_file_tmp"
+    t.boolean  "upload_file_processing", default: false
+    t.string   "type"
   end
 
   create_table "friendships", force: true do |t|
@@ -363,18 +376,6 @@ ActiveRecord::Schema.define(version: 20140906013044) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "start_date"
-  end
-
-  create_table "project_submissions", force: true do |t|
-    t.integer  "project_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "upload_file"
-    t.boolean  "required",               default: true
-    t.string   "original_filename"
-    t.string   "upload_file_tmp"
-    t.boolean  "upload_file_processing", default: false
   end
 
   create_table "projects", id: false, force: true do |t|
