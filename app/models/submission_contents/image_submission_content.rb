@@ -1,0 +1,3 @@
+class ImageSubmissionContent < FileSubmissionContent
+
+end
