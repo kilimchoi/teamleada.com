@@ -76,11 +76,13 @@ class User < ActiveRecord::Base
   has_many :stories, as: :subject
 
   # Submissions
-  has_many :submissions
+  has_many :project_scores
+  has_many :project_submissions
+
+  # TODO(mark): Refactor these into the new classes
   has_many :code_submissions
   has_many :code_submission_evaluations, foreign_key: :reviewee_id
   has_many :quiz_submissions
-  has_many :project_submissions
 
   # Project completion
   has_many :step_statuses
