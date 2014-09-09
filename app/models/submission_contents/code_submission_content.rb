@@ -18,7 +18,7 @@ class CodeSubmissionContent < ActiveRecord::Base
 
   belongs_to :parent, polymorphic: true, primary_key: :uid
   belongs_to :user
-  belongs_to :project
+  belongs_to :project_submission
 
   has_many :code_submission_evaluations
 
