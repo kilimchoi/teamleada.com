@@ -17,7 +17,7 @@
 
 class FileSubmissionContent < ActiveRecord::Base
   include ::CarrierWave::Backgrounder::Delay
-  mount_uploader :upload_file, ProjectSubmissionUploader
+  mount_uploader :upload_file, ProjectFileSubmissionUploader
   process_in_background :upload_file
   skip_callback :save, :after, :remove_previously_stored_upload_file
 

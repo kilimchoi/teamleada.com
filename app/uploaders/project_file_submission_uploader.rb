@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class ProjectSubmissionUploader < CarrierWave::Uploader::Base
+class ProjectSubmissionFileUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
 
   before :cache, :save_original_filename
