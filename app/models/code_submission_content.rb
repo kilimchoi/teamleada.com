@@ -13,7 +13,7 @@
 #  slide_index :integer
 #
 
-class CodeSubmission < ActiveRecord::Base
+class CodeSubmissionContent < ActiveRecord::Base
   include ActionView::Helpers::JavaScriptHelper
 
   belongs_to :parent, polymorphic: true, primary_key: :uid
