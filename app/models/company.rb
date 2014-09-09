@@ -18,6 +18,7 @@
 #  number_of_employees :string(255)
 #  about               :text
 #  website             :string(255)
+#  looking_for         :text
 #
 
 class Company < ActiveRecord::Base
