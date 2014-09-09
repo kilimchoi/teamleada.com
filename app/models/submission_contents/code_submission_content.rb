@@ -28,6 +28,11 @@ class CodeSubmissionContent < ActiveRecord::Base
 
   ADMIN_TABS = ["completed_projects", "all_code_submissions", "by_project"]
 
+  # TODO(mark): Remove once deploys are finished
+  def project_from_parent
+    parent.project
+  end
+
   def slide
     parent.slides[slide_index]
   end
