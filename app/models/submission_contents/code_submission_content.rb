@@ -22,6 +22,8 @@ class CodeSubmissionContent < ActiveRecord::Base
 
   has_many :code_submission_evaluations
 
+  delegate :project, to: :project_submission, allow_nil: true
+
   default_scope { order(:created_at) }
 
   ADMIN_TABS = ["completed_projects", "all_code_submissions", "by_project"]
