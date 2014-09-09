@@ -1,0 +1,2 @@
+class CSVSubmissionContent < FileSubmissionContent
+end

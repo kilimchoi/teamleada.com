@@ -1,0 +1,2 @@
+class PDFSubmissionContent < FileSubmissionContent
+end
