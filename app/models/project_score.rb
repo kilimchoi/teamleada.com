@@ -10,7 +10,7 @@
 #  updated_at :datetime
 #
 
-class Submission < ActiveRecord::Base
+class ProjectScore < ActiveRecord::Base
   belongs_to :user
   belongs_to :project
 
