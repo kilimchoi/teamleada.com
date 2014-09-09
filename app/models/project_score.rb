@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: submissions
+# Table name: project_scores
 #
 #  id         :integer          not null, primary key
 #  user_id    :integer
