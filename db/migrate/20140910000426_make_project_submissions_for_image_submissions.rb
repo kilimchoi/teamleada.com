@@ -3,11 +3,11 @@ class MakeProjectSubmissionsForImageSubmissions < ActiveRecord::Migration
     add_column :file_submission_contents, :project_submission_id, :integer
 
     ImageSubmissionContent.all.each do |image_submission|
-      slide = image_submission.project_id == 15 ? Slide.find("p15_l2_sl1") : nil
+      slide_id = image_submission.project_id == 15 ? Slide.find("p15_l2_sl1").id : nil
       submission = ProjectSubmission.create(
-        user: image_submission.user,
-        project: image_submission.project,
-        slide: slide,
+        user_id: image_submission.user_id,
+        project_id: image_submission.project_id,
+        slide_id: slide_id,
         content: image_submission,
       )
       image_submission.project_submission = submission
