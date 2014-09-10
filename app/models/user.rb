@@ -618,6 +618,10 @@ class User < ActiveRecord::Base
     code_submissions.where(project: project)
   end
 
+  def file_submissions
+    image_submissions + pdf_submissions + csv_submissions
+  end
+
   def first_missing_code_submission(project)
     project.submission_contexts.each do |submission_context|
       unless self.has_completed_submission? submission_context
