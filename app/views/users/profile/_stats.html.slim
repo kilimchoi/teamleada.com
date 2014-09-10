@@ -1,0 +1,51 @@
+// Required Variables:
+// user
+
+.row.card
+  .col-md-12
+    .row
+      .col-md-12
+        h3.title Stats at a Glance
+
+    .row
+      .col-md-12
+        .profile-stat-container
+          .profile-stat-title
+            h3 Started Projects
+          .profile-stat-value
+            = user.started_projects.count
+
+        .profile-stat-container
+          .profile-stat-title
+            h3 Completed Projects
+          .profile-stat-value
+            = user.completed_projects.count
+
+        .profile-stat-container
+          .profile-stat-title
+            h3 Started Challenges
+          .profile-stat-value
+            = user.started_challenges.count
+
+        .profile-stat-container
+          .profile-stat-title
+            h3 Completed Challenges
+          .profile-stat-value
+            = user.completed_challenges.count
+
+        .profile-stat-container
+          .profile-stat-title
+            h3 Project Submissions
+
+        .profile-stat-container
+          .profile-stat-title
+            h3 Code Submissions
+
+        .profile-stat-container
+          .profile-stat-title
+            h3 Free Response Submissions
+
+        .profile-stat-container
+          .profile-stat-title
+            h3 File Submissions
+
