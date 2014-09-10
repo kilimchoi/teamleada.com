@@ -110,7 +110,7 @@ class ProjectsController < ApplicationController
       parent_id: params[:parent_id],
       slide_id: params[:slide_id],
     )
-    @submission = CodeSubmissionContent.create_with_user_project_slide_content(current_user, @project, @slide, params[:content])
+    @submission = CodeSubmissionContent.create_or_update_with_user_project_slide_content(current_user, @project, @slide, params[:content])
     if @submission.save
       respond_to do |format|
         format.json { render json: {}, status: :ok }
@@ -123,7 +123,12 @@ class ProjectsController < ApplicationController
   end
 
   def resource
-    @submission = CodeSubmission.find_by(user: current_user, project: @project, parent_type: params[:parent_type], parent_id: params[:parent_id], slide_index: params[:slide_index])
+    @slide = Slide.find_by(
+      parent_type: params[:parent_type],
+      parent_id: params[:parent_id],
+      slide_id: params[:slide_id],
+    )
+    @submission = ProjectSubmission.find_by_user_project_slide(current_user, @project, @slide)
     if @submission
       respond_to do |format|
         format.json { render json: {content: @submission.content}, status: :ok }
