@@ -16,26 +16,14 @@
 class CodeSubmissionContent < ActiveRecord::Base
   include ActionView::Helpers::JavaScriptHelper
 
-  belongs_to :parent, polymorphic: true, primary_key: :uid
-  belongs_to :user
   belongs_to :project_submission
 
-  has_many :code_submission_evaluations
-
+  delegate :user,    to: :project_submission, allow_nil: true
   delegate :project, to: :project_submission, allow_nil: true
 
   default_scope { order(:created_at) }
 
   ADMIN_TABS = ["completed_projects", "all_code_submissions", "by_project"]
-
-  # TODO(mark): Remove once deploys are finished
-  def project_from_parent
-    parent.project
-  end
-
-  def slide
-    parent.slides[slide_index]
-  end
 
   def uid
     "#{parent_id}_cs#{slide_index}"
