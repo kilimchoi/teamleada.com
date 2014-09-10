@@ -17,7 +17,7 @@
 #  visible            :boolean          default(FALSE)
 #
 
-class CodeSubmissionEvaluation < ActiveRecord::Base
+class CodeSubmissionEvaluationContent < ActiveRecord::Base
   belongs_to :code_submission
   belongs_to :reviewer, class_name: User
   belongs_to :reviewee, class_name: User

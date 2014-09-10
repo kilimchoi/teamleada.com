@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140910004207) do
+ActiveRecord::Schema.define(version: 20140910010041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,18 +52,12 @@ ActiveRecord::Schema.define(version: 20140910004207) do
   end
 
   create_table "code_submission_evaluation_contents", force: true do |t|
-    t.integer  "reviewer_id"
-    t.integer  "reviewee_id"
-    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "code_submission_id"
-    t.integer  "project_id"
     t.integer  "computer_science"
     t.integer  "statistics"
     t.integer  "curiosity"
     t.integer  "communication"
-    t.boolean  "visible",            default: false
   end
 
   create_table "codes", force: true do |t|
@@ -574,7 +568,7 @@ ActiveRecord::Schema.define(version: 20140910004207) do
     t.integer  "reviewer_id"
     t.integer  "reviewee_id"
     t.integer  "project_id"
-    t.integer  "project_submission_id_id"
+    t.integer  "project_submission_id"
     t.text     "body"
     t.boolean  "visible"
     t.integer  "content_id"
