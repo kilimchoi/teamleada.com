@@ -204,6 +204,17 @@ class Project < ActiveRecord::Base
   end
 
   # Submissions
+  def has_image_submissions?
+  end
+
+  def has_code_submissions?
+    submission_contexts.where(submission_type: SubmissionContext::CODE).count > 0
+  end
+
+  def has_free_response_submissions?
+    submission_contexts.where(submission_type: SubmissionContext::RESPONSE).count > 0
+  end
+
   def check_submission(file)
     # Method to check the submission that the user uploaded
     solution_file = File.expand_path("#{Rails.root}/db/project_solutions/#{"%03d" % self.number}-#{self.url}.csv", __FILE__)
