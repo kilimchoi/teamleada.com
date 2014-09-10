@@ -11,9 +11,6 @@
 #  updated_at       :datetime
 #
 
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
-FactoryGirl.define do
-  factory :free_response_submission_evaluation_content do
-  end
+class FreeResponseSubmissionEvaluationContent < ActiveRecord::Base
+  has_one :submission_evaluation, as: :content
 end
