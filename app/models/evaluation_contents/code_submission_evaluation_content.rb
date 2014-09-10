@@ -23,6 +23,8 @@ class CodeSubmissionEvaluationContent < ActiveRecord::Base
   belongs_to :reviewee, class_name: User
   belongs_to :project
 
+  has_one :submission_evaluation, as: :content
+
   validates :description, presence: true
 
   scope :published, -> { where(visible: true) }
