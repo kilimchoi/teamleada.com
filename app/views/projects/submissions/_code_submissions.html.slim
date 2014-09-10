@@ -4,3 +4,7 @@
 .row.card
   .col-md-12
     h3 Code Submissions
+
+    .row
+      .col-md-12
+        = render partial: "projects/submission_contexts", locals: { submission_contexts: @project.code_submission_contexts }

@@ -4,3 +4,7 @@
 .row.card
   .col-md-12
     h3 Free Response Submissions
+
+    .row
+      .col-md-12
+        = render partial: "projects/submission_contexts", locals: { submission_contexts: @project.free_response_submission_contexts }
