@@ -13,7 +13,7 @@ $(document).ready(function() {
     $("#code-submit-button").click();
   }
 
-  openSidebar = function(url, objectClass, objectId) {
+  openSidebar = function(url, objectClass, objectId, isCodeSubmission) {
     $("#right-sidebar").animate({width: 800});
     $("#code-submit-button").show();
     $("#close-code-button").show();
@@ -26,7 +26,7 @@ $(document).ready(function() {
 
     editor.on("change", function(event) {
       saveButtonStartProgress();
-      saveSubmission(url, objectClass, objectId, Reveal.getIndices().h, editor.getValue());
+      saveSubmission(url, objectClass, objectId, Reveal.getIndices().h, editor.getValue(), isCodeSubmission);
     });
   }
 
@@ -54,13 +54,14 @@ $(document).ready(function() {
     return false;
   }
 
-  saveSubmission = function(url, objectClass, objectId, slideIndex, text) {
+  saveSubmission = function(url, objectClass, objectId, slideIndex, text, isCodeSubmission) {
     Pace.restart();
     var data = JSON.stringify({
       parent_id: objectId,
       parent_type: objectClass,
       content: text,
-      slide_id: slideIndex
+      slide_id: slideIndex,
+      is_code_submission: isCodeSubmission
     });
 
     $.ajax({
