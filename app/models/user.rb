@@ -78,10 +78,12 @@ class User < ActiveRecord::Base
   # Submissions
   has_many :project_scores
   has_many :project_submissions
+  has_many :submission_evaluations
 
-  # TODO(mark): Refactor these into the new classes
-  has_many :code_submissions
-  has_many :code_submission_evaluations, foreign_key: :reviewee_id
+  # Types of Project Submissions
+  has_many :code_submissions, -> { where(content_type: "CodeSubmissionContent") }, class_name: "ProjectSubmission"
+
+  # TODO(mark): refactor this
   has_many :quiz_submissions
 
   # Project completion
