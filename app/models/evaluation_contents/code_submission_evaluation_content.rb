@@ -12,19 +12,5 @@
 #
 
 class CodeSubmissionEvaluationContent < ActiveRecord::Base
-  belongs_to :code_submission
-  belongs_to :reviewer, class_name: User
-  belongs_to :reviewee, class_name: User
-  belongs_to :project
-
   has_one :submission_evaluation, as: :content
-
-  validates :description, presence: true
-
-  scope :published, -> { where(visible: true) }
-
-  def pretty_created_at
-    created_at.strftime("%B %d, %Y")
-  end
-
 end

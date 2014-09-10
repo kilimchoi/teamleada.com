@@ -21,9 +21,9 @@ class FileSubmissionContent < ActiveRecord::Base
   process_in_background :upload_file
   skip_callback :save, :after, :remove_previously_stored_upload_file
 
-  belongs_to :user
   belongs_to :project_submission
 
+  delegate :user,    to: :project_submission, allow_nil: true
   delegate :project, to: :project_submission, allow_nil: true
 
   default_scope { order(:created_at) }
