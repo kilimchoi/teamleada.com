@@ -3,7 +3,6 @@
 # Table name: file_submission_contents
 #
 #  id                     :integer          not null, primary key
-#  user_id                :integer
 #  created_at             :datetime
 #  updated_at             :datetime
 #  upload_file            :string(255)
