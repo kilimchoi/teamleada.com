@@ -42,7 +42,11 @@ class Project < ActiveRecord::Base
   has_many :transactions, as: :item
   has_many :interested_users, class_name: ProjectInterest
 
+  # Submission Contexts
   has_many :submission_contexts
+  has_many :code_submission_contexts, -> { where(submission_type: SubmissionContext::CODE) }, class_name: "SubmissionContext"
+  has_many :free_response_submission_contexts, -> { where(submission_type: SubmissionContext::RESPONSE) }, class_name: "SubmissionContext"
+
   has_many :code_submissions
   has_many :code_submission_evaluations
 
