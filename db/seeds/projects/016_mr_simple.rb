@@ -22,7 +22,7 @@ project = Project.create!(
   difficulty: 'Expert',
   category: Project::CHALLENGE,
   is_new: true,
-  cover_photo: 'Graph',
+  cover_photo: 'graph',
   deadline: 2.weeks,
 )
 
