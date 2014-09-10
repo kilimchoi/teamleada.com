@@ -3,7 +3,6 @@
 # Table name: file_submission_contents
 #
 #  id                     :integer          not null, primary key
-#  project_id             :integer
 #  user_id                :integer
 #  created_at             :datetime
 #  updated_at             :datetime
@@ -13,6 +12,7 @@
 #  upload_file_tmp        :string(255)
 #  upload_file_processing :boolean          default(FALSE)
 #  type                   :string(255)
+#  project_submission_id  :integer
 #
 
 class FileSubmissionContent < ActiveRecord::Base
@@ -24,7 +24,7 @@ class FileSubmissionContent < ActiveRecord::Base
   belongs_to :user
   belongs_to :project_submission
 
-  delegate :project, :project_submission, allow_nil: true
+  delegate :project, to: :project_submission, allow_nil: true
 
   default_scope { order(:created_at) }
 
