@@ -395,7 +395,7 @@ ActiveRecord::Schema.define(version: 20140910013039) do
   create_table "project_submissions", force: true do |t|
     t.integer  "user_id"
     t.integer  "project_id"
-    t.integer  "slide_id"
+    t.string   "slide_id"
     t.integer  "content_id"
     t.string   "content_type"
     t.datetime "created_at"
@@ -403,7 +403,6 @@ ActiveRecord::Schema.define(version: 20140910013039) do
   end
 
   add_index "project_submissions", ["project_id"], name: "index_project_submissions_on_project_id", using: :btree
-  add_index "project_submissions", ["slide_id"], name: "index_project_submissions_on_slide_id", using: :btree
   add_index "project_submissions", ["user_id"], name: "index_project_submissions_on_user_id", using: :btree
 
   create_table "projects", id: false, force: true do |t|

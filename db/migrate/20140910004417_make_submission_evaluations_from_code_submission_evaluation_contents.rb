@@ -3,7 +3,7 @@ class MakeSubmissionEvaluationsFromCodeSubmissionEvaluationContents < ActiveReco
     rename_column :submission_evaluations, :project_submission_id_id, :project_submission_id
     add_column :code_submission_evaluation_contents, :submission_evaluation_id, :integer
 
-    free_response_id = 1
+    free_response_id = FreeResponseSubmissionContent.count > 0 ? FreeResponseSubmissionContent.first.id : 1
     CodeSubmissionEvaluationContent.all.each do |code_evaluation|
       id = code_evaluation.code_submission_id
       if CodeSubmissionContent.exists?(id)
