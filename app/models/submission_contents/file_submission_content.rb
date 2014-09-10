@@ -11,7 +11,6 @@
 #  upload_file_tmp        :string(255)
 #  upload_file_processing :boolean          default(FALSE)
 #  type                   :string(255)
-#  project_submission_id  :integer
 #
 
 class FileSubmissionContent < ActiveRecord::Base

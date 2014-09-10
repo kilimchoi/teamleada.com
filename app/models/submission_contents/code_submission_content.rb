@@ -2,11 +2,10 @@
 #
 # Table name: code_submission_contents
 #
-#  id                    :integer          not null, primary key
-#  content               :text
-#  project_submission_id :integer
-#  created_at            :datetime
-#  updated_at            :datetime
+#  id         :integer          not null, primary key
+#  content    :text
+#  created_at :datetime
+#  updated_at :datetime
 #
 
 class CodeSubmissionContent < ActiveRecord::Base

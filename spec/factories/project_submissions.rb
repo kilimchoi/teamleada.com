@@ -5,7 +5,7 @@
 #  id           :integer          not null, primary key
 #  user_id      :integer
 #  project_id   :integer
-#  slide_id     :integer
+#  slide_id     :string(255)
 #  content_id   :integer
 #  content_type :string(255)
 #  created_at   :datetime
