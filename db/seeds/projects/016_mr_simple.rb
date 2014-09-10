@@ -1,6 +1,6 @@
 main_page_content = [
-  ['text', "In this challenge, you will design and build a MapReduce algorithm to traverse graph data."],
-  ['text', "Graphs are a powerful data structure that are used in the following cases:"],
+  ['text-info', "In this challenge, you will design and build a MapReduce algorithm to traverse graph data."],
+  ['text-warning', "Graphs are a powerful data structure that are used in the following cases:"],
   ['text', "Social Data"],
   ['text', "Road Networks"],
   ['text', "Biological Networks"],
