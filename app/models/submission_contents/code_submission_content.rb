@@ -30,12 +30,15 @@ class CodeSubmissionContent < ActiveRecord::Base
     end
 
     def create_with_user_project_slide_content(user, project, slide, content)
-      project_submission = ProjectSubmission.create_with_user_project_slide(user, project, slide)
-      CodeSubmissionContent.create(project_submission: project_submission, content: content)
+      content = CodeSubmissionContent.create(content: content)
+      project_submission = ProjectSubmission.create_with_user_project_slide_content(user, project, slide, content)
+      content
     end
 
     def update_with_user_project_slide_content(user, project, slide, content)
-
+      project_submission = ProjectSubmission.find_by(user: user, project: project, slide: slide)
+      content = project_submission.content
+      content.update(content: content)
     end
   end
 

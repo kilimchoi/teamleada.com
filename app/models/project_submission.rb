@@ -24,5 +24,9 @@ class ProjectSubmission < ActiveRecord::Base
     def exists_for_user_project_slide?(user, project, slide)
       ProjectSubmission.exists?(user: user, project: project, slide: slide)
     end
+
+    def create_with_user_project_slide_content(user, project, slide, content)
+      ProjectSubmission.create(user: user, project: project, slide: slide, content: content)
+    end
   end
 end

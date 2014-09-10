@@ -105,7 +105,11 @@ class ProjectsController < ApplicationController
   end
 
   def submit_resource
-    @slide = Slide.find_by()
+    @slide = Slide.find_by(
+      parent_type: params[:parent_type],
+      parent_id: params[:parent_id],
+      slide_id: params[:slide_id],
+    )
     @submission = CodeSubmissionContent.create_with_user_project_slide_content(current_user, @project, @slide, params[:content])
     if @submission.save
       respond_to do |format|
