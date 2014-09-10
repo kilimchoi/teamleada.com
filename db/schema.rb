@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140902060757) do
+ActiveRecord::Schema.define(version: 20140906013044) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,34 @@ ActiveRecord::Schema.define(version: 20140902060757) do
     t.string   "company_type"
     t.string   "industry"
     t.string   "ticker"
+    t.string   "headline"
+    t.string   "location"
+    t.date     "founded_date"
+    t.string   "number_of_employees"
+    t.text     "about"
+    t.string   "website"
+    t.text     "looking_for"
+  end
+
+  create_table "company_data_challenge_interests", force: true do |t|
+    t.integer  "company_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "company_employees", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "company_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "company_interests", force: true do |t|
+    t.integer  "company_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "company_projects", force: true do |t|
@@ -359,7 +387,6 @@ ActiveRecord::Schema.define(version: 20140902060757) do
     t.integer  "number"
     t.boolean  "has_leaderboard",       default: false
     t.text     "short_description"
-    t.boolean  "has_submit",            default: false
     t.integer  "cost"
     t.boolean  "paid",                  default: false
     t.integer  "uid",                                   null: false
@@ -371,6 +398,8 @@ ActiveRecord::Schema.define(version: 20140902060757) do
     t.boolean  "featured",              default: false
     t.boolean  "grants_project_access", default: false
     t.string   "cover_photo"
+    t.boolean  "has_content_submit",    default: false
+    t.boolean  "has_written_submit",    default: false
   end
 
   create_table "publications", force: true do |t|
@@ -645,7 +674,6 @@ ActiveRecord::Schema.define(version: 20140902060757) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.integer  "company_id"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "unconfirmed_email"
