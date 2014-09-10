@@ -10,8 +10,7 @@
 #
 
 class FreeResponseSubmissionContent < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :project_submission
+  has_one :project_submission, as: :content
 
   delegate :project, to: :project_submission, allow_nil: true
 end

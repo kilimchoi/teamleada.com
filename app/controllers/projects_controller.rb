@@ -3,6 +3,8 @@ class ProjectsController < ApplicationController
   load_and_authorize_resource except: [:show_interest, :project_info]
   load_resource only: [:show_interest, :project_info]
 
+  before_filter :set_slide, only: [:resource, :submit_resource]
+
   def show
     @project_status = ProjectStatus.where(user: current_user, project: @project).first_or_create
     @project_status.save
@@ -105,11 +107,6 @@ class ProjectsController < ApplicationController
   end
 
   def submit_resource
-    @slide = Slide.find_by(
-      parent_type: params[:parent_type],
-      parent_id: params[:parent_id],
-      slide_id: params[:slide_id],
-    )
     @submission = CodeSubmissionContent.create_or_update_with_user_project_slide_content(current_user, @project, @slide, params[:content])
     if @submission.save
       respond_to do |format|
@@ -123,11 +120,6 @@ class ProjectsController < ApplicationController
   end
 
   def resource
-    @slide = Slide.find_by(
-      parent_type: params[:parent_type],
-      parent_id: params[:parent_id],
-      slide_id: params[:slide_id],
-    )
     @submission = ProjectSubmission.find_by_user_project_slide(current_user, @project, @slide)
     if @submission
       respond_to do |format|
@@ -138,6 +130,16 @@ class ProjectsController < ApplicationController
         format.json { render json: {content: ""}, status: :ok}
       end
     end
+  end
+
+  private
+
+  def set_slide
+    @slide = Slide.find_by(
+      parent_type: params[:parent_type],
+      parent_id: params[:parent_id],
+      slide_id: params[:slide_id],
+    )
   end
 
 end
