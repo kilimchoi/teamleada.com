@@ -12,7 +12,7 @@
 class CodeSubmissionContent < ActiveRecord::Base
   include ActionView::Helpers::JavaScriptHelper
 
-  belongs_to :project_submission
+  has_one :project_submission, as: :content
 
   delegate :user,    to: :project_submission, allow_nil: true
   delegate :project, to: :project_submission, allow_nil: true
@@ -20,6 +20,25 @@ class CodeSubmissionContent < ActiveRecord::Base
   default_scope { order(:created_at) }
 
   ADMIN_TABS = ["completed_projects", "all_code_submissions", "by_project"]
+
+  class << self
+    def create_or_update_with_user_project_slide_content(user, project, slide, content)
+      if ProjectSubmission.exists_for_user_project_slide?(user, project, slide)
+        CodeSubmissionContent.update_with_user_project_slide_content(user, project, slide, content)
+      else
+        CodeSubmissionContent.create_with_user_project_slide_content(user, project, slide, content)
+      end
+    end
+
+    def create_with_user_project_slide_content(user, project, slide, content)
+      project_submission = ProjectSubmission.create_with_user_project_slide(user, project, slide)
+      CodeSubmissionContent.create(project_submission: project_submission, content: content)
+    end
+
+    def update_with_user_project_slide_content(user, project, slide, content)
+
+    end
+  end
 
   def uid
     "#{parent_id}_cs#{slide_index}"

@@ -19,4 +19,10 @@ class ProjectSubmission < ActiveRecord::Base
   belongs_to :content, polymorphic: true
 
   # submission context?
+
+  class << self
+    def exists_for_user_project_slide?(user, project, slide)
+      ProjectSubmission.exists?(user: user, project: project, slide: slide)
+    end
+  end
 end

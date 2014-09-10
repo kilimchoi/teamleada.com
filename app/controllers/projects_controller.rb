@@ -105,8 +105,8 @@ class ProjectsController < ApplicationController
   end
 
   def submit_resource
-    @submission = CodeSubmission.where(user: current_user, project: @project, parent_type: params[:parent_type], parent_id: params[:parent_id], slide_index: params[:slide_index]).first_or_initialize
-    @submission.content = params[:content]
+    @slide = Slide.find_by()
+    @submission = CodeSubmissionContent.create_with_user_project_slide_content(current_user, @project, @slide, params[:content])
     if @submission.save
       respond_to do |format|
         format.json { render json: {}, status: :ok }
