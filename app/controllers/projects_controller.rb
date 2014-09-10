@@ -107,7 +107,11 @@ class ProjectsController < ApplicationController
   end
 
   def submit_resource
-    @submission = CodeSubmissionContent.create_or_update_with_user_project_slide_content(current_user, @project, @slide, params[:content])
+    if params[:is_code_submission]
+      @submission = CodeSubmissionContent.create_or_update_with_user_project_slide_content(current_user, @project, @slide, params[:content])
+    else
+      @submission = FreeResponseSubmissionContent.create_or_update_with_user_project_slide_content(current_user, @project, @slide, params[:content])
+    end
     if @submission.save
       respond_to do |format|
         format.json { render json: {}, status: :ok }

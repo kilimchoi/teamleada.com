@@ -86,8 +86,8 @@ class User < ActiveRecord::Base
   # Evaluations
   has_many :submission_evaluations
 
-  # TODO(mark): refactor this
   has_many :project_scores
+  # TODO(mark): refactor this
   has_many :quiz_submissions
 
   # Project completion

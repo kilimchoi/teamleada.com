@@ -21,6 +21,7 @@ class ProjectSubmission < ActiveRecord::Base
   # submission context?
 
   delegate :content, to: :content_object, allow_nil: true
+  delegate :submission_context, to: :slide, allow_nil: true
 
   class << self
     def exists_for_user_project_slide?(user, project, slide)
