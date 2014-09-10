@@ -1,6 +1,10 @@
 = provide(:page_title, @project.title)
 
-= render partial: "projects/project_cover_photo", locals: { project: @project }
+= render partial: "shared/projects/project_cover_photo", locals: { \
+  project: @project,
+  size: "extra-large",
+  clickable: false,
+}
 .container.full-container.show-project-container
   .row
     .col-md-12
@@ -26,7 +30,7 @@
               .col-md-12
                 h2 Project Guidelines
                 = render partial: "projects/project_content", locals: {project: @project}
-            - if @project.has_submit?
+            - if @project.has_written_submit?
               .row.card
                 .col-md-12
                   h2 Submissions
@@ -35,7 +39,7 @@
             .row.card
               .col-md-12
                 - if @project_status.has_time_remaining?
-                  - if @project.has_submit?
+                  - if @project.has_content_submit?
                     h2 Make a Submission
                     = render partial: "projects/submit"
                   - if @project.has_leaderboard?

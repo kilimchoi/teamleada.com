@@ -1,6 +1,10 @@
 
 - content_for :before_container do
-  = render partial: "projects/project_cover_photo", locals: { project: @project }
+  = render partial: "shared/projects/project_cover_photo", locals: { \
+    project: @project,
+    size: "extra-large",
+    clickable: false,
+  }
 
 .container.full-container.show-project-container
   .row

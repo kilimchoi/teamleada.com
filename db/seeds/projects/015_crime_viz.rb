@@ -13,7 +13,8 @@ project = Project.create!(
   short_description: "Given a set of recent San Francisco crime data, you are tasked with finding some meaningful insights and creating visualization(s) which presents your findings.",
   enabled: true,
   number: 15,
-  has_submit: false,
+  has_content_submit: true,
+  has_written_submit: true,
   uid: 15,
   difficulty: 'Intermediate',
   category: Project::CHALLENGE,
@@ -128,7 +129,7 @@ report_submission_content_one = [
 
 report_submission_content_two = [
   ['text', "Include the visualization(s) you created by submitting here: "],
-  ['text', 'Use the same submit button to submit multiple visualization(s)'],
+  ['text', 'Use the same submit button to submit multiple visualizations. Make sure you submit image files! The file type must be a PNG or JPEG.'],
   ['image_submit', nil],
   ['next_steps', ""],
 ]
