@@ -35,7 +35,7 @@ $(document).ready(function() {
     var data = JSON.stringify({
       parent_id: objectId,
       parent_type: objectClass,
-      slide_index: slideIndex
+      slide_id: slideIndex
     });
 
     $.ajax({
@@ -60,7 +60,7 @@ $(document).ready(function() {
       parent_id: objectId,
       parent_type: objectClass,
       content: text,
-      slide_index: slideIndex
+      slide_id: slideIndex
     });
 
     $.ajax({
