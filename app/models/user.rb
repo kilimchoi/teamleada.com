@@ -79,6 +79,7 @@ class User < ActiveRecord::Base
   has_many :project_submissions
   has_many :code_submissions,          -> { where(content_type: "CodeSubmissionContent")  },         class_name: "ProjectSubmission"
   has_many :free_response_submissions, -> { where(content_type: "FreeResponseSubmissionContent")  }, class_name: "ProjectSubmission"
+  has_many :file_submissions,          -> { where(content_type: "FileSubmissionContent") },          class_name: "ProjectSubmission"
   has_many :image_submissions,         -> { where(content_type: "ImageSubmissionContent") },         class_name: "ProjectSubmission"
   has_many :pdf_submissions,           -> { where(content_type: "PDFSubmissionContent")   },         class_name: "ProjectSubmission"
   has_many :csv_submissions,           -> { where(content_type: "CSVSubmissionContent")   },         class_name: "ProjectSubmission"
@@ -616,10 +617,6 @@ class User < ActiveRecord::Base
 
   def code_submissions_for_project(project)
     code_submissions.where(project: project)
-  end
-
-  def file_submissions
-    image_submissions + pdf_submissions + csv_submissions
   end
 
   def first_missing_code_submission(project)
