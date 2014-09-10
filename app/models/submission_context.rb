@@ -27,7 +27,7 @@ class SubmissionContext < ActiveRecord::Base
   belongs_to :slide
   belongs_to :project
 
-  default_scope -> { where(required: true) }
+  scope :required, -> { where(required: true) }
 
   CODE = "code" #code snippets
   COMPLETE_CODE = "complete_code" #complete src code for a project 
