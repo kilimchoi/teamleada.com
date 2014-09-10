@@ -94,7 +94,10 @@ class User < ActiveRecord::Base
   has_many :step_statuses
   has_many :lesson_statuses
   has_many :project_statuses
-  has_many :started_projects, through: :project_statuses
+  has_many :completed_project_statuses, -> { where(completed: true) }, class_name: "ProjectStatus"
+
+  # Projects
+  has_many :projects, through: :project_statuses
 
   # Invites and Access Codes
   has_many :user_codes
@@ -563,8 +566,22 @@ class User < ActiveRecord::Base
     lessons(false)
   end
 
+  def started_projects
+    project_ids = project_statuses.pluck(:project_id)
+    projects.where(uid: project_ids)
+  end
+
   def completed_projects
-    project_statuses.where(completed: true).collect{ |project_status| project_status.project }
+    project_ids = completed_project_statuses.pluck(:project_id)
+    projects.where(uid: project_ids)
+  end
+
+  def started_challenges
+    started_projects.data_challenges
+  end
+
+  def completed_challenges
+    completed_projects.data_challenges
   end
 
   def completed_projects_with_submissions
