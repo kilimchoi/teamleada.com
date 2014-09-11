@@ -7,6 +7,14 @@ TeamLeada::Application.routes.draw do
         member do
           match "feedback", to: "projects#feedback", as: :feedback, via: :get
         end
+
+        scope module: :projects do
+          resources :submission_contexts, path: "submissions", only: [:show, :index] do
+            member do
+
+            end
+          end
+        end
       end
       resources :stories, path: "posts", only: [:show, :index]
     end
