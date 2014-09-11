@@ -1,6 +1,8 @@
 // Required Variables:
 // submission_contexts
 
-- submission_contexts.each do |submission_context|
-  .submission-context-container
-    = submission_context.title
+ul.submission-contexts-container
+  - submission_contexts.each do |submission_context|
+    = link_to "#" do
+      li.submission-context
+        = submission_context.title
