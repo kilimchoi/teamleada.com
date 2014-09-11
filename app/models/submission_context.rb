@@ -19,10 +19,14 @@ class SubmissionContext < ActiveRecord::Base
 
   include Rails.application.routes.url_helpers
 
+  validates :title, uniqueness: true
   validates :submission_type, presence: true
   validates :slide_id, presence: true
 
   before_create :set_properties
+
+  extend FriendlyId
+  friendly_id :url, use: :finders
 
   belongs_to :slide
   belongs_to :project
@@ -38,6 +42,7 @@ class SubmissionContext < ActiveRecord::Base
   def set_properties
     self.set_uid
     self.set_project
+    self.set_url
   end
 
   def set_uid
@@ -46,6 +51,10 @@ class SubmissionContext < ActiveRecord::Base
 
   def set_project
     self.project_id = self.slide.parent.project.uid
+  end
+
+  def set_url
+    self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize
   end
 
   def path

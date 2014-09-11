@@ -1,8 +1,8 @@
 // Required Variables:
-// submission_contexts
+// user, project, submission_contexts
 
 ul.submission-contexts-container
   - submission_contexts.each do |submission_context|
-    = link_to "#" do
+    = link_to user_project_submission_context_path(user, project, submission_context) do
       li.submission-context
         = submission_context.title
