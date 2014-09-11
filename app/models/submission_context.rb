@@ -19,7 +19,7 @@ class SubmissionContext < ActiveRecord::Base
 
   include Rails.application.routes.url_helpers
 
-  validates :title, uniqueness: true
+  validates :title, uniqueness: { scope: :project_id }
   validates :submission_type, presence: true
   validates :slide_id, presence: true
 
