@@ -647,6 +647,16 @@ class User < ActiveRecord::Base
     ((completed_points(project).to_f / project.total_points.to_f) * 100).round(1)
   end
 
+  # Project Submissions
+  def has_project_submission_for_submission_context?(submission_context)
+    project_submissions.exists?(slide: submission_context.slide)
+  end
+
+  def project_submission_for_submission_context(submission_context)
+    project_submissions.find_by(slide: submission_context.slide)
+  end
+
+  # Evaluations
   def evaluations_for_project(project)
     self.code_submission_evaluations.where(project: project)
   end
