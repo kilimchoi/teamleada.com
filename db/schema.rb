@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140910170534) do
+ActiveRecord::Schema.define(version: 20140911053625) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -561,6 +561,7 @@ ActiveRecord::Schema.define(version: 20140910170534) do
     t.string   "submission_type"
     t.integer  "project_id"
     t.boolean  "required",              default: true
+    t.string   "url"
   end
 
   create_table "submission_evaluations", force: true do |t|
