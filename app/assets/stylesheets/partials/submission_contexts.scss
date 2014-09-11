@@ -5,10 +5,15 @@
 }
 
 .submission-context {
-  padding: 10px 27px;
+  padding: 0 27px;
   margin: 0 -27px;
 
   &:hover {
     background-color: $highlight-gray;
   }
+}
+
+.submission-context-body {
+  padding: 10px 0;
+  border-bottom: 1px solid #dadada;
 }

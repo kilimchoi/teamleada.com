@@ -5,4 +5,5 @@ ul.submission-contexts-container
   - submission_contexts.each do |submission_context|
     = link_to user_project_submission_context_path(user, project, submission_context) do
       li.submission-context
-        = submission_context.title
+        .submission-context-body
+          = submission_context.title
