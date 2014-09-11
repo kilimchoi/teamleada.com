@@ -1,6 +1,6 @@
 TeamLeada::Application.routes.draw do
 
-  resources :users, path: "u", only: [:show, :update] do
+  resources :users, only: [:show, :update] do
 
     scope module: :users do
       resources :projects, only: [:show, :index] do
