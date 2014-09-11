@@ -1,4 +1,6 @@
-class GeneralSubmissionContent < ActiveRecord::Base
+class GeneralSubmissionContent < SubmissionContent
+  # Anything that implments this class must confrom to the SubmissionContent class
+  # and it must also have a column for 'content'
   self.abstract_class = true
 
   class << self

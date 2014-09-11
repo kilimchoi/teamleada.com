@@ -11,11 +11,6 @@
 class CodeSubmissionContent < GeneralSubmissionContent
   include ActionView::Helpers::JavaScriptHelper
 
-  has_one :project_submission, as: :content
-
-  delegate :user,    to: :project_submission, allow_nil: true
-  delegate :project, to: :project_submission, allow_nil: true
-
   default_scope { order(:created_at) }
 
   ADMIN_TABS = ["completed_projects", "all_code_submissions", "by_project"]

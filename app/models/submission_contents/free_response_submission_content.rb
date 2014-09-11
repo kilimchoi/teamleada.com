@@ -9,8 +9,4 @@
 #
 
 class FreeResponseSubmissionContent < GeneralSubmissionContent
-  has_one :project_submission, as: :content
-
-  delegate :user,    to: :project_submission, allow_nil: true
-  delegate :project, to: :project_submission, allow_nil: true
 end

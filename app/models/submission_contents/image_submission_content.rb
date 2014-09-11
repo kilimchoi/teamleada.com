@@ -14,5 +14,4 @@
 #
 
 class ImageSubmissionContent < FileSubmissionContent
-
 end
