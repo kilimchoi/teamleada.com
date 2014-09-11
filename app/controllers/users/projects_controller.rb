@@ -1,5 +1,6 @@
 class Users::ProjectsController < Users::BaseController
   load_and_authorize_resource :project
+  layout Proc.new { ["index"].include?(action_name) ? "application" : "users/projects" }
 
   def index
     @completed_projects = @user.completed_projects

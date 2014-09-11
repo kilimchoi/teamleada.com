@@ -7,4 +7,6 @@ class SubmissionContent < ActiveRecord::Base
   delegate :user,    to: :project_submission, allow_nil: true
   delegate :project, to: :project_submission, allow_nil: true
   delegate :slide,   to: :project_submission, allow_nil: true
+
+  # has_many evaluations...
 end
