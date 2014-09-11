@@ -5,5 +5,9 @@ ul.submission-contexts-container
   - submission_contexts.each do |submission_context|
     = link_to user_project_submission_context_path(user, project, submission_context) do
       li.submission-context
-        .submission-context-body
-          = submission_context.title
+        .submission-context-body.clearfix
+          .submission-context-title
+            = submission_context.title
+          .submission-context-metadata
+            = render partial: "project_submissions/submitted_label", locals: { user: user, project: project, submission_context: submission_context }
+            = render partial: "project_submissions/evaluated_label", locals: { user: user, project: project, submission_context: submission_context }

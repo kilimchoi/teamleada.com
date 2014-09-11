@@ -1,11 +1,11 @@
 // Required Variables:
 // code_submission
 
-.code-viewer-container[id="code-viewer-#{code_submission.uid}"]
+.code-viewer-container[id="code-viewer-#{code_submission.id}"]
   javascript:
     var editor;
     $(document).ready(function() {
-      editor = ace.edit("code-viewer-#{code_submission.uid}");
+      editor = ace.edit("code-viewer-#{code_submission.id}");
       editor.setOptions({
         readOnly: true,
         highlightActiveLine: false
