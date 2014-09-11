@@ -15,20 +15,7 @@
               h3.title = code_submission.submission_context.title
               p
                 = code_submission.submission_context.description
-              .code-viewer-container[id="code-viewer-#{code_submission.uid}"]
-                javascript:
-                  var editor;
-                  $(document).ready(function() {
-                    editor = ace.edit("code-viewer-#{code_submission.uid}");
-                    editor.setOptions({
-                      readOnly: true,
-                      highlightActiveLine: false
-                    });
-                    editor.renderer.$cursorLayer.element.style.opacity = 0;
-                    editor.setTheme("ace/theme/github");
-                    var content = "#{code_submission.safe_content}";
-                    editor.setValue(content, -1);
-                  });
+              = render partial: "shared/projects/code_editor", locals: { code_submission: code_submission }
         .col-md-6
           .row.card
             .col-md-12

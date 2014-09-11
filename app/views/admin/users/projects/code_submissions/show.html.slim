@@ -9,7 +9,7 @@
       h4.title = @code_submission.submission_context.title
       p
         = @code_submission.submission_context.description
-      #code-viewer
+      = render partial: "shared/projects/code_editor", locals: { code_submission: @code_submission }
 
     .col-md-5.col-md-offset-2
       - unless @evaluation.new_record?
@@ -23,16 +23,3 @@
         = f.input :description, input_html: { rows: 5 }
         = f.submit "Submit", class: "flat-button full-width"
 
-javascript:
-  var editor;
-  $(document).ready(function() {
-    editor = ace.edit("code-viewer");
-    editor.setOptions({
-      readOnly: true,
-      highlightActiveLine: false
-    });
-    editor.renderer.$cursorLayer.element.style.opacity = 0;
-    editor.setTheme("ace/theme/github");
-    var content = "#{@code_submission.safe_content}";
-    editor.setValue(content, -1);
-  });
