@@ -1,0 +1,15 @@
+= provide(:title, @project.title)
+
+- project = @project
+
+- content_for :before_container do
+  = render partial: "shared/projects/project_cover_photo", locals: { \
+    project: project,
+    size: "extra-large",
+    clickable: false,
+  }
+
+.container.full-container.show-project-container
+  = yield
+
+= parent_layout "application"
