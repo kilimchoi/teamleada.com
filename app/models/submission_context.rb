@@ -39,6 +39,7 @@ class SubmissionContext < ActiveRecord::Base
   RESPONSE = "response" #free response
   PRESENTATION_SLIDES_LINK = "presentation_slides_link" #url to the presentation slides
   PRESENTATION_VIDEO_LINK = "presentation_video_link" #url to the presentation video
+  IMAGE = "image"
 
   def set_properties
     self.set_uid
