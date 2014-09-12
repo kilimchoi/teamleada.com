@@ -1,5 +1,7 @@
 class SplitCodeSubmissionIntoCodeSubmissionAndFreeResponse < ActiveRecord::Migration
   def change
+    add_column :code_submission_contents, :is_complete_code, :boolean, default: false
+
     CodeSubmissionContent.all.each do |code_submission|
       parent_class = code_submission.parent_type == "Step" ? Step : Lesson
       parent = parent_class.find(code_submission.parent_id)
@@ -11,6 +13,7 @@ class SplitCodeSubmissionIntoCodeSubmissionAndFreeResponse < ActiveRecord::Migra
       case type
       when SubmissionContext::CODE, "code"
         # Do nothing, it's already code.
+        next
       when SubmissionContext::COMPLETE_CODE, "complete_code"
         code_submission.is_complete_code = true
         code_submission.save
