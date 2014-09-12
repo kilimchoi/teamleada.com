@@ -1,0 +1,12 @@
+.section-header {
+  @extend .clearfix;
+
+  .section-left {
+    float: left;
+  }
+
+  .section-right {
+    float: right;
+  }
+}
+
