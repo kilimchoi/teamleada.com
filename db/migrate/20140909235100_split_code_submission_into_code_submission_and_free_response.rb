@@ -28,11 +28,13 @@ class SplitCodeSubmissionIntoCodeSubmissionAndFreeResponse < ActiveRecord::Migra
 
       content = content_class.create(
         content: code_submission.content,
+        project_submission_id: code_submission.project_submission_id,
       )
 
       project_submission = ProjectSubmission.find(code_submission.project_submission_id)
       project_submission.content_id = content.id
       project_submission.content_type = content.class.to_s
+      project_submission.save!
       code_submission.delete
     end
   end

@@ -12,7 +12,7 @@ class CreateProjectSubmissionsForCodeSubmissionContexts < ActiveRecord::Migratio
         content_id: code_submission.id,
         content_type: code_submission.class.to_s,
       )
-      code_submission.project_submission = submission
+      code_submission.project_submission_id = submission.id
       code_submission.save
     end
   end

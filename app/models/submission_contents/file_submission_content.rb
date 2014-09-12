@@ -13,7 +13,7 @@
 #  type                   :string(255)
 #
 
-class FileSubmissionContent < ActiveRecord::Base
+class FileSubmissionContent < SubmissionContent
   include ::CarrierWave::Backgrounder::Delay
   mount_uploader :upload_file, ProjectFileSubmissionUploader
   process_in_background :upload_file

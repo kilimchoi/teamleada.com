@@ -1,11 +1,5 @@
 class SplitCodeSubmissionEvaluationContentWithFreeResponse < ActiveRecord::Migration
   def change
-    FreeResponseSubmissionContent.all.each do |free_response|
-      submission = ProjectSubmission.find(free_response.project_submission_id)
-      submission.content_type = free_response.class.to_s
-      submission.save
-    end
-
     SubmissionEvaluation.all.each do |evaluation|
       project_submission = ProjectSubmission.find(evaluation.project_submission_id)
       if project_submission.content_type == "FreeResponseSubmissionContent"

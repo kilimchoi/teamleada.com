@@ -4,6 +4,9 @@ class CreateVideoLinkSubmissionContents < ActiveRecord::Migration
       t.text :content
       t.string :link_type
 
+      # Remove later
+      t.integer :project_submission_id
+
       t.timestamps
     end
   end
