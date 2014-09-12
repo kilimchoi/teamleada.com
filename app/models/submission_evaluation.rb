@@ -21,4 +21,6 @@ class SubmissionEvaluation < ActiveRecord::Base
   belongs_to :project
   belongs_to :project_submission
   belongs_to :content, polymorphic: true
+
+  scope :published, -> { where(visible: true) }
 end

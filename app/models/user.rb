@@ -77,15 +77,16 @@ class User < ActiveRecord::Base
 
   # Submissions
   has_many :project_submissions
-  has_many :code_submissions,          -> { where(content_type: "CodeSubmissionContent")  },         class_name: "ProjectSubmission"
-  has_many :free_response_submissions, -> { where(content_type: "FreeResponseSubmissionContent")  }, class_name: "ProjectSubmission"
-  has_many :file_submissions,          -> { where(content_type: "FileSubmissionContent") },          class_name: "ProjectSubmission"
-  has_many :image_submissions,         -> { where(content_type: "ImageSubmissionContent") },         class_name: "ProjectSubmission"
-  has_many :pdf_submissions,           -> { where(content_type: "PDFSubmissionContent")   },         class_name: "ProjectSubmission"
-  has_many :csv_submissions,           -> { where(content_type: "CSVSubmissionContent")   },         class_name: "ProjectSubmission"
+  has_many :code_submissions,          -> { where(content_type: "CodeSubmissionContent") },         class_name: "ProjectSubmission"
+  has_many :free_response_submissions, -> { where(content_type: "FreeResponseSubmissionContent") }, class_name: "ProjectSubmission"
+  has_many :file_submissions,          -> { where(content_type: "FileSubmissionContent") },         class_name: "ProjectSubmission"
+  has_many :image_submissions,         -> { where(content_type: "ImageSubmissionContent") },        class_name: "ProjectSubmission"
+  has_many :pdf_submissions,           -> { where(content_type: "PDFSubmissionContent") },          class_name: "ProjectSubmission"
+  has_many :csv_submissions,           -> { where(content_type: "CSVSubmissionContent") },          class_name: "ProjectSubmission"
 
   # Evaluations
-  has_many :submission_evaluations
+  has_many :submission_evaluations, foreign_key: :reviewee_id
+  has_many :code_submission_evaluations,   -> { where(content_type: "CodeSubmissionEvaluation") }, class_name: "SubmissionEvaluation", foreign_key: :reviewee_id
 
   has_many :project_scores
   # TODO(mark): refactor this
