@@ -16,14 +16,16 @@ class SplitCodeSubmissionIntoCodeSubmissionAndFreeResponse < ActiveRecord::Migra
         code_submission.save
         next
       when SubmissionContext::RESPONSE, "response"
-        content = FreeResponseSubmissionContent.create(
-          content: code_submission.content,
-        )
+        content_class = FreeResponseSubmissionContent
       when SubmissionContext::PRESENTATION_SLIDES_LINK, "presentation_slides_link"
-        
+        content_class = SlidesLinkSubmissionContent
       when SubmissionContext::PRESENTATION_VIDEO_LINK, "presentation_vid_linK"
-
+        content_class = VideoLinkSubmissionContent
       end
+
+      content = content_class.create(
+        content: code_submission.content,
+      )
 
       project_submission = ProjectSubmission.find(code_submission.project_submission_id)
       project_submission.content_id = content.id
