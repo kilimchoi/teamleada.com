@@ -42,15 +42,14 @@
                       = render partial: "projects/submissions/free_response_submissions", locals: { project: @project, user: current_user }
 
               .col-md-6
-                .row.card
-                  .col-md-12
-                    - if @project_status.has_time_remaining?
-                      - if @project.has_content_submit?
-                        h2 Make a Submission
-                        = render partial: "projects/submit"
-                      - if @project.has_leaderboard?
-                        h2 Leaderboard
-                        = render partial: "projects/leaderboard", locals: {project: @project}
+                - if @project_status.has_time_remaining?
+                  - if @project.has_content_submit?
+                    = render partial: "projects/submit"
+                  - if @project.has_leaderboard?
+                    = render partial: "projects/leaderboard", locals: {project: @project}
+
+                  .row.card
+                    .col-md-12
                       - if current_user.has_finished_project? @project
                         h2 Congrats! You have successfully finished this data project.
                         = link_to "Take me to more projects!", projects_path, class: 'flat-button step-button'
@@ -65,6 +64,8 @@
                             = render partial: "projects/project_time_remaining", locals: { project: @project }
                         = link_to "Get started now!", project_lesson_path(@project, @project.lessons.first), class: 'flat-button step-button'
 
+                  .row.card
+                    .col-md-12
                       h2 Choose an option from below:
                       ul
                       - @project.lessons.each do |lesson|
@@ -76,12 +77,12 @@
                           - else
                             li.flat-button.step-button.not-completed-item
                               = lesson.title
-                    - else
-                      h2 Status
-                      p.large-font
-                        ' You started this project on
-                        = @project_status.display_start_date
-                      p.large-font
-                        ' Your due date was
-                        = @project_status.display_end_date
+                - else
+                  h2 Status
+                  p.large-font
+                    ' You started this project on
+                    = @project_status.display_start_date
+                  p.large-font
+                    ' Your due date was
+                    = @project_status.display_end_date
 
