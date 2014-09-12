@@ -356,7 +356,7 @@ presentation_context = SubmissionContext.create!(
   description: "Submit a 2-3 deck presentation of your analysis and conclusions.",
   slide: presentation_slide_one,
   submission_context_id: 0,
-  submission_type: SubmissionContext::PRES_SLIDES_LINK,
+  submission_type: SubmissionContext::PRESENTATION_SLIDES_LINK,
 )
 
 return_code_context = SubmissionContext.create!(
@@ -364,5 +364,5 @@ return_code_context = SubmissionContext.create!(
   description: "Submit a video presenting your analysis and conclusion to the 'CEO'",
   slide: presentation_slide_two,
   submission_context_id: 1,
-  submission_type: SubmissionContext::PRES_VIDEO_LINK,
+  submission_type: SubmissionContext::PRESENTATION_VIDEO_LINK,
 )
