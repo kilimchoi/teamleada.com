@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140912053827) do
+ActiveRecord::Schema.define(version: 20140912054027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -500,6 +500,13 @@ ActiveRecord::Schema.define(version: 20140912053827) do
     t.string   "parent_type"
     t.integer  "slide_id"
     t.string   "uid",         null: false
+  end
+
+  create_table "slides_link_submission_contents", force: true do |t|
+    t.text     "content"
+    t.string   "link_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "step_requirements", force: true do |t|
