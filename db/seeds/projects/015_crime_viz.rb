@@ -166,7 +166,7 @@ report_submission_context = SubmissionContext.create!(
 
 
 video_submission_content_one = [
-  ['text', 'You can optionally submit a 1 minute video presenting your insights and analysis. Pretend its to your superior.'],
+  ['text', 'You can optionally submit a 1 minute video presenting your insights and analysis. Pretend it\'s to your superior.'],
   ['text', 'Submit the YouTube link and be sure to make it unlisted!'],
   ['user_response', ""],
   ['next_steps', ""],
