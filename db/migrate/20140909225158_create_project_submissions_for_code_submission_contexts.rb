@@ -4,7 +4,7 @@ class CreateProjectSubmissionsForCodeSubmissionContexts < ActiveRecord::Migratio
       parent_class = code_submission.parent_type == "Step" ? Step : Lesson
       parent = parent_class.find(code_submission.parent_id)
       project_id = parent.project.id
-      slide_id = parent.slides[code_submission.slide_index].id
+      slide_id = parent.slides[code_submission.slide_index].uid
       submission = ProjectSubmission.create(
         user_id: code_submission.user_id,
         project_id: project_id,
