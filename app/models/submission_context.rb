@@ -37,7 +37,7 @@ class SubmissionContext < ActiveRecord::Base
   COMPLETE_CODE = "complete_code" #complete src code for a project
   RESPONSE = "response" #free response
   PRESENTATION_SLIDES_LINK = "presentation_slides_link" #url to the presentation slides
-  PRESENTATION_VIDEO_LINK = "presentation_vid_linK" #url to the presentation video
+  PRESENTATION_VIDEO_LINK = "presentation_video_link" #url to the presentation video
 
   def set_properties
     self.set_uid
