@@ -6,6 +6,8 @@
     var editor;
     $(document).ready(function() {
       editor = ace.edit("code-viewer-#{code_submission.id}");
+      editor.getSession().setUseWrapMode(true);
+      editor.setShowPrintMargin(false);
       editor.setOptions({
         readOnly: true,
         highlightActiveLine: false

@@ -1,0 +1,16 @@
+// Required Variables:
+// user, submission_contexts
+
+.row
+  .col-md-12
+    - submission_contexts.each do |submission_context|
+      - project_submission = user.project_submission_for_submission_context(submission_context)
+      - if !project_submission.nil?
+        .project-submission-container
+          .submission-context-container
+            h4.title = submission_context.title
+            p
+              = submission_context.description
+
+          .submission-content-container
+            = render partial: "users/projects/project_submissions/#{project_submission.content_object.class.to_s.underscore}", locals: { content_object: project_submission.content_object }

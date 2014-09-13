@@ -3,7 +3,12 @@
 
 .row.card
   .col-md-12
-    h3.title.no-margin-bottom Free Response Submissions
+    .section-header.title
+      .section-left
+        h3.no-margin-bottom Free Response Submissions
+      .section-right
+        = link_to "See All", user_project_submission_contexts_path(user, project)
+
 
     .row
       .col-md-12

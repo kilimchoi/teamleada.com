@@ -18,9 +18,15 @@ $(document).ready(function() {
     $("#code-submit-button").show();
     $("#close-code-button").show();
     editor = ace.edit("code-editor");
-    editor.resize();
     editor.setTheme("ace/theme/github");
-    getSubmission(url, objectClass, objectId, Reveal.getIndices().h);
+    editor.getSession().setUseWrapMode(true);
+    editor.setShowPrintMargin(false);
+    getSubmission(url, objectClass, objectId, Reveal.getIndices().h, function() {
+      session = editor.getSession();
+      count = session.getLength();
+      console.log(count, session.getLine(count - 1).length);
+      editor.gotoLine(count, session.getLine(count-1).length);
+    });
 
     editor.focus();
 
@@ -28,9 +34,11 @@ $(document).ready(function() {
       saveButtonStartProgress();
       saveSubmission(url, objectClass, objectId, Reveal.getIndices().h, editor.getValue(), isCodeSubmission);
     });
+
+    editor.resize();
   }
 
-  getSubmission = function(url, objectClass, objectId, slideIndex) {
+  getSubmission = function(url, objectClass, objectId, slideIndex, callback) {
     Pace.restart();
     var data = JSON.stringify({
       parent_id: objectId,
@@ -46,6 +54,7 @@ $(document).ready(function() {
       dataType: "json",
       success: function(data) {
         editor.setValue(data.content);
+        callback();
       },
       failure: function(data) {
         editor.setValue("");
