@@ -14,4 +14,7 @@ class Users::ProjectsController < Users::BaseController
   def feedback
   end
 
+  def filter
+  end
+
 end

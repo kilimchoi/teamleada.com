@@ -103,6 +103,8 @@ class Project < ActiveRecord::Base
     COMING_SOON => "coming-soon",
   }
 
+  VALID_FILTERS = ["started", "completed"]
+
   class << self
     def random_set_of_colors(amount)
       COLORS.sample(amount)
