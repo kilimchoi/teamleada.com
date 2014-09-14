@@ -151,6 +151,12 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def deadline_in_hours
+    if !self.deadline.nil?
+      self.deadline.div(60 * 60)
+    end
+  end
+
   def cost_in_dollars
     if cost.nil?
       "$0"
