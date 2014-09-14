@@ -1,7 +1,11 @@
 
 main_page_content = [
-  ['text', "In this project, you'll get a comprehensive case study of working with Healthcare Data."],
-  ['text', ""],
+  ['text-info', "In this project, you'll get a comprehensive case study of working with Healthcare Data."],
+  ['text', "In Pt.1, we'll focus on Data Aggregation."],
+  ['text-warning', "Often times when working in the health industry, you have to deal with multiple sources of data."],
+  ['text', "You have to assess the data quality of each individual sources, and come up with a way to combine them."],
+  ['text', "We'll work on combining a myriad of data sources to create a single dataset."],
+  ['text-success', "Let's get started."],
 ]
 
 project = Project.create!(
@@ -18,7 +22,7 @@ project = Project.create!(
   is_new: true,
   deadline: 2.hours,
   featured: true,
-  cover_photo: "health_1",
+  cover_photo: "health-1",
 )
 
 ################################################################################
