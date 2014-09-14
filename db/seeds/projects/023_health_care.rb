@@ -14,7 +14,7 @@ project = Project.create!(
   short_description: "In this part 1 (of three) of the Healthcare Analytics, you'll be conducting data aggregation of healthcare data from various sources. In part 2 and 3, you'll deal with analyzing the aggregated data.",
   enabled: true,
   number: 23,
-  has_content_submit: true,
+  has_content_submit: false,
   has_written_submit: true,
   uid: 23,
   difficulty: 'Intermediate',
