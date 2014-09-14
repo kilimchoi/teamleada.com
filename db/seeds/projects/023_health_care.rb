@@ -1,6 +1,6 @@
 
 main_page_content = [
-  ['text', "In this project, you'll get a comprehensive case study of working with Healthcare Data"],
+  ['text', "In this project, you'll get a comprehensive case study of working with Healthcare Data."],
   ['text', ""],
 ]
 
@@ -16,6 +16,7 @@ project = Project.create!(
   difficulty: 'Intermediate',
   category: Project::CHALLENGE,
   is_new: true,
+  deadline: 2.hours,
   featured: true,
   cover_photo: "health_1",
 )
@@ -25,12 +26,13 @@ puts "============ Created project: #{project.title}."
 ################################################################################
 
 intro_content_one = [
-  ['text-info', "You have a group of datasets for Healthcare data."],
+  ['text-info', "You have a group of datasets related to Healthcare."],
   ['text', "Each dataset contains part of the picture."],
-  ['text', "Your job is to aggregate the dataset into a single file"],
+  ['text', "Your job is to aggregate the dataset into a single file."],
 ]
 
 intro_content_two = [
+  ['next_steps', ""],
 ]
 
 intro_lesson = Lesson.create!(
@@ -91,6 +93,7 @@ code_submission_context = SubmissionContext.create!(
 report_submission_content_one = [
   ['text', "Submit a summary of what you did (less than 500 words)"],
   ['user_response', ""],
+  ['next_steps', ""],
 ]
 
 report_submission_lesson = Lesson.create!(
@@ -126,7 +129,7 @@ conclusion_content_one = [
 final_lesson = Lesson.create!(
   title: "Conclusion",
   project: project,
-  lesson_id: 4,
+  lesson_id: 3,
 )
 
 final_slide_one = Slide.create!(
