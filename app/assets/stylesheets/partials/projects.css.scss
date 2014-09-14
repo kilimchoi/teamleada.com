@@ -85,6 +85,10 @@
   background-image: image-url("projects/scrape_finance.jpg");
 }
 
+.project-image-health-1 {
+  //background-image: image-url("projects/scrape_finance.jpg");
+}
+
 .project-cover-darken-container {
   @include border-radius(3px);
 }
