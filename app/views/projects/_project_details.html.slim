@@ -28,8 +28,12 @@ hr
           .col-md-6
             ' Time Allowed:
             strong
-              = project.deadline_in_days
-              |  days
+              - if project.deadline_in_days > 0
+                = project.deadline_in_days
+                |  days
+              - else
+                = project.deadline_in_hours
+                |  hours
         .col-md-6
           ' Number of Submissions:
           strong
