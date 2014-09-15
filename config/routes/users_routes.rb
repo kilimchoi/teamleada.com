@@ -18,6 +18,7 @@ TeamLeada::Application.routes.draw do
 
             end
           end
+          resources :image_submission_contents, only: [:create]
         end
       end
       resources :stories, path: "posts", only: [:show, :index]
