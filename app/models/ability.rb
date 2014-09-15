@@ -45,6 +45,8 @@ class Ability
 
         can [:check_answer], Quiz
 
+        can [:show, :index], SubmissionContext
+
 #        can [:index, :create], Invite
       end
     end
