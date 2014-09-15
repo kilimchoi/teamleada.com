@@ -43,8 +43,6 @@
 
               .col-md-6
                 - if @project_status.has_time_remaining?
-                  - if @project.has_content_submit?
-                    = render partial: "projects/submit"
                   - if @project.has_leaderboard?
                     = render partial: "projects/leaderboard", locals: {project: @project}
 
