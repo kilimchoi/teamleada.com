@@ -9,7 +9,7 @@ class MakeProjectSubmissionsForImageSubmissions < ActiveRecord::Migration
         project_id: image_submission.project_id,
         slide_id: slide_id,
         content_id: image_submission.id,
-        content_type: image_submission.class.to_s
+        content_type: "ImageSubmissionContent",
       )
       image_submission.project_submission = submission
       image_submission.save
