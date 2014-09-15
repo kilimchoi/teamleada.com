@@ -1,6 +1,6 @@
 class Users::Projects::SubmissionContextsController < Users::Projects::BaseController
   load_and_authorize_resource :submission_context
-  before_filter :load_project_submission, only: [:show]
+  before_filter :load_project_submissions, only: [:show]
 
   def show
   end
@@ -10,8 +10,8 @@ class Users::Projects::SubmissionContextsController < Users::Projects::BaseContr
 
   private
 
-  def load_project_submission
-    @project_submission = @user.project_submission_for_submission_context(@submission_context)
+  def load_project_submissions
+    @project_submissions = @user.project_submissions_for_submission_context(@submission_context)
   end
 
 end

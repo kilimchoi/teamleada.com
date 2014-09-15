@@ -79,7 +79,7 @@ class User < ActiveRecord::Base
   has_many :project_submissions
   has_many :code_submissions,          -> { where(content_type: "CodeSubmissionContent") },         class_name: "ProjectSubmission"
   has_many :free_response_submissions, -> { where(content_type: "FreeResponseSubmissionContent") }, class_name: "ProjectSubmission"
-  has_many :file_submissions,          -> { where(content_type: "FileSubmissionContent") },         class_name: "ProjectSubmission"
+  has_many :file_submissions,          -> { where(content_type: ["Image", "PDF", "CSV"].map{|type| type + "SubmissionContent"}) }, class_name: "ProjectSubmission"
   has_many :image_submissions,         -> { where(content_type: "ImageSubmissionContent") },        class_name: "ProjectSubmission"
   has_many :pdf_submissions,           -> { where(content_type: "PDFSubmissionContent") },          class_name: "ProjectSubmission"
   has_many :csv_submissions,           -> { where(content_type: "CSVSubmissionContent") },          class_name: "ProjectSubmission"
@@ -653,8 +653,8 @@ class User < ActiveRecord::Base
     project_submissions.exists?(slide: submission_context.slide)
   end
 
-  def project_submission_for_submission_context(submission_context)
-    project_submissions.find_by(slide: submission_context.slide)
+  def project_submissions_for_submission_context(submission_context)
+    project_submissions.where(slide: submission_context.slide)
   end
 
   # Evaluations

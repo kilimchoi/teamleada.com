@@ -9,8 +9,8 @@
           h3 = @submission_context.description
 
       - if @user.has_project_submission_for_submission_context?(@submission_context)
-        = render partial: "users/projects/project_submissions/project_submission", locals: { \
-          project_submission: @project_submission,
+        = render partial: "users/projects/project_submissions/project_submissions", locals: { \
+          project_submissions: @project_submissions,
         }
       - else
         .row.card

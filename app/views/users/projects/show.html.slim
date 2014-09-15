@@ -15,4 +15,8 @@
         .col-md-6
           - if @project.has_free_response_submissions?
             = render partial: "projects/submissions/free_response_submissions", locals: { project: @project, user: @user }
+      .row
+        .col-md-6
+          - if @project.has_image_submissions?
+            = render partial: "projects/submissions/image_submissions", locals: { project: @project, user: @user }
 
