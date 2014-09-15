@@ -16,18 +16,6 @@ class CodeSubmissionContent < GeneralSubmissionContent
 
   ADMIN_TABS = ["completed_projects", "all_code_submissions", "by_project"]
 
-  def pretty_submitted_date
-    created_at.strftime("%B %d, %Y at %l:%M %p")
-  end
-
-  def has_evaluation_by_user?(user)
-    evaluations.where(reviewer: user).count > 0
-  end
-
-  def has_evaluation?
-    evaluations.count > 0
-  end
-
   def safe_content
     escape_javascript(content.html_safe)
   end

@@ -66,4 +66,18 @@ class ProjectSubmission < ActiveRecord::Base
     end
   end
 
+  # Evaluations
+  def has_evaluation_by_user?(user)
+    evaluations.where(reviewer: user).count > 0
+  end
+
+  def has_evaluation?
+    evaluations.count > 0
+  end
+
+  # Formatting
+  def pretty_submitted_date
+    created_at.strftime("%B %d, %Y at %l:%M %p")
+  end
+
 end
