@@ -641,7 +641,8 @@ class User < ActiveRecord::Base
         total += lesson_status.lesson.points
       end
     end
-    total + code_submissions_for_project(project).count
+    # TODO(mark): This doesn't take required/not required into account
+    total + project_submissions_for_project(project).count
   end
 
   def project_progress_percentage(project)
