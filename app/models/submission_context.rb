@@ -35,6 +35,7 @@ class SubmissionContext < ActiveRecord::Base
   delegate :project_submissions, to: :slide, allow_nil: true
 
   scope :required, -> { where(required: true) }
+  scope :optional, -> { where(required: false) }
 
   # TODO(mark): ##Constants -- possibly find a new place to store constants
   CODE = "code" #code snippets

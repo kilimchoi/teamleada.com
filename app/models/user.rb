@@ -425,8 +425,8 @@ class User < ActiveRecord::Base
     project.total_points <= completed_points(project)
   end
 
-  def has_submitted_all_code_submissions_for_project?(project)
-    project.code_submissions
+  def has_submitted_all_submissions_for_project?(project)
+    project.submission_context.required.count == self.unique_required_project_submissions_for_project_count(project)
   end
 
   def has_invited_friends?
@@ -489,7 +489,7 @@ class User < ActiveRecord::Base
   end
 
   def has_completed_submission?(submission_context)
-    self.code_submissions_for_project(submission_context.project).select{ |code_submission| submission_context.required && code_submission.submission_context == submission_context }.count > 0
+    self.project_submissions_for_project(submission_context.project).select{ |code_submission| submission_context.required && code_submission.submission_context == submission_context }.count > 0
   end
 
   def next_lesson_or_step_for_project_path(project)
@@ -625,7 +625,7 @@ class User < ActiveRecord::Base
   end
 
   def unique_required_project_submissions_for_project_count(project)
-    unique_slide_ids = required_project_submissions_for_project(project).pluck(:slide_id).uniq.count
+    required_project_submissions_for_project(project).pluck(:slide_id).uniq.count
   end
 
   def first_missing_project_submission(project)
