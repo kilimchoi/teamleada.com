@@ -38,4 +38,26 @@ class ProjectSubmission < ActiveRecord::Base
       ProjectSubmission.create(user: user, project: project, slide: slide, content_object: content_object)
     end
   end
+
+  # Attributes
+  def has_evaluation_for_reviewer?(reviewer)
+    evaluations.where(reviewer: reviewer).count > 0
+  end
+
+  def evaluation_content_object_for_reviewer(reviewer)
+    evaluations.find_by(reviewer: reviewer).content_object
+  end
+
+  def new_evaluation_content_object_for_reviewer(reviewer)
+    SubmissionEvaluation.new_content_object_for_reviewer(reviewer)
+  end
+
+  def first_or_initialize_evaluation_content_object_for_reviewer(reviewer)
+    if has_evaluation_for_reviewer?(reviewer)
+      evaluation_content_object_for_reviewer(reviewer)
+    else
+      new_evaluation_content_object_for_reviewer(reviewer)
+    end
+  end
+
 end

@@ -20,7 +20,16 @@ class SubmissionEvaluation < ActiveRecord::Base
   belongs_to :reviewee, class_name: User
   belongs_to :project
   belongs_to :project_submission
-  belongs_to :content, polymorphic: true
+  belongs_to :content_object, foreign_key: :content_id, foreign_type: :content_type, polymorphic: true
+
+  delegate :content, to: :content_object, allow_nil: true
 
   scope :published, -> { where(visible: true) }
+
+  class << self
+    def new_content_object_for_reviewer(reviewer)
+
+    end
+  end
+
 end

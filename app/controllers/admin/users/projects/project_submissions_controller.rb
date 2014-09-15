@@ -6,7 +6,7 @@ class Admin::Users::Projects::ProjectSubmissionsController < Admin::Users::Proje
   end
 
   def show
-    @evaluation = SubmissionEvaluation.where(code_submission: @code_submission, reviewer: current_user).first_or_initialize
+    @evaluation_content_object = @project_submission.first_or_initialize_evaluation_content_object_for_reviewer(current_user)
   end
 
   def evaluate
