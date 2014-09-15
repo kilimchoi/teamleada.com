@@ -45,6 +45,11 @@ class ProjectStatus < ActiveRecord::Base
     self.save
   end
 
+  def reset_start_date
+    self.start_date = nil
+    self.save
+  end
+
   def expired?
     if start_date.nil? || project.deadline.nil?
       false
