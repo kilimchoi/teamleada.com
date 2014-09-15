@@ -11,7 +11,9 @@ html
     meta charset="utf-8"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
 
-    - if content_for?(:title)
+    - if content_for?(:main_title)
+      title = "Leada - #{yield(:main_title)}"
+    - elsif content_for?(:title)
       title = "#{yield(:title)} - Leada"
     - elsif content_for?(:page_title)
       title = "#{yield(:page_title)} - Leada"
