@@ -1,0 +1,2 @@
+class FileSubmissionEvaluationContent < SubmissionEvaluationContent
+end

@@ -1,4 +1,4 @@
-class Admin::Users::Projects::CodeSubmissions::CodeSubmissionEvaluationsController < Admin::Users::Projects::CodeSubmissions::BaseController
+class Admin::Users::Projects::ProjectSubmissions::CodeSubmissionEvaluationsController < Admin::Users::Projects::ProjectSubmissions::BaseController
   load_and_authorize_resource :code_submission_evaluation
 
   def index
