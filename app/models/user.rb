@@ -599,8 +599,8 @@ class User < ActiveRecord::Base
     project_statuses.find_by(project: project)
   end
 
-  def code_submission_of_type_for_project(type, project)
-    project.submission_contexts.where(submission_type: type).collect{ |submission_context| submission_context.code_submissions_for_user(self).first }.first
+  def project_submission_of_type_for_project(type, project)
+    project.submission_contexts.where(submission_type: type).collect{ |submission_context| submission_context.project_submissions_for_user(self).first }.first
   end
 
   def video_for_project(project)
@@ -613,14 +613,14 @@ class User < ActiveRecord::Base
   end
 
   def presentation_for_project(project)
-    code_submission_of_type_for_project("presentation_slides_link", project)
+    project_submission_of_type_for_project("presentation_slides_link", project)
   end
 
-  def code_submissions_for_project(project)
-    code_submissions.where(project: project)
+  def project_submissions_for_project(project)
+    project_submissions.where(project: project)
   end
 
-  def first_missing_code_submission(project)
+  def first_missing_project_submission(project)
     project.submission_contexts.each do |submission_context|
       unless self.has_completed_submission? submission_context
         return submission_context
