@@ -40,6 +40,11 @@ class ProjectSubmission < ActiveRecord::Base
   end
 
   # Attributes
+  def evaluation_content_object_class
+    base_class = content_type.remove("Content")
+    (base_class + "EvaluationContent").constantize
+  end
+
   def has_evaluation_for_reviewer?(reviewer)
     evaluations.where(reviewer: reviewer).count > 0
   end
@@ -49,7 +54,8 @@ class ProjectSubmission < ActiveRecord::Base
   end
 
   def new_evaluation_content_object_for_reviewer(reviewer)
-    SubmissionEvaluation.new_content_object_for_reviewer(reviewer)
+    # TODO(mark): Make it include the reviewer
+    evaluation_content_object_class.new
   end
 
   def first_or_initialize_evaluation_content_object_for_reviewer(reviewer)

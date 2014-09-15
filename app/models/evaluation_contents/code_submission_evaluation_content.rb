@@ -11,6 +11,5 @@
 #  communication    :integer
 #
 
-class CodeSubmissionEvaluationContent < ActiveRecord::Base
-  has_one :submission_evaluation, as: :content
+class CodeSubmissionEvaluationContent < SubmissionEvaluationContent
 end

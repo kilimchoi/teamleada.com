@@ -11,6 +11,5 @@
 #  updated_at       :datetime
 #
 
-class FreeResponseSubmissionEvaluationContent < ActiveRecord::Base
-  has_one :submission_evaluation, as: :content
+class FreeResponseSubmissionEvaluationContent < SubmissionEvaluationContent
 end

@@ -25,11 +25,4 @@ class SubmissionEvaluation < ActiveRecord::Base
   delegate :content, to: :content_object, allow_nil: true
 
   scope :published, -> { where(visible: true) }
-
-  class << self
-    def new_content_object_for_reviewer(reviewer)
-
-    end
-  end
-
 end
