@@ -796,21 +796,13 @@ class User < ActiveRecord::Base
   end
 
   def reset_all_project_access()
-    statuses = self.project_statuses
-    statuses.map { |status| 
-      status.start_date = nil
-      status.save
-    }
+    statuses = self.project_statuses.each do |status|
+      status.reset_start_date
+    end
   end
 
   def reset_project_access(project_id)
-    statuses = self.project_statuses
-    statuses.map { |status| 
-      if status.project_id == project_id
-        status.start_date = nil
-        status.save
-      end
-    }
+    project_status_for_project(project_id).reset_start_date
   end
 
   #
