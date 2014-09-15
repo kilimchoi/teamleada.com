@@ -140,3 +140,29 @@ task :create_project_interest_stories => :environment do
   end
 end
 
+task :presentation_submission_contexts => :environment do
+  SubmissionContext.where(submission_type: SubmissionContext::PRESENTATION_SLIDES_LINK).each do |submission_context|
+    submission_context.project_submissions.each do |project_submission|
+      content_object = project_submission.content_object
+      new_content_object = SlidesLinkSubmissionContent.create(
+        content: content_object.content,
+      )
+      project_submission.content_object = new_content_object
+      project_submission.save
+      content_object.delete
+    end
+  end
+
+  SubmissionContext.where(submission_type: SubmissionContext::PRESENTATION_VIDEO_LINK).each do |submission_context|
+    submission_context.project_submissions.each do |project_submission|
+      content_object = project_submission.content_object
+      new_content_object = VideoLinkSubmissionContent.create(
+        content: content_object.content,
+      )
+      project_submission.content_object = new_content_object
+      project_submission.save
+      content_object.delete
+    end
+  end
+end
+
