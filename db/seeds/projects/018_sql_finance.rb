@@ -110,10 +110,11 @@ collect_data_slide_2 = Slide.create!(
   parent: collect_data_lesson,
   slide_id: 2,
 )
-sraper_data_submission = SubmissionContext.create!(
+
+scraper_data_submission = SubmissionContext.create!(
   title: "Scraping Yahoo Finance",
   description: "User is asked to scrape Yahoo Finance.",
-  slide: collect_data_slide_1,
+  slide: collect_data_slide_2,
   submission_context_id: 0,
   submission_type: SubmissionContext::CODE,
 )
