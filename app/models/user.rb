@@ -619,6 +619,15 @@ class User < ActiveRecord::Base
     project_submissions.where(project: project)
   end
 
+  def required_project_submissions_for_project(project)
+    required_slide_ids = project.slide_ids_of_required_submission_contexts
+    project_submissions_for_project(project).where(slide_id: required_slide_ids)
+  end
+
+  def unique_required_project_submissions_for_project_count(project)
+    unique_slide_ids = required_project_submissions_for_project(project).pluck(:slide_id).uniq.count
+  end
+
   def first_missing_project_submission(project)
     project.submission_contexts.each do |submission_context|
       unless self.has_completed_submission? submission_context
@@ -640,8 +649,7 @@ class User < ActiveRecord::Base
         total += lesson_status.lesson.points
       end
     end
-    # TODO(mark): This doesn't take required/not required into account
-    total + project_submissions_for_project(project).count
+    total + unique_required_project_submissions_for_project_count(project)
   end
 
   def project_progress_percentage(project)
@@ -650,7 +658,7 @@ class User < ActiveRecord::Base
 
   # Project Submissions
   def has_project_submission_for_submission_context?(submission_context)
-    project_submissions.exists?(slide: submission_context.slide)
+    project_submissions_for_submission_context(submission_context).count > 0
   end
 
   def project_submissions_for_submission_context(submission_context)

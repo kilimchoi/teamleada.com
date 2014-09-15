@@ -233,6 +233,10 @@ class Project < ActiveRecord::Base
     submission_contexts.where(submission_type: SubmissionContext::PRESENTATION_VIDEO_LINK).count > 0
   end
 
+  def slide_ids_of_required_submission_contexts
+    submission_contexts.required.pluck(:slide_id)
+  end
+
   def check_submission(file)
     # Method to check the submission that the user uploaded
     solution_file = File.expand_path("#{Rails.root}/db/project_solutions/#{"%03d" % self.number}-#{self.url}.csv", __FILE__)

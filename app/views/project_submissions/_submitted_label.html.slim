@@ -1,10 +1,8 @@
 // Required Variables:
 // user, project, submission_context
 
-- project_submission = user.project_submission_for_submission_context(submission_context)
-
 .project-submission-label
-  - if project_submission.nil?
-    span.label.label-danger Not Submitted
-  - else
+  - if user.has_project_submission_for_submission_context?(submission_context)
     span.label.label-success Submitted
+  - else
+    span.label.label-danger Not Submitted
