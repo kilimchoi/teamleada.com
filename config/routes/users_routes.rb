@@ -9,7 +9,7 @@ TeamLeada::Application.routes.draw do
         end
 
         collection do
-          match ":filter", to: "projects#filter", as: :filter, via: :get
+          match "filter", to: "projects#filter", as: :filter, via: :get
         end
 
         scope module: :projects do

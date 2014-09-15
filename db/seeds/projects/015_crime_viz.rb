@@ -154,10 +154,10 @@ report_submission_slide_two = Slide.create!(
 
 report_submission_context = SubmissionContext.create!(
   title: "Report Submission",
-  description: "User is asked to submit a link to the report.",
+  description: "User is asked to submit a summary of his/her analysis.",
   slide: report_submission_slide,
   submission_context_id: 0,
-  submission_type: SubmissionContext::PRESENTATION_SLIDES_LINK,
+  submission_type: SubmissionContext::RESPONSE,
 )
 
 report_submission_context = SubmissionContext.create!(
