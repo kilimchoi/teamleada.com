@@ -2,7 +2,7 @@ class Admin::Users::Projects::ProjectSubmissionsController < Admin::Users::Proje
   load_and_authorize_resource :project_submission
 
   def index
-    @code_submissions = @user.project_submissions_for_project(@project).paginate(page: params[:page])
+    @project_submissions = @user.project_submissions_for_project(@project).paginate(page: params[:page])
   end
 
   def show
