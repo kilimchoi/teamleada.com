@@ -12,9 +12,9 @@ html
     meta name="viewport" content="width=device-width, initial-scale=1.0"
 
     - if content_for?(:title)
-      title = "Leada - #{yield(:title)}"
+      title = "#{yield(:title)} - Leada"
     - elsif content_for?(:page_title)
-      title = "Leada - #{yield(:page_title)}"
+      title = "#{yield(:page_title)} - Leada"
     - else
       title = "Leada"
     link rel="shortcut icon" href=image_path("leada_favicon.png") type="image/png"
