@@ -15,8 +15,4 @@ class Admin::CodeSubmissionContentsController < Admin::BaseController
     end
   end
 
-  def show
-    @evaluation = CodeSubmissionEvaluation.where(code_submission: @code_submission, reviewer: current_user).first_or_initialize
-  end
-
 end
