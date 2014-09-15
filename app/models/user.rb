@@ -184,7 +184,7 @@ class User < ActiveRecord::Base
   default_scope -> { order(:created_at) }
   scope :alphabetically, -> { order("name ASC") }
 
-  # TODO(mark): These should not ve necessary with form objects.
+  # TODO(mark): These should not be necessary with form objects.
   accepts_nested_attributes_for :resumes
   accepts_nested_attributes_for :profile_photos
 
