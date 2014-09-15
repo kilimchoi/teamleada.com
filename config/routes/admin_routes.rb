@@ -74,7 +74,7 @@ TeamLeada::Application.routes.draw do
       end
     end
 
-    resources :code_submissions, path: "code-submissions", only: [:index]
+    resources :code_submission_contents, path: "code-submissions", only: [:index]
 
     match 'charts/category/realtime', to: "pages#realtime_charts", as: :realtime_charts, via: :get
     match 'charts/category/page-views', to: "pages#page_view_charts", as: :page_view_charts, via: :get

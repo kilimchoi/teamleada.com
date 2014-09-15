@@ -1,4 +1,4 @@
-class Admin::CodeSubmissionsController < Admin::BaseController
+class Admin::CodeSubmissionContentsController < Admin::BaseController
   load_and_authorize_resource except: [:evaluate, :update_evaluation]
 
   def index
