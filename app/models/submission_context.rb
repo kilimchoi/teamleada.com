@@ -34,12 +34,16 @@ class SubmissionContext < ActiveRecord::Base
 
   scope :required, -> { where(required: true) }
 
+  # TODO(mark): ##Constants -- possibly find a new place to store constants
   CODE = "code" #code snippets
   COMPLETE_CODE = "complete_code" #complete src code for a project
   RESPONSE = "response" #free response
   PRESENTATION_SLIDES_LINK = "presentation_slides_link" #url to the presentation slides
   PRESENTATION_VIDEO_LINK = "presentation_video_link" #url to the presentation video
   IMAGE = "image"
+  CSV = "csv"
+  PDF = "pdf"
+  FILE = "file"
 
   def set_properties
     self.set_uid
