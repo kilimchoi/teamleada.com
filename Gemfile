@@ -42,6 +42,9 @@ gem 'fog', '~> 1.22.1'
 gem 'rmagick', '~> 2.13.2', require: false
 gem 'remotipart', '~> 1.2'
 
+# STI
+gem 'store_base_sti_class', github: 'negativetwelve/store_base_sti_class'
+
 # Background processing
 gem 'sidekiq', '~> 3.2.1'
 gem 'carrierwave_backgrounder', '~> 0.4.1'
