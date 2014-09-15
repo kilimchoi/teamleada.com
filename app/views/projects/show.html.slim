@@ -40,6 +40,18 @@
                   .col-md-12
                     - if @project.has_free_response_submissions?
                       = render partial: "projects/submissions/free_response_submissions", locals: { project: @project, user: current_user }
+                .row
+                  .col-md-12
+                    - if @project.has_image_submissions?
+                       = render partial: "projects/submissions/image_submissions", locals: { project: @project, user: current_user }
+                .row
+                  .col-md-12
+                    - if @project.has_presentation_slides_link_submissions?
+                       = render partial: "projects/submissions/presentation_slides_link_submissions", locals: { project: @project, user: current_user }
+                .row
+                  .col-md-12
+                    - if @project.has_presentation_video_link_submissions?
+                      = render partial: "projects/submissions/presentation_video_link_submissions", locals: { project: @project, user: current_user }
 
               .col-md-6
                 - if @project_status.has_time_remaining?
