@@ -47,6 +47,8 @@ class Project < ActiveRecord::Base
   has_many :code_submission_contexts, -> { where(submission_type: SubmissionContext::CODE) }, class_name: "SubmissionContext"
   has_many :free_response_submission_contexts, -> { where(submission_type: SubmissionContext::RESPONSE) }, class_name: "SubmissionContext"
   has_many :image_submission_contexts, -> { where(submission_type: SubmissionContext::IMAGE) }, class_name: "SubmissionContext"
+  has_many :presentation_slides_link_submission_contexts, -> { where(submission_type: SubmissionContext::PRESENTATION_SLIDES_LINK) }, class_name: "SubmissionContext"
+  has_many :presentation_video_link_submission_contexts, -> { where(submission_type: SubmissionContext::PRESENTATION_VIDEO_LINK) }, class_name: "SubmissionContext"
 
   has_many :code_submissions
   has_many :code_submission_evaluations

@@ -32,6 +32,8 @@ class SubmissionContext < ActiveRecord::Base
   belongs_to :slide
   belongs_to :project
 
+  delegate :project_submissions, to: :slide, allow_nil: true
+
   scope :required, -> { where(required: true) }
 
   # TODO(mark): ##Constants -- possibly find a new place to store constants

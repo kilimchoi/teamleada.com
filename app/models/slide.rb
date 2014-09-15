@@ -18,6 +18,7 @@ class Slide < ActiveRecord::Base
   serialize :content, Array
   belongs_to :parent, polymorphic: true, primary_key: :uid
   has_many :submission_contexts
+  has_many :project_submissions
 
   before_create :set_uid
 
