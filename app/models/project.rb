@@ -211,15 +211,24 @@ class Project < ActiveRecord::Base
   end
 
   # Submissions
-  def has_image_submissions?
-  end
-
   def has_code_submissions?
     submission_contexts.where(submission_type: SubmissionContext::CODE).count > 0
   end
 
   def has_free_response_submissions?
     submission_contexts.where(submission_type: SubmissionContext::RESPONSE).count > 0
+  end
+
+  def has_image_submissions?
+    submission_contexts.where(submission_type: SubmissionContext::IMAGE).count > 0
+  end
+
+  def has_presentation_slides_link_submissions?
+    submission_contexts.where(submission_type: SubmissionContext::PRESENTATION_SLIDES_LINK).count > 0
+  end
+
+  def has_presentation_video_link_submissions?
+    submission_contexts.where(submission_type: SubmissionContext::PRESENTATION_VIDEO_LINK).count > 0
   end
 
   def check_submission(file)
