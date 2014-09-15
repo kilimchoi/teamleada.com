@@ -157,8 +157,17 @@ report_submission_context = SubmissionContext.create!(
   description: "User is asked to submit a link to the report.",
   slide: report_submission_slide,
   submission_context_id: 0,
-  submission_type: SubmissionContext::RESPONSE,
+  submission_type: SubmissionContext::PRESENTATION_SLIDES_LINK,
 )
+
+report_submission_context = SubmissionContext.create!(
+  title: "Visualization Submission",
+  description: "User is asked to submit an image of their visualization.",
+  slide: report_submission_slide_two,
+  submission_context_id: 0,
+  submission_type: SubmissionContext::IMAGE,
+)
+
 
 ################################################################################
 ##### Video Submission #########################################################
@@ -189,7 +198,7 @@ video_submission_context = SubmissionContext.create!(
   description: "User is asked to submit a 1 minute video presenting their analysis and findings.",
   slide: video_slide,
   submission_context_id: 0,
-  submission_type: SubmissionContext::RESPONSE,
+  submission_type: SubmissionContext::PRESENTATION_VIDEO_LINK,
   required: false,
 )
 
