@@ -20,6 +20,6 @@ table.table.table-striped
           span.label.label-success Yes
         - else
           span.label.label-danger No
-      td = code_submission.code_submission_evaluations.count
+      td = code_submission.evaluations.count
       td = link_to "All Evaluations", admin_user_project_code_submission_code_submission_evaluations_path(code_submission.user, code_submission.project, code_submission)
 

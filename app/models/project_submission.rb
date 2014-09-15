@@ -18,6 +18,8 @@ class ProjectSubmission < ActiveRecord::Base
   belongs_to :slide
   belongs_to :content_object, foreign_key: :content_id, foreign_type: :content_type, polymorphic: true
 
+  has_many :evaluations, class_name: "SubmissionEvaluation"
+
   # TODO(mark): submission context?
 
   delegate :content, to: :content_object, allow_nil: true
