@@ -1,5 +1,5 @@
 class Users::Projects::ProjectSubmissionsController < Users::Projects::BaseController
-  load_and_authorize_resource :project_submissions
+  load_and_authorize_resource :project_submission
 
   def show
   end

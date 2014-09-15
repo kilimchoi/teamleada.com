@@ -140,10 +140,6 @@ class UsersController < ApplicationController
                                      :id,
                                      :photo,
                                    ],
-                                   project_submissions_attributes: [
-                                    :id,
-                                    :upload_file,
-                                   ],
                                  })
   end
 
