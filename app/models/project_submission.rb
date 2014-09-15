@@ -20,8 +20,6 @@ class ProjectSubmission < ActiveRecord::Base
 
   has_many :evaluations, class_name: "SubmissionEvaluation"
 
-  # TODO(mark): submission context?
-
   delegate :content, to: :content_object, allow_nil: true
   delegate :submission_context, to: :slide, allow_nil: true
 
