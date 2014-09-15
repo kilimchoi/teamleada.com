@@ -35,7 +35,7 @@
     = render partial: "projects/submit"
 - elsif content_type == 'image_submit'
   p.fragment
-    = render partial: "projects/image_submit"
+    = render partial: "projects/image_submit", locals: { item: item }
 - elsif content_type == 'image'
   = image_tag content, class: "fragment content content-image"
 - elsif content_type == 'link'

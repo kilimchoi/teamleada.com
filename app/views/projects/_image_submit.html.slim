@@ -1,4 +1,7 @@
-- image_submission_content = ImageSubmissionContentForm.new(current_user, @project)
+// Required Variables:
+// item
+
+- image_submission_content = ImageSubmissionContentForm.new(current_user, @project, nil)
 
 = simple_form_for image_submission_content,
                   url: user_project_image_submission_contents_path(current_user, @project),
@@ -7,5 +10,8 @@
 
   = f.file_field :upload_file, required: true, class: "fragment submit-file-button"
   = hidden_field_tag :authenticity_token, form_authenticity_token
+  = hidden_field_tag :parent_type, item.class
+  = hidden_field_tag :parent_id, item.uid
+  = hidden_field_tag :slide_id, 0, id: "hidden-slide-id"
   = f.submit "Submit", class: "flat-button step-button fragment"
 
