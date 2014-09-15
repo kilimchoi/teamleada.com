@@ -11,7 +11,7 @@ class Admin::CodeSubmissionContentsController < Admin::BaseController
       # TODO: This is inefficient but we need an ActiveRecord relationship to paginate.
       @project_statuses = ProjectStatus.where(id: @project_statuses).group_by_user.paginate(page: params[:page])
     else
-      @code_submissions = @code_submissions.paginate(page: params[:page])
+      @code_submission_contents = @code_submission_contents.paginate(page: params[:page])
     end
   end
 

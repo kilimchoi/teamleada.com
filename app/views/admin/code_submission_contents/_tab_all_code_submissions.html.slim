@@ -1,4 +1,4 @@
-= will_paginate @code_submissions
+= will_paginate @code_submission_contents
 table.table.table-striped
   th Link
   th User
@@ -8,7 +8,7 @@ table.table.table-striped
   th Evaluated?
   th # Evaluations
   th See All Evaluations
-  - @code_submissions.each do |code_submission|
+  - @code_submission_contents.each do |code_submission|
     tr
       td = link_to "View", admin_user_project_code_submission_path(code_submission.user, code_submission.project, code_submission)
       td = link_to code_submission.user.name, admin_user_path(code_submission.user)

@@ -47,7 +47,7 @@ module ApplicationHelper
   end
 
   def valid_code_submissions_tab?(tab)
-    CodeSubmission::ADMIN_TABS.include? tab
+    CodeSubmissionContent::ADMIN_TABS.include? tab
   end
 
   def is_admin_namespace?

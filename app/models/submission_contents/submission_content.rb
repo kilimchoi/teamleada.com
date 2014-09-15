@@ -4,9 +4,8 @@ class SubmissionContent < ActiveRecord::Base
 
   has_one :project_submission, as: :content
 
-  delegate :user,    to: :project_submission, allow_nil: true
-  delegate :project, to: :project_submission, allow_nil: true
-  delegate :slide,   to: :project_submission, allow_nil: true
-
-  # has_many evaluations...
+  delegate :user,        to: :project_submission, allow_nil: true
+  delegate :project,     to: :project_submission, allow_nil: true
+  delegate :slide,       to: :project_submission, allow_nil: true
+  delegate :evaluations, to: :project_submission, allow_nil: true
 end
