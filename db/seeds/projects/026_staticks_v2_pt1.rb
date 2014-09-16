@@ -75,11 +75,12 @@ project_overview_slide1 = Slide.create!(
 ##############################################
 
 crawler_content0 = [
-  ['text', "Write a function that returns a list of urls to individuals listing."],
-  ['text', "Though we suggested that you walk the search result url, you don't have to follow the exact direction."],
+  ['text-success', "Write a function that returns a list of urls to individuals listing."],
+  ['text', "Though we suggested that you walk the search result url, you can different approaches."],
   ['text', "A sample ad url would look like the following:"],
   ['code', "http://www.boattrader.com/listing/2009-Supra-Launch-24-SSV-102286745"],
-  ['text', "Paste in the relevant code below:"],
+  ['text-warning', "Paste in the relevant code below:"],
+  ['user_code', ""],
   ['text', "Make sure to include all relevant function you used, plus any imports you might have done."],
   ['next_steps', nil],
 ]
@@ -106,12 +107,15 @@ crawler_getRaw_context0 = SubmissionContext.create!(
 )
 
 ########################################
-#### -- Concluding Section -- ##########
+####### -- Written Section -- ##########
 ########################################
 
 response_one = [
-  ['text', "Explain what you did to get a list of advertisement urls"],
-  ['user_respose', ""],
+  ['text', "Now explain in words what you did to get a list of advertisement urls."],
+  ['text', "Did you have to do anything tricky?"],
+  ['text', "What was the most challenging aspect?"],
+  ['user_response', ""],
+  ['text', "You're not being evaluated on grammar, but write a thoughtout and structured explanation."],
   ['next_steps', ""],
 ]
 
@@ -135,3 +139,24 @@ get_ad_response = SubmissionContext.create!(
   submission_type: SubmissionContext::PRES_SLIDES_LINK,
 )
 
+########################################
+######### -- Final Lesson -- ###########
+########################################
+
+conclusion_content = [
+  ['text', "We've made great progress in the Web Scraper project."],
+  ['text', "Next we're going to actually extract the individual data from the raw item level ad page html"],
+  ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
+]
+
+conclusion_lesson = Lesson.create!(
+  title: "Staticks: Conclusion Pt.1",
+  project: project,
+  lesson_id: 4,
+)
+
+conclusion_slide = Slide.create!(
+  content: conclusion_content,
+  slide_id: 0,
+  parent: conclusion_lesson,
+)
