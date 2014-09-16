@@ -492,6 +492,10 @@ class User < ActiveRecord::Base
     self.project_submissions_for_project(submission_context.project).select{ |code_submission| submission_context.required && code_submission.submission_context == submission_context }.count > 0
   end
 
+  def has_completed_required_submission?(submission_context)
+    submission_context.required && has_completed_submission?(submission_context)
+  end
+
   def next_lesson_or_step_for_project_path(project)
     next_lesson_or_step = next_lesson_or_step_for_project(project)
     if next_lesson_or_step == false
@@ -510,7 +514,7 @@ class User < ActiveRecord::Base
         return lesson
       end
       lesson.slides.each do |slide|
-        if slide.has_submission_contexts? && !self.has_completed_submission?(slide.submission_context)
+        if slide.has_submission_contexts? && !self.has_completed_required_submission?(slide.submission_context)
           return lesson
         end
       end
@@ -520,7 +524,7 @@ class User < ActiveRecord::Base
           return step
         end
         step.slides.each do |slide|
-          if slide.has_submission_contexts? && !self.has_completed_submission?(slide.submission_context)
+          if slide.has_submission_contexts? && !self.has_completed_required_submission?(slide.submission_context)
             return step
           end
         end
@@ -630,7 +634,7 @@ class User < ActiveRecord::Base
 
   def first_missing_project_submission(project)
     project.submission_contexts.each do |submission_context|
-      unless self.has_completed_submission? submission_context
+      unless self.has_completed_required_submission?(submission_context)
         return submission_context
       end
     end

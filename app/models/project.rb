@@ -205,7 +205,7 @@ class Project < ActiveRecord::Base
   end
 
   def code_submission_points
-    submission_contexts.count
+    submission_contexts.required.count
   end
 
   def steps
