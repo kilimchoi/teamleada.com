@@ -111,7 +111,7 @@ crawler_getRaw_context0 = SubmissionContext.create!(
 ########################################
 
 response_one = [
-  ['text', "Now explain in words what you did to get a list of advertisement urls."],
+  ['text-success', "Now explain in a paragraph what you did to get a list of advertisement urls."],
   ['text', "Did you have to do anything tricky?"],
   ['text', "What was the most challenging aspect?"],
   ['user_response', ""],
@@ -145,7 +145,8 @@ get_ad_response = SubmissionContext.create!(
 
 conclusion_content = [
   ['text', "We've made great progress in the Web Scraper project."],
-  ['text', "Next we're going to actually extract the individual data from the raw item level ad page html"],
+  ['text', "We have a list of urls to invidual item ads."],
+  ['text-success', "Next we're going to actually extract the individual data from the raw item level ad page html"],
   ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
 
