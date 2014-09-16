@@ -12,12 +12,12 @@ class MakeSubmissionEvaluationsFromCodeSubmissionEvaluationContents < ActiveReco
         content = FreeResponseSubmissionContent.find(free_response_id)
         free_response_id += 1
       end
-      project_submission_id = content.project_submission_id
+      project_submission = ProjectSubmission.find_by(content_id: content.id, content_type: content.class.to_s)
       evaluation = SubmissionEvaluation.create(
         reviewer_id: code_evaluation.reviewer_id,
         reviewee_id: code_evaluation.reviewee_id,
         project_id: code_evaluation.project_id,
-        project_submission_id: project_submission_id,
+        project_submission_id: project_submission.id,
         body: code_evaluation.description,
         visible: code_evaluation.visible,
         created_at: code_evaluation.created_at,

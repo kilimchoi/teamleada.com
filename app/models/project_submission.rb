@@ -25,6 +25,8 @@ class ProjectSubmission < ActiveRecord::Base
 
   ADMIN_TABS = ["completed-projects", "all-submissions", "by-project"]
 
+  default_scope -> { order("created_at ASC") }
+
   class << self
     def exists_for_user_project_slide?(user, project, slide)
       ProjectSubmission.exists?(user: user, project: project, slide: slide)
