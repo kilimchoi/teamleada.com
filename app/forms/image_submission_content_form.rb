@@ -17,7 +17,7 @@ class ImageSubmissionContentForm < Form
   end
 
   def set_attributes(params)
-    image_submission_content.upload_file   = params[:upload_file] if params[:upload_file].present?
+    image_submission_content.upload_file = params[:upload_file] if params[:upload_file].present?
 
     project_submission.content_object = image_submission_content
   end
