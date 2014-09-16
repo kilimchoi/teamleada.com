@@ -7,12 +7,7 @@
       .col-md-12
         p.large-font.center
           ' Note, once you start this project, the countdown will start and you will have
-          - if project.deadline_in_days > 0
-            = @project.deadline_in_days
-            '  days to finish.
-          - else
-            = @project.deadline_in_hours
-            '  hours to finish.
+          = render partial: "projects/project_time_remaining", locals: { project: project }
         = link_to "Start this project!", project_lesson_path(@project, @project.lessons.first), class: "flat-button step-button full-width"
   - elsif !project_status.completed?
     - if project_status.has_time_remaining?
