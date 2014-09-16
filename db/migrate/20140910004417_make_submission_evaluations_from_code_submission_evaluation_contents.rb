@@ -20,6 +20,8 @@ class MakeSubmissionEvaluationsFromCodeSubmissionEvaluationContents < ActiveReco
         project_submission_id: project_submission_id,
         body: code_evaluation.description,
         visible: code_evaluation.visible,
+        created_at: code_evaluation.created_at,
+        updated_at: code_evaluation.updated_at,
       )
       code_evaluation.submission_evaluation_id = evaluation.id
       code_evaluation.save

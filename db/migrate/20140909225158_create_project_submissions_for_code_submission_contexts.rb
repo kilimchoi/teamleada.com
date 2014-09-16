@@ -11,6 +11,8 @@ class CreateProjectSubmissionsForCodeSubmissionContexts < ActiveRecord::Migratio
         slide_id: slide_id,
         content_id: code_submission.id,
         content_type: code_submission.class.to_s,
+        created_at: code_submission.created_at,
+        updated_at: code_submission.updated_at,
       )
       code_submission.project_submission_id = submission.id
       code_submission.save

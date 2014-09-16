@@ -9,6 +9,8 @@ class SplitCodeSubmissionEvaluationContentWithFreeResponse < ActiveRecord::Migra
           statistics: code.statistics,
           curiosity: code.curiosity,
           communication: code.communication,
+          created_at: code.created_at,
+          updated_at: code.updated_at,
         )
 
         code.delete
