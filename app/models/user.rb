@@ -795,6 +795,16 @@ class User < ActiveRecord::Base
     send_deny_project_access_email(project)
   end
 
+  def reset_all_project_access()
+    statuses = self.project_statuses.each do |status|
+      status.reset_start_date
+    end
+  end
+
+  def reset_project_access(project_id)
+    project_status_for_project(project_id).reset_start_date
+  end
+
   #
   # Mailer
   #
