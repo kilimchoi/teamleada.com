@@ -1,6 +1,8 @@
 class SplitCodeSubmissionIntoCodeSubmissionAndFreeResponse < ActiveRecord::Migration
   def change
     add_column :code_submission_contents, :is_complete_code, :boolean, default: false
+    add_column :code_submission_evaluations, :content_id, :integer
+    add_column :code_submission_evaluations, :content_type, :string
 
     CodeSubmissionContent.all.each do |code_submission|
       parent_class = code_submission.parent_type == "Step" ? Step : Lesson
@@ -13,10 +15,21 @@ class SplitCodeSubmissionIntoCodeSubmissionAndFreeResponse < ActiveRecord::Migra
       case type
       when SubmissionContext::CODE, "code"
         # Do nothing, it's already code.
+        CodeSubmissionEvaluation.where(code_submission_id: code_submission.id).each do |evaluation|
+          evaluation.content_id = code_submission.id
+          evaluation.content_type = code_submission.class.to_s
+          evaluation.save
+        end
         next
       when SubmissionContext::COMPLETE_CODE, "complete_code"
         code_submission.is_complete_code = true
         code_submission.save
+
+        CodeSubmissionEvaluation.where(code_submission_id: code_submission.id).each do |evaluation|
+          evaluation.content_id = code_submission.id
+          evaluation.content_type = code_submission.class.to_s
+          evaluation.save
+        end
         next
       when SubmissionContext::RESPONSE, "response"
         content_class = FreeResponseSubmissionContent
@@ -37,6 +50,13 @@ class SplitCodeSubmissionIntoCodeSubmissionAndFreeResponse < ActiveRecord::Migra
       project_submission.content_id = content.id
       project_submission.content_type = content.class.to_s
       project_submission.save!
+
+      CodeSubmissionEvaluation.where(code_submission_id: code_submission.id).each do |evaluation|
+        evaluation.content_id = content.id
+        evaluation.content_type = content.class.to_s
+        evaluation.save
+      end
+
       code_submission.delete
     end
   end
