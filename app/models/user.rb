@@ -543,6 +543,15 @@ class User < ActiveRecord::Base
     false
   end
 
+  def projects_by_type
+    {
+      completed_challenges: completed_challenges,
+      in_progress_challenges: in_progress_challenges,
+      completed_lessons: completed_lessons,
+      in_progress_lessons: in_progress_lessons,
+    }
+  end
+
   def all_projects(completed, category)
     project_statuses.where(completed: completed).collect{ |project_status| project_status.project }.select{ |project| project.category == category }
   end

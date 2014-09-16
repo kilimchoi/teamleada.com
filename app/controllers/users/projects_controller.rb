@@ -3,8 +3,7 @@ class Users::ProjectsController < Users::BaseController
   layout Proc.new { ["index"].include?(action_name) ? "application" : "users/projects" }
 
   def index
-    @completed_projects = @user.completed_projects
-    @in_progress_projects = @user.in_progress_projects
+    @projects_by_type = @user.projects_by_type
   end
 
   def show
