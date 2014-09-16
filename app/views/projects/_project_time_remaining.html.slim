@@ -1,6 +1,6 @@
 - if project.deadline_in_days > 0
-  = @project.deadline_in_days
+  = project.deadline_in_days
   '  days to finish.
 - else
-  = @project.deadline_in_hours
+  = project.deadline_in_hours
   '  hours to finish.
