@@ -680,7 +680,7 @@ class User < ActiveRecord::Base
 
   # Evaluations
   def evaluations_for_project(project)
-    self.code_submission_evaluations.where(project: project)
+    self.submission_evaluations.where(project: project)
   end
 
   def published_evaluations_for_project(project)

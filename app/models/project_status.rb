@@ -18,6 +18,7 @@ class ProjectStatus < ActiveRecord::Base
   delegate :category, to: :project, allow_nil: true
 
   scope :group_by_user, -> { order("user_id ASC") }
+  default_scope -> { order("updated_at ASC") }
 
   def set_start_date
     self.start_date = Time.now

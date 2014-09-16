@@ -1,0 +1,24 @@
+// Required Variables:
+// submission_evaluations
+
+table.table.table-striped
+  th Grader
+  th Submitted At
+  th Computer Science
+  th Statistical Ability
+  th Curiosity
+  th Communication
+  th Visible?
+  th Comments
+  - submission_evaluations.each do |submission_evaluation|
+    - content_object = submission_evaluation.content_object
+    tr
+      td = submission_evaluation.reviewer.name
+      td = submission_evaluation.pretty_created_at
+      td = content_object.computer_science
+      td = content_object.statistics
+      td = content_object.curiosity
+      td = content_object.communication
+      td = submission_evaluation.visible
+      td = submission_evaluation.body
+

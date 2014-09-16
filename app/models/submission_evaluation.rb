@@ -25,4 +25,10 @@ class SubmissionEvaluation < ActiveRecord::Base
   delegate :content, to: :content_object, allow_nil: true
 
   scope :published, -> { where(visible: true) }
+
+  def pretty_created_at
+    # TODO(mark): This should be in a datetime extended class.
+    created_at.strftime("%B %d, %Y")
+  end
+
 end

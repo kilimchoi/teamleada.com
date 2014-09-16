@@ -15,5 +15,5 @@
       - unless @evaluation_content_object.new_record?
         .alert.alert-success You have already evaluated this project submission.
       h1.title Your Evaluation
-      = render partial: "users/projects/evaluations/#{@evaluation_content_object.class.to_s.underscore}", locals: { content_object: @evaluation_content_object }
+      = render partial: "users/projects/evaluations/evaluation_forms/#{@evaluation_content_object.class.to_s.underscore}", locals: { content_object: @evaluation_content_object }
 
