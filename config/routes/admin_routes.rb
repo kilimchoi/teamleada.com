@@ -35,7 +35,7 @@ TeamLeada::Application.routes.draw do
               end
 
               scope module: :project_submissions do
-                resources :project_submission_evaluations, path: "evaluations", only: [:index]
+                resources :submission_evaluations, path: "evaluations", only: [:index]
               end
             end
           end
