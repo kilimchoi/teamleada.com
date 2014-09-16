@@ -19,11 +19,11 @@
       .row
         .col-md-6
           - if @project.has_presentation_slides_link_submissions?
-            = render partial: "projects/submissions/slides_link_submissions", locals: { project: @project, user: @user }
+            = render partial: "projects/submissions/presentation_slides_link_submissions", locals: { project: @project, user: @user }
       .row
         .col-md-6
           - if @project.has_presentation_video_link_submissions?
-            = render partial: "projects/submissions/video_link_submissions", locals: { project: @project, user: @user }
+            = render partial: "projects/submissions/presentation_video_link_submissions", locals: { project: @project, user: @user }
       .row
         .col-md-6
           - if @project.has_image_submissions?

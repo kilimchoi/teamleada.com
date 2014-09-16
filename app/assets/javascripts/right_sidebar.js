@@ -24,7 +24,6 @@ $(document).ready(function() {
     getSubmission(url, objectClass, objectId, Reveal.getIndices().h, function() {
       session = editor.getSession();
       count = session.getLength();
-      console.log(count, session.getLine(count - 1).length);
       editor.gotoLine(count, session.getLine(count-1).length);
     });
 

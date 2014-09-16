@@ -66,6 +66,31 @@ class SubmissionContext < ActiveRecord::Base
     self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize
   end
 
+  def submission_type_to_content_class
+    case submission_type
+    when CODE, COMPLETE_CODE
+      CodeSubmissionContent
+    when RESPONSE
+      FreeResponseSubmissionContent
+    when PRESENTATION_SLIDES_LINK
+      SlidesLinkSubmissionContent
+    when PRESENTATION_VIDEO_LINK
+      VideoLinkSubmissionContent
+    when IMAGE
+      ImageSubmissionContent
+    when CSV
+      CSVSubmissionContent
+    when PDF
+      PDFSubmissionContent
+    when FILE
+      FileSubmissionContent
+    end
+  end
+
+  def create_or_update_content_with_user_project_slide_content(user, project, slide, content)
+    submission_type_to_content_class.create_or_update_with_user_project_slide_content(user, project, slide, content)
+  end
+
   def path
     item = slide.parent
     if item.is_a? Step
