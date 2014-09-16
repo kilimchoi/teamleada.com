@@ -10,7 +10,7 @@ class Admin::PagesController < Admin::BaseController
     @new_users = User.last(5).reverse
     @new_resumes = Resume.last(5).reverse
     @new_profile_photos = ProfilePhoto.last(5).reverse
-    @new_code_submissions = CodeSubmissionContent.last(5).reverse
+    @new_project_submissions = ProjectSubmission.last(5).reverse
 
     @weekly_impressions = Impression.where("created_at >= ?", 7.days.ago.to_date)
     @daily_impressions = @weekly_impressions.where("created_at >= ?", Date.today.to_date)
