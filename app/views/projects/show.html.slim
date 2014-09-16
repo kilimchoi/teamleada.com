@@ -56,8 +56,7 @@
                     - if @project.has_deadline?
                       p
                         ' Note, once you start this project, the countdown will start and you will have
-                        = @project.deadline_in_days
-                        '  days to finish.
+                        = render partial: "projects/project_time_remaining", locals: { project: @project }
                     = link_to "Get started now!", project_lesson_path(@project, @project.lessons.first), class: 'flat-button step-button'
 
                   h2 Choose an option from below:
