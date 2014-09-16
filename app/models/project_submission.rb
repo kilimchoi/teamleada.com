@@ -23,6 +23,8 @@ class ProjectSubmission < ActiveRecord::Base
   delegate :content, to: :content_object, allow_nil: true
   delegate :submission_context, to: :slide, allow_nil: true
 
+  ADMIN_TABS = ["completed-projects", "all-submissions", "by-project"]
+
   class << self
     def exists_for_user_project_slide?(user, project, slide)
       ProjectSubmission.exists?(user: user, project: project, slide: slide)

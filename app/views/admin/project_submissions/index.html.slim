@@ -10,7 +10,7 @@
     .col-md-12
       h1 = params[:tab].try(:titleize) || "All Submissions"
 
-      - if valid_code_submissions_tab?(params[:tab])
+      - if valid_submissions_tab?(params[:tab])
         = render partial: "admin/project_submissions/tab_#{params[:tab].gsub("-", "_")}"
       - else
         = render partial: "admin/project_submissions/tab_all_submissions"

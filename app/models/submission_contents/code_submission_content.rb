@@ -14,8 +14,6 @@ class CodeSubmissionContent < GeneralSubmissionContent
 
   default_scope { order(:created_at) }
 
-  ADMIN_TABS = ["completed_projects", "all_code_submissions", "by_project"]
-
   def safe_content
     escape_javascript(content.html_safe)
   end
