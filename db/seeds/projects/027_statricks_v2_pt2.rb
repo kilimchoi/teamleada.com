@@ -174,11 +174,11 @@ extract_phone_context0 = SubmissionContext.create!(
 ########################################
 
 presentation_one = [
-  ['text', 'Now that you have a working scraper, you\'ll have to present your process!'],
-  ['text', 'We\'re going to ask you to create (and present) a 3 slide presentation.'],
-  ['text', 'On the first 2 slides, explain what you did with the scraper.'],
-  ['text', 'On the last (3rd) slide, explain how you would store the scraped data.'],
-  ['text', 'The last slide is about design. You won\'t be asked to code up your plan, but be ready to explain it.'],
+  ['text-info', 'Now that you have a working scraper, you\'ll get to present your process!'],
+  ['text', 'You\'ll create (and present) a 3 slide presentation:'],
+  ['text', ' -  On the first 2 slides, explain what you did with the scraper.'],
+  ['text', ' -  On the last (3rd) slide, explain your thoughts on how you would store the scraped data.'],
+  ['text-warning', 'The last (3rd) slide is focused on design. You won\'t be asked to code up your plan, but be ready to explain it.'],
 ]
 
 presentation_two = [
@@ -188,7 +188,9 @@ presentation_two = [
 
 presentation_three = [
  ['text', 'Submit a link to a video of you presenting your conclusions (2 min max). Production quality is not important.'],
+ ['text-warning', "Use a webcam and please show yourself speaking."],
  ['user_response', ''],
+ ['text-success', "The video is an opportunity for you to show off your communication skills, which we found is one of the most sought after skills by the managers."],
  ['next_steps', ""],
 ]
 
@@ -236,7 +238,8 @@ return_code_context = SubmissionContext.create!(
 ########################################
 
 concluding_content = [
-  ['text-success', "Now that you can extract data from a single listing, you can combine the methods with what you created in Part. 1"],
+  ['text', "We started with coming up with a way to find a list of posting URls."],
+  ['text', "We then focused on extracting the individual details from the posting html."], 
   ['text-warning', "Hopefully now you have a better idea of how web scraping works."],
   ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
