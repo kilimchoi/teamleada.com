@@ -83,6 +83,8 @@ class User < ActiveRecord::Base
   has_many :image_submissions,         -> { where(content_type: "ImageSubmissionContent") },        class_name: "ProjectSubmission"
   has_many :pdf_submissions,           -> { where(content_type: "PDFSubmissionContent") },          class_name: "ProjectSubmission"
   has_many :csv_submissions,           -> { where(content_type: "CSVSubmissionContent") },          class_name: "ProjectSubmission"
+  has_many :slides_link_submissions,   -> { where(content_type: "SlidesLinkSubmissionContent") },   class_name: "ProjectSubmission"
+  has_many :video_link_submissions,    -> { where(content_type: "VideoLinkSubmissionContent") },    class_name: "ProjectSubmission"
 
   # Evaluations
   has_many :submission_evaluations, foreign_key: :reviewee_id
@@ -570,6 +572,10 @@ class User < ActiveRecord::Base
 
   def lessons(completed)
     all_projects(completed, Project::LESSON)
+  end
+
+  def started_lessons
+    started_projects.data_lessons
   end
 
   def completed_lessons

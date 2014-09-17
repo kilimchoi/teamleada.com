@@ -367,3 +367,13 @@ h1 {
   text-justify: inter-word;
 }
 
+ul.plain-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  li.indented-list {
+    padding-left: 20px;
+  }
+}
+
