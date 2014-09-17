@@ -189,7 +189,7 @@ presentation_two = [
 presentation_three = [
  ['text', 'Submit a link to a video of you presenting your conclusions (2 min max). Production quality is not important.'],
  ['user_response', ''],
- ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
+ ['next_steps', ""],
 ]
 
 presentation_lesson = Lesson.create!(
