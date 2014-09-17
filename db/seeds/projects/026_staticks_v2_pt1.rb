@@ -42,7 +42,7 @@ project_overview_content0 = [
   ['text', "Once you've acquired enough item-level data, you can engage in building analytical models."],
   ['text', "To get to creating interesting data models, it all starts here:"],
   ['text-success', "Data Acquisition"],
-]permute
+]
 
 project_overview_content1 = [
   ['text', "Specifically for our purpose, we'll be scraping a website called:"],
