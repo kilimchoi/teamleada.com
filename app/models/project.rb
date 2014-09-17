@@ -35,6 +35,8 @@ class Project < ActiveRecord::Base
 
   serialize :description, Array
 
+  belongs_to :project_set
+
   has_many :lessons, dependent: :destroy
   has_many :project_scores
 
