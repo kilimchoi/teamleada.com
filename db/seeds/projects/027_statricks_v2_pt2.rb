@@ -37,11 +37,10 @@ project_overview_content0 = [
   ['text', "Since you have access to the individual listing URLs from Part 1, you essentially have access to the raw html of an individual listing."],
   ['text-warning', "We'll go through a list data points that we'll need to grab from each listing:"],
   ['text', " - UID"],
-  ['text', " - Listing URL"],
+  ['text', " - Listing Title"],
   ['text', " - Price"],
   ['text', " - Description"],
   ['text', " - Phone Number"],
-  ['text', " - Details"],
   ['lesson_links', nil],
 ]
 
@@ -57,232 +56,6 @@ project_overview_slide0 = Slide.create!(
   slide_id: 0,
 )
 
-########## -- PROJECT OVERVIEW: Background -- ##########
-
-project_overview_background_content0 = [
-  ['text', 'Statricks is an analytics technology company specializing in pricing used goods.'],
-  ['text', 'By aggregating price data from different sources, Statricks provides price trends for users to find good deals when buying, and maximize returns when selling used goods'],
-  ['text', 'In order for price trends to be accurate, Statricks needs data from various sources (eBay, craigslist, and CarMax) – while some of these sources have Application Programming Interfaces (APIs) in place that enable easy data acquisition, a majority of them do not.'],
-  ['text', 'As a result, we need to “scrape” these websites to get the pricing data we want.'],
-  ['next_steps', nil],
-]
-
-project_overview_background = Step.create!(
-  title: "Background",
-  lesson: project_overview,
-  step_id: 0,
-)
-
-project_overview_background_slide0 = Slide.create!(
-  content: project_overview_background_content0,
-  parent: project_overview_background,
-  slide_id: 0,
-)
-
-########## -- PROJECT OVERVIEW: Our Goal -- ##########
-
-project_overview_our_goal_content0 = [
-  ['text', 'You are tasked with making a web scraper in python for the following website:'],
-  ['link', "http://www.boattrader.com"],
-  ['text', 'It\'s a website that specializes in used boats.'],
-  ['text', 'Speifically, we need an automated way of doing two things:'],
-  ['text', '1. Find the URL for each and every boat being listed on the entire website'],
-  ['text', '2. For each boat, find and store the unique boat information (title, contact number, price etc)'],
-  ['next_steps', nil],
-]
-
-
-project_overview_our_goal = Step.create!(
-  title: "Our Goal",
-  lesson: project_overview,
-  step_id: 1,
-)
-
-project_overview_our_goal_slide0 = Slide.create!(
-  content: project_overview_our_goal_content0,
-  parent: project_overview_our_goal,
-  slide_id: 0,
-)
-
-########## -- PROJECT OVERVIEW: Resources -- ##########
-
-project_overview_resources_content0 = [
-  ['text', 'For both tasks, you might find these two popular python packages very helpful:'],
-  ['text', '1. BeautifulSoup'],
-  ['text', '2. Requests'],
-  ['next_steps', nil],
-]
-
-
-project_overview_resources = Step.create!(
-  title: "Resources",
-  lesson: project_overview,
-  step_id: 2,
-)
-
-project_overview_resources_slide0 = Slide.create!(
-  content: project_overview_resources_content0,
-  parent: project_overview_resources,
-  slide_id: 0,
-)
-
-##############################################
-########## -- Building a Crawler -- ##########
-##############################################
-
-crawler_content0 = [
-  ['text', 'Before we begin to extract details from a boat listing, we need to first find the URL of that particular webpage and read the content of the html file.'],
-  ['text', 'Since we are interested in ALL of the listtings, we need to make a class of functions that will help us do this.'],
-  ['text', 'Make sure to name your functions as specified in the left navigation bar.'],
-  ['lesson_links', nil],
-]
-
-
-crawler = Lesson.create!(
-  title: "Building a Crawler",
-  project: project,
-  lesson_id: 1,
-)
-
-crawler_slide0 = Slide.create!(
-  content: crawler_content0,
-  parent: crawler,
-  slide_id: 0,
-)
-
-
-########## -- BUILDING A CRAWLER: get_raw_html -- ##########
-
-crawler_getRaw_content0 = [
-  ['text', 'Let us start by creating a function that when given a raw URL link, queries and returns the raw html file as String.'],
-  ['user_code', ''],
-  ['next_steps', nil],
-]
-
-crawler_getRaw = Step.create!(
-  title: "get_raw_html",
-  lesson: crawler,
-  step_id: 0,
-)
-
-crawler_getRaw_slide0 = Slide.create!(
-  content: crawler_getRaw_content0,
-  parent: crawler_getRaw,
-  slide_id: 0,
-)
-
-crawler_getRaw_context0 = SubmissionContext.create!(
-  title: "Raw HTML.",
-  description: "User is asked to create a function that queries and returns the raw html when given a raw URL link.",
-  slide: crawler_getRaw_slide0,
-  submission_context_id: 0,
-  submission_type: SubmissionContext::CODE,
-)
-
-########## -- BUILDING A CRAWLER: get_listing_urls -- ##########
-
-crawler_getListing_content0 = [
-  ['text', 'Next, given a raw html of a single search result page, we want to extract the list of URL links to actual listings.'],
-  ['user_code', ''],
-  ['next_steps', nil],
-]
-
-crawler_getListing = Step.create!(
-  title: "get_listing_urls",
-  lesson: crawler,
-  step_id: 1,
-)
-
-crawler_getListing_slide0 = Slide.create!(
-  content: crawler_getListing_content0,
-  parent: crawler_getListing,
-  slide_id: 0,
-)
-
-crawler_getListing_context0 = SubmissionContext.create!(
-  title: "List of URLs.",
-  description: "User is asked to create a function that extracts the list of URL links to actual listings when given a raw html of a single search result page.",
-  slide: crawler_getListing_slide0,
-  submission_context_id: 0,
-  submission_type: SubmissionContext::CODE,
-)
-
-########## -- BUILDING A CRAWLER: generate_search_links -- ##########
-
-crawler_scrape_search_content0 = [
-  ['text', 'Lastly, we want to generate search result links.'],
-  ['text', 'Do a sample boat search to see what the url looks like.'],
-  ['text', 'What do you notice? Perhaps the URL seems structured?'],
-  ['text', 'Well, that\'s because the URL is a REST endpoint.'],
-  ['text', 'Do you see a way to generate the search result links? Try a few different searches (and visit multiple result pages). Explain below:'],
-  ['user_response', 'User Response here!'],
-  ['text', 'Don\' forget to think about how you would want to parameterize the function.'],
-]
-
-crawler_scrape_search_content1 = [
-  ['text', 'Now write the code that generates a series of search result pages\' url.'],
-  ['user_code', 'User Code here'],
-  ['next_steps', nil],
-]
-
-crawler_scrape_search = Step.create!(
-  title: "generate_search_url",
-  lesson: crawler,
-  step_id: 2,
-)
-
-crawler_scrape_search_slide0 = Slide.create!(
-  content: crawler_scrape_search_content0,
-  parent: crawler_scrape_search,
-  slide_id: 0,
-)
-
-crawler_scrape_search_slide1 = Slide.create!(
-  content: crawler_scrape_search_content1,
-  parent: crawler_scrape_search,
-  slide_id: 1,
-)
-
-crawler_scrape_search_context0 = SubmissionContext.create!(
-  title: "Generate Search Links - Response",
-  description: "User is asked explain how he/she plans to generate search result page url, given that it is REST.",
-  slide: crawler_scrape_search_slide0,
-  submission_context_id: 0,
-  submission_type: SubmissionContext::RESPONSE,
-)
-
-crawler_scrape_search_context1 = SubmissionContext.create!(
-  title: "Generate Search Links - Code",
-  description: "User is asked write code that generates a formatted REST urls that represent search page results.",
-  slide: crawler_scrape_search_slide1,
-  submission_context_id: 1,
-  submission_type: SubmissionContext::CODE,
-)
-
-######################################################
-########## -- Extracting Listing Details -- ##########
-######################################################
-extract_content0 = [
-  ['text', 'To extract information from a boat listing, we need to find the URL of that particular webpage.'],
-  ['text', 'We already built the modules to help us achieve that!'],
-  ['text', 'We first use the "generate_search_url" with some parameter to load a search result url.'],
-  ['text', 'Then you can use the "get_listing_urls" function to get individual url.'],
-  ['text', 'Once you have the raw html to a single listing page, the following functions will come in handy.'],
-  ['lesson_links', nil],
-]
-
-extract = Lesson.create!(
-  title: "Extracting Listing Details",
-  project: project,
-  lesson_id: 2,
-)
-
-extract_slide0 = Slide.create!(
-  content: extract_content0,
-  parent: extract,
-  slide_id: 0,
-)
-
 ########## -- EXTRACTING LISTING DETAILS: get_UID -- ##########
 
 extract_uid_content0 = [
@@ -295,7 +68,7 @@ extract_uid_content0 = [
 
 extract_uid = Step.create!(
   title: "get_UID",
-  lesson: extract,
+  lesson: project_overview,
   step_id: 3,
 )
 
@@ -324,7 +97,7 @@ extract_title_content0 = [
 
 extract_title = Step.create!(
   title: "get_title",
-  lesson: extract,
+  lesson: project_overview,
   step_id: 4,
 )
 
@@ -352,7 +125,7 @@ extract_price_content0 = [
 
 extract_price = Step.create!(
   title: "get_price",
-  lesson: extract,
+  lesson: project_overview,
   step_id: 5,
 )
 
@@ -370,62 +143,6 @@ extract_price_context0 = SubmissionContext.create!(
   submission_type: SubmissionContext::CODE,
 )
 
-########## -- EXTRACTING LISTING DETAILS: get_description -- ##########
-
-extract_description_content0 = [
-  ['text', 'Given a beautifulsoup object, write a function that returns the description of an individual listing page.'],
-  ['user_code', ''],
-  ['next_steps', nil],
-]
-
-extract_description = Step.create!(
-  title: "get_description",
-  lesson: extract,
-  step_id: 6,
-)
-
-extract_description_slide0 = Slide.create!(
-  content: extract_description_content0,
-  parent: extract_description,
-  slide_id: 0,
-)
-
-extract_description_context0 = SubmissionContext.create!(
-  title: "Extract Description.",
-  description: "User is asked to write a function that returns the description of a listing given a beautifulsoup object.",
-  slide: extract_description_slide0,
-  submission_context_id: 0,
-  submission_type: SubmissionContext::CODE,
-)
-
-########## -- EXTRACTING LISTING DETAILS: get_img_URL -- ##########
-
-extract_img_content0 = [
-  ['text', 'Given a beautifulsoup object, write a function that returns a list of image URLs of an individual listing page.'],
-  ['user_code', ''],
-  ['next_steps', nil],
-]
-
-extract_img = Step.create!(
-  title: "get_img_URL",
-  lesson: extract,
-  step_id: 7,
-)
-
-extract_img_slide0 = Slide.create!(
-  content: extract_img_content0,
-  parent: extract_img,
-  slide_id: 0,
-)
-
-extract_img_context0 = SubmissionContext.create!(
-  title: "Extract Image URL.",
-  description: "User is asked to write a function that returns the image URL of a listing given a beautifulsoup object.",
-  slide: extract_img_slide0,
-  submission_context_id: 0,
-  submission_type: SubmissionContext::CODE,
-)
-
 ########## -- EXTRACTING LISTING DETAILS: get_phone_num -- ##########
 
 extract_phone_content0 = [
@@ -436,7 +153,7 @@ extract_phone_content0 = [
 
 extract_phone = Step.create!(
   title: 'get_phone_num',
-  lesson: extract,
+  lesson: project_overview,
   step_id: 8,
 )
 
@@ -453,35 +170,6 @@ extract_phone_context0 = SubmissionContext.create!(
   submission_context_id: 0,
   submission_type: SubmissionContext::CODE,
 )
-
-########## -- EXTRACTING LISTING DETAILS: get_details -- ##########
-
-extract_details_content0 = [
-  ['text', 'Given a beautifulsoup object, write a function that returns the "details section" of an individual listing page.'],
-  ['user_code', ''],
-  ['next_steps', nil],
-]
-
-extract_details = Step.create!(
-  title: "get_details",
-  lesson: extract,
-  step_id: 9,
-)
-
-extract_details_slide0 = Slide.create!(
-  content: extract_details_content0,
-  parent: extract_details,
-  slide_id: 0,
-)
-
-extract_details_context0 = SubmissionContext.create!(
-  title: "Extract Details.",
-  description: "User is asked to write a function that returns the \"details section\" of a listing given a beautifulsoup object.",
-  slide: extract_details_slide0,
-  submission_context_id: 0,
-  submission_type: SubmissionContext::CODE,
-)
-
 ########################################
 ########## -- All Together -- ##########
 ########################################
