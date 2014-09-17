@@ -39,7 +39,6 @@ project_overview_content0 = [
   ['text', " - UID"],
   ['text', " - Listing Title"],
   ['text', " - Price"],
-  ['text', " - Description"],
   ['text', " - Phone Number"],
   ['lesson_links', nil],
 ]
@@ -65,11 +64,10 @@ extract_uid_content0 = [
   ['next_steps', nil],
 ]
 
-
 extract_uid = Step.create!(
   title: "get_UID",
   lesson: project_overview,
-  step_id: 3,
+  step_id: 0,
 )
 
 extract_uid_slide0 = Slide.create!(
@@ -98,7 +96,7 @@ extract_title_content0 = [
 extract_title = Step.create!(
   title: "get_title",
   lesson: project_overview,
-  step_id: 4,
+  step_id: 1,
 )
 
 extract_title_slide0 = Slide.create!(
@@ -126,7 +124,7 @@ extract_price_content0 = [
 extract_price = Step.create!(
   title: "get_price",
   lesson: project_overview,
-  step_id: 5,
+  step_id: 2,
 )
 
 extract_price_slide0 = Slide.create!(
@@ -154,7 +152,7 @@ extract_phone_content0 = [
 extract_phone = Step.create!(
   title: 'get_phone_num',
   lesson: project_overview,
-  step_id: 8,
+  step_id: 3,
 )
 
 extract_phone_slide0 = Slide.create!(
