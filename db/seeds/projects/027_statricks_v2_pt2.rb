@@ -236,8 +236,8 @@ return_code_context = SubmissionContext.create!(
 ########################################
 
 concluding_content = [
-  ['text', "Now that you can extract data from a single listing, you can combine the methods with what you created in Part. 1"],
-  ['text', "Hopefully now you have a better idea of how web scraping works."],
+  ['text-success', "Now that you can extract data from a single listing, you can combine the methods with what you created in Part. 1"],
+  ['text-warning', "Hopefully now you have a better idea of how web scraping works."],
   ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
 
