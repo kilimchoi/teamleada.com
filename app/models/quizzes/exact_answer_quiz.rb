@@ -1,0 +1,2 @@
+class ExactAnswerQuiz < Quiz
+end

@@ -1,0 +1,2 @@
+class NumberRangeQuiz < Quiz
+end
