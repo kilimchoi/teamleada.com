@@ -8,7 +8,7 @@ main_page_content = [
 
 
 project = Project.create!(
-  title:"Part 2",
+  title:"MightyHive: Part 2",
   description: main_page_content,
   short_description: "A project hosted by Mightyhive, an advertising technology company. You will perform data cleaning, de-duplication, and statistical analysis to determine the effectiveness of their marketing technology.",
   number: 29,
@@ -20,7 +20,7 @@ project = Project.create!(
   category: Project::CHALLENGE,
   company_overview: "",
   is_new: false,
-  deadline: 2.weeks,
+  deadline: 3.hours,
   cover_photo: "mightyhive",
 )
 
@@ -112,7 +112,9 @@ experiment_slide = Slide.create!(
 
 challenge_part_one = [
   ['text', 'Your overall task is to analyze the data provided and return a conclusion of the effectiveness of the MightyHive Call Center Remarketing product. There are three parts to completing this project.'],
+  ['text', 'Part Two Challenge:'],
   ['text', 'With a list of all of the matched Reservation observations, some data de-duplication and cleaning must be performed. Some customers make multiple bookings for reservations and these must be distilled to a single reservation. There are also some observations which need to be removed.'],
+  ['lesson_links', nil],
 ]
 
 
@@ -135,6 +137,7 @@ data_cleaning_content_one = [
 	['text', 'Submit code which performs data de-duplication and cleaning so that you can perform analysis on the dataset.'],
 	['text', 'First submit an explanation for your cleaning process.'],
 	['user_response', '#@TODO Include UID'],
+  ['next_steps', nil]
 ]
 
 data_cleaning_content_two = [
@@ -142,7 +145,7 @@ data_cleaning_content_two = [
 	['user_code', '#@TODO Include UID'],
 	['text', 'How many observations in total after cleaning your data do you have to perform your analysis?'],
 	['quiz', 'clean_quiz'],
-	['next_steps', nil],
+	['finish_project_button', ''],
 ]
 
 quiz = Quiz.create!(
@@ -153,7 +156,7 @@ quiz = Quiz.create!(
 
 
 data_cleaning_step = Step.create!(
-	title: "Part 2 Challenge",
+	title: "Data Cleaning",
 	lesson: challenge_lesson,
 	step_id: 1,
 )

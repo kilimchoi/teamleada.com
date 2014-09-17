@@ -8,7 +8,7 @@ main_page_content = [
 
 
 project = Project.create!(
-  title:"MightyHive: AdTech Split Testing Part 1",
+  title:"Ad-Tech Split Testing Part 1",
   description: main_page_content,
   short_description: "A project hosted by Mightyhive, an advertising technology company. You will perform data cleaning, de-duplication, and statistical analysis to determine the effectiveness of their marketing technology.",
   number: 28,
@@ -20,7 +20,7 @@ project = Project.create!(
   category: Project::CHALLENGE,
   company_overview: "",
   is_new: false,
-  deadline: 2.weeks,
+  deadline: 3.hours,
   cover_photo: "mightyhive",
 )
 
@@ -111,7 +111,9 @@ experiment_slide = Slide.create!(
 
 challenge_part_one = [
   ['text', 'Your overall task is to analyze the data provided and return a conclusion of the effectiveness of the MightyHive Call Center Remarketing product. There are three parts to completing this project.'],
+  ['text', 'Part One Challenge:'],
   ['text', 'In part one you must determine how many of the observations in the Abandoned data set match with observations in the Reservation data set. Define what constitutes a match with your own assumptions and explain your thought process in your submission as well as the code which implements the matching.'],
+  ['lesson_links', nil],
 ]
 
 
@@ -140,7 +142,7 @@ data_matching_content_two = [
   ['text', 'Answer in the quiz below the number of matches you identified'],
   ['quiz', 'match_quiz'],
   ['user_code', '#@TODO Include UID'],
-  ['next_steps', nil],
+  ['finish_project_button',''],
 ]
 
 

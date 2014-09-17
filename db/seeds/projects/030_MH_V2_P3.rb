@@ -8,7 +8,7 @@ main_page_content = [
 
 
 project = Project.create!(
-  title:"Part 3",
+  title:"MightyHive: Part 3",
   description: main_page_content,
   short_description: "A project sponsored by Mightyhive, an advertising technology company. You will perform data cleaning, de-duplication, and statistical analysis to determine the effectiveness of their marketing technology.",
   number: 30,
@@ -20,7 +20,7 @@ project = Project.create!(
   category: Project::CHALLENGE,
   company_overview: "",
   is_new: false,
-  deadline: 2.weeks,
+  deadline: 3.hours,
   cover_photo: "mightyhive",
 )
 
@@ -54,7 +54,9 @@ experiment_slide = Slide.create!(
 
 challenge_part_one = [
   ['text', 'Your overall task is to analyze the data provided and return a conclusion of the effectiveness of the MightyHive Call Center Remarketing product. There are three parts to completing this project.'],
+  ['text', 'Part Three Challenge:'],
   ['text', 'With the clean data, Determine and conduct the appropriate statistical analysis. Define your null hypothesis and the 95% confidence interval for the change in proportion of Abandoned observations to Reservation observations between test and control groups.'],
+  ['lesson_links', nil]
 ]
 
 
@@ -149,7 +151,7 @@ presentation_one = [
 presentation_two = [
  ['text', 'Submit a link to a YouTube video of you presenting your conclusions (2 min max). Use a webcam and please show yourself speaking. Production value is not important.'],
  ['user_response', ''],
- ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
+ ['finish_project_button', ''],
 ]
 
 presentation_lesson = Lesson.create!(
