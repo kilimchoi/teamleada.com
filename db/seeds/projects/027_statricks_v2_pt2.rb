@@ -185,7 +185,7 @@ all_together_content_zero = [
 all_together_lesson = Lesson.create!(
   title: "The Complete Scraper",
   project: project,
-  lesson_id: 3,
+  lesson_id: 1,
 )
 
 all_together_slide0 = Slide.create!(
@@ -275,7 +275,7 @@ presentation_three = [
 presentation_lesson = Lesson.create!(
   title: "Final Presentation - Statricks",
   project: project,
-  lesson_id: 4,
+  lesson_id: 2,
 )
 
 all_together_slide_one = Slide.create!(
