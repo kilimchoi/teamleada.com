@@ -1,5 +1,3 @@
-
-
 main_page_content = [
   ['text','MightyHive is an advertising technology company that uses retargeting methods to send ads to users online. One product, “Call Center Remarketing”, uses call center log data to retarget those consumers online which did not make a purchase.'],
   ['text', 'You are tasked with determining the effectiveness of one of their advertising campaigns with a vacation rental client “Martin’s Travel Agency”.'],
@@ -8,9 +6,9 @@ main_page_content = [
 
 
 project = Project.create!(
-  title:"MightyHive Split Testing: Part 3",
+  title:"MightyHive: AdTech Split Testing - Part 3",
   description: main_page_content,
-  short_description: "A project sponsored by Mightyhive, an advertising technology company. You will perform data cleaning, de-duplication, and statistical analysis to determine the effectiveness of their marketing technology.",
+  short_description: "A project sponsored by MightyHive, an advertising technology company. You will perform data cleaning, de-duplication, and statistical analysis to determine the effectiveness of their marketing technology.",
   number: 30,
   enabled: true,
   has_content_submit: true,
@@ -22,6 +20,7 @@ project = Project.create!(
   is_new: false,
   deadline: 3.hours,
   cover_photo: "mightyhive",
+  project_set_id: 0,
 )
 
 ################################################################################

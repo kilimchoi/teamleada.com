@@ -35,6 +35,8 @@ class Project < ActiveRecord::Base
 
   serialize :description, Array
 
+  belongs_to :project_set
+
   has_many :lessons, dependent: :destroy
   has_many :project_scores
 
@@ -67,6 +69,7 @@ class Project < ActiveRecord::Base
   scope :not_featured, -> { enabled.where(featured: false) }
 
   scope :newest_first, -> { order("uid DESC") }
+  scope :displayable, -> { where(uid: Project.displayable_ids) }
 
   # Scope by type
   scope :data_challenges, -> { where(category: CHALLENGE) }
@@ -78,6 +81,7 @@ class Project < ActiveRecord::Base
   extend FriendlyId
   friendly_id :url, use: :finders
 
+  # TODO(mark): Move constants somewhere else
   BEGINNER = "Beginner"
   INTERMEDIATE = "Intermediate"
   ADVANCED = "Advanced"
@@ -110,6 +114,10 @@ class Project < ActiveRecord::Base
   VALID_FILTERS = ["started", "completed"]
 
   class << self
+    def displayable_ids
+      Project.all.select { |project| !project.is_part_of_set? || (project.is_part_of_set? && project.is_first_part_of_set?) }.map(&:uid)
+    end
+
     def random_set_of_colors(amount)
       COLORS.sample(amount)
     end
@@ -142,6 +150,15 @@ class Project < ActiveRecord::Base
   # Attributes
   def has_cover_photo?
     !cover_photo.nil?
+  end
+
+  # Project Sets
+  def is_part_of_set?
+    !project_set_id.nil?
+  end
+
+  def is_first_part_of_set?
+    is_part_of_set? && project_set.first_part == self
   end
 
   def color

@@ -1,0 +1,14 @@
+// Required Variables:
+// project
+
+- if project.is_part_of_set?
+  - project_set = project.project_set
+  - project_set.projects.each do |project_part|
+    .row
+      .col-md-12
+        = project_part.title
+        = render partial: "projects/project_action", locals: { project: project_part }
+    hr
+- else
+  = render partial: "projects/project_action", locals: { project: project }
+
