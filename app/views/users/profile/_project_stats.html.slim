@@ -77,3 +77,24 @@
                 .profile-stat-value
                   = user.file_submissions.count
 
+              li.indented-list
+                ul.plain-list
+                  li.profile-stat-container.clearfix
+                    .profile-stat-title
+                      h4 Image Submissions
+                    .profile-stat-value
+                      = user.image_submissions.count
+
+              li.profile-stat-container.clearfix
+                .profile-stat-title
+                  h4 Slides Link Submissions
+                .profile-stat-value
+                  = user.slides_link_submissions.count
+
+              li.profile-stat-container.clearfix
+                .profile-stat-title
+                  h4 Video Link Submissions
+                .profile-stat-value
+                  = user.video_link_submissions.count
+
+
