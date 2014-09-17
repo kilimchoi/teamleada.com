@@ -6,7 +6,7 @@
 main_page_content = [
   ['text-info', "The overall goal of this project series is to create a functional webscraper."],
   ['text-warning', "In Part. 1, we'll focus on getting the raw html + walking the search result pages."],
-  ['text', "This will involve taking advantage of some REST endpoint, in addition to walking through raw search result html to collect relevant urls."],
+  ['text', "This will involve taking advantage of some REST endpoint, in addition to walking through raw search result html to collect relevant URLs."],
   ['text', "We'll focus on extracting individual advertisement level data in the next part."],
   ['text-success', "Let's get started"],
 ]
@@ -40,16 +40,16 @@ project_overview_content0 = [
   ['text', "They scrape various websites to figure out the selling price of an individual item."],
   ['text', "Once you've acquired enough item-level data, you can engage in building analytical models."],
   ['text', "To get to creating interesting data models, it all starts here:"],
-  ['text-success', "Data Acquisistion"],
-]
+  ['text-success', "Data Acquisition"],
+]permute
 
 project_overview_content1 = [
   ['text', "Specifically for our purpose, we'll be scraping a website called:"],
   ['link', "http://www.boattrader.com   "],
-  ['text-info', "In order to scrape the website, you have to come up with a way to walk the url links."],
-  ['text', "There are different ways to find the urls to walk."],
-  ['text', "The way we suggest is to run a generic search and parse the search result page url."],
-  ['text-success', "As you permutate the result page url, you'll be able to simulate browsing through the search results."],
+  ['text-info', "In order to scrape the website, you have to come up with a way to walk the URL links."],
+  ['text', "There are different ways to finding the URLs to walk."],
+  ['text', "The way we suggest is to run a generic search and parse the search result page URL."],
+  ['text-success', "As you permute the result page URL, you'll be able to simulate browsing through the search results."],
   ['next_steps', ""],
 ]
 
@@ -64,6 +64,7 @@ project_overview_slide0 = Slide.create!(
   parent: project_overview,
   slide_id: 0,
 )
+
 project_overview_slide1 = Slide.create!(
   content: project_overview_content1,
   parent: project_overview,
@@ -75,16 +76,15 @@ project_overview_slide1 = Slide.create!(
 ##############################################
 
 crawler_content0 = [
-  ['text-success', "Write a function that returns a list of urls to individuals listing."],
-  ['text', "Though we suggested that you walk the search result url, you can different approaches."],
-  ['text', "A sample ad url would look like the following:"],
+  ['text-success', "Write a function that returns a list of URLs to individuals listing."],
+  ['text', "Though we suggested that you walk the search result URL, you can take different approaches."],
+  ['text', "A sample ad URL would look like the following:"],
   ['code', "http://www.boattrader.com/listing/2009-Supra-Launch-24-SSV-102286745"],
-  ['text-warning', "Paste in the relevant code below:"],
+  ['text-warning', "Paste in the relevant code that will return the list below:"],
   ['user_code', ""],
-  ['text', "Make sure to include all relevant function you used, plus any imports you might have done."],
+  ['text', "Make sure to include all the relevant function you used, plus any imports you might have done."],
   ['next_steps', nil],
 ]
-
 
 crawler = Lesson.create!(
   title: "Search Result Page",
@@ -100,7 +100,7 @@ crawler_slide0 = Slide.create!(
 
 crawler_getRaw_context0 = SubmissionContext.create!(
   title: "Get Ad URLs",
-  description: "User is asked to return the code that will return a list of url to invidual ads (after search result url walks).",
+  description: "User is asked to return the code that will return a list of URLs to individual ads (after search result URL walks).",
   slide: crawler_slide0,
   submission_context_id: 0,
   submission_type: SubmissionContext::CODE,
@@ -111,11 +111,11 @@ crawler_getRaw_context0 = SubmissionContext.create!(
 ########################################
 
 response_one = [
-  ['text-success', "Now explain in a paragraph what you did to get a list of advertisement urls."],
+  ['text-success', "Now explain in a paragraph what you did to get a list of advertisement URLs."],
   ['text', "Did you have to do anything tricky?"],
   ['text', "What was the most challenging aspect?"],
   ['user_response', ""],
-  ['text-warning', "You're not being evaluated on grammar, but write a thoughtout and structured explanation."],
+  ['text-warning', "You're not being evaluated on grammar, but write a thought out and structured explanation."],
   ['next_steps', ""],
 ]
 
@@ -145,7 +145,7 @@ get_ad_response = SubmissionContext.create!(
 
 conclusion_content = [
   ['text', "This was a great way to get started on the web scraper."],
-  ['text', "We have a list of urls to invidual item ads."],
+  ['text', "We have a list of URLs to individual item ads."],
   ['text-success', "Next we're going to actually extract the individual data from the raw item level ad page html."],
   ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
