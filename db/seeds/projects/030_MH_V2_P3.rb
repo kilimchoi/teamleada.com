@@ -142,7 +142,7 @@ stat_analysis_context_three = SubmissionContext.create!(
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 presentation_one = [
- ['text', 'Submit a link to a google presentation (2-3 slides) of your analysis and conclusion. Make sure to edit the visibility options in the sharing settings to "Anyone with the link".'],
+ ['text', 'Submit a link to a presentation (2-3 slides) of your analysis and conclusion. Make sure the link is directly viewable online.'],
  ['user_response', ''],
 ]
 
