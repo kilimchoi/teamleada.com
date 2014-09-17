@@ -15,4 +15,10 @@
 #
 
 class ExactAnswerQuiz < Quiz
+
+  def is_correct?(user_input)
+    # Given a "user_input", returns True if the user_input matches the answer.
+    answer == user_input || whitespace_and_lower_pass(user_input) || equalsign_pass(user_input) || quoteless_pass(user_input)
+  end
+
 end

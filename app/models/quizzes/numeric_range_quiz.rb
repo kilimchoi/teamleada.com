@@ -15,4 +15,8 @@
 #
 
 class NumericRangeQuiz < Quiz
+
+  def is_correct?(user_input)
+  end
+
 end

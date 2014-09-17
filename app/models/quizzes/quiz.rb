@@ -35,10 +35,10 @@ class Quiz < ActiveRecord::Base
   end
 
   def correct_answer?(user_input)
-    # Given a "user_input", returns True if the user_input matches the answer.
-    answer == user_input || whitespace_and_lower_pass(user_input) || equalsign_pass(user_input) || quoteless_pass(user_input)
+    self.is_correct?(user_input)
   end
 
+  # Helpers
   def quoteless_pass(user_input)
     # Returns T/F depending of answer == user_input, after we remove all quotes.
     quote_removed_input = Quiz.lower_and_clean(user_input).gsub(/'|"/, "")
