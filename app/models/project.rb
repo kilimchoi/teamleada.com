@@ -69,6 +69,7 @@ class Project < ActiveRecord::Base
   scope :not_featured, -> { enabled.where(featured: false) }
 
   scope :newest_first, -> { order("uid DESC") }
+  scope :displayable, -> { where(uid: Project.displayable_ids) }
 
   # Scope by type
   scope :data_challenges, -> { where(category: CHALLENGE) }
@@ -113,6 +114,10 @@ class Project < ActiveRecord::Base
   VALID_FILTERS = ["started", "completed"]
 
   class << self
+    def displayable_ids
+      Project.all.select { |project| !project.is_part_of_set? || (project.is_part_of_set? && project.is_first_part_of_set?) }.map(&:uid)
+    end
+
     def random_set_of_colors(amount)
       COLORS.sample(amount)
     end
