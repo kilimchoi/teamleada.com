@@ -136,7 +136,7 @@ get_ad_response = SubmissionContext.create!(
   description: "User is asked to explain how he/she got the list of ads.",
   slide: response_slide_one,
   submission_context_id: 0,
-  submission_type: SubmissionContext::PRES_SLIDES_LINK,
+  submission_type: SubmissionContext::RESPONSE,
 )
 
 ########################################
