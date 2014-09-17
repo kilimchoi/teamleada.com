@@ -175,11 +175,7 @@ presentation_context = SubmissionContext.create!(
   description: "Submit a 2-3 deck presentation of your analysis and conclusions.",
   slide: presentation_slide_one,
   submission_context_id: 0,
-<<<<<<< HEAD
-  submission_type: SubmissionContext::PRES_SLIDES_LINK,
-=======
   submission_type: SubmissionContext::PRESENTATION_SLIDES_LINK,
->>>>>>> 249d60b776a18c5419f60e07e13b27e229bd2b80
 )
 
 return_code_context = SubmissionContext.create!(
@@ -187,11 +183,7 @@ return_code_context = SubmissionContext.create!(
   description: "Submit a video presenting your analysis and conclusion to the 'CEO'",
   slide: presentation_slide_two,
   submission_context_id: 1,
-<<<<<<< HEAD
-  submission_type: SubmissionContext::PRES_VIDEO_LINK,
-=======
   submission_type: SubmissionContext::PRESENTATION_VIDEO_LINK,
->>>>>>> 249d60b776a18c5419f60e07e13b27e229bd2b80
 )
 
 
