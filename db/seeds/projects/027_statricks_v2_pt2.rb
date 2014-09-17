@@ -36,10 +36,10 @@ puts "============ Created project: #{project.title}."
 project_overview_content0 = [
   ['text', "Since you have access to the individual listing URLs from Part 1, you essentially have access to the raw html of an individual listing."],
   ['text-warning', "We'll go through a list data points that we'll need to grab from each listing:"],
-  ['text', " - UID"],
-  ['text', " - Listing Title"],
-  ['text', " - Price"],
-  ['text', " - Phone Number"],
+  ['text', " -  UID"],
+  ['text', " -  Listing Title"],
+  ['text', " -  Price"],
+  ['text', " -  Phone Number"],
   ['lesson_links', nil],
 ]
 
@@ -65,7 +65,7 @@ extract_uid_content0 = [
 ]
 
 extract_uid = Step.create!(
-  title: "get_UID",
+  title: "Statricks Pt2: get_UID",
   lesson: project_overview,
   step_id: 0,
 )
@@ -94,7 +94,7 @@ extract_title_content0 = [
 
 
 extract_title = Step.create!(
-  title: "get_title",
+  title: "Statricks Pt2: get_title",
   lesson: project_overview,
   step_id: 1,
 )
@@ -122,7 +122,7 @@ extract_price_content0 = [
 ]
 
 extract_price = Step.create!(
-  title: "get_price",
+  title: "Statricks Pt2: get_price",
   lesson: project_overview,
   step_id: 2,
 )
@@ -150,7 +150,7 @@ extract_phone_content0 = [
 ]
 
 extract_phone = Step.create!(
-  title: 'get_phone_num',
+  title: 'Statricks Pt2: get_phone_num',
   lesson: project_overview,
   step_id: 3,
 )
