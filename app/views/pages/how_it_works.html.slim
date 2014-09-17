@@ -1,31 +1,34 @@
-.container.full-container.card-container
-  .row
-    .col-md-12
-      .row.card
-        .col-md-12
-          h1.center How do I get hired through Leada?
+- provide(:title, "How It Works")
 
-      .row.card
-        .col-md-12
-          h4 First, submit a resume or integrate your profile with LinkedIn. You can get a data science position through Leada in two ways:
-          ol
-            li.h4 Be the one of the top submissions to a data challenge and your submission and profile is directly shown to the hiring manager of that company.
-            li.h4 Every challenge you complete goes to your profile to which companies can view and will contact you if they are interested!
+.container-fluid.full-container
+  = render partial: "shared/home_carousel", locals: { home: @home }
 
-      .row.card
-        .col-md-12
-          h1.center How We Work?
+  .container.card-container
+    .row
+      .col-md-12
+        .row.card
+          .col-md-12
+            h1.center How do I get hired through Leada?
 
-      .row.card
-        .col-md-12
-          h4 Leada offers two types of content:
-          ol
-            li.h4 Data Challenges
-            li.h4 Data Lessons
-          h4
-            strong Data Challenges
-            |  are industry emphasized projects to which you complete to recruit for data science positions.
-          h4
-            strong Data Lessons
-            |  are data science walkthroughs of different types of analysis for your own learning.
+        .row.card
+          .col-md-12
+            h4 First, submit a resume or integrate your profile with LinkedIn. You can get a data science position through Leada in two ways:
+            ol
+              li.h4 Be the one of the top submissions to a data challenge and your submission and profile is directly shown to the hiring manager of that company.
+              li.h4 Every challenge you complete goes to your profile to which companies can view and will contact you if they are interested!
+
+        .row.card
+          .col-md-12
+            h1.center How We Work?
+
+        .row.card
+          .col-md-12
+            h4 Leada offers two types of content:
+            ol
+              li.h4
+                strong Data Challenges
+                |  are industry emphasized projects to which you complete to recruit for data science positions.
+              li.h4
+                strong Data Lessons
+                |  are data science walkthroughs of different types of analysis for your own learning.
 
