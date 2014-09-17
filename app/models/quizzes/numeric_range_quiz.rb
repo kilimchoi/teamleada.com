@@ -25,7 +25,7 @@ class NumericRangeQuiz < Quiz
     elsif self.upper_bound.nil?
       self.lower_bound <= integer_user_input
     else
-        nil
+      false
     end
   end
 
