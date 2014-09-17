@@ -80,6 +80,7 @@ class Project < ActiveRecord::Base
   extend FriendlyId
   friendly_id :url, use: :finders
 
+  # TODO(mark): Move constants somewhere else
   BEGINNER = "Beginner"
   INTERMEDIATE = "Intermediate"
   ADVANCED = "Advanced"
@@ -144,6 +145,15 @@ class Project < ActiveRecord::Base
   # Attributes
   def has_cover_photo?
     !cover_photo.nil?
+  end
+
+  # Project Sets
+  def is_part_of_set?
+    !project_set_id.nil?
+  end
+
+  def is_first_part_of_set?
+    is_part_of_set? && project_set.first_part == self
   end
 
   def color

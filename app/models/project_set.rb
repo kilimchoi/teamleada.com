@@ -11,4 +11,13 @@
 
 class ProjectSet < ActiveRecord::Base
   has_many :projects
+
+  def first_part
+    projects.first
+  end
+
+  def last_part
+    projects.last
+  end
+
 end
