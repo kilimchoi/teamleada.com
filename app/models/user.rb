@@ -572,6 +572,10 @@ class User < ActiveRecord::Base
     all_projects(completed, Project::LESSON)
   end
 
+  def started_lessons
+    started_projects.data_lessons
+  end
+
   def completed_lessons
     lessons(true)
   end
