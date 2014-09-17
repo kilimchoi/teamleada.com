@@ -1,0 +1,27 @@
+= will_paginate @project_submissions
+table.table.table-striped
+  th Link
+  th User
+  th Email
+  th User Submissions for Project
+  th Submitted At
+  th Type
+  th Evaluated?
+  th # Evaluations
+  th See All Evaluations
+  - @project_submissions.each do |project_submission|
+    tr
+      td = link_to "View", admin_user_project_project_submission_path(project_submission.user, project_submission.project, project_submission)
+      td = link_to project_submission.user.name, admin_user_path(project_submission.user)
+      td = project_submission.user.email
+      td = link_to project_submission.project.title, admin_user_project_project_submissions_path(project_submission.user, project_submission.project)
+      td = project_submission.pretty_submitted_date
+      td = project_submission.content_type
+      td
+        - if project_submission.has_evaluation?
+          span.label.label-success Yes
+        - else
+          span.label.label-danger No
+      td = project_submission.evaluations.count
+      td = link_to "All Evaluations", admin_user_project_project_submission_submission_evaluations_path(project_submission.user, project_submission.project, project_submission)
+

@@ -1,9 +1,12 @@
-table.table.table-striped
-  th Rank
-  th Username
-  th Score
-  - @project.submissions.limit(10).each_with_index do |submission, index|
-    tr
-      td = index + 1
-      td = submission.user.username
-      td = submission.score
+.row.card
+  .col-md-12
+    h2 Leaderboard
+    table.table.table-striped
+      th Rank
+      th Username
+      th Score
+      - @project.project_scores.limit(10).each_with_index do |submission, index|
+        tr
+          td = index + 1
+          td = submission.user.username
+          td = submission.score

@@ -609,17 +609,17 @@ presentation_slide_three = Slide.create!(
   slide_id: 2,
 )
 presentation_context = SubmissionContext.create!(
-  title: "Presentation - slides",
+  title: "Presentation - Slides",
   description: "User is asked create a 3 slides presentation for the statricks project.",
   slide: presentation_slide_two,
   submission_context_id: 0,
-  submission_type: SubmissionContext::PRES_SLIDES_LINK,
+  submission_type: SubmissionContext::PRESENTATION_SLIDES_LINK,
 )
 
 return_code_context = SubmissionContext.create!(
-  title: "Presentation - video",
+  title: "Presentation - Video",
   description: "User is asked to create a video presentation (no longer than 2 min) of the statricks slides.",
   slide: presentation_slide_three,
   submission_context_id: 1,
-  submission_type: SubmissionContext::PRES_VIDEO_LINK,
+  submission_type: SubmissionContext::PRESENTATION_VIDEO_LINK,
 )

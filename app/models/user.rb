@@ -76,17 +76,30 @@ class User < ActiveRecord::Base
   has_many :stories, as: :subject
 
   # Submissions
-  has_many :submissions
-  has_many :code_submissions
-  has_many :code_submission_evaluations, foreign_key: :reviewee_id
-  has_many :quiz_submissions
   has_many :project_submissions
+  has_many :code_submissions,          -> { where(content_type: "CodeSubmissionContent") },         class_name: "ProjectSubmission"
+  has_many :free_response_submissions, -> { where(content_type: "FreeResponseSubmissionContent") }, class_name: "ProjectSubmission"
+  has_many :file_submissions,          -> { where(content_type: ["Image", "PDF", "CSV"].map{|type| type + "SubmissionContent"}) }, class_name: "ProjectSubmission"
+  has_many :image_submissions,         -> { where(content_type: "ImageSubmissionContent") },        class_name: "ProjectSubmission"
+  has_many :pdf_submissions,           -> { where(content_type: "PDFSubmissionContent") },          class_name: "ProjectSubmission"
+  has_many :csv_submissions,           -> { where(content_type: "CSVSubmissionContent") },          class_name: "ProjectSubmission"
+
+  # Evaluations
+  has_many :submission_evaluations, foreign_key: :reviewee_id
+  has_many :code_submission_evaluations,   -> { where(content_type: "CodeSubmissionEvaluation") }, class_name: "SubmissionEvaluation", foreign_key: :reviewee_id
+
+  has_many :project_scores
+  # TODO(mark): refactor this
+  has_many :quiz_submissions
 
   # Project completion
   has_many :step_statuses
   has_many :lesson_statuses
   has_many :project_statuses
-  has_many :started_projects, through: :project_statuses
+  has_many :completed_project_statuses, -> { where(completed: true) }, class_name: "ProjectStatus"
+
+  # Projects
+  has_many :projects, through: :project_statuses
 
   # Invites and Access Codes
   has_many :user_codes
@@ -171,10 +184,9 @@ class User < ActiveRecord::Base
   default_scope -> { order(:created_at) }
   scope :alphabetically, -> { order("name ASC") }
 
-  # TODO(mark): These should not ve necessary with form objects.
+  # TODO(mark): These should not be necessary with form objects.
   accepts_nested_attributes_for :resumes
   accepts_nested_attributes_for :profile_photos
-  accepts_nested_attributes_for :project_submissions
 
   # Validations
   validates_format_of :username, :with => /\A[A-Za-z0-9_]*\z/
@@ -413,8 +425,8 @@ class User < ActiveRecord::Base
     project.total_points <= completed_points(project)
   end
 
-  def has_submitted_all_code_submissions_for_project?(project)
-    project.code_submissions
+  def has_submitted_all_submissions_for_project?(project)
+    project.submission_context.required.count == self.unique_required_project_submissions_for_project_count(project)
   end
 
   def has_invited_friends?
@@ -477,7 +489,11 @@ class User < ActiveRecord::Base
   end
 
   def has_completed_submission?(submission_context)
-    self.code_submissions_for_project(submission_context.project).select{ |code_submission| submission_context.required && code_submission.submission_context == submission_context }.count > 0
+    self.project_submissions_for_project(submission_context.project).select{ |code_submission| submission_context.required && code_submission.submission_context == submission_context }.count > 0
+  end
+
+  def has_completed_required_submission?(submission_context)
+    submission_context.required && has_completed_submission?(submission_context)
   end
 
   def next_lesson_or_step_for_project_path(project)
@@ -498,7 +514,7 @@ class User < ActiveRecord::Base
         return lesson
       end
       lesson.slides.each do |slide|
-        if slide.has_submission_contexts? && !self.has_completed_submission?(slide.submission_context)
+        if slide.has_submission_contexts? && !self.has_completed_required_submission?(slide.submission_context)
           return lesson
         end
       end
@@ -508,7 +524,7 @@ class User < ActiveRecord::Base
           return step
         end
         step.slides.each do |slide|
-          if slide.has_submission_contexts? && !self.has_completed_submission?(slide.submission_context)
+          if slide.has_submission_contexts? && !self.has_completed_required_submission?(slide.submission_context)
             return step
           end
         end
@@ -525,6 +541,15 @@ class User < ActiveRecord::Base
       end
     end
     false
+  end
+
+  def projects_by_type
+    {
+      completed_challenges: completed_challenges,
+      in_progress_challenges: in_progress_challenges,
+      completed_lessons: completed_lessons,
+      in_progress_lessons: in_progress_lessons,
+    }
   end
 
   def all_projects(completed, category)
@@ -555,8 +580,22 @@ class User < ActiveRecord::Base
     lessons(false)
   end
 
+  def started_projects
+    project_ids = project_statuses.pluck(:project_id)
+    projects.where(uid: project_ids)
+  end
+
   def completed_projects
-    project_statuses.where(completed: true).collect{ |project_status| project_status.project }
+    project_ids = completed_project_statuses.pluck(:project_id)
+    projects.where(uid: project_ids)
+  end
+
+  def started_challenges
+    started_projects.data_challenges
+  end
+
+  def completed_challenges
+    completed_projects.data_challenges
   end
 
   def completed_projects_with_submissions
@@ -572,8 +611,8 @@ class User < ActiveRecord::Base
     project_statuses.find_by(project: project)
   end
 
-  def code_submission_of_type_for_project(type, project)
-    project.submission_contexts.where(submission_type: type).collect{ |submission_context| submission_context.code_submissions_for_user(self).first }.first
+  def project_submission_of_type_for_project(type, project)
+    project.submission_contexts.where(submission_type: type).collect{ |submission_context| submission_context.project_submissions_for_user(self).first }.first
   end
 
   def video_for_project(project)
@@ -586,16 +625,25 @@ class User < ActiveRecord::Base
   end
 
   def presentation_for_project(project)
-    code_submission_of_type_for_project("presentation_slides_link", project)
+    project_submission_of_type_for_project("presentation_slides_link", project)
   end
 
-  def code_submissions_for_project(project)
-    code_submissions.where(project: project)
+  def project_submissions_for_project(project)
+    project_submissions.where(project: project)
   end
 
-  def first_missing_code_submission(project)
+  def required_project_submissions_for_project(project)
+    required_slide_ids = project.slide_ids_of_required_submission_contexts
+    project_submissions_for_project(project).where(slide_id: required_slide_ids)
+  end
+
+  def unique_required_project_submissions_for_project_count(project)
+    required_project_submissions_for_project(project).pluck(:slide_id).uniq.count
+  end
+
+  def first_missing_project_submission(project)
     project.submission_contexts.each do |submission_context|
-      unless self.has_completed_submission? submission_context
+      unless self.has_completed_required_submission?(submission_context)
         return submission_context
       end
     end
@@ -614,15 +662,25 @@ class User < ActiveRecord::Base
         total += lesson_status.lesson.points
       end
     end
-    total + code_submissions_for_project(project).count
+    total + unique_required_project_submissions_for_project_count(project)
   end
 
   def project_progress_percentage(project)
     ((completed_points(project).to_f / project.total_points.to_f) * 100).round(1)
   end
 
+  # Project Submissions
+  def has_project_submission_for_submission_context?(submission_context)
+    project_submissions_for_submission_context(submission_context).count > 0
+  end
+
+  def project_submissions_for_submission_context(submission_context)
+    project_submissions.where(slide: submission_context.slide)
+  end
+
+  # Evaluations
   def evaluations_for_project(project)
-    self.code_submission_evaluations.where(project: project)
+    self.submission_evaluations.where(project: project)
   end
 
   def published_evaluations_for_project(project)
