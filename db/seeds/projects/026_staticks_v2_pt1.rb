@@ -27,6 +27,7 @@ project = Project.create!(
   deadline: 4.hours,
   featured: false,
   cover_photo: "statricks",
+  project_set_id: 1,
 )
 
 puts "============ Created project: #{project.title}."
