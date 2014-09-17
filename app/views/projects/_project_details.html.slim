@@ -25,11 +25,11 @@ hr
     .col-md-10
       .row
         .col-md-6
-          ' Number of Required Submissions:
+          ' Required Submissions:
           strong
             = project.submission_contexts.required.count
         .col-md-6
-          ' Number of Optional Submissions:
+          ' Optional Submissions:
           strong
             = project.submission_contexts.optional.count
       - if project.has_deadline?
