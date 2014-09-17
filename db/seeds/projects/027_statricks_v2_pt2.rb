@@ -170,7 +170,7 @@ extract_phone_context0 = SubmissionContext.create!(
 )
 
 ########################################
-#### -- Concluding Section -- ##########
+#### -- Presentation Section -- ########
 ########################################
 
 presentation_one = [
@@ -193,9 +193,9 @@ presentation_three = [
 ]
 
 presentation_lesson = Lesson.create!(
-  title: "Final Presentation - Statricks",
+  title: "Presentation - Statricks",
   project: project,
-  lesson_id: 2,
+  lesson_id: 1,
 )
 
 all_together_slide_one = Slide.create!(
@@ -229,4 +229,26 @@ return_code_context = SubmissionContext.create!(
   slide: presentation_slide_three,
   submission_context_id: 1,
   submission_type: SubmissionContext::PRES_VIDEO_LINK,
+)
+
+########################################
+#### -- Concluding Section -- ##########
+########################################
+
+concluding_content = [
+  ['text', "Now that you can extract data from a single listing, you can combine the methods with what you created in Part. 1"],
+  ['text', "Hopefully now you have a better idea of how web scraping works."],
+  ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
+]
+
+concluding_lesson = Lesson.create!(
+  title: "Concluding Statricks Series",
+  lesson_id: 2,
+  project: project,
+)
+
+concluding_lesson = Slide.create!(
+  content: concluding_content,
+  slide_id: 0,
+  parent: concluding_lesson,
 )
