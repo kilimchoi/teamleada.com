@@ -308,6 +308,10 @@ class User < ActiveRecord::Base
   #
   # Instance Methods
   #
+  def name_or_you(user)
+    self == user ? "You" : name
+  end
+
   def name
     name_attribute = read_attribute(:name)
     if name_attribute.nil? || name_attribute.blank?
