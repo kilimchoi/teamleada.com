@@ -8,7 +8,7 @@ main_page_content = [
 
 
 project = Project.create!(
-  title:"MightyHive: Part 3",
+  title:"MightyHive Split Testing: Part 3",
   description: main_page_content,
   short_description: "A project sponsored by Mightyhive, an advertising technology company. You will perform data cleaning, de-duplication, and statistical analysis to determine the effectiveness of their marketing technology.",
   number: 30,
