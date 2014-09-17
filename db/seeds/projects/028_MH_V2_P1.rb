@@ -145,10 +145,10 @@ data_matching_content_two = [
   ['finish_project_button',''],
 ]
 
-
-quiz = Quiz.create!(
+quiz = NumericRangeQuiz.create!(
   quiz_id: "match_quiz",
-  answer:"445",
+  lower_bound: 327.0,
+  upper_bound: 445.0,
   project: project,
 )
 
