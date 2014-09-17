@@ -47,7 +47,7 @@ class Step < ActiveRecord::Base
   end
 
   def set_url
-    self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize
+    self.url = title.urlify
   end
 
   def id
@@ -83,19 +83,18 @@ class Step < ActiveRecord::Base
     potential_step_uid = current_uid[0..-2] + (id + 1).to_s
     potential_next_step = Step.find_by_uid(potential_step_uid)
 
-    if not potential_next_step.nil?
-      return project_lesson_step_path(project_id: main_lesson.project.url, lesson_id: main_lesson.url, id: potential_next_step.url)
-    else
-      #return project_lesson_path(project_id: lesson.project.url, id: potential_next_lesson.url)
+    if potential_next_step.nil?
       nil
+    else
+      project_lesson_step_path(main_lesson.project, main_lesson, potential_next_step)
     end
   end
 
   def back_link
     if previous_step.nil?
-      project_lesson_path(project_id: lesson.project.url, id: lesson.url)
+      project_lesson_path(lesson.project, lesson)
     else
-      project_lesson_step_path(project_id: previous_step.main_lesson.project.url, lesson_id: previous_step.main_lesson.url, id: previous_step.url)
+      project_lesson_step_path(previous_step.main_lesson.project, previous_step.main_lesson, previous_step)
     end
   end
 

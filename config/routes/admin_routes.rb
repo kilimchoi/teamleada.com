@@ -28,14 +28,14 @@ TeamLeada::Application.routes.draw do
           end
 
           scope module: :projects do
-            resources :code_submissions, only: [:show, :index] do
+            resources :project_submissions, path: "submissions", only: [:show, :index] do
               member do
-                match "evaluate", to: "code_submissions#evaluate", as: :evaluate, via: :post
-                match "evaluate", to: "code_submissions#update_evaluation", as: :update_evaluations, via: :patch
+                match "evaluate", to: "project_submissions#evaluate", as: :evaluate, via: :post
+                match "evaluate", to: "project_submissions#update_evaluation", as: :update_evaluations, via: :patch
               end
 
-              scope module: :code_submissions do
-                resources :code_submission_evaluations, path: "evaluations", only: [:index]
+              scope module: :project_submissions do
+                resources :submission_evaluations, path: "evaluations", only: [:index]
               end
             end
           end
@@ -74,12 +74,7 @@ TeamLeada::Application.routes.draw do
       end
     end
 
-    resources :code_submissions, path: "code-submissions", only: [:index] do
-      member do
-        match 'evaluate', to: 'code_submissions#evaluate', as: :evaluate, via: :post
-        match 'evaluate', to: 'code_submissions#update_evaluation', as: :update_evaluation, via: :patch
-      end
-    end
+    resources :project_submissions, path: "submissions", only: [:index]
 
     match 'charts/category/realtime', to: "pages#realtime_charts", as: :realtime_charts, via: :get
     match 'charts/category/page-views', to: "pages#page_view_charts", as: :page_view_charts, via: :get

@@ -11,7 +11,6 @@ class Ability
     # Re-enable below when companies are viewable by everyone
 #    can [:index, :show], Company
 
-
     can :show, Lesson do |lesson|
       !lesson.project.deadline || (lesson.project.deadline && user.project_status_for_project(lesson.project).has_time_remaining?)
     end
@@ -43,6 +42,11 @@ class Ability
         can [:show, :check_submission, :complete, :submit_resource, :purchase, :resource, :feedback], Project do |project|
           project.enabled && (project.grants_project_access || (user.has_project_access? && (!project.paid || !user.has_not_paid_for_project?(project))))
         end
+
+        can [:check_answer], Quiz
+
+        can [:show, :index], SubmissionContext
+        can [:create], ImageSubmissionContent
 
 #        can [:index, :create], Invite
       end

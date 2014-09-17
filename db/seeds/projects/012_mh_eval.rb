@@ -279,14 +279,14 @@ stat_analysis_context = SubmissionContext.create!(
   submission_type: SubmissionContext::RESPONSE,
 )
 stat_analysis_context_two = SubmissionContext.create!(
-  title: "Data Matching Response",
+  title: "Statistical Analysis Code",
   description: "Submit code which performs the statistical analysis including the calculation of the 95% confidence interval.",
   slide: stat_analysis_slide_two,
   submission_context_id: 0,
   submission_type: SubmissionContext::CODE,
 )
 stat_analysis_context_three = SubmissionContext.create!(
-  title: "Data Matching Response",
+  title: "Statistical Analysis Response",
   description: "Submit a conclusion of the results. How effective was the MightyHive advertising product?",
   slide: stat_analysis_slide_three,
   submission_context_id: 0,
@@ -356,7 +356,7 @@ presentation_context = SubmissionContext.create!(
   description: "Submit a 2-3 deck presentation of your analysis and conclusions.",
   slide: presentation_slide_one,
   submission_context_id: 0,
-  submission_type: SubmissionContext::PRES_SLIDES_LINK,
+  submission_type: SubmissionContext::PRESENTATION_SLIDES_LINK,
 )
 
 return_code_context = SubmissionContext.create!(
@@ -364,5 +364,5 @@ return_code_context = SubmissionContext.create!(
   description: "Submit a video presenting your analysis and conclusion to the 'CEO'",
   slide: presentation_slide_two,
   submission_context_id: 1,
-  submission_type: SubmissionContext::PRES_VIDEO_LINK,
+  submission_type: SubmissionContext::PRESENTATION_VIDEO_LINK,
 )
