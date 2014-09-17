@@ -47,6 +47,7 @@ class SubmissionContext < ActiveRecord::Base
   CSV = "csv"
   PDF = "pdf"
   FILE = "file"
+  QUIZ = "quiz"
 
   def set_properties
     self.set_uid

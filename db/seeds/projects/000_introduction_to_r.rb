@@ -361,7 +361,7 @@ basic_operations_slide_one = Slide.create!(
   slide_id: 0,
 )
 ################################################################################
-quiz = Quiz.create!(
+quiz = ExactAnswerQuiz.create!(
   quiz_id: "onboard_1",
   answer: "10",
   project: project,
