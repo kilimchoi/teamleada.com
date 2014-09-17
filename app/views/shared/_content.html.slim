@@ -68,7 +68,7 @@
     = link_to content, project_path(project), class: 'flat-button full-width'
 - elsif content_type == 'quiz'
   p.fragment
-    = render partial: "shared/quiz", locals: {quiz_id: content}
+    = render partial: "shared/quiz", locals: { quiz_id: content, item: item }
 - elsif content_type == 'section_complete'
   p.fragment.complete
     | Section Complete!
