@@ -134,7 +134,7 @@ class Project < ActiveRecord::Base
 
   # Before Filters
   def set_url
-    self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize
+    self.url = title.urlify
   end
 
   # Attributes
