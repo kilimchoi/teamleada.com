@@ -11,8 +11,6 @@
 #  number                :integer
 #  has_leaderboard       :boolean          default(FALSE)
 #  short_description     :text
-#  has_written_submit    :boolean          default(FALSE)
-#  has_content_submit    :boolean          default(FALSE)
 #  cost                  :integer
 #  paid                  :boolean          default(FALSE)
 #  uid                   :integer          not null, primary key
@@ -24,6 +22,9 @@
 #  featured              :boolean          default(FALSE)
 #  grants_project_access :boolean          default(FALSE)
 #  cover_photo           :string(255)
+#  has_content_submit    :boolean          default(FALSE)
+#  has_written_submit    :boolean          default(FALSE)
+#  project_set_id        :integer
 #
 
 class Project < ActiveRecord::Base
