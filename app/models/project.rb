@@ -11,8 +11,6 @@
 #  number                :integer
 #  has_leaderboard       :boolean          default(FALSE)
 #  short_description     :text
-#  has_written_submit    :boolean          default(FALSE)
-#  has_content_submit    :boolean          default(FALSE)
 #  cost                  :integer
 #  paid                  :boolean          default(FALSE)
 #  uid                   :integer          not null, primary key
@@ -24,6 +22,9 @@
 #  featured              :boolean          default(FALSE)
 #  grants_project_access :boolean          default(FALSE)
 #  cover_photo           :string(255)
+#  has_content_submit    :boolean          default(FALSE)
+#  has_written_submit    :boolean          default(FALSE)
+#  project_set_id        :integer
 #
 
 class Project < ActiveRecord::Base
@@ -35,14 +36,22 @@ class Project < ActiveRecord::Base
   serialize :description, Array
 
   has_many :lessons, dependent: :destroy
-  has_many :submissions, dependent: :destroy
+  has_many :project_scores
 
-  has_many :quizes
+  has_many :quizzes
+  has_many :quiz_submissions, through: :quizzes
 
   has_many :transactions, as: :item
   has_many :interested_users, class_name: ProjectInterest
 
+  # Submission Contexts
   has_many :submission_contexts
+  has_many :code_submission_contexts, -> { where(submission_type: SubmissionContext::CODE) }, class_name: "SubmissionContext"
+  has_many :free_response_submission_contexts, -> { where(submission_type: SubmissionContext::RESPONSE) }, class_name: "SubmissionContext"
+  has_many :image_submission_contexts, -> { where(submission_type: SubmissionContext::IMAGE) }, class_name: "SubmissionContext"
+  has_many :presentation_slides_link_submission_contexts, -> { where(submission_type: SubmissionContext::PRESENTATION_SLIDES_LINK) }, class_name: "SubmissionContext"
+  has_many :presentation_video_link_submission_contexts, -> { where(submission_type: SubmissionContext::PRESENTATION_VIDEO_LINK) }, class_name: "SubmissionContext"
+
   has_many :code_submissions
   has_many :code_submission_evaluations
 
@@ -98,6 +107,8 @@ class Project < ActiveRecord::Base
     COMING_SOON => "coming-soon",
   }
 
+  VALID_FILTERS = ["started", "completed"]
+
   class << self
     def random_set_of_colors(amount)
       COLORS.sample(amount)
@@ -125,7 +136,7 @@ class Project < ActiveRecord::Base
 
   # Before Filters
   def set_url
-    self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize
+    self.url = title.urlify
   end
 
   # Attributes
@@ -148,6 +159,12 @@ class Project < ActiveRecord::Base
   def deadline_in_days
     if !self.deadline.nil?
       self.deadline.div(60 * 60 * 24)
+    end
+  end
+
+  def deadline_in_hours
+    if !self.deadline.nil?
+      self.deadline.div(60 * 60)
     end
   end
 
@@ -186,11 +203,11 @@ class Project < ActiveRecord::Base
         total += step.total_points
       end
     end
-    total + code_submission_points
+    total + submission_points
   end
 
-  def code_submission_points
-    submission_contexts.count
+  def submission_points
+    submission_contexts.required.count
   end
 
   def steps
@@ -198,6 +215,30 @@ class Project < ActiveRecord::Base
   end
 
   # Submissions
+  def has_code_submissions?
+    submission_contexts.where(submission_type: SubmissionContext::CODE).count > 0
+  end
+
+  def has_free_response_submissions?
+    submission_contexts.where(submission_type: SubmissionContext::RESPONSE).count > 0
+  end
+
+  def has_image_submissions?
+    submission_contexts.where(submission_type: SubmissionContext::IMAGE).count > 0
+  end
+
+  def has_presentation_slides_link_submissions?
+    submission_contexts.where(submission_type: SubmissionContext::PRESENTATION_SLIDES_LINK).count > 0
+  end
+
+  def has_presentation_video_link_submissions?
+    submission_contexts.where(submission_type: SubmissionContext::PRESENTATION_VIDEO_LINK).count > 0
+  end
+
+  def slide_ids_of_required_submission_contexts
+    submission_contexts.required.pluck(:slide_id)
+  end
+
   def check_submission(file)
     # Method to check the submission that the user uploaded
     solution_file = File.expand_path("#{Rails.root}/db/project_solutions/#{"%03d" % self.number}-#{self.url}.csv", __FILE__)
