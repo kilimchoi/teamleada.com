@@ -23,7 +23,7 @@ project = Project.create!(
   difficulty: 'Intermediate',
   category: Project::CHALLENGE,
   company_overview: "",
-  is_new: false,
+  is_new: true,
   deadline: 4.hours,
   featured: false,
   cover_photo: "statricks",
