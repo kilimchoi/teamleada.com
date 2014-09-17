@@ -367,19 +367,19 @@ quiz = ExactAnswerQuiz.create!(
   project: project,
 )
 
-quiz = Quiz.create!(
+quiz = ExactAnswerQuiz.create!(
   quiz_id: "onboard_2",
   answer: "11",
   project: project,
 )
 
-quiz = Quiz.create!(
+quiz = ExactAnswerQuiz.create!(
   quiz_id: "onboard_3",
   answer:"2",
   project: project,
 )
 
-quiz = Quiz.create!(
+quiz = ExactAnswerQuiz.create!(
   quiz_id: "onboard_4",
   answer:"TRUE",
   project: project,

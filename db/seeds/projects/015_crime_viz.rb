@@ -54,7 +54,7 @@ intro_content_three = [
   ['next_steps', ""],
 ]
 
-quiz = Quiz.create!(
+quiz = ExactAnswerQuiz.create!(
   quiz_id: "crime_viz_0",
   answer:"3",
   project: project,
