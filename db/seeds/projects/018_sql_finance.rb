@@ -81,7 +81,7 @@ collect_data_content_2 = [
   ['next_steps', ""],
 ]
 
-quiz_intro_pd = Quiz.create!(
+quiz_intro_pd = ExactAnswerQuiz.create!(
   quiz_id: "finance_data_0",
   answer: "3000",
   project: project

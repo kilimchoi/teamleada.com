@@ -95,13 +95,13 @@ cleaning_content_two = [
   ['next_steps'],
 ]
 
-quiz = Quiz.create!(
+quiz = ExactAnswerQuiz.create!(
   quiz_id: "ft_clean_0",
   answer:"Date",
   project: project,
 )
 
-quiz = Quiz.create!(
+quiz = ExactAnswerQuiz.create!(
   quiz_id: "ft_clean_1",
   answer:"28",
   project: project,
@@ -152,7 +152,7 @@ plotting_content_two = [
   ['next_steps'],
 ]
 
-quiz = Quiz.create!(
+quiz = ExactAnswerQuiz.create!(
   quiz_id: "ft_plot_1",
   answer:"Canada",
   project: project,
@@ -235,7 +235,7 @@ analysis_missing_content_three = [
   ['next_steps',''],
 ]
 
-quiz = Quiz.create!(
+quiz = ExactAnswerQuiz.create!(
   quiz_id: "ft_missing_0",
   answer:"Anonymous Function",
   project: project,
@@ -291,7 +291,7 @@ remove_missing_content_two = [
   ['next_steps', ''],
 ]
 
-quiz = Quiz.create!(
+quiz = ExactAnswerQuiz.create!(
   quiz_id: "ft_2",
   answer:"2",
   project: project,
@@ -377,19 +377,19 @@ time_series_setup_content_three = [
   ['next_steps', '']
 ]
 
-quiz = Quiz.create!(
+quiz = ExactAnswerQuiz.create!(
   quiz_id: "ft_3",
   answer: "3",
   project: project,
 )
 
-quiz = Quiz.create!(
+quiz = ExactAnswerQuiz.create!(
   quiz_id: "ft_setup_0",
   answer: "3",
   project: project,
 )
 
-quiz = Quiz.create!(
+quiz = ExactAnswerQuiz.create!(
   quiz_id: "ft_setup_1",
   answer: "correlation",
   project: project,
@@ -592,7 +592,7 @@ time_series_differencing_content_three = [
   ['next_steps', ''],
 ]
 
-quiz = Quiz.create!(
+quiz = ExactAnswerQuiz.create!(
   quiz_id: "ft_build_0",
   answer:"Akaike information criterion",
   project: project,
@@ -661,7 +661,7 @@ arime_prediction_content_three = [
   ['next_steps', ''],
 ]
 
-quiz = Quiz.create!(
+quiz = ExactAnswerQuiz.create!(
   quiz_id: "ft_prediction_0",
   answer:"list",
   project: project,
@@ -718,7 +718,7 @@ arime_evaluation_content_two = [
   ['next_steps', ''],
 ]
 
-quiz = Quiz.create!(
+quiz = ExactAnswerQuiz.create!(
   quiz_id: "ft_evaluation_0",
   answer:"3",
   project: project,
