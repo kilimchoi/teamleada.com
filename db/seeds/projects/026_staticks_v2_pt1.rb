@@ -115,7 +115,7 @@ response_one = [
   ['text', "Did you have to do anything tricky?"],
   ['text', "What was the most challenging aspect?"],
   ['user_response', ""],
-  ['text', "You're not being evaluated on grammar, but write a thoughtout and structured explanation."],
+  ['text-warning', "You're not being evaluated on grammar, but write a thoughtout and structured explanation."],
   ['next_steps', ""],
 ]
 
@@ -144,9 +144,9 @@ get_ad_response = SubmissionContext.create!(
 ########################################
 
 conclusion_content = [
-  ['text', "We've made great progress in the Web Scraper project."],
+  ['text', "This was a great way to get started on the web scraper."],
   ['text', "We have a list of urls to invidual item ads."],
-  ['text-success', "Next we're going to actually extract the individual data from the raw item level ad page html"],
+  ['text-success', "Next we're going to actually extract the individual data from the raw item level ad page html."],
   ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
 
