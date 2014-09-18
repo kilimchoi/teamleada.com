@@ -81,12 +81,46 @@ module ChartsHelper
     )
   end
 
+  def time_chart_from_multiple_models(timeframe, time_interval, models, title, y_axis, method)
+    overall_values = Hash.new
+    models.each do |model|
+      zeros = Hash[(timeframe.to_date..Date.today).map { |day| [ day, [] ] }]
+      data = zeros.merge(model.where("created_at > ?", timeframe).group_by{ |user| user.created_at.to_date })
+      categories = data.keys.map{ |date| date.strftime("%B %d")}
+
+      sum = model.where("created_at < ?", timeframe).count
+
+      case method
+      when "count"
+        values = data.values.map{ |array| array.count }
+      when "percent"
+        values = data.values.map{ |array| array.count.to_f / (sum += array.count) * 100 }
+      else
+        values = data.values.map{ |array| sum += array.count }
+      end
+
+      overall_values[model.to_s] = values
+    end
+
+    multichart(
+      title,
+      timeframe.to_date,
+      y_axis,
+      overall_values,
+    )
+  end
+
+
   def chart_from_model_method(timeframe, model, title, y_axis, method)
     time_chart_from_model(timeframe, 24 * 3600, model, title, y_axis, method)
   end
 
   def chart_from_model(timeframe, model, title, y_axis)
     time_chart_from_model(timeframe, 24 * 3600, model, title, y_axis, "sum")
+  end
+
+  def chart_from_multiple_models(timeframe, models, title, y_axis)
+    time_chart_from_multiple_models(timeframe, 24 * 3600, models, title, y_axis, "sum")
   end
 
   def growth_chart_from_model(timeframe, model, title, y_axis)
@@ -187,6 +221,21 @@ module ChartsHelper
 
   def code_submission_chart(timeframe)
     chart_from_model(timeframe, CodeSubmissionContent, "Code Submissions (past 30 days)", "Total number of code submissions")
+  end
+
+  # Multiple Models
+  def project_submission_chart(timeframe)
+    chart_from_multiple_models(timeframe, [
+      ProjectSubmission,
+      CodeSubmissionContent,
+      FreeResponseSubmissionContent,
+      SlidesLinkSubmissionContent,
+      VideoLinkSubmissionContent,
+      ImageSubmissionContent,
+      PDFSubmissionContent,
+      CSVSubmissionContent,
+      QuizSubmissionContent,
+    ], "Project Submissions by type (past 30 days)", "Total number of submissions")
   end
 
   # Multiple line graphs
