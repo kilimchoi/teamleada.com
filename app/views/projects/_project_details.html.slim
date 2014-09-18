@@ -35,7 +35,10 @@ hr
       - if project.has_deadline?
         .row
           .col-md-6
-            ' Time Allowed:
+            - if project.is_part_of_set?
+              ' Time Allowed Per Part:
+            - else
+              ' Time Allowed:
             strong
               - if project.deadline_in_days > 0
                 = project.deadline_in_days
