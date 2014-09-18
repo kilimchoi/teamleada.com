@@ -186,7 +186,7 @@ module ChartsHelper
   end
 
   def code_submission_chart(timeframe)
-    chart_from_model(timeframe, CodeSubmission, "Code Submissions (past 30 days)", "Total number of code submissions")
+    chart_from_model(timeframe, CodeSubmissionContent, "Code Submissions (past 30 days)", "Total number of code submissions")
   end
 
   # Multiple line graphs

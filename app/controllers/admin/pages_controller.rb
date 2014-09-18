@@ -47,6 +47,12 @@ class Admin::PagesController < Admin::BaseController
     @page_views = Impression.non_admin.where("created_at > ?", 1.day.ago).group(:url).count
   end
 
+  def growth_charts
+  end
+
+  def project_submission_charts
+  end
+
   # TODO(mark): These should be moved into a separate controller
   def page_views_dashboard
     @timeframes = Impression::TIMEFRAMES
