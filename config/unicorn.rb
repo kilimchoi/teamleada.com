@@ -23,7 +23,7 @@ stdout_path APP_PATH + "/log/unicorn.stdout.log"
 worker_processes Integer(ENV["WEB_CONCURRENCY"] || 4)
 
 # Time-out
-timeout 25
+timeout 60
 
 # listen on both a Unix domain socket and a TCP port,
 # we use a shorter backlog for quicker failover when busy
