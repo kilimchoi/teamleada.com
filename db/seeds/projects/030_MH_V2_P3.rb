@@ -1,12 +1,12 @@
 main_page_content = [
-  ['text','MightyHive is an advertising technology company that uses retargeting methods to send ads to users online. One product, “Call Center Remarketing”, uses call center log data to retarget those consumers online which did not make a purchase.'],
+  ['text-info', "MightyHive is an advertising technology company that uses retargeting methods to send ads to users online."],
+  ['text', "One product, “Call Center Remarketing”, uses call center log data to retarget those consumers online which did not make a purchase."],
   ['text', 'You are tasked with determining the effectiveness of one of their advertising campaigns with a vacation rental client “Martin’s Travel Agency”.'],
-  ['text', 'You will be submitting both code and written responses of your analysis and final recommendations.'],
+  ['text-success', 'You will be submitting both code and written responses of your analysis and final recommendations.'],
 ]
 
-
 project = Project.create!(
-  title:"MightyHive: AdTech Split Testing - Part 3",
+  title:"MightyHive: AdTech Split Testing (Part 3)",
   description: main_page_content,
   short_description: "A project sponsored by MightyHive, an advertising technology company. You will perform data cleaning, de-duplication, and statistical analysis to determine the effectiveness of their marketing technology.",
   number: 30,
@@ -18,7 +18,7 @@ project = Project.create!(
   category: Project::CHALLENGE,
   company_overview: "",
   is_new: false,
-  deadline: 3.hours,
+  deadline: 4.hours,
   cover_photo: "mightyhive",
   project_set_id: 0,
 )
@@ -28,7 +28,7 @@ puts "============ Created project: #{project.title}."
 ################################################################################
 
 experiment_content_one = [
-  ['text', 'The analytics team designed an experiment where the Abandoned observations were randomly split into test and control groups with an approximate 50-50 split.'],
+  ['text-info', 'The analytics team designed an experiment where the Abandoned observations were randomly split into test and control groups with an approximate 50-50 split.'],
   ['text', 'The Abandoned observations in the test group were retargeted with advertisements online for a period of 7 days.'],
   ['text', 'The control group was never show any advertisements.'],
   ['text', 'The Reservation observations include observations from both the test and control groups.'],
@@ -52,9 +52,11 @@ experiment_slide = Slide.create!(
 
 
 challenge_part_one = [
-  ['text', 'Your overall task is to analyze the data provided and return a conclusion of the effectiveness of the MightyHive Call Center Remarketing product. There are three parts to completing this project.'],
+  ['text-info', 'Your overall task is to analyze the data provided and return a conclusion of the effectiveness of the MightyHive Call Center Remarketing product.'],
+  ['text', 'There are three parts to completing this project.'],
   ['text', 'Part Three Challenge:'],
-  ['text', 'With the clean data, Determine and conduct the appropriate statistical analysis. Define your null hypothesis and the 95% confidence interval for the change in proportion of Abandoned observations to Reservation observations between test and control groups.'],
+  ['text', 'With the clean data, Determine and conduct the appropriate statistical analysis.'],
+  ['text-success', 'Define your null hypothesis and the 95% confidence interval for the change in proportion of Abandoned observations to Reservation observations between test and control groups.'],
   ['lesson_links', nil]
 ]
 
@@ -74,18 +76,18 @@ challenge_slide = Slide.create!(
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 stat_analysis_content_one = [
-  ['text', 'Define the null hypothesis and determine the appropriate statistical analysis.'],
+  ['text-success', 'Define the null hypothesis and determine the appropriate statistical analysis.'],
   ['user_response', '#@TODO Include UID'],
 ]
 
 stat_analysis_content_two = [
-  ['text', 'Submit code which performs the statistical analysis including the calculation of the 95% confidence interval.'],
+  ['text-success', 'Submit code which performs the statistical analysis including the calculation of the 95% confidence interval.'],
   ['user_code', '#@TODO Include UID'],
 ]
 
 stat_analysis_content_three = [
   ['text', 'Submit a conclusion of the results. How effective was the MightyHive advertising product?'],
-  ['text', 'In the box below, enter your p-value:'],
+  ['text-warning', 'In the box below, enter your p-value:'],
   ['quiz', 'stat_quiz'],
   ['user_response', '#@TODO Include UID'],
   ['next_steps', nil],
@@ -187,7 +189,6 @@ return_code_context = SubmissionContext.create!(
   submission_context_id: 1,
   submission_type: SubmissionContext::PRESENTATION_VIDEO_LINK,
 )
-
 
   ########################################
   #### -- Concluding Section -- ##########

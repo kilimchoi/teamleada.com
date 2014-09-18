@@ -1,4 +1,3 @@
-  # @author:        Guang Yang
   # @editor:        Tristan Tao
   # @mktime:        2014/06/10
   # @description:   web scraper project for boattrader.com in python
