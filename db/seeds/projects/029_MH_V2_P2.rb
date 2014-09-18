@@ -146,7 +146,7 @@ data_cleaning_content_two = [
 ]
 
 data_cleaning_content_two = [
-  ['text-warning', "As a sanity check:"],
+  ['text', "As a sanity check:"],
   ['text-warning', 'How many observations do you have remaning after de-duplication?'],
   ['quiz', 'clean_quiz'],
   ['finish_project_button', ''],
