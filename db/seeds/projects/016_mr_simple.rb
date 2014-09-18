@@ -546,7 +546,7 @@ setup_main_slide = [
   conclusion_main_content_five = [
     ['text', "Congrats!"],
     ['text-success', "You've completed the MapReduce Graph Traversal Project!"],
-    ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
+    ['finish_project_button', 'http://www.surveygizmo.com/s3/1811239/Project-Feedback-v2'],
   ]
 
   quiz = ExactAnswerQuiz.create!(
