@@ -19,6 +19,7 @@ class Quiz < ActiveRecord::Base
 
   belongs_to :project
   belongs_to :slide
+
   has_many :quiz_submission_contents
 
   validates :project, presence: true

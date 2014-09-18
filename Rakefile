@@ -167,4 +167,13 @@ task :presentation_submission_contexts => :environment do
 end
 
 task :build_quiz_submissions => :environment do
+  QuizSubmissionContent.all.each do |quiz_submission_content|
+    user = quiz_submission_content.user
+    quiz = quiz_submission_content.quiz
+    project = quiz.project
+    slide = quiz.slide
+    content_object = quiz_submission_content
+
+    project_submission = ProjectSubmission.create_with_user_project_slide_content_object(user, project, slide, content_object)
+  end
 end
