@@ -133,43 +133,43 @@ challenge_slide = Slide.create!(
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 data_cleaning_content_one = [
-	['text', 'Submit code which performs data de-duplication and cleaning so that you can perform analysis on the dataset.'],
-	['text', 'First submit an explanation for your cleaning process.'],
-	['user_response', '#@TODO Include UID'],
+  ['text', 'Submit code which performs data de-duplication and cleaning so that you can perform analysis on the dataset.'],
+  ['text', 'First submit an explanation for your cleaning process.'],
+  ['user_response', '#@TODO Include UID'],
   ['next_steps', nil]
 ]
 
 data_cleaning_content_two = [
-	['text', 'Now submit your code which executes the cleaning process you described:'],
-	['user_code', '#@TODO Include UID'],
-	['text', 'How many observations in total after cleaning your data do you have to perform your analysis?'],
-	['quiz', 'clean_quiz'],
-	['finish_project_button', ''],
+  ['text', 'Now submit your code which executes the cleaning process you described:'],
+  ['user_code', '#@TODO Include UID'],
+  ['text', 'How many observations in total after cleaning your data do you have to perform your analysis?'],
+  ['quiz', 'clean_quiz'],
+  ['finish_project_button', ''],
 ]
 
-quiz = Quiz.create!(
+quiz = NumericRangeQuiz.create!(
   quiz_id: "clean_quiz",
-  answer:"423",
+  lower_bound: 310.0,
+  upper_bound: 423.0,
   project: project,
 )
 
-
 data_cleaning_step = Step.create!(
-	title: "Data Cleaning",
-	lesson: challenge_lesson,
-	step_id: 1,
+  title: "Data Cleaning",
+  lesson: challenge_lesson,
+  step_id: 1,
 )
 
 data_cleaning_slide = Slide.create!(
-	content: data_cleaning_content_one,
-	parent: data_cleaning_step,
-	slide_id: 0,
+  content: data_cleaning_content_one,
+  parent: data_cleaning_step,
+  slide_id: 0,
 )
 
 data_cleaning_slide_two = Slide.create!(
-	content: data_cleaning_content_two,
-	parent: data_cleaning_step,
-	slide_id: 1,
+  content: data_cleaning_content_two,
+  parent: data_cleaning_step,
+  slide_id: 1,
 )
 
 data_matching_context = SubmissionContext.create!(
