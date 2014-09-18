@@ -86,10 +86,16 @@ stat_analysis_content_two = [
 ]
 
 stat_analysis_content_three = [
-  ['text', 'Submit a conclusion of the results. How effective was the MightyHive advertising product?'],
+  ['text', "Now to quickly check:"],
   ['text-warning', 'In the box below, enter your p-value:'],
   ['quiz', 'stat_quiz'],
+  ['text', "Does your answer make sense?"],
+]
+
+stat_analysis_content_four = [
+  ['text', 'Submit a conclusion of the results. How effective was the MightyHive advertising product?'],
   ['user_response', '#@TODO Include UID'],
+  ['text-info', "Make sure to comment your code for readability."],
   ['next_steps', nil],
 ]
 
@@ -120,6 +126,13 @@ stat_analysis_slide_three = Slide.create!(
   parent: stat_analysis_step,
   slide_id: 2,
 )
+
+stat_analysis_slide_four = Slide.create!(
+  content: stat_analysis_content_four,
+  parent: stat_analysis_step,
+  slide_id: 3,
+)
+
 stat_analysis_context = SubmissionContext.create!(
   title: "Data Analysis Response",
   description: "Define the null hypothesis and determine the appropriate statistical analysis.",
