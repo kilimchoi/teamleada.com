@@ -25,6 +25,7 @@ class ProjectsController < ApplicationController
     @project_data = get_yaml_data_file("projects.yml")
 
     @projects = @projects.enabled
+    @projects = @projects.displayable
     @featured_projects = @projects.featured
 
     # Don't show featured projects twice
