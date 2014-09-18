@@ -51,6 +51,7 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def project_submission_charts
+    @project_submission_chart = project_submission_chart(30.days.ago)
   end
 
   # TODO(mark): These should be moved into a separate controller
