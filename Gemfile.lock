@@ -40,9 +40,9 @@ GIT
 
 GIT
   remote: git://github.com/travis-ci/travis.rb.git
-  revision: 4a220b070afb05c5da4b1e74cbaee87f82bbf7b4
+  revision: 3d4d37da51acfcd368a89c019367a94d06a5d711
   specs:
-    travis (1.7.1)
+    travis (1.7.2)
       addressable (~> 2.3)
       backports
       faraday (~> 0.9)
