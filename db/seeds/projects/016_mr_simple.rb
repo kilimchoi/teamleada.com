@@ -107,18 +107,6 @@ setup_main_slide = [
     ['next_steps', ""],
   ]
 
-  quiz = Quiz.create!(
-    quiz_id: "mr_data_edge_count",
-    answer: "3387388",
-    project: project,
-  )
-
-  quiz = Quiz.create!(
-    quiz_id: "mr_data_node_count",
-    answer: "403394",
-    project: project,
-  )
-
   background_step_one = Step.create!(
     title: "Context & Data",
     step_id: 0,
@@ -142,6 +130,21 @@ setup_main_slide = [
     slide_id: 2,
     parent: background_step_one
   )
+
+  quiz = Quiz.create!(
+    quiz_id: "mr_data_node_count",
+    answer: "403394",
+    project: project,
+    slide: background_slide_two,
+  )
+
+  quiz = Quiz.create!(
+    quiz_id: "mr_data_edge_count",
+    answer: "3387388",
+    project: project,
+    slide: background_slide_three,
+  )
+
   ################################################################################
 
   data_representation_content_one = [
@@ -559,24 +562,6 @@ setup_main_slide = [
     ['finish_project_button', 'http://www.surveygizmo.com/s3/1811239/Project-Feedback-v2'],
   ]
 
-  quiz = ExactAnswerQuiz.create!(
-    quiz_id: "mr_quiz_1",
-    answer: "319",
-    project: project,
-  )
-
-  quiz = ExactAnswerQuiz.create!(
-    quiz_id: "mr_quiz_2",
-    answer: "3241",
-    project: project,
-  )
-
-  quiz = ExactAnswerQuiz.create!(
-    quiz_id: "mr_quiz_3",
-    answer: "421",
-    project: project,
-  )
-
   conclusion_main_slide_one = Slide.create(
     content: conclusion_main_content_one,
     slide_id: 0,
@@ -595,16 +580,37 @@ setup_main_slide = [
     parent: conclusion_lesson
   )
 
-  conclusion_main_slide_three = Slide.create(
+  conclusion_main_slide_four = Slide.create(
     content: conclusion_main_content_four,
     slide_id: 3,
     parent: conclusion_lesson
   )
 
-  conclusion_main_slide_three = Slide.create(
+  conclusion_main_slide_five = Slide.create(
     content: conclusion_main_content_five,
     slide_id: 4,
     parent: conclusion_lesson
+  )
+
+  quiz = ExactAnswerQuiz.create!(
+    quiz_id: "mr_quiz_1",
+    answer: "319",
+    project: project,
+    slide: conclusion_main_slide_two,
+  )
+
+  quiz = ExactAnswerQuiz.create!(
+    quiz_id: "mr_quiz_2",
+    answer: "3241",
+    project: project,
+    slide: conclusion_main_slide_three,
+  )
+
+  quiz = ExactAnswerQuiz.create!(
+    quiz_id: "mr_quiz_3",
+    answer: "421",
+    project: project,
+    slide: conclusion_main_slide_four,
   )
 
   src_code_submission = SubmissionContext.create!(
