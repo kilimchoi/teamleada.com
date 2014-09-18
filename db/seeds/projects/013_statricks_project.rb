@@ -16,7 +16,7 @@ project = Project.create!(
   description: main_page_content,
   short_description: "A project sponsored by Statricks, an e-Commerce analytics company. In this data challenge you will build a web scraper using the Beautiful Soup library to extract listing information. This data challenge is for users with experience in Python and some HTML.",
   number: 13,
-  enabled: true,
+  enabled: false,
   has_leaderboard: false,
   has_written_submit: true,
   uid: 13,

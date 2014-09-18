@@ -1,4 +1,4 @@
-- provide(:title, "How It Works")
+- provide(:title, "How Leada Works")
 
 .container-fluid.full-container
   = render partial: "shared/home_carousel", locals: { home: @home }
@@ -12,14 +12,18 @@
 
         .row.card
           .col-md-12
-            h4 First, submit a resume or integrate your profile with LinkedIn. You can get a data science position through Leada in two ways:
-            ol
-              li.h4 Be the one of the top submissions to a data challenge and your submission and profile is directly shown to the hiring manager of that company.
-              li.h4 Every challenge you complete goes to your profile to which companies can view and will contact you if they are interested!
-
+            h4
+              ol
+                li.h4
+                  | First submit a resume or integrate your profile with LinkedIn.
+                li.h4
+                  | You can get a data science position through Leada in two ways:
+                  ul
+                    li.h4 Be the one of the top submissions to a data challenge and your submission goes directly to the hiring manager of that company.
+                    li.h4 Every challenge you complete goes to your profile to which companies can view and will reach out if they are interested!
         .row.card
           .col-md-12
-            h1.center How We Work?
+            h1.center What are the types of content?
 
         .row.card
           .col-md-12
@@ -27,8 +31,13 @@
             ol
               li.h4
                 strong Data Challenges
-                |  are industry emphasized projects to which you complete to recruit for data science positions.
+                |  are industry hosted challenges which you complete to recruit for data science positions.
               li.h4
                 strong Data Lessons
                 |  are data science walkthroughs of different types of analysis for your own learning.
-
+        .row.card
+          .col-md-12
+            h1.center How do I get Access?
+        .row.card
+          .col-md-12
+            h4 If you have been given an access key, go to the <strong>bottom</strong> of the projects page and use it to gain access to all of our content. If you have not been given an access key, you must complete the <strong>Visualizing Crime Data</strong> challenge first!

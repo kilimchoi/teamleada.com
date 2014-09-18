@@ -96,3 +96,15 @@
                     ' Your due date was
                     = @project_status.display_end_date
 
+div class="modal fade" id="start-modal"
+  .modal-dialog.modal-sm
+    .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal" aria-hidden="true" &times;
+        h4 class="modal-title" Project Start Confirmation
+      div class="modal-body"
+        | Are you sure? This will begin the clock.
+      div class="modal-footer"
+        button type="button" class="btn btn-default btn-sm" data-dismiss="modal"
+          | Not right now.
+        = link_to "Start this project!", project_lesson_path(@project, @project.lessons.first), class: "btn btn-primary btn-sm"
