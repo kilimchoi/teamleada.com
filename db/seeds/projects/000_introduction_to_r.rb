@@ -180,12 +180,18 @@ basic_comparison_content_three = [
   ['text-success', 'What does the following code return?'],
   ['code', 'TRUE + 1'],
   ['quiz', 'onboard_3'],
+  ['text', "One more!"],
+]
+
+basic_comparison_content_four = [
   ['text-success', 'What does the following code return?'],
   ['code', 'FALSE == 0'],
   ['quiz', 'onboard_4'],
   ['text-danger', 'Remember that we compare via "==" and assign via "="'],
-  ['next_steps', nil]
+  ['next_steps', nil],
 ]
+
+
 basic_comparison_step = Step.create!(
   title: "Comparison 101",
   lesson: basic_operations_lesson,
@@ -208,6 +214,13 @@ basic_math_slide_three = Slide.create!(
   parent: basic_comparison_step,
   slide_id: 2,
 )
+
+basic_math_slide_four = Slide.create!(
+  content: basic_comparison_content_four,
+  parent: basic_comparison_step,
+  slide_id: 3,
+)
+
 ################################################################################
 ################################################################################
 ##Combining Intro Concepts
