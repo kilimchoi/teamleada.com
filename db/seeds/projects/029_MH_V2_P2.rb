@@ -1,12 +1,12 @@
 main_page_content = [
-  ['text','MightyHive is an advertising technology company that uses retargeting methods to send ads to users online. One product, “Call Center Remarketing”, uses call center log data to retarget those consumers online which did not make a purchase.'],
+  ['text-info', "MightyHive is an advertising technology company that uses retargeting methods to send ads to users online."],
+  ['text', "One product, “Call Center Remarketing”, uses call center log data to retarget those consumers online which did not make a purchase."],
   ['text', 'You are tasked with determining the effectiveness of one of their advertising campaigns with a vacation rental client “Martin’s Travel Agency”.'],
-  ['text', 'You will be submitting both code and written responses of your analysis and final recommendations.'],
+  ['text-success', 'You will be submitting both code and written responses of your analysis and final recommendations.'],
 ]
 
-
 project = Project.create!(
-  title:"MightyHive: AdTech Split Testing - Part 2",
+  title:"MightyHive: AdTech Split Testing (Part 2)",
   description: main_page_content,
   short_description: "A project hosted by MightyHive, an advertising technology company. You will perform data cleaning, de-duplication, and statistical analysis to determine the effectiveness of their marketing technology.",
   number: 29,
@@ -18,7 +18,7 @@ project = Project.create!(
   category: Project::CHALLENGE,
   company_overview: "",
   is_new: false,
-  deadline: 3.hours,
+  deadline: 4.hours,
   cover_photo: "mightyhive",
   project_set_id: 0,
 )
@@ -27,11 +27,10 @@ project = Project.create!(
 puts "============ Created project: #{project.title}."
 ################################################################################
 
-
 project_overview_content = [
-  ['text', 'This data challenge is based off of work that was directly done by the analytics team at MightyHive.'],
+  ['text-info', 'This data challenge is based off of work that was directly done by the analytics team at MightyHive.'],
   ['text', 'We will first begin by describing the data you are provided and the context of the problem MightyHive was facing.'],
-  ['text', 'You may complete this challenge in the following languages: R, Python, & MATLAB, but the preferred language is R.'],
+  ['text-danger', 'You may complete this challenge in the following languages: R, Python, & MATLAB, but the preferred language is R.'],
   ['lesson_links', nil]
 ]
 
@@ -50,15 +49,17 @@ project_overview_slide = Slide.create!(
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 data_content_one = [
-  ['text', 'The Abandoned Data Set:'],
+  ['text-warning', 'The Abandoned Data Set:'],
   ['link', 'https://s3.amazonaws.com/leada/mh_data/Abandoned_Data_Seed.csv'],
-  ['text', 'The Reservation Data Set:'],
+  ['text-warning', 'The Reservation Data Set:'],
   ['link', 'https://s3.amazonaws.com/leada/mh_data/Reservation_Data_Seed.csv'],
-  ['text', 'There are two types of observations in the two data sets provided. Abandoned observations are the potential customers who called into the call center but did not make a purchase. Reservation observations are the customers who called into the call center and made a reservation.'],
+  ['text-info', 'There are two types of observations in the two data sets provided.'],
+  ['text', 'Abandoned observations are the potential customers who called into the call center but did not make a purchase.'],
+  ['text', 'Reservation observations are the customers who called into the call center and made a reservation.'],
 ]
 
 data_content_two = [
-  ['text', 'The schema for both of the data sets is provided below:'],
+  ['text-info', 'The schema for both of the data sets is provided below:'],
   ['text', 'Caller_ID - A unique ID given to each incoming phone call to the call center'],
   ['text', 'Session - The Year/Month/Day/Time of each incoming phone call to the call center'],
   ['text', 'Incoming_Phone - Phone number identified using caller indentification'],
@@ -87,9 +88,9 @@ data_content_slide_two = Slide.create!(
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 experiment_content_one = [
-  ['text', 'The analytics team designed an experiment where the Abandoned observations were randomly split into test and control groups with an approximate 50-50 split.'],
+  ['text-info', 'The analytics team designed an experiment where the Abandoned observations were randomly split into test and control groups with an approximate 50-50 split.'],
   ['text', 'The Abandoned observations in the test group were retargeted with advertisements online for a period of 7 days.'],
-  ['text', 'The control group was never show any advertisements.'],
+  ['text', 'The control group was never shown any advertisements.'],
   ['text', 'The Reservation observations include observations from both the test and control groups.'],
   ['next_steps', nil]
 ]
@@ -108,14 +109,15 @@ experiment_slide = Slide.create!(
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-
 challenge_part_one = [
-  ['text', 'Your overall task is to analyze the data provided and return a conclusion of the effectiveness of the MightyHive Call Center Remarketing product. There are three parts to completing this project.'],
+  ['text', 'Your overall task is to analyze the data provided and return a conclusion of the effectiveness of the MightyHive Call Center Remarketing product.'],
+  ['text', 'There are three parts to completing this project.'],
   ['text', 'Part Two Challenge:'],
-  ['text', 'With a list of all of the matched Reservation observations, some data de-duplication and cleaning must be performed. Some customers make multiple bookings for reservations and these must be distilled to a single reservation. There are also some observations which need to be removed.'],
+  ['text-success', 'With a list of all of the matched Reservation observations, some data de-duplication and cleaning must be performed.'],
+  ['text', 'Some customers make multiple bookings for reservations and these must be distilled to a single reservation.'],
+  ['text-warning', 'There are also some observations which need to be removed.'],
   ['lesson_links', nil],
 ]
-
 
 challenge_lesson = Lesson.create!(
   title: "Part 2 Challenge",
@@ -133,8 +135,8 @@ challenge_slide = Slide.create!(
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 data_cleaning_content_one = [
-  ['text', 'Submit code which performs data de-duplication and cleaning so that you can perform analysis on the dataset.'],
-  ['text', 'First submit an explanation for your cleaning process.'],
+  ['text-info', 'Let\'s design a process for de-duplication and cleaning for the dataset.'],
+  ['text', 'First submit a written plan for your cleaning process.'],
   ['user_response', '#@TODO Include UID'],
   ['next_steps', nil]
 ]
@@ -142,7 +144,7 @@ data_cleaning_content_one = [
 data_cleaning_content_two = [
   ['text', 'Now submit your code which executes the cleaning process you described:'],
   ['user_code', '#@TODO Include UID'],
-  ['text', 'How many observations in total after cleaning your data do you have to perform your analysis?'],
+  ['text-warning', 'How many observations do you have remaning after de-duplication?'],
   ['quiz', 'clean_quiz'],
   ['finish_project_button', ''],
 ]
