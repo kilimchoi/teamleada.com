@@ -273,12 +273,6 @@ matching_step_content_two = [
   ['quiz', 'mh_1' ],
 ]
 
-quiz = ExactAnswerQuiz.create!(
-  quiz_id: "mh_1",
-  answer:"(402)-153-4684",
-  project: project,
-)
-
 matching_step_content_three = [
   ['text', 'Lets now save those matched rows into the variable "phone_match".'],
   ['text', 'Also for each appropriate row in the Incoming_Phone column of the Reservation dataset, lets assign a 1 to the Incoming_Phone_Match column we created earlier.'],
@@ -418,6 +412,12 @@ matching_slide_eight = Slide.create!(
   slide_id: 7,
 )
 
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "mh_1",
+  answer:"(402)-153-4684",
+  project: project,
+  slide: matching_slide_two,
+)
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 data_cleaning_content = [
@@ -617,19 +617,6 @@ hypothesis_content_three = [
   ['next_steps', nil],
 ]
 
-
-quiz = ExactAnswerQuiz.create!(
-  quiz_id: "mh_2",
-  answer:"245",
-  project: project,
-)
-
-quiz = ExactAnswerQuiz.create!(
-  quiz_id: "mh_3",
-  answer:"4266",
-  project: project,
-)
-
 hypothesis_step = Step.create!(
   title: "Hypothesis Test",
   lesson: stat_lesson,
@@ -652,6 +639,20 @@ hypothesis_slide_three = Slide.create!(
   content: hypothesis_content_three,
   parent: hypothesis_step,
   slide_id: 2,
+)
+
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "mh_2",
+  answer:"245",
+  project: project,
+  slide: hypothesis_slide_two,
+)
+
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "mh_3",
+  answer:"4266",
+  project: project,
+  slide: hypothesis_slide_three,
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -681,12 +682,6 @@ z_test_content_three = [
   ['text', 'What is our Z score rounded to the tens digit?'],
   ['quiz', 'mh_4'],
 ]
-
-quiz = ExactAnswerQuiz.create!(
-  quiz_id: "mh_4",
-  answer:"10.2",
-  project: project,
-)
 
 z_test_content_four = [
   ['text', 'We now use the normal distribution to determine what is the probability of getting a z-score more extreme than the one we observed. Since our test statistic is positive we want to look at the right tail of the normal distribution as defined by where our z-score is on the normal curve.'],
@@ -776,6 +771,13 @@ z_test_slide_eight = Slide.create!(
   content: z_test_content_eight,
   parent: z_test_step,
   slide_id: 7,
+)
+
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "mh_4",
+  answer:"10.2",
+  project: project,
+  slide: z_test_slide_three,
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
