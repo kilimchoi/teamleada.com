@@ -535,7 +535,7 @@ setup_main_slide = [
   conclusion_main_content_three = [
     ['text-warning', "What is the distance between node '2222' and node '22222'?"],
     ['quiz', "mr_quiz_2"],
-    ['text', "What about a even bigger discrepancy in node number"],
+    ['text', "What about an even bigger discrepancy in node number"],
   ]
 
   conclusion_main_content_four = [
