@@ -10,7 +10,7 @@
   ]
 
   project = Project.create!(
-    title: "Statricks: Web Scraping with Python (Part 2): Product Data Extraction",
+    title: "Statricks: Web Scraping with Python (Part 2)",
     description: main_page_content,
     short_description: "Part 2 of a project sponsored by Statricks, an e-Commerce analytics company. In this sequel, we'll be focusing on getting the actual info from the individual listings.",
     number: 27,
@@ -22,7 +22,7 @@
     category: Project::CHALLENGE,
     company_overview: "",
     is_new: true,
-    deadline: 2.weeks,
+    deadline: 5.hours,
     featured: false,
     cover_photo: "statricks",
     project_set_id: 1,
@@ -36,7 +36,7 @@
 
   project_overview_content0 = [
     ['text', "Since you have access to the individual listing URLs from Part 1, you essentially have access to the raw html of an individual listing."],
-    ['text-warning', "We'll go through a list data points that we'll need to grab from each listing:"],
+    ['text-warning', "We'll go through a list of data points that we'll need to grab from each listing:"],
     ['text', " -  UID"],
     ['text', " -  Listing Title"],
     ['text', " -  Price"],
@@ -175,11 +175,11 @@
   ########################################
 
   presentation_one = [
-    ['text-info', 'Now that you have a working scraper, you\'ll get to present your process!'],
-    ['text', 'You\'ll create (and present) a 3 slide presentation:'],
+    ['text-info', 'Now that you have a working scraper, you must present your process!'],
+    ['text', 'You\'ll create and present a 3 slide presentation:'],
     ['text', ' -  On the first 2 slides, explain what you did with the scraper.'],
     ['text', ' -  On the last (3rd) slide, explain your thoughts on how you would store the scraped data.'],
-    ['text-warning', 'The last (3rd) slide is focused on design. You won\'t be asked to code up your plan, but be ready to explain it.'],
+    ['text-warning', 'The last (3rd) slide is focused on design. You won\'t be asked to code up your plan, but explain your thought process.'],
   ]
 
   presentation_two = [
@@ -188,10 +188,10 @@
   ]
 
   presentation_three = [
-   ['text', 'Submit a link to a video of you presenting your conclusions (2 min max). Production quality is not important.'],
+   ['text', 'Submit a link to a video of you presenting your conclusions to a manager (2 min max). Production quality is not important.'],
    ['text-warning', "Use a webcam and please show yourself speaking."],
    ['user_response', ''],
-   ['text-success', "The video is an opportunity for you to show off your communication skills, which we found is one of the most sought after skills by the managers."],
+   ['text-success', "The video is an opportunity for you to show your communication skills."],
    ['next_steps', ""],
   ]
 
@@ -239,9 +239,9 @@
   ########################################
 
   concluding_content = [
-    ['text', "We started with coming up with a way to find a list of posting URLs."],
-    ['text', "We then focused on extracting the individual details from the posting html."],
-    ['text-warning', "Hopefully now you have a better idea of how web scraping works."],
+    ['text', "You've completed the Statricks Data Challenge!"],
+    ['text', "Please make sure you have commented your code thoroughly and both presentation materials (video and slides) are viewable from the link you copy and pasted."],
+    ['text-warning', "Remember, top submissions go directly to the hiring manager for interviews!"],
     ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
   ]
 

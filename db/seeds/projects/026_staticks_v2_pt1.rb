@@ -12,7 +12,7 @@ main_page_content = [
 ]
 
 project = Project.create!(
-  title: "Statricks: Web Scraping with Python (Part 1): Search Result Parsing",
+  title: "Statricks: Web Scraping with Python (Part 1)",
   description: main_page_content,
   short_description: "A project sponsored by Statricks, an e-Commerce analytics company. In this data challenge you will build a web scraper using the Beautiful Soup library to extract listing information. This data challenge is for users with experience in Python and some HTML.",
   number: 26,
@@ -24,7 +24,7 @@ project = Project.create!(
   category: Project::CHALLENGE,
   company_overview: "",
   is_new: true,
-  deadline: 4.hours,
+  deadline: 5.hours,
   featured: false,
   cover_photo: "statricks",
   project_set_id: 1,
@@ -83,7 +83,7 @@ crawler_content0 = [
   ['code', "http://www.boattrader.com/listing/2009-Supra-Launch-24-SSV-102286745"],
   ['text-warning', "Paste in the relevant code that will return the list below:"],
   ['user_code', ""],
-  ['text', "Make sure to include all the relevant function you used, plus any imports you might have done."],
+  ['text', "Make sure to include all the relevant functions you used, plus any imports you might have done."],
   ['next_steps', nil],
 ]
 
@@ -114,7 +114,7 @@ crawler_getRaw_context0 = SubmissionContext.create!(
 response_one = [
   ['text-success', "Now explain in a paragraph what you did to get a list of advertisement URLs."],
   ['text', "Did you have to do anything tricky?"],
-  ['text', "What was the most challenging aspect?"],
+  ['text', "Explain your process."],
   ['user_response', ""],
   ['text-warning', "You're not being evaluated on grammar, but write a thought out and structured explanation."],
   ['next_steps', ""],

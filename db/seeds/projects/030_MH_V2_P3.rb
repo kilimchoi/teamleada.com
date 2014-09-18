@@ -147,9 +147,11 @@ presentation_one = [
 ]
 
 presentation_two = [
-  ['text', 'Submit a link to a YouTube video of you presenting your conclusions (2 min max). Use a webcam and please show yourself speaking. Production value is not important.'],
+  ['text', 'Submit a link to a video of you presenting your conclusions to a manager (2 min max). Production quality is not important.'],
+  ['text-warning', "Use a webcam and please show yourself speaking."],
   ['user_response', ''],
-  ['finish_project_button', ''],
+  ['text-success', "The video is an opportunity for you to show your communication skills."],
+  ['next_steps', ""],
 ]
 
 presentation_lesson = Lesson.create!(
@@ -185,6 +187,30 @@ return_code_context = SubmissionContext.create!(
   submission_context_id: 1,
   submission_type: SubmissionContext::PRESENTATION_VIDEO_LINK,
 )
+
+
+  ########################################
+  #### -- Concluding Section -- ##########
+  ########################################
+
+  concluding_content = [
+    ['text', "You've completed the MightyHive Data Challenge!"],
+    ['text', "Please make sure you have commented your code thoroughly and both presentation materials (video and slides) are viewable from the link you copy and pasted."],
+    ['text-warning', "Remember, top submissions go directly to the hiring manager for interviews!"],
+    ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
+  ]
+
+  concluding_lesson = Lesson.create!(
+    title: "Concluding MightyHive Challenge",
+    lesson_id: 3,
+    project: project,
+  )
+
+  concluding_lesson = Slide.create!(
+    content: concluding_content,
+    slide_id: 0,
+    parent: concluding_lesson,
+  )
 
 
 
