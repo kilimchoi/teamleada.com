@@ -83,6 +83,20 @@ basic_math_content_two = [
   ['quiz', 'onboard_2'],
   ['next_steps', nil]
 ]
+
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "onboard_1",
+  answer: "10",
+  project: project,
+  slide: 
+)
+
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "onboard_2",
+  answer: "11",
+  project: project,
+)
+
 basic_math_step = Step.create!(
   title: "Mathematics 101",
   lesson: basic_operations_lesson,
@@ -191,6 +205,17 @@ basic_comparison_content_four = [
   ['next_steps', nil],
 ]
 
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "onboard_3",
+  answer:"2",
+  project: project,
+)
+
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "onboard_4",
+  answer:"TRUE",
+  project: project,
+)
 
 basic_comparison_step = Step.create!(
   title: "Comparison 101",
@@ -374,26 +399,3 @@ basic_operations_slide_one = Slide.create!(
   slide_id: 0,
 )
 ################################################################################
-quiz = ExactAnswerQuiz.create!(
-  quiz_id: "onboard_1",
-  answer: "10",
-  project: project,
-)
-
-quiz = ExactAnswerQuiz.create!(
-  quiz_id: "onboard_2",
-  answer: "11",
-  project: project,
-)
-
-quiz = ExactAnswerQuiz.create!(
-  quiz_id: "onboard_3",
-  answer:"2",
-  project: project,
-)
-
-quiz = ExactAnswerQuiz.create!(
-  quiz_id: "onboard_4",
-  answer:"TRUE",
-  project: project,
-)
