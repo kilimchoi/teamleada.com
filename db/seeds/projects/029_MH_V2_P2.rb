@@ -11,7 +11,7 @@ project = Project.create!(
   short_description: "A project hosted by MightyHive, an advertising technology company. You will perform data cleaning, de-duplication, and statistical analysis to determine the effectiveness of their marketing technology.",
   number: 29,
   enabled: true,
-  has_content_submit: true,
+  has_content_submit: false,
   has_written_submit: true,
   uid: 29,
   difficulty: 'Intermediate',
