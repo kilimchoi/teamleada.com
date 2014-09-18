@@ -62,8 +62,8 @@ setup_main_slide = [
   ['text', "This one focuses more on application:"],
   ['link', "http://highlyscalable.wordpress.com/2012/02/01/mapreduce-patterns/#attachment_287"],
   ['text', "Come back and refer to these resources if you are stuck!"],
-    ['text-info', "Now, before we dive into writing MapReduce code, we have to design a few things:"],
-    ['lesson_links', ""],
+  ['text-info', "Now, before we dive into writing MapReduce code, we have to design a few things:"],
+  ['lesson_links', ""],
 ]
 
   background_algorithm_lesson = Lesson.create!(
@@ -90,7 +90,7 @@ setup_main_slide = [
     ['text-info', "This means an edge exists between 2 products, only if they were purchased during the same transaction."],
     ['text-success', "To save on memory footprint, you sample an anonymized graph dataset, show below:"],
     ['link', "https://s3.amazonaws.com/leada/amazon_proj_data/amazon0601.txt.gz"],
-    ['text', "Each of the nodes maps to a consumer item.",
+    ['text', "Each of the nodes maps to a single consumer item."],
   ]
 
   background_content_two = [
