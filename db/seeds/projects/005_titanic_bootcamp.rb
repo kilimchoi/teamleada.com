@@ -66,7 +66,7 @@ view_data_content = [
   ['quiz', 't_bootcamp_1'],
 ]
 
-quiz = Quiz.create!(
+quiz = ExactAnswerQuiz.create!(
   quiz_id: "t_bootcamp_1",
   answer:"93",
   project: project,
@@ -197,7 +197,7 @@ barplot_bootcamp_content_two = [
   ['next_steps', nil],
 ]
 
-quiz = Quiz.create!(
+quiz = ExactAnswerQuiz.create!(
   quiz_id: "t_bootcamp_2",
   answer:"120",
   project: project,

@@ -2,16 +2,14 @@
 #
 # Table name: project_submissions
 #
-#  id                     :integer          not null, primary key
-#  project_id             :integer
-#  user_id                :integer
-#  created_at             :datetime
-#  updated_at             :datetime
-#  upload_file            :string(255)
-#  required               :boolean          default(TRUE)
-#  original_filename      :string(255)
-#  upload_file_tmp        :string(255)
-#  upload_file_processing :boolean          default(FALSE)
+#  id           :integer          not null, primary key
+#  user_id      :integer
+#  project_id   :integer
+#  slide_id     :string(255)
+#  content_id   :integer
+#  content_type :string(255)
+#  created_at   :datetime
+#  updated_at   :datetime
 #
 
 require 'spec_helper'

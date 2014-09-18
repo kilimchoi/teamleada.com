@@ -97,14 +97,16 @@
     .col-md-6
       .row.card
         .col-md-12
-          h2 Newest Code Submissions
+          h2 Newest Project Submissions
           table.table.table-striped
             th Name
             th Link
+            th Type
             th Time
-            - @new_code_submissions.each do |code_submission|
+            - @new_project_submissions.each do |project_submission|
               tr
-                td = link_to code_submission.user.name, admin_user_path(code_submission.user)
-                td = link_to "View", admin_user_project_code_submission_path(code_submission.user, code_submission.project, code_submission)
-                td = code_submission.created_at.strftime("%m/%d %H:%M:%S")
+                td = link_to project_submission.user.name, admin_user_path(project_submission.user)
+                td = link_to "View", admin_user_project_project_submission_path(project_submission.user, project_submission.project, project_submission)
+                td = project_submission.content_type
+                td = project_submission.created_at.strftime("%m/%d %H:%M:%S")
 

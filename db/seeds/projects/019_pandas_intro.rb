@@ -66,7 +66,7 @@ intro_content_four = [
   ['next_steps', ""],
 ]
 
-quiz_intro_pd = Quiz.create!(
+quiz_intro_pd = ExactAnswerQuiz.create!(
   quiz_id: "pd_intro_0",
   answer: "5",
   project: project,
@@ -112,19 +112,19 @@ dataframe_basics_intro = [
   ['lesson_links', ""],
 ]
 
-pd_df_basic_2 = Quiz.create!(
+pd_df_basic_2 = ExactAnswerQuiz.create!(
   quiz_id: "pd_df_basic_2",
   answer: "df.head(4)",
   project: project,
 )
 
-pd_df_basic_4 = Quiz.create!(
+pd_df_basic_4 = ExactAnswerQuiz.create!(
   quiz_id: "pd_df_basic_3",
   answer: "3.25",
   project: project,
 )
 
-pd_intro_one = Quiz.create!(
+pd_intro_one = ExactAnswerQuiz.create!(
   quiz_id: "pd_intro_1",
   answer: "4",
   project: project,
@@ -224,17 +224,17 @@ dataframe_basics_content_five = [
   ['next_steps', ""],
 ]
 
-pd_df_basic_4 = Quiz.create!(
+pd_df_basic_4 = ExactAnswerQuiz.create!(
   quiz_id: "pd_df_basic_4",
   answer: "500",
   project: project,
 )
-pd_df_basic_5 = Quiz.create!(
+pd_df_basic_5 = ExactAnswerQuiz.create!(
   quiz_id: "pd_df_basic_5",
   answer: "200000",
   project: project,
 )
-pd_df_basic_6 = Quiz.create!(
+pd_df_basic_6 = ExactAnswerQuiz.create!(
   quiz_id: "pd_df_basic_6",
   answer: "/images/s102443.gif",
   project: project,
@@ -374,13 +374,13 @@ sql_grouping_content_two = [
   ['next_steps', ""],
 ]
 
-pd_sql_grouping_quiz = Quiz.create!(
+pd_sql_grouping_quiz = ExactAnswerQuiz.create!(
   quiz_id: "pd_sql_grouping_0",
   answer: "7",
   project: project,
 )
 
-pd_sql_grouping_1 = Quiz.create!(
+pd_sql_grouping_1 = ExactAnswerQuiz.create!(
   quiz_id: "pd_sql_grouping_1",
   answer: "34618",
   project: project,
@@ -490,7 +490,7 @@ plotting_content = [
   ['next_steps', ""],
 ]
 
-pd_plotting_intro_0 = Quiz.create!(
+pd_plotting_intro_0 = ExactAnswerQuiz.create!(
   quiz_id: "pd_plotting_intro_0",
   answer: "instancemethod",
   project: project,
