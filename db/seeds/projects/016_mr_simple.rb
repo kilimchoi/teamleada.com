@@ -97,6 +97,10 @@ setup_main_slide = [
     ['text', "With this data, you have a list of directed edges, each representing a co-purchase."],
     ['text-warning', "How many Nodes are there in the data?"],
     ['quiz', "mr_data_node_count"],
+    ['text', "What abput the edges?"],
+  ]
+
+  background_content_three = [
     ['text-warning', "How many Edges are there in the data?"],
     ['quiz', "mr_data_edge_count"],
     ['text', "The full dataset is significantly larger, but we want to make sure that the algorithm runs on a smaller subset."],
@@ -130,6 +134,12 @@ setup_main_slide = [
   background_slide_two = Slide.create!(
     content: background_content_two,
     slide_id: 1,
+    parent: background_step_one
+  )
+
+  background_slide_three = Slide.create!(
+    content: background_content_three,
+    slide_id: 2,
     parent: background_step_one
   )
   ################################################################################
@@ -528,13 +538,13 @@ setup_main_slide = [
     ['text', "This means the distance between '1' and '0' should be 1."],
     ['text', "What is the distance between node '1' and node '1234'?"],
     ['quiz', "mr_quiz_1"],
-    ['text', "Let's check a few more"],
+    ['text', "Let's check a few more."],
   ]
 
   conclusion_main_content_three = [
     ['text-warning', "What is the distance between node '2222' and node '22222'?"],
     ['quiz', "mr_quiz_2"],
-    ['text', "What about an even bigger discrepancy in node number"],
+    ['text', "What about an even bigger discrepancy in node numbers?"],
   ]
 
   conclusion_main_content_four = [
