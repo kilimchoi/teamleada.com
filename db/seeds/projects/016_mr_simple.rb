@@ -16,7 +16,7 @@ project = Project.create!(
   short_description: "In this challenge you are tasked with designing and writing a graph traversal via MapReduce. You will be given a set of graph data to traverse. In the process, you will choose the graph representation, the algorithm, and more. Once you design the code, you can optionally write a functional MapReduce code.",
   number: 16,
   enabled: true,
-  has_content_submit: true,
+  has_content_submit: false,
   has_written_submit: true,
   uid: 16,
   difficulty: 'Expert',
