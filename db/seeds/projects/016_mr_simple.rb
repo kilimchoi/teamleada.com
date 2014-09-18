@@ -11,7 +11,7 @@ main_page_content = [
 ]
 
 project = Project.create!(
-  title:"Graph Traversal via Hadoop MapReduce",
+  title:"Ebay: Graph Traversal via Hadoop MapReduce",
   description: main_page_content,
   short_description: "In this challenge you are tasked with designing and writing a graph traversal via MapReduce. You will be given a set of graph data to traverse. In the process, you will choose the graph representation, the algorithm, and more. Once you design the code, you can optionally write a functional MapReduce code.",
   number: 16,
@@ -90,8 +90,7 @@ setup_main_slide = [
     ['text-info', "This means an edge exists between 2 products, only if they were purchased during the same transaction."],
     ['text-success', "To save on memory footprint, you sample an anonymized graph dataset, show below:"],
     ['link', "https://s3.amazonaws.com/leada/amazon_proj_data/amazon0601.txt.gz"],
-    ['text', "Link to the product entity mapping is as follows:"],
-    ['link_invalid', "some link"],
+    ['text', "Each of the nodes maps to a consumer item.",
   ]
 
   background_content_two = [
