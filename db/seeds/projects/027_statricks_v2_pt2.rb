@@ -241,7 +241,7 @@
     ['text', "You've completed the Statricks Data Challenge!"],
     ['text', "Please make sure you have commented your code thoroughly and both presentation materials (video and slides) are viewable from the link you copy and pasted."],
     ['text-warning', "Remember, top submissions go directly to the hiring manager for interviews!"],
-    ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
+    ['finish_project_button', 'http://www.surveygizmo.com/s3/1811239/Project-Feedback-v2'],
   ]
 
   concluding_lesson = Lesson.create!(
