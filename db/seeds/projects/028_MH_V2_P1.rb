@@ -114,7 +114,7 @@ challenge_part_one = [
   ['text', 'There are three parts to completing this project.'],
   ['text-info', 'Part One Challenge:'],
   ['text-success', 'In part one you must determine how many of the observations in the Abandoned data set match with observations in the Reservation data set.'],
-  ['text', 'Define what constitutes a match with your own assumptions and explain your thought process in your submission as well as the code which implements the matching.'],
+  ['text', 'Define what constitutes as a match with your own assumptions and explain your thought process in your submission as well as the code which implements the matching.'],
   ['lesson_links', nil],
 ]
 
@@ -141,11 +141,16 @@ data_matching_content_one = [
 ]
 
 data_matching_content_two = [
-  ['text', 'Submit code which performs the data matching under the assumptions you previously defined.'],
+  ['text', 'Write the code that performs the data matching under the assumptions you previously defined.'],
   ['text-warning', 'Make sure your code is executable from loading in the data to identifying matches.'],
-  ['text', 'Answer in the quiz below the number of matches you identified'],
+  ['text', 'How many matches did you identify?'],
   ['quiz', 'match_quiz'],
+]
+
+data_matching_content_three = [
+  ['text', "Now submit your code"],
   ['user_code', '#@TODO Include UID'],
+  ['text-success', "As usual, make sure to comment on your code!"],
   ['finish_project_button',''],
 ]
 
@@ -167,10 +172,17 @@ data_matching_slide = Slide.create!(
   parent: data_matching_step,
   slide_id: 0,
 )
+
 data_matching_slide_two = Slide.create!(
   content: data_matching_content_two,
   parent: data_matching_step,
   slide_id: 1,
+)
+
+data_matching_slide_three = Slide.create!(
+  content: data_matching_content_three,
+  parent: data_matching_step,
+  slide_id: 2,
 )
 
 data_matching_context = SubmissionContext.create!(
