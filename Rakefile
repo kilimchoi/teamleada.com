@@ -166,3 +166,5 @@ task :presentation_submission_contexts => :environment do
   end
 end
 
+task :build_quiz_submissions => :environment do
+end
