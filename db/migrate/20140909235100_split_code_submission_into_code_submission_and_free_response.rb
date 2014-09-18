@@ -13,6 +13,8 @@ class SplitCodeSubmissionIntoCodeSubmissionAndFreeResponse < ActiveRecord::Migra
 
       # The reason why there are two for each case is that we have to include the old strings that the constants used to be.
       case type
+      when SubmissionContext::QUIZ
+        next
       when SubmissionContext::CODE, "code"
         # Do nothing, it's already code.
         CodeSubmissionEvaluation.where(code_submission_id: code_submission.id).each do |evaluation|
