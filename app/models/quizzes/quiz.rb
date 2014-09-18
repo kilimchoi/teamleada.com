@@ -18,6 +18,7 @@ class Quiz < ActiveRecord::Base
   self.primary_key = "quiz_id"
 
   belongs_to :project
+  belongs_to :slide
   has_many :quiz_submission_contents
 
   validates :project, presence: true

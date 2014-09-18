@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140917205032) do
+ActiveRecord::Schema.define(version: 20140918220138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -497,6 +497,7 @@ ActiveRecord::Schema.define(version: 20140917205032) do
     t.text     "multiple_choices"
     t.decimal  "lower_bound",      precision: 10, scale: 5
     t.decimal  "upper_bound",      precision: 10, scale: 5
+    t.string   "slide_id"
   end
 
   create_table "resumes", force: true do |t|
