@@ -17,7 +17,7 @@ class Users::Projects::ImageSubmissionContentsController < Users::Projects::Base
       end
     else
       respond_to do |format|
-        format.js { render json: {data: {error: "You must attach your file in order to upload it."}}, status: :unprocessable_entity }
+        format.js { render json: {data: {error: "You must attach a file and it must be an image! (png, jpg, or jpeg extension)"}}, status: :unprocessable_entity }
       end
     end
   end

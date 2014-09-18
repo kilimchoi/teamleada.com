@@ -14,4 +14,5 @@
 #
 
 class ImageSubmissionContent < FileSubmissionContent
+  mount_uploader :upload_file, ProjectImageSubmissionUploader
 end
