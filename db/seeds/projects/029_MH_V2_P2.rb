@@ -138,12 +138,15 @@ data_cleaning_content_one = [
   ['text-info', 'Let\'s design a process for de-duplication and cleaning for the dataset.'],
   ['text', 'First submit a written plan for your cleaning process.'],
   ['user_response', '#@TODO Include UID'],
-  ['next_steps', nil]
 ]
 
 data_cleaning_content_two = [
   ['text', 'Now submit your code which executes the cleaning process you described:'],
   ['user_code', '#@TODO Include UID'],
+]
+
+data_cleaning_content_two = [
+  ['text-warning', "As a sanity check:"],
   ['text-warning', 'How many observations do you have remaning after de-duplication?'],
   ['quiz', 'clean_quiz'],
   ['finish_project_button', ''],
