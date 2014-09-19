@@ -17,6 +17,11 @@ mightyhive = Company.where(url: "mightyhive").first_or_create
 mightyhive.update(
   name: "MightyHive",
   verified: true,
+  headline: "Get more customers from your direct marketing",
+  location: "321 11th St. San Francisco, CA 94103 United States",
+  website: "http://www.mightyhive.com",
+  founded_date: Date.parse("July 2012"),
+  about: "MightyHive provides software and services to marketers, advertisers and agencies for activating existing internal business systems and intelligence tools to drive real-time online marketing campaigns.\nWe specialize in integrating to and activating data from Call Centers, Direct Mail Programs, CRM systems, Inventory Systems and other offline Enterprise class business systems to drive highly targeted real-time online marketing campaigns.\nLeverage your offline data and audience to power online channel audience reach.",
 )
 
 mightyhive_project_1 = Project.find_by(uid: 28)
@@ -30,6 +35,12 @@ statricks = Company.where(url: "statricks").first_or_create
 statricks.update(
   name: "Statricks",
   verified: true,
+  headline: "eBay delivers one of the world's largest online marketplaces to customers via any connected device, connecting people with the things they need and love",
+  location: "2065 Hamilton Avenue San Jose, CA 95125 United States",
+  website: "http://www.ebayinc.com",
+  founded_date: Date.parse("September 3rd, 1995"),
+  about: "Founded in 1995 in San Jose, Calif., eBay Inc. (NASDAQ:EBAY) connects millions of buyers and sellers globally on a daily basis through eBay, the world's largest online marketplace, and PayPal, which enables individuals and businesses to securely, easily and quickly send and receive online payments.\nWe also reach millions through specialized marketplaces such as StubHub, the world's largest ticket marketplace, and eBay classifieds sites, which together have a presence in more than 1,000 cities around the world. For more information about the company and our global portfolio of online brands, visit http://www.ebaycareers.com/our-brands.aspx.\neBay Inc. is an equal opportunity employer, dedicated to workforce diversity.",
+  looking_for: "Because we're pushing the boundaries of shopping as you know it. By incorporating real-time local inventory into the \"same old\" shopping experience, we not only give shoppers what they've been craving, but deliver retailers an unparalleled way to drive foot traffic into their stores.\nSo who are you? You're someone who wants to solve a real world problem and doesn't mind being disruptive in the process. You're someone who wants to directly impact millions of people and play a vital role in shaping the future of one of Silicon Valley's biggest icons: eBay. You're someone who values serious skills and funny titles. And, most importantly, you're someone who jumps on the opportunity to influence where we—as a company, as a team, and as thought leaders—go from here.\nReal-time local shopping is a bleeding edge challenge, one some believe is \"impossible\" to solve. But we're doing it. And what you've seen is just the beginning.",
 )
 
 statricks_project_1 = Project.find_by(uid: 26)
