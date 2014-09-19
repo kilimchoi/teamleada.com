@@ -22,6 +22,7 @@ mightyhive.update(
   website: "http://www.mightyhive.com",
   founded_date: Date.parse("July 2012"),
   about: "MightyHive provides software and services to marketers, advertisers and agencies for activating existing internal business systems and intelligence tools to drive real-time online marketing campaigns.\n\nWe specialize in integrating to and activating data from Call Centers, Direct Mail Programs, CRM systems, Inventory Systems and other offline Enterprise class business systems to drive highly targeted real-time online marketing campaigns.\n\nLeverage your offline data and audience to power online channel audience reach.",
+  looking_for: nil,
 )
 
 mightyhive_project_1 = Project.find_by(uid: 28)
@@ -39,7 +40,8 @@ statricks.update(
   location: "3723 Haven Avenue Suite 123 Menlo Park, Ca 94025 United States",
   website: "http://www.statricks.com",
   founded_date: Date.parse("March 15th, 2010"),
-  about: "Statricks is the easiest, most powerful tool for pricing used goods. We provide price trends so you can find the best deals when buying or maximize your return when selling.\n\nOur tool is designed to help buyers and sellers of used goods to get the most out of their transactions. Statricks is similar to Kelley Blue Book but for any item found in consumer goods markets - not just cars and trucks."
+  about: "Statricks is the easiest, most powerful tool for pricing used goods. We provide price trends so you can find the best deals when buying or maximize your return when selling.\n\nOur tool is designed to help buyers and sellers of used goods to get the most out of their transactions. Statricks is similar to Kelley Blue Book but for any item found in consumer goods markets - not just cars and trucks.",
+  looking_for: nil,
 )
 
 statricks_project_1 = Project.find_by(uid: 26)
