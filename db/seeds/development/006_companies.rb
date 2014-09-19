@@ -12,7 +12,7 @@ ebay.update(
   cover_photo_image: "ebay_cover_photo.jpg",
 )
 
-ebay_project = Project.find_by(uid: 18)
+ebay_project = Project.find_by(uid: 16)
 company_project = CompanyProject.where(project: ebay_project, company: ebay).first_or_create
 
 mightyhive = Company.where(url: "mightyhive").first_or_create
@@ -26,7 +26,7 @@ mightyhive.update(
   about: "MightyHive provides software and services to marketers, advertisers and agencies for activating existing internal business systems and intelligence tools to drive real-time online marketing campaigns.\n\nWe specialize in integrating to and activating data from Call Centers, Direct Mail Programs, CRM systems, Inventory Systems and other offline Enterprise class business systems to drive highly targeted real-time online marketing campaigns.\n\nLeverage your offline data and audience to power online channel audience reach.",
   looking_for: nil,
   logo_image: "mightyhive.png",
-  cover_photo_image: "mighthive_cover_photo.png",
+  cover_photo_image: "mightyhive_cover_photo.png",
 )
 
 mightyhive_project_1 = Project.find_by(uid: 28)
