@@ -24,7 +24,7 @@ class Quiz < ActiveRecord::Base
 
   validates :project, presence: true
   validates :quiz_id, uniqueness: true, presence: true
-  validates :slide_id, uniquness: true, presence: true
+  validates :slide_id, uniqueness: true, presence: true
 
   class << self
     def lower_and_clean(input)
