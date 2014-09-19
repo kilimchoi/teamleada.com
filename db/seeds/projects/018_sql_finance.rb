@@ -81,12 +81,6 @@ collect_data_content_2 = [
   ['next_steps', ""],
 ]
 
-quiz_intro_pd = ExactAnswerQuiz.create!(
-  quiz_id: "finance_data_0",
-  answer: "3000",
-  project: project
-)
-
 collect_data_lesson = Lesson.create!(
   title: "Data Collection",
   project: project,
@@ -109,6 +103,13 @@ collect_data_slide_2 = Slide.create!(
   content: collect_data_content_2,
   parent: collect_data_lesson,
   slide_id: 2,
+)
+
+quiz_intro_pd = ExactAnswerQuiz.create!(
+  quiz_id: "finance_data_0",
+  answer: "3000",
+  project: project,
+  slide: collect_data_slide_1,
 )
 
 scraper_data_submission = SubmissionContext.create!(

@@ -20,4 +20,9 @@ class QuizSubmissionContent < GeneralSubmissionContent
       quiz_submission.save
     end
   end
+
+  def quiz_via_id
+    Quiz.find_by(quiz_id: quiz_id)
+  end
+
 end

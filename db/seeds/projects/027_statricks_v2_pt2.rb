@@ -87,7 +87,7 @@
   ########## -- EXTRACTING LISTING DETAILS: get_title -- ##########
 
   extract_title_content0 = [
-    ['text', 'Given a beautifulsoup object, write a function that returns the title of an individual listing page.'],
+    ['text', 'Given a raw string of html, write a function that returns the title of an individual listing page.'],
     ['user_code', ''],
     ['next_steps', nil],
   ]
@@ -107,7 +107,7 @@
 
   extract_title_context0 = SubmissionContext.create!(
     title: "Extract Title.",
-    description: "User is asked to write a function that returns the title of the listing given a beautifulsoup object.",
+    description: "User is asked to write a function that returns the title of the listing given a raw string of html.",
     slide: extract_title_slide0,
     submission_context_id: 0,
     submission_type: SubmissionContext::CODE,
@@ -116,7 +116,7 @@
   ########## -- EXTRACTING LISTING DETAILS: get_price -- ##########
 
   extract_price_content0 = [
-    ['text', 'Given a beautifulsoup object, write a function that returns the price of an individual listing page.'],
+    ['text', 'Given a raw string of html, write a function that returns the price of an individual listing page.'],
     ['user_code', ''],
     ['next_steps', nil],
   ]
@@ -135,7 +135,7 @@
 
   extract_price_context0 = SubmissionContext.create!(
     title: "Extract Price.",
-    description: "The user is asked to write a function that returns the price of the listing given a beautifulsoup object.",
+    description: "The user is asked to write a function that returns the price of the listing given a raw string of html",
     slide: extract_price_slide0,
     submission_context_id: 0,
     submission_type: SubmissionContext::CODE,
@@ -144,7 +144,7 @@
   ########## -- EXTRACTING LISTING DETAILS: get_phone_num -- ##########
 
   extract_phone_content0 = [
-    ['text', 'Given a beautifulsoup object, write a function that returns the phone number in an individual listing page.'],
+    ['text', 'Given a raw string of html, write a function that returns the phone number in an individual listing page.'],
     ['user_code', ''],
     ['next_steps', nil],
   ]
@@ -163,7 +163,7 @@
 
   extract_phone_context0 = SubmissionContext.create!(
     title: "Extract Phone Number.",
-    description: "User is asked to write a function that returns the phone number of a listing given a beautifulsoup object.",
+    description: "User is asked to write a function that returns the phone number of a listing given a raw string of html.",
     slide: extract_phone_slide0,
     submission_context_id: 0,
     submission_type: SubmissionContext::CODE,
@@ -174,7 +174,7 @@
   ########################################
 
   presentation_one = [
-    ['text-info', 'Now that you have a working scraper, you must present your process!'],
+    ['text-info', 'Now that you have a working scraper, you get to present your process!'],
     ['text', 'You\'ll create and present a 3 slide presentation:'],
     ['text', ' -  On the first 2 slides, explain what you did with the scraper.'],
     ['text', ' -  On the last (3rd) slide, explain your thoughts on how you would store the scraped data.'],
