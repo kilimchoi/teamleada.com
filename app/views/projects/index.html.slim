@@ -23,22 +23,7 @@
         span.glyphicon.glyphicon-chevron-right
 
   - unless signed_in? && current_user.has_project_access?
-    .row.project-card-container
-      .col-md-12
-        .projects-container
-          .row.card.project-color-green.text-contrast
-            .col-md-12
-              h1.center Want Project Access?
-              h3.center
-                ' Complete the
-                - project = Project.find(15)
-                strong
-                  = link_to project.title, info_project_path(project), remote: true, class: "text-contrast"
-                |  project to receive access to more projects!
-              h3.center
-                ' If you already have an access code, enter it
-                strong
-                  = link_to "below!", "#access-code-container", class: "text-contrast"
+    = render partial: "projects/get_access"
 
   .row.project-card-container
     .col-md-12
