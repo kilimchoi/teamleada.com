@@ -99,12 +99,6 @@ stat_analysis_content_four = [
   ['next_steps', nil],
 ]
 
-quiz = NumericRangeQuiz.create!(
-  quiz_id: "stat_quiz",
-  upper_bound: 0.01,
-  project: project,
-)
-
 stat_analysis_step = Step.create!(
   title: "Statistical Analysis",
   lesson: challenge_lesson,
@@ -131,6 +125,13 @@ stat_analysis_slide_four = Slide.create!(
   content: stat_analysis_content_four,
   parent: stat_analysis_step,
   slide_id: 3,
+)
+
+quiz = NumericRangeQuiz.create!(
+  quiz_id: "stat_quiz",
+  upper_bound: 0.01,
+  project: project,
+  slide: stat_analysis_slide_three,
 )
 
 stat_analysis_context = SubmissionContext.create!(
