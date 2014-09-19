@@ -202,7 +202,7 @@ pd_intro_one = ExactAnswerQuiz.create!(
   quiz_id: "pd_intro_1",
   answer: "4",
   project: project,
-  slide: data_frame_basic_slide_three,
+  slide: data_frame_basic_slide_one,
 )
 
 #################################################################################
