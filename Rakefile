@@ -166,6 +166,14 @@ task :presentation_submission_contexts => :environment do
   end
 end
 
+task :delete_old_quiz_submissions => :environment do
+  quiz_submissions = QuizSubmissionContent.all.select{ |quiz| (155..400).include? quiz.quiz_id.to_i }
+  quiz_submissions.each do |quiz_submission|
+    quiz_submission.delete
+  end
+  puts "Deleted #{quiz_submissions.count} quiz submissions with incorrect quiz_ids."
+end
+
 task :build_quiz_submissions => :environment do
   QuizSubmissionContent.all.each do |quiz_submission_content|
     user = quiz_submission_content.user
