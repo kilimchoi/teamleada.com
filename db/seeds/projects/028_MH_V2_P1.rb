@@ -154,13 +154,6 @@ data_matching_content_three = [
   ['finish_project_button',''],
 ]
 
-quiz = NumericRangeQuiz.create!(
-  quiz_id: "match_quiz",
-  lower_bound: 327.0,
-  upper_bound: 445.0,
-  project: project,
-)
-
 data_matching_step = Step.create!(
   title: "Data Matching",
   lesson: challenge_lesson,
@@ -183,6 +176,14 @@ data_matching_slide_three = Slide.create!(
   content: data_matching_content_three,
   parent: data_matching_step,
   slide_id: 2,
+)
+
+quiz = NumericRangeQuiz.create!(
+  quiz_id: "match_quiz",
+  lower_bound: 327.0,
+  upper_bound: 445.0,
+  project: project,
+  slide: data_matching_slide_two,
 )
 
 data_matching_context = SubmissionContext.create!(
