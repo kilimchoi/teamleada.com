@@ -197,7 +197,7 @@ data_matching_context = SubmissionContext.create!(
 data_matching_context_two = SubmissionContext.create!(
   title: "Data Matching Code",
   description: "Submit code which performs the data matching under the assumptions you previously defined.",
-  slide: data_matching_slide_two,
+  slide: data_matching_slide_three,
   submission_context_id: 0,
   submission_type: SubmissionContext::CODE,
 )
