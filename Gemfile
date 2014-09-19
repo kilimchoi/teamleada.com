@@ -34,11 +34,16 @@ gem 'rails4-autocomplete', '1.1.0'
 gem 'jquery-countdown-rails', '~> 2.0.0'
 gem 'unicorn', '4.8.3'
 gem 'travis', github: 'travis-ci/travis.rb'
+gem 'rails_autolink', '~> 1.1.6'
 
 # Uploads
 gem 'carrierwave', '~> 0.10.0'
 gem 'fog', '~> 1.22.1'
 gem 'rmagick', '~> 2.13.2', require: false
+gem 'remotipart', '~> 1.2'
+
+# STI
+gem 'store_base_sti_class', github: 'negativetwelve/store_base_sti_class'
 
 # Background processing
 gem 'sidekiq', '~> 3.2.1'

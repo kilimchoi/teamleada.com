@@ -18,6 +18,7 @@ class ProjectStatus < ActiveRecord::Base
   delegate :category, to: :project, allow_nil: true
 
   scope :group_by_user, -> { order("user_id ASC") }
+  default_scope -> { order("updated_at ASC") }
 
   def set_start_date
     self.start_date = Time.now
@@ -42,6 +43,11 @@ class ProjectStatus < ActiveRecord::Base
   def mark_complete
     self.completed = true
     self.create_user_completed_project_story
+    self.save
+  end
+
+  def reset_start_date
+    self.start_date = nil
     self.save
   end
 
@@ -82,7 +88,7 @@ class ProjectStatus < ActiveRecord::Base
   end
 
   def completed_all_submissions?
-    project.submission_contexts.count > 0 && user.code_submissions_for_project(project).count == project.submission_contexts.count
+    project.submission_contexts.required.count > 0 && user.unique_required_project_submissions_for_project_count(project) == project.submission_contexts.required.count
   end
 
   def can_be_graded?
@@ -98,15 +104,15 @@ class ProjectStatus < ActiveRecord::Base
   end
 
   def graded_submissions
-    self.user.code_submissions_for_project(self.project).select{ |code_submission| code_submission.code_submission_evaluations.count > 0 }
+    user_submissions.select{ |code_submission| code_submission.evaluations.count > 0 }
   end
 
   def user_submissions
-    self.user.code_submissions_for_project(self.project)
+    self.user.project_submissions_for_project(self.project)
   end
 
   def submissions_required
-    self.project.submission_contexts
+    self.project.submission_contexts.required
   end
 
   def completed_on

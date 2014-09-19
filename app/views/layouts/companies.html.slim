@@ -1,0 +1,26 @@
+= provide(:title, @company.name)
+
+- company = @company
+- is_editing = @is_editing
+
+.full-width-container
+  = render partial: "companies/company/company_cover_photo", locals: { \
+    company: company,
+    is_editing: is_editing,
+    size: "large",
+    clickable: false,
+    show_title: false,
+  }
+
+  .container.full-container
+    .row
+      .col-md-12
+        .show-company-container.card-container
+          = render partial: "companies/company/top_header_info", locals: { company: company, is_editing: is_editing }
+
+    .row
+      .col-md-12.company-main
+        = render partial: "companies/company/company_show_sidebar", locals: { company: company }
+        = yield
+
+= parent_layout "application"

@@ -13,8 +13,8 @@ project = Project.create!(
   description: main_page_content,
   short_description: "In this challenge, you will scrape a set of Yahoo finance data. After collecting the data, you will design a database schema and then store it into a SQL database.",
   number: 18,
-  enabled: true,
-  has_submit: true,
+  enabled: false,
+  has_written_submit: true,
   uid: 18,
   difficulty: 'Intermediate',
   category: Project::CHALLENGE,
@@ -81,12 +81,6 @@ collect_data_content_2 = [
   ['next_steps', ""],
 ]
 
-quiz_intro_pd = Quiz.create!(
-  quiz_id: "finance_data_0",
-  answer: "3000",
-  project: project
-)
-
 collect_data_lesson = Lesson.create!(
   title: "Data Collection",
   project: project,
@@ -110,10 +104,18 @@ collect_data_slide_2 = Slide.create!(
   parent: collect_data_lesson,
   slide_id: 2,
 )
-sraper_data_submission = SubmissionContext.create!(
+
+quiz_intro_pd = ExactAnswerQuiz.create!(
+  quiz_id: "finance_data_0",
+  answer: "3000",
+  project: project,
+  slide: collect_data_slide_1,
+)
+
+scraper_data_submission = SubmissionContext.create!(
   title: "Scraping Yahoo Finance",
   description: "User is asked to scrape Yahoo Finance.",
-  slide: collect_data_slide_1,
+  slide: collect_data_slide_2,
   submission_context_id: 0,
   submission_type: SubmissionContext::CODE,
 )

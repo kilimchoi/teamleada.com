@@ -13,7 +13,6 @@ project = Project.create!(
   number: 5,
   enabled: true,
   has_leaderboard: false,
-  has_submit: false,
   uid: 5,
   difficulty: 'Beginner',
   category: Project::LESSON,
@@ -67,12 +66,6 @@ view_data_content = [
   ['quiz', 't_bootcamp_1'],
 ]
 
-quiz = Quiz.create!(
-  quiz_id: "t_bootcamp_1",
-  answer:"93",
-  project: project,
-)
-
 view_data_content_two = [
   ['text', 'You can also see the last six rows by using the tail() function:'],
   ['code', 'tail(ChickWeight)'],
@@ -101,6 +94,12 @@ view_data_slide_two = Slide.create!(
   slide_id: 1,
 )
 
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "t_bootcamp_1",
+  answer:"93",
+  project: project,
+  slide: view_data_slide,
+)
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 
@@ -198,13 +197,6 @@ barplot_bootcamp_content_two = [
   ['next_steps', nil],
 ]
 
-quiz = Quiz.create!(
-  quiz_id: "t_bootcamp_2",
-  answer:"120",
-  project: project,
-)
-
-
 barplot_bootcamp_step = Step.create!(
   title: "Barplots",
   lesson: visualize_lesson,
@@ -222,6 +214,14 @@ barplot_bootcamp_slide_two = Slide.create!(
   parent: barplot_bootcamp_step,
   slide_id: 1,
 )
+
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "t_bootcamp_2",
+  answer:"120",
+  project: project,
+  slide: barplot_bootcamp_slide,
+)
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 

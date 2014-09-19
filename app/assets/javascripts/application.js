@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.all
+//= require jquery.remotipart
 //= require typed
 //= require best_in_place
 //= require toastr
@@ -90,5 +91,9 @@ $(document).ready(function() {
   $(".unfavorite-user").click(function(event) {
     $(this).removeClass("fa-star");
     $(this).addClass("fa-star-o");
+  });
+
+  $(".js-background-image").css('background-image', function() {
+    return "url(" + $(this).data("image-url") + ")";
   });
 });

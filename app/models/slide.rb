@@ -18,6 +18,7 @@ class Slide < ActiveRecord::Base
   serialize :content, Array
   belongs_to :parent, polymorphic: true, primary_key: :uid
   has_many :submission_contexts
+  has_many :project_submissions
 
   before_create :set_uid
 
@@ -36,7 +37,13 @@ class Slide < ActiveRecord::Base
   def submission_context
     # We only have one submission context per slide for now. This was added for the future when we might
     # want to have more than one submission per slide.
-    submission_contexts.first
+    submission_contexts.first || SubmissionContext.new(
+      title: "Quiz Submission",
+      description: "",
+      slide: self,
+      submission_context_id: 0,
+      submission_type: SubmissionContext::QUIZ,
+    )
   end
 
   def has_submission_contexts?

@@ -20,6 +20,7 @@ TeamLeada::Application.routes.draw do
   match 'ask-peter/guidelines', to: 'pages#question_guidelines', as: 'question_guidelines', via: :get
 
   match 'handbook', to: 'pages#handbook', as: :handbook, via: :get
+  match "how-it-works", to: "pages#how_it_works", as: :how_it_works, via: :get
 
   devise_for :users, path: '',
                      path_names: { sign_in: 'login', sign_up: 'sign-up', sign_out: 'logout'},
@@ -68,7 +69,6 @@ TeamLeada::Application.routes.draw do
 
   match 'employer', to: 'employer_applications#new', as: 'new_employer', via: :get
   resources :employer_applications, path: 'employer', as: 'employer', only: [:create]
-  resources :companies, only: [:show]
 
   draw :users_routes
   draw :project_routes

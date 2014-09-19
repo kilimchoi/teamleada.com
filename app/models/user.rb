@@ -20,7 +20,6 @@
 #  confirmation_token         :string(255)
 #  confirmed_at               :datetime
 #  confirmation_sent_at       :datetime
-#  company_id                 :integer
 #  first_name                 :string(255)
 #  last_name                  :string(255)
 #  unconfirmed_email          :string(255)
@@ -44,7 +43,6 @@ class User < ActiveRecord::Base
 
   # TODO: Remove this and put in a helper class
   include Rails.application.routes.url_helpers
-
   include UsersHelper
 
   # Delegate attributes to the user_profile and user_preference
@@ -78,17 +76,31 @@ class User < ActiveRecord::Base
   has_many :stories, as: :subject
 
   # Submissions
-  has_many :submissions
-  has_many :code_submissions
-  has_many :code_submission_evaluations, foreign_key: :reviewee_id
-  has_many :quiz_submissions
   has_many :project_submissions
+  has_many :code_submissions,          -> { where(content_type: "CodeSubmissionContent") },         class_name: "ProjectSubmission"
+  has_many :free_response_submissions, -> { where(content_type: "FreeResponseSubmissionContent") }, class_name: "ProjectSubmission"
+  has_many :file_submissions,          -> { where(content_type: ["Image", "PDF", "CSV"].map{|type| type + "SubmissionContent"}) }, class_name: "ProjectSubmission"
+  has_many :image_submissions,         -> { where(content_type: "ImageSubmissionContent") },        class_name: "ProjectSubmission"
+  has_many :pdf_submissions,           -> { where(content_type: "PDFSubmissionContent") },          class_name: "ProjectSubmission"
+  has_many :csv_submissions,           -> { where(content_type: "CSVSubmissionContent") },          class_name: "ProjectSubmission"
+  has_many :slides_link_submissions,   -> { where(content_type: "SlidesLinkSubmissionContent") },   class_name: "ProjectSubmission"
+  has_many :video_link_submissions,    -> { where(content_type: "VideoLinkSubmissionContent") },    class_name: "ProjectSubmission"
+  has_many :quiz_submissions,          -> { where(content_type: "QuizSubmissionContent") },         class_name: "ProjectSubmission"
+
+  # Evaluations
+  has_many :submission_evaluations, foreign_key: :reviewee_id
+  has_many :code_submission_evaluations,   -> { where(content_type: "CodeSubmissionEvaluation") }, class_name: "SubmissionEvaluation", foreign_key: :reviewee_id
+
+  has_many :project_scores
 
   # Project completion
   has_many :step_statuses
   has_many :lesson_statuses
   has_many :project_statuses
-  has_many :started_projects, through: :project_statuses
+  has_many :completed_project_statuses, -> { where(completed: true) }, class_name: "ProjectStatus"
+
+  # Projects
+  has_many :projects, through: :project_statuses
 
   # Invites and Access Codes
   has_many :user_codes
@@ -138,18 +150,28 @@ class User < ActiveRecord::Base
                              source: :friend
 
   # Subscriptions
+  # Things that are subscribed to me
   has_many :subscriptions, as: :subscribable
   has_many :user_subscribers, through: :subscriptions, source: :subscriber, source_type: "User"
   has_many :company_subscribers, through: :subscriptions, source: :subscriber, source_type: "Company"
 
+  # Things I'm subscribed to
+  has_many :subscribed_to, as: :subscriber, class_name: Subscription
+  has_many :users_subscribed_to, through: :subscribed_to, source: :subscribable, source_type: "User"
+  has_many :companies_subscribed_to, through: :subscribed_to, source: :subscribable, source_type: "Company"
+
   # Company specific
+  has_many :company_employees
+  has_many :employer_companies, through: :company_employees, source: :company
   has_many :user_interactions, class_name: UserInteraction,
                                foreign_key: :interactor_id
   has_many :received_interactions, class_name: UserInteraction,
                                    foreign_key: :interactee_id
 
-  belongs_to :company
+  has_many :company_interests
+  has_many :company_data_challenge_interests
 
+  # Scopes
   scope :admins, -> { where(role: "admin") }
   scope :students, -> { where(role: "student") }
   scope :employers, -> { where(role: "employer") + where(role: "recruiter") }
@@ -163,10 +185,11 @@ class User < ActiveRecord::Base
   default_scope -> { order(:created_at) }
   scope :alphabetically, -> { order("name ASC") }
 
+  # TODO(mark): These should not be necessary with form objects.
   accepts_nested_attributes_for :resumes
   accepts_nested_attributes_for :profile_photos
-  accepts_nested_attributes_for :project_submissions
 
+  # Validations
   validates_format_of :username, :with => /\A[A-Za-z0-9_]*\z/
   validates :username, uniqueness: {case_sensitive: false}
   validate :check_username
@@ -176,8 +199,10 @@ class User < ActiveRecord::Base
 
   before_save :set_name
 
+  # Pagination
   self.per_page = 50
 
+  # Search
   include PgSearch
   pg_search_scope :search,
                   against: [[:first_name, 'A'], [:last_name, 'A'], [:email, 'A'], [:username, 'A']],
@@ -282,6 +307,10 @@ class User < ActiveRecord::Base
   #
   # Instance Methods
   #
+  def name_or_you(user)
+    self == user ? "You" : name
+  end
+
   def name
     name_attribute = read_attribute(:name)
     if name_attribute.nil? || name_attribute.blank?
@@ -401,8 +430,8 @@ class User < ActiveRecord::Base
     project.total_points <= completed_points(project)
   end
 
-  def has_submitted_all_code_submissions_for_project?(project)
-    project.code_submissions
+  def has_submitted_all_submissions_for_project?(project)
+    project.submission_context.required.count == self.unique_required_project_submissions_for_project_count(project)
   end
 
   def has_invited_friends?
@@ -430,7 +459,7 @@ class User < ActiveRecord::Base
   end
 
   def owns_project?(project)
-    return false if !self.is_company? || self.company.nil?
+    return false if !self.is_company?
     self.company.projects.include? project
   end
 
@@ -465,7 +494,11 @@ class User < ActiveRecord::Base
   end
 
   def has_completed_submission?(submission_context)
-    self.code_submissions_for_project(submission_context.project).select{ |code_submission| submission_context.required && code_submission.submission_context == submission_context }.count > 0
+    self.project_submissions_for_project(submission_context.project).select{ |code_submission| submission_context.required && code_submission.submission_context == submission_context }.count > 0
+  end
+
+  def has_completed_required_submission?(submission_context)
+    submission_context.required && has_completed_submission?(submission_context)
   end
 
   def next_lesson_or_step_for_project_path(project)
@@ -486,7 +519,7 @@ class User < ActiveRecord::Base
         return lesson
       end
       lesson.slides.each do |slide|
-        if slide.has_submission_contexts? && !self.has_completed_submission?(slide.submission_context)
+        if slide.has_submission_contexts? && !self.has_completed_required_submission?(slide.submission_context)
           return lesson
         end
       end
@@ -496,7 +529,7 @@ class User < ActiveRecord::Base
           return step
         end
         step.slides.each do |slide|
-          if slide.has_submission_contexts? && !self.has_completed_submission?(slide.submission_context)
+          if slide.has_submission_contexts? && !self.has_completed_required_submission?(slide.submission_context)
             return step
           end
         end
@@ -513,6 +546,15 @@ class User < ActiveRecord::Base
       end
     end
     false
+  end
+
+  def projects_by_type
+    {
+      completed_challenges: completed_challenges,
+      in_progress_challenges: in_progress_challenges,
+      completed_lessons: completed_lessons,
+      in_progress_lessons: in_progress_lessons,
+    }
   end
 
   def all_projects(completed, category)
@@ -535,6 +577,10 @@ class User < ActiveRecord::Base
     all_projects(completed, Project::LESSON)
   end
 
+  def started_lessons
+    started_projects.data_lessons
+  end
+
   def completed_lessons
     lessons(true)
   end
@@ -543,8 +589,22 @@ class User < ActiveRecord::Base
     lessons(false)
   end
 
+  def started_projects
+    project_ids = project_statuses.pluck(:project_id)
+    projects.where(uid: project_ids)
+  end
+
   def completed_projects
-    project_statuses.where(completed: true).collect{ |project_status| project_status.project }
+    project_ids = completed_project_statuses.pluck(:project_id)
+    projects.where(uid: project_ids)
+  end
+
+  def started_challenges
+    started_projects.data_challenges
+  end
+
+  def completed_challenges
+    completed_projects.data_challenges
   end
 
   def completed_projects_with_submissions
@@ -560,8 +620,8 @@ class User < ActiveRecord::Base
     project_statuses.find_by(project: project)
   end
 
-  def code_submission_of_type_for_project(type, project)
-    project.submission_contexts.where(submission_type: type).collect{ |submission_context| submission_context.code_submissions_for_user(self).first }.first
+  def project_submission_of_type_for_project(type, project)
+    project.submission_contexts.where(submission_type: type).collect{ |submission_context| submission_context.project_submissions_for_user(self).first }.first
   end
 
   def video_for_project(project)
@@ -574,16 +634,25 @@ class User < ActiveRecord::Base
   end
 
   def presentation_for_project(project)
-    code_submission_of_type_for_project("presentation_slides_link", project)
+    project_submission_of_type_for_project("presentation_slides_link", project)
   end
 
-  def code_submissions_for_project(project)
-    code_submissions.where(project: project)
+  def project_submissions_for_project(project)
+    project_submissions.where(project: project)
   end
 
-  def first_missing_code_submission(project)
+  def required_project_submissions_for_project(project)
+    required_slide_ids = project.slide_ids_of_required_submission_contexts
+    project_submissions_for_project(project).where(slide_id: required_slide_ids)
+  end
+
+  def unique_required_project_submissions_for_project_count(project)
+    required_project_submissions_for_project(project).pluck(:slide_id).uniq.count
+  end
+
+  def first_missing_project_submission(project)
     project.submission_contexts.each do |submission_context|
-      unless self.has_completed_submission? submission_context
+      unless self.has_completed_required_submission?(submission_context)
         return submission_context
       end
     end
@@ -602,15 +671,25 @@ class User < ActiveRecord::Base
         total += lesson_status.lesson.points
       end
     end
-    total + code_submissions_for_project(project).count
+    total + unique_required_project_submissions_for_project_count(project)
   end
 
   def project_progress_percentage(project)
     ((completed_points(project).to_f / project.total_points.to_f) * 100).round(1)
   end
 
+  # Project Submissions
+  def has_project_submission_for_submission_context?(submission_context)
+    project_submissions_for_submission_context(submission_context).count > 0
+  end
+
+  def project_submissions_for_submission_context(submission_context)
+    project_submissions.where(slide: submission_context.slide)
+  end
+
+  # Evaluations
   def evaluations_for_project(project)
-    self.code_submission_evaluations.where(project: project)
+    self.submission_evaluations.where(project: project)
   end
 
   def published_evaluations_for_project(project)
@@ -671,10 +750,27 @@ class User < ActiveRecord::Base
   #
   # Company Properties
   #
-  def current_company
-    # TODO(mark): We want to allow company employees to be part of more than one company (so we don't lose
-    # what they did at one company when they move to another).
-    self.company
+  def company
+    # TODO(mark): We want to allow an employee to select their current company (as opposed to just choosing the last)
+    employer_companies.last
+  end
+
+  def company=(company)
+    unless CompanyEmployee.exists?(user: self, company: company)
+      CompanyEmployee.create(user: self, company: company)
+    end
+  end
+
+  def follows_company?(company)
+    companies_subscribed_to.find_by(id: company.id)
+  end
+
+  def has_expressed_interest_in_company?(company)
+    company_interests.find_by(company: company)
+  end
+
+  def has_expressed_interest_in_data_challenge_from_company?(company)
+    company_data_challenge_interests.find_by(company: company)
   end
 
   def user_interaction_or_nil(other_user)
@@ -764,6 +860,16 @@ class User < ActiveRecord::Base
     @project_status.completed = false
     @project_status.save
     send_deny_project_access_email(project)
+  end
+
+  def reset_all_project_access()
+    statuses = self.project_statuses.each do |status|
+      status.reset_start_date
+    end
+  end
+
+  def reset_project_access(project_id)
+    project_status_for_project(project_id).reset_start_date
   end
 
   #

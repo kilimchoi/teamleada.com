@@ -8,7 +8,8 @@
 
 
 # Delete all current projects
-Project.delete_all
+ProjectSet.delete_all
+Project.unscoped.delete_all
 Lesson.delete_all
 Step.delete_all
 Slide.delete_all

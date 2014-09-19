@@ -3,6 +3,8 @@ class ProjectsController < ApplicationController
   load_and_authorize_resource except: [:show_interest, :project_info]
   load_resource only: [:show_interest, :project_info]
 
+  before_filter :set_slide, only: [:resource, :submit_resource]
+
   def show
     @project_status = ProjectStatus.where(user: current_user, project: @project).first_or_create
     @project_status.save
@@ -13,17 +15,17 @@ class ProjectsController < ApplicationController
       format.js {
         render partial: "projects/project_info"
       }
+      format.html {
+        redirect_to project_path(@project)
+      }
     end
   end
 
   def index
-    if signed_in? && current_user.has_project_access? && !current_user.is_admin?
-      @projects = @projects.enabled
-    end
-
     @project_data = get_yaml_data_file("projects.yml")
 
-    @highlighted_projects = @projects.first(3)
+    @projects = @projects.enabled
+    @projects = @projects.displayable
     @featured_projects = @projects.featured
 
     # Don't show featured projects twice
@@ -106,8 +108,7 @@ class ProjectsController < ApplicationController
   end
 
   def submit_resource
-    @submission = CodeSubmission.where(user: current_user, project: @project, parent_type: params[:parent_type], parent_id: params[:parent_id], slide_index: params[:slide_index]).first_or_initialize
-    @submission.content = params[:content]
+    @submission = @slide.submission_context.create_or_update_content_with_user_project_slide_content(current_user, @project, @slide, params[:content])
     if @submission.save
       respond_to do |format|
         format.json { render json: {}, status: :ok }
@@ -120,7 +121,7 @@ class ProjectsController < ApplicationController
   end
 
   def resource
-    @submission = CodeSubmission.find_by(user: current_user, project: @project, parent_type: params[:parent_type], parent_id: params[:parent_id], slide_index: params[:slide_index])
+    @submission = ProjectSubmission.find_by_user_project_slide(current_user, @project, @slide)
     if @submission
       respond_to do |format|
         format.json { render json: {content: @submission.content}, status: :ok }
@@ -130,6 +131,16 @@ class ProjectsController < ApplicationController
         format.json { render json: {content: ""}, status: :ok}
       end
     end
+  end
+
+  private
+
+  def set_slide
+    @slide = Slide.find_by(
+      parent_type: params[:parent_type],
+      parent_id: params[:parent_id],
+      slide_id: params[:slide_id],
+    )
   end
 
 end
