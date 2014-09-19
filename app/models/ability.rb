@@ -7,7 +7,7 @@ class Ability
     alias_action :index, :show, to: :view
 
     # Everyone
-    can [:project_info], Project
+    can [:show, :project_info], Project
     can [:index, :show], Company
 
     can :show, Lesson do |lesson|
@@ -38,7 +38,7 @@ class Ability
         end
       else
         # Only students
-        can [:show, :check_submission, :complete, :submit_resource, :purchase, :resource, :feedback], Project do |project|
+        can [:check_submission, :complete, :submit_resource, :purchase, :resource, :feedback], Project do |project|
           project.enabled && (project.grants_project_access || (user.has_project_access? && (!project.paid || !user.has_not_paid_for_project?(project))))
         end
 
