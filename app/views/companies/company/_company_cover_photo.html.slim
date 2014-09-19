@@ -22,7 +22,7 @@
 
 - content_for :cover_photo, flush: true do
   .shared-project-cover-photo class="cover-photo-#{size}"
-    .shared-project-show-cover-image.shared-project-show-cover-image-dark.js-background-image data-image-url="#{asset_path('companies/cover_photos/ebay_cover_photo.jpg')}"
+    .shared-project-show-cover-image.shared-project-show-cover-image-dark.js-background-image data-image-url="#{asset_path('companies/cover_photos/' + company.cover_photo_image)}"
   .row.row-table.row-full-height.row-no-margin
     .col-md-12.col-middle.center.project-cover-photo-content
       - if show_title
