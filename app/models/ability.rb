@@ -42,6 +42,8 @@ class Ability
           project.enabled && (project.grants_project_access || (user.has_project_access? && (!project.paid || !user.has_not_paid_for_project?(project))))
         end
 
+        can [:follow, :unfollow, :company_interest, :data_challenges_interest], Company
+
         can [:check_answer], Quiz
 
         can [:show, :index], SubmissionContext
