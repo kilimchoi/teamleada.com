@@ -617,7 +617,7 @@ class User < ActiveRecord::Base
   end
 
   def project_status_for_project(project)
-    project_statuses.find_by(project: project)
+    project_statuses.where(project: project).first_or_create
   end
 
   def project_submission_of_type_for_project(type, project)

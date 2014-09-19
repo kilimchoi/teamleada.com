@@ -2,7 +2,7 @@
 // project, project_status, user
 
 - unless project.deadline.nil?
-  - if project_status.start_date.nil?
+  - if project_status.nil? || project_status.start_date.nil?
     - if user.has_project_access?
       .row.card
         .col-md-12
@@ -26,9 +26,10 @@
           .alert.alert-danger
             h2.center.no-margin.project-timeout Your time for this project has expired.
 
-javascript:
-  $(document).ready(function() {
-    var endDate = new Date(#{@project_status.end_date_in_milliseconds})
-    $('#project-countdown').countdown({ until: endDate });
-  });
+- unless project_status.nil?
+  javascript:
+    $(document).ready(function() {
+      var endDate = new Date(#{project_status.end_date_in_milliseconds})
+      $('#project-countdown').countdown({ until: endDate });
+    });
 
