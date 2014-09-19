@@ -3,11 +3,6 @@ class LessonsController < ApplicationController
   load_resource :lesson, through: :project
 
   def show
-    unless can? :show, Lesson
-      flash[:warning] = "You must complete the Crime Visualization project to gain access to more projects!"
-      redirect_to project_path(Project.grants_project_access.first)
-    end
-
     # TODO: Right now we're giving points to users when they 'start' a lesson
     # We should give them the points when they complete the lesson.
     current_user.complete_lesson(@lesson)
