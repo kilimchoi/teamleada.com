@@ -91,13 +91,16 @@ data_context_content_two = [
   ['text', "Once you've scraped the data, you think about how to go about labeling them."],
   ['text', "Could this be a task left for an intern?"],
   ['quiz', "cl_data_context_0"],
+]
+
+data_context_content_three = [
   ['text', "Could this possibly hurt the intern's view of you as a mentor?"],
   ['quiz', "cl_data_context_1"],
   ['text-success', "You decide against using the intern."],
   ['text', "Instead, you initialize an Amazon Mechanical Turk campaign."],
 ]
 
-data_context_content_three = [
+data_context_content_four = [
   ['text', "The resulting data:"],
   ['fail-link', "some link to zipped folder"],
   ['text', "When you unzip the file, you'll get the following files inside the leada_CL folder:"],
@@ -109,18 +112,6 @@ data_context_content_three = [
   ['text-warning', "  * This is a list of You'll use this to make a submission."],
   ['next_steps', ""],
 ]
-
-cl_data_context_quiz = Quiz.create!(
-  quiz_id: "cl_data_context_0",
-  answer: "no",
-  project: project,
-)
-
-cl_data_context_quiz = Quiz.create!(
-  quiz_id: "cl_data_context_1",
-  answer: "yes",
-  project: project,
-)
 
 data_context_step = Step.create!(
   title: "Getting the Data",
@@ -144,6 +135,26 @@ data_context_slide_three = Slide.create!(
   content: data_context_content_three,
   slide_id: 2,
   parent: data_context_step,
+)
+
+data_context_slide_four = Slide.create!(
+  content: data_context_content_four,
+  slide_id: 3,
+  parent: data_context_step,
+)
+
+cl_data_context_quiz = Quiz.create!(
+  quiz_id: "cl_data_context_0",
+  answer: "no",
+  project: project,
+  slide: data_context_slide_two,
+)
+
+cl_data_context_quiz = Quiz.create!(
+  quiz_id: "cl_data_context_1",
+  answer: "yes",
+  project: project,
+  slide: data_context_slide_two,
 )
 
 #############################################
