@@ -98,6 +98,7 @@ voter_intro_quiz = Quiz.create!(
   quiz_id: "voter_intro_0",
   answer: "510459",
   project: project,
+  slide: data_details_slide,
 )
 
 ################################################################################
@@ -133,12 +134,6 @@ data_correlation_content_two = [
   ['next_steps', ""],
 ]
 
-voter_cor_quiz = Quiz.create!(
-  quiz_id: "voter_correlation_tag",
-  answer: "cat_cod",
-  project: project,
-)
-
 data_correlation_lesson = Lesson.create!(
   title: "Correlation Analysis",
   lesson_id: 1,
@@ -161,6 +156,13 @@ data_correlation_slide_two = Slide.create!(
   slide_id: 2,
   content: data_correlation_content_two,
   parent: data_correlation_lesson,
+)
+
+voter_cor_quiz = Quiz.create!(
+  quiz_id: "voter_correlation_tag",
+  answer: "cat_cod",
+  project: project,
+  slide: data_correlation_slide,
 )
 
 corr_code_submission_context = SubmissionContext.create!(
