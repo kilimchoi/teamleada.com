@@ -19,32 +19,27 @@ TeamLeada::Application.routes.draw do
     end
 
     resources :users, only: [:index, :show] do
-      member do
-        match 'projects/:project_id/publish-feedback', to: 'users#publish_feedback',
-                                                       as: :publish_feedback,
-                                                       via: :get
-        match 'projects/:project_id/grant-access',     to: 'users#grant_access',
-                                                       as: :grant_access,
-                                                       via: :get
-        match 'projects/:project_id/deny-access',      to: 'users#deny_access',
-                                                       as: :deny_access,
-                                                       via: :get
+      scope module: :users do
+        resources :projects, only: [:show, :index] do
+          member do
+            match "publish-feedback", to: "projects#publish_feedback", as: :publish_feedback, via: :get
+            match "grant-access", to: "projects#grant_access", as: :grant_access, via: :get
+            match "deny-access", to: "projects#deny_access", as: :deny_access, via: :get
+          end
 
-        match 'projects/:project_id/code-submissions', to: 'users#show_code_submissions',
-                                                       as: :code_submissions,
-                                                       via: :get
-        match 'projects/:project_id/code-submissions/:code_submission_id', to: 'users#show_code_submission',
-                                                                           as: :code_submission,
-                                                                           via: :get
-        match 'projects/:project_id/code-submissions/:code_submission_id/evaluate', to: 'code_submissions#evaluate',
-                                                                                    as: :evaluate,
-                                                                                    via: :post
-        match 'projects/:project_id/code-submissions/:code_submission_id/evaluate', to: 'code_submissions#update_evaluation',
-                                                                                    as: :update_evaluation,
-                                                                                    via: :patch
-        match 'projects/:project_id/code-submissions/:code_submission_id/evaluations', to: 'code_submission_evaluations#index',
-                                                                                       as: :evaluations,
-                                                                                       via: :get
+          scope module: :projects do
+            resources :project_submissions, path: "submissions", only: [:show, :index] do
+              member do
+                match "evaluate", to: "project_submissions#evaluate", as: :evaluate, via: :post
+                match "evaluate", to: "project_submissions#update_evaluation", as: :update_evaluations, via: :patch
+              end
+
+              scope module: :project_submissions do
+                resources :submission_evaluations, path: "evaluations", only: [:index]
+              end
+            end
+          end
+        end
       end
     end
 
@@ -79,16 +74,13 @@ TeamLeada::Application.routes.draw do
       end
     end
 
-    resources :code_submissions, path: "code-submissions", only: [:index] do
-      member do
-        match 'evaluate', to: 'code_submissions#evaluate', as: :evaluate, via: :post
-        match 'evaluate', to: 'code_submissions#update_evaluation', as: :update_evaluation, via: :patch
-      end
-    end
+    resources :project_submissions, path: "submissions", only: [:index]
 
-    match 'charts/category/realtime', to: "pages#realtime_charts", as: :realtime_charts, via: :get
-    match 'charts/category/page-views', to: "pages#page_view_charts", as: :page_view_charts, via: :get
-    match 'charts/category/:category', to: "charts#show_by_category", as: :chart_category, via: :get
+    match 'charts/category/realtime',            to: "pages#realtime_charts",           as: :realtime_charts,           via: :get
+    match 'charts/category/page-views',          to: "pages#page_view_charts",          as: :page_view_charts,          via: :get
+    match 'charts/category/growth',              to: "pages#growth_charts",             as: :growth_charts,             via: :get
+    match 'charts/category/project-submissions', to: "pages#project_submission_charts", as: :project_submission_charts, via: :get
+    match 'charts/category/:category',           to: "charts#show_by_category",         as: :chart_category,            via: :get
     resources :charts, only: [:show]
   end
 

@@ -9,7 +9,7 @@ p
   = @evaluations.count
   '  submissions.
   ' You can view them
-  = link_to "here.", project_feedback_user_url(@user, @project)
+  = link_to "here.", feedback_user_project_url(@user, @project)
   '  We are working hard on building a messaging feature so that you can respond to the feedback. In the meantime, if you have any questions or concerns, feel free to email us at
   = mail_to "grading@teamleada.com", "grading@teamleada.com"
 p

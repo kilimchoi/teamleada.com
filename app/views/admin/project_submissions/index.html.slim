@@ -1,0 +1,16 @@
+.container-fluid.full-container
+  .row
+    .col-md-12
+      ul.nav.nav-tabs.code-submissions-nav-tabs
+        = active_nav_link "All Submissions", admin_project_submissions_path(tab: "all-submissions")
+        = active_nav_link "Completed Projects", admin_project_submissions_path(tab: "completed-projects")
+        = active_nav_link "By Project", admin_project_submissions_path(tab: "by-project")
+
+  .row
+    .col-md-12
+      h1 = params[:tab].try(:titleize) || "All Submissions"
+
+      - if valid_submissions_tab?(params[:tab])
+        = render partial: "admin/project_submissions/tab_#{params[:tab].gsub("-", "_")}"
+      - else
+        = render partial: "admin/project_submissions/tab_all_submissions"

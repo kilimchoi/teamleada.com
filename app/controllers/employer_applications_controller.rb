@@ -5,6 +5,7 @@ class EmployerApplicationsController < ApplicationController
     @employer_application = EmployerApplication.new
     @large_header = true
     @company_logos = get_yaml_data_file("company_logos.yml")
+    @employer_data = get_yaml_data_file("employer.yml")
   end
 
   def create

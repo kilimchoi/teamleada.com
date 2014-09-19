@@ -1,0 +1,15 @@
+// Required Variables:
+// user, submission_contexts
+
+.row
+  .col-md-12
+    - submission_contexts.each do |submission_context|
+      - if user.has_project_submission_for_submission_context?(submission_context)
+        .project-submission-container
+          .submission-context-container
+            h4.title = submission_context.title
+            p
+              = submission_context.description
+
+          .submission-content-container
+            = render partial: "users/projects/project_submissions/project_submissions", locals: { project_submissions: user.project_submissions_for_submission_context(submission_context) }
