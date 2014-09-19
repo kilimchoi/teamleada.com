@@ -131,7 +131,6 @@ challenge_slide = Slide.create!(
   slide_id: 0,
 )
 
-
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 data_cleaning_content_one = [
@@ -152,13 +151,6 @@ data_cleaning_content_two = [
   ['finish_project_button', ''],
 ]
 
-quiz = NumericRangeQuiz.create!(
-  quiz_id: "clean_quiz",
-  lower_bound: 310.0,
-  upper_bound: 423.0,
-  project: project,
-)
-
 data_cleaning_step = Step.create!(
   title: "Data Cleaning",
   lesson: challenge_lesson,
@@ -175,6 +167,14 @@ data_cleaning_slide_two = Slide.create!(
   content: data_cleaning_content_two,
   parent: data_cleaning_step,
   slide_id: 1,
+)
+
+quiz = NumericRangeQuiz.create!(
+  quiz_id: "clean_quiz",
+  lower_bound: 310.0,
+  upper_bound: 423.0,
+  project: project,
+  slide: data_cleaning_slide_two,
 )
 
 data_matching_context = SubmissionContext.create!(

@@ -66,12 +66,6 @@ intro_content_four = [
   ['next_steps', ""],
 ]
 
-quiz_intro_pd = ExactAnswerQuiz.create!(
-  quiz_id: "pd_intro_0",
-  answer: "5",
-  project: project,
-)
-
 intro_lesson = Lesson.create!(
   title: "Intro to Pandas",
   lesson_id: 0,
@@ -96,10 +90,17 @@ intro_slide_three = Slide.create!(
   parent: intro_lesson,
 )
 
-intro_slide_two = Slide.create!(
+intro_slide_four = Slide.create!(
   content: intro_content_four,
   slide_id: 3,
   parent: intro_lesson,
+)
+
+quiz_intro_pd = ExactAnswerQuiz.create!(
+  quiz_id: "pd_intro_0",
+  answer: "5",
+  project: project,
+  slide: intro_slide_four,
 )
 
 #################################################################################
@@ -111,24 +112,6 @@ dataframe_basics_intro = [
   ['text', "We'll start with some more basics."],
   ['lesson_links', ""],
 ]
-
-pd_df_basic_2 = ExactAnswerQuiz.create!(
-  quiz_id: "pd_df_basic_2",
-  answer: "df.head(4)",
-  project: project,
-)
-
-pd_df_basic_4 = ExactAnswerQuiz.create!(
-  quiz_id: "pd_df_basic_3",
-  answer: "3.25",
-  project: project,
-)
-
-pd_intro_one = ExactAnswerQuiz.create!(
-  quiz_id: "pd_intro_1",
-  answer: "4",
-  project: project,
-)
 
 data_frame_basic_lesson = Lesson.create!(
   title: "DataFrames",
@@ -201,6 +184,27 @@ data_frame_basic_slide_three = Slide.create!(
   parent: data_frame_basic_step,
 )
 
+pd_df_basic_2 = ExactAnswerQuiz.create!(
+  quiz_id: "pd_df_basic_2",
+  answer: "df.head(4)",
+  project: project,
+  slide: data_frame_basic_slide_two,
+)
+
+pd_df_basic_4 = ExactAnswerQuiz.create!(
+  quiz_id: "pd_df_basic_3",
+  answer: "3.25",
+  project: project,
+  slide: data_frame_basic_slide_three,
+)
+
+pd_intro_one = ExactAnswerQuiz.create!(
+  quiz_id: "pd_intro_1",
+  answer: "4",
+  project: project,
+  slide: data_frame_basic_slide_one,
+)
+
 #################################################################################
 
 dataframe_basics_content_four = [
@@ -218,27 +222,14 @@ dataframe_basics_content_four = [
 dataframe_basics_content_five = [
   ['text', "How many row entries are present in log_df?"],
   ['quiz', "pd_df_basic_5"],
+]
+
+dataframe_basics_content_six = [
   ['text', "What is the URL at 85th row (remember that indexing starts at 0)?"],
   ['quiz', "pd_df_basic_6"],
   ['text-success', "Great!"],
   ['next_steps', ""],
 ]
-
-pd_df_basic_4 = ExactAnswerQuiz.create!(
-  quiz_id: "pd_df_basic_4",
-  answer: "500",
-  project: project,
-)
-pd_df_basic_5 = ExactAnswerQuiz.create!(
-  quiz_id: "pd_df_basic_5",
-  answer: "200000",
-  project: project,
-)
-pd_df_basic_6 = ExactAnswerQuiz.create!(
-  quiz_id: "pd_df_basic_6",
-  answer: "/images/s102443.gif",
-  project: project,
-)
 
 data_frame_basic_conclusion = Step.create!(
   title: "DataFrame Conclusion",
@@ -258,6 +249,32 @@ data_frame_basic_slide_five = Slide.create!(
   parent: data_frame_basic_conclusion,
 )
 
+data_frame_basic_slide_six = Slide.create!(
+  content: dataframe_basics_content_six,
+  slide_id: 2,
+  parent: data_frame_basic_conclusion,
+)
+
+pd_df_basic_4 = ExactAnswerQuiz.create!(
+  quiz_id: "pd_df_basic_4",
+  answer: "500",
+  project: project,
+  slide: data_frame_basic_slide_four,
+)
+
+pd_df_basic_5 = ExactAnswerQuiz.create!(
+  quiz_id: "pd_df_basic_5",
+  answer: "200000",
+  project: project,
+  slide: data_frame_basic_slide_five,
+)
+
+pd_df_basic_6 = ExactAnswerQuiz.create!(
+  quiz_id: "pd_df_basic_6",
+  answer: "/images/s102443.gif",
+  project: project,
+  slide: data_frame_basic_slide_six,
+)
 #################################################################################
 ###############  PD SQL ops  ####################################################
 #################################################################################
@@ -374,18 +391,6 @@ sql_grouping_content_two = [
   ['next_steps', ""],
 ]
 
-pd_sql_grouping_quiz = ExactAnswerQuiz.create!(
-  quiz_id: "pd_sql_grouping_0",
-  answer: "7",
-  project: project,
-)
-
-pd_sql_grouping_1 = ExactAnswerQuiz.create!(
-  quiz_id: "pd_sql_grouping_1",
-  answer: "34618",
-  project: project,
-)
-
 grouping_step = Step.create!(
   title: "Grouping",
   step_id: 2,
@@ -402,6 +407,20 @@ grouping_slide_two = Slide.create!(
   content: sql_grouping_content_two,
   slide_id: 1,
   parent: grouping_step,
+)
+
+pd_sql_grouping_quiz = ExactAnswerQuiz.create!(
+  quiz_id: "pd_sql_grouping_0",
+  answer: "7",
+  project: project,
+  slide: grouping_slide_one,
+)
+
+pd_sql_grouping_1 = ExactAnswerQuiz.create!(
+  quiz_id: "pd_sql_grouping_1",
+  answer: "34618",
+  project: project,
+  slide: grouping_slide_two,
 )
 
 #################################################################################
@@ -490,12 +509,6 @@ plotting_content = [
   ['next_steps', ""],
 ]
 
-pd_plotting_intro_0 = ExactAnswerQuiz.create!(
-  quiz_id: "pd_plotting_intro_0",
-  answer: "instancemethod",
-  project: project,
-)
-
 plotting_lesson = Lesson.create!(
   title: "Plotting in Pandas",
   lesson_id: 4,
@@ -506,6 +519,13 @@ plotting_slide = Slide.create!(
   content: plotting_content,
   slide_id: 0,
   parent: plotting_lesson,
+)
+
+pd_plotting_intro_0 = ExactAnswerQuiz.create!(
+  quiz_id: "pd_plotting_intro_0",
+  answer: "instancemethod",
+  project: project,
+  slide: plotting_slide,
 )
 
 #################################################################################

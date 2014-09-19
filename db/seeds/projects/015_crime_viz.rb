@@ -54,12 +54,6 @@ intro_content_three = [
   ['next_steps', ""],
 ]
 
-quiz = ExactAnswerQuiz.create!(
-  quiz_id: "crime_viz_0",
-  answer:"3",
-  project: project,
-)
-
 intro_lesson = Lesson.create!(
   title: "Introduction",
   project: project,

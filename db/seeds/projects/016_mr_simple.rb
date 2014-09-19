@@ -97,23 +97,15 @@ setup_main_slide = [
     ['text', "With this data, you have a list of directed edges, each representing a co-purchase."],
     ['text-warning', "How many Nodes are there in the data?"],
     ['quiz', "mr_data_node_count"],
+    ['text', "What abput the edges?"],
+  ]
+
+  background_content_three = [
     ['text-warning', "How many Edges are there in the data?"],
     ['quiz', "mr_data_edge_count"],
     ['text', "The full dataset is significantly larger, but we want to make sure that the algorithm runs on a smaller subset."],
     ['next_steps', ""],
   ]
-
-  quiz = Quiz.create!(
-    quiz_id: "mr_data_edge_count",
-    answer: "3387388",
-    project: project,
-  )
-
-  quiz = Quiz.create!(
-    quiz_id: "mr_data_node_count",
-    answer: "403394",
-    project: project,
-  )
 
   background_step_one = Step.create!(
     title: "Context & Data",
@@ -132,6 +124,27 @@ setup_main_slide = [
     slide_id: 1,
     parent: background_step_one
   )
+
+  background_slide_three = Slide.create!(
+    content: background_content_three,
+    slide_id: 2,
+    parent: background_step_one
+  )
+
+  quiz = Quiz.create!(
+    quiz_id: "mr_data_node_count",
+    answer: "403394",
+    project: project,
+    slide: background_slide_two,
+  )
+
+  quiz = Quiz.create!(
+    quiz_id: "mr_data_edge_count",
+    answer: "3387388",
+    project: project,
+    slide: background_slide_three,
+  )
+
   ################################################################################
 
   data_representation_content_one = [
@@ -528,13 +541,13 @@ setup_main_slide = [
     ['text', "This means the distance between '1' and '0' should be 1."],
     ['text', "What is the distance between node '1' and node '1234'?"],
     ['quiz', "mr_quiz_1"],
-    ['text', "Let's check a few more"],
+    ['text', "Let's check a few more."],
   ]
 
   conclusion_main_content_three = [
     ['text-warning', "What is the distance between node '2222' and node '22222'?"],
     ['quiz', "mr_quiz_2"],
-    ['text', "What about an even bigger discrepancy in node number"],
+    ['text', "What about an even bigger discrepancy in node numbers?"],
   ]
 
   conclusion_main_content_four = [
@@ -548,24 +561,6 @@ setup_main_slide = [
     ['text-success', "You've completed the MapReduce Graph Traversal Project!"],
     ['finish_project_button', 'http://www.surveygizmo.com/s3/1811239/Project-Feedback-v2'],
   ]
-
-  quiz = ExactAnswerQuiz.create!(
-    quiz_id: "mr_quiz_1",
-    answer: "319",
-    project: project,
-  )
-
-  quiz = ExactAnswerQuiz.create!(
-    quiz_id: "mr_quiz_2",
-    answer: "3241",
-    project: project,
-  )
-
-  quiz = ExactAnswerQuiz.create!(
-    quiz_id: "mr_quiz_3",
-    answer: "421",
-    project: project,
-  )
 
   conclusion_main_slide_one = Slide.create(
     content: conclusion_main_content_one,
@@ -585,16 +580,37 @@ setup_main_slide = [
     parent: conclusion_lesson
   )
 
-  conclusion_main_slide_three = Slide.create(
+  conclusion_main_slide_four = Slide.create(
     content: conclusion_main_content_four,
     slide_id: 3,
     parent: conclusion_lesson
   )
 
-  conclusion_main_slide_three = Slide.create(
+  conclusion_main_slide_five = Slide.create(
     content: conclusion_main_content_five,
     slide_id: 4,
     parent: conclusion_lesson
+  )
+
+  quiz = ExactAnswerQuiz.create!(
+    quiz_id: "mr_quiz_1",
+    answer: "319",
+    project: project,
+    slide: conclusion_main_slide_two,
+  )
+
+  quiz = ExactAnswerQuiz.create!(
+    quiz_id: "mr_quiz_2",
+    answer: "3241",
+    project: project,
+    slide: conclusion_main_slide_three,
+  )
+
+  quiz = ExactAnswerQuiz.create!(
+    quiz_id: "mr_quiz_3",
+    answer: "421",
+    project: project,
+    slide: conclusion_main_slide_four,
   )
 
   src_code_submission = SubmissionContext.create!(
