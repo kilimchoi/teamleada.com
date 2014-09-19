@@ -1,6 +1,7 @@
 ebay = Company.where(url: "ebay").first_or_create
 ebay.update(
   name: "eBay",
+  verified: true,
   headline: "eBay delivers one of the world's largest online marketplaces to customers via any connected device, connecting people with the things they need and love",
   location: "2065 Hamilton Avenue San Jose, CA 95125 United States",
   website: "http://www.ebayinc.com",
@@ -15,6 +16,7 @@ company_project = CompanyProject.where(project: ebay_project, company: ebay).fir
 mightyhive = Company.where(url: "mightyhive").first_or_create
 mightyhive.update(
   name: "MightyHive",
+  verified: true,
 )
 
 mightyhive_project_1 = Project.find_by(uid: 28)
@@ -27,6 +29,7 @@ company_project_3 = CompanyProject.where(project: mightyhive_project_3, company:
 statricks = Company.where(url: "statricks").first_or_create
 statricks.update(
   name: "Statricks",
+  verified: true,
 )
 
 statricks_project_1 = Project.find_by(uid: 26)
