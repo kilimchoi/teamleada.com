@@ -11,8 +11,6 @@
 #  number                :integer
 #  has_leaderboard       :boolean          default(FALSE)
 #  short_description     :text
-#  has_written_submit    :boolean          default(FALSE)
-#  has_content_submit    :boolean          default(FALSE)
 #  cost                  :integer
 #  paid                  :boolean          default(FALSE)
 #  uid                   :integer          not null, primary key
@@ -24,6 +22,9 @@
 #  featured              :boolean          default(FALSE)
 #  grants_project_access :boolean          default(FALSE)
 #  cover_photo           :string(255)
+#  has_content_submit    :boolean          default(FALSE)
+#  has_written_submit    :boolean          default(FALSE)
+#  project_set_id        :integer
 #
 
 class Project < ActiveRecord::Base
@@ -34,10 +35,13 @@ class Project < ActiveRecord::Base
 
   serialize :description, Array
 
+  belongs_to :project_set
+
   has_many :lessons, dependent: :destroy
   has_many :project_scores
 
-  has_many :quizes
+  has_many :quizzes
+  has_many :quiz_submissions, through: :quizzes
 
   has_many :transactions, as: :item
   has_many :interested_users, class_name: ProjectInterest
@@ -65,6 +69,7 @@ class Project < ActiveRecord::Base
   scope :not_featured, -> { enabled.where(featured: false) }
 
   scope :newest_first, -> { order("uid DESC") }
+  scope :displayable, -> { where(uid: Project.displayable_ids) }
 
   # Scope by type
   scope :data_challenges, -> { where(category: CHALLENGE) }
@@ -76,6 +81,7 @@ class Project < ActiveRecord::Base
   extend FriendlyId
   friendly_id :url, use: :finders
 
+  # TODO(mark): Move constants somewhere else
   BEGINNER = "Beginner"
   INTERMEDIATE = "Intermediate"
   ADVANCED = "Advanced"
@@ -108,6 +114,10 @@ class Project < ActiveRecord::Base
   VALID_FILTERS = ["started", "completed"]
 
   class << self
+    def displayable_ids
+      Project.all.select { |project| !project.is_part_of_set? || (project.is_part_of_set? && project.is_first_part_of_set?) }.map(&:uid)
+    end
+
     def random_set_of_colors(amount)
       COLORS.sample(amount)
     end
@@ -134,12 +144,21 @@ class Project < ActiveRecord::Base
 
   # Before Filters
   def set_url
-    self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize
+    self.url = title.urlify
   end
 
   # Attributes
   def has_cover_photo?
     !cover_photo.nil?
+  end
+
+  # Project Sets
+  def is_part_of_set?
+    !project_set_id.nil?
+  end
+
+  def is_first_part_of_set?
+    is_part_of_set? && project_set.first_part == self
   end
 
   def color
@@ -201,10 +220,10 @@ class Project < ActiveRecord::Base
         total += step.total_points
       end
     end
-    total + code_submission_points
+    total + submission_points
   end
 
-  def code_submission_points
+  def submission_points
     submission_contexts.required.count
   end
 

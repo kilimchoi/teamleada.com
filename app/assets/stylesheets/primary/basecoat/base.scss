@@ -255,7 +255,16 @@ hr {
   text-decoration: underline;
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5 {
   font-weight: 300;
 }
 
@@ -365,5 +374,15 @@ h1 {
 .justify {
   text-align: justify;
   text-justify: inter-word;
+}
+
+ul.plain-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  li.indented-list {
+    padding-left: 20px;
+  }
 }
 

@@ -2,7 +2,7 @@
   .col-md-12
     .project-container.card-container
       = render partial: "projects/project_countdown", locals: { project: @project, project_status: @project_status }
-      = render partial: "projects/project_progress", locals: { project: @project }
+      = render partial: "projects/project_progress", locals: { project: @project, user: @user }
       .row.card
         .col-md-12
           h2.title Project Details

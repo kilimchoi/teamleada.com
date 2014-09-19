@@ -2,22 +2,29 @@
 #
 # Table name: quizzes
 #
-#  id         :integer          not null
-#  quiz_id    :string(255)      primary key
-#  answer     :string(255)
-#  created_at :datetime
-#  updated_at :datetime
-#  project_id :integer
+#  id               :integer          not null
+#  quiz_id          :string(255)      primary key
+#  answer           :string(255)
+#  created_at       :datetime
+#  updated_at       :datetime
+#  project_id       :integer
+#  type             :string(255)
+#  multiple_choices :text
+#  lower_bound      :decimal(10, 5)
+#  upper_bound      :decimal(10, 5)
 #
 
 class Quiz < ActiveRecord::Base
   self.primary_key = "quiz_id"
 
   belongs_to :project
-  has_many :quiz_submissions
+  belongs_to :slide
+
+  has_many :quiz_submission_contents
 
   validates :project, presence: true
   validates :quiz_id, uniqueness: true, presence: true
+  validates :slide_id, uniqueness: true, presence: true
 
   class << self
     def lower_and_clean(input)
@@ -31,10 +38,10 @@ class Quiz < ActiveRecord::Base
   end
 
   def correct_answer?(user_input)
-    # Given a "user_input", returns True if the user_input matches the answer.
-    answer == user_input || whitespace_and_lower_pass(user_input) || equalsign_pass(user_input) || quoteless_pass(user_input)
+    self.is_correct?(user_input)
   end
 
+  # Helpers
   def quoteless_pass(user_input)
     # Returns T/F depending of answer == user_input, after we remove all quotes.
     quote_removed_input = Quiz.lower_and_clean(user_input).gsub(/'|"/, "")

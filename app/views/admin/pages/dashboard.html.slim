@@ -101,10 +101,12 @@
           table.table.table-striped
             th Name
             th Link
+            th Type
             th Time
             - @new_project_submissions.each do |project_submission|
               tr
                 td = link_to project_submission.user.name, admin_user_path(project_submission.user)
                 td = link_to "View", admin_user_project_project_submission_path(project_submission.user, project_submission.project, project_submission)
+                td = project_submission.content_type
                 td = project_submission.created_at.strftime("%m/%d %H:%M:%S")
 

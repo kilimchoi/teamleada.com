@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140916202759) do
+ActiveRecord::Schema.define(version: 20140918220138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -390,6 +390,14 @@ ActiveRecord::Schema.define(version: 20140916202759) do
     t.datetime "updated_at"
   end
 
+  create_table "project_sets", id: false, force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "uid",         null: false
+  end
+
   create_table "project_statuses", force: true do |t|
     t.integer  "user_id"
     t.integer  "project_id"
@@ -435,6 +443,7 @@ ActiveRecord::Schema.define(version: 20140916202759) do
     t.string   "cover_photo"
     t.boolean  "has_content_submit",    default: false
     t.boolean  "has_written_submit",    default: false
+    t.integer  "project_set_id"
   end
 
   create_table "publications", force: true do |t|
@@ -461,16 +470,22 @@ ActiveRecord::Schema.define(version: 20140916202759) do
     t.text     "title"
   end
 
-  create_table "quiz_submissions", force: true do |t|
+  create_table "quiz_submission_contents", force: true do |t|
     t.integer  "user_id"
     t.string   "quiz_id"
-    t.string   "submitted_answer"
+    t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "quiz_type"
+  end
+
+  add_index "quiz_submission_contents", ["quiz_id"], name: "index_quiz_submission_contents_on_quiz_id", using: :btree
+  add_index "quiz_submission_contents", ["user_id"], name: "index_quiz_submission_contents_on_user_id", using: :btree
+
+  create_table "quiz_submission_evaluation_contents", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "quiz_submissions", ["quiz_id"], name: "index_quiz_submissions_on_quiz_id", using: :btree
-  add_index "quiz_submissions", ["user_id"], name: "index_quiz_submissions_on_user_id", using: :btree
 
   create_table "quizzes", force: true do |t|
     t.string   "quiz_id"
@@ -478,6 +493,11 @@ ActiveRecord::Schema.define(version: 20140916202759) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "project_id"
+    t.string   "type"
+    t.text     "multiple_choices"
+    t.decimal  "lower_bound",      precision: 10, scale: 5
+    t.decimal  "upper_bound",      precision: 10, scale: 5
+    t.string   "slide_id"
   end
 
   create_table "resumes", force: true do |t|
@@ -750,6 +770,11 @@ ActiveRecord::Schema.define(version: 20140916202759) do
     t.text     "content"
     t.string   "link_type"
     t.integer  "project_submission_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "video_link_submission_evaluation_contents", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -22,6 +22,10 @@ class ImageSubmissionContentForm < Form
     project_submission.content_object = image_submission_content
   end
 
+  def valid?
+    image_submission_content.valid? && project_submission.valid?
+  end
+
   def save
     image_submission_content.save
     project_submission.save

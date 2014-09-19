@@ -8,8 +8,7 @@ class Ability
 
     # Everyone
     can [:index, :project_info], Project
-    # Re-enable below when companies are viewable by everyone
-#    can [:index, :show], Company
+    can [:index, :show], Company
 
     can :show, Lesson do |lesson|
       !lesson.project.deadline || (lesson.project.deadline && user.project_status_for_project(lesson.project).has_time_remaining?)

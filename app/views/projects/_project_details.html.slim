@@ -25,17 +25,20 @@ hr
     .col-md-10
       .row
         .col-md-6
-          ' Number of Required Submissions:
+          ' Required Submissions:
           strong
             = project.submission_contexts.required.count
         .col-md-6
-          ' Number of Optional Submissions:
+          ' Optional Submissions:
           strong
             = project.submission_contexts.optional.count
       - if project.has_deadline?
         .row
           .col-md-6
-            ' Time Allowed:
+            - if project.is_part_of_set?
+              ' Time Allowed Per Part:
+            - else
+              ' Time Allowed:
             strong
               - if project.deadline_in_days > 0
                 = project.deadline_in_days

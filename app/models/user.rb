@@ -83,14 +83,15 @@ class User < ActiveRecord::Base
   has_many :image_submissions,         -> { where(content_type: "ImageSubmissionContent") },        class_name: "ProjectSubmission"
   has_many :pdf_submissions,           -> { where(content_type: "PDFSubmissionContent") },          class_name: "ProjectSubmission"
   has_many :csv_submissions,           -> { where(content_type: "CSVSubmissionContent") },          class_name: "ProjectSubmission"
+  has_many :slides_link_submissions,   -> { where(content_type: "SlidesLinkSubmissionContent") },   class_name: "ProjectSubmission"
+  has_many :video_link_submissions,    -> { where(content_type: "VideoLinkSubmissionContent") },    class_name: "ProjectSubmission"
+  has_many :quiz_submissions,          -> { where(content_type: "QuizSubmissionContent") },         class_name: "ProjectSubmission"
 
   # Evaluations
   has_many :submission_evaluations, foreign_key: :reviewee_id
   has_many :code_submission_evaluations,   -> { where(content_type: "CodeSubmissionEvaluation") }, class_name: "SubmissionEvaluation", foreign_key: :reviewee_id
 
   has_many :project_scores
-  # TODO(mark): refactor this
-  has_many :quiz_submissions
 
   # Project completion
   has_many :step_statuses
@@ -306,6 +307,10 @@ class User < ActiveRecord::Base
   #
   # Instance Methods
   #
+  def name_or_you(user)
+    self == user ? "You" : name
+  end
+
   def name
     name_attribute = read_attribute(:name)
     if name_attribute.nil? || name_attribute.blank?
@@ -570,6 +575,10 @@ class User < ActiveRecord::Base
 
   def lessons(completed)
     all_projects(completed, Project::LESSON)
+  end
+
+  def started_lessons
+    started_projects.data_lessons
   end
 
   def completed_lessons
