@@ -16,7 +16,7 @@ project = Project.create!(
   description: main_page_content,
   short_description: "A project sponsored by Statricks, an e-Commerce analytics company. In this data challenge you will build a web scraper using the Beautiful Soup library to extract listing information. This data challenge is for users with experience in Python and some HTML.",
   number: 13,
-  enabled: true,
+  enabled: false,
   has_leaderboard: false,
   has_written_submit: true,
   uid: 13,
@@ -82,7 +82,7 @@ project_overview_background_slide0 = Slide.create!(
 
 project_overview_our_goal_content0 = [
   ['text', 'You are tasked with making a web scraper in python for the following website:'],
-  ['link', "www.boattrader.com"],
+  ['link', "http://www.boattrader.com"],
   ['text', 'It\'s a website that specializes in used boats.'],
   ['text', 'Speifically, we need an automated way of doing two things:'],
   ['text', '1. Find the URL for each and every boat being listed on the entire website'],
@@ -609,17 +609,17 @@ presentation_slide_three = Slide.create!(
   slide_id: 2,
 )
 presentation_context = SubmissionContext.create!(
-  title: "Presentation - slides",
+  title: "Presentation - Slides",
   description: "User is asked create a 3 slides presentation for the statricks project.",
   slide: presentation_slide_two,
   submission_context_id: 0,
-  submission_type: SubmissionContext::PRES_SLIDES_LINK,
+  submission_type: SubmissionContext::PRESENTATION_SLIDES_LINK,
 )
 
 return_code_context = SubmissionContext.create!(
-  title: "Presentation - video",
+  title: "Presentation - Video",
   description: "User is asked to create a video presentation (no longer than 2 min) of the statricks slides.",
   slide: presentation_slide_three,
   submission_context_id: 1,
-  submission_type: SubmissionContext::PRES_VIDEO_LINK,
+  submission_type: SubmissionContext::PRESENTATION_VIDEO_LINK,
 )

@@ -40,6 +40,10 @@ gem 'rails_autolink', '~> 1.1.6'
 gem 'carrierwave', '~> 0.10.0'
 gem 'fog', '~> 1.22.1'
 gem 'rmagick', '~> 2.13.2', require: false
+gem 'remotipart', '~> 1.2'
+
+# STI
+gem 'store_base_sti_class', github: 'negativetwelve/store_base_sti_class'
 
 # Background processing
 gem 'sidekiq', '~> 3.2.1'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140906013044) do
+ActiveRecord::Schema.define(version: 20140918220138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,30 +40,20 @@ ActiveRecord::Schema.define(version: 20140906013044) do
     t.date     "default_timeframe"
   end
 
-  create_table "code_submission_evaluations", force: true do |t|
-    t.integer  "reviewer_id"
-    t.integer  "reviewee_id"
-    t.text     "description"
+  create_table "code_submission_contents", force: true do |t|
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "code_submission_id"
-    t.integer  "project_id"
+    t.boolean  "is_complete_code", default: false
+  end
+
+  create_table "code_submission_evaluation_contents", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "computer_science"
     t.integer  "statistics"
     t.integer  "curiosity"
     t.integer  "communication"
-    t.boolean  "visible",            default: false
-  end
-
-  create_table "code_submissions", force: true do |t|
-    t.text     "content"
-    t.integer  "user_id"
-    t.integer  "project_id"
-    t.string   "parent_id"
-    t.string   "parent_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "slide_index"
   end
 
   create_table "codes", force: true do |t|
@@ -179,6 +169,37 @@ ActiveRecord::Schema.define(version: 20140906013044) do
     t.string   "name"
   end
 
+  create_table "file_submission_contents", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "upload_file"
+    t.boolean  "required",               default: true
+    t.string   "original_filename"
+    t.string   "upload_file_tmp"
+    t.boolean  "upload_file_processing", default: false
+    t.string   "type"
+  end
+
+  create_table "file_submission_evaluation_contents", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "free_response_submission_contents", force: true do |t|
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "free_response_submission_evaluation_contents", force: true do |t|
+    t.integer  "computer_science"
+    t.integer  "statistics"
+    t.integer  "curiosity"
+    t.integer  "communication"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "friendships", force: true do |t|
     t.integer  "user_id"
     t.integer  "friend_id"
@@ -189,6 +210,11 @@ ActiveRecord::Schema.define(version: 20140906013044) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "requested"
+  end
+
+  create_table "image_submission_evaluation_contents", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "impressions", force: true do |t|
@@ -356,6 +382,22 @@ ActiveRecord::Schema.define(version: 20140906013044) do
     t.datetime "updated_at"
   end
 
+  create_table "project_scores", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.decimal  "score",      precision: 20, scale: 5
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "project_sets", id: false, force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "uid",         null: false
+  end
+
   create_table "project_statuses", force: true do |t|
     t.integer  "user_id"
     t.integer  "project_id"
@@ -366,16 +408,17 @@ ActiveRecord::Schema.define(version: 20140906013044) do
   end
 
   create_table "project_submissions", force: true do |t|
-    t.integer  "project_id"
     t.integer  "user_id"
+    t.integer  "project_id"
+    t.string   "slide_id"
+    t.integer  "content_id"
+    t.string   "content_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "upload_file"
-    t.boolean  "required",               default: true
-    t.string   "original_filename"
-    t.string   "upload_file_tmp"
-    t.boolean  "upload_file_processing", default: false
   end
+
+  add_index "project_submissions", ["project_id"], name: "index_project_submissions_on_project_id", using: :btree
+  add_index "project_submissions", ["user_id"], name: "index_project_submissions_on_user_id", using: :btree
 
   create_table "projects", id: false, force: true do |t|
     t.string   "title"
@@ -400,6 +443,7 @@ ActiveRecord::Schema.define(version: 20140906013044) do
     t.string   "cover_photo"
     t.boolean  "has_content_submit",    default: false
     t.boolean  "has_written_submit",    default: false
+    t.integer  "project_set_id"
   end
 
   create_table "publications", force: true do |t|
@@ -426,16 +470,22 @@ ActiveRecord::Schema.define(version: 20140906013044) do
     t.text     "title"
   end
 
-  create_table "quiz_submissions", force: true do |t|
+  create_table "quiz_submission_contents", force: true do |t|
     t.integer  "user_id"
     t.string   "quiz_id"
-    t.string   "submitted_answer"
+    t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "quiz_type"
+  end
+
+  add_index "quiz_submission_contents", ["quiz_id"], name: "index_quiz_submission_contents_on_quiz_id", using: :btree
+  add_index "quiz_submission_contents", ["user_id"], name: "index_quiz_submission_contents_on_user_id", using: :btree
+
+  create_table "quiz_submission_evaluation_contents", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "quiz_submissions", ["quiz_id"], name: "index_quiz_submissions_on_quiz_id", using: :btree
-  add_index "quiz_submissions", ["user_id"], name: "index_quiz_submissions_on_user_id", using: :btree
 
   create_table "quizzes", force: true do |t|
     t.string   "quiz_id"
@@ -443,6 +493,11 @@ ActiveRecord::Schema.define(version: 20140906013044) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "project_id"
+    t.string   "type"
+    t.text     "multiple_choices"
+    t.decimal  "lower_bound",      precision: 10, scale: 5
+    t.decimal  "upper_bound",      precision: 10, scale: 5
+    t.string   "slide_id"
   end
 
   create_table "resumes", force: true do |t|
@@ -475,6 +530,19 @@ ActiveRecord::Schema.define(version: 20140906013044) do
     t.string   "parent_type"
     t.integer  "slide_id"
     t.string   "uid",         null: false
+  end
+
+  create_table "slides_link_submission_contents", force: true do |t|
+    t.text     "content"
+    t.string   "link_type"
+    t.integer  "project_submission_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "slides_link_submission_evaluation_contents", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "step_requirements", force: true do |t|
@@ -537,12 +605,18 @@ ActiveRecord::Schema.define(version: 20140906013044) do
     t.string   "submission_type"
     t.integer  "project_id"
     t.boolean  "required",              default: true
+    t.string   "url"
   end
 
-  create_table "submissions", force: true do |t|
-    t.integer  "user_id"
+  create_table "submission_evaluations", force: true do |t|
+    t.integer  "reviewer_id"
+    t.integer  "reviewee_id"
     t.integer  "project_id"
-    t.decimal  "score",      precision: 20, scale: 5
+    t.integer  "project_submission_id"
+    t.text     "body"
+    t.boolean  "visible"
+    t.integer  "content_id"
+    t.string   "content_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -691,5 +765,18 @@ ActiveRecord::Schema.define(version: 20140906013044) do
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "video_link_submission_contents", force: true do |t|
+    t.text     "content"
+    t.string   "link_type"
+    t.integer  "project_submission_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "video_link_submission_evaluation_contents", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

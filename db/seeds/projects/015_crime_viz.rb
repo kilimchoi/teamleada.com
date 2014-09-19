@@ -54,12 +54,6 @@ intro_content_three = [
   ['next_steps', ""],
 ]
 
-quiz = Quiz.create!(
-  quiz_id: "crime_viz_0",
-  answer:"3",
-  project: project,
-)
-
 intro_lesson = Lesson.create!(
   title: "Introduction",
   project: project,
@@ -154,11 +148,20 @@ report_submission_slide_two = Slide.create!(
 
 report_submission_context = SubmissionContext.create!(
   title: "Report Submission",
-  description: "User is asked to submit a link to the report.",
+  description: "User is asked to submit a summary of his/her analysis.",
   slide: report_submission_slide,
   submission_context_id: 0,
   submission_type: SubmissionContext::RESPONSE,
 )
+
+report_submission_context = SubmissionContext.create!(
+  title: "Visualization Submission",
+  description: "User is asked to submit an image of their visualization.",
+  slide: report_submission_slide_two,
+  submission_context_id: 0,
+  submission_type: SubmissionContext::IMAGE,
+)
+
 
 ################################################################################
 ##### Video Submission #########################################################
@@ -166,7 +169,7 @@ report_submission_context = SubmissionContext.create!(
 
 
 video_submission_content_one = [
-  ['text', 'You can optionally submit a 1 minute video presenting your insights and analysis. Pretend its to your superior.'],
+  ['text', 'You can optionally submit a 1 minute video presenting your insights and analysis. Pretend it\'s to your superior.'],
   ['text', 'Submit the YouTube link and be sure to make it unlisted!'],
   ['user_response', ""],
   ['next_steps', ""],
@@ -189,7 +192,7 @@ video_submission_context = SubmissionContext.create!(
   description: "User is asked to submit a 1 minute video presenting their analysis and findings.",
   slide: video_slide,
   submission_context_id: 0,
-  submission_type: SubmissionContext::RESPONSE,
+  submission_type: SubmissionContext::PRESENTATION_VIDEO_LINK,
   required: false,
 )
 

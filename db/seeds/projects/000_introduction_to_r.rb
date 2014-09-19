@@ -83,11 +83,13 @@ basic_math_content_two = [
   ['quiz', 'onboard_2'],
   ['next_steps', nil]
 ]
+
 basic_math_step = Step.create!(
   title: "Mathematics 101",
   lesson: basic_operations_lesson,
   step_id: 0,
 )
+
 basic_math_slide_one = Slide.create!(
   content: basic_math_content_one,
   parent: basic_math_step,
@@ -98,6 +100,20 @@ basic_math_slide_two = Slide.create!(
   content: basic_math_content_two,
   parent: basic_math_step,
   slide_id: 1,
+)
+
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "onboard_1",
+  answer: "10",
+  project: project,
+  slide: basic_math_slide_one, 
+)
+
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "onboard_2",
+  answer: "11",
+  project: project,
+  slide: basic_math_slide_two, 
 )
 ################################################################################
 basic_assignment_content_one = [
@@ -180,12 +196,17 @@ basic_comparison_content_three = [
   ['text-success', 'What does the following code return?'],
   ['code', 'TRUE + 1'],
   ['quiz', 'onboard_3'],
+  ['text', "One more!"],
+]
+
+basic_comparison_content_four = [
   ['text-success', 'What does the following code return?'],
   ['code', 'FALSE == 0'],
   ['quiz', 'onboard_4'],
   ['text-danger', 'Remember that we compare via "==" and assign via "="'],
-  ['next_steps', nil]
+  ['next_steps', nil],
 ]
+
 basic_comparison_step = Step.create!(
   title: "Comparison 101",
   lesson: basic_operations_lesson,
@@ -208,6 +229,27 @@ basic_math_slide_three = Slide.create!(
   parent: basic_comparison_step,
   slide_id: 2,
 )
+
+basic_math_slide_four = Slide.create!(
+  content: basic_comparison_content_four,
+  parent: basic_comparison_step,
+  slide_id: 3,
+)
+
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "onboard_3",
+  answer:"2",
+  project: project,
+  slide: basic_math_slide_three,
+)
+
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "onboard_4",
+  answer:"TRUE",
+  project: project,
+  slide: basic_math_slide_four,
+)
+
 ################################################################################
 ################################################################################
 ##Combining Intro Concepts
@@ -361,26 +403,3 @@ basic_operations_slide_one = Slide.create!(
   slide_id: 0,
 )
 ################################################################################
-quiz = Quiz.create!(
-  quiz_id: "onboard_1",
-  answer: "10",
-  project: project,
-)
-
-quiz = Quiz.create!(
-  quiz_id: "onboard_2",
-  answer: "11",
-  project: project,
-)
-
-quiz = Quiz.create!(
-  quiz_id: "onboard_3",
-  answer:"2",
-  project: project,
-)
-
-quiz = Quiz.create!(
-  quiz_id: "onboard_4",
-  answer:"TRUE",
-  project: project,
-)

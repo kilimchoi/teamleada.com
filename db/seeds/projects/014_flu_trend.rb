@@ -95,17 +95,6 @@ cleaning_content_two = [
   ['next_steps'],
 ]
 
-quiz = Quiz.create!(
-  quiz_id: "ft_clean_0",
-  answer:"Date",
-  project: project,
-)
-
-quiz = Quiz.create!(
-  quiz_id: "ft_clean_1",
-  answer:"28",
-  project: project,
-)
 cleaning_step = Step.create!(
   title: "Cleaning",
   lesson: data_exploration_lesson,
@@ -122,6 +111,20 @@ cleaning_slide_two = Slide.create!(
   content: cleaning_content_two,
   parent: cleaning_step,
   slide_id: 1,
+)
+
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "ft_clean_1",
+  answer:"28",
+  project: project,
+  slide: cleaning_slide_one,
+)
+
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "ft_clean_0",
+  answer:"Date",
+  project: project,
+  slide: cleaning_slide_two,
 )
 
 ############### Plotting ##############
@@ -152,13 +155,6 @@ plotting_content_two = [
   ['next_steps'],
 ]
 
-quiz = Quiz.create!(
-  quiz_id: "ft_plot_1",
-  answer:"Canada",
-  project: project,
-)
-
-
 plotting_step = Step.create!(
   title: "Plotting",
   lesson: data_exploration_lesson,
@@ -175,6 +171,13 @@ plotting_data_slide_two = Slide.create!(
   content: plotting_content_two,
   parent: plotting_step,
   slide_id: 1,
+)
+
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "ft_plot_1",
+  answer:"Canada",
+  project: project,
+  slide: plotting_data_slide_two,
 )
 
 ################################################################################
@@ -235,12 +238,6 @@ analysis_missing_content_three = [
   ['next_steps',''],
 ]
 
-quiz = Quiz.create!(
-  quiz_id: "ft_missing_0",
-  answer:"Anonymous Function",
-  project: project,
-)
-
 analysis_missing_step = Step.create!(
   title: "Analyze Missing Data",
   lesson: missing_data_lesson,
@@ -263,6 +260,13 @@ analysis_missing_slide_three = Slide.create!(
   content: analysis_missing_content_three,
   parent: analysis_missing_step,
   slide_id: 2,
+)
+
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "ft_missing_0",
+  answer:"Anonymous Function",
+  project: project,
+  slide: analysis_missing_slide_two,
 )
 
 ############### Removal (Missing Data) ##############
@@ -291,12 +295,6 @@ remove_missing_content_two = [
   ['next_steps', ''],
 ]
 
-quiz = Quiz.create!(
-  quiz_id: "ft_2",
-  answer:"2",
-  project: project,
-)
-
 remove_missing_step = Step.create!(
   title: "Remove Missing Data",
   lesson: missing_data_lesson,
@@ -313,6 +311,13 @@ remove_missing_slide_two = Slide.create!(
   content: remove_missing_content_two,
   parent: remove_missing_step,
   slide_id: 1,
+)
+
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "ft_2",
+  answer:"2",
+  project: project,
+  slide: remove_missing_slide_two,
 )
 
 ################################################################################
@@ -355,6 +360,9 @@ time_series_setup_content_two = [
   ['code', 'help(acf)'],
   ['text', "In the ACF's Help screen, how many different values are allowed for the 'type' paremeter?"],
   ['quiz', "ft_setup_0"],
+]
+
+time_series_setup_content_three = [
   ['text', "In the ACF's Help screen, what is the default value for the 'type' parameter?"],
   ['quiz', "ft_setup_1"],
   ['text', 'The idea behind differencing is to reduce the data to white-noise, which should have ACF below the dotted blue line in the plot (you\'ll see this soon).'],
@@ -363,7 +371,7 @@ time_series_setup_content_two = [
   ['text-danger', "Don't forget to check whether the ACF follows the guidelines we listed here."],
 ]
 
-time_series_setup_content_three = [
+time_series_setup_content_four = [
   ['text', "Now let's setup R to split the plotting area to 4 by 2 (4 rows, 2 column) in case your plots are cluttered."],
   ['code', 'par(mfrow=c(4, 2))'],
   ['text', 'We then create a blank canvas via the following.'],
@@ -376,24 +384,6 @@ time_series_setup_content_three = [
   ['text', "This will give the plotting area more room to work."],
   ['next_steps', '']
 ]
-
-quiz = Quiz.create!(
-  quiz_id: "ft_3",
-  answer: "3",
-  project: project,
-)
-
-quiz = Quiz.create!(
-  quiz_id: "ft_setup_0",
-  answer: "3",
-  project: project,
-)
-
-quiz = Quiz.create!(
-  quiz_id: "ft_setup_1",
-  answer: "correlation",
-  project: project,
-)
 
 time_series_setup_step = Step.create!(
   title: "Setup",
@@ -417,6 +407,33 @@ time_series_setup_slide_three = Slide.create!(
   content: time_series_setup_content_three,
   parent: time_series_setup_step,
   slide_id: 2,
+)
+
+time_series_setup_slide_four = Slide.create!(
+  content: time_series_setup_content_four,
+  parent: time_series_setup_step,
+  slide_id: 3,
+)
+
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "ft_3",
+  answer: "3",
+  project: project,
+  slide: time_series_setup_slide,
+)
+
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "ft_setup_0",
+  answer: "3",
+  project: project,
+  slide: time_series_setup_slide_two,
+)
+
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "ft_setup_1",
+  answer: "correlation",
+  project: project,
+  slide: time_series_setup_slide_three,
 )
 
 ############### Diferencing ##############
@@ -592,12 +609,6 @@ time_series_differencing_content_three = [
   ['next_steps', ''],
 ]
 
-quiz = Quiz.create!(
-  quiz_id: "ft_build_0",
-  answer:"Akaike information criterion",
-  project: project,
-)
-
 time_series_differencing_step = Step.create!(
   title: "Build",
   lesson: arima_data_lesson,
@@ -621,6 +632,14 @@ time_series_differencing_slide_three = Slide.create!(
   parent: time_series_differencing_step,
   slide_id: 2,
 )
+
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "ft_build_0",
+  answer:"Akaike information criterion",
+  project: project,
+  slide: time_series_differencing_slide_three,
+)
+
 ############### Predicting via ARIMA ##############
 
 arime_prediction_content_one = [
@@ -661,11 +680,6 @@ arime_prediction_content_three = [
   ['next_steps', ''],
 ]
 
-quiz = Quiz.create!(
-  quiz_id: "ft_prediction_0",
-  answer:"list",
-  project: project,
-)
 arime_prediction_step = Step.create!(
   title: "Prediction",
   lesson: arima_data_lesson,
@@ -690,6 +704,12 @@ arime_prediction_slide = Slide.create!(
   slide_id: 2,
 )
 
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "ft_prediction_0",
+  answer:"list",
+  project: project,
+  slide: arime_prediction_slide,
+)
 ############### Predicting via ARIMA ##############
 
 arime_evaluation_content_one = [
@@ -718,11 +738,6 @@ arime_evaluation_content_two = [
   ['next_steps', ''],
 ]
 
-quiz = Quiz.create!(
-  quiz_id: "ft_evaluation_0",
-  answer:"3",
-  project: project,
-)
 arime_evaluation_step = Step.create!(
   title: "Evaluation",
   lesson: arima_data_lesson,
@@ -741,6 +756,12 @@ arime_evaluation_slide = Slide.create!(
   slide_id: 1,
 )
 
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "ft_evaluation_0",
+  answer:"3",
+  project: project,
+  slide: arime_evaluation_slide,
+)
 ################################################################################
 ##############  Conclusion  ####################################################
 ################################################################################
