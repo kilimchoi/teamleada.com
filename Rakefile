@@ -177,7 +177,7 @@ end
 task :build_quiz_submissions => :environment do
   QuizSubmissionContent.all.each do |quiz_submission_content|
     user = quiz_submission_content.user
-    quiz = quiz_submission_content.quiz
+    quiz = quiz_submission_content.quiz_via_id
     project = quiz.project
     slide = quiz.slide
     content_object = quiz_submission_content
