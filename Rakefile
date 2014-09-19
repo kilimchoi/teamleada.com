@@ -183,5 +183,8 @@ task :build_quiz_submissions => :environment do
     content_object = quiz_submission_content
 
     project_submission = ProjectSubmission.create_with_user_project_slide_content_object(user, project, slide, content_object)
+    project_submission.updated_at = quiz_submission_content.updated_at
+    project_submission.created_at = quiz_submisison_content.created_at
+    project_submission.save
   end
 end
