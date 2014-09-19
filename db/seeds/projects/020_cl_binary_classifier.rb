@@ -154,7 +154,7 @@ cl_data_context_quiz = Quiz.create!(
   quiz_id: "cl_data_context_1",
   answer: "yes",
   project: project,
-  slide: data_context_slide_two,
+  slide: data_context_slide_three,
 )
 
 #############################################
