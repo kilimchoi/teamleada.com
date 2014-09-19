@@ -7,7 +7,7 @@ class Ability
     alias_action :index, :show, to: :view
 
     # Everyone
-    can [:index, :project_info], Project
+    can [:project_info], Project
     can [:index, :show], Company
 
     can :show, Lesson do |lesson|
