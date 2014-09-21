@@ -71,6 +71,8 @@ class Project < ActiveRecord::Base
   scope :newest_first, -> { order("uid DESC") }
   scope :displayable, -> { where(uid: Project.displayable_ids) }
 
+  scope :grants_project_access, -> { where(grants_project_access: true) }
+
   # Scope by type
   scope :data_challenges, -> { where(category: CHALLENGE) }
   scope :data_lessons,    -> { where(category: LESSON) }

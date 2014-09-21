@@ -40,6 +40,10 @@ $company-sidebar-width: 300px;
 }
 
 .company-logo-inner-border {
+  position: relative;
+  display: block;
+  height: 150px;
+  background-color: white;
   border: 4px solid #fff;
 
   @include border-radius(2px);
@@ -47,6 +51,8 @@ $company-sidebar-width: 300px;
 
 .company-page-logo {
   width: 240px;
+  background: white;
+  @include vertical-align-middle;
 }
 
 .company-location {

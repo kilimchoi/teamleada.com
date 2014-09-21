@@ -7,15 +7,15 @@ class Ability
     alias_action :index, :show, to: :view
 
     # Everyone
-    can [:index, :project_info], Project
+    can [:show, :project_info], Project
     can [:index, :show], Company
 
     can :show, Lesson do |lesson|
-      !lesson.project.deadline || (lesson.project.deadline && user.project_status_for_project(lesson.project).has_time_remaining?)
+      (user.has_project_access? || lesson.project.grants_project_access) && (!lesson.project.deadline || (lesson.project.deadline && user.project_status_for_project(lesson.project).has_time_remaining?))
     end
 
     can :show, Step do |step|
-      !step.project.deadline || (step.project.deadline && user.project_status_for_project(step.project).has_time_remaining?)
+      (user.has_project_access? || step.project.grants_project_access) && (!step.project.deadline || (step.project.deadline && user.project_status_for_project(step.project).has_time_remaining?))
     end
 
     if user.is_admin?
@@ -38,8 +38,12 @@ class Ability
         end
       else
         # Only students
-        can [:show, :check_submission, :complete, :submit_resource, :purchase, :resource, :feedback], Project do |project|
+        can [:check_submission, :complete, :submit_resource, :purchase, :resource, :feedback], Project do |project|
           project.enabled && (project.grants_project_access || (user.has_project_access? && (!project.paid || !user.has_not_paid_for_project?(project))))
+        end
+
+        can [:follow, :unfollow, :company_interest, :data_challenges_interest], Company do |company|
+          company.verified
         end
 
         can [:check_answer], Quiz

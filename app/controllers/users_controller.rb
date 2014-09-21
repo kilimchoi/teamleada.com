@@ -77,7 +77,7 @@ class UsersController < ApplicationController
         # TODO: Not hard code project-access
         if @code.access_type == 'project-access'
           flash[:info] = "Congratulations, you now have access to our data projects!"
-          redirect_to projects_path
+          redirect_to companies_path
         else
           flash[:info] = "You have successfully used your code: #{@code.value}"
           redirect_to learn_path

@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:danger] = exception.message
+    flash[:warning] = "We're sorry, we couldn't find that page!"
     redirect_to root_path
   end
 
