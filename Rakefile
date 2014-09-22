@@ -188,3 +188,8 @@ task :build_quiz_submissions => :environment do
     project_submission.save
   end
 end
+
+task :create_initial_companies => :environment do
+  puts "Creating initial companies"
+  load File.join(Rails.root, 'db', 'seeds', 'development', '006_companies.rb')
+end

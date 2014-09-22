@@ -131,14 +131,14 @@ setup_main_slide = [
     parent: background_step_one
   )
 
-  quiz = Quiz.create!(
+  quiz = ExactAnswerQuiz.create!(
     quiz_id: "mr_data_node_count",
     answer: "403394",
     project: project,
     slide: background_slide_two,
   )
 
-  quiz = Quiz.create!(
+  quiz = ExactAnswerQuiz.create!(
     quiz_id: "mr_data_edge_count",
     answer: "3387388",
     project: project,
