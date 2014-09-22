@@ -482,7 +482,8 @@ class User < ActiveRecord::Base
 
   def has_started_project?(project)
     LessonStatus.where(user: self, project: project, completed: true).count +
-    StepStatus.where(user: self, project: project, completed: true).count > 0 && !self.project_statuses.find_by(project: project).start_date.nil?
+    StepStatus.where(user: self, project: project, completed: true).count > 0 &&
+    !self.project_statuses.find_by(project: project).try(:start_date).nil?
   end
 
   def has_finished_project?(project)
