@@ -88,22 +88,24 @@ setup_main_slide = [
     ['text', "You ask yourself, how do you determine the 'distance' between 2 products?"],
     ['text', "After consulting with fellow engineers, you decide on using the shortest network distance between the products that were bought during the same transaction."],
     ['text-info', "This means an edge exists between 2 products, only if they were purchased during the same transaction."],
-    ['text-success', "To save on memory footprint, you sample an anonymized graph dataset, show below:"],
+    ['text-success', "To save on memory footprint, you sample an anonymized graph dataset, shown below:"],
     ['link', "https://s3.amazonaws.com/leada/amazon_proj_data/amazon0601.txt.gz"],
     ['text', "Each of the nodes maps to a single consumer item."],
   ]
 
   background_content_two = [
     ['text', "With this data, you have a list of directed edges, each representing a co-purchase."],
-    ['text-warning', "How many Nodes are there in the data?"],
+    ['text-warning', "How many Nodes are there in the dataset?"],
     ['quiz', "mr_data_node_count"],
-    ['text', "What abput the edges?"],
+    ['text', "What about the edges?"],
   ]
 
   background_content_three = [
-    ['text-warning', "How many Edges are there in the data?"],
+    ['text-warning', "How many Edges are there in the full dataset?"],
     ['quiz', "mr_data_edge_count"],
-    ['text', "The full dataset is significantly larger, but we want to make sure that the algorithm runs on a smaller subset."],
+    ['text', "As you see, the full dataset seems large (or is it?)."],
+    ['text', "Perhaps you'd want to make sure that the algorithm first runs on a smaller subset."],
+    ['text-info', "Though it's up to you to decide whether you want to construct a subset first."],
     ['next_steps', ""],
   ]
 
