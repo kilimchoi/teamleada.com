@@ -78,6 +78,11 @@ gem "default_value_for", "~> 3.0.0"
 # Peek
 gem "peek"
 gem "peek-git"
+gem "peek-active_resource"
+gem "peek-performance_bar"
+gem "peek-pg"
+gem "peek-resque"
+gem "peek-sidekiq"
 
 group :doc do
   gem 'sdoc', require: false
