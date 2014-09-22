@@ -11,7 +11,7 @@ main_page_content = [
 ]
 
 project = Project.create!(
-  title:"Ebay: Graph Traversal via Hadoop MapReduce",
+  title:"eBay: Graph Traversal via Hadoop MapReduce",
   description: main_page_content,
   short_description: "In this challenge you are tasked with designing and writing a graph traversal via MapReduce. You will be given a set of graph data to traverse. In the process, you will choose the graph representation, the algorithm, and more. Once you design the code, you can optionally write a functional MapReduce code.",
   number: 16,
