@@ -148,7 +148,7 @@ data_cleaning_content_two = [
   ['text', "As a sanity check:"],
   ['text-warning', 'How many observations do you have remaning after de-duplication?'],
   ['quiz', 'clean_quiz'],
-  ['finish_project_button', ''],
+  ['finish_project_button', 'http://www.surveygizmo.com/s3/1811239/Project-Feedback-v2'],
 ]
 
 data_cleaning_step = Step.create!(
