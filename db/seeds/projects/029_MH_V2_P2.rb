@@ -135,7 +135,7 @@ challenge_slide = Slide.create!(
 
 data_cleaning_content_one = [
   ['text-info', 'Let\'s design a process for de-duplication and cleaning for the dataset.'],
-  ['text', 'First submit a written plan for your cleaning process.'],
+  ['text', 'First submit an explanation for your cleaning process.'],
   ['user_response', '#@TODO Include UID'],
 ]
 
@@ -145,7 +145,7 @@ data_cleaning_content_two = [
 ]
 
 data_cleaning_content_two = [
-  ['text', "As a sanity check:"],
+  ['text', "The number of matched observations after cleaning should fit within a range:"],
   ['text-warning', 'How many observations do you have remaning after de-duplication?'],
   ['quiz', 'clean_quiz'],
   ['finish_project_button', 'http://www.surveygizmo.com/s3/1811239/Project-Feedback-v2'],
