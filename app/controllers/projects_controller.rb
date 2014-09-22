@@ -6,8 +6,7 @@ class ProjectsController < ApplicationController
   before_filter :set_slide, only: [:resource, :submit_resource]
 
   def show
-    @project_status = ProjectStatus.where(user: current_user, project: @project).first_or_create
-    @project_status.save
+    @project_status = ProjectStatus.find_by(project: @project, user: current_user)
   end
 
   def project_info
