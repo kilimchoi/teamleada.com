@@ -5,6 +5,8 @@ class ActionDispatch::Routing::Mapper
 end
 
 TeamLeada::Application.routes.draw do
+  mount Peek::Railtie => '/peek'
+
   root to: 'pages#home'
 
   match 'about', to: 'pages#about', via: :get
