@@ -75,6 +75,10 @@ gem 'aws-sdk', '~> 1.5.7'
 # Default Active Record values
 gem "default_value_for", "~> 3.0.0"
 
+# Peek
+gem "peek"
+gem "peek-git"
+
 group :doc do
   gem 'sdoc', require: false
 end
@@ -93,7 +97,6 @@ group :development, :test do
   gem 'guard'
   gem 'guard-livereload'
   gem 'guard-rspec'
-  gem "peek"
 end
 
 group :test do

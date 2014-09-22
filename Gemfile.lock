@@ -372,6 +372,8 @@ GEM
     peek (0.1.9)
       atomic (>= 1.0.0)
       railties (>= 3.0.0)
+    peek-git (1.0.2)
+      peek
     pg (0.17.1)
     pg_search (0.7.8)
       activerecord (>= 3.1)
@@ -591,6 +593,7 @@ DEPENDENCIES
   omniauth-linkedin
   paperclip (~> 4.1)
   peek
+  peek-git
   pg (= 0.17.1)
   pg_search
   quiet_assets (~> 1.0.2)
