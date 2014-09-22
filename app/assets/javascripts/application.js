@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require jquery.remotipart
+//= require peek
 //= require typed
 //= require best_in_place
 //= require toastr
