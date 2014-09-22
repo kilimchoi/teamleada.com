@@ -1,19 +1,34 @@
 var editor;
 var l;
 
+var object_class;
+var object_id;
+var is_code_submission;
+var submit_url;
+
 $(document).ready(function() {
 
   $("#close-code-button").click(function(event) {
+    saveSubmission(submit_url, object_class, object_id, Reveal.getIndices().h, editor.getValue(), is_code_submission);
     $("#code-submit-button").hide();
     $("#close-code-button").hide();
     $("#right-sidebar").css("width", 50);
-  })
+  });
+
+  $("#code-submit-button").click(function(event) {
+    saveSubmission(submit_url, object_class, object_id, Reveal.getIndices().h, editor.getValue(), is_code_submission);
+  });
 
   saveButtonStartProgress = function() {
     $("#code-submit-button").click();
   }
 
   openSidebar = function(url, objectClass, objectId, isCodeSubmission) {
+    submit_url = url;
+    object_class = objectClass;
+    object_id = objectId;
+    is_code_submission = isCodeSubmission;
+
     $("#right-sidebar").animate({width: 800});
     $("#code-submit-button").show();
     $("#close-code-button").show();
@@ -29,10 +44,10 @@ $(document).ready(function() {
 
     editor.focus();
 
-    editor.on("change", function(event) {
-      saveButtonStartProgress();
-      saveSubmission(url, objectClass, objectId, Reveal.getIndices().h, editor.getValue(), isCodeSubmission);
-    });
+//    editor.on("change", function(event) {
+//      saveButtonStartProgress();
+//      saveSubmission(url, objectClass, objectId, Reveal.getIndices().h, editor.getValue(), isCodeSubmission);
+//    });
 
     editor.resize();
   }
