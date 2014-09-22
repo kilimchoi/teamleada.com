@@ -75,7 +75,10 @@
                               p
                                 ' Note, once you start this project, the countdown will start and you will have
                                 = render partial: "projects/project_time_remaining", locals: { project: @project }
-                            = link_to "Get started now!", project_lesson_path(@project, @project.lessons.first), class: 'flat-button step-button'
+                                button class="flat-button full-width" data-toggle="modal" data-target="#start-modal"
+                                  |  Start this Project!
+                            - else
+                              = link_to "Get started now!", project_lesson_path(@project, @project.lessons.first), class: 'flat-button step-button'
 
                       .row.card
                         .col-md-12
