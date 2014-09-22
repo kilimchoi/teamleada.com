@@ -79,3 +79,6 @@ html
 
       = render partial: "layouts/footer"
       = render partial: "layouts/mobile_header"
+    - if Rails.env.development?
+      = render partial: "shared/debug_bottom_bar"
+
