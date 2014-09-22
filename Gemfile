@@ -93,6 +93,7 @@ group :development, :test do
   gem 'guard'
   gem 'guard-livereload'
   gem 'guard-rspec'
+  gem "peek"
 end
 
 group :test do

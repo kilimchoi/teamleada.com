@@ -101,6 +101,7 @@ GEM
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
     arel (5.0.1.20140414130214)
+    atomic (1.1.16)
     awesome_print (1.2.0)
     aws-sdk (1.5.8)
       httparty (~> 0.7)
@@ -368,6 +369,9 @@ GEM
       mime-types
     parslet (1.5.0)
       blankslate (~> 2.0)
+    peek (0.1.9)
+      atomic (>= 1.0.0)
+      railties (>= 3.0.0)
     pg (0.17.1)
     pg_search (0.7.8)
       activerecord (>= 3.1)
@@ -586,6 +590,7 @@ DEPENDENCIES
   omniauth
   omniauth-linkedin
   paperclip (~> 4.1)
+  peek
   pg (= 0.17.1)
   pg_search
   quiet_assets (~> 1.0.2)
