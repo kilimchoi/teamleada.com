@@ -252,6 +252,18 @@ ActiveRecord::Schema.define(version: 20140925002842) do
     t.datetime "updated_at"
   end
 
+  create_table "interview_questions", id: false, force: true do |t|
+    t.string   "title"
+    t.integer  "difficulty_level"
+    t.text     "question"
+    t.datetime "posted_at"
+    t.integer  "industry"
+    t.integer  "question_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "uid",              null: false
+  end
+
   create_table "invites", force: true do |t|
     t.integer  "user_id"
     t.string   "invited_email"
