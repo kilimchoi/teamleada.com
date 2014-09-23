@@ -7,6 +7,6 @@
       = yield
 
     .col-md-2
-      = render partial: "interview_questions/interview_questions_sidebar"
+      = render partial: "interview_questions/interview_questions_sidebar", locals: { interview_questions: @interview_questions }
 
 = parent_layout "application"

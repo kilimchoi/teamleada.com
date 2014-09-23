@@ -1,2 +1,15 @@
+// Required Variables:
+// interview_questions
+
 .sidebar#interview-questions-sidebar
-  | sidebar
+  .sidebar-section
+    - interview_questions.each do |interview_question|
+      .sidebar-item-wrapper
+        .sidebar-item
+          .sidebar-item-content
+            .sidebar-item-title
+              = interview_question.title
+            .sidebar-item-subtitle
+              ' Difficulty Level:
+              = interview_question.difficulty_level
+
