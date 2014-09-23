@@ -1,0 +1,12 @@
+.container-fluid.full-container.card-container
+  .row
+    .col-md-10
+      .row.card
+        .col-md-12
+          h1.center Interview Questions
+      = yield
+
+    .col-md-2
+      = render partial: "interview_questions/interview_questions_sidebar"
+
+= parent_layout "application"
