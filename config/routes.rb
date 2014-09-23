@@ -63,6 +63,7 @@ TeamLeada::Application.routes.draw do
 
   get '/projects', to: redirect('/companies')
 
+  draw :interview_question_routes
   draw :project_routes
   draw :company_routes
   draw :admin_routes
