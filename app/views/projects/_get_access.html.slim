@@ -1,0 +1,24 @@
+// Optional Variables:
+// direct_link
+
+- unless defined? direct_link
+  - direct_link = false
+
+.row.project-card-container
+  .col-md-12
+    .projects-container
+      .row.card.project-color-green.text-contrast
+        .col-md-12
+          h1.center Want Project Access?
+          h3.center
+            ' Complete the
+            - project = Project.find(15)
+            strong
+              - path = direct_link ? project_path(project) : info_project_path(project)
+              = link_to project.title, path, remote: !direct_link, class: "text-contrast"
+            |  project to receive access to more projects!
+          h3.center
+            ' If you already have an access code, enter it
+            strong
+              = link_to "below!", "#access-code-container", class: "text-contrast"
+

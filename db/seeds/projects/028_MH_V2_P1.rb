@@ -114,7 +114,6 @@ challenge_part_one = [
   ['text', 'There are three parts to completing this project.'],
   ['text-info', 'Part One Challenge:'],
   ['text-success', 'In part one you must determine how many of the observations in the Abandoned data set match with observations in the Reservation data set.'],
-  ['text', 'Define what constitutes as a match with your own assumptions and explain your thought process in your submission as well as the code which implements the matching.'],
   ['lesson_links', nil],
 ]
 
@@ -135,23 +134,24 @@ challenge_slide = Slide.create!(
 
 
 data_matching_content_one = [
-  ['text', 'Explain how you define a match between the Abandoned and Reservation data sets.'],
-  ['text-warning', 'There is no correct answer, use your best judgement and maximize the number of possible matches.'],
+  ['text', 'Explain how you define a match between the Abandoned and Reservation data sets and your thought process.'],
+  ['text-warning', 'There is no definite answer, maximize the number of possible matches.'],
   ['user_response', '#@TODO Include UID'],
 ]
 
 data_matching_content_two = [
   ['text', 'Write the code that performs the data matching under the assumptions you previously defined.'],
   ['text-warning', 'Make sure your code is executable from loading in the data to identifying matches.'],
-  ['text', 'How many matches did you identify?'],
-  ['quiz', 'match_quiz'],
+  ['text', "Submit your code below"],
+  ['user_code', '#@TODO Include UID'],
+  ['text-success', "Make sure to comment on your code!"],
 ]
 
 data_matching_content_three = [
-  ['text', "Now submit your code"],
-  ['user_code', '#@TODO Include UID'],
-  ['text-success', "As usual, make sure to comment on your code!"],
-  ['finish_project_button',''],
+  ['text','Based on your assumptions, you should have achieved a number of observations in a finite range'],
+  ['text', 'Check your work by submitting the number of matches you achieved:'],
+  ['quiz', 'match_quiz'],
+  ['finish_project_button','http://www.surveygizmo.com/s3/1811239/Project-Feedback-v2'],
 ]
 
 data_matching_step = Step.create!(
@@ -197,7 +197,7 @@ data_matching_context = SubmissionContext.create!(
 data_matching_context_two = SubmissionContext.create!(
   title: "Data Matching Code",
   description: "Submit code which performs the data matching under the assumptions you previously defined.",
-  slide: data_matching_slide_two,
+  slide: data_matching_slide_three,
   submission_context_id: 0,
   submission_type: SubmissionContext::CODE,
 )

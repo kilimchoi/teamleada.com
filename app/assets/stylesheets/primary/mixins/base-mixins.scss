@@ -19,3 +19,11 @@
   -o-transition: opacity ease-in-out $duration;
   transition: opacity ease-in-out $duration;
 }
+
+@mixin vertical-align-middle {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
