@@ -38,6 +38,9 @@
                 span.badge = @daily_project_impressions.non_admin.count
                 | Non-admin Project Page Views Today
               li.list-group-item
+                span.badge = @daily_company_impressions.non_admin.count
+                | Non-admin Company Page Views Today
+              li.list-group-item
                 span.badge = @daily_new_users.count
                 | New Users Today
               li.list-group-item

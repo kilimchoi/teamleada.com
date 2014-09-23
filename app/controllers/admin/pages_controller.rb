@@ -16,6 +16,7 @@ class Admin::PagesController < Admin::BaseController
     @daily_impressions = @weekly_impressions.where("created_at >= ?", Date.today.to_date)
 
     @daily_project_impressions = @daily_impressions.filter_category("projects")
+    @daily_company_impressions = @daily_impressions.filter_category("companies")
     @daily_new_users = User.where("created_at >= ?", Date.today.to_date)
     @daily_code_submissions = CodeSubmissionContent.where("created_at >= ?", Date.today.to_date)
   end

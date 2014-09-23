@@ -46,6 +46,7 @@ class Impression < ActiveRecord::Base
 
   # By category
   scope :projects, -> { where("controller_name = ? OR controller_name = ? OR controller_name = ?", "projects", "lessons", "steps") }
+  scope :companies, -> { where("controller_name = ?", "companies") }
 
   class << self
 
@@ -68,6 +69,8 @@ class Impression < ActiveRecord::Base
       case category
       when "projects"
         self.projects
+      when "companies"
+        self.companies
       else
         self.all
       end
