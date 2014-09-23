@@ -17,6 +17,8 @@ SubmissionContext.unscoped.delete_all
 
 Quiz.delete_all
 
+InterviewQuestion.delete_all
+
 # Loads seed files from db/seeds
 def load_from_folder(folder)
   Dir[File.join(Rails.root, 'db', 'seeds', folder, '*.rb')].sort.each do |seed|

@@ -1,5 +1,5 @@
 
-InterviewQuestion.where(
+InterviewQuestion.create!(
   uid: 0,
   title: "Best Restaurant",
   difficulty_level: 9,
@@ -7,4 +7,14 @@ InterviewQuestion.where(
   posted_at: DateTime.parse("September 23, 2014 12:00:00 PM"),
   industry: InterviewQuestion.industries[:data_science],
   question_type: InterviewQuestion.question_types[:free_response],
-).first_or_create
+)
+
+InterviewQuestion.create!(
+  uid: 1,
+  title: "Best Boba",
+  difficulty_level: 10,
+  question: "What is the best boba in Berkeley",
+  posted_at: DateTime.parse("September 23, 2014 12:00:00 PM"),
+  industry: InterviewQuestion.industries[:data_science],
+  question_type: InterviewQuestion.question_types[:multiple_choice],
+)
