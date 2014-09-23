@@ -1,9 +1,31 @@
-#interview-questions-sidebar {
+$sidebar-width: 200px;
+
+.sidebar {
   position: fixed;
-  height: 100%;
-  width: 100%;
-  background-color: $background-gray;
   top: 50px;
+  bottom: 0;
+  width: $sidebar-width;
+}
+
+.left-sidebar {
+  left: 0;
+}
+
+.right-sidebar {
+  right: 0;
+  border-left: 1px solid;
+  border-left-color: #cbcbcb;
+}
+
+.main-content {
+}
+
+.main-content-left {
+  margin-right: $sidebar-width;
+}
+
+#interview-questions-sidebar {
+  background-color: $background-gray;
 }
 
 .sidebar-item-wrapper {
