@@ -190,14 +190,14 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile_photos
 
   # Validations
-  validates_format_of :username, :with => /\A[A-Za-z0-9_]*\z/
+  validates_format_of :username, :with => /\A[A-Za-z0-9_-]*\z/
   validates :username, uniqueness: {case_sensitive: false}
   validate :check_username
 
   extend FriendlyId
   friendly_id :username, use: :finders
 
-  before_save :set_name
+  before_save :set_properties
 
   # Pagination
   self.per_page = 50
@@ -211,10 +211,6 @@ class User < ActiveRecord::Base
   # Default Values
   default_value_for :updated_password_at, Time.now
 
-  def == other_user
-    self.email == other_user.email
-  end
-
   #
   # Validations (move these to form objects)
   #
@@ -224,7 +220,7 @@ class User < ActiveRecord::Base
         errors.add(:username, "can't be blank")
         return
       end
-      if self.username.start_with?("_") || !/^[A-Za-z].*/.match(self.username)
+      if self.username.start_with?("_") || self.username.start_with?("-") || !/^[A-Za-z].*/.match(self.username)
         errors.add(:username, "must start with a letter")
       end
     end
@@ -280,8 +276,27 @@ class User < ActiveRecord::Base
   #
   # Before filter
   #
+  def set_properties
+    set_name
+    set_username
+  end
+
   def set_name
     self.name = "#{first_name} #{last_name}"
+  end
+
+  def set_username
+    if username.nil?
+      self.username = "#{first_name.downcase}-#{last_name.downcase}-#{unique_characters}".parameterize
+      unless self.valid?
+        self.username = nil
+        self.set_username
+      end
+    end
+  end
+
+  def unique_characters
+    4.times.map { rand(0..9) }.join("")
   end
 
   #

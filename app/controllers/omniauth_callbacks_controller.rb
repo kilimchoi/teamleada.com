@@ -14,8 +14,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       @user = User.connect_to_linkedin(env["omniauth.auth"], current_user)
       if @user.username != nil && @user.confirmed?
-        flash[:notice] = "Logged in via LinkedIn!"
-        sign_in_and_redirect @user, :event => :authentication
+        flash[:notice] = "Successfully logged in."
+        sign_in @user
+        redirect_to after_sign_up_path_for(@user)
       else
         session["devise.linkedin_uid"] = request.env["omniauth.auth"].uid
         sign_in @user
@@ -30,7 +31,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if user.is_admin?
       admin_dashboard_path
     else
-      companies_path
+      user_path(user)
       # Code below takes them back to previous page
       # session[:previous_url] || root_path
     end
