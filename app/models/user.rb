@@ -454,6 +454,24 @@ class User < ActiveRecord::Base
     invites.count > 0
   end
 
+  # Profile Completion
+  def has_filled_in_personal_info?
+    false
+  end
+
+  def has_filled_in_job_preferences?
+    false
+  end
+
+  def has_filled_in_education?
+    false
+  end
+
+  def has_filled_in_experience?
+    false
+  end
+
+  # Invitations
   def has_invites_remaining?
     invites.count < number_of_allowed_invites
   end
