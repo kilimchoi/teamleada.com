@@ -11,7 +11,7 @@
         li
           = link_to "Profile", user_path(current_user)
         li
-          = link_to "Account Settings", edit_user_path(tab: "account")
+          = link_to "Account Settings", settings_user_path(current_user, tab: "account")
       - else
         li
           = link_to "Log In", new_user_session_path

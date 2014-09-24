@@ -11,7 +11,7 @@
           span.label.label-danger.navbar-unread-conversations-badge = current_user.unread_conversations_count
         span.navbar-icon.has-tooltip.fa.fa-envelope*{"data-toggle" => "tooltip", "data-placement" => "bottom", "data-title" => "Messages"}
       = render partial: "header/messages", locals: { user: current_user }
-  li = link_to "", edit_user_path(tab: "account"), class: "navbar-icon has-tooltip fa fa-gears", data: { toggle: "tooltip", placement: "bottom", title: "Account Settings" }
+  li = link_to "", settings_user_path(current_user, tab: "account"), class: "navbar-icon has-tooltip fa fa-gears", data: { toggle: "tooltip", placement: "bottom", title: "Account Settings" }
   li = link_to "", destroy_user_session_path, method: :delete, class: "navbar-icon has-tooltip fa fa-sign-out", data: { toggle: "tooltip", placement: "bottom", title: "Sign Out" }
 
 - else

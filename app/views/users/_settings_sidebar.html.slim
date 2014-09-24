@@ -1,5 +1,5 @@
 .list-group.settings-list
-  = active_settings_link "General", edit_user_path(tab: "account"), class: "list-group-item"
-  = active_settings_link "Privacy", edit_user_path(tab: "privacy"), class: "list-group-item"
-  = active_settings_link "Email Settings", edit_user_path(tab: "email"), class: "list-group-item"
+  = active_settings_link "General", settings_user_path(current_user, tab: "account"), class: "list-group-item"
+  = active_settings_link "Privacy", settings_user_path(current_user, tab: "privacy"), class: "list-group-item"
+  = active_settings_link "Email Settings", settings_user_path(current_user, tab: "email"), class: "list-group-item"
 
