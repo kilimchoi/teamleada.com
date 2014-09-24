@@ -198,6 +198,7 @@ class User < ActiveRecord::Base
   friendly_id :username, use: :finders
 
   before_save :set_properties
+  after_create :create_signed_up_story
 
   # Pagination
   self.per_page = 50

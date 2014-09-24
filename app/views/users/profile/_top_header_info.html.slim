@@ -16,7 +16,7 @@
         - if current_user_can_edit
           .profile-button-container
             - if is_editing
-              = link_to "Finish Editing", show_user_profile_path, class: "button-small"
+              = link_to "Finish Editing", user_path(user), class: "button-small"
             - else
               = link_to "Edit Profile", edit_user_profile_path, class: "button-small"
     .profile-linkedin-integration

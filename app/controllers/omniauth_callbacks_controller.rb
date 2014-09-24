@@ -25,6 +25,11 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
   end
 
+  def failure
+    flash[:error] = "There was a problem logging in, please try again."
+    redirect_to root_url
+  end
+
   private
 
   def after_sign_up_path_for(user)
