@@ -26,7 +26,7 @@
 
         = yield
     .col-md-2
-      = yield :right_sidebar
+      = render partial: "users/user_right_sidebar", locals: { user: user }
 
 
 = parent_layout "application"
