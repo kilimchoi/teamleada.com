@@ -419,7 +419,7 @@ class User < ActiveRecord::Base
   end
 
   def has_linkedin_integration?
-    !self.linkedin_confirmed_at.nil?
+    !self.linkedin_id.nil?
   end
 
   def has_linkedin_profile_photo?
