@@ -7,5 +7,5 @@ before_script:
   - cp config/database.travis.yml config/database.yml
   - psql -c 'create database leada_test' -U postgres
 script:
-  - bundle exec rake --trace db:migrate && bundle exec rspec spec
+  - bundle exec rake --trace db:migrate db:seed && bundle exec rspec spec
 
