@@ -2,11 +2,10 @@
 = yield :before_container
 .container-fluid.full-container
   .row
-    .col-md-2
-      = render partial: "users/user_sidebar"
-    .col-md-8
+    .col-md-8.col-md-offset-1
       = yield
     .col-md-2
       = render partial: "users/user_right_sidebar"
+
 
 = parent_layout "application"
