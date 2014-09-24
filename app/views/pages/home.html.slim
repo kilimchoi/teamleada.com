@@ -25,7 +25,7 @@
             | Over 1 Million Jobs Unmet
 
           .button-container.center
-            = link_to "Join the Data Revolution", new_user_registration_path, class: "flat-button home-button"
+            = link_to "Join the Data Revolution", omniauth_authorize_path("user", "linkedin"), class: "flat-button home-button"
 
   .row.home-outline
     .col-md-12
