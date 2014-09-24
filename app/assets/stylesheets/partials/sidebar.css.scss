@@ -1,0 +1,44 @@
+.list-group-item {
+
+  &.active,
+  &.active:hover {
+    background-color: white;
+    border: 1px solid #e9eaed;
+    color: #333333;
+  }
+
+  &.active {
+    .sidebar-list-item-header {
+      border-bottom: 1px solid #ccc;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+
+      span {
+        vertical-align: middle;
+        font-weight: 700;
+      }
+    }
+  }
+
+  &.not-active {
+    padding: 20px;
+    background-color: #e6e6e6;
+
+    .sidebar-list-item-header {
+      span {
+        vertical-align: middle;
+        font-weight: 700;
+        color: #999999;
+      }
+    }
+  }
+}
+
+.sidebar-top-margin {
+  margin-top: 10px;
+}
+
+.sidebar-list-item-label {
+  font-size: 18px;
+  margin: 0.5em 1em 0.5em 0.5em;
+}
