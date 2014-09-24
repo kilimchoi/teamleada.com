@@ -3,7 +3,7 @@
 
 .sidebar.right-sidebar#interview-questions-sidebar
   .sidebar-section
-    h3.center Questions
+    h3.center = link_to "Questions", interview_questions_path
     - unless interview_questions.nil?
       - interview_questions.each do |interview_question|
         = link_to interview_question_path(interview_question) do

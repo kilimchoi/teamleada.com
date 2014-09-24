@@ -28,6 +28,13 @@ $sidebar-width: 250px;
   background-color: $background-gray;
 }
 
+.sidebar-section {
+  a {
+    color: #333333;
+    text-decoration: none;
+  }
+}
+
 .sidebar-item-wrapper {
   padding: 0 0 0 8px;
 

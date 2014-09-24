@@ -1,9 +1,6 @@
 .wrapper-container
   .main-content.main-content-left
     .container-fluid.full-container.card-container
-      .row.card
-        .col-md-12
-          h1.center Interview Questions
       = yield
 
   = render partial: "interview_questions/interview_questions_sidebar", locals: { interview_questions: @interview_questions }
