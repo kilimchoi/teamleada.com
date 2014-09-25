@@ -88,7 +88,6 @@ stat_analysis_content_two = [
 
 stat_analysis_content_three = [
   ['text', "Now to do a quick check of your analysis."],
-  ['text-warning', 'In the box below, enter your p-value:'],
   ['quiz', 'stat_quiz'],
 ]
 
@@ -131,6 +130,7 @@ quiz = NumericRangeQuiz.create!(
   upper_bound: 0.01,
   project: project,
   slide: stat_analysis_slide_three,
+  question: 'In the box below, enter your p-value:',
 )
 
 stat_analysis_context = SubmissionContext.create!(
