@@ -48,22 +48,22 @@ describe Code do
     end
   end
 
-  describe "when giving code to user" do
-    it 'should give users access to projects' do
-      @user = FactoryGirl.create(:student)
-      @user.add_code @code
-      @user.has_project_access?.should be_true
-    end
-  end
-
-  describe "when giving disabled code to user" do
-    it 'should not give users access to projects' do
-      @user = FactoryGirl.create(:student)
-      @code.enabled = false
-      @code.save
-      @user.add_code(@code).should be_false
-      @user.has_project_access?.should be_false
-    end
-  end
+#  describe "when giving code to user" do
+#    it 'should give users access to projects' do
+#      @user = FactoryGirl.create(:student)
+#      @user.add_code @code
+#      @user.has_project_access?.should be_true
+#    end
+#  end
+#
+#  describe "when giving disabled code to user" do
+#    it 'should not give users access to projects' do
+#      @user = FactoryGirl.create(:student)
+#      @code.enabled = false
+#      @code.save
+#      @user.add_code(@code).should be_false
+#      @user.has_project_access?.should be_false
+#    end
+#  end
 
 end

@@ -3,7 +3,7 @@
 
 - job_experience = item
 
-= simple_form_for form, url: update_job_experience_user_profile_path,
+= simple_form_for form, url: update_job_experience_user_path,
                         html: { class: "inline-profile-form" },
                         remote: true do |f|
   .form-inputs
@@ -31,7 +31,7 @@
     = f.hidden_field :job_experience_id, value: job_experience.id
   .form-actions
     = f.submit "Save", class: "edit-form-save-button"
-    = link_to "Cancel", cancel_update_user_profile_path, method: :post, remote: true, class: "edit-form-cancel-button"
+    = link_to "Cancel", cancel_update_user_path, method: :post, remote: true, class: "edit-form-cancel-button"
     - unless is_adding
-      = link_to "Remove this position", remove_job_experience_user_profile_path(id: job_experience.id), method: :delete, remote: true, class: "edit-form-remove-position"
+      = link_to "Remove this position", remove_job_experience_user_path(id: job_experience.id), method: :delete, remote: true, class: "edit-form-remove-position"
 
