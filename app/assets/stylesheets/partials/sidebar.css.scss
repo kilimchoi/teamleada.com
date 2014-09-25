@@ -1,63 +1,65 @@
-.list-group-item {
-  &.active,
-  &.active:hover {
-    background-color: white;
-    color: #333333;
-  }
+.user-status {
+  .list-group-item {
+    &.active,
+    &.active:hover {
+      background-color: white;
+      color: #333333;
+    }
 
-  &.active {
-    .sidebar-list-item-header {
-      border-bottom: 1px solid #ccc;
-      margin-bottom: 20px;
-      padding-bottom: 12px;
+    &.active {
+      .sidebar-list-item-header {
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
 
-      span {
-        vertical-align: middle;
-        font-weight: 700;
+        span {
+          vertical-align: middle;
+          font-weight: 700;
+        }
+      }
+    }
+
+    &.not-active {
+      padding: 20px;
+      background-color: #e6e6e6;
+
+      .sidebar-list-item-header {
+        span {
+          vertical-align: middle;
+          font-weight: 700;
+          color: #999999;
+        }
       }
     }
   }
 
-  &.not-active {
-    padding: 20px;
-    background-color: #e6e6e6;
+  .list-group-item.active,
+  .list-group-item.not-active,
+  .list-group-item.active:hover,
+  .list-group-item.not-active:hover {
+    border-top: none;
+    border-bottom: 1px solid #dadada;
 
-    .sidebar-list-item-header {
-      span {
-        vertical-align: middle;
-        font-weight: 700;
-        color: #999999;
-      }
+    &:last-child {
+      border-bottom: none;
     }
   }
-}
 
-.list-group-item.active,
-.list-group-item.not-active,
-.list-group-item.active:hover,
-.list-group-item.not-active:hover {
-  border-top: none;
-  border-bottom: 1px solid #dadada;
+  .sidebar-list-item-label {
+    font-size: 18px;
+    margin: 0.5em 1em 0.5em 0.5em;
+  }
 
-  &:last-child {
-    border-bottom: none;
+  ul.profile-completion-status,
+  ul.data-challenges-complete-status,
+  ul.get-interviews-status,
+  ul.receive-offers-status {
+    margin-top: 10px;
+    margin-left: 20px;
   }
 }
 
 .sidebar-top-margin {
   margin-top: 10px;
-}
-
-.sidebar-list-item-label {
-  font-size: 18px;
-  margin: 0.5em 1em 0.5em 0.5em;
-}
-
-ul.profile-completion-status,
-ul.data-challenges-complete-status,
-ul.get-interviews-status,
-ul.receive-offers-status {
-  margin-top: 10px;
-  margin-left: 20px;
 }
 
