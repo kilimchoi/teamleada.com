@@ -301,6 +301,23 @@ class User < ActiveRecord::Base
   end
 
   #
+  # User Status
+  #
+  def user_status
+    if !has_complete_profile?
+      1
+    elsif !has_completed_a_data_challenge?
+      2
+    elsif !has_received_interview_request?
+      3
+    elsif !has_received_offer?
+      4
+    else
+      false
+    end
+  end
+
+  #
   # Associations
   #
   def profile
@@ -469,6 +486,14 @@ class User < ActiveRecord::Base
 
   def has_filled_in_experience?
     jobs.count > 0
+  end
+
+  def has_complete_profile?
+    has_filled_in_personal_info? &&
+    has_filled_in_job_preferences? &&
+    has_filled_in_education? &&
+    has_filled_in_experience? &&
+    has_resume?
   end
 
   # Data Challenges

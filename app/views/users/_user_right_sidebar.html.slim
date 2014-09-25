@@ -2,12 +2,11 @@
 // user
 
 - info = get_yaml_data_file("user_right_sidebar.yml")
-- user_step = 4
 
 .sidebar
   ul.list-group.sidebar-top-margin.user-status.card.card-no-padding
     - info.steps.each_with_index do |step, index|
-      - if user_step == index + 1 # Active step
+      - if user.user_status == index + 1 # Active step
         li.list-group-item.no-side-border.active
           .sidebar-list-item-header
             span.sidebar-list-item-label = index + 1
