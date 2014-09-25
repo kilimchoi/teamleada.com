@@ -95,13 +95,11 @@ setup_main_slide = [
 
   background_content_two = [
     ['text', "With this data, you have a list of directed edges, each representing a co-purchase."],
-    ['text-warning', "How many Nodes are there in the dataset?"],
     ['quiz', "mr_data_node_count"],
     ['text', "What about the edges?"],
   ]
 
   background_content_three = [
-    ['text-warning', "How many Edges are there in the full dataset?"],
     ['quiz', "mr_data_edge_count"],
     ['text', "As you see, the full dataset seems large (or is it?)."],
     ['text', "Perhaps you'd want to make sure that the algorithm first runs on a smaller subset."],
@@ -138,6 +136,7 @@ setup_main_slide = [
     answer: "403394",
     project: project,
     slide: background_slide_two,
+    question: "How many Nodes are there in the dataset?",
   )
 
   quiz = ExactAnswerQuiz.create!(
@@ -145,6 +144,7 @@ setup_main_slide = [
     answer: "3387388",
     project: project,
     slide: background_slide_three,
+    question: "How many Edges are there in the full dataset?",
   )
 
   ################################################################################
@@ -541,19 +541,16 @@ setup_main_slide = [
     ['text', "These checks are for your benefits."],
     ['text-danger', "Make sure that you're returning the actual distance (and not the number of nodes)."],
     ['text', "This means the distance between '1' and '0' should be 1."],
-    ['text', "What is the distance between node '1' and node '1234'?"],
     ['quiz', "mr_quiz_1"],
     ['text', "Let's check a few more."],
   ]
 
   conclusion_main_content_three = [
-    ['text-warning', "What is the distance between node '2222' and node '22222'?"],
     ['quiz', "mr_quiz_2"],
     ['text', "What about an even bigger discrepancy in node numbers?"],
   ]
 
   conclusion_main_content_four = [
-    ['text-warning', "What is the distance between node '0' and node '403392'?"],
     ['quiz', "mr_quiz_3"],
     ['text', "Does this number make sense?"],
   ]
@@ -599,6 +596,7 @@ setup_main_slide = [
     answer: "319",
     project: project,
     slide: conclusion_main_slide_two,
+    question: "What is the distance between node '1' and node '1234'?",
   )
 
   quiz = ExactAnswerQuiz.create!(
@@ -606,6 +604,7 @@ setup_main_slide = [
     answer: "3241",
     project: project,
     slide: conclusion_main_slide_three,
+    question: "What is the distance between node '2222' and node '22222'?",
   )
 
   quiz = ExactAnswerQuiz.create!(
@@ -613,6 +612,7 @@ setup_main_slide = [
     answer: "421",
     project: project,
     slide: conclusion_main_slide_four,
+    question: "What is the distance between node '0' and node '403392'?",
   )
 
   src_code_submission = SubmissionContext.create!(
