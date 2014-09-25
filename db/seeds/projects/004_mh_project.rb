@@ -269,7 +269,6 @@ matching_step_content_two = [
   ['text', 'Verify for this on your own by manually checking the index.'],
   ['code', 'abndData$INCOMING_PHONE_A[88]'],
   ['code', 'resData$INCOMING_PHONE_R[16685]'],
-  ['text', 'What is the phone number that is matched? Make sure to input it in exactly the same format!'],
   ['quiz', 'mh_1' ],
 ]
 
@@ -417,6 +416,7 @@ quiz = ExactAnswerQuiz.create!(
   answer:"(402)-153-4684",
   project: project,
   slide: matching_slide_two,
+  question: 'What is the phone number that is matched? Make sure to input it in exactly the same format!',
 )
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -602,9 +602,7 @@ hypothesis_content_two = [
   ['code', 'test_success = length(cleaned_conversion_data$TEST_CONTROL_R[which(cleaned_conversion_data$TEST_CONTROL_R == "test")])'],
   ['code', 'test_total = sum(abndData$TEST_CONTROL_A == "test")'],
   ['code', 'test_proportion = test_success/test_total'],
-  ['text', 'What was the number of test conversions?'],
   ['quiz', 'mh_2'],
-  ['text', 'What was the total sample size of the test group?'],
   ['quiz', 'mh_3'],
 ]
 
@@ -646,6 +644,7 @@ quiz = ExactAnswerQuiz.create!(
   answer:"245",
   project: project,
   slide: hypothesis_slide_two,
+  question: 'What was the number of test conversions?',
 )
 
 quiz = ExactAnswerQuiz.create!(
@@ -653,6 +652,7 @@ quiz = ExactAnswerQuiz.create!(
   answer:"4266",
   project: project,
   slide: hypothesis_slide_three,
+  question: 'What was the total sample size of the test group?',
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -679,7 +679,6 @@ z_test_content_three = [
   ['text', 'We can now determine how extreme the occurence of this test statistic was based on the normal distribution. This test statistic when divded by the standard error becomes the well known z-score. '],
   ['text', 'The z-score basically says, how many SDs away our observed test statistic is from what we would expect and what we expect is the null hypothesis, that the difference between the two proportions is zero.'],
   ['code', 'z_score <- (test_proportion - control_proportion) / SE'],
-  ['text', 'What is our Z score rounded to the tens digit?'],
   ['quiz', 'mh_4'],
 ]
 
@@ -778,6 +777,7 @@ quiz = ExactAnswerQuiz.create!(
   answer:"10.2",
   project: project,
   slide: z_test_slide_three,
+  question: 'What is our Z score rounded to the tens digit?',
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
