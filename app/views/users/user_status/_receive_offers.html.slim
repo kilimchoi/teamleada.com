@@ -1,0 +1,8 @@
+// Required Variables:
+// user
+
+ul.plain-list.receive-offers-status
+  li class="text-#{user.has_received_offer? ? 'success' : 'danger'}"
+    span.glyphicon class="glyphicon-#{user.has_received_offer? ? 'ok' : 'remove'}"
+    span.tight-left-margin Received a Job Offer
+

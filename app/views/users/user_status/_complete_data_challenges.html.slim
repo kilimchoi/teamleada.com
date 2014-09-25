@@ -1,0 +1,8 @@
+// Required Variables:
+// user
+
+ul.plain-list.data-challenges-complete-status
+  li class="text-#{user.has_completed_a_data_challenge? ? 'success' : 'danger'}"
+    span.glyphicon class="glyphicon-#{user.has_completed_a_data_challenge? ? 'ok' : 'remove'}"
+    span.tight-left-margin Complete a Data Challenge
+
