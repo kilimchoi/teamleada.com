@@ -75,7 +75,7 @@ class Company < ActiveRecord::Base
 
   def displayable_data_challenges_for_user(user)
     if user.nil?
-      data_challenges
+      data_challenges.displayable
     else
       data_challenges.displayable_for_user(user)
     end

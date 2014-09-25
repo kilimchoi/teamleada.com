@@ -1,7 +1,9 @@
 // Required Variables:
 // user
 
-- projects = Project.data_challenges.displayable_for_user(user)
+// NOTE(mark): In the sidebar, always display featured challenges relevant to the signed_in user.
+// If they are not signed in, show them all the data challenges.
+- projects = Project.data_challenges.displayable_for_user(current_user)
 
 ul.card-group.list-group.sidebar-top-margin.card.card-no-padding.sidebar-featured-challenges
   li.list-group-item.no-side-border.active
