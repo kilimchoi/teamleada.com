@@ -255,4 +255,28 @@ module ChartsHelper
     hourly_chart_for_model(1.day.ago, Impression.non_admin, "PageViews in the past 24 hours", "Total number of PageViews")
   end
 
+  # Active Users
+  def active_users_chart(active_timeframe, timeframe)
+    data = Hash.new
+    (timeframe.to_date..Date.today).each do |day|
+      data[day] = Impression.non_admin.where("created_at > ? AND created_at < ?", day - active_timeframe, day).pluck(:user_id).uniq.compact.count
+    end
+
+    categories = data.keys.map{ |date| date.strftime("%B %d")}
+
+    title = "Active Users Chart"
+    time_interval = 24 * 3600
+    num_days = active_timeframe / 1.day
+    y_axis = "Total Active Users for the previous #{num_days} days"
+
+    time_chart(
+      title,
+      timeframe.to_date,
+      time_interval,
+      y_axis,
+      data.values,
+    )
+
+  end
+
 end

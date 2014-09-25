@@ -25,6 +25,7 @@
   #admin-sidebar-chart-links.panel.panel-default
     .panel-heading Charts
     ul.list-group
+      = active_admin_link "Active Users Charts", admin_active_users_charts_path, class: "list-group-item"
       = active_admin_link "Realtime Charts", admin_realtime_charts_path, class: "list-group-item"
       = active_admin_link "PageView Charts", admin_page_view_charts_path, class: "list-group-item"
       = active_admin_link "Growth Charts", admin_growth_charts_path, class: "list-group-item"
