@@ -60,7 +60,6 @@ intro_content_four = [
   ['text', "If you need clarifications about the Pandas API you can type the function name, followed by ? to get inline help."],
   ['text', "For example to get help with the above call, run:"],
   ['code', "pd.DataFrame?"],
-  ['text', "How many Parameters does the documentation from the above show?"],
   ['quiz', "pd_intro_0"],
   ['text-info', "Now let's take a look at some DataFrame basics!"],
   ['next_steps', ""],
@@ -101,6 +100,7 @@ quiz_intro_pd = ExactAnswerQuiz.create!(
   answer: "5",
   project: project,
   slide: intro_slide_four,
+  question: "How many Parameters does the documentation from the above show?",
 )
 
 #################################################################################
@@ -131,7 +131,6 @@ dataframe_basics_content = [
   ['text-success', "The simplest way to see the content of a DataFrame is to just print it to the console."],
   ['text', "For example, to see the DataFrame we created earlier, you can just type df:"],
   ['code', "df"],
-  ['text', "How many rows of data did the earlier command create?"],
   ['quiz', "pd_intro_1"],
   ['text', "Note that we didn't actually use the 'print()' function, which you could have used as well."],
 ]
@@ -144,7 +143,6 @@ dataframe_basics_content_two = [
   ['text', "To see the last few rows you can use tail()."],
   ['text-info', "This is similar to the UNIX-command line tools (and R!)"],
   ['code', "df.head(2)"],
-  ['text', "What code would return the first 4 rows of the df?"],
   ['quiz', "pd_df_basic_2"],
 ]
 
@@ -155,7 +153,6 @@ dataframe_basics_content_three = [
   ['text', "Finally, Pandas also has a useful function describe() that summarizes the contents of numerical columns in a DataFrame."],
   ['text', "For example, in df we can see the mean, standard deviation, etc. by running describe()."],
   ['code', "df.describe()"],
-  ['text-warning', "What is at the 75% quantile of col a? (omit trailing zeros)"],
   ['quiz', "pd_df_basic_3"],
   ['next_steps', ""],
 ]
@@ -189,6 +186,7 @@ pd_df_basic_2 = ExactAnswerQuiz.create!(
   answer: "df.head(4)",
   project: project,
   slide: data_frame_basic_slide_two,
+  question: "How many rows of data did the earlier command create?",
 )
 
 pd_df_basic_4 = ExactAnswerQuiz.create!(
@@ -196,6 +194,7 @@ pd_df_basic_4 = ExactAnswerQuiz.create!(
   answer: "3.25",
   project: project,
   slide: data_frame_basic_slide_three,
+  question: "What code would return the first 4 rows of the df?",
 )
 
 pd_intro_one = ExactAnswerQuiz.create!(
@@ -203,6 +202,7 @@ pd_intro_one = ExactAnswerQuiz.create!(
   answer: "4",
   project: project,
   slide: data_frame_basic_slide_one,
+  question: "What is at the 75% quantile of col a? (omit trailing zeros)",
 )
 
 #################################################################################
@@ -215,17 +215,14 @@ dataframe_basics_content_four = [
     na_values=['-'])"],
   ['text', "The 'names' argument tells Pandas what the column titles are in our file, and 'na_values' indicates which character is used for missing values in our dataset."],
   ['text', "Try using the commands from the previous section to explore the dataset."],
-  ['text-warning', "What is the max ResponseCode? (omit trailing zeros and any period)"],
   ['quiz', "pd_df_basic_4"],
 ]
 
 dataframe_basics_content_five = [
-  ['text', "How many row entries are present in log_df?"],
   ['quiz', "pd_df_basic_5"],
 ]
 
 dataframe_basics_content_six = [
-  ['text', "What is the URL at 85th row (remember that indexing starts at 0)?"],
   ['quiz', "pd_df_basic_6"],
   ['text-success', "Great!"],
   ['next_steps', ""],
@@ -260,6 +257,7 @@ pd_df_basic_4 = ExactAnswerQuiz.create!(
   answer: "500",
   project: project,
   slide: data_frame_basic_slide_four,
+  question: "What is the max ResponseCode? (omit trailing zeros and any period)",
 )
 
 pd_df_basic_5 = ExactAnswerQuiz.create!(
@@ -267,6 +265,7 @@ pd_df_basic_5 = ExactAnswerQuiz.create!(
   answer: "200000",
   project: project,
   slide: data_frame_basic_slide_five,
+  question: "How many row entries are present in log_df?",
 )
 
 pd_df_basic_6 = ExactAnswerQuiz.create!(
@@ -274,6 +273,7 @@ pd_df_basic_6 = ExactAnswerQuiz.create!(
   answer: "/images/s102443.gif",
   project: project,
   slide: data_frame_basic_slide_six,
+  question: "What is the URL at 85th row (remember that indexing starts at 0)?",
 )
 #################################################################################
 ###############  PD SQL ops  ####################################################
@@ -374,7 +374,6 @@ sql_grouping_content_one = [
   ['code', "grouped.ngroups"],
   ['code', "grouped.groups.keys()"],
   ['code', "grouped.get_group(200).head()"],
-  ['text-warning', "How many groups are there?"],
   ['quiz', "pd_sql_grouping_0"],
 ]
 
@@ -386,7 +385,6 @@ sql_grouping_content_two = [
   ['text', " 1. grouped.describe() prints summary statistics for numeric columns in each group."],
   ['text', " 2. grouped.size() prints the number of elements in each group."],
   ['text', " 3. Similarly grouped.sum(), grouped.mean() and grouped.median() print the sum, mean, and median values for numeric columns in each group."],
-  ['text-danger', "What is the highest ClientID with the ResponseCode of 302? (omit trailing zeros and any period)"],
   ['quiz', "pd_sql_grouping_1"],
   ['next_steps', ""],
 ]
@@ -414,6 +412,7 @@ pd_sql_grouping_quiz = ExactAnswerQuiz.create!(
   answer: "7",
   project: project,
   slide: grouping_slide_one,
+  question: "How many groups are there?",
 )
 
 pd_sql_grouping_1 = ExactAnswerQuiz.create!(
@@ -421,6 +420,7 @@ pd_sql_grouping_1 = ExactAnswerQuiz.create!(
   answer: "34618",
   project: project,
   slide: grouping_slide_two,
+  question: "What is the highest ClientID with the ResponseCode of 302? (omit trailing zeros and any period)",
 )
 
 #################################################################################
@@ -503,7 +503,6 @@ plotting_content = [
   ['code', "rand_df.plot()"],
   ['code', "rand_df.hist()"],
   ['code', "pd.DataFrame.plot?"],
-  ['text', "What is the 'type' of the above help query?"],
   ['quiz', "pd_plotting_intro_0"],
   ['text-warning', "[Optional] Generate a histogram of traffic to the site every half-hour and plot this."],
   ['next_steps', ""],
@@ -526,6 +525,7 @@ pd_plotting_intro_0 = ExactAnswerQuiz.create!(
   answer: "instancemethod",
   project: project,
   slide: plotting_slide,
+  question: "What is the 'type' of the above help query?",
 )
 
 #################################################################################
