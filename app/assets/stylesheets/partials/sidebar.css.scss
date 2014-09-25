@@ -1,9 +1,7 @@
 .list-group-item {
-
   &.active,
   &.active:hover {
     background-color: white;
-    border: 1px solid #e9eaed;
     color: #333333;
   }
 
@@ -34,6 +32,18 @@
   }
 }
 
+.list-group-item.active,
+.list-group-item.not-active,
+.list-group-item.active:hover,
+.list-group-item.not-active:hover {
+  border-top: none;
+  border-bottom: 1px solid #dadada;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
 .sidebar-top-margin {
   margin-top: 10px;
 }
@@ -42,3 +52,4 @@
   font-size: 18px;
   margin: 0.5em 1em 0.5em 0.5em;
 }
+
