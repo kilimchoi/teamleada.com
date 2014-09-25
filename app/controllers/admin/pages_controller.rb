@@ -21,6 +21,11 @@ class Admin::PagesController < Admin::BaseController
     @daily_code_submissions = CodeSubmissionContent.where("created_at >= ?", Date.today.to_date)
   end
 
+  def active_users_charts
+    @one_day_7 = active_users_chart(7.days, 30.days.ago)
+    @one_day_28 = active_users_chart(28.days, 120.days.ago)
+  end
+
   def activity
     @admin_subscriber = Subscriber.find_by(name: "admin")
     @story_notifications = @admin_subscriber.story_notifications.paginate(page: params[:page])
