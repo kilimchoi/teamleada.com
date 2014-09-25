@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140919175630) do
+ActiveRecord::Schema.define(version: 20140925002842) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -500,6 +500,7 @@ ActiveRecord::Schema.define(version: 20140919175630) do
     t.decimal  "lower_bound",      precision: 10, scale: 5
     t.decimal  "upper_bound",      precision: 10, scale: 5
     t.string   "slide_id"
+    t.text     "question"
   end
 
   create_table "resumes", force: true do |t|
