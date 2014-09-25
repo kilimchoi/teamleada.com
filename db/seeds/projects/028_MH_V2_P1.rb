@@ -177,15 +177,6 @@ data_matching_slide_three = Slide.create!(
   slide_id: 2,
 )
 
-quiz = NumericRangeQuiz.create!(
-  quiz_id: "match_quiz",
-  lower_bound: 327.0,
-  upper_bound: 445.0,
-  project: project,
-  slide: data_matching_slide_two,
-  question: 'Check your work by submitting the number of matches you achieved:',
-)
-
 data_matching_context = SubmissionContext.create!(
   title: "Data Matching Response",
   description: "Explain how you define a match between the Abandoned and Reservation data sets. There is no correct answer, use your best judgement and maximize the number of possible matches.",
@@ -197,9 +188,18 @@ data_matching_context = SubmissionContext.create!(
 data_matching_context_two = SubmissionContext.create!(
   title: "Data Matching Code",
   description: "Submit code which performs the data matching under the assumptions you previously defined.",
-  slide: data_matching_slide_three,
+  slide: data_matching_slide_two,
   submission_context_id: 0,
   submission_type: SubmissionContext::CODE,
+)
+
+quiz = NumericRangeQuiz.create!(
+  quiz_id: "match_quiz",
+  lower_bound: 327.0,
+  upper_bound: 445.0,
+  project: project,
+  slide: data_matching_slide_three,
+  question: 'Check your work by submitting the number of matches you achieved:',
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
