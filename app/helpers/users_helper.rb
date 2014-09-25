@@ -71,7 +71,6 @@ module UsersHelper
     user.skip_confirmation!
     user.generate_new_token
     user.save(validate: false)
-    user.unconfirm!
 
     create_jobs_table(auth, user)
     create_enrollments_table(auth, user)

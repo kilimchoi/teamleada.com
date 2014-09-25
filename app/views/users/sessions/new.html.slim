@@ -1,4 +1,4 @@
-= provide(:page_title, "Sign In")
+= provide(:page_title, "Log In")
 
 .container.full-container
   .row
@@ -7,7 +7,7 @@
         .row.card.card-padding-bottom
           .col-md-12
             h2.title
-              | Sign in
+              | Log In
             = simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'}) do |f|
               .form-inputs
                 = f.input :email,       required: false,

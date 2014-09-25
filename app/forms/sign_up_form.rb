@@ -31,7 +31,6 @@ class SignUpForm < Form
 
   def save
     user.save
-    user.create_signed_up_story
     # send email?
     # log some event?
   end
