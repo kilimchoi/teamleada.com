@@ -179,7 +179,7 @@ quiz = NumericRangeQuiz.create!(
   lower_bound: 310.0,
   upper_bound: 423.0,
   project: project,
-  slide: data_cleaning_slide_two,
+  slide: data_cleaning_slide_three,
   question: 'How many observations do you have remaning after de-duplication?',
 )
 
