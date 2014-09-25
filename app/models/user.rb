@@ -456,7 +456,7 @@ class User < ActiveRecord::Base
 
   # Profile Completion
   def has_filled_in_personal_info?
-    false
+    !profile.bio.nil? && !profile.location.nil?
   end
 
   def has_filled_in_job_preferences?
@@ -464,11 +464,11 @@ class User < ActiveRecord::Base
   end
 
   def has_filled_in_education?
-    false
+    enrollments.count > 0
   end
 
   def has_filled_in_experience?
-    false
+    jobs.count > 0
   end
 
   # Invitations
