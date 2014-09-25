@@ -22,6 +22,7 @@ project = Project.create!(
   featured: true,
   grants_project_access: true,
   cover_photo: "crime",
+  deadline: 3.hours,
 )
 
 ################################################################################
