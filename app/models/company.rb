@@ -73,6 +73,14 @@ class Company < ActiveRecord::Base
     projects.data_challenges
   end
 
+  def displayable_data_challenges_for_user(user)
+    if user.nil?
+      data_challenges
+    else
+      data_challenges.displayable_for_user(user)
+    end
+  end
+
   # Methods
 
   # TODO(mark): Move this into a finder class
