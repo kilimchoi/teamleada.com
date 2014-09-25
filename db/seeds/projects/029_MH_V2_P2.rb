@@ -168,7 +168,7 @@ data_cleaning_slide_two = Slide.create!(
   slide_id: 1,
 )
 
-data_cleaning_slide = Slide.create!(
+data_cleaning_slide_three = Slide.create!(
   content: data_cleaning_content_three,
   parent: data_cleaning_step,
   slide_id: 2,
