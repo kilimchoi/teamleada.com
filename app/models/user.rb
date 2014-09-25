@@ -478,11 +478,13 @@ class User < ActiveRecord::Base
 
   # Interviews
   def has_received_interview_request?
+    # TODO(mark): Interview Requests
     false
   end
 
   # Offers
   def has_received_offer?
+    # TODO(mark): Job Offers
     false
   end
 
