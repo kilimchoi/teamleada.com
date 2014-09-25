@@ -23,15 +23,3 @@
             span.sidebar-list-item-label = index + 1
             span.sidebar-list-item-title = step.title
 
-  /ul.list-group.sidebar-top-margin.profile-completion-status
-    li.list-group-item class="list-group-item-#{user.has_filled_in_personal_info? ? 'success' : 'danger'}"
-      span Personal Info
-    li.list-group-item class="list-group-item-#{user.has_filled_in_job_preferences? ? 'success' : 'danger'}"
-      span Job Preferences
-    li.list-group-item class="list-group-item-#{user.has_filled_in_education? ? 'success' : 'danger'}"
-      span Education
-    li.list-group-item class="list-group-item-#{user.has_filled_in_experience? ? 'success' : 'danger'}"
-      span Experience
-    li.list-group-item class="list-group-item-#{user.has_resume? ? 'success' : 'danger'}"
-      span Resume
-
