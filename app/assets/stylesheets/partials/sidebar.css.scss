@@ -53,7 +53,10 @@
   margin: 0.5em 1em 0.5em 0.5em;
 }
 
-ul.profile-completion-status {
+ul.profile-completion-status,
+ul.data-challenges-complete-status,
+ul.get-interviews-status,
+ul.receive-offers-status {
   margin-top: 10px;
   margin-left: 20px;
 }

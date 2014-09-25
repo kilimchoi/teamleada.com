@@ -471,6 +471,21 @@ class User < ActiveRecord::Base
     jobs.count > 0
   end
 
+  # Data Challenges
+  def has_completed_a_data_challenge?
+    completed_challenges.count > 0
+  end
+
+  # Interviews
+  def has_received_interview_request?
+    false
+  end
+
+  # Offers
+  def has_received_offer?
+    false
+  end
+
   # Invitations
   def has_invites_remaining?
     invites.count < number_of_allowed_invites
