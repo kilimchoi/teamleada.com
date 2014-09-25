@@ -676,6 +676,10 @@ class User < ActiveRecord::Base
     projects.where(uid: project_ids)
   end
 
+  def completed_project?(project)
+    !completed_projects.find_by(uid: project.uid).nil?
+  end
+
   def started_challenges
     started_projects.data_challenges
   end
@@ -939,14 +943,28 @@ class User < ActiveRecord::Base
     send_deny_project_access_email(project)
   end
 
-  def reset_all_project_access()
-    statuses = self.project_statuses.each do |status|
+  def reset_all_project_access
+    project_statuses.each do |status|
       status.reset_start_date
     end
   end
 
-  def reset_project_access(project_id)
-    project_status_for_project(project_id).reset_start_date
+  def reset_project_access_for_project(project)
+    project_status_for_project(project).reset_start_date
+  end
+
+  # Project Sets
+  def completed_prerequisites_for_project(project)
+    return true unless project.is_part_of_set?
+    projects = project.project_set.projects
+    projects.each do |prerequisite|
+      if project == prerequisite
+        return true
+      elsif !self.completed_project?(prerequisite)
+        return false
+      end
+    end
+    true
   end
 
   #
