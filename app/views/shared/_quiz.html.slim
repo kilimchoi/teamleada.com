@@ -1,7 +1,10 @@
 // Required Variables:
 // quiz_id, item
 
-- if "#{quiz_id}" != ""
+- quiz = Quiz.find_by(quiz_id: quiz_id)
+- unless quiz.nil?
+  p.fragment
+    = quiz.try(:question)
   div class="quiz_div fragment" quiz_id="#{quiz_id}"
     form class="quiz_box center" quiz_id="#{quiz_id}"
       span class="quiz_title" quiz_id="#{quiz_id}"
