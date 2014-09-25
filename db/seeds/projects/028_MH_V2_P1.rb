@@ -183,7 +183,7 @@ quiz = NumericRangeQuiz.create!(
   upper_bound: 445.0,
   project: project,
   slide: data_matching_slide_two,
-  quesitno: 'Check your work by submitting the number of matches you achieved:',
+  question: 'Check your work by submitting the number of matches you achieved:',
 )
 
 data_matching_context = SubmissionContext.create!(
