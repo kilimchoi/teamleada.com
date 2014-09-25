@@ -60,11 +60,11 @@ class ProjectStatus < ActiveRecord::Base
   end
 
   def display_start_date
-    "#{start_date.strftime('%A, %B %e, %Y')}"
+    "#{start_date.strftime('%A, %B %e, %Y at %l %p')}"
   end
 
   def display_end_date
-    "#{end_date.strftime('%A, %B %e, %Y')}"
+    "#{end_date.strftime('%A, %B %e, %Y at %l %p')}"
   end
 
   def end_date
