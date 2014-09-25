@@ -74,9 +74,9 @@ class Project < ActiveRecord::Base
   scope :grants_project_access, -> { where(grants_project_access: true) }
 
   # Scope by type
-  scope :data_challenges, -> { where(category: CHALLENGE) }
-  scope :data_lessons,    -> { where(category: LESSON) }
-  scope :coming_soon,     -> { where(category: COMING_SOON) }
+  scope :data_challenges, -> { enabled.where(category: CHALLENGE) }
+  scope :data_lessons,    -> { enabled.where(category: LESSON) }
+  scope :coming_soon,     -> { enabled.where(category: COMING_SOON) }
 
   default_scope -> { order(:uid) }
 
