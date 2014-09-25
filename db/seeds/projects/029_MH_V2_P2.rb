@@ -146,7 +146,6 @@ data_cleaning_content_two = [
 
 data_cleaning_content_two = [
   ['text', "The number of matched observations after cleaning should fit within a range:"],
-  ['text-warning', 'How many observations do you have remaning after de-duplication?'],
   ['quiz', 'clean_quiz'],
   ['finish_project_button', 'http://www.surveygizmo.com/s3/1811239/Project-Feedback-v2'],
 ]
@@ -175,6 +174,7 @@ quiz = NumericRangeQuiz.create!(
   upper_bound: 423.0,
   project: project,
   slide: data_cleaning_slide_two,
+  question: 'How many observations do you have remaning after de-duplication?',
 )
 
 data_matching_context = SubmissionContext.create!(

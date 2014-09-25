@@ -62,7 +62,6 @@ view_data_content = [
   ['code', 'ncol(ChickWeight)'],
   ['text', 'If you want to look at the first six rows of the data frame you can use the head() function:'],
   ['code', 'head(ChickWeight)'],
-  ['text', 'What is the weight of the sixth chick?'],
   ['quiz', 't_bootcamp_1'],
 ]
 
@@ -99,6 +98,7 @@ quiz = ExactAnswerQuiz.create!(
   answer:"93",
   project: project,
   slide: view_data_slide,
+  question: 'What is the weight of the sixth chick?',
 )
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -178,7 +178,6 @@ barplot_bootcamp_content = [
   ['text', 'The table() function calculates frequencies for a given variable.'],
   ['text', 'For example, let\'s determine the frequency of the Diets in the ChickWeight dataset:'],
   ['code', 'diet_freq = table(ChickWeight$Diet)'],
-  ['text', 'What is the frequency of diet type 2 and 3?'],
   ['quiz', 't_bootcamp_2'],
   ['text', 'If we wanted to see the frequency by Diet AND weight, we can add it as a parameter in the table() function:'],
   ['code', 'table(ChickWeight$weight, ChickWeight$Diet)'],
@@ -220,6 +219,7 @@ quiz = ExactAnswerQuiz.create!(
   answer:"120",
   project: project,
   slide: barplot_bootcamp_slide,
+  question: 'What is the frequency of diet type 2 and 3?',
 )
 
 
