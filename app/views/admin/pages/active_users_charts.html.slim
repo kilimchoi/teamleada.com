@@ -1,0 +1,14 @@
+= provide(:page_title, "Active Users Charts")
+
+.container-fluid.full-container.card-container
+  .row.card
+    .col-md-12
+      h1 Active Users Charts
+
+  .row.card
+    .col-md-12
+      = high_chart("1_d_7", @one_day_7)
+
+  .row.card
+    .col-md-12
+      = high_chart("1_d_28", @one_day_28)
