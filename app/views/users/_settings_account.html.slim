@@ -14,16 +14,22 @@ ul.account-settings
       span = best_in_place current_user, :last_name, type: :input, data: { field: 'last name' }, activator: "#edit-last-name"
       span.edit-row Edit
   li.settings-row
+    a.row-link.cursor-disabled
+      span.col Email
+      span = current_user.email
+  li.settings-row
     // TODO: This shouldn't have to be a link with the class row-link
     a.row-link.cursor-disabled
-      span.col Username
+      span.col Public URL
       span = current_user.username
-  li.settings-row
+
+/  li.settings-row
     = link_to("#", id: "edit-email", class: "row-link") do
       span.col Email
       span = best_in_place current_user, :email, type: :input, data: { field: 'email' }, activator: "#edit-email"
       span.edit-row Edit
-  li.settings-row
+
+/  li.settings-row
     = link_to("#", class: "row-link", data: {toggle: "modal", target: "#password-modal"}) do
       span.col Password
       span#password-update-time
