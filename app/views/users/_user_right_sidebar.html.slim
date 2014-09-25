@@ -5,45 +5,33 @@
 - user_step = 1
 
 .sidebar
-  ul.list-group.sidebar-top-margin.user-status
+  ul.list-group.sidebar-top-margin.user-status.card.card-no-padding
     - info.steps.each_with_index do |step, index|
       - if user_step == index + 1 # Active step
-        li.list-group-item.active
+        li.list-group-item.no-side-border.active
           .sidebar-list-item-header
             span.sidebar-list-item-label = index + 1
             span.sidebar-list-item-title = step.title
           .sidebar-list-item-content
-            = step.description
+            .sidebar-list-item-text
+              = step.description
+            .sidebar-list-item-extra-content
+              = render partial: "users/user_status/#{step.partial}", locals: { user: user }
       - else
-        li.list-group-item.not-active.has-tooltip data-toggle="tooltip" data-placement="left" title="#{step.description}"
+        li.list-group-item.no-side-border.not-active.has-tooltip data-toggle="tooltip" data-placement="left" title="#{step.description}"
           .sidebar-list-item-header
             span.sidebar-list-item-label = index + 1
             span.sidebar-list-item-title = step.title
 
-  ul.list-group.sidebar-top-margin.profile-completion-status
-    li.list-group-item
-      - if user.has_filled_in_personal_info?
-
-      - else
+  /ul.list-group.sidebar-top-margin.profile-completion-status
+    li.list-group-item class="list-group-item-#{user.has_filled_in_personal_info? ? 'success' : 'danger'}"
       span Personal Info
-    li.list-group-item
-      - if user.has_filled_in_job_preferences?
-
-      - else
+    li.list-group-item class="list-group-item-#{user.has_filled_in_job_preferences? ? 'success' : 'danger'}"
       span Job Preferences
-    li.list-group-item
-      - if user.has_filled_in_education?
-
-      - else
+    li.list-group-item class="list-group-item-#{user.has_filled_in_education? ? 'success' : 'danger'}"
       span Education
-    li.list-group-item
-      - if user.has_filled_in_experience?
-
-      - else
+    li.list-group-item class="list-group-item-#{user.has_filled_in_experience? ? 'success' : 'danger'}"
       span Experience
-    li.list-group-item
-      - if user.has_resume?
-
-      - else
+    li.list-group-item class="list-group-item-#{user.has_resume? ? 'success' : 'danger'}"
       span Resume
 
