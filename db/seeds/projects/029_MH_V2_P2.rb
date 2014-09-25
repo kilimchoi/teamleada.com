@@ -144,7 +144,7 @@ data_cleaning_content_two = [
   ['user_code', '#@TODO Include UID'],
 ]
 
-data_cleaning_content_two = [
+data_cleaning_content_three = [
   ['text', "The number of matched observations after cleaning should fit within a range:"],
   ['quiz', 'clean_quiz'],
   ['finish_project_button', 'http://www.surveygizmo.com/s3/1811239/Project-Feedback-v2'],
@@ -166,6 +166,12 @@ data_cleaning_slide_two = Slide.create!(
   content: data_cleaning_content_two,
   parent: data_cleaning_step,
   slide_id: 1,
+)
+
+data_cleaning_slide = Slide.create!(
+  content: data_cleaning_content_three,
+  parent: data_cleaning_step,
+  slide_id: 2,
 )
 
 quiz = NumericRangeQuiz.create!(
