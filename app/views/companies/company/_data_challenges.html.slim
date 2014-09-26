@@ -14,7 +14,7 @@
     .row
       .col-md-12
         - if company.has_data_challenges?
-          - company.data_challenges.each do |data_challenge|
+          - company.displayable_data_challenges_for_user(current_user).each do |data_challenge|
             = render partial: "companies/company/data_challenge_summary", locals: { data_challenge: data_challenge }
         - else
           p.center

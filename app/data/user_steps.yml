@@ -1,0 +1,15 @@
+---
+
+steps:
+  - title: "Complete Profile"
+    description: "Fill out your profile so that employers can start looking at your experience and your projects."
+    partial: "complete_profile"
+  - title: "Complete Data Challenges"
+    description: "Work through some company hosted data challenges. Be the one of the top submissions to a data challenge and your submission goes directly to the hiring manager of that company."
+    partial: "complete_data_challenges"
+  - title: "Get Interviews"
+    description: "After completing data challenges, companies will reach out to you with interview offers and you will be able to accept, reject, and modify offers through a conversation with the hiring manager."
+    partial: "get_interviews"
+  - title: "Receive Offers"
+    description: "If you are successful in your interviews, you will receive a formal job offer through the Leada platform."
+    partial: "receive_offers"

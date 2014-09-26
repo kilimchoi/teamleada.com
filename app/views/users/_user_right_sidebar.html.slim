@@ -1,0 +1,6 @@
+// Required Variables:
+// user
+
+.sidebar
+  = render partial: "users/profile/user_steps", locals: { user: user }
+  = render partial: "users/profile/featured_challenges", locals: { user: user }

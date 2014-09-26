@@ -301,6 +301,23 @@ class User < ActiveRecord::Base
   end
 
   #
+  # User Status
+  #
+  def user_status
+    if !has_complete_profile?
+      1
+    elsif !has_completed_a_data_challenge?
+      2
+    elsif !has_received_interview_request?
+      3
+    elsif !has_received_offer?
+      4
+    else
+      false
+    end
+  end
+
+  #
   # Associations
   #
   def profile
@@ -454,6 +471,49 @@ class User < ActiveRecord::Base
     invites.count > 0
   end
 
+  # Profile Completion
+  def has_filled_in_personal_info?
+    !profile.bio.nil? && !profile.location.nil?
+  end
+
+  def has_filled_in_job_preferences?
+    false
+  end
+
+  def has_filled_in_education?
+    enrollments.count > 0
+  end
+
+  def has_filled_in_experience?
+    jobs.count > 0
+  end
+
+  def has_complete_profile?
+    has_filled_in_personal_info? &&
+    has_filled_in_job_preferences? &&
+    has_filled_in_education? &&
+    has_filled_in_experience? &&
+    has_resume?
+  end
+
+  # Data Challenges
+  def has_completed_a_data_challenge?
+    completed_challenges.count > 0
+  end
+
+  # Interviews
+  def has_received_interview_request?
+    # TODO(mark): Interview Requests
+    false
+  end
+
+  # Offers
+  def has_received_offer?
+    # TODO(mark): Job Offers
+    false
+  end
+
+  # Invitations
   def has_invites_remaining?
     invites.count < number_of_allowed_invites
   end
@@ -614,6 +674,10 @@ class User < ActiveRecord::Base
   def completed_projects
     project_ids = completed_project_statuses.pluck(:project_id)
     projects.where(uid: project_ids)
+  end
+
+  def completed_project?(project)
+    !completed_projects.find_by(uid: project.uid).nil?
   end
 
   def started_challenges
@@ -879,14 +943,28 @@ class User < ActiveRecord::Base
     send_deny_project_access_email(project)
   end
 
-  def reset_all_project_access()
-    statuses = self.project_statuses.each do |status|
+  def reset_all_project_access
+    project_statuses.each do |status|
       status.reset_start_date
     end
   end
 
-  def reset_project_access(project_id)
-    project_status_for_project(project_id).reset_start_date
+  def reset_project_access_for_project(project)
+    project_status_for_project(project).reset_start_date
+  end
+
+  # Project Sets
+  def completed_prerequisites_for_project(project)
+    return true unless project.is_part_of_set?
+    projects = project.project_set.projects
+    projects.each do |prerequisite|
+      if project == prerequisite
+        return true
+      elsif !self.completed_project?(prerequisite)
+        return false
+      end
+    end
+    true
   end
 
   #
