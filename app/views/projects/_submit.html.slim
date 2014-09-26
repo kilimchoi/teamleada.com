@@ -9,4 +9,4 @@
       p
         | In order to make a submission, you must sign up!
         br
-        = link_to "Sign Up", new_user_registration_path, class: 'flat-button step-button'
+        = link_to "Sign Up", omniauth_authorize_path("user", "linkedin"), class: "flat-button step-button"

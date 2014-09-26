@@ -109,7 +109,7 @@
                 - else
                   .row.card
                     .col-md-12
-                      = link_to "Sign up to start this project!", new_user_registration_path, class: "flat-button full-width"
+                      = link_to "Sign Up to Access this Project!", omniauth_authorize_path("user", "linkedin"), class: "flat-button full-width"
 
 div class="modal fade" id="start-modal"
   .modal-dialog.modal-sm
