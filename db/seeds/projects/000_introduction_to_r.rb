@@ -70,7 +70,6 @@ basic_operations_slide_one = Slide.create!(
 basic_math_content_one = [
   ['text', 'Let us first try the most basic operations.'],
   ['code', '5 + 5'],
-  ['text-success', 'Enter what you get below:'],
   ['quiz', 'onboard_1'],
   ['text-info', 'You can also use functions built in R such as sqrt() or abs() to do mathematical operations.'],
   ['code', 'sqrt(16)'],
@@ -78,7 +77,7 @@ basic_math_content_one = [
 ]
 basic_math_content_two = [
   ['text', 'The same mathematical rules apply when it comes to order of operations.'],
-  ['text-success', 'Try the following and see what you get!'],
+  ['text-success', 'Try the following:'],
   ['code', '10 + 5 / 5'],
   ['quiz', 'onboard_2'],
   ['next_steps', nil]
@@ -107,6 +106,7 @@ quiz = ExactAnswerQuiz.create!(
   answer: "10",
   project: project,
   slide: basic_math_slide_one, 
+  question: 'Enter what you get below:',
 )
 
 quiz = ExactAnswerQuiz.create!(
@@ -114,6 +114,7 @@ quiz = ExactAnswerQuiz.create!(
   answer: "11",
   project: project,
   slide: basic_math_slide_two, 
+  question: 'What do you get?',
 )
 ################################################################################
 basic_assignment_content_one = [
@@ -193,14 +194,13 @@ basic_comparison_content_two = [
   ['code', 'true'],
 ]
 basic_comparison_content_three = [
-  ['text-success', 'What does the following code return?'],
+  ['text', "How about:"],
   ['code', 'TRUE + 1'],
   ['quiz', 'onboard_3'],
   ['text', "One more!"],
 ]
 
 basic_comparison_content_four = [
-  ['text-success', 'What does the following code return?'],
   ['code', 'FALSE == 0'],
   ['quiz', 'onboard_4'],
   ['text-danger', 'Remember that we compare via "==" and assign via "="'],
@@ -241,6 +241,7 @@ quiz = ExactAnswerQuiz.create!(
   answer:"2",
   project: project,
   slide: basic_math_slide_three,
+  question: 'What did the above code return?',
 )
 
 quiz = ExactAnswerQuiz.create!(
@@ -248,6 +249,7 @@ quiz = ExactAnswerQuiz.create!(
   answer:"TRUE",
   project: project,
   slide: basic_math_slide_four,
+  question: 'What did the above code return?',
 )
 
 ################################################################################

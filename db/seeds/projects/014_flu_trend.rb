@@ -76,7 +76,6 @@ cleaning_content_one = [
   ['text', "We'll see what kind of columns we have."],
   ['code', 'names(rawFluData) #Headers to the data.'],
   ['code', "head(rawFluData)"],
-  ['text-warning', "How many countries do we have data for?"],
   ['quiz', "ft_clean_1"],
   ['text', "Often times, date and time are read as strings or characters. Let's check."],
   ['code', 'class(head(rawFluData$Date))'],
@@ -88,7 +87,6 @@ cleaning_content_two = [
   ['text', 'Try the following:'],
   ['code', 'help(as.Date)'],
   ['code', 'class(as.Date("2014-03-01"))'],
-  ['text-warning', "What class did it return? Omit any quotes."],
   ['quiz', 'ft_clean_0'],
   ['text', "We'll save the result back into the column (overwriting it)."],
   ['code', 'rawFluData$Date = as.Date(rawFluData$Date, "%Y-%m-%d")'],
@@ -118,6 +116,7 @@ quiz = ExactAnswerQuiz.create!(
   answer:"28",
   project: project,
   slide: cleaning_slide_one,
+  question: "How many countries do we have data for?",
 )
 
 quiz = ExactAnswerQuiz.create!(
@@ -125,6 +124,7 @@ quiz = ExactAnswerQuiz.create!(
   answer:"Date",
   project: project,
   slide: cleaning_slide_two,
+  question: "What class did it return? Omit any quotes.",
 )
 
 ############### Plotting ##############
@@ -150,7 +150,6 @@ plotting_content_two = [
   ['text', 'This occurs up to about year 2005 and could be problematic.'],
   ['text', 'Could there be more more missing data?'],
   ['text-danger', "If we ignore the missing data, it'll surely invalidate some of our other analyses."],
-  ['text-warning', "Which of the 3 countries seems to have the highest raw number of reported flu cases?"],
   ['quiz', 'ft_plot_1'],
   ['next_steps'],
 ]
@@ -178,6 +177,7 @@ quiz = ExactAnswerQuiz.create!(
   answer:"Canada",
   project: project,
   slide: plotting_data_slide_two,
+  question: "Which of the 3 countries seems to have the highest raw number of reported flu cases?",
 )
 
 ################################################################################
@@ -216,7 +216,6 @@ analysis_missing_content_one = [
   ]
 
 analysis_missing_content_two = [
-  ['text', "What do you call a function without a name? Try googling 'nameless functions'."],
   ['quiz', "ft_missing_0"],
   ['text', "The previous function accepts an x (in this case a row in the form of a vector), which we feed into is.na()."],
   ['text-success', "is.na(x) will convert the given row into a vector of True/Fase depending on if the value is NA."],
@@ -267,6 +266,7 @@ quiz = ExactAnswerQuiz.create!(
   answer:"Anonymous Function",
   project: project,
   slide: analysis_missing_slide_two,
+  question: "What do you call a function without a name? Try googling 'nameless functions'.",
 )
 
 ############### Removal (Missing Data) ##############
@@ -290,7 +290,6 @@ remove_missing_content_two = [
   ['text-success', 'This looks like a decent piece of data to fit a time series model (As of our current date, June 2014).'],
   ['text', 'The first few things we have to do is remove seasonality and de-trend the data.'],
   ['text', "There doesn't actually seem to be any strong trend with our data (thank goodness), so we'll concentrate on removing seasonality."],
-  ['text-warning', "How many large spikes of flu outbreaks do you see?"],
   ['quiz', 'ft_2'],
   ['next_steps', ''],
 ]
@@ -318,6 +317,7 @@ quiz = ExactAnswerQuiz.create!(
   answer:"2",
   project: project,
   slide: remove_missing_slide_two,
+  question: "How many large spikes of flu outbreaks do you see?",
 )
 
 ################################################################################
@@ -349,7 +349,6 @@ time_series_setup_content_one = [
   ['text-success', "In R, we do differencing using the diff() function."],
   ['code', 'help(diff)'],
   ['code', 'diff(c(1,2,5,10))'],
-  ['text-warning', "How many values remain after the previous diff()?"],
   ['quiz', 'ft_3'],
   ['text', "Try constructing a few other vectors and apply differencing."],
 ]
@@ -358,12 +357,10 @@ time_series_setup_content_two = [
   ['text', "Additionally we'll be using the acf() function to evaluate the data."],
   ['text-success', "acf() returns the estimates for auto-covariance function, which can be plotted to evaluate the data."],
   ['code', 'help(acf)'],
-  ['text', "In the ACF's Help screen, how many different values are allowed for the 'type' paremeter?"],
   ['quiz', "ft_setup_0"],
 ]
 
 time_series_setup_content_three = [
-  ['text', "In the ACF's Help screen, what is the default value for the 'type' parameter?"],
   ['quiz', "ft_setup_1"],
   ['text', 'The idea behind differencing is to reduce the data to white-noise, which should have ACF below the dotted blue line in the plot (you\'ll see this soon).'],
   ['text-info', 'Moreover, your ACF should also lack pattern and appear random.'],
@@ -420,6 +417,7 @@ quiz = ExactAnswerQuiz.create!(
   answer: "3",
   project: project,
   slide: time_series_setup_slide,
+  question: "How many values remain after the previous diff()?",
 )
 
 quiz = ExactAnswerQuiz.create!(
@@ -427,6 +425,7 @@ quiz = ExactAnswerQuiz.create!(
   answer: "3",
   project: project,
   slide: time_series_setup_slide_two,
+  question: "In the ACF's Help screen, how many different values are allowed for the 'type' paremeter?",
 )
 
 quiz = ExactAnswerQuiz.create!(
@@ -434,6 +433,7 @@ quiz = ExactAnswerQuiz.create!(
   answer: "correlation",
   project: project,
   slide: time_series_setup_slide_three,
+  question: "In the ACF's Help screen, what is the default value for the 'type' parameter?",
 )
 
 ############### Diferencing ##############
@@ -598,7 +598,6 @@ time_series_differencing_content_two = [
 time_series_differencing_content_three = [
   ['text-info', "We also do additional parameter tweaking based on AIC score to arrive at our parameters."],
   ['link', "http://www.brianomeara.info/tutorials/aic"],
-  ['text', "What does AIC stand for?"],
   ['quiz', "ft_build_0"],
   ['code', 'flu_arima'],
   ['code', 'flu_arima$aic'],
@@ -638,6 +637,7 @@ quiz = ExactAnswerQuiz.create!(
   answer:"Akaike information criterion",
   project: project,
   slide: time_series_differencing_slide_three,
+  question: "What does AIC stand for?",
 )
 
 ############### Predicting via ARIMA ##############
@@ -648,7 +648,6 @@ arime_prediction_content_one = [
   ['code', 'flu_fcast = predict(flu_arima, n.ahead = ahead)'],
   ['code', 'class(flu_fcast) #Check what is returned'],
   ['code', 'flu_fcast'],
-  ['text-warning', "What class is flu_fcast?"],
   ['quiz', "ft_prediction_0"],
   ['text', "Now we'll construct new x-y series to visualize."],
   ['text-success', "Note that we will generate the x-variables via seq() function."],
@@ -709,6 +708,7 @@ quiz = ExactAnswerQuiz.create!(
   answer:"list",
   project: project,
   slide: arime_prediction_slide,
+  question: "What class is flu_fcast?",
 )
 ############### Predicting via ARIMA ##############
 
@@ -720,7 +720,6 @@ arime_evaluation_content_one = [
   ['text', "We'll also look at tsdiag(), which is essentially a diagnostic of the model:"],
   ['code', "help(tsdiag)"],
   ['code', 'tsdiag(flu_arima, gof.lag=400)'],
-  ['text-warning', "How many plots did tsdiag() produce?"],
   ['quiz', 'ft_evaluation_0'],
 ]
 
@@ -761,6 +760,7 @@ quiz = ExactAnswerQuiz.create!(
   answer:"3",
   project: project,
   slide: arime_evaluation_slide,
+  question: "How many plots did tsdiag() produce?",
 )
 ################################################################################
 ##############  Conclusion  ####################################################

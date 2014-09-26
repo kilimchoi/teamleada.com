@@ -76,6 +76,7 @@ TeamLeada::Application.routes.draw do
 
     resources :project_submissions, path: "submissions", only: [:index]
 
+    match "charts/category/active-users",        to: "pages#active_users_charts",       as: :active_users_charts,       via: :get
     match 'charts/category/realtime',            to: "pages#realtime_charts",           as: :realtime_charts,           via: :get
     match 'charts/category/page-views',          to: "pages#page_view_charts",          as: :page_view_charts,          via: :get
     match 'charts/category/growth',              to: "pages#growth_charts",             as: :growth_charts,             via: :get

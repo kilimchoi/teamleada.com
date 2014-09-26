@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
   def edit_profile
     @user = current_user
+    @is_editing = true
 
     @edit_about_form = EditAboutForm.new(@user)
     @edit_job_experience_form = EditJobExperienceForm.new(@user)

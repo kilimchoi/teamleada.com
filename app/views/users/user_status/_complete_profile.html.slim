@@ -1,0 +1,24 @@
+// Required Variables:
+// user
+
+ul.plain-list.profile-completion-status
+  li class="text-#{user.has_filled_in_personal_info? ? 'success' : 'danger'}"
+    span.glyphicon class="glyphicon-#{user.has_filled_in_personal_info? ? 'ok' : 'remove'}"
+    span.tight-left-margin Personal Info
+
+  li class="text-#{user.has_filled_in_job_preferences? ? 'success' : 'danger'}"
+    span.glyphicon class="glyphicon-#{user.has_filled_in_job_preferences? ? 'ok' : 'remove'}"
+    span.tight-left-margin Job Preferences
+
+  li class="text-#{user.has_filled_in_education? ? 'success' : 'danger'}"
+    span.glyphicon class="glyphicon-#{user.has_filled_in_education? ? 'ok' : 'remove'}"
+    span.tight-left-margin Education
+
+  li class="text-#{user.has_filled_in_experience? ? 'success' : 'danger'}"
+    span.glyphicon class="glyphicon-#{user.has_filled_in_experience? ? 'ok' : 'remove'}"
+    span.tight-left-margin Experience
+
+  li class="text-#{user.has_resume? ? 'success' : 'danger'}"
+    span.glyphicon class="glyphicon-#{user.has_resume? ? 'ok' : 'remove'}"
+    span.tight-left-margin Resume
+

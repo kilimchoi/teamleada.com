@@ -149,7 +149,6 @@ data_matching_content_two = [
 
 data_matching_content_three = [
   ['text','Based on your assumptions, you should have achieved a number of observations in a finite range'],
-  ['text', 'Check your work by submitting the number of matches you achieved:'],
   ['quiz', 'match_quiz'],
   ['finish_project_button','http://www.surveygizmo.com/s3/1811239/Project-Feedback-v2'],
 ]
@@ -184,6 +183,7 @@ quiz = NumericRangeQuiz.create!(
   upper_bound: 445.0,
   project: project,
   slide: data_matching_slide_two,
+  question: 'Check your work by submitting the number of matches you achieved:',
 )
 
 data_matching_context = SubmissionContext.create!(
