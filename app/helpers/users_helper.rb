@@ -52,6 +52,7 @@ module UsersHelper
       linkedin_confirmed_at:       Time.now,
       linkedin_updated_at:         Time.now,
       password:                    Devise.friendly_token[0,20],
+      role:                        "student",
     )
 
     user.update(
