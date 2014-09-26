@@ -11,7 +11,7 @@
     .row
       .col-md-12
         = render partial: "users/profile/projects",          locals: { user: user, is_company: is_company }
-        = render partial: "users/profile/project_stats",     locals: { user: user }
+        /= render partial: "users/profile/project_stats",     locals: { user: user }
         = render partial: "users/profile/badges",            locals: { user: user }
         = render partial: "users/profile/connections",       locals: { user: user }
 
