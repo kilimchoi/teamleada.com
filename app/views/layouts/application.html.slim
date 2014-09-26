@@ -45,15 +45,7 @@ html
           = render partial: "projects/sidebar", locals: {project: @step.main_lesson.project}
           = render partial: "projects/right_sidebar", locals: {item: @step}
 
-      - if is_admin_namespace?
-        .container-fluid.full-container
-          .row
-            .col-md-2
-              = render partial: "admin/shared/admin_sidebar"
-            .col-md-10
-              = yield
-
-      - elsif is_company_namespace?
+      - if is_company_namespace?
         .container-fluid.full-container
           .row
             .col-md-2
