@@ -1,11 +1,10 @@
-.container.full-container
-  .row
-    .col-md-2
-      = render partial: "users/settings_sidebar"
-    .col-md-10
-      .card-container
-        .settings-container.card
-          - if valid_settings_tab? params[:tab]
-            = render partial: "users/settings_#{params[:tab]}"
-          - else
-            = render partial: "users/settings_account"
+.row
+  .col-md-2
+    = render partial: "users/settings_sidebar"
+  .col-md-10
+    .card-container
+      .settings-container.card
+        - if valid_settings_tab? params[:tab]
+          = render partial: "users/settings_#{params[:tab]}"
+        - else
+          = render partial: "users/settings_account"

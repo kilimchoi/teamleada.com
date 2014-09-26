@@ -1,0 +1,24 @@
+// Required Variables:
+// user
+
+- info = get_yaml_data_file("user_steps.yml")
+
+- if signed_in? && current_user == user
+  ul.card-group.list-group.sidebar-top-margin.user-status.card.card-no-padding
+    - info.steps.each_with_index do |step, index|
+      - if user.user_status == index + 1 # Active step
+        li.list-group-item.no-side-border.active
+          .sidebar-list-item-header
+            span.sidebar-list-item-label = index + 1
+            span.sidebar-list-item-title = step.title
+          .sidebar-list-item-content
+            .sidebar-list-item-text
+              = step.description
+            .sidebar-list-item-extra-content
+              = render partial: "users/user_status/#{step.partial}", locals: { user: user }
+      - else
+        li.list-group-item.no-side-border.not-active.has-tooltip data-toggle="tooltip" data-placement="left" title="#{step.description}"
+          .sidebar-list-item-header
+            span.sidebar-list-item-label = index + 1
+            span.sidebar-list-item-title = step.title
+

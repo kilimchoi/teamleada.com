@@ -1,0 +1,8 @@
+// Required Variables:
+// user
+
+ul.plain-list.get-interviews-status
+  li class="text-#{user.has_received_interview_request? ? 'success' : 'danger'}"
+    span.glyphicon class="glyphicon-#{user.has_received_interview_request? ? 'ok' : 'remove'}"
+    span.tight-left-margin Received an Interview Request
+

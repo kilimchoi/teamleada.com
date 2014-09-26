@@ -391,3 +391,20 @@ ul.plain-list {
   }
 }
 
+.no-border {
+  border: none;
+  @include border-radius(0);
+  @include border-corner-radius(0);
+}
+
+.no-side-border {
+  @include border-radius(0);
+  @include border-corner-radius(0);
+  border-left: none;
+  border-right: none;
+}
+
+.tight-left-margin {
+  margin-left: 10px;
+}
+

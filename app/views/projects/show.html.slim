@@ -94,13 +94,15 @@
                                 li.flat-button.step-button.not-completed-item
                                   = lesson.title
                     - else
-                      h2 Status
-                      p.large-font
-                        ' You started this project on
-                        = @project_status.display_start_date
-                      p.large-font
-                        ' Your due date was
-                        = @project_status.display_end_date
+                      .row.card
+                        .col-md-12
+                          h2 Status
+                          p.large-font
+                            ' You started this project on
+                            = @project_status.display_start_date
+                          p.large-font
+                            ' Your due date was
+                            = @project_status.display_end_date
                   - else
                     #access-code-container
                       .row.card

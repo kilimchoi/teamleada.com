@@ -1,6 +1,6 @@
 .announcement-alert.alert.alert-info.alert-left-align
   ' Messaging is an experimental feature. Right now, you can contact Leada employees with anything that you want. We will be releasing new projects by sending a personal message to you! You can disable email notifications in
-  = link_to "settings.", edit_user_path(tab: "email")
+  = link_to "settings.", settings_user_path(current_user, tab: "email")
   ul
     li
       | Tristan: Issues regarding data challenges and lessons.

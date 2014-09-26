@@ -1,0 +1,32 @@
+- user = @user
+- is_editing = @is_editing || false
+- is_admin = @user.is_admin? || false
+- is_company = @user.is_company? || false
+
+- current_user_can_edit = current_user == user
+
+= yield :before_container
+.container-fluid.full-container
+  .row
+    .col-md-8.col-md-offset-1
+
+      .container-fluid.full-container
+        .row
+          .col-md-12
+            .user-container.card-container
+              = render partial: "users/profile/top_header_info", locals: { \
+                user: user,
+                is_editing: is_editing,
+                is_admin: is_admin,
+                is_company: is_company,
+                current_user_can_edit: current_user_can_edit,
+              }
+
+              = render partial: "users/profile/navigation", locals: { user: user }
+
+        = yield
+    .col-md-2
+      = render partial: "users/user_right_sidebar", locals: { user: user }
+
+
+= parent_layout "application"

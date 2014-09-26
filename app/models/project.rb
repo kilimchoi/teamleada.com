@@ -70,13 +70,14 @@ class Project < ActiveRecord::Base
 
   scope :newest_first, -> { order("uid DESC") }
   scope :displayable, -> { where(uid: Project.displayable_ids) }
+  scope :displayable_for_user, -> (user) { where(uid: Project.displayable_for_user_ids(user)) }
 
   scope :grants_project_access, -> { where(grants_project_access: true) }
 
   # Scope by type
-  scope :data_challenges, -> { where(category: CHALLENGE) }
-  scope :data_lessons,    -> { where(category: LESSON) }
-  scope :coming_soon,     -> { where(category: COMING_SOON) }
+  scope :data_challenges, -> { enabled.where(category: CHALLENGE) }
+  scope :data_lessons,    -> { enabled.where(category: LESSON) }
+  scope :coming_soon,     -> { enabled.where(category: COMING_SOON) }
 
   default_scope -> { order(:uid) }
 
@@ -118,6 +119,16 @@ class Project < ActiveRecord::Base
   class << self
     def displayable_ids
       Project.all.select { |project| !project.is_part_of_set? || (project.is_part_of_set? && project.is_first_part_of_set?) }.map(&:uid)
+    end
+
+    def displayable_for_user_ids(user)
+      if user.nil?
+        displayable_ids
+      else
+        Project.all.select do |project|
+          !user.completed_project?(project) && (!project.is_part_of_set? || (project.is_part_of_set? && user.completed_prerequisites_for_project(project)))
+        end.map(&:uid)
+      end
     end
 
     def random_set_of_colors(amount)
