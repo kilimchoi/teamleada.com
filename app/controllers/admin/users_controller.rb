@@ -1,6 +1,6 @@
 class Admin::UsersController < Admin::BaseController
   load_and_authorize_resource
-  layout "admin/users", except: [:index]
+  layout Proc.new { ["index"].include?(action_name) ? "admin" : "admin/users" }
 
   helper_method :sort_column, :sort_direction
 
