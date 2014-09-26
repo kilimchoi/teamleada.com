@@ -12,7 +12,7 @@ h1 Use an Access Code Here:
     | Sign in to use it!
   .button-container
     .sign-in-button-container
-      = link_to "Sign In", new_user_session_path, class: "flat-button"
+      = link_to "Log In", new_user_session_path, class: "flat-button"
     .sign-up-button-container
-      = link_to "Sign Up", new_user_registration_path, class: "flat-button"
+      = link_to "Sign Up", omniauth_authorize_path("user", "linkedin"), class: "flat-button"
 
