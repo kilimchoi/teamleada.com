@@ -1,13 +1,14 @@
 # == Schema Information
 #
-# Table name: quiz_submissions
+# Table name: quiz_submission_contents
 #
-#  id               :integer          not null, primary key
-#  user_id          :integer
-#  quiz_id          :string(255)
-#  submitted_answer :string(255)
-#  created_at       :datetime
-#  updated_at       :datetime
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  quiz_id    :string(255)
+#  content    :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#  quiz_type  :string(255)
 #
 
 class QuizSubmissionContent < GeneralSubmissionContent

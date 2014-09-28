@@ -12,6 +12,8 @@
 #  multiple_choices :text
 #  lower_bound      :decimal(10, 5)
 #  upper_bound      :decimal(10, 5)
+#  slide_id         :string(255)
+#  question         :text
 #
 
 class NumericRangeQuiz < Quiz
