@@ -1,8 +1,9 @@
-.wrapper-container
-  .main-content.main-content-left
-    .container-fluid.full-container.card-container
-      = yield
-
-  = render partial: "interview_questions/interview_questions_sidebar", locals: { interview_questions: @interview_questions }
+.container-fluid.full-container
+  .row
+    .col-md-8.col-md-offset-1
+      .card-container
+        = yield
+    .col-md-2
+      = render partial: "interview_questions/interview_questions_sidebar", locals: { interview_questions: @interview_questions }
 
 = parent_layout "application"
