@@ -65,6 +65,14 @@
   }
 }
 
+.card-group.card-group-small-header {
+  .list-group-item.active {
+    .sidebar-list-item-header {
+      margin-bottom: 10px;
+    }
+  }
+}
+
 .sidebar-top-margin {
   margin-top: 10px;
 }
@@ -76,5 +84,10 @@
 .sidebar-list-item-timestamp {
   color: #a9a9a9;
   font-weight: 300;
+}
+
+.sidebar-content-row {
+  margin-top: 3px;
+  margin-bottom: 3px;
 }
 
