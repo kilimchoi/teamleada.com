@@ -8,9 +8,22 @@ ul.card-group.list-group.sidebar-top-margin.card.card-no-padding
         li.list-group-item.no-side-border.active
           .sidebar-list-item-header
             span.sidebar-list-item-title = interview_question.title
+            span.sidebar-list-item-timestamp.pull-right
+              = time_ago_in_words(interview_question.posted_at)
+              |  ago
           .sidebar-list-item-content
-            .sidebar-list-item-text
-              ' Difficulty Level:
-              = interview_question.difficulty_level
             .sidebar-list-item-extra-content
+              .sidebar-content-difficulty-level
+                span.label.label-danger
+                  ' Difficulty Level:
+                  = interview_question.difficulty_level
+              .sidebar-content-tags
+                strong Tags:
+                span.label.label-info MapReduce
+                span.label.label-info T Test
+              .sidebar-content-category
+                strong Category:
+                span.label.label-success Data Science
+
+
 
