@@ -1,0 +1,10 @@
+// Required Variables
+// interview_question
+
+= simple_form_for @interview_question_submission_form, url: submit_interview_question_path, html: { class: "inline-profile-form" } do |f|
+  .form-inputs
+    = f.collection_radio_buttons :content, interview_question.multiple_choices, :to_s, :to_s, item_wrapper_class: "form-radio-button", item_wrapper_tag: :div
+  .form-actions
+    = f.submit "Submit", class: "edit-form-save-button"
+    /= link_to "Cancel", cancel_update_user_path, method: :post, remote: true, class: "edit-form-cancel-button"
+
