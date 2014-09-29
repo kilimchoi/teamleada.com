@@ -4,7 +4,7 @@
 #
 #  id             :integer          not null, primary key
 #  name           :string(255)
-#  taggings_count :integer
+#  taggings_count :integer          default(0), not null
 #  created_at     :datetime
 #  updated_at     :datetime
 #

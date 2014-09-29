@@ -11,6 +11,7 @@
 #  created_at       :datetime
 #  updated_at       :datetime
 #  uid              :integer          not null, primary key
+#  multiple_choices :text
 #
 
 require 'spec_helper'

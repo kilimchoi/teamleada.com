@@ -11,6 +11,7 @@
 #  created_at       :datetime
 #  updated_at       :datetime
 #  uid              :integer          not null, primary key
+#  multiple_choices :text
 #
 
 class InterviewQuestion < ActiveRecord::Base
@@ -18,6 +19,7 @@ class InterviewQuestion < ActiveRecord::Base
 
   enum industry: [ :data_science ]
   enum question_type: [ :free_response, :code, :multiple_choice ]
+  serialize :multiple_choices
 
   has_many :interview_question_submissions
   has_many :users, through: :interview_question_submissions
