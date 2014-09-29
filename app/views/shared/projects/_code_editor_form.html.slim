@@ -1,0 +1,19 @@
+// Required Variables
+// form
+
+.code-viewer-container[id="code-submission"]
+  javascript:
+    var editor;
+    $(document).ready(function() {
+      editor = ace.edit("code-submission");
+      editor.getSession().setUseWrapMode(true);
+      editor.setShowPrintMargin(false);
+      editor.setTheme("ace/theme/github");
+      editor.setValue("", -1);
+    });
+
+    submitForm = function() {
+      var textarea = $("#hidden-code-textarea");
+      textarea.val(editor.getSession().getValue());
+    }
+
