@@ -1,6 +1,6 @@
 class InterviewQuestionsController < ApplicationController
   load_and_authorize_resource :interview_question
-  before_filter :load_interview_questions
+  before_filter :load_interview_questions, only: [:index, :show]
 
   def index
   end
