@@ -32,7 +32,7 @@ class InterviewQuestion < ActiveRecord::Base
 
   class << self
     def displayable_ids_for_user(user)
-      [0, 1, 2]
+      InterviewQuestion.select { |interview_question| !user.has_submission_for_interview_question?(interview_question) }.map(&:uid)
     end
   end
 
