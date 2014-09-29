@@ -4,6 +4,6 @@
 ul.card-group.list-group.sidebar-top-margin.card.card-no-padding.card-group-small-header
   - unless interview_questions.nil?
     - interview_questions.each do |interview_question|
-      li.list-group-item.no-side-border.active
+      li.list-group-item.no-side-border.sidebar-block-item class="#{'active-block-item' if @interview_question == interview_question}"
         = render partial: "interview_questions/interview_question_block", locals: { interview_question: interview_question }
 
