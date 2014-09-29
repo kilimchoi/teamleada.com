@@ -1,5 +1,5 @@
 InterviewQuestion.create!(
-  uid: 0,
+  uid: 3,
   title: "Boy or Girl?",
   difficulty_level: 6,
   question: "In a family with 2 children, if you're told that one of the children is a girl, what is the probability that they're both girls?",
@@ -9,7 +9,7 @@ InterviewQuestion.create!(
 )
 
 InterviewQuestion.create!(
-  uid: 1,
+  uid: 4,
   title: "Text Mining",
   difficulty_level: 3,
   question: "What is an N-Gram in the context of text mining?",
@@ -19,7 +19,7 @@ InterviewQuestion.create!(
 )
 
 InterviewQuestion.create!(
-  uid: 2,
+  uid: 5,
   title: "Basic Stats with Hadoop",
   difficulty_level: 7,
   question: "How would you leverage Hadoop to find the median of 1 trillion numbers?",
@@ -29,7 +29,7 @@ InterviewQuestion.create!(
 )
 
 InterviewQuestion.create!(
-  uid: 3,
+  uid: 6,
   title: "PCA",
   difficulty_level: 7,
   question: "How does Principle Component Analysis, and how is it used?",
@@ -39,7 +39,7 @@ InterviewQuestion.create!(
 )
 
 InterviewQuestion.create!(
-  uid: 4,
+  uid: 7,
   title: "Brain Teaser",
   difficulty_level: 9,
   question: "Imagine you're an ant starting at a vertex on a cube. If you begin embarking on a random walk, what is the expected number of edges that you will taaverse, before you've visited all the vertices?",
@@ -49,7 +49,7 @@ InterviewQuestion.create!(
 )
 
 InterviewQuestion.create!(
-  uid: 5,
+  uid: 8,
   title: "Classmates",
   difficulty_level: 8,
   question: "Say you're in a classroom with 50 people. Which of the following is the closest to the probability that there is another person with the same birthday as you?",
@@ -66,7 +66,7 @@ InterviewQuestion.create!(
 )
 
 InterviewQuestion.create!(
-  uid: 6,
+  uid: 9,
   title: "Balls",
   difficulty_level: 7,
   question: "There are 2 bags. One has 2 blue balls, the other has 1 blue, 1 yellow. You randomly pick a bag, and followed by a ball from the bag. The ball is blue. What is the probability that the 2nd ball from the bag is blue?",
@@ -76,7 +76,7 @@ InterviewQuestion.create!(
 )
 
 InterviewQuestion.create!(
-  uid: 7,
+  uid: 10,
   title: "Trade-offs",
   difficulty_level: 7,
   question: "Explain the Bias-Variance tradeoff, and what that means for Data Scientists.",
@@ -86,7 +86,7 @@ InterviewQuestion.create!(
 )
 
 InterviewQuestion.create!(
-  uid: 8,
+  uid: 11,
   title: "Assumptions",
   difficulty_level: 7,
   question: "Explain the assumptions made under the Standard Linear Regression models.",
