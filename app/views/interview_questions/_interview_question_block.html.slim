@@ -1,0 +1,24 @@
+// Required Variables
+// interview_question
+
+= link_to interview_question_path(interview_question) do
+  .sidebar-list-item-header
+    span.sidebar-list-item-title = interview_question.title
+    span.sidebar-list-item-timestamp.pull-right
+      = time_ago_in_words(interview_question.posted_at)
+      |  ago
+.sidebar-list-item-content
+  .sidebar-list-item-extra-content
+    .sidebar-content-row.sidebar-content-difficulty-level
+      span.label.label-danger
+        ' Difficulty Level:
+        = interview_question.difficulty_level
+    .sidebar-content-row.sidebar-content-tags
+      strong Tags:
+      - interview_question.tags.each do |tag|
+        span.label.label-info.label-tag = tag.name
+    .sidebar-content-row.sidebar-content-category
+      strong Category:
+      span.label.label-success.label-category = interview_question.industry.titleize
+
+
