@@ -55,3 +55,23 @@ statricks_project_2 = Project.find_by(uid: 27)
 company_project_1 = CompanyProject.where(project: statricks_project_1, company: statricks).first_or_create
 company_project_2 = CompanyProject.where(project: statricks_project_2, company: statricks).first_or_create
 
+rnc = Company.where(url: "republican-national-committee").first_or_create
+rnc.update!(
+  name: "Republican National Committee",
+  verified: true,
+  headline: "RNC is a U.S. political committee that provides national leadership for the Republican Party of the United States.",
+  location: "310 First Street SE, Washington, DC 20003 United States",
+  website: "https://www.gop.com/",
+  founded_date: Date.parse("June 17 1856"),
+  about: "RNC is responsible for developing and promoting the Republican political platform, as well as coordinating fundraising and election strategy. It is also responsible for organizing and running the Republican National Convention.",
+  looking_for: nil,
+  logo_image: "republican_national_committee.png",
+  cover_photo_image: "rnc_cover_photo.jpg",
+)
+
+rnc_project_1 = Project.find_by(uid: 21)
+rnc_project_2 = Project.find_by(uid: 32)
+rnc_project_3 = Project.find_by(uid: 33)
+company_project_1 = CompanyProject.where(project: rnc_project_1, company: rnc).first_or_create
+company_project_2 = CompanyProject.where(project: rnc_project_2, company: rnc).first_or_create
+company_project_3 = CompanyProject.where(project: rnc_project_3, company: rnc).first_or_create
