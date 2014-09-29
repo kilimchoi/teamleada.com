@@ -1,0 +1,20 @@
+.container-fluid.full-container.card-container
+  .row.card
+    .col-md-12
+      h1 Interview Question Submissions
+
+  .row.card
+    .col-md-12
+      = will_paginate @interview_question_submissions
+      table.table.table-striped
+        th Link
+        th User
+        th Email
+        th Submitted At
+        - @interview_question_submissions.each do |interview_question_submission|
+          tr
+            td = link_to "View", admin_interview_question_submission_path(interview_question_submission)
+            td = link_to interview_question_submission.user.name, admin_user_path(interview_question_submission.user)
+            td = interview_question_submission.user.email
+            td = interview_question_submission.created_at.pretty_time
+

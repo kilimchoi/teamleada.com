@@ -75,6 +75,7 @@ TeamLeada::Application.routes.draw do
     end
 
     resources :project_submissions, path: "submissions", only: [:index]
+    resources :interview_question_submissions, path: "interview-question-submissions", only: [:show, :index]
 
     match "charts/category/active-users",        to: "pages#active_users_charts",       as: :active_users_charts,       via: :get
     match 'charts/category/realtime',            to: "pages#realtime_charts",           as: :realtime_charts,           via: :get
