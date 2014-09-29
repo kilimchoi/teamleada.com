@@ -110,7 +110,7 @@ normalization_content_one = [
   ['text', "You assume that the variance can be explained by the differences in populations between regions."],
   ['text', "To test your intuition, you decide to normalize the campaign data by population size."],
   ['text', "After some Googling, you end up with you the following US Census population data (2010)."],
-  ['link-fail', "link to the data."],
+  ['link', "https://s3.amazonaws.com/leada/candidate_disbursement_data_project/2010_census_populatino_by_zipcode.csv"],
   ['text', "Equipped with this additional data, you begin your analysis."],
 ]
 
