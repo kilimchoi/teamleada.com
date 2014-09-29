@@ -132,7 +132,7 @@ data_correlation_content_two = [
 ]
 
 data_correlation_content_three = [
-  ['text', "Also submit an image of your analysis plot."],
+  ['text', "Keep your submission count to under 3 images."],
   ['image_submit', ""],
   ['text-warning', "Note that the image will eventually be part of your profile for other users to view."],
   ['next_steps', ""],
@@ -214,7 +214,7 @@ conclusion_content = [
 
 conclusion_lesson = Lesson.create!(
   title: "Conclusion",
-  lesson_id: 3,
+  lesson_id: 2,
   project: project,
 )
 
