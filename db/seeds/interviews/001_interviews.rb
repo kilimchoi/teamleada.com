@@ -56,6 +56,13 @@ InterviewQuestion.create!(
   posted_at: DateTime.parse("September 23, 2014 12:00:00 PM"),
   industry: InterviewQuestion.industries[:data_science],
   question_type: InterviewQuestion.question_types[:multiple_choice],
+  multiple_choices: [
+    "0.15",
+    "0.35",
+    "0.55",
+    "0.75",
+    "0.95",
+]
 )
 
 InterviewQuestion.create!(
@@ -88,4 +95,4 @@ InterviewQuestion.create!(
   question_type: InterviewQuestion.question_types[:free_response],
 )
 
-  #question_type: InterviewQuestion.question_types[:multiple_choice],
+#question_type: InterviewQuestion.question_types[:multiple_choice],
