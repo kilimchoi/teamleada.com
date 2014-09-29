@@ -98,7 +98,7 @@ class ProjectsController < ApplicationController
     @project_status = ProjectStatus.find_by(user: current_user, project: @project)
     if current_user.completed_points(@project) >= @project.total_points
       @project_status.mark_complete
-      flash[:info] = "Congratulations! You have completed the #{@project.title} project!"
+      flash[:info] = "Congratulations! You have completed the #{@project.title} project! Check back on the company page to see more projects!"
       redirect_to @project
     else
       flash[:error] = "You have not completed all of the lessons, steps, and code submissions for this project!"
