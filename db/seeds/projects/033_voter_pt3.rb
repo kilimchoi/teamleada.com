@@ -110,7 +110,7 @@ normalization_content_one = [
   ['text', "You assume that the variance can be explained by the differences in populations between regions."],
   ['text', "To test your intuition, you decide to normalize the campaign data by population size."],
   ['text', "After some Googling, you end up with you the following US Census population data (2010)."],
-  ['link-fail', "link to the data."],
+  ['link', "http://bit.ly/1vqnyMu"],
   ['text', "Equipped with this additional data, you begin your analysis."],
 ]
 
