@@ -1,0 +1,13 @@
+// Required Variables
+// interview_question
+
+= simple_form_for @interview_question_submission_form, url: submit_interview_question_path, html: { class: "inline-profile-form" } do |f|
+  .form-inputs
+    = f.input :content, as: :text,
+                        label: "Response",
+                        placeholder: "Type your response here...",
+                        input_html: { rows: 8 }
+  .form-actions
+    = f.submit "Submit", class: "edit-form-save-button"
+    /= link_to "Cancel", cancel_update_user_path, method: :post, remote: true, class: "edit-form-cancel-button"
+

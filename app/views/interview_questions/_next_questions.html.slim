@@ -1,0 +1,29 @@
+// Required Variables:
+// interview_questions
+
+ul.card-group.list-group.sidebar-top-margin.card.card-no-padding.card-group-small-header
+  - unless interview_questions.nil?
+    - interview_questions.each do |interview_question|
+      li.list-group-item.no-side-border.active
+        = link_to interview_question_path(interview_question) do
+          .sidebar-list-item-header
+            span.sidebar-list-item-title = interview_question.title
+            span.sidebar-list-item-timestamp.pull-right
+              = time_ago_in_words(interview_question.posted_at)
+              |  ago
+        .sidebar-list-item-content
+          .sidebar-list-item-extra-content
+            .sidebar-content-row.sidebar-content-difficulty-level
+              span.label.label-danger
+                ' Difficulty Level:
+                = interview_question.difficulty_level
+            .sidebar-content-row.sidebar-content-tags
+              strong Tags:
+              span.label.label-info.label-tag MapReduce
+              span.label.label-info.label-tag T Test
+            .sidebar-content-row.sidebar-content-category
+              strong Category:
+              span.label.label-success.label-category Data Science
+
+
+

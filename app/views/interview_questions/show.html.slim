@@ -1,0 +1,11 @@
+.row.card
+  .col-md-12
+    h1
+      | Data Science
+      '  /
+      = @interview_question.title
+
+.row.card
+  .col-md-12
+    h1.title = @interview_question.question
+    = render partial: "interview_questions/forms/" + @interview_question.question_type, locals: { interview_question: @interview_question }

@@ -1,0 +1,9 @@
+// Required Variables:
+// interview_questions
+
+.sidebar
+  = render partial: "interview_questions/next_questions", locals: { interview_questions: interview_questions }
+  = render partial: "interview_questions/by_category",    locals: {}
+  = render partial: "interview_questions/by_tag",         locals: {}
+  = render partial: "interview_questions/user_stats",     locals: {}
+
