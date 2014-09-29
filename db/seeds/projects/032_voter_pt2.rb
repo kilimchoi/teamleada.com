@@ -174,8 +174,8 @@ anova_response_context = SubmissionContext.create!(
 
 conclusion_content = [
   ['text-success', "Great!"],
-  ['text', "You've finished part 2 of analyzing the Candidate Disbursement Data."],
-  ['text', "Hopefully you're getting a better grast of the underlying insight."],
+  ['text', "You've finished part 2 of the Candidate Disbursement Data Analysis."],
+  ['text', "Hopefully you're getting a better grasp of the underlying insight."],
   ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
 
