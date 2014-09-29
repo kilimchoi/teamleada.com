@@ -208,7 +208,8 @@ report_submission_context = SubmissionContext.create!(
 
 conclusion_content = [
   ['text-success', "Great!"],
-  ['text', "You've finished analyzing Part 1 of the analysis on the Candidate Disbursement Data."],
+  ['text', "Now that you've gotten a taste for the data, let's move on."],
+  ['text-warning', "You've finished analyzing Part 1 of the analysis on the Candidate Disbursement Data."],
   ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
 
