@@ -13,5 +13,5 @@ statricks = ProjectSet.create(
 rnc = ProjectSet.create(
   uid: 2,
   title: "RNC: US Election Candidate Disbursement Data Analytics",
-  description: "his project will involve working with actual candidate disbursements data released in 2014. You're asked to conduct analysis on spending category, amount, and relative size.",
+  description: "A project sponsored by Republican National Committee. It involves working with actual candidate disbursements data released in 2014. You're asked to conduct analysis on spending category, amount, and relative size.",
 )
