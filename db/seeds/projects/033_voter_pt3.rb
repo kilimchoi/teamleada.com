@@ -1,8 +1,8 @@
 main_page_content = [
   ['text-info', "This is the last part to the challenge."],
   ['text', "Note that the context/intro section is the same as before."],
-  ['text', "You also get a new dataset on population to integrate into the existing dataset."], 
-  ['text-success', "You'll have the chance to write a conclusion for the project."],
+  ['text-warning', "You also get a new dataset about population to integrate into the existing dataset."],
+  ['text-success', "You'll have the chance to write a conclusion for the project series."],
 ]
 
 project = Project.create!(
@@ -180,7 +180,7 @@ conclusion_content = [
   ['text-success', "Great!"],
   ['text', "You've finished analyzing the Candidate Disbursement Data."],
   ['text', "Hopefully you now have a better sense of how the 2014 candidate disbursement happened."],
-  ['text-info', "Write any conclusion you drew from the project."],
+  ['text-info', "Write any conclusion you drew from the entire project."],
   ['user_response',""],
   ['text-warning', "You're free to leave it blank (by writing NA), if you were unable to draw any conclusive result."],
   ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],

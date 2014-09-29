@@ -155,7 +155,7 @@ report_submission_context = SubmissionContext.create!(
   submission_type: SubmissionContext::RESPONSE,
 )
 
-report_submission_context = SubmissionContext.create!(
+image_submission_context = SubmissionContext.create!(
   title: "Visualization Submission",
   description: "User is asked to submit an image of their visualization.",
   slide: report_submission_slide_two,

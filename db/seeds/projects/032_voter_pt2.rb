@@ -19,6 +19,7 @@ project = Project.create!(
   uid: 32,
   difficulty: 'Intermediate',
   is_new: true,
+  deadline: 2.hours,
   cover_photo: "voter-pt2",
   project_set_id: 2,
 )
@@ -174,8 +175,8 @@ anova_response_context = SubmissionContext.create!(
 
 conclusion_content = [
   ['text-success', "Great!"],
-  ['text', "You've finished part 2 of analyzing the Candidate Disbursement Data."],
-  ['text', "Hopefully you're getting a better grast of the underlying insight."],
+  ['text', "You've finished part 2 of the Candidate Disbursement Data Analysis."],
+  ['text', "Hopefully you're getting a better grasp of the underlying insight."],
   ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
 
@@ -190,13 +191,3 @@ conclusion_slide = Slide.create!(
   slide_id: 0,
   parent: conclusion_lesson,
 )
-
-normalization_response_submission_context = SubmissionContext.create!(
-  title: "Conclusion on Candidate Disbursement Data",
-  description: "User is asked to write down any conclusion after the analysis  of the candidate disebursement data.",
-  slide: conclusion_slide,
-  submission_context_id: 0,
-  submission_type: SubmissionContext::RESPONSE,
-  required: true,
-)
-
