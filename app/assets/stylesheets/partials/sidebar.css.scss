@@ -8,7 +8,7 @@
   .list-group-item {
     &.active,
     &.active:hover {
-      background-color: #f9f9f9;
+      background-color: #ffffff;
       color: #333333;
     }
 
@@ -20,6 +20,12 @@
 
         span {
           vertical-align: middle;
+          font-weight: 700;
+        }
+      }
+
+      .sidebar-list-item-header-plain {
+        span {
           font-weight: 700;
         }
       }

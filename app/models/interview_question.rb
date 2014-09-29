@@ -28,6 +28,14 @@ class InterviewQuestion < ActiveRecord::Base
   has_many :taggings, as: :tagged
   has_many :tags, through: :taggings
 
+  scope :displayable_for_user, -> (user) { where(uid: InterviewQuestion.displayable_ids_for_user(user)) }
+
+  class << self
+    def displayable_ids_for_user(user)
+      InterviewQuestion.select { |interview_question| !user.has_submission_for_interview_question?(interview_question) }.map(&:uid)
+    end
+  end
+
   def tag_list
     tags.pluck(:name).join(", ")
   end

@@ -102,6 +102,10 @@ class User < ActiveRecord::Base
   # Projects
   has_many :projects, through: :project_statuses
 
+  # Interview Questions
+  has_many :interview_question_submissions
+  has_many :interview_questions, through: :interview_question_submissions
+
   # Invites and Access Codes
   has_many :user_codes
   has_many :codes, through: :user_codes
@@ -469,6 +473,11 @@ class User < ActiveRecord::Base
 
   def has_invited_friends?
     invites.count > 0
+  end
+
+  # Interview Questions
+  def has_submission_for_interview_question?(interview_question)
+    interview_question_submissions.where(interview_question: interview_question).count > 0
   end
 
   # Profile Completion
