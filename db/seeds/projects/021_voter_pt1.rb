@@ -76,7 +76,6 @@ data_cotext_slide = Slide.create!(
 data_details_content_zero = [
   ['text-success', "The meta data for the columns can be found here"],
   ['link', "http://www.fec.gov/finance/disclosure/metadata/CandidateDisbursements.shtml"],
-  ['text', "How many rows are there in the data? (Be sure to exclude the header.)"],
   ['quiz', "voter_intro_0"],
   ['text-info', "That's a lot of records!"],
   ['next_steps', ""],
@@ -99,6 +98,7 @@ voter_intro_quiz = Quiz.create!(
   answer: "510459",
   project: project,
   slide: data_details_slide,
+  question: "How many rows are there in the data? (Be sure to exclude the header.)",
 )
 
 ################################################################################
@@ -108,7 +108,6 @@ voter_intro_quiz = Quiz.create!(
 data_correlation_content = [
   ['text-success', "First, we want to understand the correlations between 'categories' / 'types' of donations. (travel V.S. advertising, for example)"],
   ['text', "This is grouped via the category code."],
-  ['text-warning', "What is the actual column name for 'category code'?"],
   ['text', "Check the link for the metadata from the previous step."],
   ['quiz', "voter_correlation_tag"],
   ['text', "The actual code-to-category mapping can be found here."],
@@ -163,6 +162,7 @@ voter_cor_quiz = Quiz.create!(
   answer: "cat_cod",
   project: project,
   slide: data_correlation_slide,
+  question: "What is the actual column name for 'category code'?",
 )
 
 corr_code_submission_context = SubmissionContext.create!(
