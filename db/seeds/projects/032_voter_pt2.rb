@@ -1,6 +1,6 @@
 main_page_content = [
-  ['text-info', "This is Part.2 of the challenge."],
-  ['text', "We'll be working with the same data from Pt.1"],
+  ['text-info', "This is Part 2 of the challenge."],
+  ['text', "We'll be working with the same data from Part 1."],
   ['text', "Therefore context/intro section is the same as before."],
   ['text-warning', "But we'll do a more detailed analysis of the data."],
   ['text-success', "Let's get started!"],
@@ -52,8 +52,8 @@ data_context_content_zero = [
   ['text-success', "The data is here:"],
   ['link', "ftp://ftp.fec.gov/FEC/data.fec.gov/candidate_disbursement2014/all_house_senate.csv"],
   ['text-warning', "The data results from a federal law that requires political candidates to record the following spending:"],
-  ['text', "-   All specific disbursements that are contributions to other federal candidates or parties or other committees as well as all loan repayments."],
-  ['text', "-   Other spending of over $200/election-cycle to be reported"],
+  ['text', "-   All specific disbursements that are contributions to other federal candidates, parties, or other committees including loan repayments."],
+  ['text', "-   Other spending of over $200/election-cycle."],
   ['text', "Now that we know how the data is collected/reported, let's learn about its meta data."],
   # ['text', "More info here:"],
   # ['link', "http://www.fec.gov/finance/disclosure/metadata/CandidateDisbursements.shtml"],
@@ -77,8 +77,6 @@ data_cotext_slide = Slide.create!(
 data_details_content_zero = [
   ['text-success', "The meta data for the columns can be found here"],
   ['link', "http://www.fec.gov/finance/disclosure/metadata/CandidateDisbursements.shtml"],
-  ['quiz', "voter_intro_pt2_0"],
-  ['text-info', "That's a lot of records!"],
   ['next_steps', ""],
 ]
 
@@ -94,20 +92,13 @@ data_details_slide = Slide.create!(
   parent: data_details_step,
 )
 
-voter_intro_quiz = Quiz.create!(
-  quiz_id: "voter_intro_pt2_0",
-  answer: "510459",
-  project: project,
-  slide: data_details_slide,
-  question: "How many rows are there in the data? (Be sure to exclude the header.)",
-)
 
 ################################################################################
 ######### ANOVA Analysis #######################################################
 ################################################################################
 
 distribution_lesson_content = [
-  ['text-success', "We want to find out how much the distribution of 'sizes' of disbursements appears to differ from campaign to campaign."],
+  ['text-success', "Find out how much the distribution of 'sizes' of disbursements appears to differ from campaign to campaign."],
   ['text', " - Are the sizes just a function of total campaign spent?"],
   ['text', " - Are they related to the vendors?"],
   ['text-info', "You're free to do any analysis you want."],
@@ -122,7 +113,7 @@ distribution_lesson_content_one = [
 ]
 
 distribution_lesson_content_two = [
-  ['text-success', "How did you analyze the difference in spending?"],
+  ['text-success', "How did you analyze the differences in spending? Defend your choice for statistical analysis."],
   ['text', "What did you conclude?"],
   ['user_response', "nil"],
   ['next_steps', ""],
@@ -175,9 +166,9 @@ anova_response_context = SubmissionContext.create!(
 
 conclusion_content = [
   ['text-success', "Great!"],
-  ['text', "You've finished part 2 of the Candidate Disbursement Data Analysis."],
-  ['text', "Hopefully you're getting a better grasp of the underlying insight."],
-  ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
+  ['text', "You've finished Part 2 of the Candidate Disbursement Data Analysis."],
+  ['text', "Hopefully you're getting a better grasp of the underlying trends in the data."],
+  ['finish_project_button', 'http://www.surveygizmo.com/s3/1811239/Project-Feedback-v2'],
 ]
 
 conclusion_lesson = Lesson.create!(

@@ -55,7 +55,7 @@ data_context_content_zero = [
   ['link', "ftp://ftp.fec.gov/FEC/data.fec.gov/candidate_disbursement2014/all_house_senate.csv"],
   ['text-warning', "The data results from a federal law that requires political candidates to record the following spending:"],
   ['text', "-   All specific disbursements that are contributions to other federal candidates, parties, or other committees including loan repayments."],
-  ['text', "-   Other spending of over $200/election-cycle"],
+  ['text', "-   Other spending of over $200/election-cycle."],
   ['text', "Now that we know how the data is collected/reported, we will give you information about its meta data."],
   ['next_steps', ""],
 ]
