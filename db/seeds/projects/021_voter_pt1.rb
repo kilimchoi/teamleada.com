@@ -22,7 +22,7 @@ project = Project.create!(
   difficulty: 'Intermediate',
   is_new: true,
   cover_photo: "voter-pt1",
-  deadline: 2.hours,
+  deadline: 1.hours,
   project_set_id: 2,
 )
 
@@ -94,7 +94,7 @@ data_details_slide = Slide.create!(
   parent: data_details_step,
 )
 
-voter_intro_quiz = Quiz.create!(
+voter_intro_quiz = ExactAnswerQuiz.create!(
   quiz_id: "voter_intro_pt1_0",
   answer: "510459",
   project: project,
@@ -128,6 +128,10 @@ data_correlation_content_one = [
 data_correlation_content_two = [
   ['text-success', "Write a few sentences about your analysis on the result."],
   ['user_response', "nil"],
+  ['text', "Next you'll submit a few images of your plot."],
+]
+
+data_correlation_content_three = [
   ['text', "Also submit an image of your analysis plot."],
   ['image_submit', ""],
   ['text-warning', "Note that the image will eventually be part of your profile for other users to view."],
@@ -158,7 +162,13 @@ data_correlation_slide_two = Slide.create!(
   parent: data_correlation_lesson,
 )
 
-voter_cor_quiz = Quiz.create!(
+data_correlation_slide_three = Slide.create!(
+  slide_id: 3,
+  content: data_correlation_content_three,
+  parent: data_correlation_lesson,
+)
+
+voter_cor_quiz = ExactAnswerQuiz.create!(
   quiz_id: "voter_correlation_tag",
   answer: "cat_cod",
   project: project,
@@ -182,6 +192,14 @@ corr_response_context = SubmissionContext.create!(
   submission_context_id: 0,
   submission_type: SubmissionContext::RESPONSE,
   required: true,
+)
+
+report_submission_context = SubmissionContext.create!(
+  title: "Visualization Submission",
+  description: "User is asked to submit an image of their correlation analysis.",
+  slide: data_correlation_slide_three,
+  submission_context_id: 0,
+  submission_type: SubmissionContext::IMAGE,
 )
 
 ################################################################################
