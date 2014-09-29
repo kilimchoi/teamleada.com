@@ -20,6 +20,7 @@ project = Project.create!(
   difficulty: 'Intermediate',
   is_new: true,
   cover_photo: "voter-pt2",
+  project_set_id: 2,
 )
 
 ################################################################################

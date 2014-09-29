@@ -23,6 +23,7 @@ project = Project.create!(
   is_new: true,
   cover_photo: "voter-pt1",
   deadline: 2.hours,
+  project_set_id: 2,
 )
 
 ################################################################################
