@@ -1,0 +1,10 @@
+.container-fluid.full-container.card-container
+  .row.card
+    .col-md-12
+      h1 = @interview_question_submission.interview_question.title
+      p = @interview_question_submission.interview_question.question
+
+  .row.card
+    .col-md-12
+      h3.title Response
+      p = @interview_question_submission.content
