@@ -19,7 +19,7 @@ project = Project.create!(
   uid: 32,
   difficulty: 'Intermediate',
   is_new: true,
-  cover_photo: "voter",
+  cover_photo: "voter-pt2",
 )
 
 ################################################################################

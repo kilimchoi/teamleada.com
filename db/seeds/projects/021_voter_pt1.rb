@@ -21,7 +21,7 @@ project = Project.create!(
   uid: 21,
   difficulty: 'Intermediate',
   is_new: true,
-  cover_photo: "voter",
+  cover_photo: "voter-pt1",
   deadline: 2.hours,
 )
 
