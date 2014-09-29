@@ -9,7 +9,7 @@ main_page_content = [
 
 
 project = Project.create!(
-  title: "US Election Candidate Disbursement Data Analytics: Pt1",
+  title: "US Election Candidate Disbursement Data Analytics (Part 1)",
   description: main_page_content,
   short_description: "This project will involve working with actual candidate disbursements data released in 2014. You're asked to conduct analysis on spending category, amount, and relative size.",
   number: 21,
