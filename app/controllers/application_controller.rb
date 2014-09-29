@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  rescue_from CanCan::AccessDenied do |exception|
+  rescue_from CanCan::AccessDenied, ActiveRecord::RecordNotFound do |exception|
     flash[:warning] = "We're sorry, we couldn't find that page!"
     redirect_to root_path
   end

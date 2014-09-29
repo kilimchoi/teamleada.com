@@ -11,6 +11,7 @@
 #  created_at       :datetime
 #  updated_at       :datetime
 #  uid              :integer          not null, primary key
+#  multiple_choices :text
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

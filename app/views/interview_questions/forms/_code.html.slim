@@ -1,0 +1,11 @@
+// Required Variables
+// interview_question
+
+= simple_form_for @interview_question_submission_form, url: submit_interview_question_path, html: { class: "inline-profile-form" } do |f|
+  .form-inputs
+    = render partial: "shared/projects/code_editor_form", locals: { form: f }
+    = f.hidden_field :content, id: "hidden-code-textarea"
+  .form-actions
+    = f.submit "Submit", onclick: "submitForm();", class: "edit-form-save-button"
+    /= link_to "Cancel", cancel_update_user_path, method: :post, remote: true, class: "edit-form-cancel-button"
+
