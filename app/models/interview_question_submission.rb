@@ -11,6 +11,12 @@
 #
 
 class InterviewQuestionSubmission < ActiveRecord::Base
+  include ActionView::Helpers::JavaScriptHelper
+
   belongs_to :interview_question
   belongs_to :user
+
+  def safe_content
+    escape_javascript(content.try(:html_safe))
+  end
 end
