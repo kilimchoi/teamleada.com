@@ -11,13 +11,13 @@ project = Project.create!(
   title: "US Election Candidate Disbursement Data Analytics",
   description: main_page_content,
   short_description: "This project will involve working with actual candidate disbursements data released in 2014. You're asked to conduct analysis on spending category, amount, and relative size.",
-  number: 21,
+  number: 32,
   enabled: true,
   has_leaderboard: false,
   has_content_submit: true,
   has_written_submit: true,
   category: Project::CHALLENGE,
-  uid: 21,
+  uid: 32,
   difficulty: 'Intermediate',
   is_new: true,
   cover_photo: "voter",
@@ -102,89 +102,7 @@ voter_intro_quiz = Quiz.create!(
 )
 
 ################################################################################
-######### Data Correlation #####################################################
-################################################################################
-
-data_correlation_content = [
-  ['text-success', "First, we want to understand the correlations between 'categories' / 'types' of donations. (travel V.S. advertising, for example)"],
-  ['text', "This is grouped via the category code."],
-  ['text', "Check the link for the metadata from the previous step."],
-  ['quiz', "voter_correlation_tag"],
-  ['text', "The actual code-to-category mapping can be found here."],
-  ['link', "http://www.fec.gov/finance/disclosure/metadata/DisbursementCategoryCodes.shtml"],
-  ['text', "Now let's do some analysis."],
-]
-
-data_correlation_content_one = [
-  ['text-danger', "Group the entries by category type and do a correlation matrix."],
-  ['text', "You're encouraged to do other analysis on the dataset for a better analysis, but you're free not to."],
-  ['text-success', "Submit the code you used to do the analysis:"],
-  ['user_code', "nil"],
-  ['text', "Do the results make sense?"],
-  ['text', "We'll talk about it next."],
-]
-
-data_correlation_content_two = [
-  ['text-success', "Write a few sentences about your analysis on the result."],
-  ['user_response', "nil"],
-  ['text', "Also submit an image of your analysis plot."],
-  ['image_submit', ""],
-  ['text-warning', "Note that the image will eventually be part of your profile for other users to view."],
-  ['next_steps', ""],
-]
-
-data_correlation_lesson = Lesson.create!(
-  title: "Correlation Analysis",
-  lesson_id: 1,
-  project: project,
-)
-
-data_correlation_slide = Slide.create!(
-  slide_id: 0,
-  content: data_correlation_content,
-  parent: data_correlation_lesson,
-)
-
-data_correlation_slide_one = Slide.create!(
-  slide_id: 1,
-  content: data_correlation_content_one,
-  parent: data_correlation_lesson,
-)
-
-data_correlation_slide_two = Slide.create!(
-  slide_id: 2,
-  content: data_correlation_content_two,
-  parent: data_correlation_lesson,
-)
-
-voter_cor_quiz = Quiz.create!(
-  quiz_id: "voter_correlation_tag",
-  answer: "cat_cod",
-  project: project,
-  slide: data_correlation_slide,
-  question: "What is the actual column name for 'category code'?",
-)
-
-corr_code_submission_context = SubmissionContext.create!(
-  title: "Correlation Code",
-  description: "User is asked to submit the code used to do the correlation analysis.",
-  slide: data_correlation_slide_one,
-  submission_context_id: 0,
-  submission_type: SubmissionContext::CODE,
-  required: true,
-)
-
-corr_response_context = SubmissionContext.create!(
-  title: "Correlation Analysis Written",
-  description: "User is asked to explain and talk about the analysis result of the categorical correlation analysis",
-  slide: data_correlation_slide_two,
-  submission_context_id: 0,
-  submission_type: SubmissionContext::RESPONSE,
-  required: true,
-)
-
-################################################################################
-######### Data Correlation #####################################################
+######### ANOVA Analysis #######################################################
 ################################################################################
 
 distribution_lesson_content = [
@@ -210,7 +128,7 @@ distribution_lesson_content_two = [
 ]
 distribution_lesson = Lesson.create!(
   title: "ANOVA on Candidate spending",
-  lesson_id: 2,
+  lesson_id: 1,
   project: project,
 )
 
@@ -251,79 +169,7 @@ anova_response_context = SubmissionContext.create!(
 )
 
 ################################################################################
-######### Data Normalization ###################################################
-################################################################################
-
-normalization_content_one = [
-  ['text-success', "After some analysis, you notice large discrepancies in candidate spending depending on the region / campaign."],
-  ['text', "You assume that the variance can be explained by the differences in populations between regions."],
-  ['text', "To test your intuition, you decide to normalize the campaign data by population size."],
-  ['text', "After some Googling, you end up with you the following US Census population data (2010)."],
-  ['link-fail', "link to the data."],
-  ['text', "Equipped with this additional data, you begin your analysis."],
-]
-
-normalization_content_two = [
-  ['text-success', "Write the code that analyzes the following:"],
-  ['text', " - Campaign dollar spent per State"],
-  ['text', " - Campaign dollar"],
-  ['text', " - Any other anomaly that you want to investigate"],
-  ['user_code', ""],
-  ['text', "Good, let's now discuss your findings."],
-]
-
-normalization_content_three = [
- ['text-success', "Explain what you did to complete your analysis."],
- ['text', "Be sure to include the reasoning behind your approach and any conclusion you drew."],
- ['user_response', ""],
- ['next_steps', ""],
-]
-
-normalization_lesson = Lesson.create(
-  title: "Normalization",
-  lesson_id: 3,
-  project: project,
-)
-
-normalization_slide_one = Slide.create!(
-  content: normalization_content_one,
-  slide_id: 0,
-  parent: normalization_lesson,
-)
-
-normalization_slide_two = Slide.create!(
-  content: normalization_content_two,
-  slide_id: 1,
-  parent: normalization_lesson,
-)
-
-normalization_slide_three = Slide.create!(
-  content: normalization_content_three,
-  slide_id: 2,
-  parent: normalization_lesson,
-)
-
-normalization_code_submission_context = SubmissionContext.create!(
-  title: "Normalization Analysis Code",
-  description: "User is asked to submit the code used to normalize campaign data per region.",
-  slide: normalization_slide_two,
-  submission_context_id: 0,
-  submission_type: SubmissionContext::CODE,
-  required: true,
-)
-
-normalization_response_submission_context = SubmissionContext.create!(
-  title: "Spending Analysis Written",
-  description: "User is asked to explain the normalized analysis of campaign spending.",
-  slide: normalization_slide_three,
-  submission_context_id: 0,
-  submission_type: SubmissionContext::RESPONSE,
-  required: true,
-)
-
-
-################################################################################
-######### Data Normalization ###################################################
+######### Conclusion ###########################################################
 ################################################################################
 
 conclusion_content = [
@@ -338,7 +184,7 @@ conclusion_content = [
 
 conclusion_lesson = Lesson.create!(
   title: "Conclusion",
-  lesson_id: 4,
+  lesson_id: 2,
   project: project,
 )
 
