@@ -99,7 +99,7 @@ normalization_content_one = [
   ['text-success', "After some analysis, you notice large discrepancies in candidate spending depending on the region / campaign."],
   ['text', "You assume that the variance can be explained by the differences in populations between regions."],
   ['text', "To test your intuition, you decide to normalize the campaign data by population size."],
-  ['text', "After some Googling, you end up with you the following US Census population data (2010)."],
+  ['text', "You are given the following US Census population data (2010)."],
   ['link-fail', "link to the data."],
   ['text', "Equipped with this additional data, you begin your analysis."],
 ]
@@ -116,6 +116,8 @@ normalization_content_two = [
 normalization_content_three = [
   ['text-success', "Explain what you did to complete your analysis."],
   ['text', "Be sure to include the reasoning behind your approach and any conclusion you drew."],
+  ['text', 'What impact did normalizing the data by population have?'],
+  ['text', 'Did your analysis discover any other discrepancies?'],
   ['user_response', ""],
   ['next_steps', ""],
 ]
@@ -170,10 +172,11 @@ conclusion_content = [
   ['text-success', "Great!"],
   ['text', "You've finished analyzing the Candidate Disbursement Data."],
   ['text', "Hopefully you now have a better sense of how the 2014 candidate disbursement happened."],
-  ['text-info', "Write any conclusion you drew from the entire project."],
+  ['text-info', "Write any final conclusion you drew from the entire project."],
+  ['text-success', 'What major takeaways did you find from analyzing this data?'],
   ['user_response',""],
   ['text-warning', "You're free to leave it blank (by writing NA), if you were unable to draw any conclusive result."],
-  ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
+  ['finish_project_button', 'http://www.surveygizmo.com/s3/1811239/Project-Feedback-v2'],
 ]
 
 conclusion_lesson = Lesson.create!(
