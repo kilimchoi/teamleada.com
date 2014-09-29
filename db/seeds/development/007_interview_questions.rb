@@ -1,5 +1,5 @@
 
-InterviewQuestion.create!(
+best_restaurant = InterviewQuestion.create!(
   uid: 0,
   title: "Best Restaurant",
   difficulty_level: 9,
@@ -9,7 +9,9 @@ InterviewQuestion.create!(
   question_type: InterviewQuestion.question_types[:free_response],
 )
 
-InterviewQuestion.create!(
+best_restaurant.tag_list = "food, restaurants, berkeley"
+
+best_boba = InterviewQuestion.create!(
   uid: 1,
   title: "Best Boba",
   difficulty_level: 10,
@@ -19,7 +21,9 @@ InterviewQuestion.create!(
   question_type: InterviewQuestion.question_types[:multiple_choice],
 )
 
-InterviewQuestion.create!(
+best_boba.tag_list = "food, boba, berkeley"
+
+best_band = InterviewQuestion.create!(
   uid: 2,
   title: "Best Band",
   difficulty_level: 5,
@@ -28,3 +32,6 @@ InterviewQuestion.create!(
   industry: InterviewQuestion.industries[:data_science],
   question_type: InterviewQuestion.question_types[:code],
 )
+
+best_band.tag_list = "bands, music, concerts"
+
