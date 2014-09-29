@@ -107,7 +107,7 @@ voter_intro_quiz = ExactAnswerQuiz.create!(
 ################################################################################
 
 data_correlation_content = [
-  ['text-success', "First, we want to understand the correlations between 'categories' / 'types' of donations. (travel V.S. advertising, for example)"],
+  ['text-success', "First, we want to understand the correlations between the different 'categories' of donations. (travel V.S. advertising, for example)"],
   ['text', "This is grouped via the category code."],
   ['text', "Check the link for the metadata from the previous step."],
   ['quiz', "voter_correlation_tag"],
