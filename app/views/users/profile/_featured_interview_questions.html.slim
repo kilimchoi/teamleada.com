@@ -3,13 +3,22 @@
 
 // NOTE(mark): In the sidebar, we show featured interview questions relevante to the signed in user.
 // If they are not signed in, they just see the most recent questions.
-- interview_questions = InterviewQuestion.displayable_for_user(user)
+- interview_questions = InterviewQuestion.displayable_for_user(current_user)
 
 ul.card-group.list-group.sidebar-top-margin.card.card-no-padding.sidebar-featured-interview_questions
   li.list-group-item.no-side-border.active
-    .sidebar-list-item-header-plain.center
-      span.sidebar-list-item-title Featured Interview Questions
+    - if interview_questions.blank?
+      .sidebar-list-item-header.center
+        span.sidebar-list-item-title Featured Interview Questions
+      .sidebar-list-item-content
+        .sidebar-list-item-text
+          | You have answered all featured interview questions! Stay tuned for more!
 
-  - interview_questions.each do |interview_question|
-    li.list-group-item.no-side-border.sidebar-block-item class="#{'active-block-item' if @interview_question == interview_question}"
-      = render partial: "interview_questions/interview_question_block", locals: { interview_question: interview_question }
+    - else
+      .sidebar-list-item-header-plain.center
+        span.sidebar-list-item-title Featured Interview Questions
+
+  - unless interview_questions.blank?
+    - interview_questions.each do |interview_question|
+      li.list-group-item.no-side-border.sidebar-block-item class="#{'active-block-item' if @interview_question == interview_question}"
+        = render partial: "interview_questions/interview_question_block", locals: { interview_question: interview_question }
