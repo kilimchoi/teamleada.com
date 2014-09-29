@@ -1,8 +1,8 @@
 main_page_content = [
   ['text-info', "This is the last part to the challenge."],
   ['text', "Note that the context/intro section is the same as before."],
-  ['text', "You also get a new dataset on population to integrate into the existing dataset."], 
-  ['text-success', "You'll have the chance to write a conclusion for the project."],
+  ['text', "You also get a new dataset about population to integrate into the existing dataset."],
+  ['text-success', "You'll have the chance to write a conclusion for the project series."],
 ]
 
 project = Project.create!(
