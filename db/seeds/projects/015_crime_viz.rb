@@ -41,7 +41,7 @@ intro_content_one = [
 intro_content_two = [
   ['text-info', "The data contains many features including district, category, and crime types."],
   ['text', "As mentioned before, the type of visualization is entirely up to you."],
-  ['text-warning', "You might want to consider creating plots that encompass the following:"],
+  ['text-warning', "You might want to consider creating plots that encompass the following, but you are not limited to answering these questions:"],
   ['text', " - Where shouldn't you park your car?"],
   ['text', " - What are the safest locations in SF? What days/times are especially dangerous?"],
   ['text', " - Are certain thefts more common in certain areas?"],
@@ -124,7 +124,7 @@ report_submission_content_one = [
 
 report_submission_content_two = [
   ['text', "Include the visualization(s) you created by submitting here: "],
-  ['text', 'Use the same submit button to submit multiple visualizations. Make sure you submit image files! The file type must be a PNG or JPEG.'],
+  ['text', 'Use the same submit button to submit multiple visualizations. Please do not submit more than 3. Make sure you submit image files! The file type must be a PNG or JPEG.'],
   ['image_submit', nil],
   ['next_steps', ""],
 ]
