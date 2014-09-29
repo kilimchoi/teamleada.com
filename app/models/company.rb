@@ -19,6 +19,8 @@
 #  about               :text
 #  website             :string(255)
 #  looking_for         :text
+#  logo_image          :string(255)
+#  cover_photo_image   :string(255)
 #
 
 class Company < ActiveRecord::Base
