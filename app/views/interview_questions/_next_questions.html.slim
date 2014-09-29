@@ -19,8 +19,8 @@ ul.card-group.list-group.sidebar-top-margin.card.card-no-padding.card-group-smal
                 = interview_question.difficulty_level
             .sidebar-content-row.sidebar-content-tags
               strong Tags:
-              span.label.label-info.label-tag MapReduce
-              span.label.label-info.label-tag T Test
+              - interview_question.tags.each do |tag|
+                span.label.label-info.label-tag = tag.name
             .sidebar-content-row.sidebar-content-category
               strong Category:
               span.label.label-success.label-category = interview_question.industry.titleize
