@@ -68,10 +68,10 @@ class SessionsController < Devise::SessionsController
     elsif user.is_company?
       company_dashboard_path
     elsif user.has_project_access?
-      projects_path
+      companies_path
     else
-      # For now, always redirect_to projects path
-      projects_path
+      # For now, always redirect_to companies_path
+      companies_path
     end
   end
 

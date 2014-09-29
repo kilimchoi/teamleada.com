@@ -55,8 +55,8 @@ challenge_part_one = [
   ['text-info', 'Your overall task is to analyze the data provided and return a conclusion of the effectiveness of the MightyHive Call Center Remarketing product.'],
   ['text', 'There are three parts to completing this project.'],
   ['text', 'Part Three Challenge:'],
-  ['text', 'With the clean data, Determine and conduct the appropriate statistical analysis.'],
-  ['text-success', 'Define your null hypothesis and the 95% confidence interval for the change in proportion of Abandoned observations to Reservation observations between test and control groups.'],
+  ['text', 'With the clean data, determine and conduct the appropriate statistical analysis.'],
+  ['text-success', 'Define your null hypothesis and calculate the 95% confidence interval for the change in proportion of conversions between test and control groups.'],
   ['lesson_links', nil]
 ]
 
@@ -83,19 +83,17 @@ stat_analysis_content_one = [
 stat_analysis_content_two = [
   ['text-success', 'Submit code which performs the statistical analysis including the calculation of the 95% confidence interval.'],
   ['user_code', '#@TODO Include UID'],
+  ['text-info', "Make sure to comment your code for readability."],
 ]
 
 stat_analysis_content_three = [
-  ['text', "Now to quickly check:"],
-  ['text-warning', 'In the box below, enter your p-value:'],
+  ['text', "Now to do a quick check of your analysis."],
   ['quiz', 'stat_quiz'],
-  ['text', "Does your answer make sense?"],
 ]
 
 stat_analysis_content_four = [
   ['text', 'Submit a conclusion of the results. How effective was the MightyHive advertising product?'],
   ['user_response', '#@TODO Include UID'],
-  ['text-info', "Make sure to comment your code for readability."],
   ['next_steps', nil],
 ]
 
@@ -132,6 +130,7 @@ quiz = NumericRangeQuiz.create!(
   upper_bound: 0.01,
   project: project,
   slide: stat_analysis_slide_three,
+  question: 'In the box below, enter your p-value:',
 )
 
 stat_analysis_context = SubmissionContext.create!(

@@ -11,10 +11,11 @@
       .row
         .col-md-12
           .project-container.card-container
-            = render partial: "projects/project_countdown", locals: { project: @project, project_status: @project_status }
-            = render partial: "projects/project_progress", locals: { project: @project, user: current_user }
+            - if signed_in?
+              = render partial: "projects/project_countdown", locals: { project: @project, project_status: @project_status, user: current_user }
+              = render partial: "projects/project_progress", locals: { project: @project, user: current_user }
 
-            - if current_user.is_waiting_on_evaluations_for_project?(@project) && @project.grants_project_access
+            - if signed_in? && current_user.is_waiting_on_evaluations_for_project?(@project) && @project.grants_project_access
               .row.card
                 .col-md-12
                   h2 Thanks for submitting!
@@ -54,47 +55,63 @@
                       = render partial: "projects/submissions/presentation_video_link_submissions", locals: { project: @project, user: current_user }
 
               .col-md-6
-                - if @project_status.has_time_remaining?
-                  - if @project.has_leaderboard?
-                    = render partial: "projects/leaderboard", locals: {project: @project}
+                - if signed_in?
+                  - if current_user.has_project_access? || @project.grants_project_access
+                    - if @project_status.nil? || @project_status.has_time_remaining?
+                      - if @project.has_leaderboard?
+                        = render partial: "projects/leaderboard", locals: {project: @project}
 
-                  .row.card
-                    .col-md-12
-                      - if current_user.has_finished_project? @project
-                        h2 Congrats! You have successfully finished this data project.
-                        = link_to "Take me to more projects!", projects_path, class: 'flat-button step-button'
-                      - elsif current_user.has_started_project? @project
-                        h2 Looks like you've already started this project!
-                        = link_to "Continue where you left off", current_user.next_lesson_or_step_for_project_path(@project), class: 'flat-button step-button'
-                      - else
-                        h2 Looks like you haven't started this project!
-                        - if @project.has_deadline?
-                          p
-                            ' Note, once you start this project, the countdown will start and you will have
-                            = render partial: "projects/project_time_remaining", locals: { project: @project }
-                        = link_to "Get started now!", project_lesson_path(@project, @project.lessons.first), class: 'flat-button step-button'
-
-                  .row.card
-                    .col-md-12
-                      h2 Choose an option from below:
-                      ul
-                      - @project.lessons.each do |lesson|
-                        .lesson-link.center
-                          - if signed_in? && current_user.completed?(lesson)
-                            = link_to lesson.title, project_lesson_path(@project, lesson), class: 'flat-button step-button project-icon fa fa-check-circle'
-                          - elsif signed_in? && current_user.next_lesson_for_project(@project) == lesson
-                            = link_to lesson.title, project_lesson_path(@project, lesson), class: 'flat-button step-button project-icon fa fa-arrow-circle-right'
+                      .row.card
+                        .col-md-12
+                          - if current_user.has_finished_project? @project
+                            h2 Congrats! You have successfully finished this data project.
+                            = link_to "Take me to more projects!", projects_path, class: 'flat-button step-button'
+                          - elsif current_user.has_started_project? @project
+                            h2 Looks like you've already started this project!
+                            = link_to "Continue where you left off", current_user.next_lesson_or_step_for_project_path(@project), class: 'flat-button step-button'
                           - else
-                            li.flat-button.step-button.not-completed-item
-                              = lesson.title
+                            h2 Looks like you haven't started this project!
+                            - if @project.has_deadline?
+                              p
+                                ' Note, once you start this project, the countdown will start and you will have
+                                = render partial: "projects/project_time_remaining", locals: { project: @project }
+                                button class="flat-button full-width" data-toggle="modal" data-target="#start-modal"
+                                  |  Start this Project!
+                            - else
+                              = link_to "Get started now!", project_lesson_path(@project, @project.lessons.first), class: 'flat-button step-button'
+
+                      .row.card
+                        .col-md-12
+                          h2 Choose an option from below:
+                          ul
+                          - @project.lessons.each do |lesson|
+                            .lesson-link.center
+                              - if signed_in? && current_user.completed?(lesson)
+                                = link_to lesson.title, project_lesson_path(@project, lesson), class: 'flat-button step-button project-icon fa fa-check-circle'
+                              - elsif signed_in? && current_user.next_lesson_for_project(@project) == lesson
+                                = link_to lesson.title, project_lesson_path(@project, lesson), class: 'flat-button step-button project-icon fa fa-arrow-circle-right'
+                              - else
+                                li.flat-button.step-button.not-completed-item
+                                  = lesson.title
+                    - else
+                      .row.card
+                        .col-md-12
+                          h2 Status
+                          p.large-font
+                            ' You started this project on
+                            = @project_status.display_start_date
+                          p.large-font
+                            ' Your due date was
+                            = @project_status.display_end_date
+                  - else
+                    #access-code-container
+                      .row.card
+                        .col-md-12
+                          = render partial: "codes/project_access_code"
                 - else
-                  h2 Status
-                  p.large-font
-                    ' You started this project on
-                    = @project_status.display_start_date
-                  p.large-font
-                    ' Your due date was
-                    = @project_status.display_end_date
+                  .row.card
+                    .col-md-12
+                      = link_to "Sign Up to Access this Project!", omniauth_authorize_path("user", "linkedin"), class: "flat-button full-width"
 
 div class="modal fade" id="start-modal"
   .modal-dialog.modal-sm

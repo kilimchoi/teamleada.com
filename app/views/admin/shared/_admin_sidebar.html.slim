@@ -20,10 +20,12 @@
       = active_admin_link "Profile Photos", admin_profile_photos_path, class: "list-group-item"
       = active_admin_link "Employer Applications", admin_employer_applications_path, class: "list-group-item"
       = active_admin_link "Project Submissions", admin_project_submissions_path(tab: "all-submissions"), class: "list-group-item"
+      = active_admin_link "Completed Projects", admin_project_submissions_path(tab: "completed-projects"), class: "list-group-item"
 
   #admin-sidebar-chart-links.panel.panel-default
     .panel-heading Charts
     ul.list-group
+      = active_admin_link "Active Users Charts", admin_active_users_charts_path, class: "list-group-item"
       = active_admin_link "Realtime Charts", admin_realtime_charts_path, class: "list-group-item"
       = active_admin_link "PageView Charts", admin_page_view_charts_path, class: "list-group-item"
       = active_admin_link "Growth Charts", admin_growth_charts_path, class: "list-group-item"

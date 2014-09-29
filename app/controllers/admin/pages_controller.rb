@@ -16,8 +16,14 @@ class Admin::PagesController < Admin::BaseController
     @daily_impressions = @weekly_impressions.where("created_at >= ?", Date.today.to_date)
 
     @daily_project_impressions = @daily_impressions.filter_category("projects")
+    @daily_company_impressions = @daily_impressions.filter_category("companies")
     @daily_new_users = User.where("created_at >= ?", Date.today.to_date)
-    @daily_code_submissions = CodeSubmissionContent.where("created_at >= ?", Date.today.to_date)
+    @daily_project_submissions = ProjectSubmission.where("created_at >= ?", Date.today.to_date)
+  end
+
+  def active_users_charts
+    @one_day_7 = active_users_chart(7.days, 30.days.ago)
+    @one_day_28 = active_users_chart(28.days, 120.days.ago)
   end
 
   def activity

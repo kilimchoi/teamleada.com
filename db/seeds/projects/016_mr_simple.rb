@@ -11,7 +11,7 @@ main_page_content = [
 ]
 
 project = Project.create!(
-  title:"Ebay: Graph Traversal via Hadoop MapReduce",
+  title:"eBay: Graph Traversal via Hadoop MapReduce",
   description: main_page_content,
   short_description: "In this challenge you are tasked with designing and writing a graph traversal via MapReduce. You will be given a set of graph data to traverse. In the process, you will choose the graph representation, the algorithm, and more. Once you design the code, you can optionally write a functional MapReduce code.",
   number: 16,
@@ -88,22 +88,22 @@ setup_main_slide = [
     ['text', "You ask yourself, how do you determine the 'distance' between 2 products?"],
     ['text', "After consulting with fellow engineers, you decide on using the shortest network distance between the products that were bought during the same transaction."],
     ['text-info', "This means an edge exists between 2 products, only if they were purchased during the same transaction."],
-    ['text-success', "To save on memory footprint, you sample an anonymized graph dataset, show below:"],
+    ['text-success', "To save on memory footprint, you sample an anonymized graph dataset, shown below:"],
     ['link', "https://s3.amazonaws.com/leada/amazon_proj_data/amazon0601.txt.gz"],
     ['text', "Each of the nodes maps to a single consumer item."],
   ]
 
   background_content_two = [
     ['text', "With this data, you have a list of directed edges, each representing a co-purchase."],
-    ['text-warning', "How many Nodes are there in the data?"],
     ['quiz', "mr_data_node_count"],
-    ['text', "What abput the edges?"],
+    ['text', "What about the edges?"],
   ]
 
   background_content_three = [
-    ['text-warning', "How many Edges are there in the data?"],
     ['quiz', "mr_data_edge_count"],
-    ['text', "The full dataset is significantly larger, but we want to make sure that the algorithm runs on a smaller subset."],
+    ['text', "As you see, the full dataset seems large (or is it?)."],
+    ['text', "Perhaps you'd want to make sure that the algorithm first runs on a smaller subset."],
+    ['text-info', "Though it's up to you to decide whether you want to construct a subset first."],
     ['next_steps', ""],
   ]
 
@@ -131,18 +131,20 @@ setup_main_slide = [
     parent: background_step_one
   )
 
-  quiz = Quiz.create!(
+  quiz = ExactAnswerQuiz.create!(
     quiz_id: "mr_data_node_count",
     answer: "403394",
     project: project,
     slide: background_slide_two,
+    question: "How many Nodes are there in the dataset?",
   )
 
-  quiz = Quiz.create!(
+  quiz = ExactAnswerQuiz.create!(
     quiz_id: "mr_data_edge_count",
     answer: "3387388",
     project: project,
     slide: background_slide_three,
+    question: "How many Edges are there in the full dataset?",
   )
 
   ################################################################################
@@ -539,19 +541,16 @@ setup_main_slide = [
     ['text', "These checks are for your benefits."],
     ['text-danger', "Make sure that you're returning the actual distance (and not the number of nodes)."],
     ['text', "This means the distance between '1' and '0' should be 1."],
-    ['text', "What is the distance between node '1' and node '1234'?"],
     ['quiz', "mr_quiz_1"],
     ['text', "Let's check a few more."],
   ]
 
   conclusion_main_content_three = [
-    ['text-warning', "What is the distance between node '2222' and node '22222'?"],
     ['quiz', "mr_quiz_2"],
     ['text', "What about an even bigger discrepancy in node numbers?"],
   ]
 
   conclusion_main_content_four = [
-    ['text-warning', "What is the distance between node '0' and node '403392'?"],
     ['quiz', "mr_quiz_3"],
     ['text', "Does this number make sense?"],
   ]
@@ -597,6 +596,7 @@ setup_main_slide = [
     answer: "319",
     project: project,
     slide: conclusion_main_slide_two,
+    question: "What is the distance between node '1' and node '1234'?",
   )
 
   quiz = ExactAnswerQuiz.create!(
@@ -604,6 +604,7 @@ setup_main_slide = [
     answer: "3241",
     project: project,
     slide: conclusion_main_slide_three,
+    question: "What is the distance between node '2222' and node '22222'?",
   )
 
   quiz = ExactAnswerQuiz.create!(
@@ -611,6 +612,7 @@ setup_main_slide = [
     answer: "421",
     project: project,
     slide: conclusion_main_slide_four,
+    question: "What is the distance between node '0' and node '403392'?",
   )
 
   src_code_submission = SubmissionContext.create!(

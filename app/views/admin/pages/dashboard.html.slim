@@ -38,11 +38,14 @@
                 span.badge = @daily_project_impressions.non_admin.count
                 | Non-admin Project Page Views Today
               li.list-group-item
+                span.badge = @daily_company_impressions.non_admin.count
+                | Non-admin Company Page Views Today
+              li.list-group-item
                 span.badge = @daily_new_users.count
                 | New Users Today
               li.list-group-item
-                span.badge = @daily_code_submissions.count
-                | New Code Submissions Today
+                span.badge = @daily_project_submissions.count
+                | New Project Submissions Today
 
   .row.card
     .col-md-12
@@ -51,7 +54,6 @@
   .row.card
     .col-md-12
       = high_chart("growth_chart", @growth_chart)
-
 
   .row
     .col-md-6

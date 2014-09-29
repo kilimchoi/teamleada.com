@@ -37,7 +37,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :confirmable,
+  devise :database_authenticatable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable
 
@@ -190,14 +190,15 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile_photos
 
   # Validations
-  validates_format_of :username, :with => /\A[A-Za-z0-9_]*\z/
+  validates_format_of :username, :with => /\A[A-Za-z0-9_-]*\z/
   validates :username, uniqueness: {case_sensitive: false}
   validate :check_username
 
   extend FriendlyId
   friendly_id :username, use: :finders
 
-  before_save :set_name
+  before_save :set_properties
+  after_create :create_signed_up_story
 
   # Pagination
   self.per_page = 50
@@ -211,10 +212,6 @@ class User < ActiveRecord::Base
   # Default Values
   default_value_for :updated_password_at, Time.now
 
-  def == other_user
-    self.email == other_user.email
-  end
-
   #
   # Validations (move these to form objects)
   #
@@ -224,7 +221,7 @@ class User < ActiveRecord::Base
         errors.add(:username, "can't be blank")
         return
       end
-      if self.username.start_with?("_") || !/^[A-Za-z].*/.match(self.username)
+      if self.username.start_with?("_") || self.username.start_with?("-") || !/^[A-Za-z].*/.match(self.username)
         errors.add(:username, "must start with a letter")
       end
     end
@@ -280,8 +277,44 @@ class User < ActiveRecord::Base
   #
   # Before filter
   #
+  def set_properties
+    set_name
+    set_username
+  end
+
   def set_name
     self.name = "#{first_name} #{last_name}"
+  end
+
+  def set_username
+    if username.nil?
+      self.username = "#{first_name.downcase}-#{last_name.downcase}-#{unique_characters}".parameterize
+      unless self.valid?
+        self.username = nil
+        self.set_username
+      end
+    end
+  end
+
+  def unique_characters
+    4.times.map { rand(0..9) }.join("")
+  end
+
+  #
+  # User Status
+  #
+  def user_status
+    if !has_complete_profile?
+      1
+    elsif !has_completed_a_data_challenge?
+      2
+    elsif !has_received_interview_request?
+      3
+    elsif !has_received_offer?
+      4
+    else
+      false
+    end
   end
 
   #
@@ -419,7 +452,7 @@ class User < ActiveRecord::Base
   end
 
   def has_linkedin_integration?
-    !self.linkedin_confirmed_at.nil?
+    !self.linkedin_id.nil?
   end
 
   def has_linkedin_profile_photo?
@@ -438,6 +471,49 @@ class User < ActiveRecord::Base
     invites.count > 0
   end
 
+  # Profile Completion
+  def has_filled_in_personal_info?
+    !profile.bio.nil? && !profile.location.nil?
+  end
+
+  def has_filled_in_job_preferences?
+    false
+  end
+
+  def has_filled_in_education?
+    enrollments.count > 0
+  end
+
+  def has_filled_in_experience?
+    jobs.count > 0
+  end
+
+  def has_complete_profile?
+    has_filled_in_personal_info? &&
+    has_filled_in_job_preferences? &&
+    has_filled_in_education? &&
+    has_filled_in_experience? &&
+    has_resume?
+  end
+
+  # Data Challenges
+  def has_completed_a_data_challenge?
+    completed_challenges.count > 0
+  end
+
+  # Interviews
+  def has_received_interview_request?
+    # TODO(mark): Interview Requests
+    false
+  end
+
+  # Offers
+  def has_received_offer?
+    # TODO(mark): Job Offers
+    false
+  end
+
+  # Invitations
   def has_invites_remaining?
     invites.count < number_of_allowed_invites
   end
@@ -482,7 +558,8 @@ class User < ActiveRecord::Base
 
   def has_started_project?(project)
     LessonStatus.where(user: self, project: project, completed: true).count +
-    StepStatus.where(user: self, project: project, completed: true).count > 0
+    StepStatus.where(user: self, project: project, completed: true).count > 0 &&
+    !self.project_statuses.find_by(project: project).try(:start_date).nil?
   end
 
   def has_finished_project?(project)
@@ -599,6 +676,10 @@ class User < ActiveRecord::Base
     projects.where(uid: project_ids)
   end
 
+  def completed_project?(project)
+    !completed_projects.find_by(uid: project.uid).nil?
+  end
+
   def started_challenges
     started_projects.data_challenges
   end
@@ -617,7 +698,7 @@ class User < ActiveRecord::Base
   end
 
   def project_status_for_project(project)
-    project_statuses.find_by(project: project)
+    project_statuses.where(project: project).first_or_create
   end
 
   def project_submission_of_type_for_project(type, project)
@@ -862,14 +943,28 @@ class User < ActiveRecord::Base
     send_deny_project_access_email(project)
   end
 
-  def reset_all_project_access()
-    statuses = self.project_statuses.each do |status|
+  def reset_all_project_access
+    project_statuses.each do |status|
       status.reset_start_date
     end
   end
 
-  def reset_project_access(project_id)
-    project_status_for_project(project_id).reset_start_date
+  def reset_project_access_for_project(project)
+    project_status_for_project(project).reset_start_date
+  end
+
+  # Project Sets
+  def completed_prerequisites_for_project(project)
+    return true unless project.is_part_of_set?
+    projects = project.project_set.projects
+    projects.each do |prerequisite|
+      if project == prerequisite
+        return true
+      elsif !self.completed_project?(prerequisite)
+        return false
+      end
+    end
+    true
   end
 
   #

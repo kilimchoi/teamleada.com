@@ -135,7 +135,7 @@ challenge_slide = Slide.create!(
 
 data_cleaning_content_one = [
   ['text-info', 'Let\'s design a process for de-duplication and cleaning for the dataset.'],
-  ['text', 'First submit a written plan for your cleaning process.'],
+  ['text', 'First submit an explanation for your cleaning process.'],
   ['user_response', '#@TODO Include UID'],
 ]
 
@@ -144,11 +144,10 @@ data_cleaning_content_two = [
   ['user_code', '#@TODO Include UID'],
 ]
 
-data_cleaning_content_two = [
-  ['text', "As a sanity check:"],
-  ['text-warning', 'How many observations do you have remaning after de-duplication?'],
+data_cleaning_content_three = [
+  ['text', "The number of matched observations after cleaning should fit within a range:"],
   ['quiz', 'clean_quiz'],
-  ['finish_project_button', ''],
+  ['finish_project_button', 'http://www.surveygizmo.com/s3/1811239/Project-Feedback-v2'],
 ]
 
 data_cleaning_step = Step.create!(
@@ -169,12 +168,19 @@ data_cleaning_slide_two = Slide.create!(
   slide_id: 1,
 )
 
+data_cleaning_slide_three = Slide.create!(
+  content: data_cleaning_content_three,
+  parent: data_cleaning_step,
+  slide_id: 2,
+)
+
 quiz = NumericRangeQuiz.create!(
   quiz_id: "clean_quiz",
   lower_bound: 310.0,
   upper_bound: 423.0,
   project: project,
-  slide: data_cleaning_slide_two,
+  slide: data_cleaning_slide_three,
+  question: 'How many observations do you have remaning after de-duplication?',
 )
 
 data_matching_context = SubmissionContext.create!(

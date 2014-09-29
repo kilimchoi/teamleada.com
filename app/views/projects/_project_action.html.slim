@@ -21,6 +21,6 @@
 
 - else
   - if project.grants_project_access
-    = link_to "Start this project!", new_user_registration_path, class: "project-action-button project-color-#{project.color}"
+    = link_to "Start This Project", omniauth_authorize_path("user", "linkedin"), class: "project-action-button project-color-#{project.color}"
   - else
     = link_to "I'm Interested", interest_project_path(project), method: :post, class: "project-action-button project-color-#{project.color}"

@@ -147,7 +147,7 @@ conclusion_content = [
   ['text', "This was a great way to get started on the web scraper."],
   ['text', "We have a list of URLs to individual item ads."],
   ['text-success', "Next we're going to actually extract the individual data from the raw item level ad page html."],
-  ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
+  ['finish_project_button', 'http://www.surveygizmo.com/s3/1811239/Project-Feedback-v2'],
 ]
 
 conclusion_lesson = Lesson.create!(

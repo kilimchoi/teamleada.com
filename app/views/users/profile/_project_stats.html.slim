@@ -74,6 +74,12 @@
 
               li.profile-stat-container.clearfix
                 .profile-stat-title
+                  h4 Quiz Submissions
+                .profile-stat-value
+                  = user.quiz_submissions.count
+
+              li.profile-stat-container.clearfix
+                .profile-stat-title
                   h4 File Submissions
                 .profile-stat-value
                   = user.file_submissions.count

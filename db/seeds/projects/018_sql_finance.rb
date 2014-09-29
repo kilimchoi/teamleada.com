@@ -66,7 +66,6 @@ collect_data_content_1 = [
   ['text-success', "Get a list of NYSE symbols by searching on Google."],
   ['text', "You should be able to find a csv/excel table of all NYSE companies (and their stock symbols)."],
   ['text', "You should be able to find the list without having to register anywhere."],
-  ['text', "How long is the list you found of NYSE stocks? Round to the nearest thousands:"],
   ['quiz', "finance_data_0"],
   ['text', "Good! Now you can use the list to iteratively scrape Yahoo Finance data."],
   ['text-info', "Write a script that will iteratively grab Yahoo Finance Data for each of the NYSE symbols you acquired."],
@@ -110,6 +109,7 @@ quiz_intro_pd = ExactAnswerQuiz.create!(
   answer: "3000",
   project: project,
   slide: collect_data_slide_1,
+  question: "How long is the list you found of NYSE stocks? Round to the nearest thousands:",
 )
 
 scraper_data_submission = SubmissionContext.create!(
