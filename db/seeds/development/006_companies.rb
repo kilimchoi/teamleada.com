@@ -71,7 +71,7 @@ rnc.update!(
 
 rnc_project_1 = Project.find_by(uid: 21)
 rnc_project_2 = Project.find_by(uid: 32)
-rnc_project_2 = Project.find_by(uid: 33)
+rnc_project_3 = Project.find_by(uid: 33)
 company_project_1 = CompanyProject.where(project: rnc_project_1, company: rnc).first_or_create
 company_project_2 = CompanyProject.where(project: rnc_project_2, company: rnc).first_or_create
-company_project_2 = CompanyProject.where(project: rnc_project_2, company: rnc).first_or_create
+company_project_3 = CompanyProject.where(project: rnc_project_3, company: rnc).first_or_create
