@@ -1,8 +1,8 @@
 main_page_content = [
-   ['text-info', "This is Part.2 of the challenge."],
-   ['text', "We'll be working with the same data from Pt.1"],
-   ['text', "Note that the context/intro section is the same as before."],
-   ['text-success', "Let's get started!"],
+  ['text-info', "This is Part.2 of the challenge."],
+  ['text', "We'll be working with the same data from Pt.1"],
+  ['text', "As a resul, note that the context/intro section is the same as before."],
+  ['text-success', "Let's get started!"],
 ]
 
 project = Project.create!(

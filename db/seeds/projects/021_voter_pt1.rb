@@ -1,10 +1,10 @@
 main_page_content = [
-  ['text', "In this data challenge we will analyze candidate disbursement data."],
+  ['text-info', "In this data challenge we will analyze candidate disbursement data."],
   ['text', "We'll be analyzing various spending record from election candidates."],
   ['text-danger', "Will we uncover some dark political secret?"],
   ['text', "Or will we simply face the same expected government spending?"],
   ['text', "This is Part.1 of the challenge."],
-  ['text', "We'll start out slow with some simple correlation analysis."],
+  ['text-success', "We'll start out slow with some simple correlation analysis."],
 ]
 
 

@@ -1,6 +1,7 @@
 main_page_content = [
-  ['text', "This is the last part to the challenge."],
+  ['text-info', "This is the last part to the challenge."],
   ['text', "Note that the context/intro section is the same as before."],
+  ['text', "You also get a new dataset on population to integrate the existing dataset."], 
   ['text-success', "You'll have the chance to write a conclusion for the project."],
 ]
 
@@ -122,10 +123,10 @@ normalization_content_two = [
 ]
 
 normalization_content_three = [
- ['text-success', "Explain what you did to complete your analysis."],
- ['text', "Be sure to include the reasoning behind your approach and any conclusion you drew."],
- ['user_response', ""],
- ['next_steps', ""],
+  ['text-success', "Explain what you did to complete your analysis."],
+  ['text', "Be sure to include the reasoning behind your approach and any conclusion you drew."],
+  ['user_response', ""],
+  ['next_steps', ""],
 ]
 
 normalization_lesson = Lesson.create(
