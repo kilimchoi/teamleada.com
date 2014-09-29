@@ -6,6 +6,17 @@ class InterviewQuestionsController < ApplicationController
   end
 
   def show
+    @interview_question_submission_form = InterviewQuestionSubmissionForm.new(current_user, @interview_question)
+  end
+
+  def submit
+    @interview_question_submission_form = InterviewQuestionSubmissionForm.new(current_user, @interview_question)
+    if @interview_question_submission_form.submit(params[:interview_question_submission_form])
+      flash[:info] = "Your answer has been submitted"
+    else
+      flash[:danger] = "There was a problem submitting your answer"
+    end
+    redirect_to @interview_question
   end
 
   private
