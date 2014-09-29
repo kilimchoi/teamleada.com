@@ -21,4 +21,19 @@ class InterviewQuestion < ActiveRecord::Base
 
   has_many :interview_question_submissions
   has_many :users, through: :interview_question_submissions
+
+  # Tags
+  has_many :taggings, as: :tagged
+  has_many :tags, through: :taggings
+
+  def tag_list
+    tags.pluck(:name).join(", ")
+  end
+
+  def tag_list=(names)
+    self.tags = names.split(",").map do |name|
+      Tag.where(name: name.strip.downcase).first_or_create!
+    end
+  end
+
 end
