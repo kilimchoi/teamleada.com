@@ -225,12 +225,3 @@ conclusion_slide = Slide.create!(
   parent: conclusion_lesson,
 )
 
-normalization_response_submission_context = SubmissionContext.create!(
-  title: "Conclusion on Candidate Disbursement Data",
-  description: "User is asked to write down any conclusion after the analysis  of the candidate disebursement data.",
-  slide: conclusion_slide,
-  submission_context_id: 0,
-  submission_type: SubmissionContext::RESPONSE,
-  required: true,
-)
-
