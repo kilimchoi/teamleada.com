@@ -15,6 +15,7 @@
 
 class InterviewQuestion < ActiveRecord::Base
   obfuscate_id spin: 9987654
+
   enum industry: [ :data_science ]
   enum question_type: [ :free_response, :code, :multiple_choice ]
 
