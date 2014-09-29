@@ -75,7 +75,7 @@ data_cotext_slide = Slide.create!(
 data_details_content_zero = [
   ['text-success', "The meta data for the columns can be found here"],
   ['link', "http://www.fec.gov/finance/disclosure/metadata/CandidateDisbursements.shtml"],
-  ['quiz', "voter_intro_0"],
+  ['quiz', "voter_intro_pt1_0"],
   ['text-info', "That's a lot of records!"],
   ['next_steps', ""],
 ]
@@ -93,7 +93,7 @@ data_details_slide = Slide.create!(
 )
 
 voter_intro_quiz = Quiz.create!(
-  quiz_id: "voter_intro_0",
+  quiz_id: "voter_intro_pt1_0",
   answer: "510459",
   project: project,
   slide: data_details_slide,
