@@ -1,7 +1,8 @@
 main_page_content = [
   ['text-info', "This is Part.2 of the challenge."],
   ['text', "We'll be working with the same data from Pt.1"],
-  ['text', "As a resul, note that the context/intro section is the same as before."],
+  ['text', "Therefore context/intro section is the same as before."],
+  ['text-warning', "But we'll do a more detailed analysis of the data."],
   ['text-success', "Let's get started!"],
 ]
 
@@ -172,11 +173,8 @@ anova_response_context = SubmissionContext.create!(
 
 conclusion_content = [
   ['text-success', "Great!"],
-  ['text', "You've finished analyzing the Candidate Disbursement Data."],
-  ['text', "Hopefully you now have a better sense of how the 2014 candidate disbursement happened."],
-  ['text-info', "Write any conclusion you drew from the project."],
-  ['user_response',""],
-  ['text-warning', "You're free to leave it blank (by writing NA), if you were unable to draw any conclusive result."],
+  ['text', "You've finished part 2 of analyzing the Candidate Disbursement Data."],
+  ['text', "Hopefully you're getting a better grast of the underlying insight."],
   ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
 ]
 
