@@ -3,8 +3,8 @@ main_page_content = [
   ['text', "We'll be analyzing various spending record from election candidates."],
   ['text-danger', "Will we uncover some dark political secret?"],
   ['text', "Or will we simply face the same expected government spending?"],
-  ['text-success', "Only one way to find out!"],
   ['text', "This is Part.1 of the challenge."],
+  ['text', "We'll start out slow with some simple correlation analysis."],
 ]
 
 
