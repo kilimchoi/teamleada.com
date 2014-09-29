@@ -19,6 +19,11 @@ best_boba = InterviewQuestion.create!(
   posted_at: DateTime.parse("September 23, 2014 12:00:00 PM"),
   industry: InterviewQuestion.industries[:data_science],
   question_type: InterviewQuestion.question_types[:multiple_choice],
+  multiple_choices: [
+    "Quickly",
+    "ShareTea",
+    "Sweethearts",
+  ]
 )
 
 best_boba.tag_list = "food, boba, berkeley"
