@@ -1,14 +1,12 @@
 main_page_content = [
-  ['text', "In this data challenge we will analyze candidate disbursement data."],
-  ['text', "We'll be analyzing various spending record from election candidates."],
-  ['text-danger', "Will we uncover some dark political secret?"],
-  ['text', "Or will we simply face the same expected government spending?"],
-  ['text-success', "Only one way to find out!"],
+   ['text-info', "This is Part.2 of the challenge."],
+   ['text', "We'll be working with the same data from Pt.1"],
+   ['text', "Note that the context/intro section is the same as before."],
+   ['text-success', "Let's get started!"],
 ]
 
-
 project = Project.create!(
-  title: "US Election Candidate Disbursement Data Analytics",
+  title: "US Election Candidate Disbursement Data Analytics: Pt2",
   description: main_page_content,
   short_description: "This project will involve working with actual candidate disbursements data released in 2014. You're asked to conduct analysis on spending category, amount, and relative size.",
   number: 32,
