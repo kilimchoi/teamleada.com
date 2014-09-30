@@ -16,9 +16,9 @@
     .sidebar-content-row.sidebar-content-tags
       strong Tags:
       - interview_question.tags.each do |tag|
-        span.label.label-default.label-tag = tag.name
+        span.label.label-default.label-tag.label-block = tag.name
     .sidebar-content-row.sidebar-content-category
       strong Category:
-      span.label.label-success.label-category = interview_question.industry.titleize
+      span.label.label-success.label-category.label-block = interview_question.industry.titleize
 
 
