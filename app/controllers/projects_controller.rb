@@ -120,7 +120,7 @@ class ProjectsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.json { render json: {}, status: :unprocessible_entity}
+        format.json { render json: {}, status: 422 }
       end
     end
   end
