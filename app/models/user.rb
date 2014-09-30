@@ -69,14 +69,14 @@ class User < ActiveRecord::Base
            to: :preferences, allow_nil: true
 
   # Profile and Preferences
-  has_one :user_profile    # Should use the .profile attribute defined below.
-  has_one :user_preference # Should use the .preferences attribute defined below.
+  has_one :user_profile,    dependent: :destroy # Should use the .profile attribute defined below.
+  has_one :user_preference, dependent: :destroy # Should use the .preferences attribute defined below.
 
   # Stories
-  has_many :stories, as: :subject
+  has_many :stories, as: :subject, dependent: :destroy
 
   # Submissions
-  has_many :project_submissions
+  has_many :project_submissions,       dependent: :destroy
   has_many :code_submissions,          -> { where(content_type: "CodeSubmissionContent") },         class_name: "ProjectSubmission"
   has_many :free_response_submissions, -> { where(content_type: "FreeResponseSubmissionContent") }, class_name: "ProjectSubmission"
   has_many :file_submissions,          -> { where(content_type: ["Image", "PDF", "CSV"].map{|type| type + "SubmissionContent"}) }, class_name: "ProjectSubmission"
@@ -103,7 +103,7 @@ class User < ActiveRecord::Base
   has_many :projects, through: :project_statuses
 
   # Interview Questions
-  has_many :interview_question_submissions
+  has_many :interview_question_submissions, dependent: :destroy
   has_many :interview_questions, through: :interview_question_submissions
 
   # Invites and Access Codes
