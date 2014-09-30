@@ -52,7 +52,7 @@ intro_slide_one = Slide.create!(
 
 project_details_content_one = [
   ['quiz', "short_intro_0"],
-  ['text', "Good, now to the main task."],
+  ['text-success', "Good, now to the main task."],
 ]
 
 project_details_content_two = [
@@ -61,8 +61,7 @@ project_details_content_two = [
   ['text', " - Then bucket the COUNT for each zipcode by $ amount in the following range:"],
   ['text-warning', "[$0 - $60],  [$60.01 - $120],  [$120+]"],
   ['text', "Your resulting columns should look something like this."],
-  ['text', "[Zipcode, # of (deliveries <= $60), # of ($60 < deliveries < $120), # of ($120 < devliveries)]"],
-  ['next_steps', ""],
+  ['text', "[Zipcode, # of (deliveries <= $60), # of ($60 < deliveries <= $120), # of (devliveries < $120)]"],
 ]
 
 project_details_content_three = [
@@ -107,7 +106,7 @@ intro_q = ExactAnswerQuiz.create!(
 normalization_code_submission_context = SubmissionContext.create!(
   title: "Code Submission for Intro Project",
   description: "User is asked to submit the code used to subset and bucket the delivery data.",
-  slide: project_details_slide_two,
+  slide: project_details_slide_three,
   submission_context_id: 0,
   submission_type: SubmissionContext::CODE,
   required: true,
