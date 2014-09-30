@@ -122,7 +122,7 @@ conclusion_content_one = [
 
 conclusion_content_two = [
   ['quiz', "short_check_2"],
-  ['text', 'This challenge was meant to show you the process for completeting challenges on Leada!'],
+  ['text', 'This mini challenge was meant to show you the process for completing challenges on Leada!'],
   ['text-success','Congratulations on completing your first challenge!'],
   ['text', 'Company hosted challenges are much more advanced but the style is the same!'],
   ['finish_project_button', "https://www.teamleada.com/companies"],
