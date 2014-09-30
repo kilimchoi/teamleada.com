@@ -36,7 +36,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if user.is_admin?
       admin_dashboard_path
     else
-      user_path(user)
+      project_lessons_path(Project.onboarding_project, Project.onboarding_project.lessons.first)
       # Code below takes them back to previous page
       # session[:previous_url] || root_path
     end

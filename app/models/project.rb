@@ -117,6 +117,10 @@ class Project < ActiveRecord::Base
   VALID_FILTERS = ["started", "completed"]
 
   class << self
+    def onboarding_project
+      Project.find_by(is_onboarding: true)
+    end
+
     def displayable_ids
       Project.all.select { |project| !project.is_part_of_set? || (project.is_part_of_set? && project.is_first_part_of_set?) }.map(&:uid)
     end
