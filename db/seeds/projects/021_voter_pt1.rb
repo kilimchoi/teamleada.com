@@ -3,8 +3,8 @@ main_page_content = [
   ['text', "We'll be analyzing various spending record from election candidates."],
   ['text-danger', "Will we uncover some dark political secret?"],
   ['text', "Or will we simply face the same expected government spending?"],
-  ['text', "This is Part.1 of the challenge."],
-  ['text-success', "We'll start out slow with some simple correlation analysis."],
+  ['text', "This is Part 1 of 3 of the data challenge."],
+  ['text-success', "We'll start out with some simple correlation analysis."],
 ]
 
 
@@ -33,7 +33,7 @@ puts "============ Created project: #{project.title}."
 intro_content_zero = [
   ['text-success', "You've been hired by an organization to analyze government data."],
   ['text', "Your first task is to analyze the election candidate disbursement data."],
-  ['text', "We'll get a little more details about the data here."],
+  ['text', "You'll get a little more details about the data here."],
   ['lesson_links', ""],
 ]
 
@@ -54,9 +54,9 @@ data_context_content_zero = [
   ['text-success', "The data is here:"],
   ['link', "ftp://ftp.fec.gov/FEC/data.fec.gov/candidate_disbursement2014/all_house_senate.csv"],
   ['text-warning', "The data results from a federal law that requires political candidates to record the following spending:"],
-  ['text', "-   All specific disbursements that are contributions to other federal candidates or parties or other committees as well as all loan repayments."],
-  ['text', "-   Other spending of over $200/election-cycle to be reported"],
-  ['text', "Now that we know how the data is collected/reported, let's learn about its meta data."],
+  ['text', "-   All specific disbursements that are contributions to other federal candidates, parties, or other committees including loan repayments."],
+  ['text', "-   Other spending of over $200/election-cycle."],
+  ['text', "Now that we know how the data is collected/reported, we will give you information about its meta data."],
   ['next_steps', ""],
 ]
 
@@ -75,7 +75,7 @@ data_cotext_slide = Slide.create!(
 ################################################################################
 
 data_details_content_zero = [
-  ['text-success', "The meta data for the columns can be found here"],
+  ['text-success', "The meta data for the columns can be found here:"],
   ['link', "http://www.fec.gov/finance/disclosure/metadata/CandidateDisbursements.shtml"],
   ['quiz', "voter_intro_pt1_0"],
   ['text-info', "That's a lot of records!"],
@@ -99,7 +99,7 @@ voter_intro_quiz = ExactAnswerQuiz.create!(
   answer: "510459",
   project: project,
   slide: data_details_slide,
-  question: "How many rows are there in the data? (Be sure to exclude the header.)",
+  question: "How many rows are there in the data? (Be sure to exclude the header).",
 )
 
 ################################################################################
@@ -107,7 +107,8 @@ voter_intro_quiz = ExactAnswerQuiz.create!(
 ################################################################################
 
 data_correlation_content = [
-  ['text-success', "First, we want to understand the correlations between the different 'categories' of donations. (travel V.S. advertising, for example)"],
+  ['text-success', "First, we want to understand the correlations between 'categories' of donations."],
+  ['text-success', 'Travel Expenses vs. Advertising Expenses would be an example.'],
   ['text', "This is grouped via the category code."],
   ['text', "Check the link for the metadata from the previous step."],
   ['quiz', "voter_correlation_tag"],
@@ -126,13 +127,13 @@ data_correlation_content_one = [
 ]
 
 data_correlation_content_two = [
-  ['text-success', "Write a few sentences about your analysis on the result."],
+  ['text-success', "What insights on disbursement data does this correlation matrix reveal? What further steps of analysis need to be taken?"],
   ['user_response', "nil"],
-  ['text', "Next you'll submit a few images of your plot."],
+  ['text', "Next you'll submit the visualization to created."],
 ]
 
 data_correlation_content_three = [
-  ['text', "Keep your submission count to under 3 images."],
+  ['text', "Submit your correlation matrix visulaization below. Make sure to properly format it with a title and labeled axes."],
   ['image_submit', ""],
   ['text-warning', "Note that the image will eventually be part of your profile for other users to view."],
   ['next_steps', ""],
@@ -208,9 +209,9 @@ report_submission_context = SubmissionContext.create!(
 
 conclusion_content = [
   ['text-success', "Great!"],
-  ['text', "Now that you've gotten a taste for the data, let's move on."],
+  ['text', "Now that you've gotten a taste for the data, go on to Part 2."],
   ['text-warning', "You've finished analyzing Part 1 of the analysis on the Candidate Disbursement Data."],
-  ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
+  ['finish_project_button', 'http://www.surveygizmo.com/s3/1811239/Project-Feedback-v2'],
 ]
 
 conclusion_lesson = Lesson.create!(

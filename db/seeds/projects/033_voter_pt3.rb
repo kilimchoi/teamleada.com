@@ -51,8 +51,8 @@ data_context_content_zero = [
   ['text-success', "The data is here:"],
   ['link', "ftp://ftp.fec.gov/FEC/data.fec.gov/candidate_disbursement2014/all_house_senate.csv"],
   ['text-warning', "The data results from a federal law that requires political candidates to record the following spending:"],
-  ['text', "-   All specific disbursements that are contributions to other federal candidates or parties or other committees as well as all loan repayments."],
-  ['text', "-   Other spending of over $200/election-cycle to be reported"],
+  ['text', "-   All specific disbursements that are contributions to other federal candidates, parties, or other committees including loan repayments."],
+  ['text', "-   Other spending of over $200/election-cycle."],
   ['text', "Now that we know how the data is collected/reported, let's learn about its meta data."],
   # ['text', "More info here:"],
   # ['link', "http://www.fec.gov/finance/disclosure/metadata/CandidateDisbursements.shtml"],
@@ -76,8 +76,6 @@ data_cotext_slide = Slide.create!(
 data_details_content_zero = [
   ['text-success', "The meta data for the columns can be found here"],
   ['link', "http://www.fec.gov/finance/disclosure/metadata/CandidateDisbursements.shtml"],
-  ['quiz', "voter_intro_pt3_0"],
-  ['text-info', "That's a lot of records!"],
   ['next_steps', ""],
 ]
 
@@ -91,14 +89,6 @@ data_details_slide = Slide.create!(
   content: data_details_content_zero,
   slide_id: 0,
   parent: data_details_step,
-)
-
-voter_intro_quiz = Quiz.create!(
-  quiz_id: "voter_intro_pt3_0",
-  answer: "510459",
-  project: project,
-  slide: data_details_slide,
-  question: "How many rows are there in the data? (Be sure to exclude the header.)",
 )
 
 ################################################################################
@@ -126,6 +116,8 @@ normalization_content_two = [
 normalization_content_three = [
   ['text-success', "Explain what you did to complete your analysis."],
   ['text', "Be sure to include the reasoning behind your approach and any conclusion you drew."],
+  ['text', 'What impact did normalizing the data by population have?'],
+  ['text', 'Did your analysis discover any other discrepancies?'],
   ['user_response', ""],
   ['next_steps', ""],
 ]
@@ -180,10 +172,11 @@ conclusion_content = [
   ['text-success', "Great!"],
   ['text', "You've finished analyzing the Candidate Disbursement Data."],
   ['text', "Hopefully you now have a better sense of how the 2014 candidate disbursement happened."],
-  ['text-info', "Write any conclusion you drew from the entire project."],
+  ['text-info', "Write any final conclusion you drew from the entire project."],
+  ['text-success', 'What major takeaways did you find from analyzing this data?'],
   ['user_response',""],
   ['text-warning', "You're free to leave it blank (by writing NA), if you were unable to draw any conclusive result."],
-  ['finish_project_button', 'http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form'],
+  ['finish_project_button', 'http://www.surveygizmo.com/s3/1811239/Project-Feedback-v2'],
 ]
 
 conclusion_lesson = Lesson.create!(
