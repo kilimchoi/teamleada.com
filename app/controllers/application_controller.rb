@@ -7,8 +7,7 @@ class ApplicationController < ActionController::Base
   after_filter :store_location
 
   def valid_impression?
-    if (controller_name == "projects" && action_name == "submit_resource") ||
-       (controller_name == "conversations" && action_name == "autocomplete_user_name")
+    if controller_name == "conversations" && action_name == "autocomplete_user_name"
       false
     else
       true
