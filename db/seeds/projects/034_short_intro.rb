@@ -1,12 +1,12 @@
 
 main_page_content = [
-  ['text-success', "This is the introductory demo project."],
+  ['text-success', "This is a mini challenge."],
 ]
 
 project = Project.create!(
-  title:"Leada Demo",
+  title:"Mini Challenge",
   description: main_page_content,
-  short_description: "You'll go through the motion of completing a Leada Project.",
+  short_description: "This is a mini challenge!",
   enabled: true,
   number: 34,
   has_content_submit: true,
@@ -30,7 +30,7 @@ intro_content_one = [
   ['link', "https://s3.amazonaws.com/leada/intro_project/delivery_data.csv"],
   ['text', "The data you downloaded is transaction data from a food delivery company in San Francisco for the past 6 months."],
   ['text-danger', "Your manager wants to determine the frequency of transactions by zipcode."],
-  ['text', "You'll create a table of zipcode and number of transactions."],
+  ['text', "First write the code which creates this table."],
   ['next_steps', ""],
 ]
 
@@ -56,12 +56,12 @@ project_details_content_one = [
 ]
 
 project_details_content_two = [
-  ['text-info', "Your task is as follows:"],
+  ['text-info', "The next task is as follows:"],
   ['text', " - Remove all zipcode entries with the total COUNT of deliveries under 200."],
-  ['text', " - Then bucket the COUNT for each zipcode by $ amount in the following range:"],
-  ['text-warning', "[$0 - $60],  [$60.01 - $120],  [$120+]"],
-  ['text', "Your resulting columns should look something like this."],
-  ['text', "[Zipcode, # of (deliveries <= $60), # of ($60 < deliveries <= $120), # of (devliveries < $120)]"],
+  ['text', " - Then bucket the COUNT for each zipcode by $ amount in the following ranges:"],
+  ['text-warning', "[$0 - $60]------------[$60.01 - $120]------------[$120+]"],
+  ['text', "Your resulting columns should be of the format:"],
+  ['text', "Zipcode | # deliveries <= $60 | $60 < # deliveries <= $120 | # deliveries < $120"],
 ]
 
 project_details_content_three = [
@@ -72,7 +72,7 @@ project_details_content_three = [
 ]
 
 project_details_lesson = Lesson.create!(
-  title: "Project Details",
+  title: "Mini Challenge",
   project: project,
   lesson_id: 1,
 )
@@ -100,7 +100,7 @@ intro_q = ExactAnswerQuiz.create!(
   answer: 4319,
   project: project,
   slide: project_details_slide,
-  question: "To get started, figure out how many transactions were there for the zipcode 94115.",
+  question: "How many transactions were there for the zipcode 94115?",
 )
 
 normalization_code_submission_context = SubmissionContext.create!(
@@ -117,18 +117,19 @@ normalization_code_submission_context = SubmissionContext.create!(
 ################################################################################
 
 conclusion_content_one = [
-  ['text', "Let's test a few entries."],
   ['quiz', "short_check_1"],
 ]
 
 conclusion_content_two = [
-  ['text', "Let's check another."],
   ['quiz', "short_check_2"],
-  ['finish_project_button', "http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form"],
+  ['text', 'This challenge was meant to show you the process for completeting challenges on Leada!'],
+  ['text-success','Congratulations on completing your first challenge!'],
+  ['text', 'Company hosted challenges are much more advanced but the style is the same!'],
+  ['finish_project_button', "https://www.teamleada.com/companies"],
 ]
 
 final_lesson = Lesson.create!(
-  title: "Conclusion - Intro Project",
+  title: "Conclusion - Mini Challenge",
   project: project,
   lesson_id: 2,
 )
@@ -157,7 +158,7 @@ intro_check_2 = ExactAnswerQuiz.create!(
   answer: "1335",
   project: project,
   slide: final_slide_two,
-  question: " For the 94122 Zipcode, how  many transactions of less than $60 dollars are there.",
+  question: " For the 94122 Zipcode, how  many transactions of less than $60 dollars are there?",
 )
 
 
