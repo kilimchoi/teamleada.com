@@ -51,6 +51,10 @@ class ProjectStatus < ActiveRecord::Base
     self.save
   end
 
+  def started?
+    !start_date.nil?
+  end
+
   def expired?
     if start_date.nil? || project.deadline.nil?
       false
@@ -121,7 +125,7 @@ class ProjectStatus < ActiveRecord::Base
 
   # Chart methods
   def created_before_and_not_completed?(day)
-    created_at <= day.date.tomorrow && !completed?
+    created_at <= day.date.tomorrow && started? && !completed?
   end
 
   def created_before_and_completed?(day)
