@@ -58,9 +58,10 @@ project_details_content_one = [
 project_details_content_two = [
   ['text-info', "Your task is as follows:"],
   ['text', " - Remove all zipcode entries with the total COUNT of deliveries under 200."],
-  ['text', " - Then bucket the COUNT for each zipcode by $ amount in the following range: [$0 - $60], [$60.01 - $120], [$120+]."],
+  ['text', " - Then bucket the COUNT for each zipcode by $ amount in the following range:"],
+  ['text-warning', "[$0 - $60],  [$60.01 - $120],  [$120+]"],
   ['text', "Your resulting columns should look something like this."],
-  ['text', "Zipcode - Num Transactions Less than 60 - Num Transactions between 60 and 120 - Num Transactions above 120"],
+  ['text', "[Zipcode, # of (deliveries <= $60), # of ($60 < deliveries < $120), # of ($120 < devliveries)]"],
   ['next_steps', ""],
 ]
 
@@ -100,7 +101,7 @@ intro_q = ExactAnswerQuiz.create!(
   answer: 4319,
   project: project,
   slide: project_details_slide,
-  question: "How many transactions were there for the zipcode 94115?",
+  question: "To get started, figure out how many transactions were there for the zipcode 94115.",
 )
 
 normalization_code_submission_context = SubmissionContext.create!(
@@ -117,8 +118,13 @@ normalization_code_submission_context = SubmissionContext.create!(
 ################################################################################
 
 conclusion_content_one = [
-  ['text-info', "The challenge was aimed at bringing out your creativity and intuition with data without specific directions."],
-  ['text-success', "It's entirely possible to arrive at some useful conclusion (big or small) without having to create sophisticated predictive models."],
+  ['text', "Let's test a few entries."],
+  ['quiz', "short_check_1"],
+]
+
+conclusion_content_two = [
+  ['text', "Let's check another."],
+  ['quiz', "short_check_2"],
   ['finish_project_button', "http://www.surveygizmo.com/s3/1654603/Project-Feedback-Form"],
 ]
 
@@ -132,6 +138,27 @@ final_slide_one = Slide.create!(
   content: conclusion_content_one,
   parent: final_lesson,
   slide_id: 0,
+)
+
+final_slide_two = Slide.create!(
+  content: conclusion_content_two,
+  parent: final_lesson,
+  slide_id: 1,
+)
+
+intro_check_1 = ExactAnswerQuiz.create!(
+  quiz_id: "short_check_1",
+  answer: "38",
+  project: project,
+  slide: final_slide_one,
+  question: "For the 94115 Zipcode, how many transactions greater than $120 dollars are there?",
+)
+intro_check_2 = ExactAnswerQuiz.create!(
+  quiz_id: "short_check_2",
+  answer: "1335",
+  project: project,
+  slide: final_slide_two,
+  question: " For the 94122 Zipcode, how  many transactions of less than $60 dollars are there.",
 )
 
 
