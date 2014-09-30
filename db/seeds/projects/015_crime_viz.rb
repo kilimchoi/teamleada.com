@@ -21,6 +21,7 @@ project = Project.create!(
   is_new: true,
   featured: true,
   grants_project_access: true,
+  is_onboarding: true,
   cover_photo: "crime",
   deadline: 3.hours,
 )
