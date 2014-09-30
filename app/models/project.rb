@@ -190,6 +190,16 @@ class Project < ActiveRecord::Base
     !self.deadline.nil?
   end
 
+  def deadline_display
+    if deadline_in_days > 0
+      "#{deadline_in_days} Days"
+    elsif deadline_in_hours > 0
+      "#{deadline_in_hours} Hours"
+    else
+      "#{deadline_in_minutes} Minutes"
+    end
+  end
+
   def deadline_in_days
     if !self.deadline.nil?
       self.deadline.div(60 * 60 * 24)
@@ -199,6 +209,12 @@ class Project < ActiveRecord::Base
   def deadline_in_hours
     if !self.deadline.nil?
       self.deadline.div(60 * 60)
+    end
+  end
+
+  def deadline_in_minutes
+    if !self.deadline.nil?
+      self.deadline.div(60)
     end
   end
 
