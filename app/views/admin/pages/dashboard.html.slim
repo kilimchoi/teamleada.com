@@ -30,9 +30,8 @@
                 span.badge = @weekly_impressions.non_admin.count
                 | Non-admin Page Views This Week
 
-        .col-md-4
           .panel.panel-default
-            .panel-heading Important Metrics
+            .panel-heading Specific Page Views (non-admin)
             ul.list-group
               li.list-group-item
                 span.badge = @daily_project_impressions.non_admin.count
@@ -40,12 +39,20 @@
               li.list-group-item
                 span.badge = @daily_company_impressions.non_admin.count
                 | Non-admin Company Page Views Today
+
+        .col-md-4
+          .panel.panel-default
+            .panel-heading Important Metrics
+            ul.list-group
               li.list-group-item
                 span.badge = @daily_new_users.count
                 | New Users Today
               li.list-group-item
                 span.badge = @daily_project_submissions.count
                 | New Project Submissions Today
+              li.list-group-item
+                span.badge = @daily_interview_question_submissions.count
+                | New Interview Submissions Today
 
   .row.card
     .col-md-12
