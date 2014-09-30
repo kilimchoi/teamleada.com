@@ -11,11 +11,11 @@ class Ability
     can [:index, :show], Company
 
     can :show, Lesson do |lesson|
-      (user.has_project_access? || lesson.project.grants_project_access) && (!lesson.project.deadline || (lesson.project.deadline && user.project_status_for_project(lesson.project).has_time_remaining?))
+      (user.has_project_access? || (!user.new_record? && lesson.project.grants_project_access)) && (!lesson.project.deadline || (lesson.project.deadline && user.project_status_for_project(lesson.project).has_time_remaining?))
     end
 
     can :show, Step do |step|
-      (user.has_project_access? || step.project.grants_project_access) && (!step.project.deadline || (step.project.deadline && user.project_status_for_project(step.project).has_time_remaining?))
+      (user.has_project_access? || (!user.new_record? && step.project.grants_project_access)) && (!step.project.deadline || (step.project.deadline && user.project_status_for_project(step.project).has_time_remaining?))
     end
 
     if user.is_admin?

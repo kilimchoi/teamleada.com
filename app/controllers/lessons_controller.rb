@@ -1,6 +1,6 @@
 class LessonsController < ApplicationController
   load_and_authorize_resource :project
-  load_resource :lesson, through: :project
+  load_and_authorize_resource :lesson, through: :project
 
   def show
     # TODO: Right now we're giving points to users when they 'start' a lesson
