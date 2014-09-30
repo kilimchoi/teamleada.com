@@ -8,4 +8,8 @@
 .row.card
   .col-md-12
     h1.title = @interview_question.question
-    = render partial: "interview_questions/forms/" + @interview_question.question_type, locals: { interview_question: @interview_question }
+    - if signed_in?
+      = render partial: "interview_questions/forms/" + @interview_question.question_type, locals: { interview_question: @interview_question }
+    - else
+      h3 Think you know the answer?
+      = link_to "Sign up to find out!", user_omniauth_authorize_path("linkedin"), class: "flat-button full-width"
