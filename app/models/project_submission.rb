@@ -27,6 +27,7 @@ class ProjectSubmission < ActiveRecord::Base
 
   default_scope -> { order("created_at ASC") }
   scope :by_type, -> (content_type) { where(content_type: content_type) }
+  scope :non_admin, -> { where("user_id NOT IN (?)", User.admins.pluck(:id)) }
 
   class << self
     def exists_for_user_project_slide?(user, project, slide)

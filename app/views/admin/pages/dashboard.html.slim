@@ -3,41 +3,37 @@
 .container-fluid.full-container.card-container
   .row.card
     .col-md-12
-      h1.title Admin Dashboard
+      h1 Admin Dashboard
 
   .row
     .col-md-12
+      .alert.alert-warning All statistics below do not include admins.
+
       .row
         .col-md-4
           .panel.panel-default
-            .panel-heading Page Views (including admin)
-            ul.list-group
-              li.list-group-item
-                span.badge = @daily_impressions.count
-                | Page Views Today
-              li.list-group-item
-                span.badge = @weekly_impressions.count
-                | Page Views This Week
-
-          .panel.panel-default
-            .panel-heading Page Views (non-admin)
+            .panel-heading Page Views
             ul.list-group
               li.list-group-item
                 span.badge = @daily_impressions.non_admin.count
-                | Non-admin Page Views Today
+                | Page Views Today
               li.list-group-item
                 span.badge = @weekly_impressions.non_admin.count
-                | Non-admin Page Views This Week
+                | Page Views This Week
 
           .panel.panel-default
-            .panel-heading Specific Page Views (non-admin)
+            .panel-heading Specific Page Views
             ul.list-group
               li.list-group-item
                 span.badge = @daily_project_impressions.non_admin.count
-                | Non-admin Project Page Views Today
+                | Project Page Views Today
               li.list-group-item
                 span.badge = @daily_company_impressions.non_admin.count
-                | Non-admin Company Page Views Today
+                | Company Page Views Today
+              li.list-group-item
+                span.badge = @daily_interview_question_impressions.non_admin.count
+                | Interview Question Page Views Today
+
 
         .col-md-4
           .panel.panel-default
