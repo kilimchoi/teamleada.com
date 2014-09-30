@@ -2,7 +2,7 @@
 
 - if signed_in?
   - if current_user.is_admin?
-    = link_to "Ask Peter", question_answer_path
+    = active_li_link "Ask Peter", question_answer_path
     //= active_li_link "Projects", projects_path
     = active_li_link "Company Challenges", companies_path
     = active_li_link "Interview Questions", interview_question_path(interview_question)
@@ -20,7 +20,7 @@
 
   - else
     / Current user is a student
-    = link_to "Ask Peter", question_answer_path
+    = active_li_link "Ask Peter", question_answer_path
     //= active_li_link "Projects", projects_path
     = active_li_link "Company Challenges", companies_path
     = active_li_link "Interview Questions", interview_question_path(interview_question)
@@ -30,7 +30,7 @@
     = active_li_link "About", about_path
 
 - else
-  = link_to "Ask Peter", question_answer_path
+  = active_li_link "Ask Peter", question_answer_path
   = active_li_link "Users", learn_path
   = active_li_link "Employers", new_employer_path
   //= active_li_link "Projects", projects_path
