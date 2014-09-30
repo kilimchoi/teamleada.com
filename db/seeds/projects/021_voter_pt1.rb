@@ -1,8 +1,8 @@
 main_page_content = [
   ['text-info', "In this data challenge we will analyze candidate disbursement data."],
-  ['text', "We'll be analyzing various spending record from election candidates."],
-  ['text-danger', "Will we uncover some dark political secret?"],
-  ['text', "Or will we simply face the same expected government spending?"],
+  ['text', "More speficically we'll be analyzing various spending record from election candidates."],
+  ['text-danger', "Our ultimate goal is to understand how money is spent in campaigns."],
+  ['text',"By understanding the spending, we can better figure out how to reach voters more effectively at lower cost."],
   ['text', "This is Part 1 of 3 of the data challenge."],
   ['text-success', "We'll start out with some simple correlation analysis."],
 ]
