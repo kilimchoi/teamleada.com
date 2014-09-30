@@ -77,7 +77,10 @@
     = "Please give us feedback!"
 - elsif content_type == "finish_project_button"
   p.fragment
-    = link_to "Complete Project!", complete_project_path(project), method: :post, class: 'flat-button full-width', onclick: "#{current_user.has_all_project_points?(project) && project.grants_project_access ? '': 'openUrl("' + content + '")'}"
+    - if project.is_onboarding
+      = link_to "Complete Project!", complete_project_path(project), method: :post, class: "flat-button full-width"
+    - else
+      = link_to "Complete Project!", complete_project_path(project), method: :post, class: 'flat-button full-width', onclick: "#{current_user.has_all_project_points?(project) && project.grants_project_access ? '': 'openUrl("' + content + '")'}"
 - elsif content_type == 'user_response'
   p.fragment
     = link_to "Enter a response", "#", onclick: "openSidebar('#{project.full_url}', '#{item.class}', '#{item.uid}', #{false}); return false;", class: "flat-button full-width"

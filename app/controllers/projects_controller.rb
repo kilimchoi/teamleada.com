@@ -98,8 +98,13 @@ class ProjectsController < ApplicationController
     @project_status = ProjectStatus.find_by(user: current_user, project: @project)
     if current_user.completed_points(@project) >= @project.total_points
       @project_status.mark_complete
-      flash[:info] = "Congratulations! You have completed the #{@project.title} project! Check back on the company page to see more projects!"
-      redirect_to @project
+      if @project.is_onboarding
+        flash[:info] = "Congratulations! You have submitted your first Leada data challenge! Check out the featured company hosted challenges on the right hand sidebar below!"
+        redirect_to user_path(current_user)
+      else
+        flash[:info] = "Congratulations! You have completed the #{@project.title} project! Check back on the company page to see more projects!"
+        redirect_to @project
+      end
     else
       flash[:error] = "You have not completed all of the lessons, steps, and code submissions for this project!"
       redirect_to current_user.next_lesson_or_step_for_project_path(@project)

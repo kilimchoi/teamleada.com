@@ -475,6 +475,10 @@ class User < ActiveRecord::Base
     invites.count > 0
   end
 
+  def has_completed_onboarding_project?
+    completed_projects.find_by(uid: Project.onboarding_project.uid)
+  end
+
   # Interview Questions
   def has_submission_for_interview_question?(interview_question)
     interview_question_submissions.where(interview_question: interview_question).count > 0
