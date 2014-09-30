@@ -18,6 +18,7 @@ project = Project.create!(
   featured: true,
   cover_photo: "intro",
   deadline: 30.minutes,
+  #is_onboarding: true,
 )
 
 ################################################################################
@@ -28,8 +29,9 @@ intro_content_one = [
   ['text-info', "Here is the dataset that we'll be woroking with."],
   ['link', "https://s3.amazonaws.com/leada/intro_project/delivery_data.csv"],
   ['text', "The data you downloaded is transaction data from a food delivery company in San Francisco for the past 6 months."],
-  ['text', "Your manager wants to determine the frequency of transactions by zipcode."],
-  ['text', "Create table of zipcode and number of transactions."],
+  ['text-danger', "Your manager wants to determine the frequency of transactions by zipcode."],
+  ['text', "You'll create a table of zipcode and number of transactions."],
+  ['next_steps', ""],
 ]
 
 intro_lesson = Lesson.create!(
@@ -45,124 +47,70 @@ intro_slide_one = Slide.create!(
 )
 
 ################################################################################
-##### Code Submission ##########################################################
+##### Project Details  ##########################################################
 ################################################################################
 
-code_submission_content_one = [
-  ['text-info', "Submit your code below."],
-  ['text-success', "Remember that your code will be evaluated by another human being."],
-  ['text', " - Write legible code"],
-  ['text', " - Write well-commented code"],
-  ['text', " - Write efficient code"],
-  ['user_code', ""],
+project_details_content_one = [
+  ['quiz', "short_intro_0"],
+  ['text', "Good, now to the main task."],
+]
+
+project_details_content_two = [
+  ['text-info', "Your task is as follows:"],
+  ['text', " - Remove all zipcode entries with the total COUNT of deliveries under 200."],
+  ['text', " - Then bucket the COUNT for each zipcode by $ amount in the following range: [$0 - $60], [$60.01 - $120], [$120+]."],
+  ['text', "Your resulting columns should look something like this."],
+  ['text', "Zipcode - Num Transactions Less than 60 - Num Transactions between 60 and 120 - Num Transactions above 120"],
   ['next_steps', ""],
 ]
 
-code_submission_lesson = Lesson.create!(
-  title: "Code Submission",
+project_details_content_three = [
+  ['text', "Submit your code below."],
+  ['user_code', ""],
+  ['text', "Great!"],
+  ['next_steps', ""],
+]
+
+project_details_lesson = Lesson.create!(
+  title: "Project Details",
   project: project,
   lesson_id: 1,
 )
 
-code_submission_slide = Slide.create!(
-  content: code_submission_content_one,
-  parent: code_submission_lesson,
+project_details_slide = Slide.create!(
+  content: project_details_content_one,
+  parent: project_details_lesson,
   slide_id: 0,
 )
 
-code_submission_context = SubmissionContext.create!(
-  title: "Source Code",
-  description: "User is asked to submit the source code for the project.",
-  slide: code_submission_slide,
-  submission_context_id: 0,
-  submission_type: SubmissionContext::CODE,
-)
-
-################################################################################
-##### Reoport Submission #######################################################
-################################################################################
-
-report_submission_content_one = [
-  ['text', "Submit a summary of your analysis (less than 500 words)"],
-  ['text-warning', "The report should contain the question you were answering, along with how you used the data to answer it."],
-  ['user_response', ""],
-]
-
-report_submission_content_two = [
-  ['text', "Include the visualization(s) you created by submitting here: "],
-  ['text', 'Use the same submit button to submit multiple visualizations. Please do not submit more than 3. Make sure you submit image files! The file type must be a PNG or JPEG.'],
-  ['image_submit', nil],
-  ['next_steps', ""],
-]
-
-report_submission_lesson = Lesson.create!(
-  title: "Summary Submission",
-  project: project,
-  lesson_id: 2,
-)
-
-report_submission_slide = Slide.create!(
-  content: report_submission_content_one,
-  parent: report_submission_lesson,
-  slide_id: 0,
-)
-
-report_submission_slide_two = Slide.create!(
-  content: report_submission_content_two,
-  parent: report_submission_lesson,
+project_details_slide_two = Slide.create!(
+  content: project_details_content_two,
+  parent: project_details_lesson,
   slide_id: 1,
 )
 
-report_submission_context = SubmissionContext.create!(
-  title: "Report Submission",
-  description: "User is asked to submit a summary of his/her analysis.",
-  slide: report_submission_slide,
-  submission_context_id: 0,
-  submission_type: SubmissionContext::RESPONSE,
+project_details_slide_three = Slide.create!(
+  content: project_details_content_three,
+  parent: project_details_lesson,
+  slide_id: 2,
 )
 
-image_submission_context = SubmissionContext.create!(
-  title: "Visualization Submission",
-  description: "User is asked to submit an image of their visualization.",
-  slide: report_submission_slide_two,
-  submission_context_id: 0,
-  submission_type: SubmissionContext::IMAGE,
-)
-
-
-################################################################################
-##### Video Submission #########################################################
-################################################################################
-
-
-video_submission_content_one = [
-  ['text', 'You can optionally submit a 1 minute video presenting your insights and analysis. Pretend it\'s to your superior.'],
-  ['text', 'Submit the YouTube link and be sure to make it unlisted!'],
-  ['user_response', ""],
-  ['next_steps', ""],
-]
-
-video_lesson = Lesson.create!(
-  title: "Video Submission (Optional)",
+intro_q = ExactAnswerQuiz.create!(
+  quiz_id: "short_intro_0",
+  answer: 4319,
   project: project,
-  lesson_id: 3,
+  slide: project_details_slide,
+  question: "How many transactions were there for the zipcode 94115?",
 )
 
-video_slide = Slide.create!(
-  content: video_submission_content_one,
-  parent: video_lesson,
-  slide_id: 0,
-)
-
-video_submission_context = SubmissionContext.create!(
-  title: "Video Submission",
-  description: "User is asked to submit a 1 minute video presenting their analysis and findings.",
-  slide: video_slide,
+normalization_code_submission_context = SubmissionContext.create!(
+  title: "Code Submission for Intro Project",
+  description: "User is asked to submit the code used to subset and bucket the delivery data.",
+  slide: project_details_slide_two,
   submission_context_id: 0,
-  submission_type: SubmissionContext::PRESENTATION_VIDEO_LINK,
-  required: false,
+  submission_type: SubmissionContext::CODE,
+  required: true,
 )
-
 
 ################################################################################
 ##### Conclusion ###############################################################
@@ -175,9 +123,9 @@ conclusion_content_one = [
 ]
 
 final_lesson = Lesson.create!(
-  title: "Conclusion",
+  title: "Conclusion - Intro Project",
   project: project,
-  lesson_id: 4,
+  lesson_id: 2,
 )
 
 final_slide_one = Slide.create!(
