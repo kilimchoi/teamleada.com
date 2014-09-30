@@ -48,6 +48,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if user.is_admin?
       "Logged in as an admin."
     elsif !user.has_completed_onboarding_project?
+      ## Project Clarity - TODO(mark): I want this to show up as a more permanent message rather than just a flash message.
       "Here is your first Leada data challenge. We'll teach you how to submit code and get your submissions viewed by a hiring manager of the top data science companies!"
     else
       "Successfully logged in."

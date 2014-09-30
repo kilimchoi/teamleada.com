@@ -99,6 +99,7 @@ class ProjectsController < ApplicationController
     if current_user.completed_points(@project) >= @project.total_points
       @project_status.mark_complete
       if @project.is_onboarding
+        # TODO(mark): I want this message to be more than just a toast message. I want it to show up prominently on the user profile.
         flash[:info] = "Congratulations! You have submitted your first Leada data challenge! Check out the featured company hosted challenges on the right hand sidebar below!"
         redirect_to user_path(current_user)
       else
