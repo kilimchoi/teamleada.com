@@ -1,3 +1,5 @@
+- interview_question = InterviewQuestion.next_question_for_user(current_user)
+
 - if signed_in?
   - if current_user.is_admin?
     - if Feature.enabled?("ask_peter")
@@ -5,7 +7,7 @@
         = link_to "Ask Peter", question_answer_path
     //= active_li_link "Projects", projects_path
     = active_li_link "Company Challenges", companies_path
-    = active_li_link "Interview Questions", interview_questions_path
+    = active_li_link "Interview Questions", interview_question_path(interview_question)
     = active_li_link "How It Works", how_it_works_path
     = active_li_link "Blog", "http://blog.teamleada.com"
     = active_li_link "Handbook", handbook_path
@@ -25,7 +27,7 @@
         = link_to "Ask Peter", question_answer_path
     //= active_li_link "Projects", projects_path
     = active_li_link "Company Challenges", companies_path
-    = active_li_link "Interview Questions", interview_questions_path
+    = active_li_link "Interview Questions", interview_question_path(interview_question)
     = active_li_link "How It Works", how_it_works_path
     = active_li_link "Blog", "http://blog.teamleada.com"
     = active_li_link "Handbook", handbook_path
@@ -39,7 +41,7 @@
   = active_li_link "Employers", new_employer_path
   //= active_li_link "Projects", projects_path
   = active_li_link "Company Challenges", companies_path
-  = active_li_link "Interview Questions", interview_questions_path
+  = active_li_link "Interview Questions", interview_question_path(interview_question)
   = active_li_link "How It Works", how_it_works_path
   = active_li_link "Blog", "http://blog.teamleada.com"
   = active_li_link "Handbook", handbook_path

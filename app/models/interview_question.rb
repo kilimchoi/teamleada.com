@@ -29,10 +29,23 @@ class InterviewQuestion < ActiveRecord::Base
   has_many :tags, through: :taggings
 
   scope :displayable_for_user, -> (user) { where(uid: InterviewQuestion.displayable_ids_for_user(user)) }
+  scope :unanswered_for_user, -> (user) { where(uid: InterviewQuestion.displayable_ids_for_user(user)) }
 
   class << self
     def displayable_ids_for_user(user)
       InterviewQuestion.select { |interview_question| !user.has_submission_for_interview_question?(interview_question) }.map(&:uid)
+    end
+
+    def unanswered_ids_for_user(user)
+      InterviewQuestion.select { |interview_question| !user.has_submission_for_interview_question?(interview_question) }.map(&:uid)
+    end
+
+    def next_question_for_user(user)
+      # If the user isn't signed in, return the first question for now. In the future, we might
+      # have it return a random element from a select few questions.
+      return first if user.nil?
+      unanswered_questions = InterviewQuestion.unanswered_for_user(user)
+      return unanswered_questions.empty? ? nil : unanswered_questions.sample
     end
   end
 

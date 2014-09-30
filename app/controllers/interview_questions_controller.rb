@@ -15,10 +15,11 @@ class InterviewQuestionsController < ApplicationController
     @interview_question_submission_form = InterviewQuestionSubmissionForm.new(current_user, @interview_question)
     if @interview_question_submission_form.submit(params[:interview_question_submission_form])
       flash[:info] = "Your answer has been submitted"
+      redirect_to InterviewQuestion.next_question_for_user(current_user)
     else
       flash[:danger] = "There was a problem submitting your answer. You must supply an answer!"
+      redirect_to @interview_question
     end
-    redirect_to @interview_question
   end
 
   private
