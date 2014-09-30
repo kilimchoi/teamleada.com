@@ -9,6 +9,7 @@ class Ability
     # Everyone
     can [:show, :project_info], Project
     can [:index, :show], Company
+    can [:show], InterviewQuestion
 
     can :show, Lesson do |lesson|
       (user.has_project_access? || (!user.new_record? && lesson.project.grants_project_access)) && (!lesson.project.deadline || (lesson.project.deadline && user.project_status_for_project(lesson.project).has_time_remaining?))
@@ -50,6 +51,8 @@ class Ability
 
         can [:show, :index], SubmissionContext
         can [:create], ImageSubmissionContent
+
+        can [:show, :submit], InterviewQuestion
 
 #        can [:index, :create], Invite
       end
