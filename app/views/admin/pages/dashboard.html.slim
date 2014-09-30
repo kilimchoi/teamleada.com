@@ -30,6 +30,10 @@
               li.list-group-item
                 span.badge = @daily_company_impressions.non_admin.count
                 | Company Page Views Today
+              li.list-group-item
+                span.badge = @daily_interview_question_impressions.non_admin.count
+                | Interview Question Page Views Today
+
 
         .col-md-4
           .panel.panel-default
