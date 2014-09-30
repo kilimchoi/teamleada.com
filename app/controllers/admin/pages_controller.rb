@@ -18,8 +18,8 @@ class Admin::PagesController < Admin::BaseController
     @daily_project_impressions = @daily_impressions.filter_category("projects")
     @daily_company_impressions = @daily_impressions.filter_category("companies")
     @daily_new_users = User.where("created_at >= ?", Date.today.to_date)
-    @daily_project_submissions = ProjectSubmission.where("created_at >= ?", Date.today.to_date)
-    @daily_interview_question_submissions = InterviewQuestion.where("created_at >= ?", Date.today.to_date)
+    @daily_project_submissions = ProjectSubmission.non_admin.where("created_at >= ?", Date.today.to_date)
+    @daily_interview_question_submissions = InterviewQuestionSubmission.non_admin.where("created_at >= ?", Date.today.to_date)
   end
 
   def active_users_charts
