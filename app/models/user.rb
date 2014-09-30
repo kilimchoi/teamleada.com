@@ -194,8 +194,8 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile_photos
 
   # Validations
-  validates_format_of :username, :with => /\A[A-Za-z0-9_-]*\z/
-  validates :username, uniqueness: {case_sensitive: false}
+  validates_format_of :username, with: /\A[A-Za-z0-9_-]*\z/
+  validates :username, uniqueness: { case_sensitive: false }
   validate :check_username
 
   extend FriendlyId
