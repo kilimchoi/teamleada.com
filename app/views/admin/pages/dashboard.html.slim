@@ -19,7 +19,6 @@
                 span.badge = @weekly_impressions.count
                 | Page Views This Week
 
-        .col-md-4
           .panel.panel-default
             .panel-heading Page Views (non-admin)
             ul.list-group
@@ -53,6 +52,17 @@
               li.list-group-item
                 span.badge = @daily_interview_question_submissions.count
                 | New Interview Submissions Today
+
+        .col-md-4
+          .panel.panel-default
+            .panel-heading Project Submissions
+            ul.list-group
+              - ["Code", "FreeResponse", "Quiz", "Image", "SlidesLink", "SlidesVideo"].each do |type|
+                li.list-group-item
+                  span.badge = @daily_project_submissions.by_type("#{type}SubmissionContent").count
+                  ' New
+                  = type
+                  |  Submissions
 
   .row.card
     .col-md-12
