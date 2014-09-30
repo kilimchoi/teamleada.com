@@ -10,15 +10,15 @@
 .sidebar-list-item-content
   .sidebar-list-item-extra-content
     .sidebar-content-row.sidebar-content-difficulty-level
-      span.label.label-danger
+      strong
         ' Difficulty Level:
         = interview_question.difficulty_level
     .sidebar-content-row.sidebar-content-tags
       strong Tags:
       - interview_question.tags.each do |tag|
-        span.label.label-default.label-tag = tag.name
+        span.label.label-default.label-tag.label-block = tag.name
     .sidebar-content-row.sidebar-content-category
       strong Category:
-      span.label.label-success.label-category = interview_question.industry.titleize
+      span.label.label-success.label-category.label-block = interview_question.industry.titleize
 
 
