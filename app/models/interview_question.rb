@@ -41,9 +41,11 @@ class InterviewQuestion < ActiveRecord::Base
     end
 
     def next_question_for_user(user)
+      # If the user isn't signed in, return the first question for now. In the future, we might
+      # have it return a random element from a select few questions.
       return first if user.nil?
       unanswered_questions = InterviewQuestion.unanswered_for_user(user)
-      return unanswered_questions.empty? ? nil : unanswered_questions.first
+      return unanswered_questions.empty? ? nil : unanswered_questions.sample
     end
   end
 
