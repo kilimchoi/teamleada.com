@@ -1,4 +1,5 @@
 //= require reveal
+//= require toastr
 
 initializeReveal();
 

@@ -18,7 +18,7 @@ project = Project.create!(
   featured: true,
   cover_photo: "intro",
   deadline: 30.minutes,
-  #is_onboarding: true,
+  is_onboarding: true,
 )
 
 ################################################################################
@@ -26,7 +26,7 @@ puts "============ Created project: #{project.title}."
 ################################################################################
 
 intro_content_one = [
-  ['text-info', "Here is the dataset that we'll be woroking with."],
+  ['text-info', "Here is the dataset that we'll be working with."],
   ['link', "https://s3.amazonaws.com/leada/intro_project/delivery_data.csv"],
   ['text', "The data you downloaded is transaction data from a food delivery company in San Francisco for the past 6 months."],
   ['text-danger', "Your manager wants to determine the frequency of transactions by zipcode."],

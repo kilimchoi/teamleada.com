@@ -100,7 +100,8 @@ $(document).ready(function() {
       success: function(data) {
         successCallback();
       },
-      failure: function(data) {
+      error: function(data) {
+        toastr.error("We're sorry an error has occurred. We've been notified and are looking into it!");
       }
     });
     return false;

@@ -40,11 +40,7 @@ hr
             - else
               ' Time Allowed:
             strong
-              - if project.deadline_in_days > 0
-                = project.deadline_in_days
-                |  days
-              - else
-                = project.deadline_in_hours
-                |  hours
+              - if project.has_deadline?
+                = project.deadline_display
 hr
 
