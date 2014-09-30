@@ -12,11 +12,11 @@ class Ability
     can [:show], InterviewQuestion
 
     can :show, Lesson do |lesson|
-      (user.has_project_access? || (!user.new_record? && lesson.project.grants_project_access)) && (!lesson.project.deadline || (lesson.project.deadline && user.project_status_for_project(lesson.project).has_time_remaining?))
+      (user.has_project_access? || (!user.new_record? && (lesson.project.grants_project_access || lesson.project.is_onboarding))) && (!lesson.project.deadline || (lesson.project.deadline && user.project_status_for_project(lesson.project).has_time_remaining?))
     end
 
     can :show, Step do |step|
-      (user.has_project_access? || (!user.new_record? && step.project.grants_project_access)) && (!step.project.deadline || (step.project.deadline && user.project_status_for_project(step.project).has_time_remaining?))
+      (user.has_project_access? || (!user.new_record? && (step.project.grants_project_access || step.project.is_onboarding))) && (!step.project.deadline || (step.project.deadline && user.project_status_for_project(step.project).has_time_remaining?))
     end
 
     if user.is_admin?
@@ -40,7 +40,7 @@ class Ability
       else
         # Only students
         can [:check_submission, :complete, :submit_resource, :purchase, :resource, :feedback], Project do |project|
-          project.enabled && (project.grants_project_access || (user.has_project_access? && (!project.paid || !user.has_not_paid_for_project?(project))))
+          project.enabled && (project.grants_project_access || project.is_onboarding || (user.has_project_access? && (!project.paid || !user.has_not_paid_for_project?(project))))
         end
 
         can [:follow, :unfollow, :company_interest, :data_challenges_interest], Company do |company|

@@ -117,6 +117,10 @@ class Project < ActiveRecord::Base
   VALID_FILTERS = ["started", "completed"]
 
   class << self
+    def onboarding_project
+      Project.find_by(is_onboarding: true)
+    end
+
     def displayable_ids
       Project.all.select { |project| !project.is_part_of_set? || (project.is_part_of_set? && project.is_first_part_of_set?) }.map(&:uid)
     end
@@ -186,6 +190,16 @@ class Project < ActiveRecord::Base
     !self.deadline.nil?
   end
 
+  def deadline_display
+    if deadline_in_days > 0
+      "#{deadline_in_days} Days"
+    elsif deadline_in_hours > 0
+      "#{deadline_in_hours} Hours"
+    else
+      "#{deadline_in_minutes} Minutes"
+    end
+  end
+
   def deadline_in_days
     if !self.deadline.nil?
       self.deadline.div(60 * 60 * 24)
@@ -195,6 +209,12 @@ class Project < ActiveRecord::Base
   def deadline_in_hours
     if !self.deadline.nil?
       self.deadline.div(60 * 60)
+    end
+  end
+
+  def deadline_in_minutes
+    if !self.deadline.nil?
+      self.deadline.div(60)
     end
   end
 

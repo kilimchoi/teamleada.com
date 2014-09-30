@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140929174240) do
+ActiveRecord::Schema.define(version: 20140930204749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -467,6 +467,7 @@ ActiveRecord::Schema.define(version: 20140929174240) do
     t.boolean  "has_content_submit",    default: false
     t.boolean  "has_written_submit",    default: false
     t.integer  "project_set_id"
+    t.boolean  "is_onboarding",         default: false
   end
 
   create_table "publications", force: true do |t|

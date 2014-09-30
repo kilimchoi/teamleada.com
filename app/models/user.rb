@@ -69,14 +69,14 @@ class User < ActiveRecord::Base
            to: :preferences, allow_nil: true
 
   # Profile and Preferences
-  has_one :user_profile    # Should use the .profile attribute defined below.
-  has_one :user_preference # Should use the .preferences attribute defined below.
+  has_one :user_profile,    dependent: :destroy # Should use the .profile attribute defined below.
+  has_one :user_preference, dependent: :destroy # Should use the .preferences attribute defined below.
 
   # Stories
-  has_many :stories, as: :subject
+  has_many :stories, as: :subject, dependent: :destroy
 
   # Submissions
-  has_many :project_submissions
+  has_many :project_submissions,       dependent: :destroy
   has_many :code_submissions,          -> { where(content_type: "CodeSubmissionContent") },         class_name: "ProjectSubmission"
   has_many :free_response_submissions, -> { where(content_type: "FreeResponseSubmissionContent") }, class_name: "ProjectSubmission"
   has_many :file_submissions,          -> { where(content_type: ["Image", "PDF", "CSV"].map{|type| type + "SubmissionContent"}) }, class_name: "ProjectSubmission"
@@ -103,7 +103,7 @@ class User < ActiveRecord::Base
   has_many :projects, through: :project_statuses
 
   # Interview Questions
-  has_many :interview_question_submissions
+  has_many :interview_question_submissions, dependent: :destroy
   has_many :interview_questions, through: :interview_question_submissions
 
   # Invites and Access Codes
@@ -194,8 +194,8 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile_photos
 
   # Validations
-  validates_format_of :username, :with => /\A[A-Za-z0-9_-]*\z/
-  validates :username, uniqueness: {case_sensitive: false}
+  validates_format_of :username, with: /\A[A-Za-z0-9_-]*\z/
+  validates :username, uniqueness: { case_sensitive: false }
   validate :check_username
 
   extend FriendlyId
@@ -473,6 +473,10 @@ class User < ActiveRecord::Base
 
   def has_invited_friends?
     invites.count > 0
+  end
+
+  def has_completed_onboarding_project?
+    completed_projects.find_by(uid: Project.onboarding_project.uid)
   end
 
   # Interview Questions
