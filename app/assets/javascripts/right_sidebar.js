@@ -9,14 +9,18 @@ var submit_url;
 $(document).ready(function() {
 
   $("#close-code-button").click(function(event) {
-    saveSubmission(submit_url, object_class, object_id, Reveal.getIndices().h, editor.getValue(), is_code_submission);
+    saveSubmission(submit_url, object_class, object_id, Reveal.getIndices().h, editor.getValue(), is_code_submission, null);
     $("#code-submit-button").hide();
     $("#close-code-button").hide();
     $("#right-sidebar").css("width", 50);
   });
 
   $("#code-submit-button").click(function(event) {
-    saveSubmission(submit_url, object_class, object_id, Reveal.getIndices().h, editor.getValue(), is_code_submission);
+    saveSubmission(submit_url, object_class, object_id, Reveal.getIndices().h, editor.getValue(), is_code_submission, function() {
+      $("#code-submit-button").hide();
+      $("#close-code-button").hide();
+      $("#right-sidebar").css("width", 50);
+    });
   });
 
   saveButtonStartProgress = function() {
@@ -77,7 +81,7 @@ $(document).ready(function() {
     return false;
   }
 
-  saveSubmission = function(url, objectClass, objectId, slideIndex, text, isCodeSubmission) {
+  saveSubmission = function(url, objectClass, objectId, slideIndex, text, isCodeSubmission, successCallback) {
     Pace.restart();
     var data = JSON.stringify({
       parent_id: objectId,
@@ -94,6 +98,7 @@ $(document).ready(function() {
       contentType: "application/json; charset=utf-8",
       dataType: "json",
       success: function(data) {
+        successCallback();
       },
       failure: function(data) {
       }
