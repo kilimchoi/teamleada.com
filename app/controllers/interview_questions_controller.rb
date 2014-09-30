@@ -25,7 +25,7 @@ class InterviewQuestionsController < ApplicationController
   private
 
   def load_interview_questions
-    @interview_questions = InterviewQuestion.all
+    @interview_questions = InterviewQuestion.displayable_for_user(current_user)
   end
 
 end

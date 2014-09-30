@@ -33,7 +33,12 @@ class InterviewQuestion < ActiveRecord::Base
 
   class << self
     def displayable_ids_for_user(user)
-      InterviewQuestion.select { |interview_question| !user.has_submission_for_interview_question?(interview_question) }.map(&:uid)
+      if user.nil?
+        # Should only grab the featured question ids but for now, grab everything
+        all.pluck(:uid)
+      else
+        InterviewQuestion.select { |interview_question| !user.has_submission_for_interview_question?(interview_question) }.map(&:uid)
+      end
     end
 
     def unanswered_ids_for_user(user)
