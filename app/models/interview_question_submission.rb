@@ -16,6 +16,8 @@ class InterviewQuestionSubmission < ActiveRecord::Base
   belongs_to :interview_question
   belongs_to :user
 
+  scope :non_admin, -> { where("user_id NOT IN (?)", User.admins.pluck(:id)) }
+
   def safe_content
     escape_javascript(content.try(:html_safe))
   end
