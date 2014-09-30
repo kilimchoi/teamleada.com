@@ -16,7 +16,7 @@ class InterviewQuestionsController < ApplicationController
     if @interview_question_submission_form.submit(params[:interview_question_submission_form])
       flash[:info] = "Your answer has been submitted"
     else
-      flash[:danger] = "There was a problem submitting your answer"
+      flash[:danger] = "There was a problem submitting your answer. You must supply an answer!"
     end
     redirect_to @interview_question
   end
