@@ -26,6 +26,7 @@ class ProjectSubmission < ActiveRecord::Base
   ADMIN_TABS = ["completed-projects", "all-submissions", "by-project"]
 
   default_scope -> { order("created_at ASC") }
+  scope :by_type, -> (content_type) { where(content_type: content_type) }
 
   class << self
     def exists_for_user_project_slide?(user, project, slide)
