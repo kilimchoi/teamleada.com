@@ -19,11 +19,11 @@ TeamLeada::Application.routes.draw do
     end
 
     resources :users, only: [:index, :show] do
-      scope module: :users do
-        member do
-          match "activity", to: "users#activity", as: :activity, via: :get
-        end
+      member do
+        match "activity", to: "users#activity", as: :activity, via: :get
+      end
 
+      scope module: :users do
         resources :projects, only: [:show, :index] do
           member do
             match "publish-feedback", to: "projects#publish_feedback", as: :publish_feedback, via: :get

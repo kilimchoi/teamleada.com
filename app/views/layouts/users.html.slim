@@ -9,23 +9,14 @@
 .container-fluid.full-container
   .row
     .col-md-8.col-md-offset-1
-
       .container-fluid.full-container
-        .row
-          .col-md-12
-            .user-container.card-container
-              = render partial: "users/profile/top_header_info", locals: { \
-                user: user,
-                is_editing: is_editing,
-                is_admin: is_admin,
-                is_company: is_company,
-                current_user_can_edit: current_user_can_edit,
-              }
-
-              = render partial: "users/profile/navigation", locals: { user: user }
-
-              - if current_user.is_admin?
-                = render partial: "users/profile/admin_navigation", locals: { user: user }
+        = render partial: "users/profile/user_header", locals: { \
+          user: user,
+          is_editing: is_editing,
+          is_admin: is_admin,
+          is_company: is_company,
+          current_user_can_edit: current_user_can_edit,
+        }
 
         = yield
     .col-md-2
