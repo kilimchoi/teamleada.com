@@ -85,4 +85,7 @@ class PagesController < ApplicationController
     @home = get_yaml_data_file("home.yml")
   end
 
+  def employer_faq
+  end
+
 end

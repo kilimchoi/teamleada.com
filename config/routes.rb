@@ -59,6 +59,7 @@ TeamLeada::Application.routes.draw do
   end
 
   match "employer", to: "employer_applications#new", as: "new_employer", via: :get
+  match "employer/faq", to: "pages#employer_faq", as: "employer_faq", via: :get
   resources :employer_applications, path: "employer", as: "employer", only: [:create]
 
   get "/projects", to: redirect("/companies")

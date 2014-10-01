@@ -25,12 +25,12 @@
     .col-md-6.col-md-offset-3
       h1 Find Data Scientists Now
       = simple_form_for @employer_application, url: employer_index_path do |f|
-        = render partial: 'shared/forms/errors', locals: { object: @employer_application }
+        = render partial: "shared/forms/errors", locals: { object: @employer_application }
         = f.input :name
         = f.input :email
         = f.input :size, collection: EmployerApplication::SIZE_OPTIONS, label: "Size (Number of employees)"
         = f.input :industry, collection: EmployerApplication::INDUSTRY_OPTIONS
-        = f.input :custom_industry, label: "If you selected 'Other', please type in your industry here."
+        = f.input :custom_industry, label: "If you selected "Other", please type in your industry here."
         = f.input :description, label: "Who Are You Looking For?"
-        = f.submit 'Submit', class: 'flat-button'
+        = f.submit "Submit", class: "flat-button"
 
