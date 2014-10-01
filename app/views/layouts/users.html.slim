@@ -23,6 +23,7 @@
               }
 
               = render partial: "users/profile/navigation", locals: { user: user }
+              = render partial: "users/profile/admin_navigation", locals: { user: user }
 
         = yield
     .col-md-2

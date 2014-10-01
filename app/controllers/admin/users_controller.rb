@@ -14,6 +14,9 @@ class Admin::UsersController < Admin::BaseController
   def show
   end
 
+  def activity
+  end
+
   private
 
   def sort_column
