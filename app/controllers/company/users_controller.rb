@@ -1,6 +1,8 @@
 class Company::UsersController < Company::BaseController
   load_and_authorize_resource
 
+  layout Proc.new { ["index"].include?(action_name) ? "company" : "company/users" }
+
   def index
     @users = current_user.company.viewable_users
     @users = @users.paginate(page: params[:page], per_page: User.company_per_page)

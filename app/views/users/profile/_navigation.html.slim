@@ -1,11 +1,12 @@
 // Required Variables:
-// user
+// user, is_company
 
 .row
   .col-md-12
     .row.card.no-padding
       .col-md-2.card-navigation-item
-        = link_to "Profile", user_path(user)
+        - profile_path = is_company ? company_browse_user_path(user) : user_path(user)
+        = link_to "Profile", profile_path
       .col-md-2.card-navigation-item
         = link_to "Projects", user_projects_path(user)
       .col-md-2.card-navigation-item

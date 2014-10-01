@@ -14,7 +14,7 @@
               .thumbnail.card
                 = image_tag user.profile_photo, class: "company-profile-photo"
                 .caption
-                  h3.inline-block User
+                  h3.inline-block = user.name
                   - if current_user.favorited?(user)
                     = link_to unfavorite_company_browse_user_path(user), remote: true,
                                                                   method: :post,

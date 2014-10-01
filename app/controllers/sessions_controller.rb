@@ -66,7 +66,8 @@ class SessionsController < Devise::SessionsController
     if user.is_admin?
       admin_dashboard_path
     elsif user.is_company?
-      company_dashboard_path
+      #company_dashboard_path
+      company_browse_users_path
     elsif user.has_project_access?
       companies_path
     else

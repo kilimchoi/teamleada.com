@@ -8,7 +8,7 @@
     - if user.completed_projects.count == 0
       h4 You have not completed any challenges yet.
     - user.completed_challenges.each do |project|
-      - project_link = is_company ? project_company_browse_user_path(user, project) : user_project_path(user, project)
+      - project_link = is_company ? company_browse_user_project_path(user, project) : user_project_path(user, project)
 
       = link_to project_link, class: "flat-button step-button" do
         span.fa.fa-trophy.icon-margin = project.title
@@ -17,7 +17,7 @@
     - if user.in_progress_challenges.count == 0
       h4 You do not currently have any in progress challenges yet.
     - user.in_progress_challenges.each do |project|
-      - project_link = is_company ? project_company_browse_user_path(user, project) : user_project_path(user, project)
+      - project_link = is_company ? company_browse_user_project_path(user, project) : user_project_path(user, project)
       = link_to project.title, project_link
       .progress
         - percentage = user.project_progress_percentage(project)
@@ -32,7 +32,7 @@
     - if user.completed_lessons.count == 0
       h4 You have not completed any lessons yet.
     - user.completed_lessons.each do |project|
-      - project_link = is_company ? project_company_browse_user_path(user, project) : user_project_path(user, project)
+      - project_link = is_company ? company_browse_user_project_path(user, project) : user_project_path(user, project)
 
       .flat-button.step-button
         span.fa.fa-trophy.icon-margin = project.title

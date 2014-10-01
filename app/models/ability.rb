@@ -7,7 +7,7 @@ class Ability
     alias_action :index, :show, to: :view
 
     # Everyone
-    can [:show, :project_info], Project
+    can [:show, :index, :project_info], Project
     can [:index, :show], Company
     can [:show], InterviewQuestion
 
@@ -34,8 +34,8 @@ class Ability
         can [:view, :show_project, :favorite, :unfavorite], User
 
         can :show, Company
-        can [:show, :check_submission, :complete, :submit_resource, :purchase, :resource], Project do |project|
-          user.company.projects.include? project
+        can [:check_submission, :complete, :submit_resource, :purchase, :resource], Project do |project|
+          false
         end
       else
         # Only students
