@@ -17,7 +17,7 @@ project = Project.create!(
   is_new: true,
   featured: true,
   cover_photo: "intro",
-  deadline: 30.minutes,
+  deadline: 1.year,
   is_onboarding: true,
 )
 
