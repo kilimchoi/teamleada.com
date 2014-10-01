@@ -9,7 +9,7 @@
 
 .row.card
   .col-md-12
-    h1.title = @interview_question.question
+    p.content.title = @interview_question.question
     - if signed_in?
       = render partial: "interview_questions/forms/" + @interview_question.question_type, locals: { interview_question: @interview_question }
     - else
