@@ -1,0 +1,19 @@
+// Required Variables:
+// user, is_editing, is_admin, is_company, current_user_can_edit
+
+.row
+  .col-md-12
+    .user-container.card-container
+      = render partial: "users/profile/top_header_info", locals: { \
+        user: user,
+        is_editing: is_editing,
+        is_admin: is_admin,
+        is_company: is_company,
+        current_user_can_edit: current_user_can_edit,
+      }
+
+      = render partial: "users/profile/navigation", locals: { user: user }
+
+      - if current_user.is_admin?
+        = render partial: "users/profile/admin_navigation", locals: { user: user }
+

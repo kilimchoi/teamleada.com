@@ -14,6 +14,10 @@ class Admin::UsersController < Admin::BaseController
   def show
   end
 
+  def activity
+    @page_views = @user.page_views.most_recent.paginate(page: params[:page])
+  end
+
   private
 
   def sort_column
