@@ -1,7 +1,7 @@
 class Company::UsersController < Company::BaseController
   load_and_authorize_resource
 
-  layout Proc.new { ["index"].include?(action_name) ? "application" : "company/users" }
+  layout Proc.new { ["index"].include?(action_name) ? "company" : "company/users" }
 
   def index
     @users = current_user.company.viewable_users

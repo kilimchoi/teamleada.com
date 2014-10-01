@@ -1,0 +1,8 @@
+.container-fluid.full-container
+  .row
+    .col-md-2
+      = render partial: "company/shared/company_sidebar"
+    .col-md-10
+      = yield
+
+= parent_layout "application"
