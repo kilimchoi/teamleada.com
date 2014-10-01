@@ -12,8 +12,8 @@ class Admin::PagesController < Admin::BaseController
     @new_profile_photos = ProfilePhoto.last(5).reverse
     @new_project_submissions = ProjectSubmission.last(5).reverse
 
-    @weekly_impressions = Impression.where("created_at >= ?", 7.days.ago.to_date)
-    @daily_impressions = @weekly_impressions.where("created_at >= ?", Date.today.to_date)
+    @weekly_impressions = Impression.this_week
+    @daily_impressions = @weekly_impressions.today
 
     @daily_project_impressions = @daily_impressions.filter_category("projects")
     @daily_company_impressions = @daily_impressions.filter_category("companies")
