@@ -12,7 +12,7 @@
         current_user_can_edit: current_user_can_edit,
       }
 
-      = render partial: "users/profile/navigation", locals: { user: user }
+      = render partial: "users/profile/navigation", locals: { user: user, is_company: is_company }
 
       - if current_user.is_admin?
         = render partial: "users/profile/admin_navigation", locals: { user: user }
