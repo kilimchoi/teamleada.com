@@ -593,7 +593,7 @@ setup_main_slide = [
 
   quiz = ExactAnswerQuiz.create!(
     quiz_id: "mr_quiz_1",
-    answer: "319",
+    answer: "4",
     project: project,
     slide: conclusion_main_slide_two,
     question: "What is the distance between node '1' and node '1234'?",
@@ -601,7 +601,7 @@ setup_main_slide = [
 
   quiz = ExactAnswerQuiz.create!(
     quiz_id: "mr_quiz_2",
-    answer: "3241",
+    answer: "5",
     project: project,
     slide: conclusion_main_slide_three,
     question: "What is the distance between node '2222' and node '22222'?",
@@ -609,7 +609,7 @@ setup_main_slide = [
 
   quiz = ExactAnswerQuiz.create!(
     quiz_id: "mr_quiz_3",
-    answer: "421",
+    answer: "4",
     project: project,
     slide: conclusion_main_slide_four,
     question: "What is the distance between node '0' and node '403392'?",
