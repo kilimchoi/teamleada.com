@@ -120,7 +120,7 @@ class User < ActiveRecord::Base
   has_many :profile_photos
 
   # Page views
-  has_many :impressions
+  has_many :page_views,    class_name: Impression
   has_many :profile_views, class_name: Impression,
                            foreign_key: :impressionable_id,
                            primary_key: :username

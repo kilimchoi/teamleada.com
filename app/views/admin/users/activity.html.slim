@@ -1,0 +1,15 @@
+.row.card
+  .col-md-12
+    h1 User Activity
+
+.row.card
+  .col-md-12
+    table.table.table-striped
+      th URL
+      th Timestamp
+      - @page_views.each do |page_view|
+        tr
+          td = page_view.url
+          td = page_view.created_at.pretty_time
+
+  = will_paginate(@page_views)
