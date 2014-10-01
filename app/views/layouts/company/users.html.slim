@@ -8,7 +8,7 @@
 = yield :before_container
 .container-fluid.full-container
   .row
-    .col-md-9
+    .col-md-8.col-md-offset-1
       .container-fluid.full-container
         = render partial: "users/profile/user_header", locals: { \
           user: user,
@@ -19,7 +19,7 @@
         }
 
         = yield
-    .col-md-3
+    .col-md-2
       = render partial: "users/user_right_sidebar", locals: { user: user }
 
 
