@@ -86,6 +86,7 @@ class PagesController < ApplicationController
   end
 
   def employer_faq
+    @faq = get_yaml_data_file("employer_faq.yml")
   end
 
 end
