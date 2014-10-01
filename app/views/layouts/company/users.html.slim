@@ -9,15 +9,16 @@
 .container-fluid.full-container
   .row
     .col-md-9
-      = render partial: "users/profile/user_header", locals: { \
-        user: user,
-        is_editing: is_editing,
-        is_admin: is_admin,
-        is_company: is_company,
-        current_user_can_edit: current_user_can_edit,
-      }
+      .container-fluid.full-container
+        = render partial: "users/profile/user_header", locals: { \
+          user: user,
+          is_editing: is_editing,
+          is_admin: is_admin,
+          is_company: is_company,
+          current_user_can_edit: current_user_can_edit,
+        }
 
-      = yield
+        = yield
     .col-md-3
       = render partial: "users/user_right_sidebar", locals: { user: user }
 
