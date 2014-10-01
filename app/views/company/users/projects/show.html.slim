@@ -1,1 +1,13 @@
+.row.card
+  .col-md-12
+    h3.title Code Submissions
+    = render partial: "projects/submission_contexts_full", locals: { submission_contexts: @project.code_submission_contexts, user: @user }
+.row.card
+  .col-md-12
+    h3.title Free Response Submissions
+    = render partial: "projects/submission_contexts_full", locals: { submission_contexts: @project.free_response_submission_contexts, user: @user }
+.row.card
+  .col-md-12
+    h3.title Image Submissions
+    = render partial: "projects/submission_contexts_full", locals: { submission_contexts: @project.image_submission_contexts, user: @user }
 
