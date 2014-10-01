@@ -1,0 +1,6 @@
+// Required Variables:
+// project_submission
+
+.row.card
+  .col-md-12
+    = render partial: "users/projects/project_submissions/#{project_submission.content_type.underscore}", locals: { content_object: project_submission.content_object }

@@ -11,10 +11,10 @@
         li
           = link_to "Profile", user_path(current_user)
         li
-          = link_to "Account Settings", edit_user_path(tab: "account")
+          = link_to "Account Settings", settings_user_path(current_user, tab: "account")
       - else
         li
-          = link_to "Sign In", new_user_session_path
+          = link_to "Log In", new_user_session_path
         li
-          = link_to "Sign Up", new_user_registration_path
+          = link_to "Sign Up", omniauth_authorize_path("user", "linkedin")
 

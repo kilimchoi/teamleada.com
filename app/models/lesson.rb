@@ -44,7 +44,7 @@ class Lesson < ActiveRecord::Base
   end
 
   def set_url
-    self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize
+    self.url = title.urlify
   end
 
   def id

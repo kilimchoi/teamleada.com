@@ -1,19 +1,31 @@
+.row
+  .col-md-12
+    .project-container.card-container
+      = render partial: "projects/project_countdown", locals: { project: @project, project_status: @project_status, user: @user }
+      = render partial: "projects/project_progress", locals: { project: @project, user: @user }
+      .row.card
+        .col-md-12
+          h2.title Project Details
+          = render partial: "projects/project_details", locals: { project: @project }
 
-- content_for :before_container do
-  = render partial: "shared/projects/project_cover_photo", locals: { \
-    project: @project,
-    size: "extra-large",
-    clickable: false,
-  }
-
-.container.full-container.show-project-container
-  .row
-    .col-md-12
-      .project-container.card-container
-        = render partial: "projects/project_countdown", locals: { project: @project, project_status: @project_status }
-        = render partial: "projects/project_progress", locals: { project: @project }
-        .row.card
-          .col-md-12
-            h1.title Project Details
-            = render partial: "projects/project_details", locals: { project: @project }
+      // TODO(mark): Refactor this into a loop...
+      .row
+        .col-md-6
+          - if @project.has_code_submissions?
+            = render partial: "projects/submissions/code_submissions", locals: { project: @project, user: @user }
+        .col-md-6
+          - if @project.has_free_response_submissions?
+            = render partial: "projects/submissions/free_response_submissions", locals: { project: @project, user: @user }
+      .row
+        .col-md-6
+          - if @project.has_presentation_slides_link_submissions?
+            = render partial: "projects/submissions/presentation_slides_link_submissions", locals: { project: @project, user: @user }
+      .row
+        .col-md-6
+          - if @project.has_presentation_video_link_submissions?
+            = render partial: "projects/submissions/presentation_video_link_submissions", locals: { project: @project, user: @user }
+      .row
+        .col-md-6
+          - if @project.has_image_submissions?
+            = render partial: "projects/submissions/image_submissions", locals: { project: @project, user: @user }
 

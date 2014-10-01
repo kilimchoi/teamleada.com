@@ -3,46 +3,62 @@
 .container-fluid.full-container.card-container
   .row.card
     .col-md-12
-      h1.title Admin Dashboard
+      h1 Admin Dashboard
 
   .row
     .col-md-12
+      .alert.alert-warning All statistics below do not include admins.
+
       .row
         .col-md-4
           .panel.panel-default
-            .panel-heading Page Views (including admin)
-            ul.list-group
-              li.list-group-item
-                span.badge = @daily_impressions.count
-                | Page Views Today
-              li.list-group-item
-                span.badge = @weekly_impressions.count
-                | Page Views This Week
-
-        .col-md-4
-          .panel.panel-default
-            .panel-heading Page Views (non-admin)
+            .panel-heading Page Views
             ul.list-group
               li.list-group-item
                 span.badge = @daily_impressions.non_admin.count
-                | Non-admin Page Views Today
+                | Page Views Today
               li.list-group-item
                 span.badge = @weekly_impressions.non_admin.count
-                | Non-admin Page Views This Week
+                | Page Views This Week
+
+          .panel.panel-default
+            .panel-heading Specific Page Views
+            ul.list-group
+              li.list-group-item
+                span.badge = @daily_project_impressions.non_admin.count
+                | Project Page Views Today
+              li.list-group-item
+                span.badge = @daily_company_impressions.non_admin.count
+                | Company Page Views Today
+              li.list-group-item
+                span.badge = @daily_interview_question_impressions.non_admin.count
+                | Interview Question Page Views Today
+
 
         .col-md-4
           .panel.panel-default
             .panel-heading Important Metrics
             ul.list-group
               li.list-group-item
-                span.badge = @daily_project_impressions.non_admin.count
-                | Non-admin Project Page Views Today
-              li.list-group-item
                 span.badge = @daily_new_users.count
                 | New Users Today
               li.list-group-item
-                span.badge = @daily_code_submissions.count
-                | New Code Submissions Today
+                span.badge = @daily_project_submissions.count
+                | New Project Submissions Today
+              li.list-group-item
+                span.badge = @daily_interview_question_submissions.count
+                | New Interview Question Submissions Today
+
+        .col-md-4
+          .panel.panel-default
+            .panel-heading Project Submissions
+            ul.list-group
+              - ["Code", "FreeResponse", "Quiz", "Image", "SlidesLink", "SlidesVideo"].each do |type|
+                li.list-group-item
+                  span.badge = @daily_project_submissions.by_type("#{type}SubmissionContent").count
+                  ' New
+                  = type
+                  |  Submissions
 
   .row.card
     .col-md-12
@@ -51,7 +67,6 @@
   .row.card
     .col-md-12
       = high_chart("growth_chart", @growth_chart)
-
 
   .row
     .col-md-6
@@ -97,14 +112,16 @@
     .col-md-6
       .row.card
         .col-md-12
-          h2 Newest Code Submissions
+          h2 Newest Project Submissions
           table.table.table-striped
             th Name
             th Link
+            th Type
             th Time
-            - @new_code_submissions.each do |code_submission|
+            - @new_project_submissions.each do |project_submission|
               tr
-                td = link_to code_submission.user.name, admin_user_path(code_submission.user)
-                td = link_to "View", admin_user_project_code_submission_path(code_submission.user, code_submission.project, code_submission)
-                td = code_submission.created_at.strftime("%m/%d %H:%M:%S")
+                td = link_to project_submission.user.name, admin_user_path(project_submission.user)
+                td = link_to "View", admin_user_project_project_submission_path(project_submission.user, project_submission.project, project_submission)
+                td = project_submission.content_type
+                td = project_submission.created_at.strftime("%m/%d %H:%M:%S")
 

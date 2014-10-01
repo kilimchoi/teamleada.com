@@ -1,10 +1,24 @@
-.container-fluid.full-container
+- provide(:title, "Featured Companies")
+
+.container-fluid.full-container.card-container
   .row
     .col-md-12
-      h1
-        ' All Companies
-      table.table.table-striped
-        th Name
-        - @companies.each do |company|
-          tr
-            td = link_to company.name, company_path(company)
+      .row.card
+        .col-md-12
+          h1.center Featured Companies
+
+  .row
+    .col-md-12
+      - @companies.each_slice(2) do |slice|
+        .row.row-table.row-full-height.row-full-width.row-tight-margin
+          - slice.each do |company|
+            .col-md-6.col-middle.project-col
+              = render partial: "companies/company/company_cover_photo", locals: { \
+                company: company,
+                is_editing: false,
+                clickable: true,
+                path: company_path(company),
+                size: "large",
+                show_title: true,
+              }
+

@@ -1,0 +1,19 @@
+// Required Variables:
+// code_submission
+
+.code-viewer-container[id="code-viewer-#{code_submission.id}"]
+  javascript:
+    var editor;
+    $(document).ready(function() {
+      editor = ace.edit("code-viewer-#{code_submission.id}");
+      editor.getSession().setUseWrapMode(true);
+      editor.setShowPrintMargin(false);
+      editor.setOptions({
+        readOnly: true,
+        highlightActiveLine: false
+      });
+      editor.renderer.$cursorLayer.element.style.opacity = 0;
+      editor.setTheme("ace/theme/github");
+      var content = "#{code_submission.safe_content}";
+      editor.setValue(content, -1);
+    });

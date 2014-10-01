@@ -1,6 +1,39 @@
 // Required Variables:
-// company, is_editing
+// company, is_editing, size, clickable, show_title
 
-.company-cover-photo-container
+// Optional Variables:
+// path, remote, link_id, relative
+
+- unless defined? link_id
+  - link_id = ""
+
+- unless defined? remote
+  - remote = false
+
+- unless defined? path
+  - path = nil
+
+- unless defined? relative
+  - relative = true
+
+//.company-cover-photo-container
   // TODO(mark): Replace data-image-url with url derived from the company's uploaded files
-  .company-cover-photo.js-background-image data-image-url="#{asset_path('companies/cover_photos/ebay_cover_photo.jpg')}"
+  .company-cover-photo.company-cover-photo-dark-cover.js-background-image data-image-url="#{asset_path('companies/cover_photos/ebay_cover_photo.jpg')}"
+
+- content_for :cover_photo, flush: true do
+  .shared-project-cover-photo class="cover-photo-#{size}"
+    .shared-project-show-cover-image.shared-project-show-cover-image-dark.js-background-image data-image-url="#{asset_path('companies/cover_photos/' + company.cover_photo_image)}"
+  .row.row-table.row-full-height.row-no-margin
+    .col-md-12.col-middle.center.project-cover-photo-content
+      - if show_title
+        h1.shared-project-title.text-contrast = company.name
+
+- container_class = relative ? "shared-project-cover-photo-container" : "shared-project-cover-photo-container-absolute"
+
+- if clickable
+  = link_to path, remote: remote, id: link_id do
+    div class="cover-photo-#{size} #{container_class}"
+      = content_for :cover_photo
+- else
+  div class="cover-photo-#{size} #{container_class}"
+    = content_for :cover_photo

@@ -1,23 +1,7 @@
-= provide(:title, "Learn Insight In Data")
+= provide(:main_title, "Leaders in Data")
 
 .container-fluid.full-container
-  .row
-    #home-carousel.carousel.slide.carousel-home data-ride="carousel" data-interval="5000"
-      .carousel-inner.carousel-home-inner
-        - @home.carousel.each_with_index do |item, index|
-          .item class="#{'active' if index == 0}"
-            .media-cover-photo.media-cover-dark class="#{item.image_class}"
-            .row.row-table.row-full-height.home-title-row
-              .col-md-12.col-middle.text-center
-                h1.media-title = item.title
-                h3.media-subtitle = item.subtitle
-
-      a.left.carousel-control href="#home-carousel" role="button" data-slide="prev"
-        span.glyphicon.glyphicon-chevron-left
-
-      a.right.carousel-control href="#home-carousel" role="button" data-slide="next"
-        span.glyphicon.glyphicon-chevron-right
-
+  = render partial: "shared/home_carousel", locals: { home: @home }
 
   .row.home-outline
     - @home.columns.each do |column|
@@ -41,7 +25,7 @@
             | Over 1 Million Jobs Unmet
 
           .button-container.center
-            = link_to "Join the Data Revolution", new_user_registration_path, class: "flat-button home-button"
+            = link_to "Join the Data Revolution", omniauth_authorize_path("user", "linkedin"), class: "flat-button home-button"
 
   .row.home-outline
     .col-md-12

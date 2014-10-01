@@ -10,7 +10,7 @@ metrics = [
     uid: 1,
     model: "ProjectStatus",
     title: "Number of In Progress Projects",
-    method: "created_before_and_not_completed?",
+    method: "created_before_started_and_not_completed?",
     collection_method: "get_count",
   },
   {
@@ -24,7 +24,7 @@ metrics = [
     uid: 3,
     model: "ProjectStatus",
     title: "All Project Interactions",
-    method: "created_before?",
+    method: "created_before_and_started?",
     collection_method: "get_count",
   },
   {

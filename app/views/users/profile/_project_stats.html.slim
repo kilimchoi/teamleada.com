@@ -1,0 +1,107 @@
+// Required Variables:
+// user
+
+.row.card
+  .col-md-12
+    .row
+      .col-md-12
+        .profile-section-header
+          h3 Project Stats at a Glance
+
+    .row
+      .col-md-12
+        // TODO(mark): Make this into a loop
+        ul.plain-list
+          li.profile-stat-container.clearfix
+            .profile-stat-title
+              h4 Started Projects
+            .profile-stat-value
+              = user.started_projects.count
+
+          li.indented-list
+            ul.plain-list
+              li.profile-stat-container.clearfix
+                .profile-stat-title
+                  h4 Started Challenges
+                .profile-stat-value
+                  = user.started_challenges.count
+
+              li.profile-stat-container.clearfix
+                .profile-stat-title
+                  h4 Started Lessons
+                .profile-stat-value
+                  = user.started_lessons.count
+
+          li.profile-stat-container.clearfix
+            .profile-stat-title
+              h4 Completed Projects
+            .profile-stat-value
+              = user.completed_projects.count
+
+          li.indented-list
+            ul.plain-list
+              li.profile-stat-container.clearfix
+                .profile-stat-title
+                  h4 Completed Challenges
+                .profile-stat-value
+                  = user.completed_challenges.count
+
+              li.profile-stat-container.clearfix
+                .profile-stat-title
+                  h4 Completed Lessons
+                .profile-stat-value
+                  = user.completed_lessons.count
+
+          li.profile-stat-container.clearfix
+            .profile-stat-title
+              h4 Project Submissions
+            .profile-stat-value
+              = user.project_submissions.count
+
+          li.indented-list
+            ul.plain-list
+              li.profile-stat-container.clearfix
+                .profile-stat-title
+                  h4 Code Submissions
+                .profile-stat-value
+                  = user.code_submissions.count
+
+              li.profile-stat-container.clearfix
+                .profile-stat-title
+                  h4 Free Response Submissions
+                .profile-stat-value
+                  = user.free_response_submissions.count
+
+              li.profile-stat-container.clearfix
+                .profile-stat-title
+                  h4 Quiz Submissions
+                .profile-stat-value
+                  = user.quiz_submissions.count
+
+              li.profile-stat-container.clearfix
+                .profile-stat-title
+                  h4 File Submissions
+                .profile-stat-value
+                  = user.file_submissions.count
+
+              li.indented-list
+                ul.plain-list
+                  li.profile-stat-container.clearfix
+                    .profile-stat-title
+                      h4 Image Submissions
+                    .profile-stat-value
+                      = user.image_submissions.count
+
+              li.profile-stat-container.clearfix
+                .profile-stat-title
+                  h4 Slides Link Submissions
+                .profile-stat-value
+                  = user.slides_link_submissions.count
+
+              li.profile-stat-container.clearfix
+                .profile-stat-title
+                  h4 Video Link Submissions
+                .profile-stat-value
+                  = user.video_link_submissions.count
+
+

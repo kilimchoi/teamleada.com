@@ -1,34 +1,19 @@
-- current_user_can_edit = current_user == user
+.row
+  .col-md-6
+    .row
+      .col-md-12
+        .user-profile-sections#user-profile
+          = render partial: "users/profile", locals: { user: user, user_profile: user.profile, is_editing: is_editing }
+          - unless is_company
+            = render partial: "users/profile/resume", locals: { user: user, is_editing: is_editing, is_company: is_company }
 
-.container-fluid.full-container
-  .row
-    .col-md-12
-      .user-container.card-container
-        = render partial: "users/profile/top_header_info", locals: { \
-          user: user,
-          is_editing: is_editing,
-          is_admin: is_admin,
-          is_company: is_company,
-          current_user_can_edit: current_user_can_edit,
-        }
-
-        = render partial: "users/profile/navigation", locals: { user: user }
-
-      .row
-        .col-md-6
-          .row
-            .col-md-12
-              .user-profile-sections#user-profile
-                = render partial: "users/profile", locals: { user: user, user_profile: user.profile, is_editing: is_editing }
-                - unless is_company
-                  = render partial: "users/profile/resume", locals: { user: user, is_editing: is_editing, is_company: is_company }
-
-        .col-md-6
-          .row
-            .col-md-12
-              = render partial: "users/profile/projects",          locals: { user: user, is_company: is_company }
-              = render partial: "users/profile/badges",            locals: { user: user }
-              = render partial: "users/profile/connections",       locals: { user: user }
+  .col-md-6
+    .row
+      .col-md-12
+        = render partial: "users/profile/projects",          locals: { user: user, is_company: is_company }
+        /= render partial: "users/profile/project_stats",     locals: { user: user }
+        = render partial: "users/profile/badges",            locals: { user: user }
+        = render partial: "users/profile/connections",       locals: { user: user }
 
 = render partial: "users/resume_modal", locals: { user: user }
 

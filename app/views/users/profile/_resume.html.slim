@@ -1,6 +1,7 @@
 .row.card
   .col-md-12
-    h3.title Resume
+    .profile-section-header
+      h3 Resume
     - if user.has_resume?
       = render partial: "users/resume_preview", locals: { resume: user.resume }
       - if is_editing

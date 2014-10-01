@@ -1,0 +1,11 @@
+// Required Variables:
+// content_object
+
+= simple_form_for content_object, url: evaluate_admin_user_project_project_submission_path do |f|
+  = f.input :computer_science, collection: 1..10
+  = f.input :statistics, collection: 1..10
+  = f.input :curiosity, collection: 1..10
+  = f.input :communication, collection: 1..10
+  = f.input :body, input_html: { rows: 5 }
+  = f.submit "Submit", class: "flat-button full-width"
+

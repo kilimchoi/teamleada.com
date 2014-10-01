@@ -12,6 +12,7 @@
 #  submission_type       :string(255)
 #  project_id            :integer
 #  required              :boolean          default(TRUE)
+#  url                   :string(255)
 #
 
 class SubmissionContext < ActiveRecord::Base
@@ -19,25 +20,39 @@ class SubmissionContext < ActiveRecord::Base
 
   include Rails.application.routes.url_helpers
 
+  validates :title, uniqueness: { scope: :project_id }
   validates :submission_type, presence: true
   validates :slide_id, presence: true
 
   before_create :set_properties
 
+  extend FriendlyId
+  friendly_id :url, use: :finders
+
   belongs_to :slide
   belongs_to :project
 
-  default_scope -> { where(required: true) }
+  delegate :project_submissions, to: :slide, allow_nil: true
 
+  scope :required, -> { where(required: true) }
+  scope :optional, -> { where(required: false) }
+
+  # TODO(mark): ##Constants -- possibly find a new place to store constants
   CODE = "code" #code snippets
-  COMPLETE_CODE = "complete_code" #complete src code for a project 
+  COMPLETE_CODE = "complete_code" #complete src code for a project
   RESPONSE = "response" #free response
-  PRES_SLIDES_LINK = "presentation_slides_link" #url to the presentation slides
-  PRES_VIDEO_LINK = "presentation_vid_linK" #url to the presentation video
+  PRESENTATION_SLIDES_LINK = "presentation_slides_link" #url to the presentation slides
+  PRESENTATION_VIDEO_LINK = "presentation_video_link" #url to the presentation video
+  IMAGE = "image"
+  CSV = "csv"
+  PDF = "pdf"
+  FILE = "file"
+  QUIZ = "quiz"
 
   def set_properties
     self.set_uid
     self.set_project
+    self.set_url
   end
 
   def set_uid
@@ -46,6 +61,35 @@ class SubmissionContext < ActiveRecord::Base
 
   def set_project
     self.project_id = self.slide.parent.project.uid
+  end
+
+  def set_url
+    self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize
+  end
+
+  def submission_type_to_content_class
+    case submission_type
+    when CODE, COMPLETE_CODE
+      CodeSubmissionContent
+    when RESPONSE
+      FreeResponseSubmissionContent
+    when PRESENTATION_SLIDES_LINK
+      SlidesLinkSubmissionContent
+    when PRESENTATION_VIDEO_LINK
+      VideoLinkSubmissionContent
+    when IMAGE
+      ImageSubmissionContent
+    when CSV
+      CSVSubmissionContent
+    when PDF
+      PDFSubmissionContent
+    when FILE
+      FileSubmissionContent
+    end
+  end
+
+  def create_or_update_content_with_user_project_slide_content(user, project, slide, content)
+    submission_type_to_content_class.create_or_update_with_user_project_slide_content(user, project, slide, content)
   end
 
   def path

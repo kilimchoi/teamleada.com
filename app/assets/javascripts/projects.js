@@ -1,4 +1,5 @@
 //= require reveal
+//= require toastr
 
 initializeReveal();
 
@@ -31,3 +32,11 @@ function initializeReveal() {
 //    ]
   });
 }
+
+$(document).ready(function() {
+  Reveal.addEventListener('slidechanged', function(event) {
+    $("#hidden-slide-id").val(event.indexh);
+  });
+
+  $("#hidden-slide-id").val(Reveal.getIndices().h);
+});

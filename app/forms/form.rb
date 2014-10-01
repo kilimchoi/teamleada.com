@@ -14,6 +14,7 @@ class Form
   end
 
   def submit(params)
+    params ||= {}
     # The general flow of this object is to:
     # 1) Set the attributes on the object(s)
     # 2) Make a called `valid?` that runs all validations on the object(s)

@@ -4,27 +4,12 @@
 - is_company = false
 - user = @user
 
-.container-fluid.full-container
+- if current_user.is_admin?
   .row
-    .col-md-12
-      .user-container.card-container
-        = render partial: "users/profile/top_header_info", locals: { \
-          user: user,
-          is_editing: is_editing,
-          is_admin: is_admin,
-          is_company: is_company,
-          current_user_can_edit: current_user_can_edit,
-        }
-
-        = render partial: "users/profile/navigation", locals: { user: user }
-
-
-      - if current_user.is_admin?
-        .row
-          .col-md-6
-            - @stories.each do |story|
-              = render partial: "stories/#{story.type.underscore}", locals: { story: story }
-      - else
-        = render partial: "stories/coming_soon", locals: { stories: @stories.first(4) }
+    .col-md-6
+      - @stories.each do |story|
+        = render partial: "stories/#{story.type.underscore}", locals: { story: story }
+- else
+  = render partial: "stories/coming_soon", locals: { stories: @stories.first(4) }
 
 

@@ -11,8 +11,6 @@
 #  number                :integer
 #  has_leaderboard       :boolean          default(FALSE)
 #  short_description     :text
-#  has_written_submit    :boolean          default(FALSE)
-#  has_content_submit    :boolean          default(FALSE)
 #  cost                  :integer
 #  paid                  :boolean          default(FALSE)
 #  uid                   :integer          not null, primary key
@@ -24,6 +22,9 @@
 #  featured              :boolean          default(FALSE)
 #  grants_project_access :boolean          default(FALSE)
 #  cover_photo           :string(255)
+#  has_content_submit    :boolean          default(FALSE)
+#  has_written_submit    :boolean          default(FALSE)
+#  project_set_id        :integer
 #
 
 class Project < ActiveRecord::Base
@@ -34,15 +35,25 @@ class Project < ActiveRecord::Base
 
   serialize :description, Array
 
-  has_many :lessons, dependent: :destroy
-  has_many :submissions, dependent: :destroy
+  belongs_to :project_set
 
-  has_many :quizes
+  has_many :lessons, dependent: :destroy
+  has_many :project_scores
+
+  has_many :quizzes
+  has_many :quiz_submissions, through: :quizzes
 
   has_many :transactions, as: :item
   has_many :interested_users, class_name: ProjectInterest
 
+  # Submission Contexts
   has_many :submission_contexts
+  has_many :code_submission_contexts, -> { where(submission_type: SubmissionContext::CODE) }, class_name: "SubmissionContext"
+  has_many :free_response_submission_contexts, -> { where(submission_type: SubmissionContext::RESPONSE) }, class_name: "SubmissionContext"
+  has_many :image_submission_contexts, -> { where(submission_type: SubmissionContext::IMAGE) }, class_name: "SubmissionContext"
+  has_many :presentation_slides_link_submission_contexts, -> { where(submission_type: SubmissionContext::PRESENTATION_SLIDES_LINK) }, class_name: "SubmissionContext"
+  has_many :presentation_video_link_submission_contexts, -> { where(submission_type: SubmissionContext::PRESENTATION_VIDEO_LINK) }, class_name: "SubmissionContext"
+
   has_many :code_submissions
   has_many :code_submission_evaluations
 
@@ -58,17 +69,22 @@ class Project < ActiveRecord::Base
   scope :not_featured, -> { enabled.where(featured: false) }
 
   scope :newest_first, -> { order("uid DESC") }
+  scope :displayable, -> { where(uid: Project.displayable_ids) }
+  scope :displayable_for_user, -> (user) { where(uid: Project.displayable_for_user_ids(user)) }
+
+  scope :grants_project_access, -> { where(grants_project_access: true) }
 
   # Scope by type
-  scope :data_challenges, -> { where(category: CHALLENGE) }
-  scope :data_lessons,    -> { where(category: LESSON) }
-  scope :coming_soon,     -> { where(category: COMING_SOON) }
+  scope :data_challenges, -> { enabled.where(category: CHALLENGE) }
+  scope :data_lessons,    -> { enabled.where(category: LESSON) }
+  scope :coming_soon,     -> { enabled.where(category: COMING_SOON) }
 
   default_scope -> { order(:uid) }
 
   extend FriendlyId
   friendly_id :url, use: :finders
 
+  # TODO(mark): Move constants somewhere else
   BEGINNER = "Beginner"
   INTERMEDIATE = "Intermediate"
   ADVANCED = "Advanced"
@@ -98,7 +114,27 @@ class Project < ActiveRecord::Base
     COMING_SOON => "coming-soon",
   }
 
+  VALID_FILTERS = ["started", "completed"]
+
   class << self
+    def onboarding_project
+      Project.find_by(is_onboarding: true)
+    end
+
+    def displayable_ids
+      Project.all.select { |project| !project.is_part_of_set? || (project.is_part_of_set? && project.is_first_part_of_set?) }.map(&:uid)
+    end
+
+    def displayable_for_user_ids(user)
+      if user.nil?
+        displayable_ids
+      else
+        Project.all.select do |project|
+          !user.completed_project?(project) && (!project.is_part_of_set? || (project.is_part_of_set? && user.completed_prerequisites_for_project(project)))
+        end.map(&:uid)
+      end
+    end
+
     def random_set_of_colors(amount)
       COLORS.sample(amount)
     end
@@ -125,12 +161,21 @@ class Project < ActiveRecord::Base
 
   # Before Filters
   def set_url
-    self.url = title.downcase.gsub(/[^a-z\s]/, '').parameterize
+    self.url = title.urlify
   end
 
   # Attributes
   def has_cover_photo?
     !cover_photo.nil?
+  end
+
+  # Project Sets
+  def is_part_of_set?
+    !project_set_id.nil?
+  end
+
+  def is_first_part_of_set?
+    is_part_of_set? && project_set.first_part == self
   end
 
   def color
@@ -145,6 +190,16 @@ class Project < ActiveRecord::Base
     !self.deadline.nil?
   end
 
+  def deadline_display
+    if deadline_in_days > 0
+      "#{deadline_in_days} Days"
+    elsif deadline_in_hours > 0
+      "#{deadline_in_hours} Hours"
+    else
+      "#{deadline_in_minutes} Minutes"
+    end
+  end
+
   def deadline_in_days
     if !self.deadline.nil?
       self.deadline.div(60 * 60 * 24)
@@ -154,6 +209,12 @@ class Project < ActiveRecord::Base
   def deadline_in_hours
     if !self.deadline.nil?
       self.deadline.div(60 * 60)
+    end
+  end
+
+  def deadline_in_minutes
+    if !self.deadline.nil?
+      self.deadline.div(60)
     end
   end
 
@@ -192,11 +253,11 @@ class Project < ActiveRecord::Base
         total += step.total_points
       end
     end
-    total + code_submission_points
+    total + submission_points
   end
 
-  def code_submission_points
-    submission_contexts.count
+  def submission_points
+    submission_contexts.required.count
   end
 
   def steps
@@ -204,6 +265,30 @@ class Project < ActiveRecord::Base
   end
 
   # Submissions
+  def has_code_submissions?
+    submission_contexts.where(submission_type: SubmissionContext::CODE).count > 0
+  end
+
+  def has_free_response_submissions?
+    submission_contexts.where(submission_type: SubmissionContext::RESPONSE).count > 0
+  end
+
+  def has_image_submissions?
+    submission_contexts.where(submission_type: SubmissionContext::IMAGE).count > 0
+  end
+
+  def has_presentation_slides_link_submissions?
+    submission_contexts.where(submission_type: SubmissionContext::PRESENTATION_SLIDES_LINK).count > 0
+  end
+
+  def has_presentation_video_link_submissions?
+    submission_contexts.where(submission_type: SubmissionContext::PRESENTATION_VIDEO_LINK).count > 0
+  end
+
+  def slide_ids_of_required_submission_contexts
+    submission_contexts.required.pluck(:slide_id)
+  end
+
   def check_submission(file)
     # Method to check the submission that the user uploaded
     solution_file = File.expand_path("#{Rails.root}/db/project_solutions/#{"%03d" % self.number}-#{self.url}.csv", __FILE__)

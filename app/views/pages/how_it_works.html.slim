@@ -1,0 +1,43 @@
+- provide(:title, "How Leada Works")
+
+.container-fluid.full-container
+  = render partial: "shared/home_carousel", locals: { home: @home }
+
+  .container.card-container
+    .row
+      .col-md-12
+        .row.card
+          .col-md-12
+            h1.center How do I get hired through Leada?
+
+        .row.card
+          .col-md-12
+            h4
+              ol
+                li.h4
+                  | First submit a resume or integrate your profile with LinkedIn.
+                li.h4
+                  | You can get a data science position through Leada in two ways:
+                  ul
+                    li.h4 Be the one of the top submissions to a data challenge and your submission goes directly to the hiring manager of that company.
+                    li.h4 Every challenge you complete goes to your profile to which companies can view and will reach out if they are interested!
+        .row.card
+          .col-md-12
+            h1.center What are the types of content?
+
+        .row.card
+          .col-md-12
+            h4 Leada offers two types of content:
+            ol
+              li.h4
+                strong Data Challenges
+                |  are industry hosted challenges which you complete to recruit for data science positions.
+              li.h4
+                strong Data Lessons
+                |  are data science walkthroughs of different types of analysis for your own learning.
+        .row.card
+          .col-md-12
+            h1.center How do I get Access?
+        .row.card
+          .col-md-12
+            p.large-font If you have not been given an access key, you must complete the <strong>Visualizing SF Crime Data</strong> challenge first! Completing this challenge gives you access to all of the company hosted challenges.

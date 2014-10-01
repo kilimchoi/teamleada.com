@@ -1,0 +1,17 @@
+.container-fluid.full-container
+  .row
+    .col-md-12
+      .card-container
+        .row.card
+          .col-md-12
+            h1.center Interview Questions
+
+  .row
+    .col-md-12
+      - @interview_questions.each_slice(3) do |slice|
+        .row
+          - slice.each do |interview_question|
+            .col-md-4
+              .row.card
+                .col-md-12
+                  = render partial: "interview_questions/interview_question_block", locals: { interview_question: interview_question }

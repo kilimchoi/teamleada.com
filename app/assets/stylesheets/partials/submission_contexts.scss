@@ -1,0 +1,32 @@
+.submission-contexts-container {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.submission-context {
+  padding: 0 27px;
+  margin: 0 -27px;
+
+  &:hover {
+    background-color: $highlight-gray;
+  }
+}
+
+.submission-context-body {
+  padding: 10px 0;
+  border-bottom: 1px solid #dadada;
+}
+
+.submission-context-title {
+  float: left;
+}
+
+.submission-context-metadata {
+  float: right;
+}
+
+.image-submission-container {
+  width: 100%;
+}
+

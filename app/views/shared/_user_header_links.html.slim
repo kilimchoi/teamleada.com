@@ -1,8 +1,8 @@
 - if signed_in?
   li
-    = link_to show_user_profile_path do
+    = link_to user_path(current_user) do
       = image_tag current_user.profile_photo, class: "navbar-profile-photo"
-      span.navbar-name = current_user.username
+      span.navbar-name = current_user.name
 
   - if Feature.enabled?("messaging")
     li.dropdown
@@ -11,10 +11,10 @@
           span.label.label-danger.navbar-unread-conversations-badge = current_user.unread_conversations_count
         span.navbar-icon.has-tooltip.fa.fa-envelope*{"data-toggle" => "tooltip", "data-placement" => "bottom", "data-title" => "Messages"}
       = render partial: "header/messages", locals: { user: current_user }
-  li = link_to "", edit_user_path(tab: "account"), class: "navbar-icon has-tooltip fa fa-gears", data: { toggle: "tooltip", placement: "bottom", title: "Account Settings" }
+  li = link_to "", settings_user_path(current_user, tab: "account"), class: "navbar-icon has-tooltip fa fa-gears", data: { toggle: "tooltip", placement: "bottom", title: "Account Settings" }
   li = link_to "", destroy_user_session_path, method: :delete, class: "navbar-icon has-tooltip fa fa-sign-out", data: { toggle: "tooltip", placement: "bottom", title: "Sign Out" }
 
 - else
-  li = link_to "Sign In", new_user_session_path
-  li = link_to "Sign Up", new_user_registration_path
+  li = link_to "Log In", new_user_session_path
+  li = link_to "Sign Up", omniauth_authorize_path("user", "linkedin")
 

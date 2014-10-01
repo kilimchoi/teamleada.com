@@ -1,0 +1,22 @@
+.row.
+  .col-md-12
+    .project-container.card-container
+      .row.card
+        .col-md-12
+          h1.title
+            'Submission:
+            = @submission_context.title
+          h3 = @submission_context.description
+
+      - if @user.has_project_submission_for_submission_context?(@submission_context)
+        = render partial: "users/projects/project_submissions/project_submissions", locals: { \
+          project_submissions: @project_submissions,
+        }
+      - else
+        .row.card
+          .col-md-12
+            h3
+              = @user.name
+              '  has not made a submission for
+              = @submission_context.title
+

@@ -13,6 +13,7 @@
 @import "bootstrap/bootstrap-overrides";
 
 @import "basecoat/base";
+@import "basecoat/type";
 @import "basecoat/images";
 @import "basecoat/icons";
 @import "basecoat/forms";
@@ -21,6 +22,7 @@
 @import "components/navigation";
 @import "components/mobile_navigation";
 @import "components/footer";
+@import "components/labels";
 
 @import "components/cards";
 @import "components/dashboard_widgets";

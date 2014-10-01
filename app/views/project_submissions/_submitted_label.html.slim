@@ -1,0 +1,8 @@
+// Required Variables:
+// user, project, submission_context
+
+.project-submission-label
+  - if signed_in? && user.has_project_submission_for_submission_context?(submission_context)
+    span.label.label-success Submitted
+  - else
+    span.label.label-danger Not Submitted

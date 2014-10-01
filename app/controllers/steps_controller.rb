@@ -1,7 +1,7 @@
 class StepsController < ApplicationController
   load_and_authorize_resource :project
   load_and_authorize_resource :lesson, through: :project
-  load_and_authorize_resource :step, find_by: :url
+  load_and_authorize_resource :step, through: :lesson
 
   def show
     # TODO: Right now we're giving users points when they 'start' a step.

@@ -10,11 +10,14 @@ html
   head
     meta charset="utf-8"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
+    meta name="globalsign-domain-verification" content="L3Z0ejCted1FJi0NHV7Kle6jYxPECkKjiPvSCpJXHE"
 
-    - if content_for?(:title)
-      title = "Leada - #{yield(:title)}"
+    - if content_for?(:main_title)
+      title = "Leada - #{yield(:main_title)}"
+    - elsif content_for?(:title)
+      title = "#{yield(:title)} - Leada"
     - elsif content_for?(:page_title)
-      title = "Leada - #{yield(:page_title)}"
+      title = "#{yield(:page_title)} - Leada"
     - else
       title = "Leada"
     link rel="shortcut icon" href=image_path("leada_favicon.png") type="image/png"
@@ -43,15 +46,7 @@ html
           = render partial: "projects/sidebar", locals: {project: @step.main_lesson.project}
           = render partial: "projects/right_sidebar", locals: {item: @step}
 
-      - if is_admin_namespace?
-        .container-fluid.full-container
-          .row
-            .col-md-2
-              = render partial: "admin/shared/admin_sidebar"
-            .col-md-10
-              = yield
-
-      - elsif is_company_namespace?
+      - if is_company_namespace?
         .container-fluid.full-container
           .row
             .col-md-2
@@ -61,19 +56,11 @@ html
             .col-md-2
               = render partial: "company/shared/company_right_sidebar"
 
-      - elsif is_user_controller? || is_user_namespace?
-        = yield :before_container
-        .container-fluid.full-container
-          .row
-            .col-md-2
-              = render partial: "users/user_sidebar"
-            .col-md-8
-              = yield
-            .col-md-2
-              = render partial: "users/user_right_sidebar"
-
       - else
         = yield
 
       = render partial: "layouts/footer"
       = render partial: "layouts/mobile_header"
+    - if Rails.env.development?
+      = render partial: "shared/debug_bottom_bar"
+

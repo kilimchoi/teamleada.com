@@ -1,9 +1,12 @@
-- if signed_in?
-  = form_tag submission_project_path(@project), multipart: true do
-    = file_field_tag "file", class: "fragment submit-file-button"
-    = submit_tag "Submit", class: 'flat-button step-button fragment', id: "submit_buton"
-- else
-  p
-    | In order to make a submission, you must sign up!
-    br
-    = link_to "Sign Up", new_user_registration_path, class: 'flat-button step-button'
+.row.card
+  .col-md-12
+    h2 Make a Submission
+    - if signed_in?
+      = form_tag submission_project_path(@project), multipart: true do
+        = file_field_tag "file", class: "fragment submit-file-button"
+        = submit_tag "Submit", class: 'flat-button step-button fragment', id: "submit_buton"
+    - else
+      p
+        | In order to make a submission, you must sign up!
+        br
+        = link_to "Sign Up", omniauth_authorize_path("user", "linkedin"), class: "flat-button step-button"

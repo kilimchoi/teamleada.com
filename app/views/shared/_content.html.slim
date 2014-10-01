@@ -35,12 +35,12 @@
     = render partial: "projects/submit"
 - elsif content_type == 'image_submit'
   p.fragment
-    = render partial: "projects/image_submit"
+    = render partial: "projects/image_submit", locals: { item: item }
 - elsif content_type == 'image'
   = image_tag content, class: "fragment content content-image"
 - elsif content_type == 'link'
   div align="center"
-    a.fragment.center href=content target="_blank"
+    a.fragment href=content target="_blank"
       = content
 - elsif content_type == 'lesson_links'
   p.fragment
@@ -68,7 +68,7 @@
     = link_to content, project_path(project), class: 'flat-button full-width'
 - elsif content_type == 'quiz'
   p.fragment
-    = render partial: "shared/quiz", locals: {quiz_id: content}
+    = render partial: "shared/quiz", locals: { quiz_id: content, item: item }
 - elsif content_type == 'section_complete'
   p.fragment.complete
     | Section Complete!
@@ -77,13 +77,16 @@
     = "Please give us feedback!"
 - elsif content_type == "finish_project_button"
   p.fragment
-    = link_to "Complete Project!", complete_project_path(project), method: :post, class: 'flat-button full-width', onclick: "#{current_user.has_all_project_points?(project) && project.uid != 15 ? 'openUrl("' + content + '")' : ''}"
+    - if project.is_onboarding
+      = link_to "Complete Project!", complete_project_path(project), method: :post, class: "flat-button full-width"
+    - else
+      = link_to "Complete Project!", complete_project_path(project), method: :post, class: 'flat-button full-width', onclick: "#{current_user.has_all_project_points?(project) && project.grants_project_access ? '': 'openUrl("' + content + '")'}"
 - elsif content_type == 'user_response'
   p.fragment
-    = link_to "Enter a response", "#", onclick: "openSidebar('#{project.full_url}', '#{item.class}', '#{item.uid}'); return false;", class: "flat-button full-width"
+    = link_to "Enter a response", "#", onclick: "openSidebar('#{project.full_url}', '#{item.class}', '#{item.uid}', #{false}); return false;", class: "flat-button full-width"
 - elsif content_type == 'user_code'
   p.fragment
-    = link_to "Submit your code now", "#", onclick: "openSidebar('#{project.full_url}', '#{item.class}', '#{item.uid}'); return false;", class: "flat-button full-width"
+    = link_to "Submit your code now", "#", onclick: "openSidebar('#{project.full_url}', '#{item.class}', '#{item.uid}', #{true}); return false;", class: "flat-button full-width"
 - else
   p.fragment.content-error
     = "ERR: Unknown Content Type. Please contact dev at: tristan@teamleada.com '#{content}' " 

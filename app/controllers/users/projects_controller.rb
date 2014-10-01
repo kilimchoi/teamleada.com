@@ -1,9 +1,9 @@
 class Users::ProjectsController < Users::BaseController
   load_and_authorize_resource :project
+  layout Proc.new { ["index"].include?(action_name) ? "users" : "users/projects" }
 
   def index
-    @completed_projects = @user.completed_projects
-    @in_progress_projects = @user.in_progress_projects
+    @projects_by_type = @user.projects_by_type
   end
 
   def show
@@ -11,6 +11,9 @@ class Users::ProjectsController < Users::BaseController
   end
 
   def feedback
+  end
+
+  def filter
   end
 
 end

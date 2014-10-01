@@ -1,0 +1,27 @@
+.container-fluid.full-container
+  .row
+    .col-md-12
+      h1.title = @user.name
+      h3.title
+        ' Submissions for:
+        = @project.title
+  .row
+    .col-md-12
+      = render partial: "admin/project_submissions/tab_all_submissions"
+
+  .row
+    .col-md-12
+      - if @project.grants_project_access
+        .row
+          - if @user.has_project_access?
+            .col-md-12.center
+              h3
+                = @user.name
+                |  has project access.
+          - else
+            .col-md-6
+              = link_to "Accept and Give Access", grant_access_admin_user_project_path(@user, @project), class: "flat-button full-width"
+            .col-md-6
+              = link_to "Deny and Restrict Access", deny_access_admin_user_project_path(@user, @project), class: "flat-button full-width"
+      - else
+        = link_to "Publish Feedback", publish_feedback_admin_user_project_path(@user, @project), class: "flat-button full-width"

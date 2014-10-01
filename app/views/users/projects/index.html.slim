@@ -1,13 +1,25 @@
-.container-fluid.full-container.card-container
-  .row.card
-    .col-md-12
-      h1
-        = @user.name
-        ' 's projects
+- provide(:title, "#{@user.name} - Projects")
 
-  .row.card
-    .col-md-12
-      .row
+.row.card
+  .col-md-12
+    h1.center Projects
+
+.row
+  .col-md-12
+    - @projects_by_type.each do |type, projects|
+      .row.card
         .col-md-12
-          h3.title Data Challenge Submission Status
-          = render partial: "users/projects/projects", locals: { user: @user, projects: @user.completed_projects_with_submissions }
+          h3.center = type.to_s.titleize
+      - projects.each_slice(2) do |slice|
+        .row
+          - slice.each do |project|
+            .col-md-6
+              .card
+                = render partial: "shared/projects/project_cover_photo", locals: { \
+                  project: project,
+                  size: "small",
+                  clickable: true,
+                  path: user_project_path(@user, project),
+                  wrapper_class: "project-cover-photo-container",
+                }
+

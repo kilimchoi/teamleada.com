@@ -1,8 +1,0 @@
-.general-sidebar#user-sidebar
-  .panel.panel-default
-    .panel-heading General
-    #user-sidebar-items.list-group
-      - profile_path = @user == current_user ? show_user_profile_path : user_path(@user)
-      = active_admin_link "Profile", profile_path, class: "list-group-item"
-      = active_admin_link "Projects", user_projects_path(@user), class: "list-group-item"
-

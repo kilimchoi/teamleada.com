@@ -1,0 +1,11 @@
+// Required Variables:
+// project_submissions
+
+.row.card
+  .col-md-12
+    - project_submissions.each_slice(4) do |slice|
+      .row
+        - slice.each do |project_submission|
+          div class="col-md-#{project_submissions.count > 1 ? 3 : 12}"
+            .project-submission-container
+              = render partial: "users/projects/project_submissions/#{project_submission.content_type.underscore}", locals: { content_object: project_submission.content_object }

@@ -19,6 +19,10 @@ TeamLeada::Application.routes.draw do
     end
 
     resources :users, only: [:index, :show] do
+      member do
+        match "activity", to: "users#activity", as: :activity, via: :get
+      end
+
       scope module: :users do
         resources :projects, only: [:show, :index] do
           member do
@@ -28,14 +32,14 @@ TeamLeada::Application.routes.draw do
           end
 
           scope module: :projects do
-            resources :code_submissions, only: [:show, :index] do
+            resources :project_submissions, path: "submissions", only: [:show, :index] do
               member do
-                match "evaluate", to: "code_submissions#evaluate", as: :evaluate, via: :post
-                match "evaluate", to: "code_submissions#update_evaluation", as: :update_evaluations, via: :patch
+                match "evaluate", to: "project_submissions#evaluate", as: :evaluate, via: :post
+                match "evaluate", to: "project_submissions#update_evaluation", as: :update_evaluations, via: :patch
               end
 
-              scope module: :code_submissions do
-                resources :code_submission_evaluations, path: "evaluations", only: [:index]
+              scope module: :project_submissions do
+                resources :submission_evaluations, path: "evaluations", only: [:index]
               end
             end
           end
@@ -74,16 +78,15 @@ TeamLeada::Application.routes.draw do
       end
     end
 
-    resources :code_submissions, path: "code-submissions", only: [:index] do
-      member do
-        match 'evaluate', to: 'code_submissions#evaluate', as: :evaluate, via: :post
-        match 'evaluate', to: 'code_submissions#update_evaluation', as: :update_evaluation, via: :patch
-      end
-    end
+    resources :project_submissions, path: "submissions", only: [:index]
+    resources :interview_question_submissions, path: "interview-question-submissions", only: [:show, :index]
 
-    match 'charts/category/realtime', to: "pages#realtime_charts", as: :realtime_charts, via: :get
-    match 'charts/category/page-views', to: "pages#page_view_charts", as: :page_view_charts, via: :get
-    match 'charts/category/:category', to: "charts#show_by_category", as: :chart_category, via: :get
+    match "charts/category/active-users",        to: "pages#active_users_charts",       as: :active_users_charts,       via: :get
+    match 'charts/category/realtime',            to: "pages#realtime_charts",           as: :realtime_charts,           via: :get
+    match 'charts/category/page-views',          to: "pages#page_view_charts",          as: :page_view_charts,          via: :get
+    match 'charts/category/growth',              to: "pages#growth_charts",             as: :growth_charts,             via: :get
+    match 'charts/category/project-submissions', to: "pages#project_submission_charts", as: :project_submission_charts, via: :get
+    match 'charts/category/:category',           to: "charts#show_by_category",         as: :chart_category,            via: :get
     resources :charts, only: [:show]
   end
 

@@ -1,0 +1,9 @@
+= provide(:page_title, "Project Submission Charts")
+
+.container-fluid.full-container
+  .row
+    .col-md-12
+      h1 Project Submission Charts
+      .row
+        .col-md-12
+          = high_chart("project_submission_chart", @project_submission_chart)

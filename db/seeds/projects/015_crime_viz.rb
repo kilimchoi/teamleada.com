@@ -22,6 +22,7 @@ project = Project.create!(
   featured: true,
   grants_project_access: true,
   cover_photo: "crime",
+  deadline: 3.hours,
 )
 
 ################################################################################
@@ -40,7 +41,7 @@ intro_content_one = [
 intro_content_two = [
   ['text-info', "The data contains many features including district, category, and crime types."],
   ['text', "As mentioned before, the type of visualization is entirely up to you."],
-  ['text-warning', "You might want to consider creating plots that encompass the following:"],
+  ['text-warning', "You might want to consider creating plots that encompass the following, but you are not limited to answering these questions:"],
   ['text', " - Where shouldn't you park your car?"],
   ['text', " - What are the safest locations in SF? What days/times are especially dangerous?"],
   ['text', " - Are certain thefts more common in certain areas?"],
@@ -53,12 +54,6 @@ intro_content_three = [
   ['text', "Remember, having a maintainable & legible codebase leads to good karma :)"],
   ['next_steps', ""],
 ]
-
-quiz = Quiz.create!(
-  quiz_id: "crime_viz_0",
-  answer:"3",
-  project: project,
-)
 
 intro_lesson = Lesson.create!(
   title: "Introduction",
@@ -129,7 +124,7 @@ report_submission_content_one = [
 
 report_submission_content_two = [
   ['text', "Include the visualization(s) you created by submitting here: "],
-  ['text', 'Use the same submit button to submit multiple visualizations. Make sure you submit image files! The file type must be a PNG or JPEG.'],
+  ['text', 'Use the same submit button to submit multiple visualizations. Please do not submit more than 3. Make sure you submit image files! The file type must be a PNG or JPEG.'],
   ['image_submit', nil],
   ['next_steps', ""],
 ]
@@ -154,11 +149,20 @@ report_submission_slide_two = Slide.create!(
 
 report_submission_context = SubmissionContext.create!(
   title: "Report Submission",
-  description: "User is asked to submit a link to the report.",
+  description: "User is asked to submit a summary of his/her analysis.",
   slide: report_submission_slide,
   submission_context_id: 0,
   submission_type: SubmissionContext::RESPONSE,
 )
+
+image_submission_context = SubmissionContext.create!(
+  title: "Visualization Submission",
+  description: "User is asked to submit an image of their visualization.",
+  slide: report_submission_slide_two,
+  submission_context_id: 0,
+  submission_type: SubmissionContext::IMAGE,
+)
+
 
 ################################################################################
 ##### Video Submission #########################################################
@@ -166,7 +170,7 @@ report_submission_context = SubmissionContext.create!(
 
 
 video_submission_content_one = [
-  ['text', 'You can optionally submit a 1 minute video presenting your insights and analysis. Pretend its to your superior.'],
+  ['text', 'You can optionally submit a 1 minute video presenting your insights and analysis. Pretend it\'s to your superior.'],
   ['text', 'Submit the YouTube link and be sure to make it unlisted!'],
   ['user_response', ""],
   ['next_steps', ""],
@@ -189,7 +193,7 @@ video_submission_context = SubmissionContext.create!(
   description: "User is asked to submit a 1 minute video presenting their analysis and findings.",
   slide: video_slide,
   submission_context_id: 0,
-  submission_type: SubmissionContext::RESPONSE,
+  submission_type: SubmissionContext::PRESENTATION_VIDEO_LINK,
   required: false,
 )
 

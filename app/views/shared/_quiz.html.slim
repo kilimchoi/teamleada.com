@@ -1,4 +1,10 @@
-- if "#{quiz_id}" != ""
+// Required Variables:
+// quiz_id, item
+
+- quiz = Quiz.find_by(quiz_id: quiz_id)
+- unless quiz.nil?
+  p.fragment
+    = quiz.try(:question)
   div class="quiz_div fragment" quiz_id="#{quiz_id}"
     form class="quiz_box center" quiz_id="#{quiz_id}"
       span class="quiz_title" quiz_id="#{quiz_id}"
@@ -7,7 +13,7 @@
       //= image_tag "loading.gif", class: "loading-gif", id: "waiting", quiz_id: "#{quiz_id}"
 - else
   p.fragment.content-error
-    | QUIZ: missing quiz_id 
+    ' QUIZ: missing quiz_id
 
 javascript:
   $(document).ready(function() {
@@ -32,18 +38,37 @@ javascript:
       var user_input = $(quiz_id_selector+".quiz_input").val();
       var quiz_id = $(quiz_id_selector+".quiz_input").attr('quiz_id');
       var correct = false;
+
+      var objectId = "#{item.uid}";
+      var objectClass = "#{item.class}";
+      var slideIndex = Reveal.getIndices().h;
+
+      var data = JSON.stringify({
+        parent_id: objectId,
+        parent_type: objectClass,
+        slide_id: slideIndex,
+        quiz_id: quiz_id,
+        user_input: user_input
+      });
+
       $.ajax({
-        url: '/quizzes/check_answer?quiz_id=' + quiz_id + '&user_input=' + user_input , type: 'get', dataType: 'html',
+        url: '/quizzes/check_answer',
+        type: 'POST',
+        dataType: 'json',
+        data: data,
         processData: false,
+        contentType: "application/json; charset=utf-8",
         success: function(data) {
-          if (data == "correct") {
+          var answer = data.text;
+          if (answer == "correct") {
             correct = true;
           } else {
             correct = false;
-            console.log(data);
+            console.log(answer);
           }
         }
       });
+
       setTimeout(function() {
         //$(quiz_id_selector+".loading-gif").css("visibility", "hidden");
         if (correct){

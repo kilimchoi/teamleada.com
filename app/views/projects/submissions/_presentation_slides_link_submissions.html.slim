@@ -1,0 +1,19 @@
+// Required Variables:
+// user, project
+
+.row.card
+  .col-md-12
+    .section-header.title
+      .section-left
+        h3.no-margin-bottom Slides Presentation Submission(s)
+      .section-right
+        - if signed_in?
+          = link_to "See All", user_project_submission_contexts_path(user, project)
+
+    .row
+      .col-md-12
+        = render partial: "projects/submission_contexts", locals: { \
+          user: user,
+          project: project,
+          submission_contexts: @project.presentation_slides_link_submission_contexts,
+        }

@@ -1,5 +1,8 @@
+// Required Variables:
+// user, is_editing
+
 = render partial: "users/profile/about",           locals: { user: user, is_editing: is_editing, form: @edit_about_form }
-= render partial: "users/profile/questions",       locals: { user_profile: user_profile, is_editing: is_editing }
+/= render partial: "users/profile/questions",       locals: { user_profile: user_profile, is_editing: is_editing }
 = render partial: "users/profile/experience",      locals: { user: user, is_editing: is_editing, form: @edit_job_experience_form }
 = render partial: "users/profile/education",       locals: { user: user, is_editing: is_editing, form: @edit_enrollment_form }
 = render partial: "users/profile/awards",          locals: { user: user, is_editing: is_editing }

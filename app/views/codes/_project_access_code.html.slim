@@ -1,8 +1,8 @@
-h1 Have an Early Access Code already?
+h1 Use an Access Code Here:
 - if signed_in?
   .row
     .col-md-6.col-md-offset-3
-      = form_tag "learn", method: :post do |f|
+      = form_tag "/learn", method: :post do |f|
         .input-group
           = text_field_tag :code, params[:code], class: "form-control small-form", placeholder: "Code"
           span.input-group-btn
@@ -12,7 +12,7 @@ h1 Have an Early Access Code already?
     | Sign in to use it!
   .button-container
     .sign-in-button-container
-      = link_to "Sign In", new_user_session_path, class: "flat-button"
+      = link_to "Log In", new_user_session_path, class: "flat-button"
     .sign-up-button-container
-      = link_to "Sign Up", new_user_registration_path, class: "flat-button"
+      = link_to "Sign Up", omniauth_authorize_path("user", "linkedin"), class: "flat-button"
 

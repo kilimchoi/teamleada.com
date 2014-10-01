@@ -1,14 +1,19 @@
 // Required Variables:
-// project, project_status
+// project, project_status, user
 
 - unless project.deadline.nil?
-  - if project_status.start_date.nil?
-    .row.card
-      .col-md-12
-        p.large-font.center
-          ' Note, once you start this project, the countdown will start and you will have
-          = render partial: "projects/project_time_remaining", locals: { project: project }
-        = link_to "Start this project!", project_lesson_path(@project, @project.lessons.first), class: "flat-button step-button full-width"
+  - if project_status.nil? || project_status.start_date.nil?
+    - if user.has_project_access?
+      .row.card
+        .col-md-12
+          p.large-font.center
+            ' Note, once you start this project, the countdown will start and you will have
+            = render partial: "projects/project_time_remaining", locals: { project: project }
+          button class="flat-button full-width" data-toggle="modal" data-target="#start-modal"
+            |  Start this Project!
+    - else
+      = render partial: "projects/get_access", locals: { direct_link: true }
+
   - elsif !project_status.completed?
     - if project_status.has_time_remaining?
       .row.card
@@ -21,9 +26,10 @@
           .alert.alert-danger
             h2.center.no-margin.project-timeout Your time for this project has expired.
 
-javascript:
-  $(document).ready(function() {
-    var endDate = new Date(#{@project_status.end_date_in_milliseconds})
-    $('#project-countdown').countdown({ until: endDate });
-  });
+- unless project_status.nil?
+  javascript:
+    $(document).ready(function() {
+      var endDate = new Date(#{project_status.end_date_in_milliseconds})
+      $('#project-countdown').countdown({ until: endDate });
+    });
 

@@ -19,6 +19,6 @@ TeamLeada::Application.routes.draw do
     end
   end
 
-  match 'quizzes/check_answer', to: 'quizzes#check_answer', via: :get
+  match 'quizzes/check_answer', to: 'quizzes#check_answer', via: :post
 
 end

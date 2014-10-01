@@ -62,15 +62,8 @@ view_data_content = [
   ['code', 'ncol(ChickWeight)'],
   ['text', 'If you want to look at the first six rows of the data frame you can use the head() function:'],
   ['code', 'head(ChickWeight)'],
-  ['text', 'What is the weight of the sixth chick?'],
   ['quiz', 't_bootcamp_1'],
 ]
-
-quiz = Quiz.create!(
-  quiz_id: "t_bootcamp_1",
-  answer:"93",
-  project: project,
-)
 
 view_data_content_two = [
   ['text', 'You can also see the last six rows by using the tail() function:'],
@@ -100,6 +93,13 @@ view_data_slide_two = Slide.create!(
   slide_id: 1,
 )
 
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "t_bootcamp_1",
+  answer:"93",
+  project: project,
+  slide: view_data_slide,
+  question: 'What is the weight of the sixth chick?',
+)
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 
@@ -178,7 +178,6 @@ barplot_bootcamp_content = [
   ['text', 'The table() function calculates frequencies for a given variable.'],
   ['text', 'For example, let\'s determine the frequency of the Diets in the ChickWeight dataset:'],
   ['code', 'diet_freq = table(ChickWeight$Diet)'],
-  ['text', 'What is the frequency of diet type 2 and 3?'],
   ['quiz', 't_bootcamp_2'],
   ['text', 'If we wanted to see the frequency by Diet AND weight, we can add it as a parameter in the table() function:'],
   ['code', 'table(ChickWeight$weight, ChickWeight$Diet)'],
@@ -197,13 +196,6 @@ barplot_bootcamp_content_two = [
   ['next_steps', nil],
 ]
 
-quiz = Quiz.create!(
-  quiz_id: "t_bootcamp_2",
-  answer:"120",
-  project: project,
-)
-
-
 barplot_bootcamp_step = Step.create!(
   title: "Barplots",
   lesson: visualize_lesson,
@@ -221,6 +213,15 @@ barplot_bootcamp_slide_two = Slide.create!(
   parent: barplot_bootcamp_step,
   slide_id: 1,
 )
+
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "t_bootcamp_2",
+  answer:"120",
+  project: project,
+  slide: barplot_bootcamp_slide,
+  question: 'What is the frequency of diet type 2 and 3?',
+)
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 

@@ -1,0 +1,14 @@
+= provide(:page_title, "Submission Evaluations")
+
+.container-fluid.full-container
+  .row
+    .col-md-12
+      h1.title
+        ' Submission Evaluations for
+        = @user.name
+      h3.title
+        = @project.title
+      = render partial: "users/projects/evaluations/evaluation_table_views/#{@project_submission.evaluation_content_object_class.to_s.underscore}s", locals: { \
+        submission_evaluations: @submission_evaluations,
+      }
+

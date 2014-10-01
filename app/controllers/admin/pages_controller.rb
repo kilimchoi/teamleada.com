@@ -10,14 +10,22 @@ class Admin::PagesController < Admin::BaseController
     @new_users = User.last(5).reverse
     @new_resumes = Resume.last(5).reverse
     @new_profile_photos = ProfilePhoto.last(5).reverse
-    @new_code_submissions = CodeSubmission.last(5).reverse
+    @new_project_submissions = ProjectSubmission.last(5).reverse
 
-    @weekly_impressions = Impression.where("created_at >= ?", 7.days.ago.to_date)
-    @daily_impressions = @weekly_impressions.where("created_at >= ?", Date.today.to_date)
+    @weekly_impressions = Impression.this_week
+    @daily_impressions = @weekly_impressions.today
 
     @daily_project_impressions = @daily_impressions.filter_category("projects")
+    @daily_company_impressions = @daily_impressions.filter_category("companies")
+    @daily_interview_question_impressions = @daily_impressions.filter_category("interview_questions")
     @daily_new_users = User.where("created_at >= ?", Date.today.to_date)
-    @daily_code_submissions = CodeSubmission.where("created_at >= ?", Date.today.to_date)
+    @daily_project_submissions = ProjectSubmission.non_admin.where("created_at >= ?", Date.today.to_date)
+    @daily_interview_question_submissions = InterviewQuestionSubmission.non_admin.where("created_at >= ?", Date.today.to_date)
+  end
+
+  def active_users_charts
+    @one_day_7 = active_users_chart(7.days, 30.days.ago)
+    @one_day_28 = active_users_chart(28.days, 120.days.ago)
   end
 
   def activity
@@ -45,6 +53,13 @@ class Admin::PagesController < Admin::BaseController
     @seven_day_engagement = page_views_chart(7.days.ago)
     @one_day_engagement = one_day_chart
     @page_views = Impression.non_admin.where("created_at > ?", 1.day.ago).group(:url).count
+  end
+
+  def growth_charts
+  end
+
+  def project_submission_charts
+    @project_submission_chart = project_submission_chart(30.days.ago)
   end
 
   # TODO(mark): These should be moved into a separate controller

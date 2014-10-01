@@ -9,7 +9,7 @@ main_page_content = [
 ]
 
 project = Project.create!(
-  title:"Healthcare Cost Analytics: Part.1 Data Aggregation",
+  title:"Healthcare Cost Analytics Part 1 Data Aggregation",
   description: main_page_content,
   short_description: "In this part 1 (of three) of the Healthcare Analytics, you'll be conducting data aggregation of healthcare data from various sources. In part 2 and 3, you'll deal with analyzing the aggregated data.",
   enabled: true,
@@ -20,7 +20,7 @@ project = Project.create!(
   difficulty: 'Intermediate',
   category: Project::CHALLENGE,
   is_new: true,
-  deadline: 2.hours,
+  deadline: 1.hours,
   featured: true,
   cover_photo: "health-1",
 )

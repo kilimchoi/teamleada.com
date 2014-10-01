@@ -70,7 +70,6 @@ basic_operations_slide_one = Slide.create!(
 basic_math_content_one = [
   ['text', 'Let us first try the most basic operations.'],
   ['code', '5 + 5'],
-  ['text-success', 'Enter what you get below:'],
   ['quiz', 'onboard_1'],
   ['text-info', 'You can also use functions built in R such as sqrt() or abs() to do mathematical operations.'],
   ['code', 'sqrt(16)'],
@@ -78,16 +77,18 @@ basic_math_content_one = [
 ]
 basic_math_content_two = [
   ['text', 'The same mathematical rules apply when it comes to order of operations.'],
-  ['text-success', 'Try the following and see what you get!'],
+  ['text-success', 'Try the following:'],
   ['code', '10 + 5 / 5'],
   ['quiz', 'onboard_2'],
   ['next_steps', nil]
 ]
+
 basic_math_step = Step.create!(
   title: "Mathematics 101",
   lesson: basic_operations_lesson,
   step_id: 0,
 )
+
 basic_math_slide_one = Slide.create!(
   content: basic_math_content_one,
   parent: basic_math_step,
@@ -98,6 +99,22 @@ basic_math_slide_two = Slide.create!(
   content: basic_math_content_two,
   parent: basic_math_step,
   slide_id: 1,
+)
+
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "onboard_1",
+  answer: "10",
+  project: project,
+  slide: basic_math_slide_one, 
+  question: 'Enter what you get below:',
+)
+
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "onboard_2",
+  answer: "11",
+  project: project,
+  slide: basic_math_slide_two, 
+  question: 'What do you get?',
 )
 ################################################################################
 basic_assignment_content_one = [
@@ -177,15 +194,19 @@ basic_comparison_content_two = [
   ['code', 'true'],
 ]
 basic_comparison_content_three = [
-  ['text-success', 'What does the following code return?'],
+  ['text', "How about:"],
   ['code', 'TRUE + 1'],
   ['quiz', 'onboard_3'],
-  ['text-success', 'What does the following code return?'],
+  ['text', "One more!"],
+]
+
+basic_comparison_content_four = [
   ['code', 'FALSE == 0'],
   ['quiz', 'onboard_4'],
   ['text-danger', 'Remember that we compare via "==" and assign via "="'],
-  ['next_steps', nil]
+  ['next_steps', nil],
 ]
+
 basic_comparison_step = Step.create!(
   title: "Comparison 101",
   lesson: basic_operations_lesson,
@@ -208,6 +229,29 @@ basic_math_slide_three = Slide.create!(
   parent: basic_comparison_step,
   slide_id: 2,
 )
+
+basic_math_slide_four = Slide.create!(
+  content: basic_comparison_content_four,
+  parent: basic_comparison_step,
+  slide_id: 3,
+)
+
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "onboard_3",
+  answer:"2",
+  project: project,
+  slide: basic_math_slide_three,
+  question: 'What did the above code return?',
+)
+
+quiz = ExactAnswerQuiz.create!(
+  quiz_id: "onboard_4",
+  answer:"TRUE",
+  project: project,
+  slide: basic_math_slide_four,
+  question: 'What did the above code return?',
+)
+
 ################################################################################
 ################################################################################
 ##Combining Intro Concepts
@@ -361,26 +405,3 @@ basic_operations_slide_one = Slide.create!(
   slide_id: 0,
 )
 ################################################################################
-quiz = Quiz.create!(
-  quiz_id: "onboard_1",
-  answer: "10",
-  project: project,
-)
-
-quiz = Quiz.create!(
-  quiz_id: "onboard_2",
-  answer: "11",
-  project: project,
-)
-
-quiz = Quiz.create!(
-  quiz_id: "onboard_3",
-  answer:"2",
-  project: project,
-)
-
-quiz = Quiz.create!(
-  quiz_id: "onboard_4",
-  answer:"TRUE",
-  project: project,
-)

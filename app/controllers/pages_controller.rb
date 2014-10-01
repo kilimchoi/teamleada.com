@@ -81,4 +81,8 @@ class PagesController < ApplicationController
     @large_header = true
   end
 
+  def how_it_works
+    @home = get_yaml_data_file("home.yml")
+  end
+
 end

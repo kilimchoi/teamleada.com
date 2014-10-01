@@ -4,7 +4,13 @@
 - is_editing = @is_editing
 
 .full-width-container
-  = render partial: "companies/company/company_cover_photo", locals: { company: company, is_editing: is_editing }
+  = render partial: "companies/company/company_cover_photo", locals: { \
+    company: company,
+    is_editing: is_editing,
+    size: "large",
+    clickable: false,
+    show_title: false,
+  }
 
   .container.full-container
     .row

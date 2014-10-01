@@ -41,11 +41,17 @@ class Impression < ActiveRecord::Base
   scope :most_recent, -> { order("created_at DESC") }
 
   # By timeframe
-  scope :daily, -> (day) { where("created_at >= ?", day.to_date) }
-  scope :weekly, -> (beginning_of_week) { where("created_at >= ?", beginning_of_week.to_date) }
+  scope :since_date, -> (date) { where("created_at >= ?", date.to_date) }
+
+  # Specific timeframe
+  scope :today, -> { since_date(Date.today) }
+  scope :this_week, -> { since_date(7.days.ago) }
+  scope :this_month, -> { since_date(30.days.ago) }
 
   # By category
   scope :projects, -> { where("controller_name = ? OR controller_name = ? OR controller_name = ?", "projects", "lessons", "steps") }
+  scope :companies, -> { where("controller_name = ?", "companies") }
+  scope :interview_questions, -> { where("controller_name = ?", "interview_questions") }
 
   class << self
 
@@ -68,6 +74,10 @@ class Impression < ActiveRecord::Base
       case category
       when "projects"
         self.projects
+      when "companies"
+        self.companies
+      when "interview_questions"
+        self.interview_questions
       else
         self.all
       end

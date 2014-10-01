@@ -1,0 +1,22 @@
+= will_paginate @project_statuses
+table.table.table-striped
+  th Link
+  th Username
+  th Project
+  th Completed On
+  th Submission Graded?
+  - @project_statuses.each do |project_status|
+    tr
+      td = link_to "View", admin_user_project_project_submissions_path(project_status.user, project_status.project)
+      td = link_to project_status.user.name, admin_user_path(project_status.user)
+      td = project_status.project.title
+      td = project_status.completed_on
+      td
+        - if !project_status.can_be_graded?
+          span.label.label-warning
+            | --
+        - elsif project_status.fully_graded?
+          span.label.label-success Graded!
+        - else
+          span.label.label-danger = project_status.feedback_progress
+

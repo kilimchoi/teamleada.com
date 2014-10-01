@@ -8,6 +8,7 @@
 
 
 # Delete all current projects
+ProjectSet.delete_all
 Project.unscoped.delete_all
 Lesson.delete_all
 Step.delete_all
@@ -15,6 +16,8 @@ Slide.delete_all
 SubmissionContext.unscoped.delete_all
 
 Quiz.delete_all
+
+InterviewQuestion.delete_all
 
 # Loads seed files from db/seeds
 def load_from_folder(folder)
@@ -35,6 +38,7 @@ folders = [
   'charts',
   'company',
   'user_actions',
+  'interview_questions',
 ]
 
 folders.each do |folder|

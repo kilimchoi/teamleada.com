@@ -1,0 +1,103 @@
+.card-group {
+  a:hover,
+  a:focus {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .list-group-item {
+    &.active,
+    &.active:hover {
+      background-color: #ffffff;
+      color: #333333;
+    }
+
+    &.active {
+      .sidebar-list-item-header {
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+
+        span {
+          vertical-align: middle;
+          font-weight: 700;
+        }
+      }
+
+      .sidebar-list-item-header-plain {
+        span {
+          font-weight: 700;
+        }
+      }
+    }
+
+    &.not-active {
+      padding: 20px;
+      background-color: #e6e6e6;
+
+      .sidebar-list-item-header {
+        span {
+          vertical-align: middle;
+          font-weight: 700;
+          color: #999999;
+        }
+      }
+    }
+  }
+
+  .list-group-item.active,
+  .list-group-item.not-active,
+  .list-group-item.active:hover,
+  .list-group-item.not-active:hover {
+    border-top: none;
+    border-bottom: 1px solid #dadada;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .sidebar-list-item-label {
+    font-size: 18px;
+    margin: 0.5em 1em 0.5em 0.5em;
+  }
+
+  ul.profile-completion-status,
+  ul.data-challenges-complete-status,
+  ul.get-interviews-status,
+  ul.receive-offers-status {
+    margin-top: 10px;
+    margin-left: 20px;
+  }
+}
+
+.card-group.card-group-small-header {
+  .list-group-item.active {
+    .sidebar-list-item-header {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.sidebar-top-margin {
+  margin-top: 10px;
+}
+
+.sidebar-project-container {
+  margin: 5px;
+}
+
+.sidebar-list-item-timestamp {
+  color: #a9a9a9;
+  font-weight: 300;
+}
+
+.sidebar-content-row {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.sidebar-block-item.active-block-item {
+  border-left: 5px solid #333333;
+}
+

@@ -1,0 +1,24 @@
+// Required Variables:
+// user
+
+// NOTE(mark): In the sidebar, always display featured challenges relevant to the signed_in user.
+// If they are not signed in, show them all the data challenges.
+- projects = Project.data_challenges.displayable_for_user(current_user)
+
+ul.card-group.list-group.sidebar-top-margin.card.card-no-padding.sidebar-featured-challenges
+  li.list-group-item.no-side-border.active
+    .sidebar-list-item-header.center
+      span.sidebar-list-item-title Featured Challenges
+    .sidebar-list-item-content
+      .sidebar-list-item-extra-content
+        - projects.each do |project|
+          .sidebar-project-container
+            = render partial: "shared/projects/project_cover_photo", locals: { \
+              project: project,
+              size: "small",
+              clickable: true,
+              path: project_path(project),
+              wrapper_class: "project-cover-photo-container",
+            }
+
+

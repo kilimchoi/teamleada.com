@@ -1,0 +1,20 @@
+// Required Variables:
+// home (loaded from yaml file)
+
+.row
+  #home-carousel.carousel.slide.carousel-home data-ride="carousel" data-interval="5000"
+    .carousel-inner.carousel-home-inner
+      - home.carousel.each_with_index do |item, index|
+        .item class="#{'active' if index == 0}"
+          .media-cover-photo.media-cover-dark class="#{item.image_class}"
+          .row.row-table.row-full-height.home-title-row
+            .col-md-12.col-middle.text-center
+              h1.media-title = item.title
+              h3.media-subtitle = item.subtitle
+
+    a.left.carousel-control href="#home-carousel" role="button" data-slide="prev"
+      span.glyphicon.glyphicon-chevron-left
+
+    a.right.carousel-control href="#home-carousel" role="button" data-slide="next"
+      span.glyphicon.glyphicon-chevron-right
+

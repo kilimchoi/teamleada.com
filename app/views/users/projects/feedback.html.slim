@@ -5,35 +5,22 @@
         ' Feedback for
         = @project.title
 
-  - code_submissions = @user.code_submissions_for_project(@project)
-  - if code_submissions.count > 0
-    - code_submissions.each do |code_submission|
+  - project_submissions = @user.project_submissions_for_project(@project)
+  - if project_submissions.count > 0
+    - project_submissions.each do |project_submission|
       .row
         .col-md-6
           .row.card
             .col-md-12
-              h3.title = code_submission.submission_context.title
+              h3.title = project_submission.submission_context.title
               p
-                = code_submission.submission_context.description
-              .code-viewer-container[id="code-viewer-#{code_submission.uid}"]
-                javascript:
-                  var editor;
-                  $(document).ready(function() {
-                    editor = ace.edit("code-viewer-#{code_submission.uid}");
-                    editor.setOptions({
-                      readOnly: true,
-                      highlightActiveLine: false
-                    });
-                    editor.renderer.$cursorLayer.element.style.opacity = 0;
-                    editor.setTheme("ace/theme/github");
-                    var content = "#{code_submission.safe_content}";
-                    editor.setValue(content, -1);
-                  });
+                = project_submission.submission_context.description
+              = render partial: "users/projects/project_submissions/project_submission", locals: { project_submission: project_submission }
         .col-md-6
           .row.card
             .col-md-12
               h3.title Feedback
-              - code_submission.code_submission_evaluations.each do |evaluation|
+              - project_submission.evaluations.each do |evaluation|
                 .evaluation-description
                   - if evaluation.visible?
                     = evaluation.description

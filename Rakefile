@@ -140,3 +140,56 @@ task :create_project_interest_stories => :environment do
   end
 end
 
+task :presentation_submission_contexts => :environment do
+  SubmissionContext.where(submission_type: SubmissionContext::PRESENTATION_SLIDES_LINK).each do |submission_context|
+    submission_context.project_submissions.each do |project_submission|
+      content_object = project_submission.content_object
+      new_content_object = SlidesLinkSubmissionContent.create(
+        content: content_object.content,
+      )
+      project_submission.content_object = new_content_object
+      project_submission.save
+      content_object.delete
+    end
+  end
+
+  SubmissionContext.where(submission_type: SubmissionContext::PRESENTATION_VIDEO_LINK).each do |submission_context|
+    submission_context.project_submissions.each do |project_submission|
+      content_object = project_submission.content_object
+      new_content_object = VideoLinkSubmissionContent.create(
+        content: content_object.content,
+      )
+      project_submission.content_object = new_content_object
+      project_submission.save
+      content_object.delete
+    end
+  end
+end
+
+task :delete_old_quiz_submissions => :environment do
+  quiz_submissions = QuizSubmissionContent.all.select{ |quiz| (155..400).include? quiz.quiz_id.to_i }
+  quiz_submissions.each do |quiz_submission|
+    quiz_submission.delete
+  end
+  puts "Deleted #{quiz_submissions.count} quiz submissions with incorrect quiz_ids."
+end
+
+task :build_quiz_submissions => :environment do
+  QuizSubmissionContent.all.each do |quiz_submission_content|
+    user = quiz_submission_content.user
+    quiz = quiz_submission_content.quiz_via_id
+    project = quiz.project
+    slide = quiz.slide
+    content_object = quiz_submission_content
+
+    project_submission = ProjectSubmission.create_with_user_project_slide_content_object(user, project, slide, content_object)
+    project_submission.updated_at = quiz_submission_content.updated_at
+    project_submission.created_at = quiz_submission_content.created_at
+    project_submission.save
+  end
+end
+
+task :create_initial_companies => :environment do
+  puts "Creating initial companies"
+  load File.join(Rails.root, 'db', 'seeds', 'development', '006_companies.rb')
+end

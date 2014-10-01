@@ -23,7 +23,7 @@ stdout_path APP_PATH + "/log/unicorn.stdout.log"
 worker_processes Integer(ENV["WEB_CONCURRENCY"] || 4)
 
 # Time-out
-timeout 15
+timeout 60
 
 # listen on both a Unix domain socket and a TCP port,
 # we use a shorter backlog for quicker failover when busy
@@ -48,9 +48,19 @@ check_client_connection false
 before_fork do |server, worker|
   # the following is highly recomended for Rails + "preload_app true"
   # as there's no need for the master process to hold a connection
+
   defined?(ActiveRecord::Base) and
     ActiveRecord::Base.connection.disconnect!
- 
+
+  old_pid = APP_PATH + '/tmp/pids/unicorn.pid.oldbin'
+  if File.exists?(old_pid) && server.pid != old_pid
+    begin
+      Process.kill("QUIT", File.read(old_pid).to_i)
+    rescue Errno::ENOENT, Errno::ESRCH
+      #Already down
+    end
+  end 
+
   Signal.trap 'TERM' do
     puts 'Unicorn master intercepting TERM and sending myself QUIT instead'
     Process.kill 'QUIT', Process.pid

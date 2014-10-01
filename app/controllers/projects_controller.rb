@@ -3,9 +3,10 @@ class ProjectsController < ApplicationController
   load_and_authorize_resource except: [:show_interest, :project_info]
   load_resource only: [:show_interest, :project_info]
 
+  before_filter :set_slide, only: [:resource, :submit_resource]
+
   def show
-    @project_status = ProjectStatus.where(user: current_user, project: @project).first_or_create
-    @project_status.save
+    @project_status = ProjectStatus.find_by(project: @project, user: current_user)
   end
 
   def project_info
@@ -23,6 +24,7 @@ class ProjectsController < ApplicationController
     @project_data = get_yaml_data_file("projects.yml")
 
     @projects = @projects.enabled
+    @projects = @projects.displayable
     @featured_projects = @projects.featured
 
     # Don't show featured projects twice
@@ -96,8 +98,14 @@ class ProjectsController < ApplicationController
     @project_status = ProjectStatus.find_by(user: current_user, project: @project)
     if current_user.completed_points(@project) >= @project.total_points
       @project_status.mark_complete
-      flash[:info] = "Congratulations! You have completed the #{@project.title} project!"
-      redirect_to @project
+      if @project.is_onboarding
+        # TODO(mark): I want this message to be more than just a toast message. I want it to show up prominently on the user profile.
+        flash[:info] = "Congratulations! You have submitted your first Leada data challenge! Check out the featured company hosted challenges on the right hand sidebar below!"
+        redirect_to user_path(current_user)
+      else
+        flash[:info] = "Congratulations! You have completed the #{@project.title} project! Check back on the company page to see more projects!"
+        redirect_to @project
+      end
     else
       flash[:error] = "You have not completed all of the lessons, steps, and code submissions for this project!"
       redirect_to current_user.next_lesson_or_step_for_project_path(@project)
@@ -105,21 +113,20 @@ class ProjectsController < ApplicationController
   end
 
   def submit_resource
-    @submission = CodeSubmission.where(user: current_user, project: @project, parent_type: params[:parent_type], parent_id: params[:parent_id], slide_index: params[:slide_index]).first_or_initialize
-    @submission.content = params[:content]
+    @submission = @slide.submission_context.create_or_update_content_with_user_project_slide_content(current_user, @project, @slide, params[:content])
     if @submission.save
       respond_to do |format|
         format.json { render json: {}, status: :ok }
       end
     else
       respond_to do |format|
-        format.json { render json: {}, status: :unprocessible_entity}
+        format.json { render json: {}, status: 422 }
       end
     end
   end
 
   def resource
-    @submission = CodeSubmission.find_by(user: current_user, project: @project, parent_type: params[:parent_type], parent_id: params[:parent_id], slide_index: params[:slide_index])
+    @submission = ProjectSubmission.find_by_user_project_slide(current_user, @project, @slide)
     if @submission
       respond_to do |format|
         format.json { render json: {content: @submission.content}, status: :ok }
@@ -129,6 +136,16 @@ class ProjectsController < ApplicationController
         format.json { render json: {content: ""}, status: :ok}
       end
     end
+  end
+
+  private
+
+  def set_slide
+    @slide = Slide.find_by(
+      parent_type: params[:parent_type],
+      parent_id: params[:parent_id],
+      slide_id: params[:slide_id],
+    )
   end
 
 end

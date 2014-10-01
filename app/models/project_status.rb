@@ -18,6 +18,7 @@ class ProjectStatus < ActiveRecord::Base
   delegate :category, to: :project, allow_nil: true
 
   scope :group_by_user, -> { order("user_id ASC") }
+  default_scope -> { order("updated_at ASC") }
 
   def set_start_date
     self.start_date = Time.now
@@ -50,6 +51,10 @@ class ProjectStatus < ActiveRecord::Base
     self.save
   end
 
+  def started?
+    !start_date.nil?
+  end
+
   def expired?
     if start_date.nil? || project.deadline.nil?
       false
@@ -59,11 +64,11 @@ class ProjectStatus < ActiveRecord::Base
   end
 
   def display_start_date
-    "#{start_date.strftime('%A, %B %e, %Y')}"
+    "#{start_date.strftime('%A, %B %e, %Y at %l %p')}"
   end
 
   def display_end_date
-    "#{end_date.strftime('%A, %B %e, %Y')}"
+    "#{end_date.strftime('%A, %B %e, %Y at %l %p')}"
   end
 
   def end_date
@@ -87,7 +92,7 @@ class ProjectStatus < ActiveRecord::Base
   end
 
   def completed_all_submissions?
-    project.submission_contexts.count > 0 && user.code_submissions_for_project(project).count >= project.submission_contexts.count
+    project.submission_contexts.required.count > 0 && user.unique_required_project_submissions_for_project_count(project) == project.submission_contexts.required.count
   end
 
   def can_be_graded?
@@ -103,15 +108,15 @@ class ProjectStatus < ActiveRecord::Base
   end
 
   def graded_submissions
-    self.user.code_submissions_for_project(self.project).select{ |code_submission| code_submission.code_submission_evaluations.count > 0 }
+    user_submissions.select{ |code_submission| code_submission.evaluations.count > 0 }
   end
 
   def user_submissions
-    self.user.code_submissions_for_project(self.project)
+    self.user.project_submissions_for_project(self.project)
   end
 
   def submissions_required
-    self.project.submission_contexts
+    self.project.submission_contexts.required
   end
 
   def completed_on
@@ -119,15 +124,15 @@ class ProjectStatus < ActiveRecord::Base
   end
 
   # Chart methods
-  def created_before_and_not_completed?(day)
-    created_at <= day.date.tomorrow && !completed?
+  def created_before_started_and_not_completed?(day)
+    created_at <= day.date.tomorrow && started? && !completed?
   end
 
   def created_before_and_completed?(day)
     created_at <= day.date.tomorrow && completed?
   end
 
-  def created_before?(day)
-    created_at <= day.date.tomorrow
+  def created_before_and_started?(day)
+    created_at <= day.date.tomorrow && started?
   end
 end

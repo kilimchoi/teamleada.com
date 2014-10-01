@@ -88,7 +88,7 @@ class ConfirmationsController < Devise::ConfirmationsController
     if user.is_admin?
       admin_dashboard_path
     else
-      projects_path
+      companies_path
       # Code below takes them back to previous page
       # session[:previous_url] || root_path
     end

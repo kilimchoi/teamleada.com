@@ -1,7 +1,0 @@
-.list-group
-  - project.submission_contexts.each do |submission_context|
-    - if current_user.has_completed_submission?(submission_context)
-      = link_to submission_context.title, submission_context.path, class: "list-group-item list-group-item-success"
-    - else
-      li.list-group-item
-        = submission_context.title

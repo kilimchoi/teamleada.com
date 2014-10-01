@@ -1,0 +1,32 @@
+.row.card
+  .col-md-12
+    h1 User Activity
+
+.row
+  .col-md-3
+    .panel.panel-default
+      .panel-heading Page Views
+      ul.list-group
+        li.list-group-item
+          span.badge = @page_views.today.count
+          | Page Views Today
+        li.list-group-item
+          span.badge = @page_views.this_week.count
+          | Page Views This Week
+        li.list-group-item
+          span.badge = @page_views.this_month.count
+          | Page Views This Month
+
+
+
+.row.card
+  .col-md-12
+    table.table.table-striped
+      th URL
+      th Timestamp
+      - @page_views.each do |page_view|
+        tr
+          td = page_view.url
+          td = page_view.created_at.pretty_time
+
+  = will_paginate(@page_views)

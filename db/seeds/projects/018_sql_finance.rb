@@ -13,7 +13,7 @@ project = Project.create!(
   description: main_page_content,
   short_description: "In this challenge, you will scrape a set of Yahoo finance data. After collecting the data, you will design a database schema and then store it into a SQL database.",
   number: 18,
-  enabled: true,
+  enabled: false,
   has_written_submit: true,
   uid: 18,
   difficulty: 'Intermediate',
@@ -66,7 +66,6 @@ collect_data_content_1 = [
   ['text-success', "Get a list of NYSE symbols by searching on Google."],
   ['text', "You should be able to find a csv/excel table of all NYSE companies (and their stock symbols)."],
   ['text', "You should be able to find the list without having to register anywhere."],
-  ['text', "How long is the list you found of NYSE stocks? Round to the nearest thousands:"],
   ['quiz', "finance_data_0"],
   ['text', "Good! Now you can use the list to iteratively scrape Yahoo Finance data."],
   ['text-info', "Write a script that will iteratively grab Yahoo Finance Data for each of the NYSE symbols you acquired."],
@@ -80,12 +79,6 @@ collect_data_content_2 = [
   ['text-warning', "Make sure to include relevant comments."],
   ['next_steps', ""],
 ]
-
-quiz_intro_pd = Quiz.create!(
-  quiz_id: "finance_data_0",
-  answer: "3000",
-  project: project
-)
 
 collect_data_lesson = Lesson.create!(
   title: "Data Collection",
@@ -110,10 +103,19 @@ collect_data_slide_2 = Slide.create!(
   parent: collect_data_lesson,
   slide_id: 2,
 )
-sraper_data_submission = SubmissionContext.create!(
+
+quiz_intro_pd = ExactAnswerQuiz.create!(
+  quiz_id: "finance_data_0",
+  answer: "3000",
+  project: project,
+  slide: collect_data_slide_1,
+  question: "How long is the list you found of NYSE stocks? Round to the nearest thousands:",
+)
+
+scraper_data_submission = SubmissionContext.create!(
   title: "Scraping Yahoo Finance",
   description: "User is asked to scrape Yahoo Finance.",
-  slide: collect_data_slide_1,
+  slide: collect_data_slide_2,
   submission_context_id: 0,
   submission_type: SubmissionContext::CODE,
 )

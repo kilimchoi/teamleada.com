@@ -3,10 +3,10 @@
 columns:
   - title: "Host a Challenge"
     icon: "home"
-    description: "Outsource the \"take home\" portion of the interview process for your data team to us."
+    description: "Outsource the take home portion of the interview process for your data team to us."
   - title: "Create a Challenge"
     icon: "cogs"
-    description: "Work with Leada to create a custom challenge tailored to your industry and the skills you need."
+    description: "Work with Leada to create a custom challenge tailored to your position and the skills you need."
   - title: "Select a Challenge"
     icon: "arrow-up"
-    description: "Choose from the challenges we have created which encompass the array of skills necessary for a data scientist."
+    description: "Choose from the 12 challenges we have created from writing MapReduce to building a time series model."

@@ -18,6 +18,9 @@
 #  number_of_employees :string(255)
 #  about               :text
 #  website             :string(255)
+#  looking_for         :text
+#  logo_image          :string(255)
+#  cover_photo_image   :string(255)
 #
 
 class Company < ActiveRecord::Base
@@ -70,6 +73,14 @@ class Company < ActiveRecord::Base
 
   def data_challenges
     projects.data_challenges
+  end
+
+  def displayable_data_challenges_for_user(user)
+    if user.nil?
+      data_challenges.displayable
+    else
+      data_challenges.displayable_for_user(user)
+    end
   end
 
   # Methods

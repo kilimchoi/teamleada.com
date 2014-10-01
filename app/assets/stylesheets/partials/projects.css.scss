@@ -81,12 +81,37 @@
   background-image: image-url("projects/ab_testing.jpg");
 }
 
+.project-image-graph {
+  background-image: image-url("projects/graph.png");
+}
+
 .project-image-scrape-finance {
   background-image: image-url("projects/scrape_finance.jpg");
 }
 
 .project-image-health-1 {
   background-image: image-url("projects/health_1.jpg");
+}
+
+.project-image-voter-pt1 {
+  background-image: image-url("projects/voter2.png");
+}
+
+.project-image-voter-pt2 {
+  background-image: image-url("projects/voter.png");
+}
+
+.project-image-voter-pt3 {
+  background-image: image-url("projects/voter3.png");
+}
+
+.project-image-movielens {
+  background-image: image-url("projects/movielens.png");
+}
+
+.project-image-intro {
+  //background-image: image-url("projects/leada_large_just_logo.png");
+  background-color: #34DDDD;
 }
 
 .project-cover-darken-container {
