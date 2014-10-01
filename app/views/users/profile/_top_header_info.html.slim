@@ -7,10 +7,7 @@
 
     .profile-overview.clearfix
       h1.title.profile-name
-        - if is_company
-          | Anonymous User
-        - else
-          = user.name
+        = user.name
       .clearfix
       .profile-header-info.clearfix
         - if current_user_can_edit
