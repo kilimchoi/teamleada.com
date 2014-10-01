@@ -33,7 +33,10 @@ TeamLeada::Application.routes.draw do
       member do
         match 'favorite', to: 'users#favorite', as: :favorite, via: :post
         match 'unfavorite', to: 'users#unfavorite', as: :unfavorite, via: :post
-        match 'projects/:project_id', to: 'users#show_project', as: :project, via: :get
+      end
+
+      scope module: :users do
+        resources :projects, only: [:show]
       end
     end
   end
