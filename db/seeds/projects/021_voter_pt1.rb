@@ -96,7 +96,7 @@ data_details_slide = Slide.create!(
 
 voter_intro_quiz = ExactAnswerQuiz.create!(
   quiz_id: "voter_intro_pt1_0",
-  answer: "510459",
+  answer: "526396",
   project: project,
   slide: data_details_slide,
   question: "How many rows are there in the data? (Be sure to exclude the header).",
